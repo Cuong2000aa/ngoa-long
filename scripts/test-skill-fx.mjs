@@ -119,6 +119,8 @@ ok(vfxSrc.includes("spawnRowSweep"), "spawnRowSweep (hàng ngang)");
 ok(vfxSrc.includes("spawnAoENova"), "spawnAoENova (toàn địch)");
 ok(vfxSrc.includes("spawnAllyBless"), "spawnAllyBless (phe ta)");
 ok(vfxSrc.includes("spawnPatternEmission"), "spawnPatternEmission router");
+ok(vfxSrc.includes("clearBattleVfx"), "clearBattleVfx cho QA");
+ok(!/spawnRowSweep[\s\S]{0,600}0xfffbeb/.test(vfxSrc), "row sweep không cream-wash motif");
 
 // —— BattleRenderer không remap gold → fire ——
 const br = fs.readFileSync(path.join(ROOT, "src/battle/BattleRenderer.ts"), "utf8");
@@ -134,6 +136,8 @@ ok(br.includes("hitStopUntil"), "BattleRenderer có hit-stop");
 ok(br.includes("spawnPatternEmission"), "BattleRenderer gọi spawnPatternEmission");
 ok(br.includes("qualityToScale"), "BattleRenderer scale theo phẩm");
 ok(br.includes("pattern?:"), "SkillFlashOpts có pattern");
+ok(br.includes("clearFx"), "BattleRenderer.clearFx");
+ok(br.includes("pausedForShot"), "BattleRenderer.pausedForShot");
 
 // —— combat-ui wave flag ——
 const ui = fs.readFileSync(path.join(ROOT, "js/combat/combat-ui.js"), "utf8");
@@ -154,22 +158,24 @@ function expectNamedFx(name) {
   const n = name || "";
   // Thứ tự quan trọng: compound (Phong Tiễn / Hỏa Long Tiễn) trước Tiễn generic
   const rules = [
-    [/Giáp|Thiết Bích|Hộ Thể|Thủ Hộ|Lấy Thân Làm Giáp/i, "shield"],
-    [/Đột Kích|Tập Kích|Xung Phong|Nghịch Tập/i, "rush"],
+    [/Giáp|Thiết Bích|Hộ Thể|Thủ Hộ|Lấy Thân Làm Giáp|Hãn Vệ/i, "shield"],
+    [/Đột Kích|Tập Kích|Xung Phong|Nghịch Tập|Đột Tiến|Đột Tập|Cường Tập|Nộ Tập|Tật Xung/i, "rush"],
     [/Kỵ Liệp|Kỵ Kích|Kỵ Chiến|Chiến Kỵ|Đơn Kỵ|Thiết Kỵ|Nhất Kỵ|Thiên Lý Đơn Kỵ|Bạch Kỵ/i, "charge"],
     [/Phong Tiễn/i, "whirlwind"],
     [/Hỏa Long Tiễn|Long Tiễn/i, "dragon"],
     [/Hỏa .{0,6}Tiễn|Viêm .{0,4}Tiễn/i, "fire_rain"],
     [/Lôi Tiễn|Kinh Lôi|Lôi Kích|Thần Lôi|Xích Lôi|Tử Điện|Lôi Oanh|Cửu Thiên Thần Lôi|Kinh Thiên Bạo Lôi|Cửu Tiêu Thần Lôi/i, "thunder"],
-    [/Tiễn|Nghệ Xạ|Thần Xạ|Mũi Nhọn|Liệt Thỉ|Thỉ$/i, "yellow"],
+    [/Tiễn|Nghệ Xạ|Thần Xạ|Mũi Nhọn|Liệt Thỉ|Thỉ$|Tề Xạ|Xạ Sát|Phi Xạ|Liên Nỏ|Kỵ Xạ|Xạ Thủ|Kình Nỏ|Giương Cung/i, "yellow"],
     [/Lang |Sói/i, "wolf"],
     [/Hổ Khiếu|Hổ Bôn|Hùng Hổ|Hổ Xung|Hổ Sát|Mãnh Hổ|Hổ Tri|Triệu Hổ/i, "tiger"],
     [/Thanh Long|Bạch Long|Ngân Long|Thiên Long|Phục Long|Đằng Long|Địa Long|Trời Long|Hỏa Long/i, "dragon"],
-    [/Thiên Hỏa|Hỏa Vũ|Hỏa Ngưu|Hỏa Thiêu|Hỏa Thần|Đại Viêm|Hồng Viêm|Hắc Viêm|Luyện Ngục|Xích Lửa|Hỏa /i, "fire_rain"],
+    [/Thiên Hỏa|Hỏa Vũ|Hỏa Ngưu|Hỏa Thiêu|Hỏa Thần|Đại Viêm|Hồng Viêm|Hắc Viêm|Luyện Ngục|Xích Lửa|Lửa Lục|Hỏa /i, "fire_rain"],
     [/Độc Địa|Độc Xà|Độc Tiêu|Xà Độc|Độc /i, "green_poison"],
-    [/Bát Trận|Kỳ Môn/i, "bagua"],
-    [/Lạc Thủy|Thủy Chiến|Hồng Thủy/i, "blue_water"],
-    [/Gió Lốc|Dòng Xoáy|Lướt Nhanh Như Gió|Cuồng Phong|Phong Lôi|Đông Phong|Thần Phong|Băng Phong/i, "whirlwind"],
+    [/Bát Trận|Kỳ Môn|Phá Trận|Ngũ Hành/i, "bagua"],
+    [/Lạc Thủy|Thủy Chiến|Hồng Thủy|Vũ Thánh|Thiên Vũ|Phượng Vũ/i, "blue_water"],
+    [/Gió Lốc|Dòng Xoáy|Lướt Nhanh Như Gió|Cuồng Phong|Phong Lôi|Đông Phong|Thần Phong|Băng Phong|Phong Hầu|Uy Phong|Tang Phong/i, "whirlwind"],
+    [/Kỳ Mưu|Ẩn Mưu|Quỷ Cốc|Định Kế/i, "purple"],
+    [/Huyết Chiến|Huyết Quỷ|Nộ Sát|Quỷ Sát|Bác Sát/i, "crimson"],
   ];
   for (const [re, flash] of rules) if (re.test(n)) return flash;
   return null;
@@ -181,11 +187,13 @@ function namedFxOk(fx, want) {
   if (want === "rush") return flash === "rush" || motif === "rush";
   if (want === "shield") return flash === "shield" || motif === "shield";
   if (want === "yellow") return flash === "yellow" || flash === "thunder";
-  if (want === "blue_water") return ["blue_water", "cyan", "teal", "blue", "white_blue"].includes(flash);
-  if (want === "fire_rain") return ["fire_rain", "red_fire", "orange", "dragon", "crimson"].includes(flash);
-  if (want === "green_poison") return ["green_poison", "poison", "snake"].includes(flash) || motif === "snake" || motif === "poison";
+  if (want === "blue_water") return ["blue_water", "cyan", "teal", "blue", "white_blue"].includes(flash) || motif === "water";
+  if (want === "fire_rain") return ["fire_rain", "red_fire", "orange", "dragon", "crimson", "fire_green"].includes(flash) || motif === "fire";
+  if (want === "green_poison") return ["green_poison", "poison", "snake", "fire_green"].includes(flash) || motif === "snake" || motif === "poison";
   if (want === "whirlwind") return flash === "whirlwind" || flash === "wind" || motif === "whirlwind";
   if (want === "dragon") return flash === "dragon" || motif === "dragon";
+  if (want === "purple") return flash === "purple" || motif === "shadow" || motif === "arcane";
+  if (want === "crimson") return flash === "crimson" || flash === "gold_red" || flash === "dark_red";
   return flash === want || motif === want;
 }
 function auditFaction(faction, minGens) {

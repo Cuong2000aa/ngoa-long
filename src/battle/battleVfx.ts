@@ -538,8 +538,18 @@ function sheetForFlash(flash: string): string[] {
 function slashSheetForFlash(flash: string): string[] {
   if (flash === "crimson" || flash === "red" || flash === "gold_red" || flash === "orange" || flash === "fire_rain")
     return TEX.slashFire;
-  if (flash === "purple" || flash === "violet" || flash === "dark_red") return TEX.slashPurple;
-  if (flash === "blue" || flash === "cyan" || flash === "blue_water" || flash === "white_blue") return TEX.slashBlue;
+  if (flash === "purple" || flash === "violet" || flash === "dark_red" || flash === "bagua") return TEX.slashPurple;
+  if (flash === "blue" || flash === "cyan" || flash === "blue_water" || flash === "white_blue" || flash === "teal")
+    return TEX.slashBlue;
+  // Độc / rắn — dùng sheet độc (không classic trắng)
+  if (flash === "green_poison" || flash === "poison" || flash === "snake" || flash === "fire_green")
+    return TEX.poison.length ? TEX.poison : TEX.slashBlue;
+  if (flash === "dragon") return TEX.dragon.length ? TEX.dragon : TEX.slashFire;
+  if (flash === "thunder") return TEX.thunderSpell.length ? TEX.thunderSpell : TEX.slashPurple;
+  if (flash === "wind" || flash === "whirlwind")
+    return TEX.whirlwind.length ? TEX.whirlwind : TEX.slashBlue;
+  if (flash === "tiger") return TEX.tigerRoar.length ? TEX.tigerRoar : TEX.slashFire;
+  if (flash === "wolf") return TEX.wolf.length ? TEX.wolf : TEX.slashFire;
   return TEX.slashClassic.length ? TEX.slashClassic : TEX.slash;
 }
 
@@ -1506,26 +1516,30 @@ export function spawnRowSweep(
   scale?: string | null
 ): void {
   const mul = fxScaleMul(scale);
-  const tint = auraTint(flash);
+  const r = auraRecipe(flash);
+  const tint = r.mainColor ?? auraTint(flash);
+  const midSheet = r.main.length ? r.main : slashSheetForFlash(flash);
+  const edgeSheet = r.overlay?.length ? r.overlay : slashSheetForFlash(flash);
   const ordered = targets.slice().sort((a, b) => a.x - b.x);
   if (ordered.length >= 2) {
     const a = ordered[0];
     const b = ordered[ordered.length - 1];
     const mid = a.clone().lerp(b, 0.5);
     mid.y = Math.max(from.y, 0.7);
-    void playSheet(scene, mid, slashSheetForFlash(flash), {
+    void playSheet(scene, mid, midSheet, {
       size: (1.8 + ordered.length * 0.15) * mul,
       life: 420,
       y: 0,
       yMode: "abs",
       color: tint,
     });
-    void playSheet(scene, mid, TEX.slash, {
+    // Viền motif — giữ tint (không cream wash làm mất xanh độc / lam thủy)
+    void playSheet(scene, mid, edgeSheet, {
       size: 1.4 * mul,
       life: 360,
       y: 0.05,
       yMode: "abs",
-      color: 0xfffbeb,
+      color: r.overlayColor ?? tint,
     });
   }
   ordered.forEach((to, i) => {
@@ -1572,12 +1586,12 @@ export function spawnAoENova(
         color: r.overlayColor ?? tint,
       });
       spawnImpactAt(scene, to, flash);
-      // «mưa» nhẹ từ trên
-      void playSheet(scene, to, TEX.hit, {
+      // «mưa» motif — cùng tint, không cream wash
+      void playSheet(scene, to, r.main.length ? r.main : TEX.hit, {
         size: 0.85 * mul,
         life: 360,
         y: 1.35,
-        color: 0xfff7ed,
+        color: tint,
       });
     }, 40 + i * 50);
   });
@@ -1661,6 +1675,37 @@ export function spawnPatternEmission(
 }
 
 /** Animate sprite sheets + fade + đạn bay */
+/** Xóa toàn bộ FX đang chạy (QA / đổi chiêu sạch khung hình) */
+export function clearBattleVfx(scene?: THREE.Scene | null): void {
+  const list = Array.from(ACTIVE_FX);
+  ACTIVE_FX.clear();
+  list.forEach((spr) => {
+    if (!spr) return;
+    if (spr.parent) spr.parent.remove(spr);
+    else if (scene) scene.remove(spr);
+    try {
+      (spr.material as THREE.SpriteMaterial).dispose();
+    } catch {
+      /* ignore */
+    }
+  });
+  if (scene) {
+    const doomed: THREE.Object3D[] = [];
+    scene.traverse((o) => {
+      if ((o as THREE.Sprite).isSprite && (o as FxSprite).userData?.born != null) doomed.push(o);
+    });
+    doomed.forEach((o) => {
+      o.parent?.remove(o);
+      const mat = (o as THREE.Sprite).material as THREE.SpriteMaterial | undefined;
+      try {
+        mat?.dispose();
+      } catch {
+        /* ignore */
+      }
+    });
+  }
+}
+
 export function tickBattleVfx(_scene: THREE.Scene, now: number, _dt: number): void {
   if (!ACTIVE_FX.size) return;
   ACTIVE_FX.forEach((ch) => {

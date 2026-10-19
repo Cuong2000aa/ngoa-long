@@ -109,8 +109,12 @@ def main() -> None:
         if not fx.get("text"):
             fx["text"] = (name or "").upper()[:18]
             changed = True
+        # luôn ghi lại object fx khi có thay đổi (tránh lệch flash tồn tại)
         if changed:
             sk["fx"] = fx
+            stats["motif_changed"] += 1
+        elif fx.get("motif") != motif or fx.get("flash") != flash:
+            sk["fx"] = { **fx, "motif": motif, "flash": flash }
             stats["motif_changed"] += 1
 
     stats["unmapped_brackets"] = dict(
