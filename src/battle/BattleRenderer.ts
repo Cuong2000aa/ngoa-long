@@ -313,6 +313,8 @@ export class BattleRenderer {
       antialias: true,
       alpha: true,
       powerPreference: "high-performance",
+      // Cho QA / toDataURL đọc buffer sau render (chi phí nhỏ)
+      preserveDrawingBuffer: true,
     });
     renderer.setPixelRatio(dpr);
     renderer.setClearColor(0x000000, 0);

@@ -82,6 +82,10 @@ try {
 
   // Đánh → modal xác nhận → Xuất quân (#brief-go)
   await page.waitForFunction(() => !!document.getElementById("brief-go"), { timeout: 15000 });
+  // Đóng băng combat ngay sau spawn — chỉ skillFlash QA, không event playback
+  await page.evaluate(() => {
+    window.__NL_SKILL_QA__ = true;
+  });
   await page.evaluate(() => {
     document.getElementById("brief-go")?.click();
   });
@@ -170,11 +174,41 @@ try {
     const waitMs = Math.max(280, Math.min(900, (info && info.waitMs) || 420));
     await page.waitForTimeout(waitMs);
     const shot = resolve(outDir, `${c.label}.png`);
-    const canvas = page.locator("#combat-overlay canvas").first();
-    if (await canvas.count()) {
-      await canvas.screenshot({ path: shot, type: "png" });
+    // Force 1 frame rồi toDataURL (cần preserveDrawingBuffer trên WebGLRenderer)
+    const dataUrl = await page.evaluate(() => {
+      const v = window.NLCombatUI && window.NLCombatUI.getView && window.NLCombatUI.getView();
+      const br = v && v._battle3d;
+      const c = document.querySelector("#combat-overlay canvas");
+      if (!c) return null;
+      try {
+        if (br && br.renderer && br.scene && br.camera) {
+          br.renderer.render(br.scene, br.camera);
+        }
+        return c.toDataURL("image/jpeg", 0.72);
+      } catch {
+        return null;
+      }
+    });
+    if (dataUrl && dataUrl.startsWith("data:image")) {
+      const b64 = dataUrl.replace(/^data:image\/\w+;base64,/, "");
+      const out = dataUrl.includes("jpeg") ? shot.replace(/\.png$/, ".jpg") : shot;
+      writeFileSync(out, Buffer.from(b64, "base64"));
+      if (out !== shot) {
+        // giữ tên .png trong report bằng copy đường dẫn logic — ghi thêm png nhỏ via page clip
+        writeFileSync(shot, Buffer.from(b64, "base64"));
+      }
     } else {
-      await page.screenshot({ path: shot, fullPage: false, type: "png" });
+      const box = await page.evaluate(() => {
+        const c = document.querySelector("#combat-overlay canvas");
+        if (!c) return null;
+        const r = c.getBoundingClientRect();
+        return { x: r.x, y: r.y, width: r.width, height: r.height };
+      });
+      if (box && box.width > 10) {
+        await page.screenshot({ path: shot, clip: box, type: "jpeg", quality: 70, timeout: 20000 });
+      } else {
+        await page.screenshot({ path: shot, fullPage: false, type: "jpeg", quality: 70, timeout: 20000 });
+      }
     }
 
     const pass = !!(info && info.ok && info.hasCanvas);
