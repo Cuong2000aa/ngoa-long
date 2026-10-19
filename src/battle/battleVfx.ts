@@ -1292,13 +1292,14 @@ export function spawnSlashArc(
   const mid = at.clone().lerp(toward, 0.4);
   mid.y = Math.max(at.y, toward.y * 0.15 + 0.55, 0.65);
   const sheet = slashSheetForFlash(flash);
-  void playSheet(scene, mid, sheet, { size: 1.25, life: 340, y: 0, yMode: "abs" });
-  void playSheet(scene, mid, TEX.slash, {
-    size: 0.95,
-    life: 260,
+  const tint = auraTint(flash);
+  void playSheet(scene, mid, sheet, { size: 1.35, life: 360, y: 0, yMode: "abs", color: tint });
+  void playSheet(scene, mid, slashSheetForFlash(flash), {
+    size: 1.05,
+    life: 280,
     y: 0.08,
     yMode: "abs",
-    color: 0xffe8c8,
+    color: tint,
   });
 }
 

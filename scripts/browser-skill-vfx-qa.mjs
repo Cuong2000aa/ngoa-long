@@ -24,24 +24,25 @@ if (!chrome) {
   process.exit(1);
 }
 
+/** expectHex: substring màu material phải xuất hiện trên FX sprites */
 const CASES = [
-  { flash: "wolf", pattern: "column", label: "LangTuyen-column-wolf" },
-  { flash: "shield", pattern: "self", label: "ThietBich-shield" },
-  { flash: "charge", pattern: "single", label: "KyLiep-charge" },
-  { flash: "rush", pattern: "single", label: "DotKich-rush" },
-  { flash: "whirlwind", pattern: "single", label: "DongXoay-whirlwind" },
-  { flash: "dragon", pattern: "all", label: "HoaLong-dragon" },
-  { flash: "snake", pattern: "single", label: "DocXa-snake" },
-  { flash: "yellow", pattern: "single", label: "BachBo-yellow" },
-  { flash: "blue_water", pattern: "all", label: "VuThanh-water" },
-  { flash: "bagua", pattern: "all", label: "Bagua" },
-  { flash: "thunder", pattern: "all", label: "ThanLoi-thunder" },
-  { flash: "crimson", pattern: "all", label: "HuyetChien-crimson" },
-  { flash: "purple", pattern: "single", label: "KyMuu-shadow" },
-  { flash: "fire_rain", pattern: "all", label: "ThienHoa-fire" },
-  { flash: "tiger", pattern: "front_row", label: "HoKhieu-tiger" },
-  { flash: "steel", pattern: "column", label: "Slash-column-steel" },
-  { flash: "green_poison", pattern: "row", label: "Poison-row" },
+  { flash: "wolf", pattern: "column", label: "LangTuyen-column-wolf", expectHex: ["fca5a5", "blood", "ff"] },
+  { flash: "shield", pattern: "self", label: "ThietBich-shield", expectHex: ["ffe08a", "fde68a", "fff"] },
+  { flash: "charge", pattern: "single", label: "KyLiep-charge", expectHex: ["d4b896", "c4", "ffe"] },
+  { flash: "rush", pattern: "single", label: "DotKich-rush", expectHex: ["ffe", "c0", "d4"] },
+  { flash: "whirlwind", pattern: "single", label: "DongXoay-whirlwind", expectHex: ["a7f3d0", "7d", "86"] },
+  { flash: "dragon", pattern: "all", label: "HoaLong-dragon", expectHex: ["ffb347", "fb92", "ff"] },
+  { flash: "snake", pattern: "single", label: "DocXa-snake", expectHex: ["4ade80", "86efac", "22c55e", "a3e635"] },
+  { flash: "yellow", pattern: "single", label: "BachBo-yellow", expectHex: ["fde68a", "ffe", "fbb"] },
+  { flash: "blue_water", pattern: "all", label: "VuThanh-water", expectHex: ["7dd3fc", "38bdf8"] },
+  { flash: "bagua", pattern: "all", label: "Bagua", expectHex: ["fde047", "67e8f9", "c4b5fd"] },
+  { flash: "thunder", pattern: "all", label: "ThanLoi-thunder", expectHex: ["c4b5fd", "a78", "e0"] },
+  { flash: "crimson", pattern: "all", label: "HuyetChien-crimson", expectHex: ["fca5a5", "fb7185"] },
+  { flash: "purple", pattern: "single", label: "KyMuu-shadow", expectHex: ["c4b5fd", "a78bfa"] },
+  { flash: "fire_rain", pattern: "all", label: "ThienHoa-fire", expectHex: ["fb923c", "ff8844", "ea580c"] },
+  { flash: "tiger", pattern: "front_row", label: "HoKhieu-tiger", expectHex: ["fbbf24", "fb9", "ff"] },
+  { flash: "steel", pattern: "column", label: "Slash-column-steel", expectHex: ["e2", "cbd", "ffe", "fff"] },
+  { flash: "green_poison", pattern: "row", label: "Poison-row", expectHex: ["4ade80", "22c55e", "a3e635", "86efac"] },
 ];
 
 const browser = await chromium.launch({
@@ -171,50 +172,67 @@ try {
       }
     }, c);
 
-    const waitMs = Math.max(280, Math.min(900, (info && info.waitMs) || 420));
+    const waitMs = Math.max(320, Math.min(950, (info && info.waitMs) || 450));
     await page.waitForTimeout(waitMs);
-    const shot = resolve(outDir, `${c.label}.png`);
-    // Force 1 frame rồi toDataURL (cần preserveDrawingBuffer trên WebGLRenderer)
-    const dataUrl = await page.evaluate(() => {
-      const v = window.NLCombatUI && window.NLCombatUI.getView && window.NLCombatUI.getView();
+    await page
+      .waitForFunction(
+        () => {
+          const v = window.NLCombatUI && window.NLCombatUI.getView && window.NLCombatUI.getView();
+          const br = v && v._battle3d;
+          if (!br || !br.scene) return false;
+          let n = 0;
+          br.scene.traverse((o) => {
+            if (o && o.name === "fx-sprite") n++;
+          });
+          return n > 0;
+        },
+        { timeout: 2500 }
+      )
+      .catch(() => {});
+    await page.waitForTimeout(100);
+
+    const fxProbe = await page.evaluate(() => {
+      const v = window.NLCombatUI.getView();
       const br = v && v._battle3d;
-      const c = document.querySelector("#combat-overlay canvas");
-      if (!c) return null;
-      try {
-        if (br && br.renderer && br.scene && br.camera) {
-          br.renderer.render(br.scene, br.camera);
-        }
-        return c.toDataURL("image/jpeg", 0.72);
-      } catch {
-        return null;
+      const colors = [];
+      let n = 0;
+      if (br && br.scene) {
+        br.scene.traverse((o) => {
+          if (o && o.name === "fx-sprite") {
+            n++;
+            const m = o.material;
+            if (m && m.color) colors.push(m.color.getHexString());
+          }
+        });
       }
+      return { n, colors };
     });
-    if (dataUrl && dataUrl.startsWith("data:image")) {
-      const b64 = dataUrl.replace(/^data:image\/\w+;base64,/, "");
-      const out = dataUrl.includes("jpeg") ? shot.replace(/\.png$/, ".jpg") : shot;
-      writeFileSync(out, Buffer.from(b64, "base64"));
-      if (out !== shot) {
-        // giữ tên .png trong report bằng copy đường dẫn logic — ghi thêm png nhỏ via page clip
-        writeFileSync(shot, Buffer.from(b64, "base64"));
-      }
+
+    const shot = resolve(outDir, `${c.label}.png`);
+    const box = await page.evaluate(() => {
+      const el = document.getElementById("combat-overlay") || document.querySelector("#combat-overlay canvas");
+      if (!el) return null;
+      const r = el.getBoundingClientRect();
+      return {
+        x: Math.max(0, r.x),
+        y: Math.max(0, r.y),
+        width: Math.min(r.width, 1400),
+        height: Math.min(r.height, 900),
+      };
+    });
+    if (box && box.width > 40 && box.height > 40) {
+      await page.screenshot({ path: shot, clip: box, type: "png", timeout: 30000 });
     } else {
-      const box = await page.evaluate(() => {
-        const c = document.querySelector("#combat-overlay canvas");
-        if (!c) return null;
-        const r = c.getBoundingClientRect();
-        return { x: r.x, y: r.y, width: r.width, height: r.height };
-      });
-      if (box && box.width > 10) {
-        await page.screenshot({ path: shot, clip: box, type: "jpeg", quality: 70, timeout: 20000 });
-      } else {
-        await page.screenshot({ path: shot, fullPage: false, type: "jpeg", quality: 70, timeout: 20000 });
-      }
+      await page.screenshot({ path: shot, fullPage: false, type: "png", timeout: 30000 });
     }
 
-    const pass = !!(info && info.ok && info.hasCanvas);
+    const joined = (fxProbe.colors || []).join(",").toLowerCase();
+    const colorOk =
+      !c.expectHex || c.expectHex.some((h) => joined.includes(String(h).toLowerCase()));
+    const pass = !!(info && info.ok && info.hasCanvas && fxProbe.n > 0 && colorOk);
     if (!pass) failed++;
-    results.push({ ...c, pass, info, shot });
-    console.log(pass ? "PASS" : "FAIL", c.label, JSON.stringify(info));
+    results.push({ ...c, pass, info, fxProbe, shot });
+    console.log(pass ? "PASS" : "FAIL", c.label, JSON.stringify({ ...info, fx: fxProbe }));
   }
 } catch (e) {
   failed++;
