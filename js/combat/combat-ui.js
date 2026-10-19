@@ -408,6 +408,16 @@
           enemyFormation: start.enemyFormation || "square",
         });
       }
+      // Browser skill-VFX QA: spawn trận rồi đóng băng — không chạy event playback
+      if (global.__NL_SKILL_QA__) {
+        self._playing = false;
+        self._skip = true;
+        if (self._battle3d) {
+          self._battle3d.pausedForShot = true;
+          if (typeof self._battle3d.clearFx === "function") self._battle3d.clearFx();
+        }
+        return;
+      }
       step();
     }
 

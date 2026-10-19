@@ -10,6 +10,7 @@ fix3-*.png
 city-drag.png
 city-click.png
 tests/out/
+docs/_shots/skill-qa/
 .DS_Store
 Thumbs.db
 

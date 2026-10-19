@@ -445,13 +445,22 @@ def infer_motif_flash(name: str, desc: str, pattern: str | None = None) -> tuple
     blob = n + " " + d
     pat = pattern or infer_pattern(desc)
 
-    # Rule cứng theo TÊN (cùng thứ tự scripts/test-skill-fx.mjs expectNamedFx)
+    # Rule cứng theo TÊN — mở rộng full catalog (QA + audit mọi chiêu)
     named_rules: list[tuple[re.Pattern[str], str, str]] = [
-        (re.compile(r"Giáp|Thiết Bích|Hộ Thể|Thủ Hộ|Lấy Thân Làm Giáp", re.I), "shield", "shield"),
-        (re.compile(r"Đột Kích|Tập Kích|Xung Phong|Nghịch Tập|Tiên Đăng", re.I), "rush", "rush"),
+        (re.compile(r"Giáp|Thiết Bích|Hộ Thể|Thủ Hộ|Lấy Thân Làm Giáp|Hãn Vệ", re.I), "shield", "shield"),
         (
             re.compile(
-                r"Kỵ Liệp|Kỵ Kích|Kỵ Chiến|Chiến Kỵ|Đơn Kỵ|Thiết Kỵ|Nhất Kỵ|Thiên Lý Đơn Kỵ|Bạch Kỵ",
+                r"Đột Kích|Tập Kích|Xung Phong|Nghịch Tập|Tiên Đăng|Đột Tiến|Đột Tập|"
+                r"Cường Tập|Nộ Tập|Tật Xung|Nỗ Tập|Lõa Y Nộ Tập|Xả Thân Cường Tập",
+                re.I,
+            ),
+            "rush",
+            "rush",
+        ),
+        (
+            re.compile(
+                r"Kỵ Liệp|Kỵ Kích|Kỵ Chiến|Chiến Kỵ|Đơn Kỵ|Thiết Kỵ|Nhất Kỵ|"
+                r"Thiên Lý Đơn Kỵ|Bạch Kỵ|Kỵ Thần|Tây Lương",
                 re.I,
             ),
             "charge",
@@ -469,7 +478,16 @@ def infer_motif_flash(name: str, desc: str, pattern: str | None = None) -> tuple
             "thunder",
             "thunder",
         ),
-        (re.compile(r"Tiễn|Nghệ Xạ|Thần Xạ|Mũi Nhọn|Liệt Thỉ|Thỉ$", re.I), "pierce", "yellow"),
+        # Cung / tiễn / nỏ — trước shadow/blood
+        (
+            re.compile(
+                r"Tiễn|Nghệ Xạ|Thần Xạ|Mũi Nhọn|Liệt Thỉ|Thỉ$|Tề Xạ|Xạ Sát|Phi Xạ|"
+                r"Liên Nỏ|Kỵ Xạ|Xạ Thủ|Kình Nỏ|Giương Cung|Nỏ ",
+                re.I,
+            ),
+            "pierce",
+            "yellow",
+        ),
         (re.compile(r"Lang |Sói|Lang Tuyền", re.I), "wolf", "wolf"),
         (
             re.compile(
@@ -491,24 +509,64 @@ def infer_motif_flash(name: str, desc: str, pattern: str | None = None) -> tuple
         (
             re.compile(
                 r"Thiên Hỏa|Hỏa Vũ|Hỏa Ngưu|Hỏa Thiêu|Hỏa Thần|Đại Viêm|Hồng Viêm|"
-                r"Hắc Viêm|Luyện Ngục|Xích Lửa|Xích Lửa Trí Tuệ",
+                r"Hắc Viêm|Luyện Ngục|Xích Lửa|Xích Lửa Trí Tuệ|Lửa Lục",
                 re.I,
             ),
             "fire",
             "fire_rain",
         ),
-        (re.compile(r"Độc Địa|Độc Xà|Độc Tiêu|Xà Độc", re.I), "poison", "green_poison"),
-        (re.compile(r"Bát Trận|Kỳ Môn|Bát Quái", re.I), "bagua", "bagua"),
-        (re.compile(r"Lạc Thủy|Thủy Chiến|Hồng Thủy", re.I), "water", "blue_water"),
+        (re.compile(r"Độc Địa|Độc Xà|Độc Tiêu|Xà Độc|Độc ", re.I), "poison", "green_poison"),
+        (
+            re.compile(
+                r"Bát Trận|Kỳ Môn|Bát Quái|Chiến Trận|Phá Trận|Thương Trận|Ngũ Hành",
+                re.I,
+            ),
+            "bagua",
+            "bagua",
+        ),
+        (
+            re.compile(
+                r"Lạc Thủy|Thủy Chiến|Hồng Thủy|Vũ Thánh|Xích Vũ|Thiên Vũ|"
+                r"Phượng Vũ|Vũ Điệu|Vũ Khuynh",
+                re.I,
+            ),
+            "water",
+            "blue_water",
+        ),
         (
             re.compile(
                 r"Gió Lốc|Dòng Xoáy|Lướt Nhanh Như Gió|Cuồng Phong|Phong Lôi|"
-                r"Đông Phong|Thần Phong|Băng Phong",
+                r"Đông Phong|Thần Phong|Băng Phong|Phong Hầu|Uy Phong|Tang Phong",
                 re.I,
             ),
             "whirlwind",
             "whirlwind",
         ),
+        # Mưu / ám / kế
+        (
+            re.compile(
+                r"Kỳ Mưu|Ẩn Mưu|Liên Hoàn Kế|Quỷ Cốc|Định Kế|Ám |Huyền |"
+                r"Tấu Sát|Khu Trục|Hiệu Lệnh",
+                re.I,
+            ),
+            "shadow",
+            "purple",
+        ),
+        # Huyết / sát — son crimson (KHÔNG dùng substring «huyết» trong «thuyết»)
+        (
+            re.compile(
+                r"(?:^|[\s·])Huyết|"
+                r"Nộ Sát|Bác Sát|Quỷ Sát|Tấu Sát|"
+                r"Huyết Chiến|Huyết Quỷ|Huyết Chinh|Huyết Nhẫn|Huyết Trảm|"
+                r"Huyết Lộ|Huyết Chế|Huyết Ách|Mục Huyết|Huyết Phủ",
+                re.I,
+            ),
+            "slash",
+            "crimson",
+        ),
+        (re.compile(r"Loan Hồi|Hồi Phượng|Nhân Đức|Cam Vũ|Hồi Xuân|Trị Liệu", re.I), "heal", "gold_soft"),
+        # Không Thành / mưu kế truyền thuyết
+        (re.compile(r"Không Thành", re.I), "bagua", "bagua"),
     ]
     for cre, motif, flash in named_rules:
         if cre.search(raw_name):
@@ -534,28 +592,38 @@ def infer_motif_flash(name: str, desc: str, pattern: str | None = None) -> tuple
         return "dragon", "dragon"
     if "xà" in n or "rắn" in blob or "độc xà" in blob:
         return "snake", "snake"
-    if any(k in n for k in ("hỏa", "viêm")) and "long" not in n:
+    if "lửa lục" in n or "fire_green" in n:
+        return "poison", "fire_green"
+    if any(k in n for k in ("hỏa", "viêm", "lửa")) and "long" not in n:
         return "fire", "fire_rain"
     if any(k in blob for k in ("lôi", "sét", "điện", "sấm")):
         return "thunder", "thunder"
-    if any(k in n for k in ("thủy", "hải")):
+    if any(k in n for k in ("thủy", "hải", " vũ", "vũ ")):
         return "water", "blue_water"
     if any(k in blob for k in ("độc", "trúng độc", "kịch độc", "hủ thực")):
         return "poison", "green_poison"
-    if any(k in blob for k in ("bát quái", "không thành", "huyễn", "kỳ môn")):
+    if any(k in blob for k in ("bát quái", "không thành", "huyễn", "kỳ môn", "phá trận", "chiến trận")):
         return "bagua", "bagua"
-    if any(k in blob for k in ("trị liệu", "cam vũ", "nhân đức", "hồi xuân")) or (
+    if any(k in blob for k in ("trị liệu", "cam vũ", "nhân đức", "hồi xuân", "loan hồi")) or (
         has_troop_heal(desc) and pat in ("ally_all", "self") and "địch" not in d
     ):
         return "heal", "gold_soft"
-    if "ám tế" in blob or any(k in n for k in ("ám sát", "ám dạ", "ám tập")):
+    if any(k in n for k in ("ám ", "ám sát", "ám dạ", "ám tập", "ẩn mưu", "kỳ mưu", "quỷ cốc")):
         return "shadow", "purple"
-    if "huyết" in n or "máu" in n:
+    if re.search(r"(?:^|[\s·])huyết|nộ sát|quỷ sát|bác sát|máu", n):
         return "slash", "crimson"
+    if "không thành" in n:
+        return "bagua", "bagua"
+    if any(k in n for k in ("phong ", "phong", "gió")) and "long" not in n:
+        return "whirlwind", "whirlwind"
+    if any(k in n for k in ("đột ", "đột tiến", "đột tập", "cường tập", "nộ tập", "tật xung")):
+        return "rush", "rush"
+    if re.search(r"xạ|nỏ|cung", n) and "thương" not in n:
+        return "pierce", "yellow"
 
     if pat in ("self", "ally_all"):
         return "buff", "gold_soft"
-    if "[kế sách]" in d or "mưu công" in d:
+    if "[kế sách]" in d or "mưu công" in d or "kỳ mưu" in n or "kế" in n:
         return "arcane", "blue"
     return "slash", "steel"
 

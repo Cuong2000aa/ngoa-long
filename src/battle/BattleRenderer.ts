@@ -7,6 +7,7 @@ import {
 } from "./battleActors";
 import {
   prefetchBattleVfx,
+  clearBattleVfx,
   spawnAllyBless,
   spawnCavalryCharge,
   spawnHitBurst,
@@ -271,6 +272,8 @@ export class BattleRenderer {
   private t0 = 0;
   private last = 0;
   private preview = false;
+  /** QA: đóng băng lunge/cam — VFX vẫn tick để chụp motif */
+  pausedForShot = false;
   private refDist = 14.4;
   private readonly tmp = new THREE.Vector3();
   private readonly camHome = new THREE.Vector3();
@@ -310,6 +313,8 @@ export class BattleRenderer {
       antialias: true,
       alpha: true,
       powerPreference: "high-performance",
+      // Cho QA / toDataURL đọc buffer sau render (chi phí nhỏ)
+      preserveDrawingBuffer: true,
     });
     renderer.setPixelRatio(dpr);
     renderer.setClearColor(0x000000, 0);
@@ -1009,6 +1014,20 @@ export class BattleRenderer {
     this.camera.updateProjectionMatrix();
   }
 
+  /** Hủy timeline chiêu đang chạy */
+  cancelSkillPlay(): void {
+    if (this.skillPlayCancel) {
+      this.skillPlayCancel();
+      this.skillPlayCancel = null;
+    }
+  }
+
+  /** Xóa FX đang chạy — dùng trước khi bắn motif QA */
+  clearFx(): void {
+    this.cancelSkillPlay();
+    clearBattleVfx(this.scene);
+  }
+
   private tick = (): void => {
     if (!this.running || !this.renderer || !this.scene || !this.camera) return;
     this.raf = requestAnimationFrame(this.tick);
@@ -1016,15 +1035,16 @@ export class BattleRenderer {
     let dt = Math.min(0.05, (now - this.last) / 1000);
     this.last = now;
     if (now < this.hitStopUntil) dt *= 0.15;
+    const freezeUnits = this.pausedForShot;
 
     this.fighters.forEach((f) => {
-      f.actor.mixer.update(dt);
+      if (!freezeUnits) f.actor.mixer.update(dt);
       if (f.dead) {
         this.applyHitFlash(f, now);
         return;
       }
       const wasLunge = !!f.lunge;
-      this.updateLunge(f, now);
+      if (!freezeUnits) this.updateLunge(f, now);
       this.applyHitFlash(f, now);
       if (!f.lunge) {
         f.actor.root.position.y = 0;
@@ -1032,7 +1052,7 @@ export class BattleRenderer {
       }
     });
 
-    this.updateCamJuice(now);
+    if (!freezeUnits) this.updateCamJuice(now);
     tickBattleVfx(this.scene, now, dt);
     this.syncHudPositions();
     this.renderer.render(this.scene, this.camera);
