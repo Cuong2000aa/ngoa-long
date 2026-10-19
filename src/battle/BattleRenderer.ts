@@ -698,7 +698,6 @@ export class BattleRenderer {
     const now = performance.now();
     const dt = Math.min(0.05, (now - this.last) / 1000);
     this.last = now;
-    const t = (now - this.t0) / 1000;
 
     this.fighters.forEach((f) => {
       f.actor.mixer.update(dt);
@@ -708,15 +707,9 @@ export class BattleRenderer {
       }
       this.updateLunge(f, now);
       this.applyHitFlash(f, now);
-      // Idle bob cụm + từng lính phụ lệch pha
+      // Idle đứng yên — không bob/rung (chỉ lunge khi đánh)
       if (!f.lunge) {
-        const bob = Math.sin(t * 2.1 + f.seed * 0.37) * 0.022;
-        f.actor.root.position.y = bob;
-        f.actor.members.forEach((m, i) => {
-          if (i === 0) return;
-          const ph = (m.userData.bobPhase as number) || i;
-          m.position.y = 0.02 + Math.sin(t * 2.4 + ph) * 0.018;
-        });
+        f.actor.root.position.y = 0;
       }
     });
 

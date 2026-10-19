@@ -52,7 +52,8 @@ def fetch(url: str, dest: Path) -> bool:
         return False
 
 
-def fit_icon(im: Image.Image, size: int = CELL) -> Image.Image:
+def scrub_bg(im: Image.Image) -> Image.Image:
+    """Chỉ gỡ nền đen/trắng thuần — giữ giáp tối, bóng, FX."""
     im = im.convert("RGBA")
     px = im.load()
     w, h = im.size
@@ -61,17 +62,40 @@ def fit_icon(im: Image.Image, size: int = CELL) -> Image.Image:
             r, g, b, a = px[x, y]
             if a < 8:
                 continue
-            if r < 14 and g < 14 and b < 14:
+            if r < 6 and g < 6 and b < 6:
                 px[x, y] = (0, 0, 0, 0)
-            elif r > 248 and g > 248 and b > 248:
+            elif r > 252 and g > 252 and b > 252:
                 px[x, y] = (0, 0, 0, 0)
+    return im
+
+
+def fit_icon(im: Image.Image, size: int = CELL) -> Image.Image:
+    """
+    Fit full icon vào ô — margin đều, không crop chặt (giữ tóc/sét/áo).
+    Chừa mép ~10% mỗi cạnh.
+    """
+    im = scrub_bg(im)
+    w, h = im.size
     box = im.getbbox() or (0, 0, w, h)
-    im = im.crop(box)
-    im.thumbnail((size - 24, size - 28), Image.Resampling.LANCZOS)
+    # Nới bbox 2px giữ fringe FX
+    x0 = max(0, box[0] - 2)
+    y0 = max(0, box[1] - 2)
+    x1 = min(w, box[2] + 2)
+    y1 = min(h, box[3] + 2)
+    im = im.crop((x0, y0, x1, y1))
+
+    margin = max(8, size // 10)
+    max_w = size - 2 * margin
+    max_h = size - 2 * margin
+    im.thumbnail((max_w, max_h), Image.Resampling.LANCZOS)
+
     canvas = Image.new("RGBA", (size, size), (0, 0, 0, 0))
     ox = (size - im.width) // 2
-    oy = size - im.height - 8
-    canvas.paste(im, (ox, max(6, oy)), im)
+    # Chân gần đáy nhưng luôn đủ mép trên cho mũ/sét
+    oy = size - margin - im.height
+    if oy < margin:
+        oy = margin
+    canvas.paste(im, (ox, oy), im)
     return canvas
 
 
@@ -82,28 +106,32 @@ def shift(im: Image.Image, dx: int, dy: int) -> Image.Image:
 
 
 def scale_about_feet(im: Image.Image, sx: float, sy: float) -> Image.Image:
+    """Scale nhẹ trong ô — không phình quá mạnh (tránh cắt FX)."""
     w, h = im.size
+    sx = max(0.9, min(1.1, sx))
+    sy = max(0.9, min(1.1, sy))
     nw, nh = max(1, int(w * sx)), max(1, int(h * sy))
     scaled = im.resize((nw, nh), Image.Resampling.LANCZOS)
     out = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-    out.paste(scaled, ((w - nw) // 2, h - nh), scaled)
+    ox = (w - nw) // 2
+    oy = h - nh
+    if oy < 0:
+        oy = 0
+        scaled = scaled.crop((0, nh - h, nw, nh)) if nh > h else scaled
+        nh = min(nh, h)
+    out.paste(scaled, (ox, oy), scaled)
     return out
 
 
 def rotate_about_feet(im: Image.Image, deg: float) -> Image.Image:
+    """Xoay nhẹ — giữ full canvas, không getbbox (tránh cắt sét/áo)."""
     w, h = im.size
-    pad = Image.new("RGBA", (w + 40, h + 40), (0, 0, 0, 0))
-    pad.paste(im, (20, 20), im)
+    deg = max(-10, min(10, deg))
+    pad = Image.new("RGBA", (w + 48, h + 48), (0, 0, 0, 0))
+    pad.paste(im, (24, 24), im)
     rot = pad.rotate(deg, resample=Image.Resampling.BICUBIC, expand=False)
     cx, cy = rot.size[0] // 2, rot.size[1] // 2
-    cropped = rot.crop((cx - w // 2, cy - h // 2, cx + w // 2, cy + h // 2))
-    bb = cropped.getbbox()
-    if not bb:
-        return im.copy()
-    body = cropped.crop(bb)
-    out = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-    out.paste(body, ((w - body.width) // 2, max(0, h - body.height - 2)), body)
-    return out
+    return rot.crop((cx - w // 2, cy - h // 2, cx + w // 2, cy + h // 2))
 
 
 def tint(im: Image.Image, rgb: tuple[int, int, int], strength: float) -> Image.Image:
@@ -125,23 +153,25 @@ def brighten(im: Image.Image, factor: float) -> Image.Image:
 
 def make_sheet(icon_path: Path, out_path: Path) -> None:
     base = fit_icon(Image.open(icon_path), CELL)
+    # Attack nhẹ — ít dịch/xoay để không cắt tóc/sét/áo
     frames: list[Image.Image] = [
         base,
-        rotate_about_feet(scale_about_feet(shift(base, 4, 1), 0.96, 1.04), -8),
-        rotate_about_feet(scale_about_feet(shift(base, 8, 0), 0.94, 1.06), -12),
-        rotate_about_feet(scale_about_feet(shift(base, -12, -3), 1.14, 0.9), 10),
-        brighten(rotate_about_feet(scale_about_feet(shift(base, -18, -4), 1.18, 0.88), 14), 1.25),
-        tint(scale_about_feet(shift(base, -10, -1), 1.08, 0.96), (255, 220, 120), 0.35),
-        scale_about_feet(shift(base, -4, 0), 1.02, 0.99),
+        rotate_about_feet(scale_about_feet(shift(base, 3, 0), 0.98, 1.02), -5),
+        rotate_about_feet(scale_about_feet(shift(base, 5, 0), 0.97, 1.03), -7),
+        rotate_about_feet(scale_about_feet(shift(base, -8, -2), 1.06, 0.96), 6),
+        brighten(rotate_about_feet(scale_about_feet(shift(base, -10, -2), 1.08, 0.95), 8), 1.15),
+        tint(scale_about_feet(shift(base, -6, 0), 1.04, 0.98), (255, 220, 120), 0.28),
+        scale_about_feet(shift(base, -3, 0), 1.01, 0.99),
         base,
-        shift(base, 0, 0),
-        shift(base, 0, -2),
-        shift(base, 1, -4),
-        shift(base, 0, -1),
-        tint(shift(base, 0, -5), (180, 210, 255), 0.22),
-        tint(scale_about_feet(shift(base, 0, -9), 1.08, 1.08), (255, 210, 100), 0.32),
-        brighten(tint(scale_about_feet(shift(base, 0, -7), 1.12, 1.1), (255, 240, 160), 0.4), 1.15),
-        tint(shift(base, 0, -2), (200, 230, 255), 0.12),
+        # Idle tĩnh ×8 — không bob trong sheet (tránh rung khi idle 1 frame)
+        base,
+        base,
+        base,
+        base,
+        tint(base, (180, 210, 255), 0.18),
+        tint(scale_about_feet(base, 1.04, 1.04), (255, 210, 100), 0.25),
+        brighten(tint(scale_about_feet(base, 1.06, 1.05), (255, 240, 160), 0.32), 1.1),
+        tint(base, (200, 230, 255), 0.1),
     ]
     sheet = Image.new("RGBA", (CELL * COLS, CELL * ROWS), (0, 0, 0, 0))
     for i, fr in enumerate(frames):

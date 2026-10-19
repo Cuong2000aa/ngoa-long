@@ -111,10 +111,10 @@ const CLIPS_SOLO: Record<string, Clip> = {
 };
 
 const CLIPS_HOBAO: Record<string, Clip> = {
-  idle: { row: 1, start: 0, frames: 2, fps: 4, loop: true },
+  idle: { row: 1, start: 0, frames: 1, fps: 1, loop: true },
   attack: { row: 0, start: 0, frames: 8, fps: 15, loop: false },
   skill: { row: 1, start: 0, frames: 8, fps: 12, loop: false },
-  hit: { row: 1, start: 0, frames: 2, fps: 8, loop: false },
+  hit: { row: 1, start: 0, frames: 1, fps: 8, loop: false },
   death: { row: 1, start: 0, frames: 1, fps: 1, loop: false },
 };
 
@@ -160,7 +160,8 @@ function paintFrame(sh: SheetRuntime): void {
       const r = d[i];
       const g = d[i + 1];
       const b = d[i + 2];
-      if ((r > 245 && g > 245 && b > 245) || (r < 14 && g < 14 && b < 14)) d[i + 3] = 0;
+      // Chỉ xóa nền trắng / đen thuần — giữ giáp tối / bóng
+      if ((r > 250 && g > 250 && b > 250) || (r < 6 && g < 6 && b < 6)) d[i + 3] = 0;
     }
     ctx.putImageData(id, 0, 0);
   } catch {
