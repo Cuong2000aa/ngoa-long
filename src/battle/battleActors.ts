@@ -299,37 +299,6 @@ export async function createBattleActor(
   root.add(leader);
   members.push(leader);
 
-  // Pad tròn kiểu Ngọa Long — xanh phe ta / đỏ địch (như ảnh có unit)
-  const padR = 0.34;
-  const pad = new THREE.Mesh(
-    new THREE.CircleGeometry(padR, 32),
-    new THREE.MeshBasicMaterial({
-      color: enemy ? 0xdc2626 : 0x22c55e,
-      transparent: true,
-      opacity: 0.72,
-      depthWrite: false,
-    })
-  );
-  pad.rotation.x = -Math.PI / 2;
-  pad.position.y = 0.035;
-  pad.renderOrder = 1;
-  root.add(pad);
-
-  const ring = new THREE.Mesh(
-    new THREE.RingGeometry(padR + 0.01, padR + 0.06, 16),
-    new THREE.MeshBasicMaterial({
-      color: enemy ? 0xfca5a5 : 0x86efac,
-      transparent: true,
-      opacity: 0.85,
-      side: THREE.DoubleSide,
-      depthWrite: false,
-    })
-  );
-  ring.rotation.x = -Math.PI / 2;
-  ring.position.y = 0.04;
-  ring.renderOrder = 2;
-  root.add(ring);
-
   const actor: BattleActor = {
     root,
     sprite: leader,
