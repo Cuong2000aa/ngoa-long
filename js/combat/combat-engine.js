@@ -318,12 +318,51 @@
     });
   }
 
+  /** combatProfiles từ status-effects.json — hệ số wiki_buff/debuff */
+  function combatProfiles() {
+    var se =
+      (typeof NLDatabase !== "undefined" && NLDatabase.statusEffects && NLDatabase.statusEffects()) ||
+      (global.NL_DB && global.NL_DB.statusEffects) ||
+      null;
+    return (se && se.combatProfiles) || {};
+  }
+
+  function wikiProfile(buff) {
+    if (!buff) return null;
+    var profiles = combatProfiles();
+    var id = buff.id;
+    if (id && profiles[id]) return profiles[id];
+    // fallback theo label slug đơn giản
+    if (buff.label && profiles[buff.label]) return profiles[buff.label];
+    return null;
+  }
+
   function buffMul(unit, key) {
     var m = 1;
     (unit.buffs || []).forEach(function (b) {
       if (b.type === key) m += b.value || 0;
+      // wiki_buff cộng atk/def theo combatProfiles
+      if (b.type === "wiki_buff" || b.type === "wiki_debuff") {
+        var p = wikiProfile(b);
+        if (!p) return;
+        if (key === "atk_up" && p.atkMul) m += p.atkMul;
+        if (key === "def_up" && p.defMul) m += p.defMul;
+      }
     });
     return m;
+  }
+
+  function wikiDownMul(unit, key) {
+    // key: atkDown | defDown — trả về hệ số nhân (1 - tổng)
+    var cut = 0;
+    (unit.buffs || []).forEach(function (b) {
+      if (b.type !== "wiki_buff" && b.type !== "wiki_debuff") return;
+      var p = wikiProfile(b);
+      if (!p) return;
+      if (key === "atkDown" && p.atkDown) cut += p.atkDown;
+      if (key === "defDown" && p.defDown) cut += p.defDown;
+    });
+    return Math.max(0.4, 1 - cut);
   }
 
   function tickStatus(unit) {
@@ -343,12 +382,21 @@
     var atkStat = damageType === "strategy" ? attacker.triLuc : attacker.vuLuc;
     atkStat *= attacker.formAtk || 1;
     atkStat *= buffMul(attacker, "atk_up");
+    atkStat *= wikiDownMul(attacker, "atkDown");
     (attacker.buffs || []).forEach(function (b) {
       if (b.type === "atk_down") atkStat *= 1 - (b.value || 0);
+    });
+    // lifesteal đánh dấu trên opts — calcHit không trừ máu ở đây
+    var lifeSteal = 0;
+    (attacker.buffs || []).forEach(function (b) {
+      if (b.type !== "wiki_buff") return;
+      var p = wikiProfile(b);
+      if (p && p.lifesteal) lifeSteal += p.lifesteal;
     });
 
     var defense = defender.tongLinh * (defender.formDef || 1);
     defense *= buffMul(defender, "def_up");
+    defense *= wikiDownMul(defender, "defDown");
     (defender.buffs || []).forEach(function (b) {
       if (b.type === "def_down") defense *= 1 - (b.value || 0);
     });
@@ -384,6 +432,7 @@
       missed: missed,
       crit: crit,
       counter: counter,
+      lifesteal: lifeSteal > 0 && !missed ? lifeSteal : 0,
     };
   }
 
@@ -572,12 +621,18 @@
           pushBuff(tgt, "def_up", eff.value || 0.1, eff.duration || 2, extra);
           touched[tgt.uid] = tgt;
         } else if (eff.type === "wiki_buff" || eff.type === "wiki_debuff") {
-          var wTarget = eff.target === "self" ? actor : eff.target === "ally" ? t : t;
+          var wTarget = eff.target === "self" ? actor : t;
+          var wKind = eff.kind || (eff.type === "wiki_debuff" ? "debuff" : "buff");
           pushBuff(wTarget, eff.type, 0, eff.duration || 2, {
             label: eff.label,
             id: eff.id || eff.type,
-            kind: eff.kind || (eff.type === "wiki_debuff" ? "debuff" : "buff"),
+            kind: wKind,
           });
+          // control profile → stun
+          var wp = wikiProfile({ id: eff.id, label: eff.label });
+          if ((wKind === "control" || (wp && wp.stun)) && wTarget) {
+            wTarget.stunned = Math.max(wTarget.stunned || 0, eff.duration || 1);
+          }
           touched[wTarget.uid] = wTarget;
         } else if (eff.type === "heal_pct") {
           var heal = Math.round(t.maxHp * (eff.value || 0.1));
@@ -849,6 +904,19 @@
 
     target.hp = Math.max(0, target.hp - hit.damage);
     if (target.hp <= 0) target.alive = false;
+
+    // Hấp huyết / dục huyết từ wiki_buff
+    if (hit.lifesteal && actor && actor.alive && hit.damage > 0) {
+      var healed = Math.max(1, Math.round(hit.damage * hit.lifesteal));
+      actor.hp = Math.min(actor.maxHp, actor.hp + healed);
+      uiEvents.push({
+        type: "float",
+        uid: actor.uid,
+        text: "+" + healed,
+        kind: "heal",
+      });
+      uiEvents.push({ type: "hp", uid: actor.uid, hp: actor.hp, maxHp: actor.maxHp });
+    }
 
     // Bị đánh → + sĩ khí
     addMorale(target, moraleCfg.gainOnHit != null ? moraleCfg.gainOnHit : 15);

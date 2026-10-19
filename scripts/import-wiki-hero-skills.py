@@ -247,14 +247,32 @@ def match_general(g: dict, wiki_by_name: dict[str, str]) -> str | None:
 
 
 def skill_from_tier(name: str, desc: str, q: int, q_name: str) -> dict:
+    # Semantics chung với repair-skill-pipeline (effects / pattern / motif)
+    try:
+        from lib_skill_semantics import (
+            build_full_name_map,
+            effects_from_desc,
+            infer_motif_flash as _motif,
+            infer_pattern as _pattern,
+            parse_hits as _hits,
+        )
+
+        pattern = _pattern(desc)
+        hits = _hits(desc)
+        motif, flash = _motif(name, desc, pattern)
+        effects = effects_from_desc(desc, build_full_name_map())
+    except Exception:
+        pattern = infer_pattern(desc)
+        hits = parse_hits(desc)
+        motif, flash = infer_motif_flash(name, desc)
+        effects = infer_effects(desc)
+
     sid = slugify(name)
-    motif, flash = infer_motif_flash(name, desc)
-    hits = parse_hits(desc)
     sk = {
         "id": sid,
         "name": name,
         "damageType": infer_damage_type(desc),
-        "pattern": infer_pattern(desc),
+        "pattern": pattern,
         "power": parse_power(desc, q),
         "moraleCost": 100,
         "fx": {
@@ -268,7 +286,6 @@ def skill_from_tier(name: str, desc: str, q: int, q_name: str) -> dict:
     }
     if hits > 1:
         sk["hits"] = hits
-    effects = infer_effects(desc)
     if effects:
         sk["effects"] = effects
     return sk

@@ -9,6 +9,8 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "test:fx": "node scripts/test-skill-fx.mjs",
+    "test:skills": "node scripts/test-skill-pipeline.mjs",
+    "repair:skills": "python3 scripts/repair-skill-pipeline.py",
     "shot": "node scripts/shot-city.mjs",
     "test:click": "node scripts/click-city.mjs"
   },

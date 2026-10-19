@@ -3,7 +3,7 @@
   "source": "https://ngoalong.vnggames.com/ngoa-long-wiki/hieu-ung",
   "sourceNews": "https://ngoalong.vnggames.com/tin-tuc/tin-tuc/hieu-ung-chien-dau.html",
   "importedAt": "2026-10-19",
-  "note": "effects = map engine combat; wikiCatalog = snapshot tên wiki (fan remake).",
+  "note": "effects = map engine combat; wikiCatalog = snapshot tên wiki; combatProfiles = hệ số atk/def cho wiki_buff/debuff (fan remake).",
   "effects": {
     "stun": {
       "id": "stun",
@@ -3930,5 +3930,1435 @@
     "fromWikiMd": 0
   },
   "iconDir": "assets/ui/status",
-  "iconNote": "Icon wiki hieu-ung — tải bằng scripts/download-status-icons.py"
+  "iconNote": "Icon wiki hieu-ung — tải bằng scripts/download-status-icons.py",
+  "combatProfiles": {
+    "anh_dung": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "anh_dung_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "bai_uu": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "ba_chu": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "ba_chu_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "bat_quai": {
+      "kind": "buff",
+      "defMul": 0.2
+    },
+    "bac_nhuoc": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "bach_nhan": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "bao": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "bao_no": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "bao_phat": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "moralePerTurn": 10
+    },
+    "bao_thuong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "bao_ve": {
+      "kind": "unremovable",
+      "atkMul": 0.06
+    },
+    "bat_khuat": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "lifesteal": 0.08
+    },
+    "bat_khuat_chuyen_dung_bac_7": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "bat_khuat_2": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "lifesteal": 0.08
+    },
+    "ben_bi": {
+      "kind": "buff",
+      "defMul": 0.12
+    },
+    "bong_lanh": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "boi_thuy": {
+      "kind": "debuff",
+      "defDown": 0.12,
+      "atkDown": 0.1
+    },
+    "bo_phong_2": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "c_huy": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "chien_than": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "chuyen_doi": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "lifesteal": 0.08
+    },
+    "cham_ngoi": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "chem_giet": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "chuoc_gioi_chuyen_dung_bac_7": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "chi_huy_2": {
+      "kind": "unremovable",
+      "atkMul": 0.06
+    },
+    "chong_do": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "cung_cong_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "cuong_bao": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "cuong_chien": {
+      "kind": "debuff",
+      "defDown": 0.12,
+      "atkDown": 0.1
+    },
+    "co_doc": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "cong_tam": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "cuong_tap": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "cuong_vo_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "cam_quan": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "cap_cuu": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "atkMul": 0.06
+    },
+    "cap_cuu_2": {
+      "kind": "unremovable",
+      "lifesteal": 0.08,
+      "atkMul": 0.06
+    },
+    "di_ke": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "dieu_ke": {
+      "kind": "buff",
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "do_du": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "do_du_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "du_hop_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1,
+      "lifesteal": 0.08
+    },
+    "dung_tuyet": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "dung_tuyet_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "deo_dai": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "duc_huyet": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "lifesteal": 0.08
+    },
+    "e_so": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "e_so_2": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "giem_pha": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "giai_tru": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "giai_tru_bao_ho": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "giai_tru_0": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "giai_tru_2": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "giai_tru_2_bao_ho": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "giai_tru_3": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "giam_chien_cong": {
+      "kind": "debuff",
+      "defDown": 0.12,
+      "atkDown": 0.1
+    },
+    "giam_chien_phong": {
+      "kind": "debuff",
+      "defDown": 0.12
+    },
+    "giam_cong_2": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "giam_muu_cong": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "giam_muu_cong_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "giam_muu_phong": {
+      "kind": "debuff",
+      "defDown": 0.12,
+      "atkDown": 0.1
+    },
+    "giam_muu_phong_2": {
+      "kind": "debuff",
+      "defDown": 0.12,
+      "atkDown": 0.1
+    },
+    "giam_phap_cong": {
+      "kind": "debuff",
+      "defDown": 0.12,
+      "atkDown": 0.1
+    },
+    "giam_phap_cong_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "giam_phap_phong_2": {
+      "kind": "unremovable",
+      "defMul": 0.15
+    },
+    "giam_phong_2": {
+      "kind": "unremovable",
+      "defMul": 0.15
+    },
+    "giam_phong_thu": {
+      "kind": "debuff",
+      "defDown": 0.12
+    },
+    "giam_phong_thu_2": {
+      "kind": "unremovable",
+      "defMul": 0.15
+    },
+    "giam_sat_thuong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "giam_thuong": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "giam_tri_lieu": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "giam_tan_cong": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "giam_vo_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "giam_vat_cong": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "giam_vat_cong_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "giam_vat_phong": {
+      "kind": "debuff",
+      "defDown": 0.12
+    },
+    "giam_vat_phong_2": {
+      "kind": "unremovable",
+      "defMul": 0.15
+    },
+    "giam_dap": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "hoat_luc": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "atkMul": 0.06
+    },
+    "hoat_luc_2": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "atkMul": 0.06
+    },
+    "huyet_cuc": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "huyet_nhan_2": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "lifesteal": 0.08
+    },
+    "huyet_thuan_2": {
+      "kind": "unremovable",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "huyen_giap": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "ham_tran_chuyen_dung_bac_7": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "hon_me": {
+      "kind": "control",
+      "stun": true
+    },
+    "hu_nhuoc": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "hu_nhuoc_2": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "ha_thap_phong_thu": {
+      "kind": "debuff",
+      "defDown": 0.12
+    },
+    "hap_dan": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "hap_huyet": {
+      "kind": "buff",
+      "lifesteal": 0.12,
+      "atkMul": 0.05
+    },
+    "hap_huyet_2": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "lifesteal": 0.08
+    },
+    "hoa_than": {
+      "kind": "buff",
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "hoi_phuc": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "lifesteal": 0.08
+    },
+    "hoi_xuan": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "lifesteal": 0.08
+    },
+    "hon_loan": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "ho_chu": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "ho_thuan": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "ho_the": {
+      "kind": "unremovable",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "hoi_tam": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "defMul": 0.05
+    },
+    "hoi_tam_2": {
+      "kind": "unremovable",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "hu_thuc": {
+      "kind": "debuff",
+      "defDown": 0.12
+    },
+    "hu_thuc_2": {
+      "kind": "unremovable",
+      "defMul": 0.15
+    },
+    "khieu_khich": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "khat_mau": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "khoa_vay": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "khac_bo": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "khac_cung": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "khac_ky": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "khac_thuong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "khong_che": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "khong_hoa": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "kinh_cuc": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "kinh_cuc_2": {
+      "kind": "unremovable",
+      "atkMul": 0.06
+    },
+    "kinh_hon": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "kinh_hon_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "kien_nghi_2": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "kien_thu": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "kien_thu_2": {
+      "kind": "unremovable",
+      "defMul": 0.15
+    },
+    "kien_tri_2": {
+      "kind": "unremovable",
+      "defMul": 0.15
+    },
+    "kien_dinh": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "kieu_binh": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "kieu_binh_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "kich_duong": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "kich_hoat_kich_doc": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "kich_hoat_thien_hoa": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "kich_hoat_thieu_dot": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "kich_no": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "moralePerTurn": 10
+    },
+    "kich_no_2": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "moralePerTurn": 10
+    },
+    "kich_doc": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "ky_tran": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "ky_tran_2": {
+      "kind": "unremovable",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "ky_tap_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "lay_dong": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "lay_dong_2": {
+      "kind": "unremovable",
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "li_thuong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "lien_hoan": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "lien_kich": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "lien_tuc": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "long_hon": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "loai_bo": {
+      "kind": "debuff",
+      "defDown": 0.1
+    },
+    "loai_bo_may_tinh": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "ly_roi": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "loi_co": {
+      "kind": "buff",
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "loi_co_2": {
+      "kind": "unremovable",
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "lac_nguyet": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "loi_don": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "luc_doan": {
+      "kind": "buff",
+      "atkMul": 0.12
+    },
+    "ma_am": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "minh_triet": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "minh_tam": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "mien_dich": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "mien_dich_ma_am": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "mien_thuong": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "may_den": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "me_hoac": {
+      "kind": "control",
+      "stun": true
+    },
+    "muu_cong": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "lifesteal": 0.08,
+      "moralePerTurn": 10
+    },
+    "muu_dinh": {
+      "kind": "unremovable",
+      "atkMul": 0.1,
+      "lifesteal": 0.08,
+      "moralePerTurn": 10
+    },
+    "met_moi": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "nghia_dung": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "nghia_dung_1": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "nghia_dung_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "nghia_dung_3": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "nghia_tuyet": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "nghich_chien_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "nghich_chuyen": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "nghich_chuyen_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "nguyet_huy": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "nguyet_huy_2": {
+      "kind": "unremovable",
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "nguyet_hon": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "nguyet_hon_2": {
+      "kind": "unremovable",
+      "atkMul": 0.06
+    },
+    "ngu_say": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "ngu_hoanh": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "nhue_kich": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "nhan_tam_bo": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "atkMul": 0.06
+    },
+    "pha_thanh": {
+      "kind": "debuff",
+      "defDown": 0.15
+    },
+    "pha_dich": {
+      "kind": "debuff",
+      "defDown": 0.12
+    },
+    "phan": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "phan_cong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "phan_chan": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "moralePerTurn": 10
+    },
+    "phuc_thu": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "phuc_thu_3": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "quy_phong": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "song_hung": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "suy_yeu": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "sach_thuan": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "soi_suc": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "atkMul": 0.06
+    },
+    "sung_kiem": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "atkMul": 0.06
+    },
+    "so_hai": {
+      "kind": "debuff",
+      "atkDown": 0.12
+    },
+    "tan_vo": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "thanh_long_2": {
+      "kind": "unremovable",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "thi_ky": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "thi_ky_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "thi_doc": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "thien_cam": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "thien_hoa": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "thien_tuong": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "moralePerTurn": 10
+    },
+    "thien_van": {
+      "kind": "buff",
+      "atkMul": 0.08,
+      "defMul": 0.08
+    },
+    "thieu_thuong": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "thieu_dot": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "thiet_bich": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "thiet_y": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "thiet_y_chuyen_dung_bac_7": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "thien_chien_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "them_binh_linh": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "them_linh": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "thi_quan": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "thi_quan_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "thoi_mien": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "thuong_tich": {
+      "kind": "debuff",
+      "defDown": 0.1
+    },
+    "thau_suot": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "than_binh": {
+      "kind": "buff",
+      "atkMul": 0.12,
+      "defMul": 0.08
+    },
+    "than_loi": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "than_toc": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "than_toc_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "thi_huyet": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "thinh_no": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "thong_quan": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "thu_ho": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "thu_ho_2": {
+      "kind": "unremovable",
+      "defMul": 0.15
+    },
+    "thu_nghia": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "thu_ngu": {
+      "kind": "unremovable",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "thuy_kinh_2": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "tin_gia": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tien_cong": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "lifesteal": 0.08,
+      "moralePerTurn": 10
+    },
+    "toan_nang": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "toan_nang_chuyen_dung_bac_7": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "toan_nang_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "treo_thuong": {
+      "kind": "debuff",
+      "defDown": 0.1,
+      "atkDown": 0.05
+    },
+    "tru_than": {
+      "kind": "unremovable",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "truy_kich_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tri": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "tri_luc_2": {
+      "kind": "unremovable",
+      "atkMul": 0.06
+    },
+    "tri_tue": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tri_tue_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tru_sach_chuyen_dung_bac_7": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "trung_doc": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "tram_sat": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "tram_tien": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tran_quoc": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "tung_hoanh": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "tan_ta": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "tan_ta_2": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "tai_sinh": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "lifesteal": 0.08
+    },
+    "te_liet": {
+      "kind": "control",
+      "stun": true
+    },
+    "tong_long": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "defMul": 0.1
+    },
+    "tong_long_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "tang_chien_cong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tang_cong_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "tang_cuong": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "tang_muu_cong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tang_muu_cong_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tang_muu_phong_2": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "tang_phap_cong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tang_phap_cong_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tang_phap_phong_2": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "tang_st_chien_phap_2": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "tang_st_ke_sach_2": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "tang_st_vat_ly_2": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "tang_tan_cong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tang_tat_ca_cong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tang_uy": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tang_vat_cong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tang_vat_cong_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tang_vat_phong_2": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "tuoc_doat": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "moralePerTurn": 10
+    },
+    "tan_cong_manh_me": {
+      "kind": "unremovable",
+      "atkMul": 0.1,
+      "lifesteal": 0.08,
+      "moralePerTurn": 10
+    },
+    "tat_hanh_chuyen_dung_bac_7": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tinh_hoa": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "to_chi": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "toa_binh": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "toa_binh_2": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "tu_chien": {
+      "kind": "buff",
+      "atkMul": 0.15
+    },
+    "tu_than": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "tu_than_2": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "tu_thu": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "tu_thu_2": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "vien_muu": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "vong_doan": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "vay_khon_2": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "atkMul": 0.06
+    },
+    "vo_ngon": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "vo_ngon_2": {
+      "kind": "unremovable",
+      "atkMul": 0.06
+    },
+    "vo_tinh": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "vo_dung": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "vo_luc": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "vo_luc_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "vo_tran": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "vo_tran_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1,
+      "lifesteal": 0.08
+    },
+    "xua_duoi": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "xuyen_thau": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "xuyen_thau_2": {
+      "kind": "unremovable",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "xuyen_thau_2_chuyen_dung_bac_7": {
+      "kind": "unremovable",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "xao_bien": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "am_te": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "am_van": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "ap_che": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "ap_che_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "ap_uc": {
+      "kind": "debuff",
+      "atkDown": 0.1,
+      "defDown": 0.05
+    },
+    "am_hon": {
+      "kind": "buff",
+      "atkMul": 0.12
+    },
+    "am_hon_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "y_chi": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "dien_cuong": {
+      "kind": "buff",
+      "atkMul": 0.15
+    },
+    "dien_cuong_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "dieu_thong": {
+      "kind": "unremovable",
+      "atkMul": 0.06
+    },
+    "dieu_tri": {
+      "kind": "unremovable",
+      "atkMul": 0.06
+    },
+    "dieu_vo": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "diep_nhan": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "doat": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "doat_2": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "doat_khi": {
+      "kind": "buff",
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "doat_khi_3": {
+      "kind": "unremovable",
+      "lifesteal": 0.08,
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "dao_binh": {
+      "kind": "debuff",
+      "atkDown": 0.12
+    },
+    "dong_bang": {
+      "kind": "control",
+      "stun": true
+    },
+    "dong_do": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "dong_do_2": {
+      "kind": "unremovable",
+      "defMul": 0.15
+    },
+    "dau_tran_tang_si_khi": {
+      "kind": "buff",
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "day_si_khi": {
+      "kind": "buff",
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "de_hon": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "de_khang": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "de_khang_2": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "do_luc": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "don_dien": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "do_hiem": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "do_hiem_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "doc_ke": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "an_nap_chuyen_dung_bac_7": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "phan_kich": {
+      "kind": "buff",
+      "atkMul": 0.08
+    },
+    "huyet_nhan": {
+      "kind": "buff",
+      "atkMul": 0.12,
+      "lifesteal": 0.05
+    },
+    "thanh_long": {
+      "kind": "buff",
+      "atkMul": 0.12,
+      "defMul": 0.08
+    },
+    "di_nhieu": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    }
+  }
 }
