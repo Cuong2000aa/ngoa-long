@@ -27,7 +27,6 @@ type SheetsFile = {
 
 const RAW = sheetsIndex as SheetsFile;
 const BY_WIKI = RAW.byWikiId || {};
-const BY_TROOP_TIER = RAW.byTroopTier || {};
 
 function typeTable(troop: string): Record<string, SheetMeta> | undefined {
   if (RAW.types?.[troop]) return RAW.types[troop];
@@ -54,11 +53,14 @@ function typeMeta(troop: string, tier: number): SheetMeta {
   };
 }
 
-/** Ưu tiên wikiId → khớp tên → pool bậc (seed) → đại diện loại×bậc */
+/**
+ * Map art ổn định: wikiId → khớp tên wiki → đại diện loại×bậc.
+ * Không random pool (tránh skin lệch / sprite vỡ).
+ */
 function resolveMeta(
   troop: string,
   tier: number,
-  seed: number,
+  _seed: number,
   wikiId?: string | null,
   name?: string | null
 ): SheetMeta {
@@ -66,13 +68,8 @@ function resolveMeta(
   if (name) {
     const n = name.trim().toLowerCase();
     for (const m of Object.values(BY_WIKI)) {
-      if (m.name && m.name.trim().toLowerCase() === n) return m;
+      if (m.name && m.name.trim().toLowerCase() === n && m.troop === troop) return m;
     }
-  }
-  const pool = BY_TROOP_TIER[troop]?.[String(tier)] || [];
-  if (pool.length) {
-    const id = pool[Math.abs(seed | 0) % pool.length];
-    if (id && BY_WIKI[id]) return BY_WIKI[id];
   }
   return typeMeta(troop, tier);
 }
@@ -160,7 +157,10 @@ function paintFrame(sh: SheetRuntime): void {
     const id = ctx.getImageData(0, 0, fw, fh);
     const d = id.data;
     for (let i = 0; i < d.length; i += 4) {
-      if (d[i] > 245 && d[i + 1] > 245 && d[i + 2] > 245) d[i + 3] = 0;
+      const r = d[i];
+      const g = d[i + 1];
+      const b = d[i + 2];
+      if ((r > 245 && g > 245 && b > 245) || (r < 14 && g < 14 && b < 14)) d[i + 3] = 0;
     }
     ctx.putImageData(id, 0, 0);
   } catch {
@@ -310,7 +310,7 @@ export async function createBattleActor(
     })
   );
   pad.rotation.x = -Math.PI / 2;
-  pad.position.y = 0.008;
+  pad.position.y = 0.035;
   pad.renderOrder = 1;
   root.add(pad);
 
@@ -325,7 +325,7 @@ export async function createBattleActor(
     })
   );
   ring.rotation.x = -Math.PI / 2;
-  ring.position.y = 0.012;
+  ring.position.y = 0.04;
   ring.renderOrder = 2;
   root.add(ring);
 

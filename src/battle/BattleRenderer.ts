@@ -3,7 +3,6 @@ import {
   createBattleActor,
   playActor,
   prefetchBattleActors,
-  troopArtUrl,
   type BattleActor,
 } from "./battleActors";
 import {
@@ -35,6 +34,11 @@ export type BattleUnitSpec = {
 export type BattleMountOpts = {
   /** Preview bày trận — camera nhìn đội ta, không cần nửa sân địch */
   preview?: boolean;
+};
+
+export type BattleSpawnOpts = {
+  allyFormation?: string;
+  enemyFormation?: string;
 };
 
 type Lunge = {
@@ -69,22 +73,122 @@ type Fighter = {
 };
 
 /**
- * Đội hình 3+2 kiểu Ngọa Long H5:
- * - Quân ta PHẢI / địch TRÁI (icon wiki nhìn trái)
- * - Hàng trước gần giữa; hàng sau lùi cánh
+ * Lưới 3×3 theo trận pháp wiki — quân ta PHẢI / địch TRÁI (icon nhìn trái).
  */
-const FRONT_Z = [-2.2, 0, 2.2];
-const BACK_Z = [-1.15, 1.15];
-const FRONT_X = 2.95;
-const BACK_X = 4.75;
+const COL_Z = [-2.45, 0, 2.45] as const;
+const ROW_DEPTH = [2.55, 3.95, 5.35] as const;
 
-function slotXZ(slot: number, enemy: boolean): { x: number; z: number } {
+type Cell = { col: 0 | 1 | 2; row: 0 | 1 | 2 };
+
+const FORM_LAYOUT: Record<string, Cell[]> = {
+  crane_wing: [
+    { col: 0, row: 0 },
+    { col: 2, row: 0 },
+    { col: 0, row: 2 },
+    { col: 1, row: 2 },
+    { col: 2, row: 2 },
+  ],
+  long_snake: [
+    { col: 1, row: 0 },
+    { col: 0, row: 1 },
+    { col: 1, row: 1 },
+    { col: 2, row: 1 },
+    { col: 2, row: 2 },
+  ],
+  square: [
+    { col: 0, row: 0 },
+    { col: 1, row: 0 },
+    { col: 2, row: 0 },
+    { col: 0, row: 1 },
+    { col: 2, row: 1 },
+  ],
+  fish_scale: [
+    { col: 1, row: 0 },
+    { col: 0, row: 1 },
+    { col: 1, row: 1 },
+    { col: 2, row: 1 },
+    { col: 1, row: 2 },
+  ],
+  arrow: [
+    { col: 0, row: 0 },
+    { col: 1, row: 0 },
+    { col: 2, row: 0 },
+    { col: 1, row: 1 },
+    { col: 1, row: 2 },
+  ],
+  qi_xing: [
+    { col: 0, row: 0 },
+    { col: 1, row: 1 },
+    { col: 2, row: 1 },
+    { col: 0, row: 2 },
+    { col: 2, row: 2 },
+  ],
+  chaotic_sword: [
+    { col: 0, row: 0 },
+    { col: 2, row: 0 },
+    { col: 1, row: 1 },
+    { col: 0, row: 2 },
+    { col: 2, row: 2 },
+  ],
+  wild_goose: [
+    { col: 0, row: 0 },
+    { col: 0, row: 1 },
+    { col: 1, row: 1 },
+    { col: 2, row: 1 },
+    { col: 2, row: 2 },
+  ],
+  hammer_march: [
+    { col: 1, row: 0 },
+    { col: 1, row: 1 },
+    { col: 0, row: 2 },
+    { col: 1, row: 2 },
+    { col: 2, row: 2 },
+  ],
+  tiger_strategy: [
+    { col: 1, row: 0 },
+    { col: 0, row: 1 },
+    { col: 2, row: 1 },
+    { col: 0, row: 2 },
+    { col: 2, row: 2 },
+  ],
+};
+
+function readFormLayout(formationId?: string | null): Cell[] {
+  const fid = formationId || "crane_wing";
+  try {
+    type FormDb = {
+      formations?: {
+        list?: Record<string, { layout?: Array<{ col: number; row: number }> }>;
+      };
+    };
+    const w =
+      typeof window !== "undefined" ? (window as unknown as { NL_DB?: FormDb }) : null;
+    const form = w?.NL_DB?.formations?.list?.[fid];
+    if (form?.layout && form.layout.length >= 5) {
+      return form.layout.slice(0, 5).map((c) => ({
+        col: Math.max(0, Math.min(2, c.col | 0)) as 0 | 1 | 2,
+        row: Math.max(0, Math.min(2, c.row | 0)) as 0 | 1 | 2,
+      }));
+    }
+  } catch {
+    /* ignore */
+  }
+  return FORM_LAYOUT[fid] || FORM_LAYOUT.crane_wing;
+}
+
+function slotXZ(
+  slot: number,
+  enemy: boolean,
+  formationId?: string | null
+): { x: number; z: number } {
   const s = Math.max(0, Math.min(4, slot | 0));
-  const front = s <= 2;
-  const z = front ? FRONT_Z[s] : BACK_Z[s - 3];
-  const ax = front ? FRONT_X : BACK_X;
-  // Wiki icon nhìn TRÁI → quân ta bên phải (nhìn địch), địch bên trái (mirror nhìn phải)
-  return { x: enemy ? -ax : ax, z };
+  const layout = readFormLayout(formationId);
+  const cell = layout[s] || layout[0];
+  const depth = ROW_DEPTH[cell.row];
+  const z = COL_Z[cell.col];
+  // Quân ta +X (phải), địch −X (trái)
+  const x = enemy ? -depth : depth;
+  return { x, z };
 }
 
 function clampSlot(s: number | null | undefined): number {
@@ -192,16 +296,17 @@ export class BattleRenderer {
     const loader = new THREE.TextureLoader();
     const aniso = Math.min(8, this.renderer?.capabilities.getMaxAnisotropy() || 1);
 
-    const groundMat = new THREE.MeshBasicMaterial({ color: 0xcbb89a });
+    const groundMat = new THREE.MeshBasicMaterial({ color: 0xcbb89a, depthWrite: true });
     const ground = new THREE.Mesh(new THREE.PlaneGeometry(36, 26), groundMat);
     ground.rotation.x = -Math.PI / 2;
     ground.position.set(0, -0.04, -1.2);
     scene.add(ground);
 
+    // Sàn y=0 — pad/VFX đặt y>0 nên không bị che
     const floorMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
     const courtyard = new THREE.Mesh(new THREE.PlaneGeometry(15.2, 9.8), floorMat);
     courtyard.rotation.x = -Math.PI / 2;
-    courtyard.position.y = 0.01;
+    courtyard.position.y = 0;
     scene.add(courtyard);
 
     loader.load("assets/battle/arena-floor-3k.jpg", (tex) => {
@@ -238,14 +343,21 @@ export class BattleRenderer {
     });
   }
 
-  spawn(allies: BattleUnitSpec[], foes: BattleUnitSpec[], _playerFaction = "shu"): void {
+  spawn(
+    allies: BattleUnitSpec[],
+    foes: BattleUnitSpec[],
+    _playerFaction = "shu",
+    opts?: BattleSpawnOpts
+  ): void {
     if (!this.scene) return;
     this.clearFighters();
     const scene = this.scene;
+    const allyForm = (opts && opts.allyFormation) || "crane_wing";
+    const enemyForm = (opts && opts.enemyFormation) || "square";
     const add = async (u: BattleUnitSpec, enemy: boolean) => {
       const slot = clampSlot(u.slot);
       const seed = (u.uid || u.name || "").length * 17 + slot * 31 + (enemy ? 99 : 3);
-      const { x, z } = slotXZ(slot, enemy);
+      const { x, z } = slotXZ(slot, enemy, enemy ? enemyForm : allyForm);
       const rimHex = enemy ? 0xef4444 : 0x2dd4bf;
       try {
         const tier = u.troopTier != null ? u.troopTier : 1;
@@ -260,6 +372,7 @@ export class BattleRenderer {
         );
         actor.root.position.set(x, 0, z);
         scene.add(actor.root);
+        // Máu/sĩ khí ở panel 2 góc — không chip trên đầu (che FX)
         const hud = this.createHud(u.name, enemy, u.troop || "infantry", tier);
         this.fighters.set(u.uid, {
           uid: u.uid,
@@ -292,20 +405,13 @@ export class BattleRenderer {
     ]);
   }
 
-  private createHud(name: string, enemy: boolean, troop: string, tier = 1): HTMLElement | null {
-    if (!this.hudLayer || this.preview) return null;
-    const el = document.createElement("div");
-    el.className = "unit-overhead" + (enemy ? " enemy" : " ally");
-    const src = troopArtUrl(troop, tier);
-    el.innerHTML =
-      '<div class="uo-chip"><img class="uo-face" src="' +
-      src +
-      '" alt="" /><div class="uo-meta"><div class="uo-name"></div>' +
-      '<div class="uo-hp"><i></i></div><div class="uo-morale"><i></i></div>' +
-      '<div class="uo-status"></div></div></div>';
-    (el.querySelector(".uo-name") as HTMLElement).textContent = name;
-    this.hudLayer.appendChild(el);
-    return el;
+  private createHud(
+    _name: string,
+    _enemy: boolean,
+    _troop: string,
+    _tier = 1
+  ): HTMLElement | null {
+    return null;
   }
 
   private paintHud(f: Fighter): void {

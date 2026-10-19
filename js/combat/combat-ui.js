@@ -403,7 +403,10 @@
             troopTier: u.troopTier != null ? u.troopTier : 1,
           });
         });
-        self._battle3d.spawn(allies3d, foes3d, faction);
+        self._battle3d.spawn(allies3d, foes3d, faction, {
+          allyFormation: start.playerFormation || "crane_wing",
+          enemyFormation: start.enemyFormation || "square",
+        });
       }
       step();
     }
