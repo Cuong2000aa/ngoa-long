@@ -1,0 +1,291 @@
+{
+  "schemaVersion": 1,
+  "id": "main_progression_v1",
+  "name": "Tiến trình Tam Quốc",
+  "inspiredBy": "Ngọa Long / 卧龙吟 — uy danh mở slot tướng; phó bản thu phục; tửu quán hội đàm theo điều kiện",
+  "notes": [
+    "Danh vọng (prestige) ≈ Uy danh: mở thêm chỗ chứa tướng + mở chiêu mộ mốc.",
+    "Qua ải lần đầu có thể nhận tướng (dã tướng) hoặc mở khóa Tửu Quán (required_stage).",
+    "Tướng mở đầu theo phe — không trùng thưởng first-clear."
+  ],
+  "starters": {
+    "note": "Giống 卧龙吟: mở đầu tướng phụ (xanh/lam), minh chủ & ngũ hổ mở muộn bằng uy danh / phó bản — không tặng Quan Vũ/Tào Tháo lúc tạo nhân vật.",
+    "shu": {
+      "generalIds": [
+        "liaohua",
+        "guanying",
+        "zhangbao_shu"
+      ],
+      "blurb": "Thục: Liêu Hóa · Quan Bình · Trương Bào — tướng trẻ / phụ ban đầu."
+    },
+    "wei": {
+      "generalIds": [
+        "yuejin",
+        "licadian",
+        "caoren"
+      ],
+      "blurb": "Ngụy: Nhạc Tiến · Lý Điển · Tào Nhân — ngũ tử lương tướng / thủ thành sớm."
+    },
+    "wu": {
+      "generalIds": [
+        "chengpu",
+        "handang",
+        "zhouzhi"
+      ],
+      "blurb": "Ngô: Trình Phổ · Hàn Đương · Chu Thái — kỳ cựu Giang Đông thời sơ."
+    }
+  },
+  "prestigeRanks": [
+    {
+      "rank": 1,
+      "prestige": 0,
+      "title": "Bạch Đinh",
+      "heroSlotsBonus": 0
+    },
+    {
+      "rank": 2,
+      "prestige": 100,
+      "title": "Hiệu Úy I",
+      "heroSlotsBonus": 1,
+      "unlockNote": "Mở thêm 1 chỗ kho tướng"
+    },
+    {
+      "rank": 3,
+      "prestige": 300,
+      "title": "Hiệu Úy II",
+      "heroSlotsBonus": 1
+    },
+    {
+      "rank": 4,
+      "prestige": 500,
+      "title": "Hiệu Úy III",
+      "heroSlotsBonus": 2,
+      "unlockNote": "Mở chiêu mộ theo danh vọng (tím)"
+    },
+    {
+      "rank": 5,
+      "prestige": 800,
+      "title": "Hiệu Úy IV",
+      "heroSlotsBonus": 2
+    },
+    {
+      "rank": 6,
+      "prestige": 1200,
+      "title": "Hộ Quân I",
+      "heroSlotsBonus": 3,
+      "unlockNote": "Mở slot trận linh hoạt hơn"
+    },
+    {
+      "rank": 7,
+      "prestige": 2000,
+      "title": "Hộ Quân II",
+      "heroSlotsBonus": 3
+    },
+    {
+      "rank": 8,
+      "prestige": 3500,
+      "title": "Trấn Quân",
+      "heroSlotsBonus": 4
+    },
+    {
+      "rank": 9,
+      "prestige": 5000,
+      "title": "Tướng Quân",
+      "heroSlotsBonus": 5
+    },
+    {
+      "rank": 10,
+      "prestige": 8000,
+      "title": "Đô Đốc",
+      "heroSlotsBonus": 6
+    }
+  ],
+  "howToGainPrestige": [
+    "Thắng phó bản (thưởng danh vọng theo ải + first-clear)",
+    "Thắng lãnh địa Thế giới",
+    "Thắng Lôi đài"
+  ],
+  "stageLinks": {
+    "ch1_s1": {
+      "story": "Loạn Khăn Vàng bùng ở Trác Châu. Quan quân tập kết.",
+      "mission": "Dẹp toán nghĩa quân đầu tiên — làm quen bày trận 5 ô.",
+      "firstClear": {
+        "prestige": 25,
+        "hint": "Tửu Quán: mở chiêu mộ lính trắng / xanh cơ bản (danh vọng thấp)."
+      }
+    },
+    "ch1_s2": {
+      "story": "Khăn Vàng tập kết. Có thể thu phục nghĩa sĩ quy thuận.",
+      "mission": "Phá vòng vây — thu phục tướng phụ đầu tiên theo phe.",
+      "firstClear": {
+        "prestige": 40,
+        "grantByFaction": {
+          "shu": "liufeng",
+          "wei": "veteran_guard",
+          "wu": "lingtong"
+        },
+        "hint": "Thu phục thêm 1 tướng phụ. Tửu Quán mở thêm xanh/lam."
+      }
+    },
+    "ch1_s3": {
+      "story": "Trương Bảo dùng yêu thuật. Elite đầu tiên.",
+      "mission": "Hạ Trương Bảo — học ưu tiên mục tiêu.",
+      "firstClear": {
+        "prestige": 55,
+        "hint": "Mở thêm chiêu mộ tướng lam sớm tại Tửu Quán."
+      }
+    },
+    "ch1_s4": {
+      "story": "Trương Lương phục binh. Mưu sĩ bắt đầu lộ diện.",
+      "mission": "Phá phục binh — mở chiêu mộ mưu sĩ (tím, cần danh vọng).",
+      "firstClear": {
+        "prestige": 70,
+        "grantByFaction": {
+          "shu": "madai",
+          "wei": "zhanghe",
+          "wu": "huanggai"
+        },
+        "hint": "Tửu Quán: mưu sĩ tím cần vượt ải này + ~500 danh vọng."
+      }
+    },
+    "ch1_s5": {
+      "story": "Áp sát Quảng Tông — trước cửa đại doanh Trương Giác.",
+      "mission": "Giữ đội hình, chuẩn bị boss chương.",
+      "firstClear": {
+        "prestige": 80
+      }
+    },
+    "ch1_s6": {
+      "story": "Trương Giác — Hoàng Thiên đã chết. Loạn Khăn Vàng tạm dẹp.",
+      "mission": "Boss chương 1 — mở Lôi đài + chiêu mộ nâng cao.",
+      "firstClear": {
+        "prestige": 150,
+        "grantByFaction": {
+          "shu": "wangping",
+          "wei": "xiahou_yuan",
+          "wu": "daqiao"
+        },
+        "hint": "Mở Lôi đài. Minh chủ / ngũ hổ vẫn khóa danh vọng cao."
+      }
+    },
+    "ch2_s1": {
+      "story": "Đổng Trác loạn chính. Liên quân tiến Dương Nhân.",
+      "mission": "Bước vào chương Đổng Trác.",
+      "firstClear": {
+        "prestige": 60
+      }
+    },
+    "ch2_s2": {
+      "story": "Phàn Trù chặn đường.",
+      "firstClear": {
+        "prestige": 70,
+        "grantByFaction": {
+          "shu": "fazheng",
+          "wei": "xuchu",
+          "wu": "lusu"
+        }
+      }
+    },
+    "ch2_s3": {
+      "story": "Hoa Hùng tại Hổ Lao — ải danh tướng.",
+      "mission": "Hạ Hoa Hùng — mở khóa danh tướng trung kỳ.",
+      "firstClear": {
+        "prestige": 120,
+        "hint": "Tửu Quán: mở thêm cam/tím (Khương Duy, Trương Liêu, Cam Ninh…) nếu đủ danh vọng."
+      }
+    },
+    "ch2_s4": {
+      "story": "Lý Thôi · Quách Dĩ quấy phá.",
+      "firstClear": {
+        "prestige": 90
+      }
+    },
+    "ch2_s5": {
+      "story": "Tam Anh chiến Lã Bố — đỉnh chương 2.",
+      "mission": "Sống sót trước Lã Bố — mở chiêu mộ cao cấp.",
+      "firstClear": {
+        "prestige": 180,
+        "grantByFaction": {
+          "shu": "weiyan",
+          "wei": "zhangliao",
+          "wu": "ganning"
+        },
+        "hint": "Mở thêm tướng cam. Lưu Bị / Tào Tháo / Tôn Quyền cần danh vọng rất cao."
+      }
+    },
+    "ch2_s6": {
+      "story": "Đổng Trác bỏ Lạc Dương. Liên quân tan.",
+      "mission": "Boss chương 2 — mở tính năng cao hơn.",
+      "firstClear": {
+        "prestige": 200,
+        "hint": "Chuẩn bị chương Quần Hùng — Thế giới & chiêu mộ rộng."
+      }
+    },
+    "ch3_s1": {
+      "story": "Tào Tháo khởi binh Trần Lưu — quần hùng phân tranh.",
+      "firstClear": {
+        "prestige": 100,
+        "grantByFaction": {
+          "shu": "xushu",
+          "wei": "guojia",
+          "wu": "xiaoqiao"
+        }
+      }
+    },
+    "ch3_s2": {
+      "story": "Đào Khiêm Từ Châu — nhân nghĩa hay quyền mưu.",
+      "firstClear": {
+        "prestige": 110
+      }
+    },
+    "ch3_s3": {
+      "story": "Công Tôn Toản — Bạch Mã nghĩa tòng.",
+      "firstClear": {
+        "prestige": 120,
+        "grantByFaction": {
+          "shu": "zhaoyun",
+          "wei": "zhanghe",
+          "wu": "taishici"
+        },
+        "hint": "Thục nhận Triệu Vân (đỏ). Ngụy/Ngô nhận danh tướng tương ứng."
+      }
+    },
+    "ch3_s4": {
+      "story": "Nhan Lương · Văn Xú — hổ tướng Hà Bắc.",
+      "firstClear": {
+        "prestige": 130
+      }
+    },
+    "ch3_s5": {
+      "story": "Lưu Biểu Kinh Châu — đất dụng nhân.",
+      "firstClear": {
+        "prestige": 140,
+        "grantByFaction": {
+          "shu": "xushu",
+          "wei": "jiaxu",
+          "wu": "zhugejin"
+        }
+      }
+    },
+    "ch3_s6": {
+      "story": "Viên Thiệu — bá chủ Hà Bắc. Kết thúc chính tuyến v1.",
+      "mission": "Boss chương 3 — mở endgame nhẹ (tháp / chiêu mộ huyền thoại).",
+      "firstClear": {
+        "prestige": 250,
+        "grantByFaction": {
+          "shu": "pangtong",
+          "wei": "xunyu",
+          "wu": "luxun"
+        },
+        "hint": "Mở thêm tính năng cao. Danh tướng đỏ còn lại: Tửu Quán + danh vọng rất cao."
+      }
+    }
+  },
+  "tavernRules": {
+    "summary": "Chiêu mộ = đủ Bạc + Danh vọng + cấp Ty Vũ + đã vượt required_stage (nếu có).",
+    "early": "Ải ch1_s2 trở đi mở tướng xanh/lam phe mình.",
+    "mid": "Ải ch1_s4 / ch1_s6 mở tím và nâng cao.",
+    "late": "Ải ch2_s3+ và ch3 mở cam; đỏ cần danh vọng 1000+ và Ty Vũ cao.",
+    "prestigeGenerals": "Một số entry source=prestige: chủ yếu khóa theo mốc danh vọng (giống uy danh gốc)."
+  }
+}

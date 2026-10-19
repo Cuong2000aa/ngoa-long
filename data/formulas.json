@@ -1,0 +1,72 @@
+{
+  "id": "nl_formulas_v3",
+  "schemaVersion": 3,
+  "level": {
+    "statPerLevel": 0.04,
+    "hpPerLevel": 0.045
+  },
+  "combat": {
+    "physCoef": 1.0,
+    "stratCoef": 1.0,
+    "skillNormalPower": 1.0,
+    "minDamage": 25,
+    "damageRandomMin": 0.95,
+    "damageRandomMax": 1.05,
+    "missBase": 0.05,
+    "missClamp": [0.02, 0.18],
+    "critBase": 0.08,
+    "critMul": 1.5,
+    "critClamp": [0.05, 0.4],
+    "maxRounds": 40,
+    "counterMul": 1.25,
+    "weakMul": 0.8,
+    "rangedArmorDefault": 0.85,
+    "turnOrder": "speed_then_slot",
+    "speedWeights": { "vuLuc": 0.55, "tongLinh": 0.25, "triLuc": 0.2 }
+  },
+  "morale": {
+    "start": 50,
+    "max": 100,
+    "gainOnAttack": 25,
+    "gainOnHit": 15,
+    "skillThreshold": 100,
+    "resetAfterSkill": 0
+  },
+  "economy": {
+    "buildingCostGrowthDefault": 1.52,
+    "offlineCapHours": 48,
+    "tickMs": 1000,
+    "defaultFormationId": "crane_wing"
+  },
+  "city": {
+    "starting": {
+      "silver": 5000,
+      "food": 4000,
+      "gem": 50,
+      "buildings": {
+        "ty_vu": 1,
+        "mo_bac": 1,
+        "nong_trai": 1,
+        "doanh_trai": 1,
+        "kho": 1
+      }
+    },
+    "upgrade": {
+      "note": "cost = baseCost * costGrowth^level; timeSec = upgradeBaseSec * upgradeGrowth^level"
+    }
+  },
+  "campaign": {
+    "loseFoodRatio": 0.5,
+    "staminaByType": { "normal": 80, "elite": 150, "boss": 250 },
+    "defaultEnemyFormation": "square",
+    "startingUnlocked": ["campaign"],
+    "featureLabels": {
+      "arena": "Đấu Trường / Lôi đài",
+      "recruit_advanced": "Chiêu mộ tướng cao cấp",
+      "tower_hard": "Tháp thí luyện (Khó)",
+      "equip_enhance_plus": "Cường hóa trang bị+",
+      "campaign_hard": "Phó bản Khó",
+      "legend_recruit": "Chiêu mộ Huyền thoại"
+    }
+  }
+}

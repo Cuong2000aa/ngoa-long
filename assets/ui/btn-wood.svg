@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 52" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="woodGrain" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#875830"/>
+      <stop offset="45%" stop-color="#5e3a1d"/>
+      <stop offset="100%" stop-color="#38200e"/>
+    </linearGradient>
+    <linearGradient id="goldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f3d26b"/>
+      <stop offset="50%" stop-color="#b58720"/>
+      <stop offset="100%" stop-color="#7a560d"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="176" height="48" rx="4" fill="url(#woodGrain)" stroke="url(#goldBorder)" stroke-width="2.5"/>
+  <rect x="6" y="6" width="168" height="40" rx="2" fill="none" stroke="rgba(255,235,180,0.22)" stroke-width="1"/>
+  <circle cx="11" cy="26" r="2.2" fill="#e8c547"/>
+  <circle cx="169" cy="26" r="2.2" fill="#e8c547"/>
+</svg>

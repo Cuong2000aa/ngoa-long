@@ -1,0 +1,504 @@
+{
+  "schemaVersion": 2,
+  "slots": [
+    "weapon",
+    "armor",
+    "horse",
+    "book",
+    "accessory"
+  ],
+  "slotNames": {
+    "weapon": "Vũ khí",
+    "armor": "Giáp",
+    "horse": "Ngựa",
+    "book": "Sách",
+    "accessory": "Đồ phổ"
+  },
+  "rarities": [
+    "white",
+    "green",
+    "blue",
+    "purple",
+    "orange",
+    "red"
+  ],
+  "list": [
+    {
+      "id": "sword_common",
+      "name": "Thanh Phong Kiếm",
+      "slot": "weapon",
+      "rarity": "white",
+      "bonuses": {
+        "vuLuc": 5
+      },
+      "desc": "Kiếm lính."
+    },
+    {
+      "id": "sword_iron",
+      "name": "Thiết Kiếm",
+      "slot": "weapon",
+      "rarity": "green",
+      "bonuses": {
+        "vuLuc": 10
+      },
+      "desc": "Kiếm sắt."
+    },
+    {
+      "id": "blade_steel",
+      "name": "Cương Đao",
+      "slot": "weapon",
+      "rarity": "blue",
+      "bonuses": {
+        "vuLuc": 18,
+        "tongLinh": 3
+      },
+      "desc": "Đao thép."
+    },
+    {
+      "id": "spear_long",
+      "name": "Trường Thương",
+      "slot": "weapon",
+      "rarity": "blue",
+      "bonuses": {
+        "vuLuc": 16,
+        "tongLinh": 5
+      },
+      "desc": "Thương dài."
+    },
+    {
+      "id": "bow_composite",
+      "name": "Củng Nỏ",
+      "slot": "weapon",
+      "rarity": "blue",
+      "bonuses": {
+        "vuLuc": 17,
+        "triLuc": 4
+      },
+      "desc": "Nỏ cứng."
+    },
+    {
+      "id": "blade_qinglong",
+      "name": "Thanh Long Yển Nguyệt",
+      "slot": "weapon",
+      "rarity": "orange",
+      "bonuses": {
+        "vuLuc": 35,
+        "tongLinh": 8
+      },
+      "desc": "Đại đao danh tướng."
+    },
+    {
+      "id": "spear_fangtian",
+      "name": "Phương Thiên Họa Kích",
+      "slot": "weapon",
+      "rarity": "red",
+      "bonuses": {
+        "vuLuc": 48,
+        "tongLinh": 10
+      },
+      "desc": "Kích Lã Bố."
+    },
+    {
+      "id": "sword_yitian",
+      "name": "Ỷ Thiên Kiếm",
+      "slot": "weapon",
+      "rarity": "orange",
+      "bonuses": {
+        "vuLuc": 30,
+        "triLuc": 12
+      },
+      "desc": "Kiếm Ỷ Thiên."
+    },
+    {
+      "id": "halberd_snake",
+      "name": "Xà Mâu",
+      "slot": "weapon",
+      "rarity": "purple",
+      "bonuses": {
+        "vuLuc": 26,
+        "tongLinh": 6
+      },
+      "desc": "Mâu Xà."
+    },
+    {
+      "id": "armor_cloth",
+      "name": "Bố Bào",
+      "slot": "armor",
+      "rarity": "white",
+      "bonuses": {
+        "tongLinh": 4,
+        "hp": 80
+      },
+      "desc": "Áo vải."
+    },
+    {
+      "id": "armor_leather",
+      "name": "Bì Giáp",
+      "slot": "armor",
+      "rarity": "green",
+      "bonuses": {
+        "tongLinh": 8,
+        "hp": 150
+      },
+      "desc": "Giáp da."
+    },
+    {
+      "id": "armor_scale",
+      "name": "Lân Giáp",
+      "slot": "armor",
+      "rarity": "blue",
+      "bonuses": {
+        "tongLinh": 14,
+        "hp": 280
+      },
+      "desc": "Giáp vảy."
+    },
+    {
+      "id": "armor_tiger",
+      "name": "Hổ Báo Khôi",
+      "slot": "armor",
+      "rarity": "purple",
+      "bonuses": {
+        "tongLinh": 22,
+        "hp": 450
+      },
+      "desc": "Giáp hổ."
+    },
+    {
+      "id": "armor_dragon",
+      "name": "Long Lân Khôi",
+      "slot": "armor",
+      "rarity": "orange",
+      "bonuses": {
+        "tongLinh": 30,
+        "hp": 600
+      },
+      "desc": "Giáp long."
+    },
+    {
+      "id": "armor_imperial",
+      "name": "Đế Vương Khôi",
+      "slot": "armor",
+      "rarity": "red",
+      "bonuses": {
+        "tongLinh": 40,
+        "hp": 800,
+        "triLuc": 8
+      },
+      "desc": "Giáp đế."
+    },
+    {
+      "id": "horse_grey",
+      "name": "Thanh Kỵ",
+      "slot": "horse",
+      "rarity": "white",
+      "bonuses": {
+        "vuLuc": 4,
+        "tongLinh": 3
+      },
+      "desc": "Ngựa thường."
+    },
+    {
+      "id": "horse_brown",
+      "name": "Hoàng Bưu",
+      "slot": "horse",
+      "rarity": "green",
+      "bonuses": {
+        "vuLuc": 8,
+        "tongLinh": 6
+      },
+      "desc": "Ngựa tốt."
+    },
+    {
+      "id": "horse_white",
+      "name": "Bạch Long",
+      "slot": "horse",
+      "rarity": "blue",
+      "bonuses": {
+        "vuLuc": 12,
+        "tongLinh": 10
+      },
+      "desc": "Ngựa trắng."
+    },
+    {
+      "id": "horse_red",
+      "name": "Xích Thố",
+      "slot": "horse",
+      "rarity": "orange",
+      "bonuses": {
+        "vuLuc": 15,
+        "tongLinh": 12
+      },
+      "desc": "Xích Thố."
+    },
+    {
+      "id": "horse_jueying",
+      "name": "Tuyệt Ảnh",
+      "slot": "horse",
+      "rarity": "red",
+      "bonuses": {
+        "vuLuc": 20,
+        "tongLinh": 18
+      },
+      "desc": "Tuyệt Ảnh."
+    },
+    {
+      "id": "horse_dilu",
+      "name": "Đích Lư",
+      "slot": "horse",
+      "rarity": "purple",
+      "bonuses": {
+        "tongLinh": 16,
+        "hp": 200
+      },
+      "desc": "Đích Lư."
+    },
+    {
+      "id": "book_primer",
+      "name": "Tam Tự Kinh",
+      "slot": "book",
+      "rarity": "white",
+      "bonuses": {
+        "triLuc": 6
+      },
+      "desc": "Sách nhập môn."
+    },
+    {
+      "id": "book_bingfa",
+      "name": "Tôn Tử Binh Pháp",
+      "slot": "book",
+      "rarity": "blue",
+      "bonuses": {
+        "triLuc": 18
+      },
+      "desc": "Binh pháp."
+    },
+    {
+      "id": "book_24",
+      "name": "Nhị Thập Tứ Thiên",
+      "slot": "book",
+      "rarity": "purple",
+      "bonuses": {
+        "triLuc": 28,
+        "tongLinh": 6
+      },
+      "desc": "Binh thư cao."
+    },
+    {
+      "id": "book_mengde",
+      "name": "Mạnh Đức Tân Thư",
+      "slot": "book",
+      "rarity": "orange",
+      "bonuses": {
+        "triLuc": 32,
+        "vuLuc": 8
+      },
+      "desc": "Thư Tào."
+    },
+    {
+      "id": "book_kongming",
+      "name": "Long Trung Đối",
+      "slot": "book",
+      "rarity": "red",
+      "bonuses": {
+        "triLuc": 42,
+        "tongLinh": 10
+      },
+      "desc": "Sách Khổng Minh."
+    },
+    {
+      "id": "acc_jade",
+      "name": "Ngọc Bội",
+      "slot": "accessory",
+      "rarity": "green",
+      "bonuses": {
+        "hp": 200,
+        "triLuc": 5
+      },
+      "desc": "Ngọc."
+    },
+    {
+      "id": "acc_ring",
+      "name": "Ngân Giới",
+      "slot": "accessory",
+      "rarity": "blue",
+      "bonuses": {
+        "vuLuc": 8,
+        "hp": 150
+      },
+      "desc": "Nhẫn bạc."
+    },
+    {
+      "id": "acc_amulet",
+      "name": "Hộ Thân Phù",
+      "slot": "accessory",
+      "rarity": "purple",
+      "bonuses": {
+        "tongLinh": 12,
+        "hp": 300
+      },
+      "desc": "Bùa hộ."
+    },
+    {
+      "id": "acc_seal",
+      "name": "Ngọc Tỷ",
+      "slot": "accessory",
+      "rarity": "orange",
+      "bonuses": {
+        "tongLinh": 15,
+        "triLuc": 15,
+        "vuLuc": 10
+      },
+      "desc": "Ấn tín."
+    },
+    {
+      "id": "acc_imperial_seal",
+      "name": "Truyền Quốc Ngọc Tỷ",
+      "slot": "accessory",
+      "rarity": "red",
+      "bonuses": {
+        "tongLinh": 25,
+        "triLuc": 25,
+        "vuLuc": 15,
+        "hp": 400
+      },
+      "desc": "Ngọc tỷ truyền quốc."
+    }
+  ],
+  "dropTables": {
+    "common": [
+      {
+        "itemId": "sword_common",
+        "weight": 18
+      },
+      {
+        "itemId": "armor_cloth",
+        "weight": 18
+      },
+      {
+        "itemId": "horse_grey",
+        "weight": 12
+      },
+      {
+        "itemId": "book_primer",
+        "weight": 12
+      },
+      {
+        "itemId": "sword_iron",
+        "weight": 12
+      },
+      {
+        "itemId": "armor_leather",
+        "weight": 12
+      },
+      {
+        "itemId": "acc_jade",
+        "weight": 10
+      },
+      {
+        "itemId": null,
+        "weight": 6
+      }
+    ],
+    "elite": [
+      {
+        "itemId": "blade_steel",
+        "weight": 14
+      },
+      {
+        "itemId": "spear_long",
+        "weight": 12
+      },
+      {
+        "itemId": "bow_composite",
+        "weight": 12
+      },
+      {
+        "itemId": "armor_scale",
+        "weight": 14
+      },
+      {
+        "itemId": "horse_white",
+        "weight": 10
+      },
+      {
+        "itemId": "book_bingfa",
+        "weight": 12
+      },
+      {
+        "itemId": "acc_ring",
+        "weight": 10
+      },
+      {
+        "itemId": "armor_tiger",
+        "weight": 8
+      },
+      {
+        "itemId": "halberd_snake",
+        "weight": 5
+      },
+      {
+        "itemId": null,
+        "weight": 3
+      }
+    ],
+    "boss": [
+      {
+        "itemId": "blade_qinglong",
+        "weight": 10
+      },
+      {
+        "itemId": "sword_yitian",
+        "weight": 8
+      },
+      {
+        "itemId": "armor_tiger",
+        "weight": 14
+      },
+      {
+        "itemId": "armor_dragon",
+        "weight": 8
+      },
+      {
+        "itemId": "horse_red",
+        "weight": 12
+      },
+      {
+        "itemId": "horse_dilu",
+        "weight": 8
+      },
+      {
+        "itemId": "book_24",
+        "weight": 12
+      },
+      {
+        "itemId": "book_mengde",
+        "weight": 6
+      },
+      {
+        "itemId": "acc_seal",
+        "weight": 8
+      },
+      {
+        "itemId": "acc_amulet",
+        "weight": 8
+      },
+      {
+        "itemId": "spear_fangtian",
+        "weight": 3
+      },
+      {
+        "itemId": "horse_jueying",
+        "weight": 2
+      },
+      {
+        "itemId": "acc_imperial_seal",
+        "weight": 1
+      },
+      {
+        "itemId": null,
+        "weight": 0
+      }
+    ]
+  }
+}

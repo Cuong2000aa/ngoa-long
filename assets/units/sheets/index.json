@@ -1,0 +1,222 @@
+{
+  "infantry": {
+    "1": {
+      "sheet": "assets/units/sheets/infantry-t1.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-infantry-t1.png"
+    },
+    "2": {
+      "sheet": "assets/units/sheets/infantry-t2.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-infantry-t2.png"
+    },
+    "3": {
+      "sheet": "assets/units/sheets/infantry-t3.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-infantry-t3.png"
+    },
+    "4": {
+      "sheet": "assets/units/sheets/infantry-t4.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-infantry-t4.png"
+    },
+    "5": {
+      "sheet": "assets/units/sheets/infantry-t5.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-infantry-t5.png"
+    },
+    "6": {
+      "sheet": "assets/units/sheets/infantry-t6.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-infantry-t6.png"
+    }
+  },
+  "spear": {
+    "1": {
+      "sheet": "assets/units/sheets/spear-t1.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-spear-t1.png"
+    },
+    "2": {
+      "sheet": "assets/units/sheets/spear-t2.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-spear-t2.png"
+    },
+    "3": {
+      "sheet": "assets/units/sheets/spear-t3.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-spear-t3.png"
+    },
+    "4": {
+      "sheet": "assets/units/sheets/spear-t4.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-spear-t4.png"
+    },
+    "5": {
+      "sheet": "assets/units/sheets/spear-t5.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-spear-t5.png"
+    },
+    "6": {
+      "sheet": "assets/units/sheets/spear-t6.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-spear-t6.png"
+    }
+  },
+  "cavalry": {
+    "1": {
+      "sheet": "assets/units/sheets/cavalry-t1.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-cavalry-t1.png"
+    },
+    "2": {
+      "sheet": "assets/units/sheets/cavalry-t2.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-cavalry-t2.png"
+    },
+    "3": {
+      "sheet": "assets/units/sheets/cavalry-t3.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-cavalry-t3.png"
+    },
+    "4": {
+      "sheet": "assets/units/sheets/cavalry-t4.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-cavalry-t4.png"
+    },
+    "5": {
+      "sheet": "assets/units/sheets/hobao-ky.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "hobao",
+      "icon": "assets/units/battle/wiki-cavalry-t5.png"
+    },
+    "6": {
+      "sheet": "assets/units/sheets/hobao-ky.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "hobao",
+      "icon": "assets/units/battle/wiki-cavalry-t6.png"
+    }
+  },
+  "archer": {
+    "1": {
+      "sheet": "assets/units/sheets/archer-t1.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-archer-t1.png"
+    },
+    "2": {
+      "sheet": "assets/units/sheets/archer-t2.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-archer-t2.png"
+    },
+    "3": {
+      "sheet": "assets/units/sheets/archer-t3.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-archer-t3.png"
+    },
+    "4": {
+      "sheet": "assets/units/sheets/archer-t4.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-archer-t4.png"
+    },
+    "5": {
+      "sheet": "assets/units/sheets/archer-t5.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-archer-t5.png"
+    },
+    "6": {
+      "sheet": "assets/units/sheets/archer-t6.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-archer-t6.png"
+    }
+  },
+  "strategist": {
+    "1": {
+      "sheet": "assets/units/sheets/strategist-t1.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-strategist-t1.png"
+    },
+    "2": {
+      "sheet": "assets/units/sheets/strategist-t2.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-strategist-t2.png"
+    },
+    "3": {
+      "sheet": "assets/units/sheets/strategist-t3.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-strategist-t3.png"
+    },
+    "4": {
+      "sheet": "assets/units/sheets/strategist-t4.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-strategist-t4.png"
+    },
+    "5": {
+      "sheet": "assets/units/sheets/strategist-t5.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-strategist-t5.png"
+    },
+    "6": {
+      "sheet": "assets/units/sheets/strategist-t6.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-derived",
+      "icon": "assets/units/battle/wiki-strategist-t6.png"
+    }
+  }
+}

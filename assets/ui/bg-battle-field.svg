@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0e0a12"/>
+      <stop offset="22%" stop-color="#3a1a28"/>
+      <stop offset="48%" stop-color="#b84820"/>
+      <stop offset="72%" stop-color="#e88830"/>
+      <stop offset="100%" stop-color="#f0b050"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="52%" cy="28%" r="34%">
+      <stop offset="0%" stop-color="#fff2c0" stop-opacity="0.75"/>
+      <stop offset="35%" stop-color="#ffb040" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#c04018" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ground" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9a6230"/>
+      <stop offset="45%" stop-color="#6a4020"/>
+      <stop offset="100%" stop-color="#2e180c"/>
+    </linearGradient>
+    <linearGradient id="dust" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d08040" stop-opacity="0"/>
+      <stop offset="60%" stop-color="#a05828" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#401808" stop-opacity="0.55"/>
+    </linearGradient>
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <ellipse cx="820" cy="260" rx="420" ry="180" fill="url(#sunGlow)"/>
+  <circle cx="820" cy="250" r="48" fill="#ffe8a8" opacity="0.9"/>
+
+  <!-- Distant mountains -->
+  <path d="M0,340 L120,280 L240,330 L380,250 L520,310 L680,230 L820,300 L980,240 L1140,305 L1280,255 L1440,300 L1600,270 L1600,480 L0,480 Z"
+        fill="#1a1210" opacity="0.9"/>
+  <path d="M0,380 L180,320 L340,370 L500,300 L700,360 L900,290 L1100,350 L1300,310 L1600,340 L1600,560 L0,560 Z"
+        fill="#2a1c14" opacity="0.92"/>
+  <path d="M0,430 L220,380 L420,420 L640,360 L880,410 L1120,370 L1360,405 L1600,385 L1600,600 L0,600 Z"
+        fill="#3d2818" opacity="0.95"/>
+
+  <!-- Dead trees -->
+  <g stroke="#120c08" stroke-width="5" fill="none" opacity="0.7" stroke-linecap="round">
+    <path d="M140,520 L140,380 M140,430 L95,350 M140,445 L185,355 M140,470 L115,400"/>
+    <path d="M1480,510 L1480,370 M1480,420 L1435,340 M1480,440 L1525,345"/>
+    <path d="M320,560 L320,450 M320,500 L285,430 M1180,550 L1180,440 M1180,490 L1215,420"/>
+  </g>
+
+  <!-- Battlefield ground -->
+  <path d="M0,520 L1600,490 L1600,900 L0,900 Z" fill="url(#ground)"/>
+  <path d="M0,560 Q400,530 800,575 T1600,545 L1600,900 L0,900 Z" fill="#7a4a24" opacity="0.55"/>
+  <path d="M0,640 Q500,610 900,660 T1600,630 L1600,900 L0,900 Z" fill="#5a3418" opacity="0.5"/>
+
+  <!-- Cracks / tracks -->
+  <g stroke="rgba(20,10,4,0.45)" stroke-width="2.5" fill="none">
+    <path d="M160,650 Q380,620 620,670"/>
+    <path d="M700,690 Q980,650 1280,700"/>
+    <path d="M280,760 Q560,730 820,775"/>
+    <path d="M920,780 Q1180,750 1420,790"/>
+    <path d="M420,820 Q700,800 980,830"/>
+  </g>
+
+  <!-- Scattered rocks -->
+  <g fill="#2a1810" opacity="0.55">
+    <ellipse cx="220" cy="700" rx="28" ry="10"/>
+    <ellipse cx="480" cy="740" rx="18" ry="7"/>
+    <ellipse cx="1100" cy="720" rx="32" ry="11"/>
+    <ellipse cx="1380" cy="760" rx="22" ry="8"/>
+  </g>
+
+  <!-- Atmospheric dust -->
+  <rect width="1600" height="900" fill="url(#dust)"/>
+  <ellipse cx="800" cy="860" rx="780" ry="70" fill="rgba(40,18,6,0.45)"/>
+
+  <!-- Vignette -->
+  <rect width="1600" height="900" fill="url(#dust)" opacity="0.4"/>
+</svg>

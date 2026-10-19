@@ -1,0 +1,9564 @@
+{
+  "schemaVersion": 1,
+  "source": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/data/hero/",
+  "count": 373,
+  "byNation": {
+    "Quần": 177,
+    "Trung lập": 73,
+    "Ngụy": 42,
+    "Ngô": 41,
+    "Thục": 40
+  },
+  "heroes": [
+    {
+      "id": "1",
+      "name": "Nghiêm Chính",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đột Tiến"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Triệu Hoằng",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phấn Chiến"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Trương Khải",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đột Tiến"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Cao Thăng",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thiết Bích"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Trương Man Thành",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hoành Tảo"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "name": "Đặng Mậu",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phấn Tấn"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "name": "Quản Hợi",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thư Kích"
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "name": "Hà Nghi",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Giao Chiến"
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "name": "Hàn Trung",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hoành Tảo"
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "name": "Lưu Tích",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cường Tập"
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "name": "Cung Đô",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phấn Tấn"
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "name": "Ngưu Phụ",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cường Tập"
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "name": "Hồ Chẩn",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đột Tiến"
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "name": "Trương Tế",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Thành"
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "name": "Phàn Trù",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phấn Chiến"
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "name": "Đổng Mân",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tề Xạ"
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "name": "Lý Túc",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kịch Độc"
+        }
+      ]
+    },
+    {
+      "id": "31",
+      "name": "Quách Tị",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ám Sát"
+        }
+      ]
+    },
+    {
+      "id": "32",
+      "name": "Lý Giác",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thiết Bích"
+        }
+      ]
+    },
+    {
+      "id": "37",
+      "name": "Trần Hoành",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Gió Lốc"
+        }
+      ]
+    },
+    {
+      "id": "39",
+      "name": "Chu Hân",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Công Tâm"
+        }
+      ]
+    },
+    {
+      "id": "40",
+      "name": "Lưu Dao",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cổ Vũ"
+        }
+      ]
+    },
+    {
+      "id": "41",
+      "name": "Trách Dung",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thiết Bích"
+        }
+      ]
+    },
+    {
+      "id": "42",
+      "name": "Nghiêm Dư",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kỵ Kích"
+        }
+      ]
+    },
+    {
+      "id": "43",
+      "name": "Nghiêm Bạch Hổ",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phản Kích"
+        }
+      ]
+    },
+    {
+      "id": "45",
+      "name": "Ngu Tị",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Lạc Lôi"
+        }
+      ]
+    },
+    {
+      "id": "46",
+      "name": "Hứa Cống",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Trị Liệu"
+        }
+      ]
+    },
+    {
+      "id": "47",
+      "name": "Vương Túc",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ám Tế"
+        }
+      ]
+    },
+    {
+      "id": "49",
+      "name": "Lưu Huân",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Thành"
+        }
+      ]
+    },
+    {
+      "id": "51",
+      "name": "Dương Hoằng",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Bộc Viêm"
+        }
+      ]
+    },
+    {
+      "id": "52",
+      "name": "Du Thiệp",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thiết Bích"
+        }
+      ]
+    },
+    {
+      "id": "53",
+      "name": "Trần Lan",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Nộ Hống"
+        }
+      ]
+    },
+    {
+      "id": "54",
+      "name": "Trần Kỷ",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phấn Chiến"
+        }
+      ]
+    },
+    {
+      "id": "55",
+      "name": "Trương Huân",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kích Thích"
+        }
+      ]
+    },
+    {
+      "id": "56",
+      "name": "Kiều Nhuy",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kích Thích"
+        }
+      ]
+    },
+    {
+      "id": "57",
+      "name": "Hàn Dận",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Bộc Viêm"
+        }
+      ]
+    },
+    {
+      "id": "59",
+      "name": "Viên Diệu",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Bộc Viêm"
+        }
+      ]
+    },
+    {
+      "id": "61",
+      "name": "Viên Dận",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tử Sanh"
+        }
+      ]
+    },
+    {
+      "id": "63",
+      "name": "Viên Thuật",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Độc Chú"
+        }
+      ]
+    },
+    {
+      "id": "65",
+      "name": "Điền Khải",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Giao Chiến"
+        }
+      ]
+    },
+    {
+      "id": "66",
+      "name": "Đơn Kinh",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tự Hủy"
+        }
+      ]
+    },
+    {
+      "id": "67",
+      "name": "Trâu Đan",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Gió Lốc"
+        }
+      ]
+    },
+    {
+      "id": "71",
+      "name": "Nghiêm Cương",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Xuyên Dương"
+        }
+      ]
+    },
+    {
+      "id": "72",
+      "name": "Quan Tịnh",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Công Tâm"
+        }
+      ]
+    },
+    {
+      "id": "73",
+      "name": "Vương Môn",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thiết Bích"
+        }
+      ]
+    },
+    {
+      "id": "74",
+      "name": "Công Tôn Độ",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hoành Tảo"
+        }
+      ]
+    },
+    {
+      "id": "76",
+      "name": "Công Tôn Uyên",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Kích"
+        }
+      ]
+    },
+    {
+      "id": "78",
+      "name": "Giả Phạm",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hỏa Long"
+        }
+      ]
+    },
+    {
+      "id": "81",
+      "name": "Dương Nhiệm",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tề Xạ"
+        }
+      ]
+    },
+    {
+      "id": "82",
+      "name": "Dương Tùng",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tử Sanh"
+        }
+      ]
+    },
+    {
+      "id": "83",
+      "name": "Dương Ngang",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thiết Bích"
+        }
+      ]
+    },
+    {
+      "id": "86",
+      "name": "Trương Lỗ",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Trị Liệu"
+        }
+      ]
+    },
+    {
+      "id": "88",
+      "name": "Vương Uy",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thiết Bích"
+        }
+      ]
+    },
+    {
+      "id": "89",
+      "name": "Hàn Tung",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Lạc Lôi"
+        }
+      ]
+    },
+    {
+      "id": "92",
+      "name": "Khoái Việt",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hỏa Long"
+        }
+      ]
+    },
+    {
+      "id": "94",
+      "name": "Thái Hòa",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Xạ Thủ"
+        }
+      ]
+    },
+    {
+      "id": "95",
+      "name": "Thái Trung",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tiễn Vũ"
+        }
+      ]
+    },
+    {
+      "id": "98",
+      "name": "Lưu Kỳ",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cổn Thạch"
+        }
+      ]
+    },
+    {
+      "id": "99",
+      "name": "Hoàng Tổ",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đột Kích"
+        }
+      ]
+    },
+    {
+      "id": "101",
+      "name": "Lưu Độ",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tử Sanh"
+        }
+      ]
+    },
+    {
+      "id": "102",
+      "name": "Hình Đạo Vinh",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kích Thích"
+        }
+      ]
+    },
+    {
+      "id": "103",
+      "name": "Hàn Huyền",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Độc Chú"
+        }
+      ]
+    },
+    {
+      "id": "104",
+      "name": "Hàn Hạo",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tự Hủy"
+        }
+      ]
+    },
+    {
+      "id": "109",
+      "name": "Vương Lũy",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Bộc Viêm"
+        }
+      ]
+    },
+    {
+      "id": "110",
+      "name": "Ngô Lan",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phấn Chiến"
+        }
+      ]
+    },
+    {
+      "id": "111",
+      "name": "Đổng Hòa",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Lạc Lôi"
+        }
+      ]
+    },
+    {
+      "id": "115",
+      "name": "Lưu Tuân",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ám Sát"
+        }
+      ]
+    },
+    {
+      "id": "120",
+      "name": "Hoàng Quyền",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Lạc Lôi"
+        }
+      ]
+    },
+    {
+      "id": "122",
+      "name": "Bàng Nghĩa",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ám Sát"
+        }
+      ]
+    },
+    {
+      "id": "123",
+      "name": "Dương Hoài",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Nộ Hống"
+        }
+      ]
+    },
+    {
+      "id": "125",
+      "name": "Hoàng Sùng",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phấn Chiến"
+        }
+      ]
+    },
+    {
+      "id": "128",
+      "name": "Lưu Nhàn",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Thành"
+        }
+      ]
+    },
+    {
+      "id": "133",
+      "name": "Lương Hưng",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đột Kích"
+        }
+      ]
+    },
+    {
+      "id": "134",
+      "name": "Lý Kham",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đạp Phá"
+        }
+      ]
+    },
+    {
+      "id": "135",
+      "name": "Dương Thu",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phấn Tấn"
+        }
+      ]
+    },
+    {
+      "id": "137",
+      "name": "Thành Nghi",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Xạ Thủ"
+        }
+      ]
+    },
+    {
+      "id": "138",
+      "name": "Hậu Tuyển",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đột Kích"
+        }
+      ]
+    },
+    {
+      "id": "141",
+      "name": "Trình Ngân",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Kích"
+        }
+      ]
+    },
+    {
+      "id": "142",
+      "name": "Trương Hoành",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đột Tiến"
+        }
+      ]
+    },
+    {
+      "id": "145",
+      "name": "Mã Ngoạn",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Thành"
+        }
+      ]
+    },
+    {
+      "id": "149",
+      "name": "Lữ Tường",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đột Kích"
+        }
+      ]
+    },
+    {
+      "id": "150",
+      "name": "Lữ Khoáng",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thiết Bích"
+        }
+      ]
+    },
+    {
+      "id": "151",
+      "name": "Lữ Uy Hoàng",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ám Sát"
+        }
+      ]
+    },
+    {
+      "id": "152",
+      "name": "Phùng Kỷ",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ly Gián"
+        }
+      ]
+    },
+    {
+      "id": "156",
+      "name": "Trần Lâm",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Nhục Mạ"
+        }
+      ]
+    },
+    {
+      "id": "157",
+      "name": "Trần Chấn",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Bộc Viêm"
+        }
+      ]
+    },
+    {
+      "id": "158",
+      "name": "Tô Do",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cường Tập"
+        }
+      ]
+    },
+    {
+      "id": "160",
+      "name": "Tưởng Nghĩa Cừ",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phấn Tấn"
+        }
+      ]
+    },
+    {
+      "id": "162",
+      "name": "Thôi Diễm",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ám Tế"
+        }
+      ]
+    },
+    {
+      "id": "164",
+      "name": "Cao Nhu",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kịch Độc"
+        }
+      ]
+    },
+    {
+      "id": "165",
+      "name": "Cao Can",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Giao Chiến"
+        }
+      ]
+    },
+    {
+      "id": "166",
+      "name": "Hứa Du",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Gió Lốc"
+        }
+      ]
+    },
+    {
+      "id": "167",
+      "name": "Cúc Nghĩa",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đạp Phá"
+        }
+      ]
+    },
+    {
+      "id": "169",
+      "name": "Quách Đồ",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Lạc Lôi"
+        }
+      ]
+    },
+    {
+      "id": "170",
+      "name": "Viên Đàm",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hoành Tảo"
+        }
+      ]
+    },
+    {
+      "id": "171",
+      "name": "Viên Thượng",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Kích"
+        }
+      ]
+    },
+    {
+      "id": "172",
+      "name": "Viên Hi",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thư Kích"
+        }
+      ]
+    },
+    {
+      "id": "174",
+      "name": "Ung Khải",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tề Xạ"
+        }
+      ]
+    },
+    {
+      "id": "175",
+      "name": "Mạnh Ưu",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đột Kích"
+        }
+      ]
+    },
+    {
+      "id": "178",
+      "name": "Mang Nha Trường",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Thành"
+        }
+      ]
+    },
+    {
+      "id": "179",
+      "name": "Đổng Trà Na",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Huyết Lộ"
+        }
+      ]
+    },
+    {
+      "id": "182",
+      "name": "Chu Bao",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hoành Tảo"
+        }
+      ]
+    },
+    {
+      "id": "184",
+      "name": "Ngột Đột Cốt",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phản Kích"
+        }
+      ]
+    },
+    {
+      "id": "185",
+      "name": "Cao Định",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Kích"
+        }
+      ]
+    },
+    {
+      "id": "188",
+      "name": "A Hội Nam",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Giao Chiến"
+        }
+      ]
+    },
+    {
+      "id": "189",
+      "name": "Dương Sửu",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tử Sanh"
+        }
+      ]
+    },
+    {
+      "id": "191",
+      "name": "Trương Dương",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đột Kích"
+        }
+      ]
+    },
+    {
+      "id": "192",
+      "name": "Trương Mạc",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Bộc Viêm"
+        }
+      ]
+    },
+    {
+      "id": "196",
+      "name": "Hầu Thành",
+      "nation": "Trung lập",
+      "faction": "neutral",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phản Kích"
+        }
+      ]
+    },
+    {
+      "id": "197",
+      "name": "Ngụy Tục",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Kích"
+        }
+      ]
+    },
+    {
+      "id": "396",
+      "name": "Văn Khâm",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thuẫn Kích"
+        }
+      ]
+    },
+    {
+      "id": "413",
+      "name": "Vô Khâu Kiệm",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tử Sanh"
+        }
+      ]
+    },
+    {
+      "id": "533",
+      "name": "Phàn Thị",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cổ Vũ"
+        }
+      ]
+    },
+    {
+      "id": "637",
+      "name": "Kim Hoàn",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kích Thích"
+        }
+      ]
+    },
+    {
+      "id": "639",
+      "name": "Triệu Phạm",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tự Hủy"
+        }
+      ]
+    },
+    {
+      "id": "640",
+      "name": "Trần Ưng",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Thành"
+        }
+      ]
+    },
+    {
+      "id": "648",
+      "name": "Nga Hà Thiêu",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Hoàn"
+        }
+      ]
+    },
+    {
+      "id": "649",
+      "name": "Phạt Đồng",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phấn Tấn"
+        }
+      ]
+    },
+    {
+      "id": "650",
+      "name": "Mang Trung",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đột Kích"
+        }
+      ]
+    },
+    {
+      "id": "651",
+      "name": "A Quý",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Kích"
+        }
+      ]
+    },
+    {
+      "id": "655",
+      "name": "Triệt Lý Cát",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Nộ Hống"
+        }
+      ]
+    },
+    {
+      "id": "656",
+      "name": "Nghị Già Tắc",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thư Kích"
+        }
+      ]
+    },
+    {
+      "id": "658",
+      "name": "Phan Lâm",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Thành"
+        }
+      ]
+    },
+    {
+      "id": "661",
+      "name": "Phù Kiện",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cường Tập"
+        }
+      ]
+    },
+    {
+      "id": "663",
+      "name": "Thành Luật Quy",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đạp Phá"
+        }
+      ]
+    },
+    {
+      "id": "664",
+      "name": "Tố Lợi",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thiết Bích"
+        }
+      ]
+    },
+    {
+      "id": "666",
+      "name": "Kha Tỉ Năng",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Gió Lốc"
+        }
+      ]
+    },
+    {
+      "id": "667",
+      "name": "Bộ Độ Căn",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tiễn Vũ"
+        }
+      ]
+    },
+    {
+      "id": "669",
+      "name": "Lâu Ban",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hoành Họa"
+        }
+      ]
+    },
+    {
+      "id": "674",
+      "name": "Vu Phù La",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Huyễn Thuật"
+        }
+      ]
+    },
+    {
+      "id": "675",
+      "name": "Khứ Ti",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Huyết Lộ"
+        }
+      ]
+    },
+    {
+      "id": "741",
+      "name": "Trương Yên",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đạp Phá"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Kỵ Kích"
+        }
+      ]
+    },
+    {
+      "id": "742",
+      "name": "Trương Bảo",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Huyễn Thuật"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Huyễn Pháp"
+        }
+      ]
+    },
+    {
+      "id": "743",
+      "name": "Trương Lương",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Huyết Lộ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Khổ Kế"
+        }
+      ]
+    },
+    {
+      "id": "768",
+      "name": "Quản Lộ",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đột Tập"
+        }
+      ]
+    },
+    {
+      "id": "769",
+      "name": "Hà Tiến",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cự Mã"
+        }
+      ]
+    },
+    {
+      "id": "770",
+      "name": "Đinh Nguyên",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phá Phủ"
+        }
+      ]
+    },
+    {
+      "id": "775",
+      "name": "Trần Đam",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Chuyên Chú"
+        }
+      ]
+    },
+    {
+      "id": "779",
+      "name": "Trịnh Thái",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thường",
+      "tierCount": 1,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Lợi Nhẫn"
+        }
+      ]
+    },
+    {
+      "id": "853",
+      "name": "Ba Tài",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Bộc Viêm"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Hỏa Nham"
+        }
+      ]
+    },
+    {
+      "id": "854",
+      "name": "Trình Viễn Chí",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Huyết Lộ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Huyết Chiến"
+        }
+      ]
+    },
+    {
+      "id": "855",
+      "name": "Từ Vinh",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thư Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Sát Ý"
+        }
+      ]
+    },
+    {
+      "id": "856",
+      "name": "Cao Thuận",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kích Thích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Bác Kích"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Bác Sát"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Thương Trận"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Hãm Trận Tiên Đăng"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Hãm Doanh Thôi Nhuệ"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Tiên Đăng Tử Sĩ"
+        }
+      ]
+    },
+    {
+      "id": "857",
+      "name": "Đổng Thừa",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Công Tâm"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Ly Gián"
+        }
+      ]
+    },
+    {
+      "id": "858",
+      "name": "Trương Anh",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thuẫn Kích"
+        }
+      ]
+    },
+    {
+      "id": "859",
+      "name": "Ngu Phiên",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Lãng Đào"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Vòng Xoáy"
+        }
+      ]
+    },
+    {
+      "id": "860",
+      "name": "Vương Lãng",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Độc Chú"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Độc Chú"
+        }
+      ]
+    },
+    {
+      "id": "861",
+      "name": "Lôi Bạc",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cường Tập"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Phá Phủ"
+        }
+      ]
+    },
+    {
+      "id": "862",
+      "name": "Lạc Tựu",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kích Thích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Bác Kích"
+        }
+      ]
+    },
+    {
+      "id": "863",
+      "name": "Diêm Tượng",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hồng Viêm"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Hồng Viêm"
+        }
+      ]
+    },
+    {
+      "id": "864",
+      "name": "Kỷ Linh",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Thành"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Binh Phạt"
+        }
+      ]
+    },
+    {
+      "id": "865",
+      "name": "Điền Dự",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Lãng Đào"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Vòng Xoáy"
+        }
+      ]
+    },
+    {
+      "id": "868",
+      "name": "Trương Vệ",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phản Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Nghịch Chuyển"
+        }
+      ]
+    },
+    {
+      "id": "869",
+      "name": "Diêm Phố",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Lãng Đào"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Bài Lãng"
+        }
+      ]
+    },
+    {
+      "id": "871",
+      "name": "Lưu Tông",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cổn Thạch"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Lạc Thạch"
+        }
+      ]
+    },
+    {
+      "id": "873",
+      "name": "Thái Mạo",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kích Thích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Phá Kích"
+        }
+      ]
+    },
+    {
+      "id": "874",
+      "name": "Trương Doãn",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thiết Bích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Bài Lãng"
+        }
+      ]
+    },
+    {
+      "id": "875",
+      "name": "Lưu Hiền",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Huyết Lộ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Khổ Kế"
+        }
+      ]
+    },
+    {
+      "id": "876",
+      "name": "Ngô Ban",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kịch Độc"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Độc Tiêu"
+        }
+      ]
+    },
+    {
+      "id": "877",
+      "name": "Lôi Đồng",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hoành Tảo"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Hám Địa"
+        }
+      ]
+    },
+    {
+      "id": "878",
+      "name": "Lý Nghiêm",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Thành"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Viện Binh"
+        }
+      ]
+    },
+    {
+      "id": "879",
+      "name": "Nghiêm Nhan",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thủ Hộ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Ngự Giáp"
+        }
+      ]
+    },
+    {
+      "id": "882",
+      "name": "Cao Bái",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thư Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Lôi Tiễn"
+        }
+      ]
+    },
+    {
+      "id": "883",
+      "name": "Trương Tùng",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hỏa Long"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Địa Liệp"
+        }
+      ]
+    },
+    {
+      "id": "885",
+      "name": "Lưu Chương",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tề Xạ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Vô Ngại"
+        }
+      ]
+    },
+    {
+      "id": "894",
+      "name": "Thuần Vu Quỳnh",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Hoàn"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Liên Hoàn"
+        }
+      ]
+    },
+    {
+      "id": "899",
+      "name": "Mộc Lộc Vương",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Yêu Thuật"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Phần Diệt"
+        }
+      ]
+    },
+    {
+      "id": "900",
+      "name": "Đóa Tư Vương",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ám Tế"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Phá Kế"
+        }
+      ]
+    },
+    {
+      "id": "903",
+      "name": "Trương Hổ",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hoành Tảo"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "San Bằng"
+        }
+      ]
+    },
+    {
+      "id": "904",
+      "name": "Tào Tính",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ám Sát"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Xạ Sát"
+        }
+      ]
+    },
+    {
+      "id": "905",
+      "name": "Tống Hiến",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cường Tập"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Nhiễu Tập"
+        }
+      ]
+    },
+    {
+      "id": "906",
+      "name": "Chu Chỉ",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kỵ Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Đơn Kỵ"
+        }
+      ]
+    },
+    {
+      "id": "907",
+      "name": "Ngưu Kim",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Hoàn"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Xạ Sát"
+        }
+      ]
+    },
+    {
+      "id": "908",
+      "name": "Tang Bá",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đạp Phá"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Viện Binh"
+        }
+      ]
+    },
+    {
+      "id": "910",
+      "name": "Bào Long",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kích Thích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Chước Giới"
+        }
+      ]
+    },
+    {
+      "id": "920",
+      "name": "Thạp Đốn",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Khổ Kế"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Khổ Kế"
+        }
+      ]
+    },
+    {
+      "id": "921",
+      "name": "Cốt Tiến",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ám Sát"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tật Xung"
+        }
+      ]
+    },
+    {
+      "id": "924",
+      "name": "Chung Dao",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Gió Lốc"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Gió Lốc"
+        }
+      ]
+    },
+    {
+      "id": "925",
+      "name": "Lưu Diệp",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kịch Độc"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Độc Kế"
+        }
+      ]
+    },
+    {
+      "id": "928",
+      "name": "Lý Thông",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thư Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Lôi Tiễn"
+        }
+      ]
+    },
+    {
+      "id": "929",
+      "name": "Đặng Trung",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đạp Phá"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Đơn Kỵ"
+        }
+      ]
+    },
+    {
+      "id": "931",
+      "name": "Trần Quần",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hỏa Long"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Địa Liệp"
+        }
+      ]
+    },
+    {
+      "id": "932",
+      "name": "Vu Cấm",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thiết Bích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thiết Thương"
+        }
+      ]
+    },
+    {
+      "id": "933",
+      "name": "Lạc Tiến",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phản Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Nghịch Chuyển"
+        }
+      ]
+    },
+    {
+      "id": "934",
+      "name": "Dương Tu",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Trị Liệu"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Trị Liệu"
+        }
+      ]
+    },
+    {
+      "id": "936",
+      "name": "Hoa Hâm",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Nhục Mạ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Nhục Mạ"
+        }
+      ]
+    },
+    {
+      "id": "943",
+      "name": "Hí Chí Tài",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hải Tiếu"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Mai Lãng"
+        }
+      ]
+    },
+    {
+      "id": "944",
+      "name": "Hạ Hầu Bá",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tật Xung"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tật Xung"
+        }
+      ]
+    },
+    {
+      "id": "962",
+      "name": "Tôn Hưu",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Trị Liệu"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Trị Liệu"
+        }
+      ]
+    },
+    {
+      "id": "963",
+      "name": "Tổ Mậu",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đột Tập"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Đột Tập"
+        }
+      ]
+    },
+    {
+      "id": "965",
+      "name": "Tưởng Khâm",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hoành Tảo"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Hám Địa"
+        }
+      ]
+    },
+    {
+      "id": "967",
+      "name": "Lăng Tháo",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Giao Chiến"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Giao Chiến"
+        }
+      ]
+    },
+    {
+      "id": "968",
+      "name": "Trần Võ",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thiết Bích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thiết Thương"
+        }
+      ]
+    },
+    {
+      "id": "971",
+      "name": "Đinh Phụng",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tấu Sát"
+        }
+      ]
+    },
+    {
+      "id": "972",
+      "name": "Trương Chiêu",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Nhục Mạ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Nhục Mạ"
+        }
+      ]
+    },
+    {
+      "id": "974",
+      "name": "Lăng Thống",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Độc Tiêu"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Xà Độc"
+        }
+      ]
+    },
+    {
+      "id": "983",
+      "name": "Đổng Tập",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tật Xung"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Mũi Nhọn"
+        }
+      ]
+    },
+    {
+      "id": "1002",
+      "name": "Lưu Phong",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thư Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Lôi Tiễn"
+        }
+      ]
+    },
+    {
+      "id": "1005",
+      "name": "Triệu Thống",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Thành"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Binh Phạt"
+        }
+      ]
+    },
+    {
+      "id": "1007",
+      "name": "Quan Sách",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Huyết Lộ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Huyết Chiến"
+        }
+      ]
+    },
+    {
+      "id": "1008",
+      "name": "Phó Thiêm",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thuẫn Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thuẫn Kích"
+        }
+      ]
+    },
+    {
+      "id": "1009",
+      "name": "Phí Huy",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kịch Độc"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Ôn Dịch"
+        }
+      ]
+    },
+    {
+      "id": "1014",
+      "name": "Lý Khôi",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tiễu Sát"
+        }
+      ]
+    },
+    {
+      "id": "1015",
+      "name": "Trần Đăng",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Nhục Mạ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Nhục Mạ"
+        }
+      ]
+    },
+    {
+      "id": "1018",
+      "name": "Triệu Quảng",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tật Xung"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tật Xung"
+        }
+      ]
+    },
+    {
+      "id": "1021",
+      "name": "Mạnh Đạt",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thủ Hộ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Hãn Vệ"
+        }
+      ]
+    },
+    {
+      "id": "1068",
+      "name": "Vu Độc",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Thành"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Hủy Hoại"
+        }
+      ]
+    },
+    {
+      "id": "1138",
+      "name": "Tân Tì",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Lãng Đào"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Huyền Băng"
+        }
+      ]
+    },
+    {
+      "id": "1249",
+      "name": "Vương Cơ",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Chước Giới"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tiễn Đạp"
+        }
+      ]
+    },
+    {
+      "id": "1405",
+      "name": "Ngô Ý",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cuồng Bạo"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Chiến Cuồng"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Cuồng Loạn"
+        }
+      ]
+    },
+    {
+      "id": "1412",
+      "name": "Tữ Thụ",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kinh Lôi"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tháp Thiên"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Kích Nộ"
+        }
+      ]
+    },
+    {
+      "id": "1418",
+      "name": "Ngạc Hoán",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Nộ Hống"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Nộ Hống"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Nộ Xích"
+        }
+      ]
+    },
+    {
+      "id": "1420",
+      "name": "Việt Cát",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đơn Kỵ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Kỵ Liệp"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Kỵ Xạ"
+        }
+      ]
+    },
+    {
+      "id": "1423",
+      "name": "Hoàng Loạn",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kích Thích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Phá Kích"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Chấn Kích"
+        }
+      ]
+    },
+    {
+      "id": "1427",
+      "name": "Ô Diên",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cuồng Bạo"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Chiến Cuồng"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Phẫn Nộ"
+        }
+      ]
+    },
+    {
+      "id": "1435",
+      "name": "Hách Chiêu",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Lôi Tiễn"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Mũi Nhọn"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Nghệ Xạ"
+        }
+      ]
+    },
+    {
+      "id": "1463",
+      "name": "Tôn Hoàn",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thần",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phi Xạ"
+        },
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "[NPC] Trời Tru Đất Diệt"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Liên Nỏ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Hỏa Nỏ"
+        }
+      ]
+    },
+    {
+      "id": "1470",
+      "name": "Liêu Hóa",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đạp Phá"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Đơn Kỵ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Kỵ Liệp"
+        }
+      ]
+    },
+    {
+      "id": "1477",
+      "name": "Sa Ma Kha",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cuồng Bạo"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Chiến Cuồng"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Cuồng Loạn"
+        }
+      ]
+    },
+    {
+      "id": "1502",
+      "name": "Kha Ngô",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hải Tiếu"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Mai Lãng"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Ngủ Say"
+        }
+      ]
+    },
+    {
+      "id": "1567",
+      "name": "Dương Nghi",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Chiến",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Nhục Mạ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Ngủ Say"
+        }
+      ]
+    },
+    {
+      "id": "1604",
+      "name": "Dương Cổ",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hồng Viêm"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thiên Khải"
+        }
+      ]
+    },
+    {
+      "id": "1904",
+      "name": "Vương Song",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thuẫn Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thuẫn Kích"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Chùy Kích"
+        }
+      ]
+    },
+    {
+      "id": "1905",
+      "name": "Trình Phổ",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kỵ Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Kỵ Kích"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Kỵ Chiến"
+        }
+      ]
+    },
+    {
+      "id": "1906",
+      "name": "Quan Hưng",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Nộ Kiếm"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Nộ Trảm"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Nộ Tập"
+        }
+      ]
+    },
+    {
+      "id": "1909",
+      "name": "Dương Bách",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Huyết Chế"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Huyết Chế"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Kìm Hãm"
+        }
+      ]
+    },
+    {
+      "id": "1926",
+      "name": "Tào Hưu",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Hoàn"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tên Lạc"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Yêu Giáp"
+        }
+      ]
+    },
+    {
+      "id": "1927",
+      "name": "Tôn Thiều",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thuẫn Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thuẫn Kích"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Yêu Giáp"
+        }
+      ]
+    },
+    {
+      "id": "1928",
+      "name": "Lý Điển",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kích Thích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Phá Kích"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Hủy Diệt"
+        }
+      ]
+    },
+    {
+      "id": "1929",
+      "name": "Trương Thừa",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kích Thích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Phá Kích"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Hủy Diệt"
+        }
+      ]
+    },
+    {
+      "id": "1930",
+      "name": "Bào Tam Nương",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kích Thích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Bác Kích"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Hủy Diệt"
+        }
+      ]
+    },
+    {
+      "id": "1934",
+      "name": "Công Tôn Phạm",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ám Sát"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thích Sát"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Hành Thích"
+        }
+      ]
+    },
+    {
+      "id": "1935",
+      "name": "Lãnh Bao",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ám Sát"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thích Sát"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Hành Thích"
+        }
+      ]
+    },
+    {
+      "id": "1952",
+      "name": "Hàn Toại",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Truyền thuyết",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cổn Thạch"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Lạc Thạch"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Quỷ Kế"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Đoạt Tâm"
+        }
+      ]
+    },
+    {
+      "id": "1953",
+      "name": "Phí Sạn",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Truyền thuyết",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hỏa Long"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Lạc Thạch"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Quỷ Kế"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Đoạt Tâm"
+        }
+      ]
+    },
+    {
+      "id": "1954",
+      "name": "Khoái Lương",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Truyền thuyết",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hải Tiếu"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Mai Lãng"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Long Đào"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Thủy Công"
+        }
+      ]
+    },
+    {
+      "id": "1957",
+      "name": "Mã Thiết",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Truyền thuyết",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hoành Tảo"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Hoành Họa"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Tập Kích"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Loạn Kích"
+        }
+      ]
+    },
+    {
+      "id": "1958",
+      "name": "Mã Đằng",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Truyền thuyết",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đạp Phá"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Kỵ Kích"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Tật Trì"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Kỵ Thần"
+        }
+      ]
+    },
+    {
+      "id": "1966",
+      "name": "Xa Trụ",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Truyền thuyết",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Uy Phong"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tang Phong"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Khu Trục"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Kiềm Hãm"
+        }
+      ]
+    },
+    {
+      "id": "1967",
+      "name": "Lữ Đại",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Truyền thuyết",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Uy Phong"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tang Phong"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Khu Trục"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Kiềm Hãm"
+        }
+      ]
+    },
+    {
+      "id": "1968",
+      "name": "Mã Đại",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Truyền thuyết",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Uy Phong"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tang Phong"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Khu Trục"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Kiềm Hãm"
+        }
+      ]
+    },
+    {
+      "id": "1969",
+      "name": "Tưởng Uyển",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Truyền thuyết",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cổn Thạch"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Lạc Thạch"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Quỷ Kế"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Đoạt Tâm"
+        }
+      ]
+    },
+    {
+      "id": "1970",
+      "name": "Trương Hoành",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Truyền thuyết",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hải Tiếu"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Mai Lãng"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Long Đào"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Thủy Công"
+        }
+      ]
+    },
+    {
+      "id": "2013",
+      "name": "Tỏa Nô",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Truyền thuyết",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phi Xạ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Liên Nỏ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Hỏa Nỏ"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Kình Nỏ"
+        }
+      ]
+    },
+    {
+      "id": "2015",
+      "name": "Mê Đương",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Truyền thuyết",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cổ Vũ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Lôi Cổ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Hiệu Triệu"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Định Quân Cổ"
+        }
+      ]
+    },
+    {
+      "id": "2018",
+      "name": "Tiên Vu Phụ",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Truyền thuyết",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phi Xạ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Liên Nỏ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Huyết Nhẫn"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Nhuệ Nhẫn"
+        }
+      ]
+    },
+    {
+      "id": "2075",
+      "name": "Lục Kháng",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Truyền thuyết",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ám Tế"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Ám Tế"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Ám Tế"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Hư Thực"
+        }
+      ]
+    },
+    {
+      "id": "2076",
+      "name": "Nha Đan",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Truyền thuyết",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ám Tế"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Ám Tế"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Ám Tế"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Hư Thực"
+        }
+      ]
+    },
+    {
+      "id": "2200",
+      "name": "Thái Diễm",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tường Đồng"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tường Đồng"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Trường Ca"
+        }
+      ]
+    },
+    {
+      "id": "2418",
+      "name": "Thẩm Phối",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Truyền thuyết",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thủ Hộ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Hãn Vệ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Bích Lũy"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Thuẫn Tường"
+        }
+      ]
+    },
+    {
+      "id": "2424",
+      "name": "Bùi Nguyên Thiệu",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Truyền thuyết",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thiết Bích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thiết Thương"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Bá Thương"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Long Thương"
+        }
+      ]
+    },
+    {
+      "id": "2758",
+      "name": "Tào Phi",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thượng Cổ",
+      "tierCount": 5,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Công Tâm"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tự Lập"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Đăng Cơ"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Quy Tâm"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Uy Áp"
+        }
+      ]
+    },
+    {
+      "id": "2759",
+      "name": "Chu Thương",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thượng Cổ",
+      "tierCount": 5,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thiết Bích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Nộ Thích"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Đột Kích"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Liên Thích"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Xuyên Vân Thích"
+        }
+      ]
+    },
+    {
+      "id": "2760",
+      "name": "Chu Nhiên",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thượng Cổ",
+      "tierCount": 5,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thư Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thiết Nõ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Hỏa Nỏ"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Kình Nỏ"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thần Cơ Nỏ"
+        }
+      ]
+    },
+    {
+      "id": "3077",
+      "name": "Phan Phượng",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thượng Cổ",
+      "tierCount": 5,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tự Hủy"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tự Hủy"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Tuyệt Sát"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Khai Sơn Huyết Phủ"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Vô Song Thượng Tướng"
+        }
+      ]
+    },
+    {
+      "id": "3488",
+      "name": "Mã Hưu",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 5,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đột Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Chước Giới"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Khí Giới"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Dương Công"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Nhiễu Loạn Đột Tập"
+        }
+      ]
+    },
+    {
+      "id": "3531",
+      "name": "Vương Nguyên Cơ",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Kích Dương"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Thanh Huy"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thanh Huy"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Giảo Nguyệt Thanh Huy"
+        }
+      ]
+    },
+    {
+      "id": "3541",
+      "name": "Tào Chương",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Nộ Kiếm"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Nộ Trảm"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Đằng Long"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Tinh Ngự"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Long Đằng Tứ Hải"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Trời Rơi Sao Sáng"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Tinh Vẫn Địa Liệp"
+        }
+      ]
+    },
+    {
+      "id": "3542",
+      "name": "Ngụy Diên",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hoành Họa"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tấu Sát"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Đằng Long"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Tinh Ngự"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Long Đằng Tứ Hải"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Trời Rơi Sao Sáng"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Tinh Vẫn Địa Liệp"
+        }
+      ]
+    },
+    {
+      "id": "3543",
+      "name": "Tôn Kiên",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hám Địa"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "San Bằng"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Đằng Long"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Tinh Ngự"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Long Đằng Tứ Hải"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Trời Rơi Sao Sáng"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Tinh Vẫn Địa Liệp"
+        }
+      ]
+    },
+    {
+      "id": "3553",
+      "name": "Gia Cát Đản",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hỏa Long"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Bạo Lôi"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thần Ngự"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Ân Nghĩa"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Địa Trạch Vạn Vật"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thần Hữu Một Phương"
+        }
+      ]
+    },
+    {
+      "id": "3557",
+      "name": "Trương Ninh",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Xuyên Thích"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Hoàng Thiên Quỷ Đạo"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Quỷ Cốc Sách"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Ngũ Hành Phá Trận"
+        }
+      ]
+    },
+    {
+      "id": "3603",
+      "name": "Văn Ương",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tật Xung"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Sát Khí"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Xích Long"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Viêm Long Phá"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Viêm Long Sát"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Viêm Long Kỳ Tập"
+        }
+      ]
+    },
+    {
+      "id": "3604",
+      "name": "Giả Hử",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hư Vô"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Hắc Động"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thâm Uyên"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Độc Địa"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Loạn Thế Kỳ Mưu"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thao Lược Tung Hoành"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Mưu Đoạn Càn Khôn"
+        }
+      ]
+    },
+    {
+      "id": "3605",
+      "name": "Lỗ Túc",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hư Vô"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Hắc Động"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thâm Uyên"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Độc Địa"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Loạn Thế Kỳ Mưu"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thao Lược Tung Hoành"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Mưu Đoạn Càn Khôn"
+        }
+      ]
+    },
+    {
+      "id": "3606",
+      "name": "Từ Thứ",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hư Vô"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Hắc Động"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thâm Uyên"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Độc Địa"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Loạn Thế Kỳ Mưu"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thao Lược Tung Hoành"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Mưu Đoạn Càn Khôn"
+        }
+      ]
+    },
+    {
+      "id": "3694",
+      "name": "Nhan Lương",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hám Địa"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Nộ Trảm"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Trảm Sát"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Kiêu Tướng"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Nhất Kỵ Phá Thánh"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Quỷ Tướng Phá Thánh"
+        }
+      ]
+    },
+    {
+      "id": "3695",
+      "name": "Văn Sửu",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kỵ Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thiết Kỵ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Phù Đồ"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Dũng Tướng"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Nhất Kỵ Đương Thiên"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Quỷ Tướng Tru Thần"
+        }
+      ]
+    },
+    {
+      "id": "3726",
+      "name": "Vương Doãn",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ly Gián"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Ly Gián"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Bạn Ly"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Mê Trận"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Uy Áp"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Cư Ngạo Uy Áp"
+        }
+      ]
+    },
+    {
+      "id": "3729",
+      "name": "Trần Cung",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Địa Liệp"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Địa Nha"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Hàn Băng"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Bỏng Lạnh"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Nhiễu Loạn Quân Địch"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Bốn Bề Bủa Vây"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Phong Hạc"
+        }
+      ]
+    },
+    {
+      "id": "3748",
+      "name": "Mã Vân Lộc",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phi Xạ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Liên Nỏ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Cung Mã"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Đoạt Tâm Tiễn"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Phượng Vũ Cửu Thiên"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Loan Hồi Phượng Vũ"
+        }
+      ]
+    },
+    {
+      "id": "3749",
+      "name": "Tào Hồng",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hoành Họa"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "San Bằng"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Hộ Chủ"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Viện Hộ"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Sa Trường Ngự Địch"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Mục Huyết Hộ Chủ"
+        }
+      ]
+    },
+    {
+      "id": "3750",
+      "name": "Từ Thịnh",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Liên Hoàn"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tên Lạc"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Tiễn Trận"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Hỏa Long Tiễn"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Mạn Thiên Tiễn Vũ"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thất Tinh Tiễn Trận"
+        }
+      ]
+    },
+    {
+      "id": "3767",
+      "name": "Trương Nghi",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ám Sát"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thích Sát"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Hành Thích"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Hành Thích"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Diệt Gọn"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Ám Dạ Thích Sát"
+        }
+      ]
+    },
+    {
+      "id": "3768",
+      "name": "Trần Thái",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ám Sát"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thích Sát"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Hành Thích"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Hành Thích"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Diệt Gọn"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Ám Dạ Thích Sát"
+        }
+      ]
+    },
+    {
+      "id": "3769",
+      "name": "Hàn Đương",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ám Sát"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thích Sát"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Hành Thích"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Hành Thích"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Diệt Gọn"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Ám Dạ Thích Sát"
+        }
+      ]
+    },
+    {
+      "id": "3771",
+      "name": "Tư Mã Ý",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kinh Lôi"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thần Lôi"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Tử Thần"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Sinh Sát"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Tử Thần Giáng Lâm"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thu Hồn Đoạt Phách"
+        }
+      ]
+    },
+    {
+      "id": "3775",
+      "name": "Tư Mã Huy",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Độ Chúng Sinh"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Kính Ánh Sơn Hà"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Kính Diễn Luân Hồi"
+        }
+      ]
+    },
+    {
+      "id": "3786",
+      "name": "Trương Bao",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hổ Khiếu"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Sư Hống"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Cuồng Hào"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Đế Hồn"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Bạo Nộ Hống"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Phá Đảm Nộ Hống"
+        }
+      ]
+    },
+    {
+      "id": "3787",
+      "name": "Phan Chương",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hổ Khiếu"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Sư Hống"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Cuồng Hào"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Đế Hồn"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Bạo Nộ Hống"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Phá Đảm Nộ Hống"
+        }
+      ]
+    },
+    {
+      "id": "3788",
+      "name": "Tào Nhân",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hổ Khiếu"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Sư Hống"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Cuồng Hào"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Đế Hồn"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Bạo Nộ Hống"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Phá Đảm Nộ Hống"
+        }
+      ]
+    },
+    {
+      "id": "3789",
+      "name": "Lư Thực",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Bài Nhiễu"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Giải Nan"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Giải Trừ"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Phản Kế"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Phản Kế"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Nho Thánh Hộ Thể"
+        }
+      ]
+    },
+    {
+      "id": "3799",
+      "name": "Hứa Chử",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cuồng Bạo"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Chiến Cuồng"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Cuồng Loạn"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Hổ Tri"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Hổ Hầu Sân Nộ"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Lõa Y Nộ Tập"
+        }
+      ]
+    },
+    {
+      "id": "3800",
+      "name": "Hoàng Cái",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Khổ Kế"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Hy Sinh"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thệ Tử"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Ngọc Thạch Cụ Diệt"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Xả Thân Cường Tập"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Càng Già Càng Cay"
+        }
+      ]
+    },
+    {
+      "id": "3801",
+      "name": "Quan Bình",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phản Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Nghịch Chuyển"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Bác Sát"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Thanh Long Hồn"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thanh Long Nguyện"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thanh Long Khiếu Nguyệt"
+        }
+      ]
+    },
+    {
+      "id": "3802",
+      "name": "Vương Dị",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Trị Liệu"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Trị Dũ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Trị Dũ"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Dũ Hợp"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Ân Huệ Chi Vũ"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Mưa Hạn"
+        }
+      ]
+    },
+    {
+      "id": "3808",
+      "name": "Từ Hoảng",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Man Ngưu"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Cuồng Ngưu"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Địa Long"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Hỏa Ngưu Đạp"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Man Ngưu Khai Sơn"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Trời Long Đất Lở"
+        }
+      ]
+    },
+    {
+      "id": "3816",
+      "name": "Mã Lương",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Địa Liệp"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Địa Nha"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Băng Chùy"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Băng Phong"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thiên Hàn Địa Băng"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thiên Lý Băng Phong"
+        }
+      ]
+    },
+    {
+      "id": "3817",
+      "name": "Cố Ung",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Địa Liệp"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Địa Nha"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Băng Chùy"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Băng Phong"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thiên Hàn Địa Băng"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thiên Lý Băng Phong"
+        }
+      ]
+    },
+    {
+      "id": "3818",
+      "name": "Tuân Du",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Địa Liệp"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Địa Nha"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Băng Chùy"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Băng Phong"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thiên Hàn Địa Băng"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thiên Lý Băng Phong"
+        }
+      ]
+    },
+    {
+      "id": "3824",
+      "name": "Trương Trọng Cảnh",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ly Gián"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Phiến Động"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Mưu Thủ"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Loạn Thế Phổ Độ"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Tế Thế Chỉ Qua"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Kim Quý Yếu Lược"
+        }
+      ]
+    },
+    {
+      "id": "3834",
+      "name": "Lưu Bị",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hiệu Lệnh"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thiên Mệnh"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thiên Chinh"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Quân Lâm"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thiên Hạ Chia Ba"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thiên Hạ Chia Ba"
+        }
+      ]
+    },
+    {
+      "id": "3835",
+      "name": "Tôn Quyền",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hiệu Lệnh"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thiên Mệnh"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thiên Chinh"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Quân Lâm"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thiên Hạ Chia Ba"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thiên Hạ Chia Ba"
+        }
+      ]
+    },
+    {
+      "id": "3836",
+      "name": "Tào Tháo",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hiệu Lệnh"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Kiêu Hùng"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thiên Chinh"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Quân Lâm"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thiên Hạ Chia Ba"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thiên Hạ Chia Ba"
+        }
+      ]
+    },
+    {
+      "id": "3840",
+      "name": "Tư Mã Viêm",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Tỏa Hồn"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Ám Vân"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Định Kế Nhất Thống"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thâu Tóm Thiên Hạ"
+        }
+      ]
+    },
+    {
+      "id": "3841",
+      "name": "Tư Mã Chiêu",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Độc Chú"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tru Tâm"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Tỏa Hồn"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Ám Vân"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Quyền Hành"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Vương Triều Tan Rã"
+        }
+      ]
+    },
+    {
+      "id": "3852",
+      "name": "Pháp Chính",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Sơn Băng"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tháp Thiên"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thiên Băng"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Liệt Thiên"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thiên Băng Địa Liệp"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Trời Tru Đất Diệt"
+        }
+      ]
+    },
+    {
+      "id": "3853",
+      "name": "Gia Cát Khác",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Sơn Băng"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tháp Thiên"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thiên Băng"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Liệt Thiên"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thiên Băng Địa Liệp"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Trời Tru Đất Diệt"
+        }
+      ]
+    },
+    {
+      "id": "3854",
+      "name": "Trình Dục",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Sơn Băng"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tháp Thiên"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thiên Băng"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Liệt Thiên"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thiên Băng Địa Liệp"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Trời Tru Đất Diệt"
+        }
+      ]
+    },
+    {
+      "id": "3855",
+      "name": "Tư Mã Du",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Nhục Mạ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Nhục Mạ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Xua Đuổi"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Xua Đuổi"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thanh Tâm"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thanh Nhã Cần Chính"
+        }
+      ]
+    },
+    {
+      "id": "3943",
+      "name": "Lữ Mông",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ngự Giáp"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Ngự Giáp"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thần Ngự"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Bạch Y Độ Giang"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thiên Nhẫn"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Bạch Y Phá Lãng"
+        }
+      ]
+    },
+    {
+      "id": "3944",
+      "name": "Khương Duy",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ngự Giáp"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Ngự Giáp"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thần Ngự"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Ân Nghĩa"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Bắc Vọng"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Nghĩa Đảm Hùng Tâm"
+        }
+      ]
+    },
+    {
+      "id": "3945",
+      "name": "Trương Nhiệm",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tiễn Vũ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tên Lạc"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Hỏa Tiễn"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Tiễn Lam"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Trung Nghĩa Hộ Chủ"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thần Tiễn Hộ Chủ"
+        }
+      ]
+    },
+    {
+      "id": "3957",
+      "name": "Lý Nho",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Lạc Lôi"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Kinh Lôi"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Âm Lôi"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Độc Lôi"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Tuyệt Sách Độc Kế"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Náo Loạn Kinh Thành"
+        }
+      ]
+    },
+    {
+      "id": "3958",
+      "name": "Mao Giới",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Khích Lệ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Khích Lệ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thi Độc"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Thực Tâm"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Hủ Thi Độc"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Quỷ Môn Thi Độc"
+        }
+      ]
+    },
+    {
+      "id": "3959",
+      "name": "Y Tịch",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Khích Lệ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Khích Lệ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thi Độc"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Thực Tâm"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Hủ Thi Độc"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Quỷ Môn Thi Độc"
+        }
+      ]
+    },
+    {
+      "id": "3960",
+      "name": "Chu Trị",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Khích Lệ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Khích Lệ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thi Độc"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Thực Tâm"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Hủ Thi Độc"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Quỷ Môn Thi Độc"
+        }
+      ]
+    },
+    {
+      "id": "3969",
+      "name": "Gia Cát Lượng",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đông Phong"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Phục Long"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thần Toán"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Bát Trận Đồ"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thiên Địa Vạn Tượng"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Kỳ Môn Bát Trận Đồ"
+        }
+      ]
+    },
+    {
+      "id": "3970",
+      "name": "Chu Du",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Binh Tiển"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Phong Tiễn"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Hỏa Thần"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Đại Viêm Đế"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Hồng Liên Nghiệp Hỏa"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Luyện Ngục Hỏa Hải"
+        }
+      ]
+    },
+    {
+      "id": "3971",
+      "name": "Quách Gia",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Viêm Lôi"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Xích Lôi"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Quỷ Mưu"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Quỷ Kế"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Quyết Thắng Thiên Lý"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Biển Sao Lấp Lánh"
+        }
+      ]
+    },
+    {
+      "id": "3972",
+      "name": "Phục Thọ",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 4,
+      "skills": [
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Xua Đuổi"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Xua Đuổi"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thanh U Thù Tuyệt"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Hiền Thục Lưu Phương"
+        }
+      ]
+    },
+    {
+      "id": "3973",
+      "name": "Tào Tiết",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Bách Lý Truy Hồn"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Lạc Nhật Thần Tiễn"
+        }
+      ]
+    },
+    {
+      "id": "3974",
+      "name": "Trương Tinh Thái",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thương Long Xuất Hải"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Lung Hoàn Táng Địch"
+        }
+      ]
+    },
+    {
+      "id": "3975",
+      "name": "Bộ Luyện Sư",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Diệt Thế Thiên Lôi"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Kinh Thiên Bạo Lôi"
+        }
+      ]
+    },
+    {
+      "id": "3976",
+      "name": "Trương Xuân Hoa",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 5,
+      "skills": [
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Công Tâm"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Công Tâm"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Ly Gián"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Tuyên Mục Uy Nghi"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Tuyệt Tình Vô Hối"
+        }
+      ]
+    },
+    {
+      "id": "3983",
+      "name": "Mã Siêu",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phá Quân"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thí Quân"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Kỵ Thần"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Phong Lôi"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Bạch Hồng Quán Nhật"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Tế Nhật Thiên Kỵ"
+        }
+      ]
+    },
+    {
+      "id": "3984",
+      "name": "Hạ Hầu Uyên",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phá Quân"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thí Quân"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Kỵ Thần"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Phong Lôi"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Bạch Hồng Quán Nhật"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Tế Nhật Thiên Kỵ"
+        }
+      ]
+    },
+    {
+      "id": "3985",
+      "name": "Chu Hoàn",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phá Quân"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thí Quân"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Kỵ Thần"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Phong Lôi"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Bạch Hồng Quán Nhật"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Tế Nhật Thiên Kỵ"
+        }
+      ]
+    },
+    {
+      "id": "3986",
+      "name": "Trương Tú",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kích Thích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Bác Kích"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thị Huyết"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Ma Quân"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Bậc Thầy U Mịch"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Huyết Ách Sư"
+        }
+      ]
+    },
+    {
+      "id": "3994",
+      "name": "Công Tôn Toán",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kích Thích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Bác Kích"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Bác Sát"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Thương Trận"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Rừng Giáo Tua Tủa"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Bạch Mã Tướng Quân"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Bạch Kỵ Dương Kỳ"
+        }
+      ]
+    },
+    {
+      "id": "3999",
+      "name": "Lưu Biểu",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cổ Vũ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Lôi Cổ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Hiệu Triệu"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Định Quân Cổ"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Tự Thủ Giữ Mình"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Bảo Vệ Kinh Giang"
+        }
+      ]
+    },
+    {
+      "id": "4000",
+      "name": "Công Tôn Tu",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thiết Thương"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Địa Thích"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Cốt Thích"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Diêm La Kích"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thập Phương Diệt"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Nghịch Chuyển Sinh Tử"
+        }
+      ]
+    },
+    {
+      "id": "4001",
+      "name": "Thái Văn Cơ",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Ngâm Thơ Giải Sầu"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Bài Ca Biên Ải"
+        }
+      ]
+    },
+    {
+      "id": "4036",
+      "name": "Củng Chí",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Huyết Chế"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Huyết Chế"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Kìm Hãm"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Sách Phản"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Sách Phản"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Bỏ Tối Theo Sáng"
+        }
+      ]
+    },
+    {
+      "id": "4038",
+      "name": "Đồng Uyên",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 2,
+      "skills": [
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Long Chiến Vu Dã"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Phi Long Tại Thiên"
+        }
+      ]
+    },
+    {
+      "id": "4049",
+      "name": "Điền Phong",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hư Vô"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Hắc Động"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Quỷ Môn"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Kỳ Môn"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Quyền Mưu"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Quyền Biến"
+        }
+      ]
+    },
+    {
+      "id": "4063",
+      "name": "Tôn Càn",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Trị Liệu"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Trị Liệu"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Bích Lũy"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Thuẫn Tường"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Tường Đồng Vách Sắt"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Vững Như Bàn Thạch"
+        }
+      ]
+    },
+    {
+      "id": "4066",
+      "name": "Mãn Sủng",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thủ Hộ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Hãn Vệ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Bích Lũy"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Thuẫn Tường"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Tường Đồng Vách Sắt"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Vững Như Bàn Thạch"
+        }
+      ]
+    },
+    {
+      "id": "4067",
+      "name": "Gia Cát Cẩn",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thủ Hộ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Hãn Vệ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Bích Lũy"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Thuẫn Tường"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Tường Đồng Vách Sắt"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Vững Như Bàn Thạch"
+        }
+      ]
+    },
+    {
+      "id": "4070",
+      "name": "Lữ Linh Khởi",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thái Sơ",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kỵ Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Kỵ Liệp"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Kỵ Xạ"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Phi Ngựa Giương Cung"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Minh Hỏa Liêu Nguyên"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Tru Thần Diệt Ma"
+        }
+      ]
+    },
+    {
+      "id": "4076",
+      "name": "Trương Phi",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Nộ Sát"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Bào Hao"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Mãnh Hổ"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Hổ Khiếu"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Vạn Người Khó Đỡ"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Bá Vương Kích Đỉnh"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Mãnh Hổ Liệt Sơn"
+        }
+      ]
+    },
+    {
+      "id": "4077",
+      "name": "Hạ Hầu Đôn",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Nộ Sát"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Bào Hao"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Mãnh Hổ"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Hổ Khiếu"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Vạn Người Khó Đỡ"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Bá Vương Kích Đỉnh"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Mãnh Hổ Liệt Sơn"
+        }
+      ]
+    },
+    {
+      "id": "4078",
+      "name": "Cam Ninh",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Nộ Sát"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Bào Hao"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Mãnh Hổ"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Hổ Khiếu"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Vạn Người Khó Đỡ"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Bá Vương Kích Đỉnh"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Mãnh Hổ Liệt Sơn"
+        }
+      ]
+    },
+    {
+      "id": "4079",
+      "name": "Tào Thực",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 8,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phấn Chấn"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Kích Dương"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Ngang Dương"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Uy Dương"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Tụng Ca"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Phấn Chấn Lòng Quân"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Phấn Chấn Lòng Quân"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Ca Tụng Công Đức"
+        }
+      ]
+    },
+    {
+      "id": "4080",
+      "name": "Tiểu Kiều",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 8,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cổ Vũ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Kích Dương"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Ngang Dương"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Uy Dương"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Tụng Ca"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Phấn Chấn Lòng Quân"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Phấn Chấn Lòng Quân"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Ca Tụng Công Đức"
+        }
+      ]
+    },
+    {
+      "id": "4081",
+      "name": "Giản Ung",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 8,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phấn Chấn"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Kích Dương"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Ngang Dương"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Uy Dương"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Tụng Ca"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Phấn Chấn Lòng Quân"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Phấn Chấn Lòng Quân"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Ca Tụng Công Đức"
+        }
+      ]
+    },
+    {
+      "id": "4083",
+      "name": "Tả Từ",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 5,
+      "skills": [
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Tan Rã"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Phá Hoàng Sách"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Đạo Pháp Thiên Địa"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thiên Địa Vô Cực"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Càn Khôn Tá Pháp"
+        }
+      ]
+    },
+    {
+      "id": "4084",
+      "name": "Mạnh Hoạch",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cuồng Bạo"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Chiến Cuồng"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thị Huyết"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Cuồng Nộ"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Man Nộ Hống"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Dị Tộc Xâm Nhập"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Đại Vương Thân Chinh"
+        }
+      ]
+    },
+    {
+      "id": "4085",
+      "name": "Chúc Dung",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Độc Nhẫn"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Xà Thích"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Liệt Nhẫn"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Phần Thiên"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Nộ Ngục Viêm"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Hồng Hoang Nộ Hỏa"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Thần Hỏa Hiện Thế"
+        }
+      ]
+    },
+    {
+      "id": "4099",
+      "name": "Hoàng Nguyệt Anh",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ám Tế"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Ám Tế"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Ám Tế"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Lạc Thủy Tiên"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Lạc Thần Mạc"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Khuynh Thế Giai Nhân"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Vũ Điệu Lạc Thần"
+        }
+      ]
+    },
+    {
+      "id": "4100",
+      "name": "Đại Kiều",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tường Đồng"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tường Đồng"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Tường Đồng"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Lạc Thủy Tiên"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Lạc Thần Mạc"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Khuynh Thế Giai Nhân"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Vũ Điệu Lạc Thần"
+        }
+      ]
+    },
+    {
+      "id": "4101",
+      "name": "Chân Cơ",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ám Tế"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Ám Tế"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Ám Tế"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Lạc Thủy Tiên"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Lạc Thần Mạc"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Khuynh Thế Giai Nhân"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Vũ Điệu Lạc Thần"
+        }
+      ]
+    },
+    {
+      "id": "4102",
+      "name": "Đổng Trác",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Nộ Hống"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Băng Hoại"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Bạo Lệ"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Bạo Trấn"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Tửu Trì Nhục Lâm"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Thiên Uy Bạo Ngược"
+        }
+      ]
+    },
+    {
+      "id": "4115",
+      "name": "Bàng Thống",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tử Điện"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thần Lôi"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Lôi Oanh"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Cửu Thiên Thần Lôi"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Diệt Thế Thiên Lôi"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Kinh Thiên Bạo Lôi"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Cửu Tiêu Thần Lôi"
+        }
+      ]
+    },
+    {
+      "id": "4116",
+      "name": "Tuân Vực",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tử Điện"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thần Lôi"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Lôi Oanh"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Cửu Thiên Thần Lôi"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Diệt Thế Thiên Lôi"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Kinh Thiên Bạo Lôi"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Cửu Tiêu Thần Lôi"
+        }
+      ]
+    },
+    {
+      "id": "4117",
+      "name": "Lục Tốn",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hồng Viêm"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Hắc Viêm"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Nhiên Tận"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Hỏa Thiêu Liên Doanh"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Nghiệp Viêm Bạo"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Hỏa Thế Ngút Trời"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Xích Lửa Trí Tuệ"
+        }
+      ]
+    },
+    {
+      "id": "4124",
+      "name": "Triệu Vân",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đơn Kỵ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thần Phong"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Bạch Long"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Ngân Long"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Ngân Long Tường"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Ngân Long Thất Thiểm"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Thiên Long Thức Tỉnh"
+        }
+      ]
+    },
+    {
+      "id": "4125",
+      "name": "Chu Thái",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đơn Kỵ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Huyết Chinh"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Dũng Mãnh"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Phấn Chiến"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Chiến Thần Can Đảm"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Chiến Thần Bất Khuất"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Lấy Thân Làm Giáp"
+        }
+      ]
+    },
+    {
+      "id": "4126",
+      "name": "Trương Hợp",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đơn Kỵ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Chiến Kỵ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Hổ Uy"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Thiện Biến"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Tiên Cơ Chiến Trận"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Binh Vô Thường Hình"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Binh Hình Cửu Độn"
+        }
+      ]
+    },
+    {
+      "id": "4127",
+      "name": "Điêu Thuyền",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ly Gián"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tán Ca"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Khuynh Quốc"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Bế Nguyệt"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Vũ Điệu Dưới Trăng"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thiên Vũ Khuynh Thành"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Nghê Thường Thiên Vũ"
+        }
+      ]
+    },
+    {
+      "id": "4128",
+      "name": "Lữ Bố",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Vô Song"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Ma Thần"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Minh Vương"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Thiên Hạ Vô Song"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Quỷ Thần Nhất Kích"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Ma Thần Nộ Hỏa"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Quỷ Thần Loạn Vũ"
+        }
+      ]
+    },
+    {
+      "id": "4141",
+      "name": "Mã Tốc",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hồng Viêm"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Hắc Viêm"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Nhiên Tận"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Thiên Hỏa Thiêu"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Nghiệp Viêm Bạo"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Hỏa Thế Ngút Trời"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Xích Lửa Trí Tuệ"
+        }
+      ]
+    },
+    {
+      "id": "4142",
+      "name": "Bàng Đức",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Nghịch Tập"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Dòng Xoáy"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Lang Tuyền"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Tố Lưu Nghịch Tập"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thương Long Xuất Hải"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Lung Hoàn Táng Địch"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Lang Tuyền Khốn Trận"
+        }
+      ]
+    },
+    {
+      "id": "4143",
+      "name": "Thái Sử Từ",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Nghịch Tập"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Nghịch Lưu"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Lang Tuyền"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Tố Lưu Nghịch Tập"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thương Long Xuất Hải"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Lung Hoàn Táng Địch"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Lang Tuyền Khốn Trận"
+        }
+      ]
+    },
+    {
+      "id": "4149",
+      "name": "Lưu Thiện",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 6,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Tử Sanh"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Tử Sanh"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Yêu Giáp"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Khai Triều Thừa Vận"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Trấn Định Sơn Hà"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Thịnh Thế Vương Quyền"
+        }
+      ]
+    },
+    {
+      "id": "4152",
+      "name": "Tào Duệ",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Khai Triều Thừa Vận"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Trấn Định Sơn Hà"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Thịnh Thế Vương Quyền"
+        }
+      ]
+    },
+    {
+      "id": "4155",
+      "name": "Tôn Lượng",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Khai Triều Thừa Vận"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Trấn Định Sơn Hà"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Thịnh Thế Vương Quyền"
+        }
+      ]
+    },
+    {
+      "id": "4156",
+      "name": "Trương Giác",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Yêu Thuật"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Yêu Pháp"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thiên Băng"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Bình Thuật"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Bình Thuật"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Hoàng Thiên Đương Lập"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Thương Thiên Dĩ Tử"
+        }
+      ]
+    },
+    {
+      "id": "4157",
+      "name": "Viên Thiệu",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 8,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ngự Giáp"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Ngự Giáp"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Yêu Thuẫn"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Đóng Quân Phòng Thủ"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Loạn Thế Hào Kiệt"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Hùng Cứ"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Vang Danh Thiên Hạ"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Môn Sinh Tứ Hải"
+        }
+      ]
+    },
+    {
+      "id": "4170",
+      "name": "Hoàng Trung",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Lôi Tiễn"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Liệt Thỉ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Nghệ Xạ"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Truy Nguyệt"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Bách Lý Truy Hồn"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Lạc Nhật Thần Tiễn"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Xích Vũ Quán Hồng"
+        }
+      ]
+    },
+    {
+      "id": "4171",
+      "name": "Tôn Thượng Hương",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Lôi Tiễn"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Lôi Tiễn"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Nghệ Xạ"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Truy Nguyệt"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Bách Lý Truy Hồn"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Lạc Nhật Thần Tiễn"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Xích Vũ Quán Hồng"
+        }
+      ]
+    },
+    {
+      "id": "4172",
+      "name": "Điển Vi",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ngự Giáp"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Ngự Giáp"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thần Ngự"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Huyết Chiến Bát Phương"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Ác Lai"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Ác Quỷ Triền Thân"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Ác Lai Liệt Phách"
+        }
+      ]
+    },
+    {
+      "id": "4173",
+      "name": "Đặng Ngải",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Long Minh"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Long Uy"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Nộ Long"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Thần Binh Xuất Hiện"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Hành Binh"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thần Binh Ám Độ"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Kỳ Binh Phá Thục"
+        }
+      ]
+    },
+    {
+      "id": "4205",
+      "name": "Chung Hội",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Ly Gián"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Phiến Động"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Mưu Thủ"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Loạn Thế Mưu"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Ngạo Nghễ Thiên Hạ"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Cư Công Ngạo Thượng"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Giả Chiếu Cử Binh"
+        }
+      ]
+    },
+    {
+      "id": "4206",
+      "name": "Cao Lãm",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Phản Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Nghịch Chuyển"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Huyết Trảm"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Phá Địch"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thế Phá Địch"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thống Quân Phá Địch"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Bày Trận Như Núi"
+        }
+      ]
+    },
+    {
+      "id": "4207",
+      "name": "Văn Sính",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Kỵ Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Đơn Kỵ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Cứu Viện"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Trấn Hồn"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Phòng Ngự Cẩn Thận"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Chế Ngự Quân Địch"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Trấn Thủ Hán Thủy"
+        }
+      ]
+    },
+    {
+      "id": "4228",
+      "name": "Trương Liêu",
+      "nation": "Ngụy",
+      "faction": "wei",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Hổ Xung"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Hổ Sát"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Quỷ Sát"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Huyết Quỷ Nhẫn"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Uy Chấn Tiêu Dao"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Lướt Nhanh Như Gió"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Triệu Hổ Phá Trận"
+        }
+      ]
+    },
+    {
+      "id": "4229",
+      "name": "Tôn Sách",
+      "nation": "Ngô",
+      "faction": "wu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Xưng Bá"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Bá Vương"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Thiên Uy"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Bá Vương Thần Uy"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Bá Vương"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thần Uy Phá Trận"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Bá Vương Liệt Phách"
+        }
+      ]
+    },
+    {
+      "id": "4230",
+      "name": "Quan Vũ",
+      "nation": "Thục",
+      "faction": "shu",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 8,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Yển Nguyệt"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Thanh Long"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Võ Thánh"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Võ Thánh"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Thanh Long Trảm"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thanh Long Yển Nguyệt"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thiên Lý Đơn Kỵ"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Uy Chấn Hoa Hạ"
+        }
+      ]
+    },
+    {
+      "id": "4231",
+      "name": "Văn Phượng Khanh",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Thủ Hộ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Bảo Hộ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Cầu Phúc"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Chiến Ca"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Nguyệt Loạn Vũ"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Sông Sao Rực Rỡ"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Bỉ Ngạn Tinh Kiều"
+        }
+      ]
+    },
+    {
+      "id": "4232",
+      "name": "Vu Cát",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 3,
+      "skills": [
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Âm Dương Diệt"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Bùa Phép Trấn Tà"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Đạo Thuật Huyền Thông"
+        }
+      ]
+    },
+    {
+      "id": "4248",
+      "name": "Hoa Đà",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Cam Vũ"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Cam Vũ"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Cam Vũ"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Nhân Y"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Thánh Thủ Hồi Xuân"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Thánh Thủ Tề Thế"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Huyền Hồ Tế Chúng"
+        }
+      ]
+    },
+    {
+      "id": "4249",
+      "name": "Hoa Hùng",
+      "nation": "Quần",
+      "faction": "other",
+      "qualityName": "Thần Hoàng",
+      "tierCount": 7,
+      "skills": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "name": "Đột Kích"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "name": "Giao Chiến"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "name": "Bác Kích"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "name": "Dũng Mãnh Đột Kích"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "name": "Vô Cùng Dũng Mãnh"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "name": "Càn Quét Bạo Lực"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "name": "Hùng Hổ Tiên Phong"
+        }
+      ]
+    }
+  ]
+}

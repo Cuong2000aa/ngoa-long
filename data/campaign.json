@@ -1,0 +1,886 @@
+{
+  "schemaVersion": 3,
+  "id": "main_campaign_v3",
+  "name": "Tam Quốc Chí — Chính tuyến",
+  "formationRef": "nl_default_5",
+  "chapters": [
+    {
+      "id": "ch1_khan_vang",
+      "index": 1,
+      "name": "Khăn Vàng nổi dậy",
+      "yearHint": "184",
+      "summary": "Trương Giác phất cờ Hoàng Thiên. Quan quân dẹp loạn.",
+      "unlockRequire": null,
+      "stages": [
+        {
+          "id": "ch1_s1",
+          "index": 1,
+          "name": "Loạn khởi Trác Châu",
+          "type": "normal",
+          "powerHint": 1.0,
+          "enemies": [
+            {
+              "generalId": "recruit_militia",
+              "level": 3,
+              "slot": 0
+            },
+            {
+              "generalId": "recruit_guard",
+              "level": 4,
+              "slot": 1
+            },
+            {
+              "generalId": "recruit_scout",
+              "level": 3,
+              "slot": 3
+            }
+          ],
+          "rewards": {
+            "silver": 180,
+            "food": 50,
+            "exp": 60,
+            "dropTable": "common",
+            "dropChance": 0.2
+          },
+          "aliases": [
+            "st_01_01"
+          ],
+          "staminaCost": 90,
+          "stamina_cost": 90,
+          "enemyFormationId": "square",
+          "enemy_formation_id": "ef_ch1_s1"
+        },
+        {
+          "id": "ch1_s2",
+          "index": 2,
+          "name": "Khăn Vàng tập kết",
+          "type": "normal",
+          "powerHint": 1.1,
+          "enemies": [
+            {
+              "generalId": "yellow_zealot",
+              "level": 6,
+              "slot": 0
+            },
+            {
+              "generalId": "yellow_zealot",
+              "level": 6,
+              "slot": 1
+            },
+            {
+              "generalId": "yellow_shaman",
+              "level": 6,
+              "slot": 2
+            },
+            {
+              "generalId": "recruit_scout",
+              "level": 5,
+              "slot": 4
+            }
+          ],
+          "rewards": {
+            "silver": 270,
+            "food": 70,
+            "exp": 90,
+            "dropTable": "common",
+            "dropChance": 0.25
+          },
+          "aliases": [
+            "st_01_02"
+          ],
+          "staminaCost": 100,
+          "stamina_cost": 100,
+          "enemyFormationId": "crane_wing",
+          "enemy_formation_id": "ef_ch1_s2"
+        },
+        {
+          "id": "ch1_s3",
+          "index": 3,
+          "name": "Trương Bảo xuất trận",
+          "type": "elite",
+          "powerHint": 1.3,
+          "enemies": [
+            {
+              "generalId": "zhangbao",
+              "level": 12,
+              "slot": 1
+            },
+            {
+              "generalId": "yellow_zealot",
+              "level": 9,
+              "slot": 0
+            },
+            {
+              "generalId": "yellow_captain",
+              "level": 10,
+              "slot": 2
+            },
+            {
+              "generalId": "yellow_shaman",
+              "level": 9,
+              "slot": 3
+            }
+          ],
+          "rewards": {
+            "silver": 540,
+            "food": 120,
+            "exp": 180,
+            "dropTable": "elite",
+            "dropChance": 0.4
+          },
+          "aliases": [
+            "st_01_03"
+          ],
+          "staminaCost": 150,
+          "stamina_cost": 150,
+          "enemyFormationId": "long_snake",
+          "enemy_formation_id": "ef_ch1_s3"
+        },
+        {
+          "id": "ch1_s4",
+          "index": 4,
+          "name": "Trương Lương phục binh",
+          "type": "elite",
+          "powerHint": 1.45,
+          "enemies": [
+            {
+              "generalId": "zhangliang",
+              "level": 14,
+              "slot": 1
+            },
+            {
+              "generalId": "recruit_rider",
+              "level": 11,
+              "slot": 0
+            },
+            {
+              "generalId": "yellow_captain",
+              "level": 12,
+              "slot": 2
+            },
+            {
+              "generalId": "yellow_shaman",
+              "level": 11,
+              "slot": 4
+            }
+          ],
+          "rewards": {
+            "silver": 660,
+            "food": 150,
+            "exp": 220,
+            "dropTable": "elite",
+            "dropChance": 0.45
+          },
+          "aliases": [
+            "st_01_04"
+          ],
+          "staminaCost": 150,
+          "stamina_cost": 150,
+          "enemyFormationId": "long_snake",
+          "enemy_formation_id": "ef_ch1_s4"
+        },
+        {
+          "id": "ch1_s5",
+          "index": 5,
+          "name": "Áp sát Quảng Tông",
+          "type": "normal",
+          "powerHint": 1.55,
+          "enemies": [
+            {
+              "generalId": "yellow_captain",
+              "level": 14,
+              "slot": 0
+            },
+            {
+              "generalId": "yellow_captain",
+              "level": 14,
+              "slot": 1
+            },
+            {
+              "generalId": "yellow_zealot",
+              "level": 13,
+              "slot": 2
+            },
+            {
+              "generalId": "yellow_shaman",
+              "level": 13,
+              "slot": 3
+            },
+            {
+              "generalId": "recruit_crossbow",
+              "level": 12,
+              "slot": 4
+            }
+          ],
+          "rewards": {
+            "silver": 780,
+            "food": 170,
+            "exp": 260,
+            "dropTable": "elite",
+            "dropChance": 0.35
+          },
+          "aliases": [
+            "st_01_05"
+          ],
+          "staminaCost": 130,
+          "stamina_cost": 130,
+          "enemyFormationId": "square",
+          "enemy_formation_id": "ef_ch1_s5"
+        },
+        {
+          "id": "ch1_s6",
+          "index": 6,
+          "name": "Trương Giác — Hoàng Thiên",
+          "type": "boss",
+          "powerHint": 1.8,
+          "enemies": [
+            {
+              "generalId": "zhangjiao",
+              "level": 18,
+              "slot": 1
+            },
+            {
+              "generalId": "zhangbao",
+              "level": 15,
+              "slot": 0
+            },
+            {
+              "generalId": "zhangliang",
+              "level": 15,
+              "slot": 2
+            },
+            {
+              "generalId": "yellow_captain",
+              "level": 13,
+              "slot": 3
+            },
+            {
+              "generalId": "yellow_shaman",
+              "level": 13,
+              "slot": 4
+            }
+          ],
+          "rewards": {
+            "silver": 1500,
+            "food": 300,
+            "exp": 500,
+            "gold": 5,
+            "dropTable": "boss",
+            "dropChance": 0.7,
+            "firstClearBonus": {
+              "silver": 300,
+              "itemId": "book_bingfa"
+            }
+          },
+          "aliases": [
+            "st_01_06"
+          ],
+          "staminaCost": 250,
+          "stamina_cost": 250,
+          "enemyFormationId": "long_snake",
+          "enemy_formation_id": "ef_ch1_s6",
+          "unlockFeatures": [
+            "arena",
+            "recruit_advanced"
+          ]
+        }
+      ],
+      "aliases": [
+        "ch_01"
+      ]
+    },
+    {
+      "id": "ch2_dong_trac",
+      "index": 2,
+      "name": "Loạn Đổng Trác",
+      "yearHint": "189–192",
+      "summary": "Đổng Trác nắm triều. Hoa Hùng — Lã Bố tại Hổ Lao Quan.",
+      "unlockRequire": {
+        "chapterId": "ch1_khan_vang",
+        "stageId": "ch1_s6"
+      },
+      "stages": [
+        {
+          "id": "ch2_s1",
+          "index": 1,
+          "name": "Tiến quân Dương Nhân",
+          "type": "normal",
+          "powerHint": 1.6,
+          "enemies": [
+            {
+              "generalId": "recruit_rider",
+              "level": 16,
+              "slot": 0
+            },
+            {
+              "generalId": "recruit_guard",
+              "level": 16,
+              "slot": 1
+            },
+            {
+              "generalId": "recruit_spearman",
+              "level": 15,
+              "slot": 2
+            },
+            {
+              "generalId": "recruit_scout",
+              "level": 15,
+              "slot": 3
+            }
+          ],
+          "rewards": {
+            "silver": 600,
+            "food": 140,
+            "exp": 240,
+            "dropTable": "common",
+            "dropChance": 0.3
+          },
+          "aliases": [
+            "st_02_01"
+          ],
+          "staminaCost": 110,
+          "stamina_cost": 110,
+          "enemyFormationId": "square",
+          "enemy_formation_id": "ef_ch2_s1"
+        },
+        {
+          "id": "ch2_s2",
+          "index": 2,
+          "name": "Phàn Trù chặn đường",
+          "type": "normal",
+          "powerHint": 1.7,
+          "enemies": [
+            {
+              "generalId": "fancho",
+              "level": 18,
+              "slot": 1
+            },
+            {
+              "generalId": "zhangji_dz",
+              "level": 17,
+              "slot": 0
+            },
+            {
+              "generalId": "recruit_spearman",
+              "level": 16,
+              "slot": 2
+            },
+            {
+              "generalId": "recruit_crossbow",
+              "level": 16,
+              "slot": 4
+            }
+          ],
+          "rewards": {
+            "silver": 720,
+            "food": 160,
+            "exp": 280,
+            "dropTable": "elite",
+            "dropChance": 0.35
+          },
+          "aliases": [
+            "st_02_02"
+          ],
+          "staminaCost": 120,
+          "stamina_cost": 120,
+          "enemyFormationId": "crane_wing",
+          "enemy_formation_id": "ef_ch2_s2"
+        },
+        {
+          "id": "ch2_s3",
+          "index": 3,
+          "name": "Hoa Hùng — Ải Hổ Lao",
+          "type": "elite",
+          "powerHint": 1.95,
+          "enemies": [
+            {
+              "generalId": "huaxiong",
+              "level": 22,
+              "slot": 1
+            },
+            {
+              "generalId": "recruit_rider",
+              "level": 18,
+              "slot": 0
+            },
+            {
+              "generalId": "recruit_rider",
+              "level": 18,
+              "slot": 2
+            },
+            {
+              "generalId": "veteran_guard",
+              "level": 17,
+              "slot": 3
+            }
+          ],
+          "rewards": {
+            "silver": 1050,
+            "food": 200,
+            "exp": 360,
+            "dropTable": "elite",
+            "dropChance": 0.5
+          },
+          "aliases": [
+            "st_02_03"
+          ],
+          "staminaCost": 180,
+          "stamina_cost": 180,
+          "enemyFormationId": "long_snake",
+          "enemy_formation_id": "ef_ch2_s3"
+        },
+        {
+          "id": "ch2_s4",
+          "index": 4,
+          "name": "Lý Thôi · Quách Dĩ",
+          "type": "elite",
+          "powerHint": 2.05,
+          "enemies": [
+            {
+              "generalId": "liuru",
+              "level": 22,
+              "slot": 0
+            },
+            {
+              "generalId": "guosi",
+              "level": 22,
+              "slot": 1
+            },
+            {
+              "generalId": "veteran_spear",
+              "level": 20,
+              "slot": 2
+            },
+            {
+              "generalId": "veteran_archer",
+              "level": 20,
+              "slot": 4
+            }
+          ],
+          "rewards": {
+            "silver": 1200,
+            "food": 220,
+            "exp": 400,
+            "dropTable": "elite",
+            "dropChance": 0.5
+          },
+          "aliases": [
+            "st_02_04"
+          ],
+          "staminaCost": 180,
+          "stamina_cost": 180,
+          "enemyFormationId": "long_snake",
+          "enemy_formation_id": "ef_ch2_s4"
+        },
+        {
+          "id": "ch2_s5",
+          "index": 5,
+          "name": "Tam Anh chiến Lã Bố",
+          "type": "boss",
+          "powerHint": 2.35,
+          "enemies": [
+            {
+              "generalId": "lubu",
+              "level": 28,
+              "slot": 1
+            },
+            {
+              "generalId": "huaxiong",
+              "level": 22,
+              "slot": 0
+            },
+            {
+              "generalId": "veteran_rider",
+              "level": 21,
+              "slot": 2
+            },
+            {
+              "generalId": "veteran_spear",
+              "level": 20,
+              "slot": 3
+            },
+            {
+              "generalId": "veteran_archer",
+              "level": 20,
+              "slot": 4
+            }
+          ],
+          "rewards": {
+            "silver": 2100,
+            "food": 400,
+            "exp": 640,
+            "gold": 8,
+            "dropTable": "boss",
+            "dropChance": 0.75,
+            "firstClearBonus": {
+              "silver": 400,
+              "itemId": "horse_red"
+            }
+          },
+          "aliases": [
+            "st_02_05"
+          ],
+          "staminaCost": 300,
+          "stamina_cost": 300,
+          "enemyFormationId": "long_snake",
+          "enemy_formation_id": "ef_ch2_s5"
+        },
+        {
+          "id": "ch2_s6",
+          "index": 6,
+          "name": "Đổng Trác bỏ Lạc Dương",
+          "type": "boss",
+          "powerHint": 2.2,
+          "enemies": [
+            {
+              "generalId": "dongzhuo",
+              "level": 26,
+              "slot": 1
+            },
+            {
+              "generalId": "liru",
+              "level": 24,
+              "slot": 4
+            },
+            {
+              "generalId": "liuru",
+              "level": 22,
+              "slot": 0
+            },
+            {
+              "generalId": "guosi",
+              "level": 22,
+              "slot": 2
+            },
+            {
+              "generalId": "veteran_guard",
+              "level": 21,
+              "slot": 3
+            }
+          ],
+          "rewards": {
+            "silver": 1950,
+            "food": 380,
+            "exp": 600,
+            "gold": 6,
+            "dropTable": "boss",
+            "dropChance": 0.65,
+            "firstClearBonus": {
+              "itemId": "acc_seal"
+            }
+          },
+          "aliases": [
+            "st_02_06"
+          ],
+          "staminaCost": 300,
+          "stamina_cost": 300,
+          "enemyFormationId": "long_snake",
+          "enemy_formation_id": "ef_ch2_s6",
+          "unlockFeatures": [
+            "tower_hard",
+            "equip_enhance_plus"
+          ]
+        }
+      ],
+      "aliases": [
+        "ch_02"
+      ]
+    },
+    {
+      "id": "ch3_quan_hung",
+      "index": 3,
+      "name": "Quần Hùng Trục Lộc",
+      "yearHint": "191–200",
+      "summary": "Chư hầu phân tranh. Tào khởi nghiệp, Lưu lưu vong, Viên Thiệu Hà Bắc.",
+      "unlockRequire": {
+        "chapterId": "ch2_dong_trac",
+        "stageId": "ch2_s6"
+      },
+      "stages": [
+        {
+          "id": "ch3_s1",
+          "index": 1,
+          "name": "Tào Tháo khởi binh Trần Lưu",
+          "type": "normal",
+          "powerHint": 2.15,
+          "enemies": [
+            {
+              "generalId": "veteran_rider",
+              "level": 24,
+              "slot": 0
+            },
+            {
+              "generalId": "veteran_guard",
+              "level": 24,
+              "slot": 1
+            },
+            {
+              "generalId": "veteran_spear",
+              "level": 23,
+              "slot": 2
+            },
+            {
+              "generalId": "veteran_archer",
+              "level": 23,
+              "slot": 4
+            }
+          ],
+          "rewards": {
+            "silver": 840,
+            "food": 180,
+            "exp": 320,
+            "dropTable": "common",
+            "dropChance": 0.35
+          },
+          "aliases": [
+            "st_03_01"
+          ],
+          "staminaCost": 130,
+          "stamina_cost": 130,
+          "enemyFormationId": "square",
+          "enemy_formation_id": "ef_ch3_s1"
+        },
+        {
+          "id": "ch3_s2",
+          "index": 2,
+          "name": "Đào Khiêm Từ Châu",
+          "type": "normal",
+          "powerHint": 2.25,
+          "enemies": [
+            {
+              "generalId": "taogian",
+              "level": 26,
+              "slot": 1
+            },
+            {
+              "generalId": "veteran_guard",
+              "level": 24,
+              "slot": 0
+            },
+            {
+              "generalId": "veteran_guard",
+              "level": 24,
+              "slot": 2
+            },
+            {
+              "generalId": "recruit_crossbow",
+              "level": 22,
+              "slot": 3
+            }
+          ],
+          "rewards": {
+            "silver": 960,
+            "food": 200,
+            "exp": 360,
+            "dropTable": "elite",
+            "dropChance": 0.4
+          },
+          "aliases": [
+            "st_03_02"
+          ],
+          "staminaCost": 140,
+          "stamina_cost": 140,
+          "enemyFormationId": "crane_wing",
+          "enemy_formation_id": "ef_ch3_s2"
+        },
+        {
+          "id": "ch3_s3",
+          "index": 3,
+          "name": "Công Tôn Toản — Bạch Mã",
+          "type": "elite",
+          "powerHint": 2.45,
+          "enemies": [
+            {
+              "generalId": "gongsunzan",
+              "level": 30,
+              "slot": 1
+            },
+            {
+              "generalId": "veteran_rider",
+              "level": 26,
+              "slot": 0
+            },
+            {
+              "generalId": "veteran_rider",
+              "level": 26,
+              "slot": 2
+            },
+            {
+              "generalId": "veteran_archer",
+              "level": 25,
+              "slot": 3
+            }
+          ],
+          "rewards": {
+            "silver": 1260,
+            "food": 260,
+            "exp": 440,
+            "dropTable": "elite",
+            "dropChance": 0.5
+          },
+          "aliases": [
+            "st_03_03"
+          ],
+          "staminaCost": 210,
+          "stamina_cost": 210,
+          "enemyFormationId": "long_snake",
+          "enemy_formation_id": "ef_ch3_s3"
+        },
+        {
+          "id": "ch3_s4",
+          "index": 4,
+          "name": "Nhan Lương · Văn Xú",
+          "type": "elite",
+          "powerHint": 2.6,
+          "enemies": [
+            {
+              "generalId": "yanliang",
+              "level": 32,
+              "slot": 0
+            },
+            {
+              "generalId": "wenchou",
+              "level": 32,
+              "slot": 1
+            },
+            {
+              "generalId": "veteran_spear",
+              "level": 28,
+              "slot": 2
+            },
+            {
+              "generalId": "tianfeng",
+              "level": 28,
+              "slot": 4
+            }
+          ],
+          "rewards": {
+            "silver": 1440,
+            "food": 300,
+            "exp": 520,
+            "dropTable": "elite",
+            "dropChance": 0.55
+          },
+          "aliases": [
+            "st_03_04"
+          ],
+          "staminaCost": 210,
+          "stamina_cost": 210,
+          "enemyFormationId": "long_snake",
+          "enemy_formation_id": "ef_ch3_s4"
+        },
+        {
+          "id": "ch3_s5",
+          "index": 5,
+          "name": "Lưu Biểu Kinh Châu",
+          "type": "elite",
+          "powerHint": 2.7,
+          "enemies": [
+            {
+              "generalId": "liubiao",
+              "level": 34,
+              "slot": 1
+            },
+            {
+              "generalId": "veteran_guard",
+              "level": 30,
+              "slot": 0
+            },
+            {
+              "generalId": "veteran_spear",
+              "level": 30,
+              "slot": 2
+            },
+            {
+              "generalId": "veteran_archer",
+              "level": 29,
+              "slot": 3
+            },
+            {
+              "generalId": "elite_vanguard",
+              "level": 28,
+              "slot": 4
+            }
+          ],
+          "rewards": {
+            "silver": 1560,
+            "food": 320,
+            "exp": 560,
+            "dropTable": "elite",
+            "dropChance": 0.55
+          },
+          "aliases": [
+            "st_03_05"
+          ],
+          "staminaCost": 210,
+          "stamina_cost": 210,
+          "enemyFormationId": "square",
+          "enemy_formation_id": "ef_ch3_s5"
+        },
+        {
+          "id": "ch3_s6",
+          "index": 6,
+          "name": "Viên Thiệu — Bá chủ Hà Bắc",
+          "type": "boss",
+          "powerHint": 2.95,
+          "enemies": [
+            {
+              "generalId": "yuanshao",
+              "level": 36,
+              "slot": 1
+            },
+            {
+              "generalId": "yanliang",
+              "level": 32,
+              "slot": 0
+            },
+            {
+              "generalId": "wenchou",
+              "level": 32,
+              "slot": 2
+            },
+            {
+              "generalId": "jushou",
+              "level": 30,
+              "slot": 3
+            },
+            {
+              "generalId": "tianfeng",
+              "level": 30,
+              "slot": 4
+            }
+          ],
+          "rewards": {
+            "silver": 2700,
+            "food": 500,
+            "exp": 800,
+            "gold": 12,
+            "dropTable": "boss",
+            "dropChance": 0.8,
+            "firstClearBonus": {
+              "silver": 500,
+              "itemId": "blade_qinglong"
+            }
+          },
+          "aliases": [
+            "st_03_06"
+          ],
+          "staminaCost": 350,
+          "stamina_cost": 350,
+          "enemyFormationId": "long_snake",
+          "enemy_formation_id": "ef_ch3_s6",
+          "unlockFeatures": [
+            "campaign_hard",
+            "legend_recruit"
+          ]
+        }
+      ],
+      "aliases": [
+        "ch_03"
+      ]
+    }
+  ],
+  "defaults": {
+    "loseFoodRatio": 0.5
+  }
+}

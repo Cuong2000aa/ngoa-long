@@ -1,0 +1,132 @@
+{
+  "id": "ngoa-long-offline-db",
+  "version": "3.1.0",
+  "inspiredBy": "Ngọa Long / 卧龙吟 (UQEE→VNG 2011) ",
+  "locale": "vi-VN",
+  "wiki": {
+    "hub": "https://ngoalong.vnggames.com/ngoa-long-wiki",
+    "hieuUng": "https://ngoalong.vnggames.com/ngoa-long-wiki/hieu-ung",
+    "binhChung": "https://ngoalong.vnggames.com/ngoa-long-wiki/binh-chung",
+    "docs": "docs/wiki/SOURCES.md",
+    "importEffects": "scripts/import-wiki-effects.py"
+  },
+  "modules": [
+    "qualities",
+    "troops",
+    "formation",
+    "formations",
+    "formulas",
+    "factions",
+    "skills",
+    "generals",
+    "recruit",
+    "items",
+    "buildings",
+    "campaign",
+    "arena",
+    "progression",
+    "statusEffects"
+  ],
+  "progression": {
+    "engine": "NLCampaign + NLRecruit",
+    "rules": "Danh vọng mở quan hàm + slot tướng; first-clear ải thu phục tướng theo phe; Tửu Quán khóa theo ải+danh vọng+Ty Vũ"
+  },
+  "combatEngine": {
+    "version": 3,
+    "morale": "start 50; +25 attack; +15 hit; >=100 skill then reset 0",
+    "grid": "front 0-2 protect back 3-4",
+    "counter": "cavalry>infantry>spear>cavalry; archer/strategist ranged"
+  },
+  "statKeys": {
+    "tongLinh": "Thống lĩnh — thủ binh, giảm dame nhận, miss chance",
+    "vuLuc": "Vũ lực — dame vật lý, tốc độ hành động gần đúng",
+    "triLuc": "Trí lực — dame mưu lược / chiến pháp strategy",
+    "hp": "Khí huyết tối đa lúc cấp 1 (scale theo level)"
+  },
+  "refs": {
+    "general.skillId": "skills.skills.*",
+    "general.quality": "qualities.tiers.*",
+    "general.troop": "troops.types.*",
+    "general.faction": "factions.list.*",
+    "campaign.enemies.generalId": "generals.list.id",
+    "items.dropTables.itemId": "items.list.id | null",
+    "recruit.pools.generalId": "generals.list.id"
+  },
+  "conventions": {
+    "id": "snake hoặc chữ thường không dấu, ổn định không đổi",
+    "npcOnly": "true = không vào kho tướng người chơi",
+    "baseStatsRange": {
+      "white": {
+        "min": 28,
+        "max": 48
+      },
+      "green": {
+        "min": 40,
+        "max": 58
+      },
+      "blue": {
+        "min": 52,
+        "max": 72
+      },
+      "purple": {
+        "min": 65,
+        "max": 88
+      },
+      "orange": {
+        "min": 75,
+        "max": 96
+      },
+      "red": {
+        "min": 85,
+        "max": 100
+      }
+    },
+    "hpByQuality": {
+      "white": [
+        1200,
+        1800
+      ],
+      "green": [
+        1600,
+        2200
+      ],
+      "blue": [
+        2000,
+        2800
+      ],
+      "purple": [
+        2400,
+        3400
+      ],
+      "orange": [
+        2800,
+        4000
+      ],
+      "red": [
+        3000,
+        5200
+      ]
+    }
+  },
+  "tick": {
+    "resourceIntervalMs": 1000,
+    "offlineCapHours": 48
+  },
+  "city": {
+    "engine": "NLCityEconomy",
+    "playerState": "NLPlayer v3",
+    "coreBuildings": [
+      "ty_vu",
+      "mo_bac",
+      "nong_trai",
+      "doanh_trai",
+      "kho"
+    ],
+    "rules": "Ty Vũ = trần cấp nhà khác; sản xuất /phút; nâng cấp có countdown; Kho clamp; offline delta"
+  },
+  "campaign": {
+    "engine": "NLCampaign",
+    "schemaVersion": 3,
+    "rules": "unlock tuần tự; staminaCost lương thực; thắng=thưởng+mở ải; thua=mất 50% lương; boss unlockFeatures"
+  }
+}

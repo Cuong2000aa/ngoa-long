@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <rect x="2" y="2" width="44" height="44" rx="6" fill="#2c1a0e" stroke="#c9a227" stroke-width="2.2"/>
+  <!-- Song Ki¿m / Ph°¡ng Thiên HÍa Kích Giao Chi¿n -->
+  <line x1="12" y1="36" x2="36" y2="12" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/>
+  <line x1="36" y1="36" x2="12" y2="12" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="24" cy="24" r="6" fill="#991b1b" stroke="#facc15" stroke-width="1.8"/>
+</svg>

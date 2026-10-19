@@ -1,0 +1,841 @@
+/**
+ * Chiến trận — nền tối trầm, thẻ tướng portrait, thanh Sĩ Khí, log giấy da.
+ */
+.combat-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  background: #0a0604;
+  font-family: var(--font-ui, "Be Vietnam Pro", "Segoe UI", Tahoma, sans-serif);
+}
+.combat-overlay[hidden] { display: none !important; }
+
+.combat-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background:
+    linear-gradient(180deg, rgba(10, 6, 4, 0.55) 0%, rgba(10, 6, 4, 0.35) 45%, rgba(8, 5, 4, 0.75) 100%),
+    url("../assets/ui/bg-battle-field.svg") center / cover no-repeat,
+    radial-gradient(ellipse at 50% 45%, #1e140e 0%, #0e0906 55%, #080504 100%);
+  overflow: hidden;
+}
+
+.combat-atmosphere,
+.combat-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.combat-atmosphere {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 3px,
+      rgba(0, 0, 0, 0.08) 3px 4px
+    );
+  opacity: 0.5;
+}
+.combat-vignette {
+  box-shadow: inset 0 60px 80px rgba(0, 0, 0, 0.55), inset 0 -80px 90px rgba(0, 0, 0, 0.65);
+}
+
+.combat-head {
+  position: relative;
+  z-index: 2;
+  padding: 0.55rem 0.75rem 0.25rem;
+}
+
+.combat-vs-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.45rem 0.65rem;
+  border: 2px solid #5eead4;
+  background-image:
+    url("../assets/ui/borders/panel-border-012.png"),
+    url("../assets/ui/vs-bar-metal.svg"),
+    linear-gradient(180deg, #0f1c24, #081016);
+  background-size: 100% 100%, 100% 100%, auto;
+  background-repeat: no-repeat;
+  box-shadow:
+    inset 0 0 0 1px rgba(94, 234, 212, 0.25),
+    0 8px 24px rgba(0, 0, 0, 0.55);
+}
+.vs-side {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 0;
+  flex: 1;
+}
+.vs-side.enemy { justify-content: flex-end; text-align: right; }
+.vs-avatar {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #5eead4;
+  background: #120c08 url("../assets/units/battle/wiki-infantry-t1.png") center / contain no-repeat;
+  display: grid;
+  place-items: center;
+  color: transparent;
+  font-weight: 800;
+  font-size: 0;
+  flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(94, 234, 212, 0.25);
+}
+.vs-avatar.enemy {
+  background-image: url("../assets/units/battle/wiki-spear-t1.png");
+  border-color: #f87171;
+}
+.vs-avatar.ally::before,
+.vs-avatar.enemy::before { content: none; }
+.vs-meta { min-width: 0; }
+.side-name {
+  display: block;
+  font-weight: 700;
+  color: #fde68a;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.side-sub {
+  display: block;
+  font-size: 0.68rem;
+  color: #a89070;
+}
+.combat-vs-medallion {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #c59b27;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #8b1510, #3a0e08);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: #fde68a;
+  font-weight: 800;
+  font-size: 0.75rem;
+  font-style: normal;
+}
+.combat-vs-medallion i { font-style: normal; }
+
+.combat-title-sub {
+  position: relative;
+  z-index: 2;
+  margin: 0.35rem 0 0;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #fde68a;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+.combat-round-badge {
+  position: relative;
+  z-index: 2;
+  align-self: center;
+  margin: 0.25rem auto 0.35rem;
+  padding: 0.15rem 0.65rem;
+  border: 1px solid #c59b27;
+  background: rgba(26, 15, 10, 0.9);
+  color: #fde68a;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.combat-arena {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.75rem 4.5rem;
+}
+
+.combat-field {
+  position: relative;
+  width: min(860px, 100%);
+  height: min(52vh, 440px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.4rem;
+  border: 1px solid rgba(197, 155, 39, 0.35);
+  background: rgba(14, 9, 6, 0.55);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.battle-gl-host {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.battle-gl {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/*
+ * mode-3d — full-bleed sân như Fire Emblem / Triangle Strategy:
+ * canvas phủ cả combat-stage; HUD thẻ nổi 2 bên, không khung hộp giữa màn.
+ */
+.combat-overlay.mode-3d .combat-stage {
+  /* Sân cung Forbidden City full-bleed — canvas 3D alpha đè lên */
+  background:
+    linear-gradient(180deg, rgba(28, 18, 12, 0.22) 0%, rgba(18, 12, 8, 0.38) 55%, rgba(12, 8, 6, 0.52) 100%),
+    url("../assets/battle/battle-courtyard.jpg") center 42% / cover no-repeat;
+  background-color: #2a1c14;
+}
+.combat-overlay.mode-3d .combat-atmosphere {
+  opacity: 0.12;
+  z-index: 1;
+}
+.combat-overlay.mode-3d .combat-vignette {
+  z-index: 1;
+  box-shadow:
+    inset 0 60px 80px rgba(0, 0, 0, 0.28),
+    inset 0 -70px 90px rgba(0, 0, 0, 0.35);
+}
+.combat-overlay.mode-3d .battle-gl {
+  background: transparent;
+}
+.combat-overlay.mode-3d .combat-head {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 6;
+  padding: 0.65rem 1rem 0;
+  pointer-events: none;
+}
+.combat-overlay.mode-3d .combat-vs-bar {
+  max-width: 520px;
+  margin: 0 auto;
+  pointer-events: auto;
+  border-color: rgba(232, 197, 71, 0.55);
+  background:
+    linear-gradient(180deg, rgba(28, 18, 12, 0.92), rgba(14, 10, 8, 0.88));
+  backdrop-filter: blur(6px);
+}
+.combat-overlay.mode-3d .combat-title-sub {
+  position: absolute;
+  top: 4.2rem;
+  left: 0;
+  right: 0;
+  z-index: 6;
+  margin: 0;
+  font-size: 0.78rem;
+  opacity: 0.85;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+}
+.combat-overlay.mode-3d .combat-round-badge {
+  position: absolute;
+  top: 5.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  margin: 0;
+  background: rgba(12, 8, 6, 0.75);
+  backdrop-filter: blur(4px);
+}
+.combat-overlay.mode-3d .combat-arena {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 0;
+  align-items: stretch;
+  justify-content: stretch;
+}
+.combat-overlay.mode-3d .combat-field {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  display: block;
+  overflow: hidden;
+}
+.combat-overlay.mode-3d .battle-gl-host {
+  z-index: 0;
+}
+/* HUD thẻ — dock trái (địch) / phải (ta), kiểu turn-based modern */
+.combat-overlay.mode-3d .combat-side-label {
+  position: absolute;
+  z-index: 5;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  padding: 0.2rem 0.45rem;
+  background: rgba(8, 6, 4, 0.7);
+  border: 1px solid rgba(197, 155, 39, 0.35);
+  pointer-events: none;
+}
+.combat-overlay.mode-3d .enemy-label {
+  top: 6.8rem;
+  left: 0.75rem;
+  color: #fca5a5;
+}
+.combat-overlay.mode-3d .ally-label {
+  bottom: 5.2rem;
+  right: 0.75rem;
+  color: #86efac;
+  text-align: right;
+}
+.combat-overlay.mode-3d .combat-formation-mark {
+  /* Ẩn mark giữa sân — tránh “gạch/vòng” đè lên 3D */
+  display: none !important;
+}
+.combat-overlay.mode-3d #combat-enemy,
+.combat-overlay.mode-3d #combat-player {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: min(200px, 26vw);
+  pointer-events: none;
+  min-height: 0;
+}
+.combat-overlay.mode-3d #combat-enemy {
+  top: 8.2rem;
+  left: 0.65rem;
+}
+.combat-overlay.mode-3d #combat-player {
+  bottom: 6.6rem;
+  right: 0.65rem;
+}
+.combat-overlay.mode-3d .combat-grid .c-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.combat-overlay.mode-3d .combat-grid .c-slot {
+  width: 100%;
+}
+.combat-overlay.mode-3d .combat-grid .empty {
+  display: none;
+}
+.combat-overlay.mode-3d .c-card.plate-only {
+  min-height: 0;
+  padding: 0;
+  background: linear-gradient(135deg, rgba(18, 12, 8, 0.92), rgba(10, 8, 6, 0.88));
+  border: 1px solid rgba(197, 155, 39, 0.45);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+}
+.combat-overlay.mode-3d .c-card.ally {
+  border-color: rgba(94, 234, 212, 0.45);
+}
+.combat-overlay.mode-3d .c-card.enemy {
+  border-color: rgba(248, 113, 113, 0.5);
+}
+.combat-overlay.mode-3d .combat-fx {
+  z-index: 7;
+}
+.combat-overlay.mode-3d .combat-round-btns {
+  z-index: 8;
+}
+
+/* HUD trên đầu unit — chip portrait + HP (FE / 3K mobile) */
+.battle-hud-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  overflow: hidden;
+}
+.unit-overhead {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 96px;
+  transform: translate(-50%, -100%);
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.55));
+  font-family: var(--font-ui, "Be Vietnam Pro", "Segoe UI", Tahoma, sans-serif);
+}
+.unit-overhead .uo-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.28rem;
+  padding: 0.12rem 0.28rem 0.14rem 0.12rem;
+  background:
+    linear-gradient(135deg, rgba(28, 18, 10, 0.88), rgba(12, 8, 6, 0.82));
+  border: 1px solid rgba(197, 155, 39, 0.45);
+  border-radius: 3px;
+}
+.unit-overhead.enemy .uo-chip {
+  border-color: rgba(248, 113, 113, 0.55);
+}
+.unit-overhead.ally .uo-chip {
+  border-color: rgba(45, 212, 191, 0.5);
+}
+.unit-overhead .uo-face {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
+  background: radial-gradient(circle at 50% 40%, rgba(40, 28, 16, 0.9), rgba(0, 0, 0, 0.55));
+  border-radius: 3px;
+  border: 1px solid rgba(197, 155, 39, 0.4);
+}
+.unit-overhead .uo-meta {
+  min-width: 0;
+  flex: 1;
+}
+.unit-overhead .uo-name {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #fde68a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+  text-shadow: 0 1px 2px #000;
+  letter-spacing: 0;
+}
+.unit-overhead.enemy .uo-name { color: #fecaca; }
+.unit-overhead.ally .uo-name { color: #a7f3d0; }
+.unit-overhead .uo-hp,
+.unit-overhead .uo-morale {
+  height: 7px;
+  border: 1px solid rgba(0, 0, 0, 0.55);
+  background: rgba(8, 6, 4, 0.75);
+  overflow: hidden;
+  border-radius: 2px;
+}
+.unit-overhead .uo-morale {
+  height: 4px;
+  margin-top: 2px;
+}
+.unit-overhead .uo-hp > i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #7f1d1d, #ef4444 60%, #fca5a5);
+}
+.unit-overhead .uo-morale > i {
+  display: block;
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(90deg, #854d0e, #facc15 60%, #fef08a);
+}
+.unit-overhead .uo-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-top: 3px;
+  min-height: 0;
+}
+.unit-overhead .uo-st {
+  font-size: 0.58rem;
+  font-weight: 700;
+  line-height: 1.2;
+  padding: 1px 4px;
+  border-radius: 2px;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 2px #000;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+}
+.unit-overhead .uo-st-buff {
+  color: #fef3c7;
+  background: linear-gradient(180deg, rgba(180, 120, 20, 0.92), rgba(90, 50, 10, 0.88));
+  border-color: rgba(250, 204, 21, 0.55);
+}
+.unit-overhead .uo-st-debuff {
+  color: #fce7f3;
+  background: linear-gradient(180deg, rgba(120, 30, 90, 0.92), rgba(50, 10, 40, 0.9));
+  border-color: rgba(232, 121, 249, 0.5);
+}
+.unit-overhead .uo-st-control {
+  color: #e0e7ff;
+  background: linear-gradient(180deg, rgba(60, 50, 140, 0.95), rgba(25, 20, 70, 0.92));
+  border-color: rgba(165, 180, 252, 0.55);
+}
+.unit-overhead.dead {
+  opacity: 0.35;
+}
+
+/* Roster dock — thẻ ngang có mặt tướng */
+.combat-overlay.mode-3d #combat-enemy,
+.combat-overlay.mode-3d #combat-player {
+  opacity: 1;
+  width: min(200px, 26vw);
+}
+.combat-overlay.mode-3d .c-card.plate-only {
+  padding: 0;
+  overflow: hidden;
+}
+.combat-overlay.mode-3d .c-roster {
+  display: flex;
+  align-items: stretch;
+  gap: 0.4rem;
+  padding: 0.35rem 0.45rem;
+}
+.combat-overlay.mode-3d .c-face {
+  position: relative;
+  width: 44px;
+  flex-shrink: 0;
+}
+.combat-overlay.mode-3d .c-face img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  background: radial-gradient(circle at 50% 40%, rgba(40, 28, 16, 0.85), rgba(0, 0, 0, 0.5));
+  border-radius: 4px;
+}
+.combat-overlay.mode-3d .c-face .c-troop-badge {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  font-size: 0.55rem;
+  line-height: 1;
+  padding: 0.12rem 0.2rem;
+  background: rgba(12, 8, 6, 0.9);
+  border: 1px solid rgba(197, 155, 39, 0.45);
+  color: #fde68a;
+}
+.combat-overlay.mode-3d .c-plate {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.15rem;
+}
+.combat-overlay.mode-3d .c-name {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #fef3c7;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.combat-overlay.mode-3d .c-meta {
+  font-size: 0.62rem;
+  color: rgba(253, 230, 138, 0.7);
+}
+.combat-overlay.mode-3d .c-card .c-hp,
+.combat-overlay.mode-3d .c-card .c-morale {
+  display: block;
+  height: 6px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+.combat-overlay.mode-3d .c-card .c-morale { height: 4px; }
+.combat-overlay.mode-3d .c-card .c-hp > i,
+.combat-overlay.mode-3d .c-card .c-morale > i {
+  display: block;
+  height: 100%;
+}
+.combat-overlay.mode-3d .c-card .c-hp > i {
+  background: linear-gradient(90deg, #991b1b, #f87171);
+}
+.combat-overlay.mode-3d .c-card .c-morale > i {
+  background: linear-gradient(90deg, #a16207, #facc15);
+}
+.combat-overlay.mode-3d .c-sprite-wrap,
+.combat-overlay.mode-3d .c-flag {
+  display: none;
+}
+.combat-overlay.mode-3d .vs-avatar {
+  background-image: url("../assets/units/battle/wiki-infantry.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #120c08;
+}
+.combat-overlay.mode-3d .vs-avatar.enemy {
+  background-image: url("../assets/units/battle/wiki-spear.png");
+}
+
+@media (max-width: 720px) {
+  .combat-overlay.mode-3d #combat-enemy,
+  .combat-overlay.mode-3d #combat-player {
+    width: min(132px, 38vw);
+  }
+  .combat-overlay.mode-3d #combat-enemy {
+    top: 7.4rem;
+  }
+}
+
+.combat-side-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: #a89070;
+  font-weight: 700;
+}
+.enemy-label { text-align: right; color: #c08070; }
+.ally-label { color: #90b090; }
+
+.combat-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.4rem;
+  min-height: 110px;
+}
+.combat-grid .empty {
+  min-height: 110px;
+  border: 1px dashed rgba(197, 155, 39, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.combat-formation-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.2rem 0;
+  color: rgba(197, 155, 39, 0.45);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+}
+.bagua-ring-deco { display: none; }
+.bagua-core {
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgba(197, 155, 39, 0.45);
+  display: grid;
+  place-items: center;
+  font-size: 0.75rem;
+}
+.bagua-text { font-weight: 700; }
+
+/* Thẻ tướng — portrait cổ trang */
+.c-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 118px;
+  padding: 0.3rem;
+  border: 2px solid #8a6a18;
+  background: linear-gradient(180deg, #2c1810 0%, #1a0f0a 100%);
+  box-shadow: inset 0 0 0 1px rgba(197, 155, 39, 0.15);
+  transition: border-color 0.12s;
+}
+.c-card.ally { border-color: #6a8a4a; }
+.c-card.enemy { border-color: #8a4a3a; }
+.c-card.ready { border-color: #c59b27; box-shadow: inset 0 0 0 1px rgba(253, 230, 138, 0.25); }
+.c-card.dead { opacity: 0.35; filter: grayscale(0.8); }
+.c-card.hit { outline: 1px solid #c4281c; }
+.c-card.heal { outline: 1px solid #5a8a4a; }
+
+.c-flag {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  z-index: 2;
+  font-size: 0.58rem;
+  color: #fde68a;
+  font-weight: 800;
+}
+.c-flag-pole { display: none; }
+
+.c-sprite-wrap {
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(94, 234, 212, 0.4);
+  background: #081016;
+  margin-bottom: 0.25rem;
+  position: relative;
+  overflow: hidden;
+}
+.c-portrait-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.88;
+  filter: saturate(1.05) contrast(1.05);
+}
+.c-sprite-img {
+  display: block !important;
+  position: relative;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  image-rendering: auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.7));
+}
+.c-troop-badge {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  min-width: 1.1rem;
+  padding: 0 0.15rem;
+  font-size: 0.58rem;
+  font-weight: 800;
+  color: #fde68a;
+  letter-spacing: 0;
+  border: 1px solid rgba(197, 155, 39, 0.45);
+  background: rgba(18, 12, 8, 0.88);
+  line-height: 1.2;
+}
+.c-minions { display: none !important; }
+
+.c-plate {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  min-width: 0;
+}
+.c-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fde68a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.c-meta {
+  font-size: 0.58rem;
+  color: #a89070;
+}
+.c-hp,
+.c-morale {
+  height: 5px;
+  border: 1px solid #3a2a18;
+  background: #0a0604;
+  overflow: hidden;
+}
+.c-hp,
+.c-morale {
+  height: 8px;
+  border: 1px solid rgba(94, 234, 212, 0.35);
+  background: #04080c;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+.c-hp > i,
+.c-morale > i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #7f1d1d, #ef4444 55%, #fca5a5);
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.45);
+}
+.c-morale > i {
+  background: linear-gradient(90deg, #854d0e, #facc15 55%, #fef08a);
+  box-shadow: 0 0 6px rgba(250, 204, 21, 0.4);
+}
+.c-morale {
+  margin-top: 1px;
+}
+.c-morale::before {
+  content: none;
+}
+
+.combat-fx {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Log giấy da */
+.combat-log {
+  position: absolute;
+  right: 0.65rem;
+  bottom: 4.6rem;
+  z-index: 8;
+  width: min(280px, 42vw);
+  max-height: 36vh;
+  overflow: auto;
+  padding: 0.55rem 0.65rem;
+  border: 2px solid #c59b27;
+  background:
+    linear-gradient(180deg, rgba(58, 40, 24, 0.96), rgba(36, 24, 14, 0.96));
+  color: #e8d4a8;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55), inset 0 0 30px rgba(0, 0, 0, 0.25);
+}
+.combat-log[hidden] { display: none !important; }
+.combat-log .c-log-line {
+  margin: 0 0 0.25rem;
+  border-bottom: 1px solid rgba(197, 155, 39, 0.12);
+  padding-bottom: 0.2rem;
+}
+.combat-log .c-log-line:last-child { border-bottom: 0; }
+
+.combat-result {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  min-width: 220px;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  border: 2px solid #c59b27;
+  background: linear-gradient(180deg, #2c1810, #1a0f0a);
+  color: #fde68a;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
+}
+.combat-result.win { border-color: #8a9a40; }
+.combat-result.lose { border-color: #8b1510; }
+.combat-result[hidden] { display: none !important; }
+
+.combat-round-btns {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 9;
+  display: flex;
+  flex-direction: row;
+  gap: 0.45rem;
+  padding: 0.45rem 0.55rem;
+  border: 2px solid #5eead4;
+  background:
+    linear-gradient(180deg, rgba(15, 28, 36, 0.95), rgba(8, 16, 22, 0.98));
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55), inset 0 0 20px rgba(45, 212, 191, 0.08);
+}
+.c-round-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  min-width: 72px;
+  padding: 0.4rem 0.55rem;
+  border: 1px solid #2dd4bf;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #134e4a, #0f172a);
+  color: #ccfbf1;
+  box-shadow:
+    inset 0 1px 0 rgba(153, 246, 228, 0.25),
+    0 2px 0 #042f2e;
+}
+.c-round-btn:active {
+  transform: translateY(2px);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.65);
+}
+.c-round-btn.primary {
+  background: linear-gradient(180deg, #8b2a18, #3a0e08);
+  border-color: #c59b27;
+}
+.c-round-ico { font-size: 0.85rem; line-height: 1; }
+.c-round-lbl { font-size: 0.62rem; font-weight: 700; }
+
+@media (max-width: 640px) {
+  .combat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .combat-log { width: min(240px, 55vw); bottom: 5.2rem; }
+}

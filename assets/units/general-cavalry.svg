@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 160" fill="none">
+  <defs>
+    <linearGradient id="cArmor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffe8a0"/><stop offset="40%" stop-color="#d4a024"/><stop offset="100%" stop-color="#6a3a10"/>
+    </linearGradient>
+    <linearGradient id="cHorse" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6a4428"/><stop offset="100%" stop-color="#2a1810"/>
+    </linearGradient>
+    <linearGradient id="cSkin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5d4b0"/><stop offset="100%" stop-color="#c89870"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="70" cy="152" rx="48" ry="7" fill="#000" opacity="0.35"/>
+  <!-- horse body -->
+  <ellipse cx="70" cy="118" rx="48" ry="22" fill="url(#cHorse)"/>
+  <ellipse cx="28" cy="112" rx="16" ry="12" fill="#5a3820"/>
+  <path d="M14,112 L4,100 L10,96 L22,108" fill="#4a2e18"/>
+  <!-- horse legs -->
+  <rect x="40" y="128" width="7" height="22" rx="2" fill="#2a1810"/>
+  <rect x="58" y="130" width="7" height="20" rx="2" fill="#2a1810"/>
+  <rect x="78" y="128" width="7" height="22" rx="2" fill="#2a1810"/>
+  <rect x="96" y="130" width="7" height="20" rx="2" fill="#2a1810"/>
+  <!-- saddle -->
+  <ellipse cx="72" cy="108" rx="22" ry="10" fill="#8b1510"/>
+  <rect x="55" y="100" width="36" height="8" rx="2" fill="#c9a227"/>
+  <!-- rider body -->
+  <path d="M56,58 L88,58 L90,100 L54,100 Z" fill="url(#cArmor)"/>
+  <path d="M62,64 L82,64 L80,86 L64,86 Z" fill="#c4281c" opacity="0.4"/>
+  <!-- arms + spear -->
+  <path d="M88,66 L118,40" stroke="#c0c8d0" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M116,36 L128,28 L130,32 L120,42 Z" fill="#e8c547"/>
+  <ellipse cx="52" cy="68" rx="8" ry="6" fill="url(#cArmor)"/>
+  <ellipse cx="90" cy="66" rx="8" ry="6" fill="url(#cArmor)"/>
+  <!-- head -->
+  <ellipse cx="72" cy="44" rx="16" ry="18" fill="url(#cSkin)"/>
+  <path d="M54,42 Q72,16 90,42 L86,50 Q72,38 58,50 Z" fill="#e8c547"/>
+  <rect x="68" y="12" width="8" height="14" fill="#c9a227"/>
+  <path d="M72,10 Q60,0 64,-4 Q76,2 72,10" fill="#1a4a8a"/>
+  <circle cx="65" cy="46" r="1.8" fill="#1a1008"/>
+  <circle cx="79" cy="46" r="1.8" fill="#1a1008"/>
+  <path d="M66,54 Q72,58 78,54" stroke="#8b4a28" stroke-width="1.4" fill="none"/>
+  <!-- mane -->
+  <path d="M30,100 Q22,88 28,78 Q36,90 34,100" fill="#1a1008"/>
+  <!-- tail -->
+  <path d="M116,118 Q134,108 130,130 Q122,122 116,124" fill="#2a1810"/>
+</svg>

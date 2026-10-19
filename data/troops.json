@@ -1,0 +1,644 @@
+{
+  "schemaVersion": 6,
+  "rule": "Cận chiến tam giác: Kỵ > Bộ > Thương > Kỵ. Cung/Mưu đánh xa riêng. Bậc binh chủng tăng hệ số (bám Ngọa Long).",
+  "meleeTriangle": [
+    "cavalry",
+    "infantry",
+    "spear"
+  ],
+  "counterMul": 1.25,
+  "weakMul": 0.8,
+  "neutralMul": 1.0,
+  "dualTroop": {
+    "enabled": true,
+    "switchOncePerBattle": true,
+    "note": "troop = chính; troop2 = phụ. Counter theo troop active."
+  },
+  "tierByLevel": [
+    {
+      "maxLevel": 19,
+      "tier": 1
+    },
+    {
+      "maxLevel": 39,
+      "tier": 2
+    },
+    {
+      "maxLevel": 54,
+      "tier": 3
+    },
+    {
+      "maxLevel": 74,
+      "tier": 4
+    },
+    {
+      "maxLevel": 89,
+      "tier": 5
+    },
+    {
+      "maxLevel": 999,
+      "tier": 6
+    }
+  ],
+  "tierMods": {
+    "1": {
+      "atk": 1.0,
+      "def": 1.0,
+      "label": "Sơ cấp"
+    },
+    "2": {
+      "atk": 1.2,
+      "def": 1.15,
+      "label": "Trung cấp"
+    },
+    "3": {
+      "atk": 1.45,
+      "def": 1.35,
+      "label": "Cao cấp"
+    },
+    "4": {
+      "atk": 1.7,
+      "def": 1.55,
+      "label": "Tinh nhuệ"
+    },
+    "5": {
+      "atk": 2.0,
+      "def": 1.8,
+      "label": "Hổ Báo"
+    },
+    "6": {
+      "atk": 2.4,
+      "def": 2.1,
+      "label": "Thiên binh"
+    }
+  },
+  "types": {
+    "cavalry": {
+      "id": "cavalry",
+      "name": "Kỵ binh",
+      "short": "Kỵ",
+      "range": "melee",
+      "beats": "infantry",
+      "beatenBy": "spear",
+      "desc": "Khắc Bộ binh; bị Thương binh khắc.",
+      "tierNames": [
+        "Kỵ",
+        "Kim Kỵ",
+        "Bạch Kỵ",
+        "Bạch Hổ Kỵ",
+        "Hổ Báo Kỵ",
+        "Băng Kỵ"
+      ],
+      "statBias": {
+        "vuLuc": 1.032,
+        "tongLinh": 1.012,
+        "triLuc": 1.016
+      },
+      "wikiStatBias": {
+        "vuLuc": 1.028,
+        "tongLinh": 1.028,
+        "triLuc": 1.045
+      },
+      "wikiTierNames": [
+        "Kỵ",
+        "Kim Kỵ",
+        "Bạch Kỵ",
+        "Bạch Hổ Kỵ",
+        "Hổ Báo Kỵ",
+        "Băng Kỵ"
+      ],
+      "wikiTiers": {
+        "1": {
+          "name": "Kỵ",
+          "desc": "Kỵ Binh có thể khắc chế Bộ Binh nhưng lại bị Thương Binh uy hiếp.",
+          "statTags": [
+            "beatsInfantry",
+            "weakToSpear"
+          ],
+          "statBias": {
+            "vuLuc": 1.0,
+            "tongLinh": 1.0,
+            "triLuc": 1.0
+          }
+        },
+        "2": {
+          "name": "Kim Kỵ",
+          "desc": "Toàn lực mạnh.",
+          "statTags": [],
+          "statBias": {
+            "vuLuc": 1.0,
+            "tongLinh": 1.0,
+            "triLuc": 1.0
+          }
+        },
+        "5": {
+          "name": "Hổ Báo Kỵ",
+          "desc": "Khả năng tổng hợp mạnh, giỏi Tấn công thường.",
+          "statTags": [],
+          "statBias": {
+            "vuLuc": 1.0,
+            "tongLinh": 1.0,
+            "triLuc": 1.0
+          }
+        },
+        "3": {
+          "name": "Bạch Kỵ",
+          "desc": "Mạnh về phòng thủ, đánh thường có 10% khiến địch Hỗn Loạn 1 lượt.",
+          "statTags": [
+            "physAtk",
+            "physDef"
+          ],
+          "statBias": {
+            "vuLuc": 1.12,
+            "tongLinh": 1.12,
+            "triLuc": 1.0
+          }
+        },
+        "4": {
+          "name": "Bạch Hổ Kỵ",
+          "desc": "Tấn công thường mạnh, lực phòng thủ ưu tú, giảm phòng thủ thường của đối phương.",
+          "statTags": [
+            "physDef",
+            "defFocus"
+          ],
+          "statBias": {
+            "vuLuc": 1.0,
+            "tongLinh": 1.12,
+            "triLuc": 1.0
+          }
+        },
+        "6": {
+          "name": "Băng Kỵ",
+          "desc": "Tấn công mạnh, phòng thủ ưu tú, đánh thường khiến mục tiêu -50% phòng thủ trong 2 lượt.",
+          "statTags": [
+            "physAtk",
+            "physDef",
+            "defFocus"
+          ],
+          "statBias": {
+            "vuLuc": 1.12,
+            "tongLinh": 1.12,
+            "triLuc": 1.0
+          }
+        }
+      },
+      "wikiDesc": "Kỵ Binh có thể khắc chế Bộ Binh nhưng lại bị Thương Binh uy hiếp."
+    },
+    "infantry": {
+      "id": "infantry",
+      "name": "Bộ binh",
+      "short": "Bộ",
+      "range": "melee",
+      "beats": "spear",
+      "beatenBy": "cavalry",
+      "desc": "Khắc Thương binh; bị Kỵ binh khắc.",
+      "tierNames": [
+        "Bộ",
+        "Kim Bộ",
+        "Giáp Bộ",
+        "Điện Sĩ",
+        "Hàn Giáp Bộ",
+        "Trấn Ngục Giáp"
+      ],
+      "statBias": {
+        "vuLuc": 1.031,
+        "tongLinh": 1.037,
+        "triLuc": 1.024
+      },
+      "wikiStatBias": {
+        "vuLuc": 1.039,
+        "tongLinh": 1.033,
+        "triLuc": 1.043
+      },
+      "wikiTierNames": [
+        "Bộ",
+        "Kim Bộ",
+        "Giáp Bộ",
+        "Điện Sĩ",
+        "Hàn Giáp Bộ",
+        "Trấn Ngục Giáp"
+      ],
+      "wikiTiers": {
+        "1": {
+          "name": "Bộ",
+          "desc": "Bộ Binh có thể khắc chế Thương Binh nhưng lại bị Kỵ Binh uy hiếp.",
+          "statTags": [
+            "beatsSpear",
+            "weakToCavalry"
+          ],
+          "statBias": {
+            "vuLuc": 1.0,
+            "tongLinh": 1.0,
+            "triLuc": 1.0
+          }
+        },
+        "2": {
+          "name": "Kim Bộ",
+          "desc": "Toàn lực mạnh.",
+          "statTags": [],
+          "statBias": {
+            "vuLuc": 1.0,
+            "tongLinh": 1.0,
+            "triLuc": 1.0
+          }
+        },
+        "3": {
+          "name": "Giáp Bộ",
+          "desc": "Đánh thường và Chiến pháp mạnh, nhưng sợ Mưu Công.",
+          "statTags": [
+            "physAtk",
+            "stratAtk"
+          ],
+          "statBias": {
+            "vuLuc": 1.12,
+            "tongLinh": 1.0,
+            "triLuc": 1.15
+          }
+        },
+        "4": {
+          "name": "Điện Sĩ",
+          "desc": "Năng lực tổng hợp mạnh, bạo kích và phản kích ưu tú.",
+          "statTags": [
+            "crit",
+            "counter",
+            "balanced"
+          ],
+          "statBias": {
+            "vuLuc": 1.05,
+            "tongLinh": 1.05,
+            "triLuc": 1.05
+          }
+        },
+        "5": {
+          "name": "Hàn Giáp Bộ",
+          "desc": "Kế Sách mạnh, đánh thường có 20% khiến mục tiêu Mất Sĩ Khí 1 lượt.",
+          "statTags": [
+            "physAtk",
+            "stratAtk"
+          ],
+          "statBias": {
+            "vuLuc": 1.12,
+            "tongLinh": 1.0,
+            "triLuc": 1.15
+          }
+        },
+        "6": {
+          "name": "Băng Giáp",
+          "desc": "Đánh thường và phòng thủ cực cao, đánh thường giúp bản thân +50 sĩ khí, không tăng sĩ khí đối phương, có 15% khiến đối phương đóng băng 1 lượt.",
+          "statTags": [
+            "physAtk",
+            "physDef",
+            "defFocus"
+          ],
+          "statBias": {
+            "vuLuc": 1.12,
+            "tongLinh": 1.12,
+            "triLuc": 1.0
+          }
+        }
+      },
+      "wikiDesc": "Bộ Binh có thể khắc chế Thương Binh nhưng lại bị Kỵ Binh uy hiếp."
+    },
+    "spear": {
+      "id": "spear",
+      "name": "Thương binh",
+      "short": "Thương",
+      "range": "melee",
+      "beats": "cavalry",
+      "beatenBy": "infantry",
+      "desc": "Khắc Kỵ binh; bị Bộ binh khắc.",
+      "tierNames": [
+        "Thương",
+        "Kim Thương",
+        "Hoàng Thương",
+        "Linh Thương",
+        "Diệm Thương",
+        "Băng Thương"
+      ],
+      "statBias": {
+        "vuLuc": 1.03,
+        "tongLinh": 1.051,
+        "triLuc": 1.018
+      },
+      "wikiStatBias": {
+        "vuLuc": 1.038,
+        "tongLinh": 1.064,
+        "triLuc": 1.036
+      },
+      "wikiTierNames": [
+        "Thương",
+        "Kim Thương",
+        "Hoàng Thương",
+        "Linh Thương",
+        "Diệm Thương",
+        "Băng Thương"
+      ],
+      "wikiTiers": {
+        "1": {
+          "name": "Thương",
+          "desc": "Thương Binh có thể khắc chế Kỵ Binh nhưng lại bị Bộ Binh uy hiếp.",
+          "statTags": [
+            "beatsCavalry",
+            "weakToInfantry"
+          ],
+          "statBias": {
+            "vuLuc": 1.0,
+            "tongLinh": 1.0,
+            "triLuc": 1.0
+          }
+        },
+        "2": {
+          "name": "Kim Thương",
+          "desc": "Năng lực chungưu tú.",
+          "statTags": [],
+          "statBias": {
+            "vuLuc": 1.0,
+            "tongLinh": 1.0,
+            "triLuc": 1.0
+          }
+        },
+        "3": {
+          "name": "Hoàng Thương",
+          "desc": "Năng lực tổng hợp mạnh, bạo kích và phản kích xuất sắc.",
+          "statTags": [
+            "crit",
+            "counter",
+            "balanced"
+          ],
+          "statBias": {
+            "vuLuc": 1.05,
+            "tongLinh": 1.05,
+            "triLuc": 1.05
+          }
+        },
+        "4": {
+          "name": "Linh Thương",
+          "desc": "Năng lực tổng hợp mạnh, ưu tú về bạo kích và phản kích.",
+          "statTags": [
+            "crit",
+            "counter",
+            "balanced"
+          ],
+          "statBias": {
+            "vuLuc": 1.05,
+            "tongLinh": 1.05,
+            "triLuc": 1.05
+          }
+        },
+        "5": {
+          "name": "Diệm Thương",
+          "desc": "Năng lực chung ưu tú, sau khi tấn công thường, lần kế hút HP và thiêu đốt 2 lượt.",
+          "statTags": [],
+          "statBias": {
+            "vuLuc": 1.0,
+            "tongLinh": 1.0,
+            "triLuc": 1.0
+          }
+        },
+        "6": {
+          "name": "Băng Thương",
+          "desc": "Khả năng phòng thủ tuyệt vời, đánh thường bản thân tăng Thủ Hộ, tăng Thủ Hộ và Hộ Thuẫn 1 lượt cho đồng đội sinh lực nhấp nhất.",
+          "statTags": [
+            "physAtk",
+            "physDef"
+          ],
+          "statBias": {
+            "vuLuc": 1.12,
+            "tongLinh": 1.12,
+            "triLuc": 1.0
+          }
+        }
+      },
+      "wikiDesc": "Thương Binh có thể khắc chế Kỵ Binh nhưng lại bị Bộ Binh uy hiếp."
+    },
+    "archer": {
+      "id": "archer",
+      "name": "Cung binh",
+      "short": "Cung",
+      "range": "ranged",
+      "beats": null,
+      "beatenBy": null,
+      "armorCoef": 0.85,
+      "canTargetBack": true,
+      "desc": "Đánh xa — không vào vòng khắc cận chiến; xuyên hàng sau nếu skill/pattern cho phép.",
+      "tierNames": [
+        "Cung",
+        "Hỏa Cung",
+        "Diệm Cung",
+        "Xích Cung",
+        "Tu La Cung",
+        "Băng Cung"
+      ],
+      "statBias": {
+        "vuLuc": 1.049,
+        "tongLinh": 1.0,
+        "triLuc": 1.019
+      },
+      "wikiStatBias": {
+        "vuLuc": 1.023,
+        "tongLinh": 1.038,
+        "triLuc": 1.037
+      },
+      "wikiTierNames": [
+        "Cung",
+        "Hỏa Cung",
+        "Diệm Cung",
+        "Xích Cung",
+        "Tu La Cung",
+        "Băng Cung"
+      ],
+      "wikiTiers": {
+        "1": {
+          "name": "Cung",
+          "desc": "Tấn công khá cao nhưng phòng thủ yếu.",
+          "statTags": [
+            "physDef"
+          ],
+          "statBias": {
+            "vuLuc": 1.0,
+            "tongLinh": 1.12,
+            "triLuc": 1.0
+          }
+        },
+        "2": {
+          "name": "Hỏa Cung",
+          "desc": "Giỏi Mưu công và Phòng thủ.",
+          "statTags": [
+            "physDef",
+            "stratAtk"
+          ],
+          "statBias": {
+            "vuLuc": 1.0,
+            "tongLinh": 1.12,
+            "triLuc": 1.15
+          }
+        },
+        "3": {
+          "name": "Diệm Cung",
+          "desc": "Sở trường Kế sách.",
+          "statTags": [
+            "stratAtk"
+          ],
+          "statBias": {
+            "vuLuc": 1.0,
+            "tongLinh": 1.0,
+            "triLuc": 1.15
+          }
+        },
+        "4": {
+          "name": "Xích Cung",
+          "desc": "Binh chủng có sở trường về kế sách, tấn công thường kèm theo trạng thái thiêu đốt.",
+          "statTags": [
+            "stratAtk"
+          ],
+          "statBias": {
+            "vuLuc": 1.0,
+            "tongLinh": 1.0,
+            "triLuc": 1.15
+          }
+        },
+        "5": {
+          "name": "Tu La Cung",
+          "desc": "Tấn công theo đường thẳng và giảm vật phòng, chỉ tăng sĩ khí đơn lẻ.",
+          "statTags": [
+            "physDef"
+          ],
+          "statBias": {
+            "vuLuc": 1.0,
+            "tongLinh": 1.12,
+            "triLuc": 1.0
+          }
+        },
+        "6": {
+          "name": "Băng Cung",
+          "desc": "Tấn công cực cao, nhận hiệu quả Hội Tâm và Nguyệt Hồn 2 lượt.",
+          "statTags": [
+            "physAtk",
+            "atkFocus"
+          ],
+          "statBias": {
+            "vuLuc": 1.12,
+            "tongLinh": 1.0,
+            "triLuc": 1.0
+          }
+        }
+      },
+      "wikiDesc": "Tấn công khá cao nhưng phòng thủ yếu."
+    },
+    "strategist": {
+      "id": "strategist",
+      "name": "Mưu sĩ",
+      "short": "Mưu",
+      "range": "ranged",
+      "beats": null,
+      "beatenBy": null,
+      "armorCoef": 0.75,
+      "canTargetBack": true,
+      "desc": "Mưu lược — dame theo Trí lực; không vào vòng khắc cận chiến.",
+      "tierNames": [
+        "Sách Sĩ",
+        "Hỏa Sách Sĩ",
+        "Lôi Cổ",
+        "Khống Vân",
+        "Hỏa Sứ",
+        "Băng Hồ"
+      ],
+      "statBias": {
+        "vuLuc": 0.963,
+        "tongLinh": 0.976,
+        "triLuc": 1.089
+      },
+      "wikiStatBias": {
+        "vuLuc": 1.017,
+        "tongLinh": 1.021,
+        "triLuc": 1.048
+      },
+      "wikiTierNames": [
+        "Sách Sĩ",
+        "Hỏa Sách Sĩ",
+        "Lôi Cổ",
+        "Khống Vân",
+        "Hỏa Sứ",
+        "Băng Hồ"
+      ],
+      "wikiTiers": {
+        "1": {
+          "name": "Quan văn",
+          "desc": "Mưu công khá cao nhưng phòng thủ yếu.",
+          "statTags": [
+            "physDef",
+            "stratAtk"
+          ],
+          "statBias": {
+            "vuLuc": 1.0,
+            "tongLinh": 1.12,
+            "triLuc": 1.15
+          }
+        },
+        "2": {
+          "name": "Hỏa Sách Sĩ",
+          "desc": "Mưu công cao.",
+          "statTags": [
+            "stratAtk"
+          ],
+          "statBias": {
+            "vuLuc": 1.0,
+            "tongLinh": 1.0,
+            "triLuc": 1.15
+          }
+        },
+        "3": {
+          "name": "Lôi Cổ",
+          "desc": "Mỗi lượt tăng Sĩ khí phe mình.",
+          "statTags": [],
+          "statBias": {
+            "vuLuc": 1.0,
+            "tongLinh": 1.0,
+            "triLuc": 1.0
+          }
+        },
+        "4": {
+          "name": "Địa Sư",
+          "desc": "Mưu công toàn diện, chỉ tăng sĩ khí đơn thể, phòng thủ thường tương đối cao.",
+          "statTags": [
+            "physDef",
+            "stratAtk"
+          ],
+          "statBias": {
+            "vuLuc": 1.0,
+            "tongLinh": 1.12,
+            "triLuc": 1.15
+          }
+        },
+        "5": {
+          "name": "Hỏa Sứ",
+          "desc": "Mưu công, tấn công thường cao, kèm theo sát thương kế sách, pháp phòng tương đối thấp.",
+          "statTags": [
+            "magicDef",
+            "stratAtk"
+          ],
+          "statBias": {
+            "vuLuc": 1.0,
+            "tongLinh": 1.0,
+            "triLuc": 1.15
+          }
+        },
+        "6": {
+          "name": "Băng Hồ",
+          "desc": "Tấn công đường thẳng, khiến mục tiêu -50 sĩ khí, bản thân +40% Mưu Công trong 2 lượt.",
+          "statTags": [
+            "stratAtk"
+          ],
+          "statBias": {
+            "vuLuc": 1.0,
+            "tongLinh": 1.0,
+            "triLuc": 1.15
+          }
+        }
+      },
+      "wikiDesc": "Mưu công khá cao nhưng phòng thủ yếu."
+    }
+  },
+  "wikiSource": "https://ngoalong.vnggames.com/ngoa-long-wiki/binh-chung",
+  "wikiNote": "Chỉ số/tên bậc lấy từ wiki player units; NPC không đưa vào types."
+}

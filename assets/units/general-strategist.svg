@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160" fill="none">
+  <defs>
+    <linearGradient id="mRobe" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6a4ab0"/><stop offset="50%" stop-color="#3a2870"/><stop offset="100%" stop-color="#181040"/>
+    </linearGradient>
+    <linearGradient id="mSkin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5d4b0"/><stop offset="100%" stop-color="#c89870"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="60" cy="150" rx="34" ry="6" fill="#000" opacity="0.35"/>
+  <!-- flowing robe -->
+  <path d="M40,70 L80,70 L98,148 L22,148 Z" fill="url(#mRobe)"/>
+  <path d="M48,78 L72,78 L78,140 L42,140 Z" fill="#c4b5fd" opacity="0.15"/>
+  <path d="M30,72 Q18,110 28,148" stroke="#a78bfa" stroke-width="2" opacity="0.4" fill="none"/>
+  <path d="M90,72 Q102,110 92,148" stroke="#a78bfa" stroke-width="2" opacity="0.4" fill="none"/>
+  <!-- upper -->
+  <path d="M42,52 L78,52 L82,78 L38,78 Z" fill="#4a3088"/>
+  <rect x="40" y="74" width="40" height="6" fill="#e8c547"/>
+  <!-- fan -->
+  <path d="M88,58 L112,40 L116,48 L96,70 Z" fill="#f0e0b0" stroke="#c9a227" stroke-width="1.5"/>
+  <line x1="92" y1="58" x2="110" y2="44" stroke="#c4281c" stroke-width="1"/>
+  <line x1="94" y1="62" x2="112" y2="48" stroke="#c4281c" stroke-width="1"/>
+  <!-- arms -->
+  <path d="M42,58 L28,72 L34,78 L48,64 Z" fill="#4a3088"/>
+  <path d="M78,56 L92,62 L88,72 L74,64 Z" fill="#4a3088"/>
+  <!-- head + guan hat -->
+  <ellipse cx="60" cy="40" rx="16" ry="18" fill="url(#mSkin)"/>
+  <path d="M44,34 L76,34 L74,22 Q60,10 46,22 Z" fill="#1a1028"/>
+  <rect x="52" y="8" width="16" height="16" rx="2" fill="#2a1848" stroke="#e8c547" stroke-width="1.5"/>
+  <line x1="60" y1="8" x2="60" y2="0" stroke="#e8c547" stroke-width="2"/>
+  <circle cx="60" cy="0" r="3" fill="#ffe484"/>
+  <!-- beard -->
+  <path d="M52,52 Q60,64 68,52" fill="#3a3028"/>
+  <circle cx="53" cy="42" r="1.7" fill="#1a1008"/>
+  <circle cx="67" cy="42" r="1.7" fill="#1a1008"/>
+  <!-- aura -->
+  <circle cx="60" cy="90" r="40" fill="none" stroke="#a78bfa" stroke-width="1" opacity="0.25" stroke-dasharray="4 4"/>
+</svg>

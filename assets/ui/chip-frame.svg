@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 50" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="chipBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#472b15"/>
+      <stop offset="55%" stop-color="#2a180b"/>
+      <stop offset="100%" stop-color="#170c05"/>
+    </linearGradient>
+    <linearGradient id="chipRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8c547"/>
+      <stop offset="50%" stop-color="#a67c1a"/>
+      <stop offset="100%" stop-color="#5c3e08"/>
+    </linearGradient>
+  </defs>
+  <rect x="1.5" y="1.5" width="217" height="47" rx="4" fill="url(#chipBg)" stroke="url(#chipRim)" stroke-width="2.2"/>
+  <rect x="5" y="5" width="210" height="40" rx="2" fill="none" stroke="rgba(232,197,71,0.18)" stroke-width="1"/>
+</svg>

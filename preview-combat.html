@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skill Design Preview — 3Q diễn nghĩa</title>
+  <link rel="stylesheet" href="assets/fonts/be-vietnam-pro.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/combat.css" />
+  <link rel="stylesheet" href="css/combat-vfx.css" />
+</head>
+<body>
+  <div id="app">
+    <div id="combat-overlay" class="combat-overlay">
+      <div class="combat-stage" id="stage">
+        <div class="combat-atmosphere" aria-hidden="true"></div>
+        <div class="combat-vignette" aria-hidden="true"></div>
+        <header class="combat-head">
+          <div class="combat-vs-bar">
+            <div class="vs-side ally">
+              <span class="vs-avatar ally"></span>
+              <div class="vs-meta">
+                <span class="side-name ally">Lưu Bị</span>
+                <span class="side-sub ally">Skill Design Demo</span>
+              </div>
+            </div>
+            <span class="combat-vs-medallion"><i>VS</i></span>
+            <div class="vs-side enemy">
+              <div class="vs-meta enemy">
+                <span class="side-name enemy">Khăn Vàng</span>
+                <span class="side-sub enemy">Timeline + Particles</span>
+              </div>
+              <span class="vs-avatar enemy"></span>
+            </div>
+          </div>
+        </header>
+        <h2 class="combat-title-sub">Học JRPG timeline · LiteFX particles</h2>
+        <div class="combat-round-badge">Bấm skill bên dưới</div>
+        <div class="combat-arena">
+          <div class="combat-field">
+            <div class="combat-side-label enemy-label">Địch</div>
+            <div id="combat-enemy" class="combat-grid"></div>
+            <div class="combat-formation-mark" aria-hidden="true">
+              <span class="bagua-ring-deco"></span>
+              <span class="bagua-core">☯</span>
+              <span class="bagua-text">八卦陣</span>
+            </div>
+            <div id="combat-player" class="combat-grid"></div>
+            <div class="combat-side-label ally-label">Phe ta</div>
+          </div>
+          <div id="combat-fx" class="combat-fx"></div>
+        </div>
+        <div class="skd-demo-bar" id="demo-bar"></div>
+      </div>
+    </div>
+  </div>
+  <script src="js/combat/skill-design.js"></script>
+  <script src="js/combat/combat-vfx.js"></script>
+  <script>
+    var SPRITES = {
+      cavalry: "assets/units/general-cavalry.svg",
+      infantry: "assets/units/general-infantry.svg",
+      spear: "assets/units/general-spear.svg",
+      archer: "assets/units/general-archer.svg",
+      strategist: "assets/units/general-strategist.svg"
+    };
+    var CHAR = { cavalry: "騎", infantry: "步", spear: "槍", archer: "弓", strategist: "謀" };
+    var LBL = { cavalry: "Kỵ", infantry: "Bộ", spear: "Thương", archer: "Cung", strategist: "Mưu" };
+
+    function card(u) {
+      var div = document.createElement("div");
+      div.className = "c-card q-" + (u.quality || "white") + " " + u.side + " troop-" + u.troop;
+      div.dataset.side = u.side;
+      div.dataset.uid = u.uid;
+      var flag = u.name.replace(/\s+/g, "").slice(0, 2);
+      var mPct = Math.round((u.morale / u.maxMorale) * 100);
+      div.innerHTML =
+        '<div class="c-flag"><span class="c-flag-pole"></span><b>' + flag + '</b></div>' +
+        '<div class="c-sprite-wrap"><img class="c-sprite-img" src="' + SPRITES[u.troop] + '" alt="" />' +
+        '<span class="c-troop-badge">' + CHAR[u.troop] + '</span></div>' +
+        '<div class="c-minions"><img src="assets/units/minion.svg" /><img src="assets/units/minion.svg" /><img src="assets/units/minion.svg" /></div>' +
+        '<div class="c-plate"><div class="c-name">' + u.name + '</div>' +
+        '<div class="c-meta"><span class="c-troop">' + LBL[u.troop] + '</span> Lv.' + u.level + '</div>' +
+        '<div class="c-hp"><i style="width:100%"></i></div>' +
+        '<div class="c-morale"><i style="width:' + mPct + '%"></i></div></div>';
+      return div;
+    }
+
+    function place(container, units, isEnemy) {
+      var slots = [null, null, null, null, null];
+      units.forEach(function (u) { slots[u.slot] = u; });
+      var front = document.createElement("div"); front.className = "c-row front";
+      var back = document.createElement("div"); back.className = "c-row back";
+      [0,1,2].forEach(function (i) {
+        var cell = document.createElement("div");
+        cell.className = "c-slot" + (slots[i] ? "" : " empty");
+        if (slots[i]) cell.appendChild(card(slots[i]));
+        front.appendChild(cell);
+      });
+      [3,4].forEach(function (i) {
+        var cell = document.createElement("div");
+        cell.className = "c-slot" + (slots[i] ? "" : " empty");
+        if (slots[i]) cell.appendChild(card(slots[i]));
+        back.appendChild(cell);
+      });
+      if (isEnemy) { container.appendChild(back); container.appendChild(front); }
+      else { container.appendChild(front); container.appendChild(back); }
+    }
+
+    place(document.getElementById("combat-enemy"), [
+      { uid: "e1", name: "Đỗ Thám", troop: "archer", level: 1, quality: "white", side: "enemy", slot: 1, morale: 40, maxMorale: 100 },
+      { uid: "e2", name: "Khăn Vàng", troop: "infantry", level: 1, quality: "white", side: "enemy", slot: 0, morale: 20, maxMorale: 100 },
+      { uid: "e3", name: "Khăn Vàng", troop: "spear", level: 1, quality: "white", side: "enemy", slot: 1, morale: 55, maxMorale: 100 },
+      { uid: "e4", name: "Khăn Vàng", troop: "infantry", level: 1, quality: "white", side: "enemy", slot: 2, morale: 30, maxMorale: 100 }
+    ], true);
+
+    place(document.getElementById("combat-player"), [
+      { uid: "a1", name: "Lưu Bị", troop: "strategist", level: 3, quality: "green", side: "ally", slot: 0, morale: 70, maxMorale: 100 },
+      { uid: "a2", name: "Quan Vũ", troop: "cavalry", level: 3, quality: "blue", side: "ally", slot: 1, morale: 90, maxMorale: 100 },
+      { uid: "a3", name: "Trương Phi", troop: "infantry", level: 3, quality: "blue", side: "ally", slot: 2, morale: 50, maxMorale: 100 }
+    ], false);
+
+    var demos = [
+      { flash: "bagua", text: "BÁT QUÁI TRẬN", label: "Bát Quái" },
+      { flash: "fire_rain", text: "THIÊN HỎA", label: "Thiên Hỏa" },
+      { flash: "thunder", text: "LÔI KÍCH", label: "Lôi Kích" },
+      { flash: "gold_pierce", text: "LONG NỖ", label: "Long Nỗ" },
+      { flash: "wind", text: "PHONG VÂN", label: "Phong Vân" },
+      { flash: "gold_red", text: "VŨ THÁNH", label: "Vũ Thánh" },
+      { flash: "green_poison", text: "ĐỘC MƯU", label: "Độc Mưu" },
+      { flash: "gold_soft", text: "NHÂN ĐỨC", label: "Nhân Đức" }
+    ];
+
+    var bar = document.getElementById("demo-bar");
+    var root = document.getElementById("combat-overlay");
+    var layer = document.getElementById("combat-fx");
+    var playing = null;
+
+    demos.forEach(function (d) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.textContent = d.label;
+      btn.onclick = function () {
+        if (playing && playing.cancel) playing.cancel();
+        var source = document.querySelector("#combat-player .c-card");
+        var targets = Array.prototype.slice.call(document.querySelectorAll("#combat-enemy .c-card"));
+        playing = NLCombatVfx.playSkill({
+          layer: layer,
+          root: root,
+          sourceCard: source,
+          targetCards: targets.slice(0, d.flash === "thunder" || d.flash === "gold_pierce" ? 1 : 3),
+          text: d.text,
+          flash: d.flash
+        });
+      };
+      bar.appendChild(btn);
+    });
+  </script>
+</body>
+</html>

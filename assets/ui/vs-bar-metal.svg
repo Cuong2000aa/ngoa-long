@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 64" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="plate" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4a5a42"/>
+      <stop offset="18%" stop-color="#2a3830"/>
+      <stop offset="55%" stop-color="#121a14"/>
+      <stop offset="100%" stop-color="#080e0a"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f0d878"/>
+      <stop offset="40%" stop-color="#c9a227"/>
+      <stop offset="100%" stop-color="#6a4a10"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff8d0" stop-opacity="0.35"/>
+      <stop offset="40%" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="64" rx="6" fill="url(#rim)"/>
+  <rect x="3" y="3" width="714" height="58" rx="4" fill="url(#plate)"/>
+  <rect x="3" y="3" width="714" height="58" rx="4" fill="url(#shine)"/>
+  <!-- rivets -->
+  <g fill="#e8c547">
+    <circle cx="14" cy="14" r="2.2"/>
+    <circle cx="14" cy="50" r="2.2"/>
+    <circle cx="706" cy="14" r="2.2"/>
+    <circle cx="706" cy="50" r="2.2"/>
+  </g>
+  <!-- center notch glow -->
+  <ellipse cx="360" cy="32" rx="40" ry="22" fill="#2d8a4a" opacity="0.25"/>
+</svg>

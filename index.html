@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>3Q diễn nghĩa</title>
+  <link rel="icon" href="data:," />
+  <link rel="preload" href="assets/fonts/BeVietnamPro-Regular.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="assets/fonts/BeVietnamPro-Bold.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="assets/fonts/BeVietnamPro-ExtraBold.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="stylesheet" href="assets/fonts/be-vietnam-pro.css?v=31" />
+  <link rel="stylesheet" href="css/style.css?v=31" />
+  <link rel="stylesheet" href="css/game-ui.css?v=31" />
+  <link rel="stylesheet" href="css/combat.css?v=31" />
+  <link rel="stylesheet" href="css/combat-vfx.css?v=31" />
+</head>
+<body>
+  <!-- Loading full-screen: hiện ngay, ẩn khi NLBoot gate xong -->
+  <div id="nl-loading" class="nl-loading" role="status" aria-live="polite" aria-busy="true">
+    <div class="nl-loading-veil" aria-hidden="true"></div>
+    <div class="nl-loading-panel">
+      <div class="nl-loading-crest" aria-hidden="true">龍</div>
+      <div class="nl-loading-title">3Q DIỄN NGHĨA</div>
+      <p class="nl-loading-tag" id="nl-loading-label">Đang mở bản đồ…</p>
+      <div class="nl-loading-track" aria-hidden="true">
+        <div class="nl-loading-fill" id="nl-loading-fill"></div>
+      </div>
+      <p class="nl-loading-pct" id="nl-loading-pct">0%</p>
+    </div>
+  </div>
+
+  <div id="app">
+    <!-- Start -->
+    <section id="screen-start" class="screen active">
+      <div class="start-bg"></div>
+      <div class="start-panel ornate">
+        <div class="start-crest" aria-hidden="true"></div>
+        <div class="ornate-title">3Q DIỄN NGHĨA</div>
+        <p class="start-tag">Chiến thuật · Offline · Tam Quốc</p>
+        <p class="start-tag">Tướng mở theo phó bản &amp; danh vọng</p>
+        <div class="faction-pick" id="faction-pick">
+          <button type="button" class="faction" data-faction="wei" aria-pressed="false"><span>Ngụy</span></button>
+          <button type="button" class="faction" data-faction="shu" aria-pressed="true"><span>Thục</span></button>
+          <button type="button" class="faction" data-faction="wu" aria-pressed="false"><span>Ngô</span></button>
+        </div>
+        <label class="field">
+          <span>Tên thành chủ</span>
+          <input id="player-name" type="text" maxlength="16" value="Lưu Huyền Đức" autocomplete="off" />
+        </label>
+        <div class="start-actions">
+          <button type="button" id="btn-new" class="btn-game primary">Khai quốc</button>
+          <button type="button" id="btn-continue" class="btn-game" hidden>Tiếp tục</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main — layout 3 tầng chuẩn webgame chiến thuật 2011 -->
+    <section id="screen-game" class="screen">
+      <div class="game-stage">
+        <div id="iso-town-map" class="iso-town-map" aria-hidden="true"></div>
+        <div id="building-labels" class="building-labels"></div>
+
+        <!-- Top HUD cố định góc trên -->
+        <header class="nl-top">
+          <div class="nl-avatar">
+            <div class="avatar-frame">
+              <div class="avatar-face" id="avatar-face"></div>
+              <span class="avatar-lv" id="avatar-lv">Lv.1</span>
+            </div>
+            <div class="avatar-name" id="avatar-name">Thành Chủ</div>
+          </div>
+          <div class="nl-res">
+            <div class="res-chip silver" id="chip-silver" title="Bạc (tăng theo thời gian thực)">
+              <i class="ico-silver"></i>
+              <div class="res-col">
+                <span class="res-label">Bạc: <b id="res-silver">0</b></span>
+                <small class="res-rate" id="rate-silver">+0/phút</small>
+              </div>
+            </div>
+            <div class="res-chip food" id="chip-food" title="Lương thực (tăng theo thời gian thực)">
+              <i class="ico-food"></i>
+              <div class="res-col">
+                <span class="res-label">Lương: <b id="res-food">0</b></span>
+                <small class="res-rate" id="rate-food">+0/phút</small>
+              </div>
+            </div>
+            <div class="res-chip gold" title="Vàng / Nguyên bảo">
+              <i class="ico-coin"></i>
+              <span id="res-gold">0</span>
+              <button type="button" class="chip-plus" id="btn-tick" title="Tua nhanh +1 giờ sản xuất">+1h</button>
+            </div>
+          </div>
+          <div class="nl-quick">
+            <button type="button" class="qbtn" data-panel="world" title="Bản đồ Thế giới"><span>Thế Giới</span></button>
+            <button type="button" class="qbtn" id="btn-save" title="Lưu game"><span>Lưu</span></button>
+            <button type="button" class="qbtn" id="btn-menu" title="Menu"><span>Hệ thống</span></button>
+          </div>
+        </header>
+
+        <!-- Bảng Thành Chính trực tiếp (Mặc định hiển thị khi ở Thành Chính) -->
+        <aside id="city-hud-dock" class="city-hud-dock ornate">
+          <div class="dock-head">
+            <h3>Quản Lý Thành Chính</h3>
+            <span class="dock-sub" id="dock-tyvu-cap">Trần cấp: Lv.1</span>
+          </div>
+          <div id="city-dock-list" class="city-dock-list"></div>
+        </aside>
+
+        <!-- Right side -->
+        <aside class="nl-side">
+          <button type="button" class="side-btn" data-panel="city">Quốc Chính</button>
+          <button type="button" class="side-btn" data-panel="world">Thế Giới</button>
+          <button type="button" class="side-btn" data-panel="equip">Trang bị</button>
+          <button type="button" class="side-btn" data-panel="thap">Tháp</button>
+          <button type="button" class="side-btn" id="btn-day"><span id="day-label">Ngày 1</span></button>
+        </aside>
+
+        <!-- Bottom nav chuẩn Ngọa Long: [Thành Chính], [Tửu Quán], [Phó Bản], [Lôi Đài] -->
+        <nav class="nl-bottom" id="bottom-nav">
+          <button type="button" class="nav-item active" data-panel="city-home"><i class="ni ni-home"></i><span>Thành Chính</span></button>
+          <button type="button" class="nav-item" data-panel="generals"><i class="ni ni-gen"></i><span>Tửu Quán</span></button>
+          <button type="button" class="nav-item" data-panel="tower"><i class="ni ni-dung"></i><span>Phó Bản</span></button>
+          <button type="button" class="nav-item" data-panel="arena"><i class="ni ni-arena"></i><span>Lôi Đài</span></button>
+        </nav>
+
+        <!-- Floating tip -->
+        <div class="nl-tip" id="nl-tip">Click công trình để nâng cấp</div>
+        <div class="nl-toast" id="nl-toast" hidden></div>
+      </div>
+
+      <!-- Slide panels -->
+      <div id="panel-layer" class="panel-layer" hidden>
+        <div class="panel-backdrop" id="panel-backdrop"></div>
+        <div class="panel-sheet ornate" id="panel-sheet">
+          <button type="button" class="panel-close" id="panel-close">×</button>
+          <div id="panel-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Combat — nền tối, thẻ portrait, sĩ khí, log giấy da -->
+    <div id="combat-overlay" class="combat-overlay" hidden>
+      <div class="combat-stage">
+        <div class="combat-atmosphere" aria-hidden="true"></div>
+        <div class="combat-vignette" aria-hidden="true"></div>
+
+        <header class="combat-head">
+          <div class="combat-vs-bar" id="combat-vs-bar">
+            <div class="vs-side ally">
+              <span class="vs-avatar ally" id="combat-ally-avatar"></span>
+              <div class="vs-meta">
+                <span class="side-name ally" id="combat-ally-name">Phe ta</span>
+                <span class="side-sub ally" id="combat-ally-sub">Đạo quân</span>
+              </div>
+            </div>
+            <span class="combat-vs-medallion" aria-hidden="true"><i>對</i></span>
+            <div class="vs-side enemy">
+              <div class="vs-meta enemy">
+                <span class="side-name enemy" id="combat-enemy-name">Địch</span>
+                <span class="side-sub enemy" id="combat-enemy-sub">Phó bản</span>
+              </div>
+              <span class="vs-avatar enemy" id="combat-enemy-avatar"></span>
+            </div>
+          </div>
+        </header>
+
+        <h2 id="combat-title" class="combat-title-sub">Chiến đấu</h2>
+        <div class="combat-round-badge" id="combat-round-badge">Hiệp 1</div>
+
+        <div class="combat-arena">
+          <div class="combat-field">
+            <div class="combat-side-label enemy-label">ĐỊCH QUÂN</div>
+            <div id="combat-enemy" class="combat-grid"></div>
+            <div class="combat-formation-mark" aria-hidden="true">
+              <span class="bagua-core">陣</span>
+              <span class="bagua-text">Sĩ khí 0–100</span>
+            </div>
+            <div id="combat-player" class="combat-grid"></div>
+            <div class="combat-side-label ally-label">QUÂN TA</div>
+          </div>
+          <div id="combat-fx" class="combat-fx"></div>
+        </div>
+
+        <div id="combat-result" class="combat-result" hidden></div>
+        <div id="combat-log" class="combat-log" hidden></div>
+
+        <aside class="combat-round-btns">
+          <button type="button" id="btn-combat-skip" class="c-round-btn" title="Bỏ qua hoạt cảnh">
+            <span class="c-round-ico">≫</span>
+            <span class="c-round-lbl">Bỏ qua</span>
+          </button>
+          <button type="button" id="btn-combat-log-toggle" class="c-round-btn" title="Chiến báo">
+            <span class="c-round-ico">報</span>
+            <span class="c-round-lbl">Chiến báo</span>
+          </button>
+          <button type="button" id="btn-combat-close" class="c-round-btn primary" hidden title="Nhận thưởng">
+            <span class="c-round-ico">賞</span>
+            <span class="c-round-lbl">Thưởng</span>
+          </button>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Formation 3+2 -->
+    <div id="form-overlay" class="overlay" hidden>
+      <div class="form-modal ornate form-modal-nl">
+        <div class="nl-panel-head" style="border:none;padding:0;margin:0 0 0.35rem">
+          <div class="nl-panel-ico" aria-hidden="true">陣</div>
+          <div>
+            <h2 style="margin:0">Bày binh bố trận</h2>
+            <p class="nl-panel-sub">Hàng trước 3 · Hàng sau 2 · Tối đa 5 tướng</p>
+          </div>
+        </div>
+        <div id="form-preview-3d" class="form-preview-3d" aria-label="Xem trước đội hình 3D"></div>
+        <div class="form-arena form-grid-wrap">
+          <div class="form-row-label">Hàng trước</div>
+          <div id="form-front" class="form-slots front"></div>
+          <div class="form-row-label">Hàng sau</div>
+          <div id="form-back" class="form-slots back"></div>
+        </div>
+        <p class="form-pool-hint">Kho tướng · chạm thẻ để xếp / gỡ · dual ⇄ đổi binh chủng</p>
+        <div id="form-pool" class="form-pool"></div>
+        <div class="battle-actions">
+          <button type="button" id="btn-form-cancel" class="btn-game">Hủy</button>
+          <button type="button" id="btn-form-fight" class="btn-game primary">Xuất trận</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/boot.js"></script>
+  <script src="js/db/nl-db.bundle.js"></script>
+  <script src="js/db/database.js"></script>
+  <script src="js/combat/combat-engine.js"></script>
+  <script src="js/combat/skill-design.js"></script>
+  <script src="js/combat/combat-vfx.js"></script>
+  <script src="js/combat/combat-ui.js"></script>
+  <script src="js/city/player-state.js"></script>
+  <script src="js/city/city-economy.js"></script>
+  <script src="js/campaign/campaign-engine.js"></script>
+  <script src="js/recruit/recruit-system.js"></script>
+  <script src="js/arena/arena-system.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/battle.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/core/backend.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
+

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Người · xem model</title>
+  <link rel="icon" href="data:," />
+  <style>html, body { margin: 0; height: 100%; overflow: hidden; }</style>
+</head>
+<body>
+  <!-- Mặc định: model gốc (trước/bên). ?debug=1 tô vùng xương; ?rig=1 bản đã gắn xương, &pose=walk|idle|guard|hoe|dig|thrust|carry, &t=giây -->
+  <script type="module">
+    import * as THREE from "three";
+    import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+    import { MeshoptDecoder } from "three/examples/jsm/libs/meshopt_decoder.module.js";
+
+    const q = new URLSearchParams(location.search);
+    const names = (q.get("m") ?? "soldier,villager,villager2,official").split(",");
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(innerWidth, innerHeight);
+    renderer.setScissorTest(true);
+    document.body.appendChild(renderer.domElement);
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xa9bfd4);
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x556677, 2.4));
+    const sun = new THREE.DirectionalLight(0xffffff, 2.4);
+    sun.position.set(2, 4, 3);
+    scene.add(sun);
+
+    const subjects = [];
+    let folk = null, people = null;
+    const folkUrl = "/src/city/folk.ts", peopleUrl = "/src/city/people.ts";
+    if (q.has("rig") || q.has("debug")) {
+      folk = await import(/* @vite-ignore */ folkUrl);
+      people = await import(/* @vite-ignore */ peopleUrl);
+    }
+    const ROLE = { soldier: "soldier", villager: "farmer", villager2: "miner", official: "scholar" };
+    const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
+    for (let i = 0; i < names.length; i++) {
+      let obj;
+      if (q.has("debug")) obj = await folk.loadFolkDebug(names[i]);
+      else if (q.has("rig")) {
+        const kit = await folk.loadFolk();
+        const role = ROLE[names[i]];
+        const rig = kit.rig(role, "shu", names[i] === "villager2" ? 1 : 0);
+        obj = rig.root;
+        obj.userData.act = (dt, t, pose) => {
+          const walking = pose === "walk" || pose === "carry";
+          people.animateRig(rig, walking ? "idle" : pose, walking ? 1.5 * dt : 0, walking ? 1 : 0, dt, t, pose === "carry", i);
+        };
+      }
+      else obj = (await loader.loadAsync(`/assets/city/people/${names[i]}.glb`)).scene;
+      const box = new THREE.Box3().setFromObject(obj);
+      const g = new THREE.Group();
+      g.add(obj);
+      if (!q.has("rig")) {
+        const s = 1.9 / (box.max.y - box.min.y);
+        obj.scale.multiplyScalar(s);
+        obj.position.y -= box.min.y * s;
+      }
+      g.position.x = (i - (names.length - 1) / 2) * 2.4;
+      scene.add(g);
+      subjects.push(obj);
+      console.log(names[i], box.min.toArray().map((v) => v.toFixed(3)).join(","), box.max.toArray().map((v) => v.toFixed(3)).join(","));
+    }
+    scene.add(new THREE.GridHelper(12, 24, 0x334455, 0x778899));
+    const span = names.length * 2.4;
+    const front = new THREE.PerspectiveCamera(30, innerWidth / (innerHeight / 2), 0.1, 100);
+    front.position.set(0, 1.1, span * 1.25 + 2);
+    front.lookAt(0, 0.95, 0);
+    const side = new THREE.PerspectiveCamera(30, innerWidth / (innerHeight / 2), 0.1, 100);
+    side.position.set(span * 0.9, 1.6, span * 0.9);
+    side.lookAt(0, 0.9, 0);
+    const pose = q.get("pose") ?? "walk";
+    const fixedT = q.has("t") ? Number(q.get("t")) : null;
+    if (fixedT !== null) for (let i = 0; i < fixedT * 60; i++) subjects.forEach((s) => s.userData.act?.(1 / 60, i / 60, pose));
+    let last = performance.now(), t = 0;
+    renderer.setAnimationLoop(() => {
+      const now = performance.now();
+      const dt = (now - last) / 1000;
+      last = now;
+      t += dt;
+      if (fixedT === null) subjects.forEach((s) => s.userData.act?.(dt, t, pose));
+      const w = innerWidth, h = innerHeight / 2;
+      [[front, h], [side, 0]].forEach(([cam, y]) => {
+        renderer.setViewport(0, y, w, h);
+        renderer.setScissor(0, y, w, h);
+        renderer.render(scene, cam);
+      });
+      document.body.dataset.ready = "1";
+    });
+  </script>
+</body>
+</html>

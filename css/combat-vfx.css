@@ -1,0 +1,379 @@
+/**
+ * Combat VFX + skill presentation — không giới hạn “nhẹ”
+ * Sprite FX từ assets/fx/* + particle canvas additive
+ */
+.combat-fx {
+  z-index: 12;
+  overflow: hidden;
+}
+.vfx-canvas {
+  mix-blend-mode: screen;
+  opacity: 0.95;
+}
+
+/* Slash / impact */
+.vfx-slash,
+.vfx-impact,
+.vfx-sigil,
+.vfx-shockwave,
+.vfx-sheet {
+  position: absolute;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 16;
+}
+.vfx-slash {
+  width: 120px;
+  height: 120px;
+  background:
+    linear-gradient(135deg, transparent 40%, rgba(255, 240, 180, 0.95) 50%, transparent 60%),
+    radial-gradient(circle, rgba(255, 80, 40, 0.55), transparent 70%);
+  animation: vfx-slash-spin 0.5s ease-out forwards;
+  filter: drop-shadow(0 0 12px #ff6b3a);
+}
+.vfx-slash.from-enemy {
+  animation-name: vfx-slash-spin-rev;
+}
+.vfx-impact {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff7c2 0%, #fb923c 35%, transparent 70%);
+  animation: vfx-pop 0.45s ease-out forwards;
+  mix-blend-mode: screen;
+}
+.vfx-impact.crit {
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, #fff 0%, #fde68a 20%, #ef4444 45%, transparent 72%);
+  filter: drop-shadow(0 0 20px #fbbf24);
+}
+.vfx-shockwave {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(253, 230, 138, 0.85);
+  border-radius: 50%;
+  animation: vfx-ring 0.55s ease-out forwards;
+  box-shadow: 0 0 24px rgba(232, 197, 71, 0.65);
+}
+.vfx-sigil {
+  font-size: 2.4rem;
+  color: #fde68a;
+  text-shadow: 0 0 18px #67e8f9, 0 0 8px #c084fc;
+  animation: vfx-sigil 0.9s ease-out forwards;
+}
+.vfx-sheet {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  image-rendering: auto;
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 16px rgba(255, 200, 80, 0.55));
+}
+.vfx-sheet.scale-L {
+  width: 240px;
+  height: 240px;
+  filter: drop-shadow(0 0 28px rgba(255, 160, 40, 0.75));
+}
+.vfx-flare {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  animation: vfx-flare 0.7s ease-out forwards;
+  z-index: 15;
+}
+
+/* Số sát thương bay (wiki NL: chữ đỏ lớn trên đầu cụm) */
+.c-float {
+  position: absolute;
+  z-index: 22;
+  transform: translate(-50%, 0);
+  pointer-events: none;
+  font-family: var(--font-ui, "Be Vietnam Pro", "Segoe UI", Tahoma, sans-serif);
+  font-weight: 800;
+  font-size: 1.45rem;
+  letter-spacing: 0.02em;
+  color: #ff3b2f;
+  text-shadow:
+    0 0 2px #1a0505,
+    0 2px 0 #4a0a0a,
+    0 0 12px rgba(255, 60, 40, 0.7);
+  animation: c-float-up 0.9s ease-out forwards;
+  white-space: nowrap;
+}
+.c-float.crit {
+  font-size: 1.75rem;
+  color: #ffd54a;
+  text-shadow:
+    0 0 2px #3a2000,
+    0 2px 0 #6a3a00,
+    0 0 16px rgba(255, 200, 40, 0.85);
+}
+.c-float.miss {
+  font-size: 1.1rem;
+  color: #cbd5e1;
+  text-shadow: 0 1px 0 #0f172a;
+}
+.c-float.debuff {
+  color: #e9d5ff;
+  font-size: 0.85rem;
+  text-shadow: 0 0 8px #7e22ce, 0 2px 4px #000;
+}
+.c-float.heal {
+  color: #4ade80;
+  text-shadow: 0 0 10px rgba(74, 222, 128, 0.55);
+}
+@keyframes c-float-up {
+  0% { transform: translate(-50%, 8px) scale(0.7); opacity: 0; }
+  18% { transform: translate(-50%, -4px) scale(1.12); opacity: 1; }
+  100% { transform: translate(-50%, -48px) scale(1); opacity: 0; }
+}
+
+/* Banner chiêu */
+.c-skill-banner {
+  position: absolute;
+  left: 50%;
+  top: 18%;
+  transform: translateX(-50%) scale(0.85);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: min(420px, 70vw);
+  padding: 0.55rem 1.1rem;
+  border: 2px solid #5eead4;
+  background:
+    linear-gradient(90deg, rgba(8, 40, 48, 0.2), rgba(10, 24, 36, 0.92) 18%, rgba(10, 24, 36, 0.92) 82%, rgba(8, 40, 48, 0.2)),
+    url("../assets/ui/borders/panel-border-010.png") center / 100% 100% no-repeat;
+  color: #e0f7fa;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  box-shadow:
+    0 0 0 1px rgba(94, 234, 212, 0.35),
+    0 12px 40px rgba(0, 0, 0, 0.65),
+    inset 0 0 30px rgba(45, 212, 191, 0.12);
+  animation: vfx-banner 0.85s ease-out forwards;
+  text-shadow: 0 0 12px rgba(94, 234, 212, 0.45);
+}
+.c-skill-banner .skd-glyph {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #5eead4;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fde68a;
+  font-size: 1rem;
+}
+.c-skill-banner.skd-scale-L {
+  top: 14%;
+  font-size: 1.15rem;
+  border-color: #fbbf24;
+  box-shadow: 0 0 40px rgba(251, 191, 36, 0.35), 0 16px 48px rgba(0, 0, 0, 0.7);
+}
+.c-skill-banner.skd-ember { border-color: #fb923c; color: #ffedd5; }
+.c-skill-banner.skd-frost { border-color: #38bdf8; color: #e0f2fe; }
+.c-skill-banner.skd-storm { border-color: #a78bfa; color: #ede9fe; }
+.c-skill-banner.skd-bagua { border-color: #fde047; color: #fef9c3; }
+
+.c-screen-flash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 11;
+  background: radial-gradient(ellipse at 50% 40%, rgba(94, 234, 212, 0.35), transparent 60%);
+  animation: vfx-flash 0.4s ease-out forwards;
+  mix-blend-mode: screen;
+}
+.c-screen-flash.skd-ember { background: radial-gradient(ellipse at 50% 40%, rgba(251, 146, 60, 0.4), transparent 60%); }
+.c-screen-flash.skd-frost { background: radial-gradient(ellipse at 50% 40%, rgba(56, 189, 248, 0.4), transparent 60%); }
+.c-screen-flash.skd-storm { background: radial-gradient(ellipse at 50% 40%, rgba(167, 139, 250, 0.4), transparent 60%); }
+.c-screen-flash.skd-bagua { background: radial-gradient(ellipse at 50% 40%, rgba(253, 224, 71, 0.35), transparent 60%); }
+
+.c-bagua-ring {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  width: 160px;
+  height: 160px;
+  border: 2px solid rgba(253, 224, 71, 0.65);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 2.5rem;
+  color: #fde68a;
+  box-shadow: 0 0 40px rgba(103, 232, 249, 0.35), inset 0 0 30px rgba(192, 132, 252, 0.25);
+  animation: vfx-bagua 1.05s ease-out forwards;
+  z-index: 14;
+  pointer-events: none;
+}
+.c-wind-sweep {
+  position: absolute;
+  left: -10%;
+  top: 30%;
+  width: 120%;
+  height: 28%;
+  background: linear-gradient(90deg, transparent, rgba(110, 231, 183, 0.35), transparent);
+  transform: skewY(-6deg);
+  animation: vfx-wind 0.65s ease-out forwards;
+  pointer-events: none;
+  z-index: 13;
+  mix-blend-mode: screen;
+}
+.c-pierce-beam {
+  position: absolute;
+  left: 10%;
+  top: 42%;
+  width: 80%;
+  height: 6px;
+  background: linear-gradient(90deg, transparent, #fde68a, #fff, #fde68a, transparent);
+  box-shadow: 0 0 20px #fbbf24;
+  animation: vfx-beam 0.5s ease-out forwards;
+  pointer-events: none;
+  z-index: 13;
+}
+.c-thunder-bolt {
+  position: absolute;
+  left: 48%;
+  top: 8%;
+  width: 8px;
+  height: 55%;
+  background: linear-gradient(180deg, #fff, #a78bfa, transparent);
+  box-shadow: 0 0 24px #c4b5fd;
+  animation: vfx-bolt 0.45s ease-out forwards;
+  pointer-events: none;
+  z-index: 14;
+}
+
+.skill-glow {
+  box-shadow: 0 0 0 2px #5eead4, 0 0 28px rgba(94, 234, 212, 0.55) !important;
+  filter: brightness(1.15);
+}
+.skd-windup {
+  animation: vfx-charge 0.35s ease-in-out infinite alternate;
+}
+
+.vfx-lunge-fwd { animation: vfx-lunge-f 0.35s ease-out; }
+.vfx-lunge-back { animation: vfx-lunge-b 0.35s ease-out; }
+.vfx-shake { animation: vfx-shake 0.3s linear; }
+
+@keyframes vfx-slash-spin {
+  from { transform: translate(-50%, -50%) rotate(-40deg) scale(0.4); opacity: 0; }
+  40% { opacity: 1; }
+  to { transform: translate(-50%, -50%) rotate(50deg) scale(1.3); opacity: 0; }
+}
+@keyframes vfx-slash-spin-rev {
+  from { transform: translate(-50%, -50%) rotate(40deg) scale(0.4); opacity: 0; }
+  40% { opacity: 1; }
+  to { transform: translate(-50%, -50%) rotate(-50deg) scale(1.3); opacity: 0; }
+}
+@keyframes vfx-pop {
+  from { transform: translate(-50%, -50%) scale(0.2); opacity: 1; }
+  to { transform: translate(-50%, -50%) scale(1.6); opacity: 0; }
+}
+@keyframes vfx-ring {
+  from { transform: translate(-50%, -50%) scale(0.3); opacity: 1; }
+  to { transform: translate(-50%, -50%) scale(3.2); opacity: 0; }
+}
+@keyframes vfx-sigil {
+  from { transform: translate(-50%, -50%) scale(0.5) rotate(-20deg); opacity: 0; }
+  40% { opacity: 1; }
+  to { transform: translate(-50%, -50%) scale(1.4) rotate(20deg); opacity: 0; }
+}
+@keyframes vfx-banner {
+  0% { transform: translateX(-50%) scale(0.7); opacity: 0; }
+  25% { transform: translateX(-50%) scale(1.05); opacity: 1; }
+  75% { transform: translateX(-50%) scale(1); opacity: 1; }
+  100% { transform: translateX(-50%) scale(1); opacity: 0; }
+}
+@keyframes vfx-flash {
+  from { opacity: 0.85; }
+  to { opacity: 0; }
+}
+@keyframes vfx-bagua {
+  from { transform: translate(-50%, -50%) scale(0.4) rotate(0deg); opacity: 0; }
+  30% { opacity: 1; }
+  to { transform: translate(-50%, -50%) scale(1.35) rotate(180deg); opacity: 0; }
+}
+@keyframes vfx-wind {
+  from { transform: skewY(-6deg) translateX(-30%); opacity: 0; }
+  40% { opacity: 1; }
+  to { transform: skewY(-6deg) translateX(30%); opacity: 0; }
+}
+@keyframes vfx-beam {
+  from { opacity: 0; transform: scaleX(0.2); }
+  40% { opacity: 1; transform: scaleX(1); }
+  to { opacity: 0; }
+}
+@keyframes vfx-bolt {
+  from { opacity: 0; transform: scaleY(0.2); }
+  30% { opacity: 1; transform: scaleY(1); }
+  to { opacity: 0; }
+}
+@keyframes vfx-charge {
+  from { filter: brightness(1.05); }
+  to { filter: brightness(1.35) saturate(1.2); }
+}
+@keyframes vfx-lunge-f {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+  100% { transform: translateY(0); }
+}
+@keyframes vfx-lunge-b {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(14px); }
+  100% { transform: translateY(0); }
+}
+@keyframes vfx-shake {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-6px, 2px); }
+  40% { transform: translate(5px, -3px); }
+  60% { transform: translate(-4px, -2px); }
+  80% { transform: translate(4px, 1px); }
+}
+@keyframes vfx-flare {
+  from { transform: translate(-50%, -50%) scale(0.4); opacity: 1; }
+  to { transform: translate(-50%, -50%) scale(2.2); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vfx-slash, .vfx-impact, .c-skill-banner, .c-screen-flash,
+  .c-bagua-ring, .vfx-sheet, .vfx-lunge-fwd, .vfx-lunge-back, .vfx-shake {
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Skill-design preview bar (preview-combat.html) */
+.skd-demo-bar,
+#demo-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0.65rem 0.75rem 1rem;
+  margin-top: 0.35rem;
+  z-index: 20;
+  position: relative;
+}
+.skd-demo-bar button,
+#demo-bar button {
+  font-family: inherit;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  padding: 0.4rem 0.7rem;
+  border-radius: 4px;
+  border: 1px solid rgba(232, 197, 71, 0.45);
+  background: linear-gradient(180deg, rgba(60, 36, 14, 0.95), rgba(28, 16, 8, 0.95));
+  color: #fde68a;
+  cursor: pointer;
+}
+.skd-demo-bar button:hover,
+#demo-bar button:hover {
+  border-color: #e8c547;
+  color: #fff8d6;
+}

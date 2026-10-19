@@ -1,0 +1,4302 @@
+{
+  "matched": 69,
+  "unmatched": 23,
+  "newSkills": 252,
+  "updatedGenerals": 69,
+  "playableMatched": 50,
+  "npcMatched": 19,
+  "matches": [
+    {
+      "generalId": "liubei",
+      "name": "Lưu Bị",
+      "npcOnly": false,
+      "wikiId": "3834",
+      "skillsByQuality": {
+        "white": "hieu_lenh",
+        "green": "thien_menh",
+        "blue": "thien_chinh",
+        "purple": "quan_lam",
+        "orange": "thien_ha_chia_ba",
+        "red": "thien_ha_chia_ba"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "hieu_lenh",
+          "skillName": "Hiệu Lệnh",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "thien_menh",
+          "skillName": "Thiên Mệnh",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "thien_chinh",
+          "skillName": "Thiên Chinh",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "quan_lam",
+          "skillName": "Quân Lâm",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "thien_ha_chia_ba",
+          "skillName": "Thiên Hạ Chia Ba",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "thien_ha_chia_ba",
+          "skillName": "Thiên Hạ Chia Ba",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "guanyu",
+      "name": "Quan Vũ",
+      "npcOnly": false,
+      "wikiId": "4230",
+      "skillsByQuality": {
+        "white": "yen_nguyet",
+        "green": "thanh_long",
+        "blue": "vo_thanh",
+        "purple": "thanh_long_tram",
+        "orange": "thien_ly_don_ky",
+        "red": "uy_chan_hoa_ha"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "yen_nguyet",
+          "skillName": "Yển Nguyệt",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "thanh_long",
+          "skillName": "Thanh Long",
+          "motif": "dragon",
+          "flash": "dragon"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "vo_thanh",
+          "skillName": "Võ Thánh",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "vo_thanh",
+          "skillName": "Võ Thánh",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "thanh_long_tram",
+          "skillName": "Thanh Long Trảm",
+          "motif": "dragon",
+          "flash": "dragon"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "thanh_long_yen_nguyet",
+          "skillName": "Thanh Long Yển Nguyệt",
+          "motif": "dragon",
+          "flash": "dragon"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "thien_ly_don_ky",
+          "skillName": "Thiên Lý Đơn Kỵ",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "uy_chan_hoa_ha",
+          "skillName": "Uy Chấn Hoa Hạ",
+          "motif": "shadow",
+          "flash": "purple"
+        }
+      ]
+    },
+    {
+      "generalId": "zhangfei",
+      "name": "Trương Phi",
+      "npcOnly": false,
+      "wikiId": "4076",
+      "skillsByQuality": {
+        "white": "no_sat",
+        "green": "bao_hao",
+        "blue": "manh_ho",
+        "purple": "ho_khieu",
+        "orange": "ba_vuong_kich_dinh",
+        "red": "manh_ho_liet_son"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "no_sat",
+          "skillName": "Nộ Sát",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "bao_hao",
+          "skillName": "Bào Hao",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "manh_ho",
+          "skillName": "Mãnh Hổ",
+          "motif": "tiger",
+          "flash": "orange"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "ho_khieu",
+          "skillName": "Hổ Khiếu",
+          "motif": "tiger",
+          "flash": "orange"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "van_nguoi_kho_do",
+          "skillName": "Vạn Người Khó Đỡ",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "ba_vuong_kich_dinh",
+          "skillName": "Bá Vương Kích Đỉnh",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "manh_ho_liet_son",
+          "skillName": "Mãnh Hổ Liệt Sơn",
+          "motif": "tiger",
+          "flash": "orange"
+        }
+      ]
+    },
+    {
+      "generalId": "zhaoyun",
+      "name": "Triệu Vân",
+      "npcOnly": false,
+      "wikiId": "4124",
+      "skillsByQuality": {
+        "white": "don_ky",
+        "green": "than_phong",
+        "blue": "bach_long",
+        "purple": "ngan_long",
+        "orange": "ngan_long_that_thiem",
+        "red": "thien_long_thuc_tinh"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "don_ky",
+          "skillName": "Đơn Kỵ",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "than_phong",
+          "skillName": "Thần Phong",
+          "motif": "whirlwind",
+          "flash": "wind"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "bach_long",
+          "skillName": "Bạch Long",
+          "motif": "dragon",
+          "flash": "dragon"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "ngan_long",
+          "skillName": "Ngân Long",
+          "motif": "dragon",
+          "flash": "dragon"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "ngan_long_tuong",
+          "skillName": "Ngân Long Tường",
+          "motif": "dragon",
+          "flash": "dragon"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "ngan_long_that_thiem",
+          "skillName": "Ngân Long Thất Thiểm",
+          "motif": "dragon",
+          "flash": "dragon"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "thien_long_thuc_tinh",
+          "skillName": "Thiên Long Thức Tỉnh",
+          "motif": "dragon",
+          "flash": "dragon"
+        }
+      ]
+    },
+    {
+      "generalId": "zhugeliang",
+      "name": "Gia Cát Lượng",
+      "npcOnly": false,
+      "wikiId": "3969",
+      "skillsByQuality": {
+        "white": "dong_phong",
+        "green": "phuc_long",
+        "blue": "than_toan",
+        "purple": "bat_tran_do",
+        "orange": "ky_mon_bat_tran_do",
+        "red": "ky_mon_bat_tran_do"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "dong_phong",
+          "skillName": "Đông Phong",
+          "motif": "whirlwind",
+          "flash": "wind"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "phuc_long",
+          "skillName": "Phục Long",
+          "motif": "dragon",
+          "flash": "dragon"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "than_toan",
+          "skillName": "Thần Toán",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "bat_tran_do",
+          "skillName": "Bát Trận Đồ",
+          "motif": "bagua",
+          "flash": "bagua"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "thien_dia_van_tuong",
+          "skillName": "Thiên Địa Vạn Tượng",
+          "motif": "bagua",
+          "flash": "bagua"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "ky_mon_bat_tran_do",
+          "skillName": "Kỳ Môn Bát Trận Đồ",
+          "motif": "bagua",
+          "flash": "bagua"
+        }
+      ]
+    },
+    {
+      "generalId": "huangzhong",
+      "name": "Hoàng Trung",
+      "npcOnly": false,
+      "wikiId": "4170",
+      "skillsByQuality": {
+        "white": "loi_tien",
+        "green": "liet_thi",
+        "blue": "nghe_xa",
+        "purple": "truy_nguyet",
+        "orange": "lac_nhat_than_tien",
+        "red": "xich_vu_quan_hong"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "loi_tien",
+          "skillName": "Lôi Tiễn",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "liet_thi",
+          "skillName": "Liệt Thỉ",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "nghe_xa",
+          "skillName": "Nghệ Xạ",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "truy_nguyet",
+          "skillName": "Truy Nguyệt",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "bach_ly_truy_hon",
+          "skillName": "Bách Lý Truy Hồn",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "lac_nhat_than_tien",
+          "skillName": "Lạc Nhật Thần Tiễn",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "xich_vu_quan_hong",
+          "skillName": "Xích Vũ Quán Hồng",
+          "motif": "fire",
+          "flash": "fire_rain"
+        }
+      ]
+    },
+    {
+      "generalId": "machao",
+      "name": "Mã Siêu",
+      "npcOnly": false,
+      "wikiId": "3983",
+      "skillsByQuality": {
+        "white": "pha_quan",
+        "green": "thi_quan",
+        "blue": "ky_than",
+        "purple": "phong_loi",
+        "orange": "te_nhat_thien_ky",
+        "red": "te_nhat_thien_ky"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "pha_quan",
+          "skillName": "Phá Quân",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "thi_quan",
+          "skillName": "Thí Quân",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "ky_than",
+          "skillName": "Kỵ Thần",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "phong_loi",
+          "skillName": "Phong Lôi",
+          "motif": "whirlwind",
+          "flash": "wind"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "bach_hong_quan_nhat",
+          "skillName": "Bạch Hồng Quán Nhật",
+          "motif": "fire",
+          "flash": "fire_rain"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "te_nhat_thien_ky",
+          "skillName": "Tế Nhật Thiên Kỵ",
+          "motif": "heal",
+          "flash": "gold_soft"
+        }
+      ]
+    },
+    {
+      "generalId": "pangtong",
+      "name": "Bàng Thống",
+      "npcOnly": false,
+      "wikiId": "4115",
+      "skillsByQuality": {
+        "white": "tu_dien",
+        "green": "than_loi",
+        "blue": "loi_oanh",
+        "purple": "cuu_thien_than_loi",
+        "orange": "kinh_thien_bao_loi",
+        "red": "cuu_tieu_than_loi"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "tu_dien",
+          "skillName": "Tử Điện",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "than_loi",
+          "skillName": "Thần Lôi",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "loi_oanh",
+          "skillName": "Lôi Oanh",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "cuu_thien_than_loi",
+          "skillName": "Cửu Thiên Thần Lôi",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "diet_the_thien_loi",
+          "skillName": "Diệt Thế Thiên Lôi",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "kinh_thien_bao_loi",
+          "skillName": "Kinh Thiên Bạo Lôi",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "cuu_tieu_than_loi",
+          "skillName": "Cửu Tiêu Thần Lôi",
+          "motif": "thunder",
+          "flash": "thunder"
+        }
+      ]
+    },
+    {
+      "generalId": "weiyan",
+      "name": "Ngụy Diên",
+      "npcOnly": false,
+      "wikiId": "3542",
+      "skillsByQuality": {
+        "white": "hoanh_hoa",
+        "green": "tau_sat",
+        "blue": "dang_long",
+        "purple": "tinh_ngu",
+        "orange": "troi_roi_sao_sang",
+        "red": "tinh_van_dia_liep"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "hoanh_hoa",
+          "skillName": "Hoành Họa",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "tau_sat",
+          "skillName": "Tấu Sát",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "dang_long",
+          "skillName": "Đằng Long",
+          "motif": "dragon",
+          "flash": "dragon"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "tinh_ngu",
+          "skillName": "Tinh Ngự",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "long_dang_tu_hai",
+          "skillName": "Long Đằng Tứ Hải",
+          "motif": "dragon",
+          "flash": "dragon"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "troi_roi_sao_sang",
+          "skillName": "Trời Rơi Sao Sáng",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "tinh_van_dia_liep",
+          "skillName": "Tinh Vẫn Địa Liệp",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "liufeng",
+      "name": "Lưu Phong",
+      "npcOnly": false,
+      "wikiId": "1002",
+      "skillsByQuality": {
+        "white": "thu_kich",
+        "green": "loi_tien",
+        "blue": "loi_tien",
+        "purple": "loi_tien",
+        "orange": "loi_tien",
+        "red": "loi_tien"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "thu_kich",
+          "skillName": "Thư Kích",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "loi_tien",
+          "skillName": "Lôi Tiễn",
+          "motif": "thunder",
+          "flash": "thunder"
+        }
+      ]
+    },
+    {
+      "generalId": "guanying",
+      "name": "Quan Bình",
+      "npcOnly": false,
+      "wikiId": "3801",
+      "skillsByQuality": {
+        "white": "phan_kich",
+        "green": "nghich_chuyen",
+        "blue": "bac_sat",
+        "purple": "thanh_long_hon",
+        "orange": "thanh_long_khieu_nguyet",
+        "red": "thanh_long_khieu_nguyet"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "phan_kich",
+          "skillName": "Phản Kích",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "nghich_chuyen",
+          "skillName": "Nghịch Chuyển",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "bac_sat",
+          "skillName": "Bác Sát",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "thanh_long_hon",
+          "skillName": "Thanh Long Hồn",
+          "motif": "dragon",
+          "flash": "dragon"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "thanh_long_nguyen",
+          "skillName": "Thanh Long Nguyện",
+          "motif": "dragon",
+          "flash": "dragon"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "thanh_long_khieu_nguyet",
+          "skillName": "Thanh Long Khiếu Nguyệt",
+          "motif": "dragon",
+          "flash": "dragon"
+        }
+      ]
+    },
+    {
+      "generalId": "jiangwei",
+      "name": "Khương Duy",
+      "npcOnly": false,
+      "wikiId": "3944",
+      "skillsByQuality": {
+        "white": "ngu_giap",
+        "green": "ngu_giap",
+        "blue": "than_ngu",
+        "purple": "an_nghia",
+        "orange": "nghia_dam_hung_tam",
+        "red": "nghia_dam_hung_tam"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "ngu_giap",
+          "skillName": "Ngự Giáp",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "ngu_giap",
+          "skillName": "Ngự Giáp",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "than_ngu",
+          "skillName": "Thần Ngự",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "an_nghia",
+          "skillName": "Ân Nghĩa",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "bac_vong",
+          "skillName": "Bắc Vọng",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "nghia_dam_hung_tam",
+          "skillName": "Nghĩa Đảm Hùng Tâm",
+          "motif": "arcane",
+          "flash": "blue"
+        }
+      ]
+    },
+    {
+      "generalId": "fazheng",
+      "name": "Pháp Chính",
+      "npcOnly": false,
+      "wikiId": "3852",
+      "skillsByQuality": {
+        "white": "son_bang",
+        "green": "thap_thien",
+        "blue": "thien_bang",
+        "purple": "liet_thien",
+        "orange": "troi_tru_dat_diet",
+        "red": "troi_tru_dat_diet"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "son_bang",
+          "skillName": "Sơn Băng",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "thap_thien",
+          "skillName": "Tháp Thiên",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "thien_bang",
+          "skillName": "Thiên Băng",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "liet_thien",
+          "skillName": "Liệt Thiên",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "thien_bang_dia_liep",
+          "skillName": "Thiên Băng Địa Liệp",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "troi_tru_dat_diet",
+          "skillName": "Trời Tru Đất Diệt",
+          "motif": "arcane",
+          "flash": "blue"
+        }
+      ]
+    },
+    {
+      "generalId": "xushu",
+      "name": "Từ Thứ",
+      "npcOnly": false,
+      "wikiId": "3606",
+      "skillsByQuality": {
+        "white": "hu_vo",
+        "green": "hac_dong",
+        "blue": "tham_uyen",
+        "purple": "doc_dia",
+        "orange": "thao_luoc_tung_hoanh",
+        "red": "muu_doan_can_khon"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "hu_vo",
+          "skillName": "Hư Vô",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "hac_dong",
+          "skillName": "Hắc Động",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "tham_uyen",
+          "skillName": "Thâm Uyên",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "doc_dia",
+          "skillName": "Độc Địa",
+          "motif": "poison",
+          "flash": "green_poison"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "loan_the_ky_muu",
+          "skillName": "Loạn Thế Kỳ Mưu",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "thao_luoc_tung_hoanh",
+          "skillName": "Thao Lược Tung Hoành",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "muu_doan_can_khon",
+          "skillName": "Mưu Đoạn Càn Khôn",
+          "motif": "shadow",
+          "flash": "purple"
+        }
+      ]
+    },
+    {
+      "generalId": "madai",
+      "name": "Mã Đại",
+      "npcOnly": false,
+      "wikiId": "1968",
+      "skillsByQuality": {
+        "white": "uy_phong",
+        "green": "tang_phong",
+        "blue": "khu_truc",
+        "purple": "kiem_ham",
+        "orange": "kiem_ham",
+        "red": "kiem_ham"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "uy_phong",
+          "skillName": "Uy Phong",
+          "motif": "whirlwind",
+          "flash": "wind"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "tang_phong",
+          "skillName": "Tang Phong",
+          "motif": "whirlwind",
+          "flash": "wind"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "khu_truc",
+          "skillName": "Khu Trục",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "kiem_ham",
+          "skillName": "Kiềm Hãm",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "liaohua",
+      "name": "Liêu Hóa",
+      "npcOnly": false,
+      "wikiId": "1470",
+      "skillsByQuality": {
+        "white": "dap_pha",
+        "green": "don_ky",
+        "blue": "ky_liep",
+        "purple": "ky_liep",
+        "orange": "ky_liep",
+        "red": "ky_liep"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "dap_pha",
+          "skillName": "Đạp Phá",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "don_ky",
+          "skillName": "Đơn Kỵ",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "ky_liep",
+          "skillName": "Kỵ Liệp",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "caocao",
+      "name": "Tào Tháo",
+      "npcOnly": false,
+      "wikiId": "3836",
+      "skillsByQuality": {
+        "white": "hieu_lenh",
+        "green": "kieu_hung",
+        "blue": "thien_chinh",
+        "purple": "quan_lam",
+        "orange": "thien_ha_chia_ba",
+        "red": "thien_ha_chia_ba"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "hieu_lenh",
+          "skillName": "Hiệu Lệnh",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "kieu_hung",
+          "skillName": "Kiêu Hùng",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "thien_chinh",
+          "skillName": "Thiên Chinh",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "quan_lam",
+          "skillName": "Quân Lâm",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "thien_ha_chia_ba",
+          "skillName": "Thiên Hạ Chia Ba",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "thien_ha_chia_ba",
+          "skillName": "Thiên Hạ Chia Ba",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "simayi",
+      "name": "Tư Mã Ý",
+      "npcOnly": false,
+      "wikiId": "3771",
+      "skillsByQuality": {
+        "white": "kinh_loi",
+        "green": "than_loi",
+        "blue": "tu_than",
+        "purple": "sinh_sat",
+        "orange": "thu_hon_doat_phach",
+        "red": "thu_hon_doat_phach"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "kinh_loi",
+          "skillName": "Kinh Lôi",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "than_loi",
+          "skillName": "Thần Lôi",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "tu_than",
+          "skillName": "Tử Thần",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "sinh_sat",
+          "skillName": "Sinh Sát",
+          "motif": "buff",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "tu_than_giang_lam",
+          "skillName": "Tử Thần Giáng Lâm",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "thu_hon_doat_phach",
+          "skillName": "Thu Hồn Đoạt Phách",
+          "motif": "arcane",
+          "flash": "blue"
+        }
+      ]
+    },
+    {
+      "generalId": "xuchu",
+      "name": "Hứa Chử",
+      "npcOnly": false,
+      "wikiId": "3799",
+      "skillsByQuality": {
+        "white": "cuong_bao",
+        "green": "chien_cuong",
+        "blue": "cuong_loan",
+        "purple": "ho_tri",
+        "orange": "loa_y_no_tap",
+        "red": "loa_y_no_tap"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "cuong_bao",
+          "skillName": "Cuồng Bạo",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "chien_cuong",
+          "skillName": "Chiến Cuồng",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "cuong_loan",
+          "skillName": "Cuồng Loạn",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "ho_tri",
+          "skillName": "Hổ Tri",
+          "motif": "tiger",
+          "flash": "orange"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "ho_hau_san_no",
+          "skillName": "Hổ Hầu Sân Nộ",
+          "motif": "tiger",
+          "flash": "orange"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "loa_y_no_tap",
+          "skillName": "Lõa Y Nộ Tập",
+          "motif": "poison",
+          "flash": "green_poison"
+        }
+      ]
+    },
+    {
+      "generalId": "dianwei",
+      "name": "Điển Vi",
+      "npcOnly": false,
+      "wikiId": "4172",
+      "skillsByQuality": {
+        "white": "ngu_giap",
+        "green": "ngu_giap",
+        "blue": "than_ngu",
+        "purple": "huyet_chien_bat_phuong",
+        "orange": "ac_quy_trien_than",
+        "red": "ac_lai_liet_phach"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "ngu_giap",
+          "skillName": "Ngự Giáp",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "ngu_giap",
+          "skillName": "Ngự Giáp",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "than_ngu",
+          "skillName": "Thần Ngự",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "huyet_chien_bat_phuong",
+          "skillName": "Huyết Chiến Bát Phương",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "ac_lai",
+          "skillName": "Ác Lai",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "ac_quy_trien_than",
+          "skillName": "Ác Quỷ Triền Thân",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "ac_lai_liet_phach",
+          "skillName": "Ác Lai Liệt Phách",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "jiaxu",
+      "name": "Giả Hủ",
+      "npcOnly": false,
+      "wikiId": "3604",
+      "skillsByQuality": {
+        "white": "hu_vo",
+        "green": "hac_dong",
+        "blue": "tham_uyen",
+        "purple": "doc_dia",
+        "orange": "thao_luoc_tung_hoanh",
+        "red": "muu_doan_can_khon"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "hu_vo",
+          "skillName": "Hư Vô",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "hac_dong",
+          "skillName": "Hắc Động",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "tham_uyen",
+          "skillName": "Thâm Uyên",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "doc_dia",
+          "skillName": "Độc Địa",
+          "motif": "poison",
+          "flash": "green_poison"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "loan_the_ky_muu",
+          "skillName": "Loạn Thế Kỳ Mưu",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "thao_luoc_tung_hoanh",
+          "skillName": "Thao Lược Tung Hoành",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "muu_doan_can_khon",
+          "skillName": "Mưu Đoạn Càn Khôn",
+          "motif": "shadow",
+          "flash": "purple"
+        }
+      ]
+    },
+    {
+      "generalId": "zhangliao",
+      "name": "Trương Liêu",
+      "npcOnly": false,
+      "wikiId": "4228",
+      "skillsByQuality": {
+        "white": "ho_xung",
+        "green": "ho_sat",
+        "blue": "quy_sat",
+        "purple": "huyet_quy_nhan",
+        "orange": "luot_nhanh_nhu_gio",
+        "red": "trieu_ho_pha_tran"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "ho_xung",
+          "skillName": "Hổ Xung",
+          "motif": "tiger",
+          "flash": "orange"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "ho_sat",
+          "skillName": "Hổ Sát",
+          "motif": "tiger",
+          "flash": "orange"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "quy_sat",
+          "skillName": "Quỷ Sát",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "huyet_quy_nhan",
+          "skillName": "Huyết Quỷ Nhẫn",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "uy_chan_tieu_dao",
+          "skillName": "Uy Chấn Tiêu Dao",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "luot_nhanh_nhu_gio",
+          "skillName": "Lướt Nhanh Như Gió",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "trieu_ho_pha_tran",
+          "skillName": "Triệu Hổ Phá Trận",
+          "motif": "tiger",
+          "flash": "orange"
+        }
+      ]
+    },
+    {
+      "generalId": "xuhuang",
+      "name": "Từ Hoảng",
+      "npcOnly": false,
+      "wikiId": "3808",
+      "skillsByQuality": {
+        "white": "man_nguu",
+        "green": "cuong_nguu",
+        "blue": "dia_long",
+        "purple": "hoa_nguu_dap",
+        "orange": "troi_long_dat_lo",
+        "red": "troi_long_dat_lo"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "man_nguu",
+          "skillName": "Man Ngưu",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "cuong_nguu",
+          "skillName": "Cuồng Ngưu",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "dia_long",
+          "skillName": "Địa Long",
+          "motif": "dragon",
+          "flash": "dragon"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "hoa_nguu_dap",
+          "skillName": "Hỏa Ngưu Đạp",
+          "motif": "fire",
+          "flash": "fire_rain"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "man_nguu_khai_son",
+          "skillName": "Man Ngưu Khai Sơn",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "troi_long_dat_lo",
+          "skillName": "Trời Long Đất Lở",
+          "motif": "dragon",
+          "flash": "dragon"
+        }
+      ]
+    },
+    {
+      "generalId": "zhanghe",
+      "name": "Trương Cáp",
+      "npcOnly": false,
+      "wikiId": "4126",
+      "skillsByQuality": {
+        "white": "don_ky",
+        "green": "chien_ky",
+        "blue": "ho_uy",
+        "purple": "thien_bien",
+        "orange": "binh_vo_thuong_hinh",
+        "red": "binh_hinh_cuu_don"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "don_ky",
+          "skillName": "Đơn Kỵ",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "chien_ky",
+          "skillName": "Chiến Kỵ",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "ho_uy",
+          "skillName": "Hổ Uy",
+          "motif": "tiger",
+          "flash": "orange"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "thien_bien",
+          "skillName": "Thiện Biến",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "tien_co_chien_tran",
+          "skillName": "Tiên Cơ Chiến Trận",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "binh_vo_thuong_hinh",
+          "skillName": "Binh Vô Thường Hình",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "binh_hinh_cuu_don",
+          "skillName": "Binh Hình Cửu Độn",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "yuejin",
+      "name": "Nhạc Tiến",
+      "npcOnly": false,
+      "wikiId": "933",
+      "skillsByQuality": {
+        "white": "phan_kich",
+        "green": "nghich_chuyen",
+        "blue": "nghich_chuyen",
+        "purple": "nghich_chuyen",
+        "orange": "nghich_chuyen",
+        "red": "nghich_chuyen"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "phan_kich",
+          "skillName": "Phản Kích",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "nghich_chuyen",
+          "skillName": "Nghịch Chuyển",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "licadian",
+      "name": "Lý Điển",
+      "npcOnly": false,
+      "wikiId": "1928",
+      "skillsByQuality": {
+        "white": "kich_thich",
+        "green": "pha_kich",
+        "blue": "huy_diet",
+        "purple": "huy_diet",
+        "orange": "huy_diet",
+        "red": "huy_diet"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "kich_thich",
+          "skillName": "Kích Thích",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "pha_kich",
+          "skillName": "Phá Kích",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "huy_diet",
+          "skillName": "Hủy Diệt",
+          "motif": "arcane",
+          "flash": "blue"
+        }
+      ]
+    },
+    {
+      "generalId": "guojia",
+      "name": "Quách Gia",
+      "npcOnly": false,
+      "wikiId": "3971",
+      "skillsByQuality": {
+        "white": "viem_loi",
+        "green": "xich_loi",
+        "blue": "quy_muu",
+        "purple": "quy_ke",
+        "orange": "bien_sao_lap_lanh",
+        "red": "bien_sao_lap_lanh"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "viem_loi",
+          "skillName": "Viêm Lôi",
+          "motif": "fire",
+          "flash": "fire_rain"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "xich_loi",
+          "skillName": "Xích Lôi",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "quy_muu",
+          "skillName": "Quỷ Mưu",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "quy_ke",
+          "skillName": "Quỷ Kế",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "quyet_thang_thien_ly",
+          "skillName": "Quyết Thắng Thiên Lý",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "bien_sao_lap_lanh",
+          "skillName": "Biển Sao Lấp Lánh",
+          "motif": "arcane",
+          "flash": "blue"
+        }
+      ]
+    },
+    {
+      "generalId": "xunyu",
+      "name": "Tuân Úc",
+      "npcOnly": false,
+      "wikiId": "4116",
+      "skillsByQuality": {
+        "white": "tu_dien",
+        "green": "than_loi",
+        "blue": "loi_oanh",
+        "purple": "cuu_thien_than_loi",
+        "orange": "kinh_thien_bao_loi",
+        "red": "cuu_tieu_than_loi"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "tu_dien",
+          "skillName": "Tử Điện",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "than_loi",
+          "skillName": "Thần Lôi",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "loi_oanh",
+          "skillName": "Lôi Oanh",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "cuu_thien_than_loi",
+          "skillName": "Cửu Thiên Thần Lôi",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "diet_the_thien_loi",
+          "skillName": "Diệt Thế Thiên Lôi",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "kinh_thien_bao_loi",
+          "skillName": "Kinh Thiên Bạo Lôi",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "cuu_tieu_than_loi",
+          "skillName": "Cửu Tiêu Thần Lôi",
+          "motif": "thunder",
+          "flash": "thunder"
+        }
+      ]
+    },
+    {
+      "generalId": "xunyou",
+      "name": "Tuân Du",
+      "npcOnly": false,
+      "wikiId": "3818",
+      "skillsByQuality": {
+        "white": "dia_liep",
+        "green": "dia_nha",
+        "blue": "bang_chuy",
+        "purple": "bang_phong",
+        "orange": "thien_ly_bang_phong",
+        "red": "thien_ly_bang_phong"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "dia_liep",
+          "skillName": "Địa Liệp",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "dia_nha",
+          "skillName": "Địa Nha",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "bang_chuy",
+          "skillName": "Băng Chùy",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "bang_phong",
+          "skillName": "Băng Phong",
+          "motif": "whirlwind",
+          "flash": "wind"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "thien_han_dia_bang",
+          "skillName": "Thiên Hàn Địa Băng",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "thien_ly_bang_phong",
+          "skillName": "Thiên Lý Băng Phong",
+          "motif": "whirlwind",
+          "flash": "wind"
+        }
+      ]
+    },
+    {
+      "generalId": "caoren",
+      "name": "Tào Nhân",
+      "npcOnly": false,
+      "wikiId": "3788",
+      "skillsByQuality": {
+        "white": "ho_khieu",
+        "green": "su_hong",
+        "blue": "cuong_hao",
+        "purple": "de_hon",
+        "orange": "pha_dam_no_hong",
+        "red": "pha_dam_no_hong"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "ho_khieu",
+          "skillName": "Hổ Khiếu",
+          "motif": "tiger",
+          "flash": "orange"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "su_hong",
+          "skillName": "Sư Hống",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "cuong_hao",
+          "skillName": "Cuồng Hào",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "de_hon",
+          "skillName": "Đế Hồn",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "bao_no_hong",
+          "skillName": "Bạo Nộ Hống",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "pha_dam_no_hong",
+          "skillName": "Phá Đảm Nộ Hống",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "caopi",
+      "name": "Tào Phi",
+      "npcOnly": false,
+      "wikiId": "2758",
+      "skillsByQuality": {
+        "white": "cong_tam",
+        "green": "tu_lap",
+        "blue": "dang_co",
+        "purple": "quy_tam",
+        "orange": "uy_ap",
+        "red": "uy_ap"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "cong_tam",
+          "skillName": "Công Tâm",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "tu_lap",
+          "skillName": "Tự Lập",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "dang_co",
+          "skillName": "Đăng Cơ",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "quy_tam",
+          "skillName": "Quy Tâm",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "uy_ap",
+          "skillName": "Uy Áp",
+          "motif": "heal",
+          "flash": "gold_soft"
+        }
+      ]
+    },
+    {
+      "generalId": "xiahou_dun",
+      "name": "Hạ Hầu Đôn",
+      "npcOnly": false,
+      "wikiId": "4077",
+      "skillsByQuality": {
+        "white": "no_sat",
+        "green": "bao_hao",
+        "blue": "manh_ho",
+        "purple": "ho_khieu",
+        "orange": "ba_vuong_kich_dinh",
+        "red": "manh_ho_liet_son"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "no_sat",
+          "skillName": "Nộ Sát",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "bao_hao",
+          "skillName": "Bào Hao",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "manh_ho",
+          "skillName": "Mãnh Hổ",
+          "motif": "tiger",
+          "flash": "orange"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "ho_khieu",
+          "skillName": "Hổ Khiếu",
+          "motif": "tiger",
+          "flash": "orange"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "van_nguoi_kho_do",
+          "skillName": "Vạn Người Khó Đỡ",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "ba_vuong_kich_dinh",
+          "skillName": "Bá Vương Kích Đỉnh",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "manh_ho_liet_son",
+          "skillName": "Mãnh Hổ Liệt Sơn",
+          "motif": "tiger",
+          "flash": "orange"
+        }
+      ]
+    },
+    {
+      "generalId": "xiahou_yuan",
+      "name": "Hạ Hầu Uyên",
+      "npcOnly": false,
+      "wikiId": "3984",
+      "skillsByQuality": {
+        "white": "pha_quan",
+        "green": "thi_quan",
+        "blue": "ky_than",
+        "purple": "phong_loi",
+        "orange": "te_nhat_thien_ky",
+        "red": "te_nhat_thien_ky"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "pha_quan",
+          "skillName": "Phá Quân",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "thi_quan",
+          "skillName": "Thí Quân",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "ky_than",
+          "skillName": "Kỵ Thần",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "phong_loi",
+          "skillName": "Phong Lôi",
+          "motif": "whirlwind",
+          "flash": "wind"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "bach_hong_quan_nhat",
+          "skillName": "Bạch Hồng Quán Nhật",
+          "motif": "fire",
+          "flash": "fire_rain"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "te_nhat_thien_ky",
+          "skillName": "Tế Nhật Thiên Kỵ",
+          "motif": "heal",
+          "flash": "gold_soft"
+        }
+      ]
+    },
+    {
+      "generalId": "sunquan",
+      "name": "Tôn Quyền",
+      "npcOnly": false,
+      "wikiId": "3835",
+      "skillsByQuality": {
+        "white": "hieu_lenh",
+        "green": "thien_menh",
+        "blue": "thien_chinh",
+        "purple": "quan_lam",
+        "orange": "thien_ha_chia_ba",
+        "red": "thien_ha_chia_ba"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "hieu_lenh",
+          "skillName": "Hiệu Lệnh",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "thien_menh",
+          "skillName": "Thiên Mệnh",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "thien_chinh",
+          "skillName": "Thiên Chinh",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "quan_lam",
+          "skillName": "Quân Lâm",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "thien_ha_chia_ba",
+          "skillName": "Thiên Hạ Chia Ba",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "thien_ha_chia_ba",
+          "skillName": "Thiên Hạ Chia Ba",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "zhouyu",
+      "name": "Chu Du",
+      "npcOnly": false,
+      "wikiId": "3970",
+      "skillsByQuality": {
+        "white": "binh_tien",
+        "green": "phong_tien",
+        "blue": "hoa_than",
+        "purple": "dai_viem_de",
+        "orange": "luyen_nguc_hoa_hai",
+        "red": "luyen_nguc_hoa_hai"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "binh_tien",
+          "skillName": "Binh Tiển",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "phong_tien",
+          "skillName": "Phong Tiễn",
+          "motif": "whirlwind",
+          "flash": "wind"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "hoa_than",
+          "skillName": "Hỏa Thần",
+          "motif": "fire",
+          "flash": "fire_rain"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "dai_viem_de",
+          "skillName": "Đại Viêm Đế",
+          "motif": "fire",
+          "flash": "fire_rain"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "hong_lien_nghiep_hoa",
+          "skillName": "Hồng Liên Nghiệp Hỏa",
+          "motif": "fire",
+          "flash": "fire_rain"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "luyen_nguc_hoa_hai",
+          "skillName": "Luyện Ngục Hỏa Hải",
+          "motif": "fire",
+          "flash": "fire_rain"
+        }
+      ]
+    },
+    {
+      "generalId": "luxun",
+      "name": "Lục Tốn",
+      "npcOnly": false,
+      "wikiId": "4117",
+      "skillsByQuality": {
+        "white": "hong_viem",
+        "green": "hac_viem",
+        "blue": "nhien_tan",
+        "purple": "hoa_thieu_lien_doanh",
+        "orange": "hoa_the_ngut_troi",
+        "red": "xich_lua_tri_tue"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "hong_viem",
+          "skillName": "Hồng Viêm",
+          "motif": "fire",
+          "flash": "fire_rain"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "hac_viem",
+          "skillName": "Hắc Viêm",
+          "motif": "fire",
+          "flash": "fire_rain"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "nhien_tan",
+          "skillName": "Nhiên Tận",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "hoa_thieu_lien_doanh",
+          "skillName": "Hỏa Thiêu Liên Doanh",
+          "motif": "fire",
+          "flash": "fire_rain"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "nghiep_viem_bao",
+          "skillName": "Nghiệp Viêm Bạo",
+          "motif": "fire",
+          "flash": "fire_rain"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "hoa_the_ngut_troi",
+          "skillName": "Hỏa Thế Ngút Trời",
+          "motif": "fire",
+          "flash": "fire_rain"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "xich_lua_tri_tue",
+          "skillName": "Xích Lửa Trí Tuệ",
+          "motif": "fire",
+          "flash": "fire_rain"
+        }
+      ]
+    },
+    {
+      "generalId": "taishici",
+      "name": "Thái Sử Từ",
+      "npcOnly": false,
+      "wikiId": "4143",
+      "skillsByQuality": {
+        "white": "nghich_tap",
+        "green": "nghich_luu",
+        "blue": "lang_tuyen",
+        "purple": "to_luu_nghich_tap",
+        "orange": "lung_hoan_tang_dich",
+        "red": "lang_tuyen_khon_tran"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "nghich_tap",
+          "skillName": "Nghịch Tập",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "nghich_luu",
+          "skillName": "Nghịch Lưu",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "lang_tuyen",
+          "skillName": "Lang Tuyền",
+          "motif": "wolf",
+          "flash": "crimson"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "to_luu_nghich_tap",
+          "skillName": "Tố Lưu Nghịch Tập",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "thuong_long_xuat_hai",
+          "skillName": "Thương Long Xuất Hải",
+          "motif": "dragon",
+          "flash": "dragon"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "lung_hoan_tang_dich",
+          "skillName": "Lung Hoàn Táng Địch",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "lang_tuyen_khon_tran",
+          "skillName": "Lang Tuyền Khốn Trận",
+          "motif": "wolf",
+          "flash": "crimson"
+        }
+      ]
+    },
+    {
+      "generalId": "ganning",
+      "name": "Cam Ninh",
+      "npcOnly": false,
+      "wikiId": "4078",
+      "skillsByQuality": {
+        "white": "no_sat",
+        "green": "bao_hao",
+        "blue": "manh_ho",
+        "purple": "ho_khieu",
+        "orange": "ba_vuong_kich_dinh",
+        "red": "manh_ho_liet_son"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "no_sat",
+          "skillName": "Nộ Sát",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "bao_hao",
+          "skillName": "Bào Hao",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "manh_ho",
+          "skillName": "Mãnh Hổ",
+          "motif": "tiger",
+          "flash": "orange"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "ho_khieu",
+          "skillName": "Hổ Khiếu",
+          "motif": "tiger",
+          "flash": "orange"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "van_nguoi_kho_do",
+          "skillName": "Vạn Người Khó Đỡ",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "ba_vuong_kich_dinh",
+          "skillName": "Bá Vương Kích Đỉnh",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "manh_ho_liet_son",
+          "skillName": "Mãnh Hổ Liệt Sơn",
+          "motif": "tiger",
+          "flash": "orange"
+        }
+      ]
+    },
+    {
+      "generalId": "huanggai",
+      "name": "Hoàng Cái",
+      "npcOnly": false,
+      "wikiId": "3800",
+      "skillsByQuality": {
+        "white": "kho_ke",
+        "green": "hy_sinh",
+        "blue": "the_tu",
+        "purple": "ngoc_thach_cu_diet",
+        "orange": "cang_gia_cang_cay",
+        "red": "cang_gia_cang_cay"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "kho_ke",
+          "skillName": "Khổ Kế",
+          "motif": "tiger",
+          "flash": "orange"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "hy_sinh",
+          "skillName": "Hy Sinh",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "the_tu",
+          "skillName": "Thệ Tử",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "ngoc_thach_cu_diet",
+          "skillName": "Ngọc Thạch Cụ Diệt",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "xa_than_cuong_tap",
+          "skillName": "Xả Thân Cường Tập",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "cang_gia_cang_cay",
+          "skillName": "Càng Già Càng Cay",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "zhouzhi",
+      "name": "Chu Thái",
+      "npcOnly": false,
+      "wikiId": "4125",
+      "skillsByQuality": {
+        "white": "don_ky",
+        "green": "huyet_chinh",
+        "blue": "dung_manh",
+        "purple": "phan_chien",
+        "orange": "chien_than_bat_khuat",
+        "red": "lay_than_lam_giap"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "don_ky",
+          "skillName": "Đơn Kỵ",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "huyet_chinh",
+          "skillName": "Huyết Chinh",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "dung_manh",
+          "skillName": "Dũng Mãnh",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "phan_chien",
+          "skillName": "Phấn Chiến",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "chien_than_can_dam",
+          "skillName": "Chiến Thần Can Đảm",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "chien_than_bat_khuat",
+          "skillName": "Chiến Thần Bất Khuất",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "lay_than_lam_giap",
+          "skillName": "Lấy Thân Làm Giáp",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "lingtong",
+      "name": "Lăng Thống",
+      "npcOnly": false,
+      "wikiId": "974",
+      "skillsByQuality": {
+        "white": "doc_tieu",
+        "green": "xa_doc",
+        "blue": "xa_doc",
+        "purple": "xa_doc",
+        "orange": "xa_doc",
+        "red": "xa_doc"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "doc_tieu",
+          "skillName": "Độc Tiêu",
+          "motif": "poison",
+          "flash": "green_poison"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "xa_doc",
+          "skillName": "Xà Độc",
+          "motif": "snake",
+          "flash": "snake"
+        }
+      ]
+    },
+    {
+      "generalId": "lusu",
+      "name": "Lỗ Túc",
+      "npcOnly": false,
+      "wikiId": "3605",
+      "skillsByQuality": {
+        "white": "hu_vo",
+        "green": "hac_dong",
+        "blue": "tham_uyen",
+        "purple": "doc_dia",
+        "orange": "thao_luoc_tung_hoanh",
+        "red": "muu_doan_can_khon"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "hu_vo",
+          "skillName": "Hư Vô",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "hac_dong",
+          "skillName": "Hắc Động",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "tham_uyen",
+          "skillName": "Thâm Uyên",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "doc_dia",
+          "skillName": "Độc Địa",
+          "motif": "poison",
+          "flash": "green_poison"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "loan_the_ky_muu",
+          "skillName": "Loạn Thế Kỳ Mưu",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "thao_luoc_tung_hoanh",
+          "skillName": "Thao Lược Tung Hoành",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "muu_doan_can_khon",
+          "skillName": "Mưu Đoạn Càn Khôn",
+          "motif": "shadow",
+          "flash": "purple"
+        }
+      ]
+    },
+    {
+      "generalId": "zhugejin",
+      "name": "Gia Cát Cẩn",
+      "npcOnly": false,
+      "wikiId": "4067",
+      "skillsByQuality": {
+        "white": "thu_ho",
+        "green": "han_ve",
+        "blue": "bich_luy",
+        "purple": "thuan_tuong",
+        "orange": "vung_nhu_ban_thach",
+        "red": "vung_nhu_ban_thach"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "thu_ho",
+          "skillName": "Thủ Hộ",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "han_ve",
+          "skillName": "Hãn Vệ",
+          "motif": "shield",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "bich_luy",
+          "skillName": "Bích Lũy",
+          "motif": "buff",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "thuan_tuong",
+          "skillName": "Thuẫn Tường",
+          "motif": "buff",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "tuong_dong_vach_sat",
+          "skillName": "Tường Đồng Vách Sắt",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "vung_nhu_ban_thach",
+          "skillName": "Vững Như Bàn Thạch",
+          "motif": "heal",
+          "flash": "gold_soft"
+        }
+      ]
+    },
+    {
+      "generalId": "sunce",
+      "name": "Tôn Sách",
+      "npcOnly": false,
+      "wikiId": "4229",
+      "skillsByQuality": {
+        "white": "xung_ba",
+        "green": "ba_vuong",
+        "blue": "thien_uy",
+        "purple": "ba_vuong_than_uy",
+        "orange": "than_uy_pha_tran",
+        "red": "ba_vuong_liet_phach"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "xung_ba",
+          "skillName": "Xưng Bá",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "ba_vuong",
+          "skillName": "Bá Vương",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "thien_uy",
+          "skillName": "Thiên Uy",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "ba_vuong_than_uy",
+          "skillName": "Bá Vương Thần Uy",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "ba_vuong",
+          "skillName": "Bá Vương",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "than_uy_pha_tran",
+          "skillName": "Thần Uy Phá Trận",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "ba_vuong_liet_phach",
+          "skillName": "Bá Vương Liệt Phách",
+          "motif": "dragon",
+          "flash": "dragon"
+        }
+      ]
+    },
+    {
+      "generalId": "sunjian",
+      "name": "Tôn Kiên",
+      "npcOnly": false,
+      "wikiId": "3543",
+      "skillsByQuality": {
+        "white": "ham_dia",
+        "green": "san_bang",
+        "blue": "dang_long",
+        "purple": "tinh_ngu",
+        "orange": "troi_roi_sao_sang",
+        "red": "tinh_van_dia_liep"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "ham_dia",
+          "skillName": "Hám Địa",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "san_bang",
+          "skillName": "San Bằng",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "dang_long",
+          "skillName": "Đằng Long",
+          "motif": "dragon",
+          "flash": "dragon"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "tinh_ngu",
+          "skillName": "Tinh Ngự",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "long_dang_tu_hai",
+          "skillName": "Long Đằng Tứ Hải",
+          "motif": "dragon",
+          "flash": "dragon"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "troi_roi_sao_sang",
+          "skillName": "Trời Rơi Sao Sáng",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "tinh_van_dia_liep",
+          "skillName": "Tinh Vẫn Địa Liệp",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "xiaoqiao",
+      "name": "Tiểu Kiều",
+      "npcOnly": false,
+      "wikiId": "4080",
+      "skillsByQuality": {
+        "white": "co_vu",
+        "green": "kich_duong",
+        "blue": "ngang_duong",
+        "purple": "tung_ca",
+        "orange": "phan_chan_long_quan",
+        "red": "ca_tung_cong_duc"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "co_vu",
+          "skillName": "Cổ Vũ",
+          "motif": "buff",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "kich_duong",
+          "skillName": "Kích Dương",
+          "motif": "buff",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "ngang_duong",
+          "skillName": "Ngang Dương",
+          "motif": "buff",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "uy_duong",
+          "skillName": "Uy Dương",
+          "motif": "buff",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "tung_ca",
+          "skillName": "Tụng Ca",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "phan_chan_long_quan",
+          "skillName": "Phấn Chấn Lòng Quân",
+          "motif": "buff",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "phan_chan_long_quan",
+          "skillName": "Phấn Chấn Lòng Quân",
+          "motif": "buff",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "ca_tung_cong_duc",
+          "skillName": "Ca Tụng Công Đức",
+          "motif": "buff",
+          "flash": "gold_soft"
+        }
+      ]
+    },
+    {
+      "generalId": "daqiao",
+      "name": "Đại Kiều",
+      "npcOnly": false,
+      "wikiId": "4100",
+      "skillsByQuality": {
+        "white": "tuong_dong",
+        "green": "tuong_dong",
+        "blue": "tuong_dong",
+        "purple": "lac_thuy_tien",
+        "orange": "khuynh_the_giai_nhan",
+        "red": "vu_dieu_lac_than"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "tuong_dong",
+          "skillName": "Tường Đồng",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "tuong_dong",
+          "skillName": "Tường Đồng",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "tuong_dong",
+          "skillName": "Tường Đồng",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "lac_thuy_tien",
+          "skillName": "Lạc Thủy Tiên",
+          "motif": "buff",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "lac_than_mac",
+          "skillName": "Lạc Thần Mạc",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "khuynh_the_giai_nhan",
+          "skillName": "Khuynh Thế Giai Nhân",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "vu_dieu_lac_than",
+          "skillName": "Vũ Điệu Lạc Thần",
+          "motif": "heal",
+          "flash": "gold_soft"
+        }
+      ]
+    },
+    {
+      "generalId": "zhangzhao",
+      "name": "Trương Chiêu",
+      "npcOnly": false,
+      "wikiId": "972",
+      "skillsByQuality": {
+        "white": "nhuc_ma",
+        "green": "nhuc_ma",
+        "blue": "nhuc_ma",
+        "purple": "nhuc_ma",
+        "orange": "nhuc_ma",
+        "red": "nhuc_ma"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "nhuc_ma",
+          "skillName": "Nhục Mạ",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "nhuc_ma",
+          "skillName": "Nhục Mạ",
+          "motif": "shadow",
+          "flash": "purple"
+        }
+      ]
+    },
+    {
+      "generalId": "chengpu",
+      "name": "Trình Phổ",
+      "npcOnly": false,
+      "wikiId": "1905",
+      "skillsByQuality": {
+        "white": "ky_kich",
+        "green": "ky_kich",
+        "blue": "ky_chien",
+        "purple": "ky_chien",
+        "orange": "ky_chien",
+        "red": "ky_chien"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "ky_kich",
+          "skillName": "Kỵ Kích",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "ky_kich",
+          "skillName": "Kỵ Kích",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "ky_chien",
+          "skillName": "Kỵ Chiến",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "handang",
+      "name": "Hàn Đương",
+      "npcOnly": false,
+      "wikiId": "3769",
+      "skillsByQuality": {
+        "white": "am_sat",
+        "green": "thich_sat",
+        "blue": "hanh_thich",
+        "purple": "hanh_thich",
+        "orange": "am_da_thich_sat",
+        "red": "am_da_thich_sat"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "am_sat",
+          "skillName": "Ám Sát",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "thich_sat",
+          "skillName": "Thích Sát",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "hanh_thich",
+          "skillName": "Hành Thích",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "hanh_thich",
+          "skillName": "Hành Thích",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "diet_gon",
+          "skillName": "Diệt Gọn",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "am_da_thich_sat",
+          "skillName": "Ám Dạ Thích Sát",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "zhangbao",
+      "name": "Trương Bảo",
+      "npcOnly": true,
+      "wikiId": "742",
+      "skillsByQuality": {
+        "white": "huyen_thuat",
+        "green": "huyen_phap",
+        "blue": "huyen_phap",
+        "purple": "huyen_phap",
+        "orange": "huyen_phap",
+        "red": "huyen_phap"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "huyen_thuat",
+          "skillName": "Huyễn Thuật",
+          "motif": "bagua",
+          "flash": "bagua"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "huyen_phap",
+          "skillName": "Huyễn Pháp",
+          "motif": "bagua",
+          "flash": "bagua"
+        }
+      ]
+    },
+    {
+      "generalId": "zhangliang",
+      "name": "Trương Lương",
+      "npcOnly": true,
+      "wikiId": "743",
+      "skillsByQuality": {
+        "white": "huyet_lo",
+        "green": "kho_ke",
+        "blue": "kho_ke",
+        "purple": "kho_ke",
+        "orange": "kho_ke",
+        "red": "kho_ke"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "huyet_lo",
+          "skillName": "Huyết Lộ",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "kho_ke",
+          "skillName": "Khổ Kế",
+          "motif": "tiger",
+          "flash": "orange"
+        }
+      ]
+    },
+    {
+      "generalId": "zhangjiao",
+      "name": "Trương Giác",
+      "npcOnly": true,
+      "wikiId": "4156",
+      "skillsByQuality": {
+        "white": "yeu_thuat",
+        "green": "yeu_phap",
+        "blue": "thien_bang",
+        "purple": "binh_thuat",
+        "orange": "hoang_thien_duong_lap",
+        "red": "thuong_thien_di_tu"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "yeu_thuat",
+          "skillName": "Yêu Thuật",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "yeu_phap",
+          "skillName": "Yêu Pháp",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "thien_bang",
+          "skillName": "Thiên Băng",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "binh_thuat",
+          "skillName": "Bình Thuật",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "binh_thuat",
+          "skillName": "Bình Thuật",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "hoang_thien_duong_lap",
+          "skillName": "Hoàng Thiên Đương Lập",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "thuong_thien_di_tu",
+          "skillName": "Thương Thiên Dĩ Tử",
+          "motif": "arcane",
+          "flash": "blue"
+        }
+      ]
+    },
+    {
+      "generalId": "huaxiong",
+      "name": "Hoa Hùng",
+      "npcOnly": true,
+      "wikiId": "4249",
+      "skillsByQuality": {
+        "white": "dot_kich",
+        "green": "giao_chien",
+        "blue": "bac_kich",
+        "purple": "dung_manh_dot_kich",
+        "orange": "can_quet_bao_luc",
+        "red": "hung_ho_tien_phong"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "dot_kich",
+          "skillName": "Đột Kích",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "giao_chien",
+          "skillName": "Giao Chiến",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "bac_kich",
+          "skillName": "Bác Kích",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "dung_manh_dot_kich",
+          "skillName": "Dũng Mãnh Đột Kích",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "vo_cung_dung_manh",
+          "skillName": "Vô Cùng Dũng Mãnh",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "can_quet_bao_luc",
+          "skillName": "Càn Quét Bạo Lực",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "hung_ho_tien_phong",
+          "skillName": "Hùng Hổ Tiên Phong",
+          "motif": "whirlwind",
+          "flash": "wind"
+        }
+      ]
+    },
+    {
+      "generalId": "lubu",
+      "name": "Lã Bố",
+      "npcOnly": true,
+      "wikiId": "4128",
+      "skillsByQuality": {
+        "white": "vo_song",
+        "green": "ma_than",
+        "blue": "minh_vuong",
+        "purple": "thien_ha_vo_song",
+        "orange": "ma_than_no_hoa",
+        "red": "quy_than_loan_vu"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "vo_song",
+          "skillName": "Vô Song",
+          "motif": "buff",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "ma_than",
+          "skillName": "Ma Thần",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "minh_vuong",
+          "skillName": "Minh Vương",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "thien_ha_vo_song",
+          "skillName": "Thiên Hạ Vô Song",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "quy_than_nhat_kich",
+          "skillName": "Quỷ Thần Nhất Kích",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "ma_than_no_hoa",
+          "skillName": "Ma Thần Nộ Hỏa",
+          "motif": "fire",
+          "flash": "fire_rain"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "quy_than_loan_vu",
+          "skillName": "Quỷ Thần Loạn Vũ",
+          "motif": "water",
+          "flash": "blue_water"
+        }
+      ]
+    },
+    {
+      "generalId": "dongzhuo",
+      "name": "Đổng Trác",
+      "npcOnly": true,
+      "wikiId": "4102",
+      "skillsByQuality": {
+        "white": "no_hong",
+        "green": "no_hong",
+        "blue": "bang_hoai",
+        "purple": "bao_le",
+        "orange": "tuu_tri_nhuc_lam",
+        "red": "thien_uy_bao_nguoc"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "no_hong",
+          "skillName": "Nộ Hống",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "bang_hoai",
+          "skillName": "Băng Hoại",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "bao_le",
+          "skillName": "Bạo Lệ",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "bao_tran",
+          "skillName": "Bạo Trấn",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "tuu_tri_nhuc_lam",
+          "skillName": "Tửu Trì Nhục Lâm",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "thien_uy_bao_nguoc",
+          "skillName": "Thiên Uy Bạo Ngược",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "liru",
+      "name": "Lý Nho",
+      "npcOnly": true,
+      "wikiId": "3957",
+      "skillsByQuality": {
+        "white": "lac_loi",
+        "green": "kinh_loi",
+        "blue": "am_loi",
+        "purple": "doc_loi",
+        "orange": "nao_loan_kinh_thanh",
+        "red": "nao_loan_kinh_thanh"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "lac_loi",
+          "skillName": "Lạc Lôi",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "kinh_loi",
+          "skillName": "Kinh Lôi",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "am_loi",
+          "skillName": "Âm Lôi",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "doc_loi",
+          "skillName": "Độc Lôi",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "tuyet_sach_doc_ke",
+          "skillName": "Tuyệt Sách Độc Kế",
+          "motif": "poison",
+          "flash": "green_poison"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "nao_loan_kinh_thanh",
+          "skillName": "Náo Loạn Kinh Thành",
+          "motif": "poison",
+          "flash": "green_poison"
+        }
+      ]
+    },
+    {
+      "generalId": "fancho",
+      "name": "Phàn Trù",
+      "npcOnly": true,
+      "wikiId": "23",
+      "skillsByQuality": {
+        "white": "phan_chien",
+        "green": "phan_chien",
+        "blue": "phan_chien",
+        "purple": "phan_chien",
+        "orange": "phan_chien",
+        "red": "phan_chien"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "phan_chien",
+          "skillName": "Phấn Chiến",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "zhangji_dz",
+      "name": "Trương Tế",
+      "npcOnly": true,
+      "wikiId": "22",
+      "skillsByQuality": {
+        "white": "lien_thanh",
+        "green": "lien_thanh",
+        "blue": "lien_thanh",
+        "purple": "lien_thanh",
+        "orange": "lien_thanh",
+        "red": "lien_thanh"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "lien_thanh",
+          "skillName": "Liên Thành",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "yuanshao",
+      "name": "Viên Thiệu",
+      "npcOnly": true,
+      "wikiId": "4157",
+      "skillsByQuality": {
+        "white": "ngu_giap",
+        "green": "ngu_giap",
+        "blue": "yeu_thuan",
+        "purple": "loan_the_hao_kiet",
+        "orange": "vang_danh_thien_ha",
+        "red": "mon_sinh_tu_hai"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "ngu_giap",
+          "skillName": "Ngự Giáp",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "ngu_giap",
+          "skillName": "Ngự Giáp",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "yeu_thuan",
+          "skillName": "Yêu Thuẫn",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "dong_quan_phong_thu",
+          "skillName": "Đóng Quân Phòng Thủ",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "loan_the_hao_kiet",
+          "skillName": "Loạn Thế Hào Kiệt",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "hung_cu",
+          "skillName": "Hùng Cứ",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "vang_danh_thien_ha",
+          "skillName": "Vang Danh Thiên Hạ",
+          "motif": "heal",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "mon_sinh_tu_hai",
+          "skillName": "Môn Sinh Tứ Hải",
+          "motif": "heal",
+          "flash": "gold_soft"
+        }
+      ]
+    },
+    {
+      "generalId": "yuan_shu",
+      "name": "Viên Thuật",
+      "npcOnly": true,
+      "wikiId": "63",
+      "skillsByQuality": {
+        "white": "doc_chu",
+        "green": "doc_chu",
+        "blue": "doc_chu",
+        "purple": "doc_chu",
+        "orange": "doc_chu",
+        "red": "doc_chu"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "doc_chu",
+          "skillName": "Độc Chú",
+          "motif": "poison",
+          "flash": "green_poison"
+        }
+      ]
+    },
+    {
+      "generalId": "gongsunzan",
+      "name": "Công Tôn Toản",
+      "npcOnly": true,
+      "wikiId": "3994",
+      "skillsByQuality": {
+        "white": "kich_thich",
+        "green": "bac_kich",
+        "blue": "bac_sat",
+        "purple": "thuong_tran",
+        "orange": "bach_ma_tuong_quan",
+        "red": "bach_ky_duong_ky"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "kich_thich",
+          "skillName": "Kích Thích",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "bac_kich",
+          "skillName": "Bác Kích",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "bac_sat",
+          "skillName": "Bác Sát",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "thuong_tran",
+          "skillName": "Thương Trận",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "rung_giao_tua_tua",
+          "skillName": "Rừng Giáo Tua Tủa",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "bach_ma_tuong_quan",
+          "skillName": "Bạch Mã Tướng Quân",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 8,
+          "qName": "Thần Hoàng",
+          "skillId": "bach_ky_duong_ky",
+          "skillName": "Bạch Kỵ Dương Kỳ",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "liubiao",
+      "name": "Lưu Biểu",
+      "npcOnly": true,
+      "wikiId": "3999",
+      "skillsByQuality": {
+        "white": "co_vu",
+        "green": "loi_co",
+        "blue": "hieu_trieu",
+        "purple": "dinh_quan_co",
+        "orange": "bao_ve_kinh_giang",
+        "red": "bao_ve_kinh_giang"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "co_vu",
+          "skillName": "Cổ Vũ",
+          "motif": "buff",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "loi_co",
+          "skillName": "Lôi Cổ",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "hieu_trieu",
+          "skillName": "Hiệu Triệu",
+          "motif": "buff",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "dinh_quan_co",
+          "skillName": "Định Quân Cổ",
+          "motif": "buff",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "tu_thu_giu_minh",
+          "skillName": "Tự Thủ Giữ Mình",
+          "motif": "buff",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "bao_ve_kinh_giang",
+          "skillName": "Bảo Vệ Kinh Giang",
+          "motif": "buff",
+          "flash": "gold_soft"
+        }
+      ]
+    },
+    {
+      "generalId": "liuzhang",
+      "name": "Lưu Chương",
+      "npcOnly": true,
+      "wikiId": "885",
+      "skillsByQuality": {
+        "white": "te_xa",
+        "green": "vo_ngai",
+        "blue": "vo_ngai",
+        "purple": "vo_ngai",
+        "orange": "vo_ngai",
+        "red": "vo_ngai"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "te_xa",
+          "skillName": "Tề Xạ",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "vo_ngai",
+          "skillName": "Vô Ngại",
+          "motif": "buff",
+          "flash": "gold_soft"
+        }
+      ]
+    },
+    {
+      "generalId": "yanliang",
+      "name": "Nhan Lương",
+      "npcOnly": true,
+      "wikiId": "3694",
+      "skillsByQuality": {
+        "white": "ham_dia",
+        "green": "no_tram",
+        "blue": "tram_sat",
+        "purple": "kieu_tuong",
+        "orange": "quy_tuong_pha_thanh",
+        "red": "quy_tuong_pha_thanh"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "ham_dia",
+          "skillName": "Hám Địa",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "no_tram",
+          "skillName": "Nộ Trảm",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "tram_sat",
+          "skillName": "Trảm Sát",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "kieu_tuong",
+          "skillName": "Kiêu Tướng",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "nhat_ky_pha_thanh",
+          "skillName": "Nhất Kỵ Phá Thánh",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "quy_tuong_pha_thanh",
+          "skillName": "Quỷ Tướng Phá Thánh",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "wenchou",
+      "name": "Văn Xú",
+      "npcOnly": true,
+      "wikiId": "3695",
+      "skillsByQuality": {
+        "white": "ky_kich",
+        "green": "thiet_ky",
+        "blue": "phu_do",
+        "purple": "dung_tuong",
+        "orange": "quy_tuong_tru_than",
+        "red": "quy_tuong_tru_than"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "ky_kich",
+          "skillName": "Kỵ Kích",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "thiet_ky",
+          "skillName": "Thiết Kỵ",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "phu_do",
+          "skillName": "Phù Đồ",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "dung_tuong",
+          "skillName": "Dũng Tướng",
+          "motif": "buff",
+          "flash": "gold_soft"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "nhat_ky_duong_thien",
+          "skillName": "Nhất Kỵ Đương Thiên",
+          "motif": "slash",
+          "flash": "steel"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "quy_tuong_tru_than",
+          "skillName": "Quỷ Tướng Tru Thần",
+          "motif": "buff",
+          "flash": "gold_soft"
+        }
+      ]
+    },
+    {
+      "generalId": "tianfeng",
+      "name": "Điền Phong",
+      "npcOnly": true,
+      "wikiId": "4049",
+      "skillsByQuality": {
+        "white": "hu_vo",
+        "green": "hac_dong",
+        "blue": "quy_mon",
+        "purple": "ky_mon",
+        "orange": "quyen_bien",
+        "red": "quyen_bien"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "hu_vo",
+          "skillName": "Hư Vô",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "hac_dong",
+          "skillName": "Hắc Động",
+          "motif": "shadow",
+          "flash": "purple"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "quy_mon",
+          "skillName": "Quỷ Môn",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 5,
+          "qName": "Truyền thuyết",
+          "skillId": "ky_mon",
+          "skillName": "Kỳ Môn",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 6,
+          "qName": "Thượng Cổ",
+          "skillId": "quyen_muu",
+          "skillName": "Quyền Mưu",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 7,
+          "qName": "Thái Sơ",
+          "skillId": "quyen_bien",
+          "skillName": "Quyền Biến",
+          "motif": "arcane",
+          "flash": "blue"
+        }
+      ]
+    },
+    {
+      "generalId": "jushou",
+      "name": "Thư Thụ",
+      "npcOnly": true,
+      "wikiId": "1412",
+      "skillsByQuality": {
+        "white": "kinh_loi",
+        "green": "thap_thien",
+        "blue": "kich_no",
+        "purple": "kich_no",
+        "orange": "kich_no",
+        "red": "kich_no"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "kinh_loi",
+          "skillName": "Kinh Lôi",
+          "motif": "thunder",
+          "flash": "thunder"
+        },
+        {
+          "q": 2,
+          "qName": "Chiến",
+          "skillId": "thap_thien",
+          "skillName": "Tháp Thiên",
+          "motif": "arcane",
+          "flash": "blue"
+        },
+        {
+          "q": 3,
+          "qName": "Thần",
+          "skillId": "kich_no",
+          "skillName": "Kích Nộ",
+          "motif": "slash",
+          "flash": "steel"
+        }
+      ]
+    },
+    {
+      "generalId": "hanxuan",
+      "name": "Hàn Huyền",
+      "npcOnly": true,
+      "wikiId": "103",
+      "skillsByQuality": {
+        "white": "doc_chu",
+        "green": "doc_chu",
+        "blue": "doc_chu",
+        "purple": "doc_chu",
+        "orange": "doc_chu",
+        "red": "doc_chu"
+      },
+      "tiers": [
+        {
+          "q": 1,
+          "qName": "Thường",
+          "skillId": "doc_chu",
+          "skillName": "Độc Chú",
+          "motif": "poison",
+          "flash": "green_poison"
+        }
+      ]
+    }
+  ],
+  "unmatchedList": [
+    {
+      "id": "zhangbao_shu",
+      "name": "Trương Bào",
+      "npcOnly": false,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "wangping",
+      "name": "Vương Bình",
+      "npcOnly": false,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "recruit_guard",
+      "name": "Thủ Vệ",
+      "npcOnly": false,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "recruit_scout",
+      "name": "Do Thám",
+      "npcOnly": false,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "recruit_militia",
+      "name": "Dân Binh",
+      "npcOnly": false,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "recruit_porter",
+      "name": "Phu Dịch",
+      "npcOnly": false,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "recruit_rider",
+      "name": "Kỵ Binh",
+      "npcOnly": false,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "recruit_spearman",
+      "name": "Thương Thủ",
+      "npcOnly": false,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "recruit_crossbow",
+      "name": "Nỏ Thủ",
+      "npcOnly": false,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "recruit_blade",
+      "name": "Đao Phủ",
+      "npcOnly": false,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "veteran_guard",
+      "name": "Lão Binh",
+      "npcOnly": false,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "veteran_rider",
+      "name": "Thiết Kỵ",
+      "npcOnly": false,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "veteran_spear",
+      "name": "Trường Thương",
+      "npcOnly": false,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "veteran_archer",
+      "name": "Thiện Xạ",
+      "npcOnly": false,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "elite_vanguard",
+      "name": "Tinh Nhuệ",
+      "npcOnly": false,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "elite_raider",
+      "name": "Kỳ Binh",
+      "npcOnly": false,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "yellow_zealot",
+      "name": "Khăn Vàng Tử Sĩ",
+      "npcOnly": true,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "yellow_shaman",
+      "name": "Khăn Vàng Vu",
+      "npcOnly": true,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "yellow_captain",
+      "name": "Khăn Vàng Hiệu",
+      "npcOnly": true,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "liuru",
+      "name": "Lý Thôi",
+      "npcOnly": true,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "guosi",
+      "name": "Quách Dĩ",
+      "npcOnly": true,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "kongrong",
+      "name": "Khổng Dung",
+      "npcOnly": true,
+      "reason": "no_wiki_name_match"
+    },
+    {
+      "id": "taogian",
+      "name": "Đào Khiêm",
+      "npcOnly": true,
+      "reason": "no_wiki_name_match"
+    }
+  ]
+}

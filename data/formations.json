@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 3,
+  "defaultId": "crane_wing",
+  "slots": {
+    "front": [
+      { "slot": 0, "label": "Ô 1 — Trước Trên" },
+      { "slot": 1, "label": "Ô 2 — Trước Giữa" },
+      { "slot": 2, "label": "Ô 3 — Trước Dưới" }
+    ],
+    "back": [
+      { "slot": 3, "label": "Ô 4 — Sau Giữa" },
+      { "slot": 4, "label": "Ô 5 — Sau Dưới" }
+    ]
+  },
+  "list": {
+    "crane_wing": {
+      "id": "crane_wing",
+      "name": "Hạc Dực",
+      "desc": "Hai cánh mạnh công, giữa vững.",
+      "slotMods": {
+        "0": { "atk": 1.1, "def": 0.95 },
+        "1": { "atk": 1.0, "def": 1.1 },
+        "2": { "atk": 1.1, "def": 0.95 },
+        "3": { "atk": 1.05, "def": 1.0 },
+        "4": { "atk": 1.05, "def": 1.0 }
+      }
+    },
+    "long_snake": {
+      "id": "long_snake",
+      "name": "Trường Xà",
+      "desc": "Xuyên kích theo cột; hàng trước áp lực cao.",
+      "slotMods": {
+        "0": { "atk": 1.15, "def": 0.9 },
+        "1": { "atk": 1.15, "def": 0.9 },
+        "2": { "atk": 1.15, "def": 0.9 },
+        "3": { "atk": 1.0, "def": 1.05 },
+        "4": { "atk": 1.0, "def": 1.05 }
+      }
+    },
+    "square": {
+      "id": "square",
+      "name": "Phương Viên",
+      "desc": "Phòng thủ vững; công giảm nhẹ.",
+      "slotMods": {
+        "0": { "atk": 0.95, "def": 1.15 },
+        "1": { "atk": 0.95, "def": 1.2 },
+        "2": { "atk": 0.95, "def": 1.15 },
+        "3": { "atk": 0.9, "def": 1.1 },
+        "4": { "atk": 0.9, "def": 1.1 }
+      }
+    },
+    "fish_scale": {
+      "id": "fish_scale",
+      "name": "Ngư Lân",
+      "desc": "Cân bằng công thủ.",
+      "slotMods": {
+        "0": { "atk": 1.05, "def": 1.05 },
+        "1": { "atk": 1.05, "def": 1.05 },
+        "2": { "atk": 1.05, "def": 1.05 },
+        "3": { "atk": 1.0, "def": 1.0 },
+        "4": { "atk": 1.0, "def": 1.0 }
+      }
+    },
+    "arrow": {
+      "id": "arrow",
+      "name": "Nhuệ Tiễn",
+      "desc": "Hàng sau tăng công (cung/mưu); hàng trước mỏng hơn.",
+      "slotMods": {
+        "0": { "atk": 1.0, "def": 0.95 },
+        "1": { "atk": 1.0, "def": 0.95 },
+        "2": { "atk": 1.0, "def": 0.95 },
+        "3": { "atk": 1.2, "def": 0.9 },
+        "4": { "atk": 1.2, "def": 0.9 }
+      }
+    }
+  }
+}

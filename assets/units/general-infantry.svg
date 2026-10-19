@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160" fill="none">
+  <defs>
+    <linearGradient id="gArmor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8c070"/>
+      <stop offset="35%" stop-color="#c4281c"/>
+      <stop offset="100%" stop-color="#5a1008"/>
+    </linearGradient>
+    <linearGradient id="gHelm" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffe8a0"/><stop offset="100%" stop-color="#a87020"/>
+    </linearGradient>
+    <linearGradient id="gSkin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5d4b0"/><stop offset="100%" stop-color="#c89870"/>
+    </linearGradient>
+    <linearGradient id="gCloth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a6a40"/><stop offset="100%" stop-color="#0e2818"/>
+    </linearGradient>
+    <filter id="sh"><feDropShadow dx="0" dy="3" stdDeviation="2" flood-opacity="0.45"/></filter>
+  </defs>
+  <ellipse cx="60" cy="150" rx="32" ry="7" fill="#000" opacity="0.35"/>
+  <!-- cape -->
+  <path d="M28,58 Q18,90 32,130 L50,120 L48,70 Z" fill="#1a3a28" opacity="0.85"/>
+  <path d="M92,58 Q102,90 88,130 L70,120 L72,70 Z" fill="#1a3a28" opacity="0.85"/>
+  <!-- legs -->
+  <path d="M42,108 L38,146 L50,146 L52,112 Z" fill="#2a1810"/>
+  <path d="M78,108 L70,112 L72,146 L84,146 Z" fill="#2a1810"/>
+  <rect x="36" y="142" width="16" height="6" rx="1" fill="#c9a227"/>
+  <rect x="70" y="142" width="16" height="6" rx="1" fill="#c9a227"/>
+  <!-- body -->
+  <path d="M36,56 L84,56 L88,108 L32,108 Z" fill="url(#gArmor)" filter="url(#sh)"/>
+  <path d="M44,62 L76,62 L74,88 L46,88 Z" fill="#ffe484" opacity="0.25"/>
+  <path d="M52,70 L68,70 L66,100 L54,100 Z" fill="#1a3a28" opacity="0.5"/>
+  <!-- belt -->
+  <rect x="34" y="96" width="52" height="8" fill="#c9a227"/>
+  <circle cx="60" cy="100" r="5" fill="#ffe484" stroke="#8b1510" stroke-width="1"/>
+  <!-- arms + weapon -->
+  <path d="M28,62 L16,78 L22,84 L36,70 Z" fill="url(#gArmor)"/>
+  <path d="M92,62 L104,78 L98,84 L84,70 Z" fill="url(#gArmor)"/>
+  <path d="M100,70 L108,40 L112,42 L106,74 Z" fill="#d0d8e0" stroke="#6a7080" stroke-width="1"/>
+  <path d="M106,38 L118,28 L120,32 L110,44 Z" fill="#c4281c"/>
+  <!-- head -->
+  <ellipse cx="60" cy="42" rx="18" ry="20" fill="url(#gSkin)"/>
+  <!-- helmet -->
+  <path d="M40,40 Q60,12 80,40 L76,48 Q60,36 44,48 Z" fill="url(#gHelm)"/>
+  <rect x="56" y="8" width="8" height="16" rx="1" fill="#e8c547"/>
+  <path d="M60,6 Q48,-4 52,-8 Q64,-2 60,6" fill="#c4281c"/>
+  <path d="M60,6 Q72,-4 68,-8 Q56,-2 60,6" fill="#8b1510"/>
+  <!-- face -->
+  <circle cx="52" cy="44" r="2" fill="#1a1008"/>
+  <circle cx="68" cy="44" r="2" fill="#1a1008"/>
+  <path d="M54,52 Q60,56 66,52" stroke="#8b4a28" stroke-width="1.5" fill="none"/>
+  <path d="M48,40 Q52,36 56,40" stroke="#5a3018" stroke-width="1.2" fill="none"/>
+  <path d="M64,40 Q68,36 72,40" stroke="#5a3018" stroke-width="1.2" fill="none"/>
+  <!-- shoulder pads -->
+  <ellipse cx="34" cy="60" rx="10" ry="7" fill="url(#gHelm)"/>
+  <ellipse cx="86" cy="60" rx="10" ry="7" fill="url(#gHelm)"/>
+</svg>

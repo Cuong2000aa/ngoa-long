@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thành Chính · showcase</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/game-ui.css" />
+  <style>
+    html, body { margin: 0; height: 100%; background: #1a120c; }
+    .game-stage { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
+  </style>
+</head>
+<body>
+  <!-- Xem công trình ở mọi mốc level: /tests/showcase.html?lv=60 -->
+  <div class="game-stage">
+    <div id="iso-town-map"></div>
+    <div id="building-labels"></div>
+  </div>
+  <script type="module">
+    import "/src/main.ts";
+    const lv = Number(new URLSearchParams(location.search).get("lv") || 1);
+    const ids = ["hall", "wall", "farm", "barracks", "mine", "academy"];
+    const city = new window.NLCity.CityRenderer(null, document.getElementById("building-labels"));
+    window.__city = city;
+    city.refresh({ faction: "shu", buildings: Object.fromEntries(ids.map((id) => [id, lv])) });
+  </script>
+</body>
+</html>

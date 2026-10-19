@@ -1,0 +1,91 @@
+{
+  "list": {
+    "shu": {
+      "id": "shu",
+      "name": "Thục",
+      "nameFull": "Thục Hán",
+      "color": "#b91c1c",
+      "bonus": {
+        "food": 1.12,
+        "silver": 1.0,
+        "gold": 1.0,
+        "exp": 1.05
+      },
+      "starterGeneralIds": [
+        "liaohua",
+        "guanying",
+        "zhangbao_shu"
+      ],
+      "desc": "Nhân nghĩa · lợi lương · danh tướng Ngũ Hổ (mở dần theo tiến trình)"
+    },
+    "wei": {
+      "id": "wei",
+      "name": "Ngụy",
+      "nameFull": "Tào Ngụy",
+      "color": "#1d4ed8",
+      "bonus": {
+        "food": 1.0,
+        "silver": 1.12,
+        "gold": 1.0,
+        "exp": 1.05
+      },
+      "starterGeneralIds": [
+        "yuejin",
+        "licadian",
+        "caoren"
+      ],
+      "desc": "Quyền mưu · lợi bạc · hổ tướng (mở dần theo tiến trình)"
+    },
+    "wu": {
+      "id": "wu",
+      "name": "Ngô",
+      "nameFull": "Đông Ngô",
+      "color": "#0f766e",
+      "bonus": {
+        "food": 1.0,
+        "silver": 1.0,
+        "gold": 1.1,
+        "exp": 1.05
+      },
+      "starterGeneralIds": [
+        "chengpu",
+        "handang",
+        "zhouzhi"
+      ],
+      "desc": "Thủy chiến · lợi vàng · hỏa công (mở dần theo tiến trình)"
+    },
+    "yellow": {
+      "id": "yellow",
+      "name": "Khăn Vàng",
+      "playable": false,
+      "color": "#ca8a04",
+      "desc": "NPC — loạn khởi 184"
+    },
+    "dongzhuo": {
+      "id": "dongzhuo",
+      "name": "Đổng Trác",
+      "playable": false,
+      "color": "#7f1d1d",
+      "desc": "NPC — loạn Trác"
+    },
+    "yuan": {
+      "id": "yuan",
+      "name": "Viên",
+      "playable": false,
+      "color": "#a16207",
+      "desc": "NPC — Viên Thiệu / Viên Thuật"
+    },
+    "other": {
+      "id": "other",
+      "name": "Chư hầu",
+      "playable": false,
+      "color": "#78716c",
+      "desc": "NPC / generic / chư hầu khác"
+    }
+  },
+  "playable": [
+    "shu",
+    "wei",
+    "wu"
+  ]
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quạ · xem model</title>
+  <link rel="icon" href="data:," />
+  <style>html, body { margin: 0; height: 100%; overflow: hidden; }</style>
+</head>
+<body>
+  <!-- 4 góc nhìn quạ (bên/trên/trước/chéo sau). ?debug=1 tô vùng cắt, ?fly=1 bản bay, &glide=1 lượn, &t=giây -->
+  <script type="module">
+    import * as THREE from "three";
+    import { loadRaven, loadRavenDebug } from "/src/city/raven.ts";
+
+    const q = new URLSearchParams(location.search);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(innerWidth, innerHeight);
+    renderer.setScissorTest(true);
+    document.body.appendChild(renderer.domElement);
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xa9bfd4);
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x556677, 2.4));
+    const sun = new THREE.DirectionalLight(0xffffff, 2.6);
+    sun.position.set(2, 4, 3);
+    scene.add(sun, new THREE.AxesHelper(0.3));
+
+    const subject = q.has("debug") ? await loadRavenDebug() : (await loadRaven()).spawn();
+    scene.add(subject);
+    const box = new THREE.Box3().setFromObject(subject);
+    const c = box.getCenter(new THREE.Vector3());
+    const r = Math.max(0.8, box.getSize(new THREE.Vector3()).length()) * 1.1;
+    document.title = `bbox ${box.min.toArray().map((v) => v.toFixed(3))} .. ${box.max.toArray().map((v) => v.toFixed(3))}`;
+    const views = [[r, 0, 0], [0, r, 0.0001], [0, 0, r], [-r * 0.6, r * 0.45, -r * 0.6]].map((d) => {
+      const cam = new THREE.PerspectiveCamera(40, innerWidth / innerHeight, 0.01, 50);
+      cam.position.copy(c).add(new THREE.Vector3(...d));
+      cam.lookAt(c);
+      return cam;
+    });
+    const effort = q.has("glide") ? 0 : 1;
+    const fixedT = q.has("t") ? Number(q.get("t")) : null;
+    if (fixedT !== null) for (let i = 0; i < fixedT * 60; i++) subject.userData.flap?.(1 / 60, effort);
+    let last = performance.now();
+    renderer.setAnimationLoop(() => {
+      const now = performance.now();
+      if (fixedT === null) subject.userData.flap?.((now - last) / 1000, effort);
+      last = now;
+      const w = innerWidth / 2, h = innerHeight / 2;
+      views.forEach((cam, i) => {
+        const x = (i % 2) * w, y = (1 - Math.floor(i / 2)) * h;
+        renderer.setViewport(x, y, w, h);
+        renderer.setScissor(x, y, w, h);
+        renderer.render(scene, cam);
+      });
+      document.body.dataset.ready = "1";
+    });
+  </script>
+</body>
+</html>

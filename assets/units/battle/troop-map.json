@@ -1,0 +1,32 @@
+{
+  "infantry": {
+    "file": "assets/units/battle/wiki-infantry.png",
+    "wikiName": "Hoàng Bộ",
+    "source": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1e17cf23-6667-4fce-ab08-57530311f8fd.7b228.png",
+    "bytes": 25173
+  },
+  "spear": {
+    "file": "assets/units/battle/wiki-spear.png",
+    "wikiName": "Kích Vương",
+    "source": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2ede4e31-d050-46c9-9f18-4add3da8dc72.9e8b5.png",
+    "bytes": 25184
+  },
+  "cavalry": {
+    "file": "assets/units/battle/wiki-cavalry.png",
+    "wikiName": "Bạch Kỵ",
+    "source": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f4fa033d-e772-46de-8a4b-df3572a325d9.32e90.png",
+    "bytes": 24234
+  },
+  "archer": {
+    "file": "assets/units/battle/wiki-archer.png",
+    "wikiName": "Diệm Cung",
+    "source": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/34239df5-00ef-48ad-8c25-16d213105586.cca3f.png",
+    "bytes": 23109
+  },
+  "strategist": {
+    "file": "assets/units/battle/wiki-strategist.png",
+    "wikiName": "Linh Hỏa Mưu Sĩ",
+    "source": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/dc1cc93e-156c-4f9d-8871-6917bead0dc1.5e2a5.png",
+    "bytes": 17991
+  }
+}

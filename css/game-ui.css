@@ -1,0 +1,600 @@
+/**
+ * Ngọa Long — lớp panel / HUD / asset wiring
+ * Đồng bộ palette gỗ–đồng từ style.css. Không glow tím, không pill hiện đại.
+ */
+:root {
+  --nl-ink: #f3e6c8;
+  --nl-jade: #1a4a32;
+  --nl-gold: #c59b27;
+  --nl-gold-soft: #fde68a;
+  --nl-crimson: #8b1510;
+  --nl-paper: #f3e6c8;
+  --nl-paper-dim: #a89070;
+  --nl-panel: rgba(26, 15, 10, 0.96);
+  --nl-edge: linear-gradient(180deg, #e8c547, #c59b27 45%, #6a4a10);
+  --nl-asset-panel: url("../assets/ui/panel-parchment.svg");
+  --nl-asset-chip: url("../assets/ui/chip-frame.svg");
+  --nl-asset-btn-wood: url("../assets/ui/btn-wood.svg");
+  --nl-asset-btn-crimson: url("../assets/ui/btn-crimson.svg");
+  --nl-asset-city-bg: url("../assets/ui/bg-city-scroll.svg");
+  --nl-asset-battle-bg: url("../assets/ui/bg-battle-field.svg");
+  --nl-asset-vs: url("../assets/ui/vs-bar-metal.svg");
+}
+
+#screen-start.active {
+  background:
+    radial-gradient(ellipse at 50% 18%, rgba(139, 21, 16, 0.4), transparent 52%),
+    linear-gradient(180deg, #1a100a 0%, #0a0604 100%) !important;
+}
+
+.start-panel {
+  border-radius: 2px !important;
+  background-image: var(--nl-asset-panel), var(--nl-panel);
+  background-size: 100% 100%, auto;
+  background-repeat: no-repeat;
+}
+
+.res-chip {
+  background-image: var(--nl-asset-chip);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.nl-bottom .nav-item span {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.nl-tabs .btn-game {
+  flex: 1;
+  min-width: 100px;
+}
+
+/* Toast aliases (JS dùng good/bad) */
+.nl-toast.good,
+.nl-toast.ok { border-color: #5a8a4a; color: #c8e8b8; }
+.nl-toast.bad,
+.nl-toast.err { border-color: #c4281c; color: #f5c0b8; }
+
+/* Panel sheet dùng khung giấy da */
+.panel-sheet.ornate,
+.form-modal.ornate {
+  background-image: var(--nl-asset-panel), linear-gradient(180deg, #2c1810 0%, #1a0f0a 100%);
+  background-size: 100% 100%, auto;
+  background-repeat: no-repeat;
+}
+
+.form-preview-3d {
+  width: 100%;
+  height: 168px;
+  margin: 0 0 0.5rem;
+  border: 1px solid rgba(197, 155, 39, 0.35);
+  background: radial-gradient(ellipse at 50% 28%, #3a2818 0%, #120c08 72%);
+  overflow: hidden;
+  position: relative;
+  border-radius: 2px;
+}
+.form-preview-3d .battle-gl-host,
+.form-preview-3d .battle-gl {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.f-dual-btn {
+  display: inline-block;
+  margin: 0.15rem 0 0;
+  padding: 0.12rem 0.35rem;
+  font-size: 0.65rem;
+  border: 1px solid rgba(197, 155, 39, 0.5);
+  background: rgba(20, 12, 8, 0.85);
+  color: #fde68a;
+  cursor: pointer;
+}
+.f-dual-btn:hover {
+  border-color: #e8c547;
+}
+.equip-horse-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.equip-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.25rem 0.5rem;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid rgba(197, 155, 39, 0.28);
+  background: rgba(18, 12, 8, 0.7);
+}
+.equip-row strong {
+  color: #fde68a;
+}
+.equip-horse-now {
+  grid-column: 1 / -1;
+  font-size: 0.72rem;
+  color: #a89070;
+}
+.equip-horse-sel {
+  grid-column: 1 / -1;
+  background: #1a100c;
+  color: #f5e6c8;
+  border: 1px solid rgba(197, 155, 39, 0.4);
+  padding: 0.25rem 0.4rem;
+}
+
+/* ===================== PANEL CONTENT ===================== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 0.55rem;
+}
+
+.gcard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.65rem 0.7rem;
+  border: 1px solid rgba(197, 155, 39, 0.35);
+  background:
+    linear-gradient(180deg, rgba(44, 24, 16, 0.92), rgba(18, 12, 8, 0.94));
+  box-shadow: inset 0 1px 0 rgba(253, 230, 138, 0.08);
+  min-width: 0;
+}
+.gcard:hover {
+  border-color: rgba(232, 197, 71, 0.55);
+}
+.gcard h3 {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--nl-gold-soft);
+  line-height: 1.3;
+}
+.gcard .lvl {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+}
+.gcard .meta,
+.meta {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--nl-paper-dim);
+  line-height: 1.4;
+}
+.gcard .cost {
+  margin: 0;
+  font-size: 0.7rem;
+  color: #c4a45a;
+}
+.gcard .btn-game { align-self: flex-start; margin-top: 0.15rem; }
+
+.gcard-portrait {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.gcard-art {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border: 1px solid var(--nl-gold);
+  background: #120c08;
+  object-fit: contain;
+  image-rendering: auto;
+  padding: 2px;
+}
+
+.troop {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.1rem 0.4rem;
+  border: 1px solid rgba(197, 155, 39, 0.4);
+  background: rgba(12, 8, 6, 0.65);
+  font-size: 0.65rem;
+  color: #c4a45a;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.troop.cavalry { border-color: #8a6a30; color: #e8c547; }
+.troop.infantry { border-color: #5a7a4a; color: #a8c878; }
+.troop.spear { border-color: #6a7a8a; color: #a8c0d8; }
+.troop.archer { border-color: #7a5a3a; color: #d4a878; }
+.troop.strategist { border-color: #6a4a7a; color: #c8a8e0; }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.25rem;
+  margin: 0.15rem 0;
+}
+.stats > div {
+  padding: 0.2rem 0.25rem;
+  border: 1px solid rgba(197, 155, 39, 0.22);
+  background: rgba(0, 0, 0, 0.28);
+  text-align: center;
+  min-width: 0;
+}
+.stats span {
+  display: block;
+  font-size: 0.58rem;
+  color: var(--nl-paper-dim);
+}
+.stats b {
+  font-size: 0.78rem;
+  color: var(--nl-gold-soft);
+}
+
+.row-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+/* World map territories */
+.world-map {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.45rem;
+}
+.territory {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  min-height: 72px;
+  padding: 0.55rem 0.6rem;
+  border: 1px solid rgba(197, 155, 39, 0.35);
+  border-radius: 2px;
+  background: linear-gradient(180deg, #3a2216, #1a0f0a);
+  color: var(--nl-ink);
+  text-align: left;
+  box-shadow:
+    inset 0 1px 0 rgba(253, 230, 138, 0.12),
+    0 2px 0 #0a0604;
+  cursor: pointer;
+}
+.territory:hover:not(:disabled) {
+  border-color: var(--nl-gold);
+  color: var(--nl-gold-soft);
+}
+.territory:disabled,
+.territory.mine {
+  cursor: default;
+  opacity: 0.95;
+  border-color: #5a8a4a;
+  background: linear-gradient(180deg, #1a3a28, #0e1a14);
+}
+.territory.ai { border-color: rgba(139, 21, 16, 0.55); }
+.t-name {
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--nl-gold-soft);
+}
+.t-meta {
+  font-size: 0.68rem;
+  color: var(--nl-paper-dim);
+  line-height: 1.35;
+}
+
+/* Progress / tower / campaign blocks */
+.progress-block {
+  margin: 0 0 0.65rem;
+  padding: 0.65rem 0.7rem;
+  border: 1px solid rgba(197, 155, 39, 0.35);
+  background: rgba(12, 8, 6, 0.55);
+}
+.progress-block > strong {
+  display: block;
+  color: var(--nl-gold-soft);
+  margin-bottom: 0.35rem;
+  font-size: 0.9rem;
+}
+.floor-bar {
+  height: 10px;
+  margin: 0.45rem 0 0.65rem;
+  border: 1px solid #3a2a18;
+  background: #0a0604;
+  overflow: hidden;
+}
+.floor-bar > i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #6a1810, #c59b27);
+}
+
+.nl-rank-row,
+.nl-stage-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.35rem;
+  border-bottom: 1px solid rgba(197, 155, 39, 0.15);
+}
+.nl-rank-row:last-child,
+.nl-stage-row:last-child { border-bottom: 0; }
+.nl-rank-row.is-you {
+  background: rgba(26, 74, 50, 0.25);
+  border: 1px solid rgba(90, 138, 74, 0.4);
+  margin: 0.15rem 0;
+  padding: 0.45rem;
+}
+.nl-rank-num {
+  min-width: 2.2rem;
+  font-weight: 800;
+  color: var(--nl-gold);
+  font-size: 0.85rem;
+}
+.nl-stage-info { flex: 1; min-width: 0; font-size: 0.82rem; color: var(--nl-ink); }
+.nl-stage-actions { display: flex; flex-wrap: wrap; gap: 0.3rem; flex-shrink: 0; }
+
+.lead {
+  font-size: 0.9rem;
+  color: var(--nl-paper-dim);
+}
+
+/* Formation — thẻ tướng (portrait + sprite), không chỉ chữ */
+.form-slots .slot,
+.form-slot {
+  position: relative;
+  width: 84px;
+  height: 118px;
+  border: 1px dashed rgba(197, 155, 39, 0.35);
+  background: rgba(8, 5, 4, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0;
+  font-size: 0.65rem;
+  color: var(--nl-paper-dim);
+  cursor: pointer;
+  padding: 0;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.12s, transform 0.12s, box-shadow 0.12s;
+}
+.form-slots .slot:hover {
+  border-color: rgba(197, 155, 39, 0.7);
+  transform: translateY(-2px);
+}
+.form-slots .slot.empty {
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(197, 155, 39, 0.08), transparent 70%),
+    rgba(8, 5, 4, 0.7);
+}
+.f-empty-ico {
+  font-size: 1.4rem;
+  color: rgba(197, 155, 39, 0.45);
+  font-weight: 300;
+  line-height: 1;
+}
+.f-empty-num {
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  color: var(--nl-paper-dim);
+}
+.form-slots .slot.filled,
+.form-slot.filled {
+  border-style: solid;
+  border-color: #8a6a18;
+  color: var(--nl-gold-soft);
+  background: linear-gradient(180deg, #2c1810 0%, #1a0f0a 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(197, 155, 39, 0.18),
+    0 4px 10px rgba(0, 0, 0, 0.35);
+}
+.form-slots .slot.filled:hover {
+  border-color: var(--nl-gold);
+}
+.f-flag {
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  z-index: 3;
+  font-size: 0.58rem;
+  font-weight: 800;
+  color: #fde68a;
+  text-shadow: 0 1px 2px #000;
+  pointer-events: none;
+}
+.f-art {
+  position: relative;
+  height: 74px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 80%, rgba(197, 155, 39, 0.18), transparent 55%),
+    linear-gradient(180deg, #2a1c12 0%, #0e0a08 100%);
+  border-bottom: 1px solid rgba(197, 155, 39, 0.25);
+}
+.f-sprite {
+  position: relative;
+  z-index: 1;
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.75));
+  pointer-events: none;
+  image-rendering: auto;
+}
+.f-sprite.solo {
+  width: 58px;
+  height: 58px;
+}
+.f-troop-badge {
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  z-index: 2;
+  min-width: 1.15rem;
+  padding: 0 0.18rem;
+  font-size: 0.58rem;
+  font-weight: 800;
+  color: #fde68a;
+  border: 1px solid rgba(197, 155, 39, 0.5);
+  background: rgba(18, 12, 8, 0.9);
+  line-height: 1.25;
+}
+.f-plate {
+  padding: 0.28rem 0.2rem 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.08rem;
+  min-width: 0;
+}
+.form-slots .slot strong {
+  font-size: 0.68rem;
+  line-height: 1.15;
+  color: #fde68a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.slot-troop {
+  font-size: 0.58rem;
+  color: var(--nl-paper-dim);
+  font-weight: 600;
+}
+.form-slots .slot.troop-cavalry { border-color: #8a6a30; }
+.form-slots .slot.troop-infantry { border-color: #5a7a4a; }
+.form-slots .slot.troop-spear { border-color: #6a7a8a; }
+.form-slots .slot.troop-archer { border-color: #7a5a3a; }
+.form-slots .slot.troop-strategist { border-color: #6a4a7a; }
+
+.form-pool-hint {
+  margin: 0.15rem 0 0.4rem;
+  font-size: 0.72rem;
+  color: var(--nl-paper-dim);
+}
+
+.form-pool .chip,
+.form-pool-item,
+.form-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.45rem 0.25rem 0.25rem;
+  border: 1px solid rgba(197, 155, 39, 0.4);
+  background: linear-gradient(180deg, #3a2216, #1a0f0a);
+  color: var(--nl-gold-soft);
+  font-size: 0.72rem;
+  cursor: pointer;
+  border-radius: 2px;
+  text-align: left;
+  min-width: 0;
+  transition: border-color 0.12s, background 0.12s;
+}
+.form-chip-art {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 1px solid rgba(197, 155, 39, 0.35);
+  background: linear-gradient(180deg, #2a1c12, #0e0a08);
+  display: grid;
+  place-items: center;
+}
+.form-chip-sprite {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px #000);
+}
+.form-chip-sprite.solo {
+  width: 36px;
+  height: 36px;
+}
+.form-arena,
+.form-grid-wrap {
+  background:
+    linear-gradient(180deg, rgba(14, 9, 6, 0.55), rgba(8, 5, 4, 0.72)),
+    url("../assets/ui/bg-battle-field.svg") center / cover no-repeat !important;
+}
+.form-chip-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  min-width: 0;
+}
+.form-chip-meta b {
+  font-size: 0.72rem;
+  color: #fde68a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 7.5rem;
+}
+.form-chip-meta small {
+  font-size: 0.58rem;
+  color: var(--nl-paper-dim);
+  font-weight: 600;
+}
+.form-chip-check {
+  margin-left: 0.15rem;
+  color: #86efac;
+  font-weight: 800;
+  font-size: 0.75rem;
+}
+.form-pool .chip.on,
+.form-pool-item.on,
+.form-chip.on {
+  border-color: var(--nl-gold);
+  background: rgba(139, 21, 16, 0.5);
+  box-shadow: inset 0 0 0 1px rgba(253, 230, 138, 0.15);
+}
+
+/* Building dock seals — optional sprite thumbs */
+.dock-thumb {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  object-fit: contain;
+  image-rendering: auto;
+  background: #120c08;
+  border: 1px solid rgba(197, 155, 39, 0.35);
+  padding: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .btn-game,
+  .qbtn,
+  .side-btn,
+  .nav-item,
+  .c-round-btn,
+  .territory {
+    transition: none !important;
+  }
+  .res-chip.pulse { outline: none; }
+}
+
+@media (max-width: 560px) {
+  .nl-panel-head { gap: 0.45rem; }
+  .nl-panel-ico { width: 34px; height: 34px; font-size: 0.75rem; }
+  .card-grid { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1366px) {
+  .panel-sheet {
+    width: min(480px, 90vw);
+    max-height: min(78vh, 600px);
+  }
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (min-width: 1600px) {
+  .panel-sheet {
+    width: min(500px, 42vw);
+  }
+}

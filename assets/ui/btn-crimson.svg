@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 52" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="crimsonLacquer" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#cf3c27"/>
+      <stop offset="50%" stop-color="#9c1d13"/>
+      <stop offset="100%" stop-color="#610e08"/>
+    </linearGradient>
+    <linearGradient id="imperialGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff099"/>
+      <stop offset="50%" stop-color="#e0b236"/>
+      <stop offset="100%" stop-color="#8c650e"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="176" height="48" rx="4" fill="url(#crimsonLacquer)" stroke="url(#imperialGold)" stroke-width="2.6"/>
+  <rect x="6" y="6" width="168" height="40" rx="2" fill="none" stroke="rgba(255,240,180,0.32)" stroke-width="1"/>
+  <polygon points="10,26 14,22 18,26 14,30" fill="#fde047"/>
+  <polygon points="170,26 166,22 162,26 166,30" fill="#fde047"/>
+</svg>

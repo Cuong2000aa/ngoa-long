@@ -1,0 +1,257 @@
+{
+  "schemaVersion": 3,
+  "note": "Thành chính NL — Ty Vũ giới hạn cấp nhà khác. Sản lượng theo phút. Nâng cấp có thời gian chờ.",
+  "levelBands": [
+    {
+      "min": 1,
+      "max": 9,
+      "assetSuffix": "lv1",
+      "label": "Sơ cấp"
+    },
+    {
+      "min": 10,
+      "max": 19,
+      "assetSuffix": "lv10",
+      "label": "Trung cấp"
+    },
+    {
+      "min": 20,
+      "max": 39,
+      "assetSuffix": "lv20",
+      "label": "Cao cấp"
+    },
+    {
+      "min": 40,
+      "max": 59,
+      "assetSuffix": "lv40",
+      "label": "Tinh xảo"
+    },
+    {
+      "min": 60,
+      "max": 99,
+      "assetSuffix": "lv60",
+      "label": "Hùng tráng"
+    },
+    {
+      "min": 100,
+      "max": 180,
+      "assetSuffix": "lv100",
+      "label": "Đỉnh phong"
+    }
+  ],
+  "coreIds": [
+    "ty_vu",
+    "mo_bac",
+    "nong_trai",
+    "doanh_trai",
+    "kho"
+  ],
+  "list": [
+    {
+      "id": "ty_vu",
+      "aliases": [
+        "b_tyvu",
+        "hall"
+      ],
+      "name": "Ty Vũ",
+      "slot": {
+        "col": 2,
+        "row": 1
+      },
+      "maxLevel": 180,
+      "baseCost": {
+        "silver": 200,
+        "food": 100
+      },
+      "costGrowth": 1.55,
+      "upgradeBaseSec": 20,
+      "upgradeGrowth": 1.38,
+      "effect": {
+        "type": "hall_cap",
+        "otherMaxLevel": "ty_vu_level"
+      },
+      "desc": "Nhà chính — cấp Ty Vũ = trần cấp mọi công trình khác."
+    },
+    {
+      "id": "mo_bac",
+      "aliases": [
+        "b_mobac",
+        "mine"
+      ],
+      "name": "Mỏ Bạc",
+      "slot": {
+        "col": 4,
+        "row": 2
+      },
+      "maxLevel": 180,
+      "baseCost": {
+        "silver": 80,
+        "food": 60
+      },
+      "costGrowth": 1.5,
+      "upgradeBaseSec": 25,
+      "upgradeGrowth": 1.35,
+      "effect": {
+        "type": "silver_per_min",
+        "base": 8,
+        "perLevel": 4
+      },
+      "desc": "Sản xuất Bạc theo thời gian thực (mỗi phút)."
+    },
+    {
+      "id": "nong_trai",
+      "aliases": [
+        "b_nongtrai",
+        "farm",
+        "kho_lua"
+      ],
+      "name": "Nông Trại",
+      "slot": {
+        "col": 0,
+        "row": 2
+      },
+      "maxLevel": 180,
+      "baseCost": {
+        "silver": 70,
+        "food": 50
+      },
+      "costGrowth": 1.5,
+      "upgradeBaseSec": 25,
+      "upgradeGrowth": 1.35,
+      "effect": {
+        "type": "food_per_min",
+        "base": 10,
+        "perLevel": 5
+      },
+      "desc": "Sản xuất Lương thực theo thời gian thực (mỗi phút)."
+    },
+    {
+      "id": "doanh_trai",
+      "aliases": [
+        "b_doanhtrai",
+        "barracks"
+      ],
+      "name": "Doanh Trại",
+      "slot": {
+        "col": 1,
+        "row": 3
+      },
+      "maxLevel": 180,
+      "baseCost": {
+        "silver": 120,
+        "food": 90
+      },
+      "costGrowth": 1.52,
+      "upgradeBaseSec": 30,
+      "upgradeGrowth": 1.36,
+      "effect": {
+        "type": "troops",
+        "maxBase": 500,
+        "maxPerLevel": 200,
+        "regenPerMinBase": 2,
+        "regenPerMinPerLevel": 1,
+        "atkPctPerLevel": 0.5
+      },
+      "desc": "Giới hạn & hồi phục binh lực; tăng nhẹ sát thương xuất trận."
+    },
+    {
+      "id": "kho",
+      "aliases": [
+        "b_kho",
+        "warehouse",
+        "kho_trang"
+      ],
+      "name": "Kho",
+      "slot": {
+        "col": 3,
+        "row": 3
+      },
+      "maxLevel": 180,
+      "baseCost": {
+        "silver": 100,
+        "food": 80
+      },
+      "costGrowth": 1.5,
+      "upgradeBaseSec": 28,
+      "upgradeGrowth": 1.34,
+      "effect": {
+        "type": "warehouse",
+        "silverBase": 20000,
+        "silverPerLevel": 8000,
+        "foodBase": 20000,
+        "foodPerLevel": 8000
+      },
+      "desc": "Giới hạn dung tích Bạc và Lương thực."
+    },
+    {
+      "id": "quan_vien",
+      "aliases": [],
+      "name": "Quân Viện",
+      "slot": {
+        "col": 3,
+        "row": 2
+      },
+      "maxLevel": 120,
+      "baseCost": {
+        "silver": 110,
+        "food": 90
+      },
+      "costGrowth": 1.52,
+      "upgradeBaseSec": 30,
+      "upgradeGrowth": 1.35,
+      "effect": {
+        "type": "troop_hp_pct",
+        "perLevel": 1.0
+      },
+      "desc": "+% HP tướng khi xuất trận."
+    },
+    {
+      "id": "san_tap",
+      "aliases": [
+        "academy"
+      ],
+      "name": "Sân Tập",
+      "slot": {
+        "col": 2,
+        "row": 4
+      },
+      "maxLevel": 120,
+      "baseCost": {
+        "silver": 90,
+        "food": 70
+      },
+      "costGrowth": 1.5,
+      "upgradeBaseSec": 26,
+      "upgradeGrowth": 1.34,
+      "effect": {
+        "type": "train_discount_pct",
+        "perLevel": 0.5,
+        "cap": 40
+      },
+      "desc": "Giảm phí huấn luyện tướng."
+    },
+    {
+      "id": "tuong_quan",
+      "aliases": [],
+      "name": "Tướng Quán",
+      "slot": {
+        "col": 2,
+        "row": 2
+      },
+      "maxLevel": 100,
+      "baseCost": {
+        "silver": 140,
+        "food": 120
+      },
+      "costGrowth": 1.55,
+      "upgradeBaseSec": 35,
+      "upgradeGrowth": 1.36,
+      "effect": {
+        "type": "general_slot",
+        "base": 8,
+        "perLevel": 0.2
+      },
+      "desc": "Sức chứa danh tướng."
+    }
+  ]
+}

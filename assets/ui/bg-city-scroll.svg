@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bgSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2a1c10"/>
+      <stop offset="28%" stop-color="#4a3220"/>
+      <stop offset="58%" stop-color="#6b4a2e"/>
+      <stop offset="100%" stop-color="#3a2818"/>
+    </linearGradient>
+    <radialGradient id="warmSun" cx="54%" cy="32%" r="48%">
+      <stop offset="0%" stop-color="#f0d070" stop-opacity="0.35"/>
+      <stop offset="50%" stop-color="#c47a30" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#2a1c10" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="groundScroll" cx="52%" cy="56%" r="55%">
+      <stop offset="0%" stop-color="#7a6040"/>
+      <stop offset="60%" stop-color="#554030"/>
+      <stop offset="100%" stop-color="#322418"/>
+    </radialGradient>
+    <pattern id="ancientTiles" width="96" height="54" patternUnits="userSpaceOnUse">
+      <path d="M 48,0 L 96,27 L 48,54 L 0,27 Z" fill="none" stroke="rgba(40,24,12,0.28)" stroke-width="1.3"/>
+      <path d="M 48,3 L 92,27 L 48,51 L 4,27 Z" fill="none" stroke="rgba(232,197,71,0.12)" stroke-width="0.9"/>
+    </pattern>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bgSky)"/>
+  <rect width="1920" height="1080" fill="url(#warmSun)"/>
+  <path d="M0,330 Q220,195 440,285 T890,210 T1360,265 T1920,235 L1920,560 L0,560 Z" fill="#3a2a1c" opacity="0.9"/>
+  <path d="M0,395 Q310,270 610,345 T1180,275 T1640,330 T1920,305 L1920,620 L0,620 Z" fill="#4a3424" opacity="0.94"/>
+  <polygon points="990,155 1880,545 990,1035 100,545" fill="#1e3a42" stroke="#143038" stroke-width="8"/>
+  <polygon points="990,198 1775,540 990,962 205,540" fill="url(#groundScroll)" stroke="#8a6a38" stroke-width="5"/>
+  <polygon points="990,210 1755,540 990,945 225,540" fill="url(#ancientTiles)"/>
+  <polygon points="990,320 1125,380 650,805 515,745" fill="rgba(230,210,170,0.28)" stroke="rgba(232,197,71,0.35)" stroke-width="2"/>
+  <polygon points="610,505 1410,505 1355,565 555,565" fill="rgba(210,190,150,0.2)" stroke="rgba(232,197,71,0.22)" stroke-width="1.5"/>
+  <polygon points="215,530 990,192 990,245 215,582" fill="#6a6052" stroke="#3a342c" stroke-width="3"/>
+  <polygon points="990,192 1765,530 1765,582 990,245" fill="#585248" stroke="#3a342c" stroke-width="3"/>
+  <polygon points="205,540 990,962 990,1002 205,580" fill="#72685a" stroke="#322c24" stroke-width="3.5"/>
+  <polygon points="990,962 1775,540 1775,580 990,1002" fill="#5c5448" stroke="#322c24" stroke-width="3.5"/>
+</svg>

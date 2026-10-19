@@ -1,0 +1,745 @@
+/* global window, NLDatabase */
+/**
+ * NL Combat Engine v3 — bám cơ chế Ngọa Long 2011
+ * - Lưới 3+2 (front bảo vệ back)
+ * - Sĩ khí: start 50 | +25 đánh | +15 bị đánh | >=100 → Chiến pháp → reset 0
+ * - Khắc cận chiến: Kỵ>Bộ>Thương>Kỵ ; Cung/Mưu đánh xa
+ * - Battle Log JSON theo từng action để Client render
+ */
+(function (global) {
+  function uid(prefix) {
+    return (prefix || "u") + "_" + Math.random().toString(36).slice(2, 8);
+  }
+
+  function clamp(n, a, b) {
+    return Math.max(a, Math.min(b, n));
+  }
+
+  function rnd(a, b) {
+    return a + Math.random() * (b - a);
+  }
+
+  function cfg() {
+    var f = NLDatabase && NLDatabase.formulas && NLDatabase.formulas();
+    return {
+      combat: (f && f.combat) || {},
+      morale: (f && f.morale) || {
+        start: 50,
+        max: 100,
+        gainOnAttack: 25,
+        gainOnHit: 15,
+        skillThreshold: 100,
+        resetAfterSkill: 0,
+      },
+    };
+  }
+
+  function troopInfo(troopId) {
+    if (!NLDatabase) return null;
+    return NLDatabase.getTroop(troopId);
+  }
+
+  /** Hệ số khắc chế — tam giác cận chiến */
+  function counterMultiplier(atkTroop, defTroop) {
+    var C = cfg().combat;
+    var counterMul = C.counterMul != null ? C.counterMul : 1.25;
+    var weakMul = C.weakMul != null ? C.weakMul : 0.8;
+    var a = troopInfo(atkTroop);
+    var d = troopInfo(defTroop);
+    if (!a || !d) return 1;
+    // Ranged không vào vòng khắc cứng
+    if (a.range === "ranged" || d.range === "ranged") return 1;
+    if (a.beats === defTroop) return counterMul;
+    if (d.beats === atkTroop) return weakMul;
+    return 1;
+  }
+
+  function formationMods(formationId, slot) {
+    var raw = NLDatabase && NLDatabase.raw && NLDatabase.raw();
+    var formations = raw && raw.formations;
+    if (!formations) return { atk: 1, def: 1 };
+    var fid = formationId || formations.defaultId || "crane_wing";
+    var form = formations.list[fid];
+    if (!form || !form.slotMods) return { atk: 1, def: 1 };
+    var m = form.slotMods[String(slot)] || form.slotMods[slot];
+    return { atk: (m && m.atk) || 1, def: (m && m.def) || 1 };
+  }
+
+  function isFront(slot) {
+    return slot >= 0 && slot <= 2;
+  }
+
+  function normalizeUnit(raw, side, slot, formationId) {
+    var g = raw;
+    if (raw.generalId && raw.vuLuc == null && NLDatabase) {
+      g = NLDatabase.scaleGeneral(raw.generalId, raw.level || 1) || raw;
+    }
+    var tongLinh = g.tongLinh != null ? g.tongLinh : Math.round((g.def || 50) * 0.9);
+    var vuLuc = g.vuLuc != null ? g.vuLuc : Math.round(g.atk || 50);
+    var triLuc = g.triLuc != null ? g.triLuc : Math.round((g.atk || 50) * 0.6);
+    var hp = g.hp != null ? g.hp : g.maxHp || 2000;
+    // Cộng bonus cường hóa (+4% mỗi cấp enhance) nếu có
+    var enhMul = 1 + (g.enhance || 0) * 0.04;
+    if (enhMul > 1) {
+      tongLinh = Math.round(tongLinh * enhMul);
+      vuLuc = Math.round(vuLuc * enhMul);
+      triLuc = Math.round(triLuc * enhMul);
+      hp = Math.round(hp * enhMul);
+    }
+    var s = slot != null ? slot : g.slot != null ? g.slot : 0;
+    s = clamp(s, 0, 4);
+    var moraleCfg = cfg().morale;
+    var mods = formationMods(formationId, s);
+
+    var troopTier =
+      g.troopTier != null
+        ? g.troopTier
+        : NLDatabase && NLDatabase.troopTierForLevel
+        ? NLDatabase.troopTierForLevel(g.level || 1)
+        : 1;
+    var activeTroop = g.activeTroop || g.troop || "infantry";
+    var troop2 = g.troop2 || null;
+    var troopTierName = g.troopTierName || null;
+    if (!troopTierName && NLDatabase && NLDatabase.getTroop) {
+      var tr = NLDatabase.getTroop(activeTroop);
+      if (tr && tr.tierNames && tr.tierNames[troopTier - 1]) {
+        troopTierName = tr.tierNames[troopTier - 1];
+      }
+    }
+    return {
+      uid: g.uid || uid(side === "player" ? "h" : "e"),
+      generalId: g.id || g.generalId || g.key || "unknown",
+      name: g.name || "?",
+      side: side,
+      slot: s,
+      troop: activeTroop,
+      troopPrimary: g.troopPrimary || g.troop || activeTroop,
+      troop2: troop2,
+      troopSwitched: false,
+      horseId: g.horseId || null,
+      troopTier: troopTier,
+      troopTierName: troopTierName,
+      quality: g.quality || "white",
+      level: g.level || 1,
+      tongLinh: tongLinh,
+      vuLuc: vuLuc,
+      triLuc: triLuc,
+      hp: hp,
+      maxHp: g.maxHp || hp,
+      morale: moraleCfg.start != null ? moraleCfg.start : 50,
+      maxMorale: moraleCfg.max != null ? moraleCfg.max : 100,
+      skillId: (function () {
+        if (NLDatabase && NLDatabase.resolveSkillId) {
+          return NLDatabase.resolveSkillId({
+            id: g.id || g.generalId,
+            skillId: g.skillBaseId || g.skillId,
+            quality: g.quality || "white",
+            skillsByQuality: g.skillsByQuality,
+          });
+        }
+        return g.skillId || "basic_strike";
+      })(),
+      formAtk: mods.atk,
+      formDef: mods.def,
+      buffs: [],
+      stunned: 0,
+      silenced: 0,
+      alive: true,
+    };
+  }
+
+  function living(units, side) {
+    return units.filter(function (u) {
+      return u.alive && u.hp > 0 && (!side || u.side === side);
+    });
+  }
+
+  function frontAlive(units, side) {
+    return living(units, side).filter(function (u) {
+      return isFront(u.slot);
+    });
+  }
+
+  function backAlive(units, side) {
+    return living(units, side).filter(function (u) {
+      return !isFront(u.slot);
+    });
+  }
+
+  /** Mục tiêu đánh thường: bắt buộc hàng trước nếu còn sống */
+  function pickNormalTarget(attacker, defenders) {
+    var foes = living(defenders);
+    if (!foes.length) return null;
+    var atkInfo = troopInfo(attacker.troop);
+    var ranged = atkInfo && atkInfo.range === "ranged";
+    var front = frontAlive(defenders, foes[0].side);
+    // Cận chiến / mặc định: chỉ đánh được hàng trước nếu còn
+    if (!ranged && front.length) {
+      return front[Math.floor(Math.random() * front.length)];
+    }
+    // Ranged: ưu tiên front 70%, có thể bắn back 30% nếu có
+    if (ranged) {
+      var back = backAlive(defenders, foes[0].side);
+      if (back.length && Math.random() < 0.35) {
+        return back[Math.floor(Math.random() * back.length)];
+      }
+      if (front.length) return front[Math.floor(Math.random() * front.length)];
+      return foes[Math.floor(Math.random() * foes.length)];
+    }
+    return foes[Math.floor(Math.random() * foes.length)];
+  }
+
+  function resolveSkillTargets(actor, pattern, enemies, allies) {
+    var foes = living(enemies);
+    var friends = living(allies);
+    if (!pattern || pattern === "single") {
+      var t = pickNormalTarget(actor, enemies);
+      return t ? [t] : [];
+    }
+    if (pattern === "self") return [actor];
+    if (pattern === "ally_all") return friends.slice();
+    if (pattern === "all") return foes.slice();
+    if (pattern === "front_row") {
+      var fr = frontAlive(enemies, foes[0] && foes[0].side);
+      return fr.length ? fr : foes.slice(0, 1);
+    }
+    if (pattern === "row") {
+      var one = pickNormalTarget(actor, enemies);
+      if (!one) return [];
+      return isFront(one.slot)
+        ? frontAlive(enemies, one.side)
+        : backAlive(enemies, one.side);
+    }
+    if (pattern === "column") {
+      var focus = pickNormalTarget(actor, enemies);
+      if (!focus) return [];
+      var colMap = { 0: [0, 3], 1: [1, 4], 2: [2], 3: [0, 3], 4: [1, 4] };
+      var cols = colMap[focus.slot] || [focus.slot];
+      return foes.filter(function (u) {
+        return cols.indexOf(u.slot) >= 0;
+      });
+    }
+    return [];
+  }
+
+  function speedOf(u, weights) {
+    var w = weights || { vuLuc: 0.55, tongLinh: 0.25, triLuc: 0.2 };
+    return u.vuLuc * (w.vuLuc || 0.55) + u.tongLinh * (w.tongLinh || 0.25) + u.triLuc * (w.triLuc || 0.2);
+  }
+
+  /** Thứ tự ra đòn: tốc độ ↓, rồi slot ↑ (trước → sau) */
+  function turnOrder(units, combatCfg) {
+    var w = combatCfg.speedWeights || {};
+    return living(units).slice().sort(function (a, b) {
+      var sa = speedOf(a, w);
+      var sb = speedOf(b, w);
+      if (Math.abs(sa - sb) > 0.01) return sb - sa;
+      return a.slot - b.slot;
+    });
+  }
+
+  function buffMul(unit, key) {
+    var m = 1;
+    (unit.buffs || []).forEach(function (b) {
+      if (b.type === key) m += b.value || 0;
+    });
+    return m;
+  }
+
+  function tickStatus(unit) {
+    unit.buffs = (unit.buffs || []).filter(function (b) {
+      if (b.duration == null) return true;
+      b.duration -= 1;
+      return b.duration > 0;
+    });
+    if (unit.stunned > 0) unit.stunned -= 1;
+    if (unit.silenced > 0) unit.silenced -= 1;
+  }
+
+  function calcHit(attacker, defender, damageType, power, opts) {
+    opts = opts || {};
+    var C = cfg().combat;
+    var counter = counterMultiplier(attacker.troop, defender.troop);
+    var atkStat = damageType === "strategy" ? attacker.triLuc : attacker.vuLuc;
+    atkStat *= attacker.formAtk || 1;
+    atkStat *= buffMul(attacker, "atk_up");
+    (attacker.buffs || []).forEach(function (b) {
+      if (b.type === "atk_down") atkStat *= 1 - (b.value || 0);
+    });
+
+    var defense = defender.tongLinh * (defender.formDef || 1);
+    defense *= buffMul(defender, "def_up");
+    (defender.buffs || []).forEach(function (b) {
+      if (b.type === "def_down") defense *= 1 - (b.value || 0);
+    });
+
+    var defInfo = troopInfo(defender.troop);
+    if (defInfo && defInfo.range === "ranged" && defInfo.armorCoef) {
+      defense *= defInfo.armorCoef;
+    }
+
+    var coef = damageType === "strategy" ? C.stratCoef != null ? C.stratCoef : 1 : C.physCoef != null ? C.physCoef : 1;
+    var raw = atkStat * (power || 1) * coef * counter - defense;
+    var minD = C.minDamage != null ? C.minDamage : 25;
+    raw *= rnd(C.damageRandomMin != null ? C.damageRandomMin : 0.95, C.damageRandomMax != null ? C.damageRandomMax : 1.05);
+
+    var missChance = clamp(
+      (C.missBase != null ? C.missBase : 0.05) + defender.tongLinh * 0.0003 - attacker.vuLuc * 0.00012,
+      (C.missClamp && C.missClamp[0]) || 0.02,
+      (C.missClamp && C.missClamp[1]) || 0.18
+    );
+    var missed = !opts.noMiss && Math.random() < missChance;
+
+    var critChance = clamp(
+      (C.critBase != null ? C.critBase : 0.08) + (opts.critBonus || 0) + attacker.vuLuc * 0.0002,
+      (C.critClamp && C.critClamp[0]) || 0.05,
+      (C.critClamp && C.critClamp[1]) || 0.4
+    );
+    var crit = !missed && Math.random() < critChance;
+    if (crit) raw *= C.critMul != null ? C.critMul : 1.5;
+
+    var dmg = missed ? 0 : Math.max(minD, Math.round(raw));
+    return {
+      damage: dmg,
+      missed: missed,
+      crit: crit,
+      counter: counter,
+    };
+  }
+
+  /** Wiki: https://ngoalong.vnggames.com/ngoa-long-wiki/hieu-ung — ưu tiên NL_DB.statusEffects */
+  var STATUS_META_FALLBACK = {
+    stun: { id: "stun", label: "Hỗn loạn", short: "Loạn", kind: "control" },
+    silence: { id: "silence", label: "Ám tế", short: "Ám", kind: "debuff" },
+    poison: { id: "poison", label: "Trúng độc", short: "Độc", kind: "debuff" },
+    burn: { id: "burn", label: "Thiêu đốt", short: "Thiêu", kind: "debuff" },
+    atk_up: { id: "atk_up", label: "Anh dũng", short: "Dũng", kind: "buff" },
+    atk_down: { id: "atk_down", label: "Giảm công", short: "Yếu", kind: "debuff" },
+    def_up: { id: "def_up", label: "Kiên thủ", short: "Thủ", kind: "buff" },
+    def_down: { id: "def_down", label: "Phá thủ", short: "Phá", kind: "debuff" },
+  };
+
+  function statusMetaMap() {
+    var se =
+      (typeof NLDatabase !== "undefined" && NLDatabase.statusEffects && NLDatabase.statusEffects()) ||
+      (global.NL_DB && global.NL_DB.statusEffects) ||
+      null;
+    if (se && se.effects) {
+      var out = {};
+      Object.keys(se.effects).forEach(function (k) {
+        var e = se.effects[k];
+        out[k] = {
+          id: e.id || k,
+          label: e.label || e.wiki || k,
+          short: e.short || (e.label || k).slice(0, 4),
+          kind: e.kind || "debuff",
+        };
+      });
+      return out;
+    }
+    return STATUS_META_FALLBACK;
+  }
+
+  function collectStatuses(unit) {
+    var STATUS_META = statusMetaMap();
+    var out = [];
+    if (!unit) return out;
+    if (unit.stunned > 0) out.push(STATUS_META.stun);
+    if (unit.silenced > 0) out.push(STATUS_META.silence);
+    (unit.buffs || []).forEach(function (b) {
+      var key = b.type === "dot" ? b.dotType || "poison" : b.type;
+      var meta = STATUS_META[key];
+      if (meta && !out.some(function (x) { return x.id === meta.id; })) out.push(meta);
+    });
+    return out;
+  }
+
+  function pushStatuses(uiEvents, unit) {
+    if (!uiEvents || !unit) return;
+    uiEvents.push({
+      type: "status",
+      uid: unit.uid,
+      statuses: collectStatuses(unit).map(function (s) {
+        return { id: s.id, label: s.short || s.label, kind: s.kind };
+      }),
+    });
+  }
+
+  function applyEffects(actor, targets, effects, uiEvents) {
+    if (!effects) return;
+    var touched = {};
+    effects.forEach(function (eff) {
+      var list =
+        eff.target === "self"
+          ? [actor]
+          : targets && targets.length
+            ? targets
+            : [actor];
+      list.forEach(function (t) {
+        if (!t) return;
+        if (!t.alive && eff.type !== "heal_pct" && eff.type !== "morale_boost") return;
+        if (eff.chance != null && Math.random() > eff.chance) return;
+        if (eff.type === "stun") t.stunned = Math.max(t.stunned, eff.duration || 1);
+        else if (eff.type === "silence") t.silenced = Math.max(t.silenced, eff.duration || 1);
+        else if (eff.type === "burn" || eff.type === "poison") {
+          t.buffs.push({ type: "dot", value: eff.value || 0.08, duration: eff.duration || 2, dotType: eff.type });
+        } else if (eff.type === "def_down" || eff.type === "atk_down" || eff.type === "atk_up" || eff.type === "def_up") {
+          var who = eff.self ? actor : t;
+          who.buffs.push({ type: eff.type, value: eff.value || 0.1, duration: eff.duration || 2 });
+          touched[who.uid] = who;
+        } else if (eff.type === "self_def_up") {
+          actor.buffs.push({ type: "def_up", value: eff.value || 0.2, duration: eff.duration || 2 });
+          touched[actor.uid] = actor;
+        } else if (eff.type === "tonglinh_up") {
+          var tgt = eff.self ? actor : t;
+          tgt.buffs.push({ type: "def_up", value: eff.value || 0.1, duration: eff.duration || 2 });
+          touched[tgt.uid] = tgt;
+        } else if (eff.type === "heal_pct") {
+          var heal = Math.round(t.maxHp * (eff.value || 0.1));
+          t.hp = Math.min(t.maxHp, t.hp + heal);
+        } else if (eff.type === "morale_boost") {
+          t.morale = clamp(t.morale + (eff.value || 20), 0, t.maxMorale);
+        }
+        touched[t.uid] = t;
+      });
+    });
+    if (uiEvents) {
+      Object.keys(touched).forEach(function (uid) {
+        pushStatuses(uiEvents, touched[uid]);
+      });
+    }
+  }
+
+  function processDots(unit) {
+    var notes = [];
+    (unit.buffs || []).forEach(function (b) {
+      if (b.type !== "dot" || !unit.alive) return;
+      var dmg = Math.max(1, Math.round(unit.maxHp * (b.value || 0.08)));
+      unit.hp = Math.max(0, unit.hp - dmg);
+      notes.push({ damage: dmg, kind: b.dotType });
+      if (unit.hp <= 0) unit.alive = false;
+    });
+    return notes;
+  }
+
+  function addMorale(unit, amount) {
+    unit.morale = clamp(unit.morale + amount, 0, unit.maxMorale);
+  }
+
+  /**
+   * @param {Array} playerRaw
+   * @param {Array} enemyRaw
+   * @param {{ title?: string, playerFormation?: string, enemyFormation?: string }} opts
+   */
+  function runBattle(playerRaw, enemyRaw, opts) {
+    opts = opts || {};
+    var moraleCfg = cfg().morale;
+    var combatCfg = cfg().combat;
+    var maxRounds = combatCfg.maxRounds || 40;
+    var pForm = opts.playerFormation || "crane_wing";
+    var eForm = opts.enemyFormation || "square";
+
+    var allies = playerRaw.map(function (g, i) {
+      return normalizeUnit(g, "player", g.slot != null ? g.slot : i, pForm);
+    });
+    var foes = enemyRaw.map(function (g, i) {
+      return normalizeUnit(g, "enemy", g.slot != null ? g.slot : i, eForm);
+    });
+
+    var battleLog = [];
+    var uiEvents = [];
+
+    uiEvents.push({
+      type: "battle_start",
+      title: opts.title || "Chiến đấu",
+      allies: snapshot(allies),
+      foes: snapshot(foes),
+      playerFormation: pForm,
+      enemyFormation: eForm,
+    });
+
+    var round = 0;
+    while (round < maxRounds) {
+      round++;
+      if (!living(allies).length || !living(foes).length) break;
+      uiEvents.push({ type: "round", round: round });
+
+      var order = turnOrder(allies.concat(foes), combatCfg);
+
+      for (var oi = 0; oi < order.length; oi++) {
+        var actor = order[oi];
+        if (!actor.alive) continue;
+        if (!living(allies).length || !living(foes).length) break;
+
+        processDots(actor);
+        if (!actor.alive) {
+          uiEvents.push({ type: "death", uid: actor.uid, name: actor.name });
+          continue;
+        }
+
+        if (actor.stunned > 0) {
+          uiEvents.push({ type: "skip", uid: actor.uid, reason: "stun" });
+          tickStatus(actor);
+          continue;
+        }
+
+        var myAllies = actor.side === "player" ? allies : foes;
+        var myEnemies = actor.side === "player" ? foes : allies;
+
+        var moraleBefore = actor.morale;
+        var skill = NLDatabase ? NLDatabase.getSkill(actor.skillId) : null;
+        var threshold = moraleCfg.skillThreshold != null ? moraleCfg.skillThreshold : 100;
+        var useSkill = skill && actor.morale >= threshold && actor.silenced <= 0;
+
+        var entry = {
+          round: round,
+          actor_id: actor.uid,
+          actor_name: actor.name,
+          actor_side: actor.side,
+          actor_slot: actor.slot,
+          action_type: useSkill ? "SKILL" : "NORMAL_ATTACK",
+          skill_name: useSkill ? skill.name : null,
+          skill_id: useSkill ? skill.id : null,
+          morale_before: moraleBefore,
+          morale_after: moraleBefore,
+          targets: [],
+        };
+
+        uiEvents.push({ type: "turn", uid: actor.uid, name: actor.name, side: actor.side });
+
+        if (useSkill) {
+          var targets = resolveSkillTargets(actor, skill.pattern, myEnemies, myAllies);
+          if (skill.pattern === "ally_all" || skill.pattern === "self") {
+            targets = resolveSkillTargets(actor, skill.pattern, myEnemies, myAllies);
+          }
+
+          var skillHits = Math.max(1, skill.hits | 0 || 1);
+          uiEvents.push({
+            type: "skill",
+            uid: actor.uid,
+            skillId: skill.id,
+            name: skill.name,
+            text: (skill.fx && skill.fx.text) || skill.name,
+            flash: (skill.fx && skill.fx.flash) || "gold",
+            pattern: skill.pattern || "single",
+            damageType: skill.damageType || "physical",
+            hits: skillHits,
+            quality: actor.quality || null,
+            targets: targets.map(function (t) { return t.uid; }),
+          });
+          uiEvents.push({
+            type: "float",
+            uid: actor.uid,
+            text: (skill.fx && skill.fx.text) || skill.name,
+            kind: "skill",
+          });
+
+          var power = skill.power != null ? skill.power : 1;
+          if (power > 0 && skill.pattern !== "ally_all" && skill.pattern !== "self") {
+            for (var hi = 0; hi < skillHits; hi++) {
+              if (hi > 0) {
+                uiEvents.push({
+                  type: "skill_wave",
+                  uid: actor.uid,
+                  wave: hi + 1,
+                  flash: (skill.fx && skill.fx.flash) || "gold",
+                  targets: targets.map(function (t) { return t.uid; }),
+                });
+              }
+              targets.forEach(function (t) {
+                if (!t.alive) return;
+                var hit = calcHit(actor, t, skill.damageType || "physical", power, {
+                  critBonus: skill.critBonus || 0,
+                });
+                pushTargetResult(entry, actor, t, hit, uiEvents, moraleCfg);
+              });
+            }
+          }
+
+          // heal / buff skills
+          if (skill.pattern === "ally_all" || skill.pattern === "self") {
+            applyEffects(actor, targets, skill.effects, uiEvents);
+            targets.forEach(function (t) {
+              entry.targets.push({
+                target_id: t.uid,
+                target_name: t.name,
+                damage_dealt: 0,
+                is_crit: false,
+                is_miss: false,
+                target_hp_left: t.hp,
+                is_defeated: !t.alive,
+                support: true,
+              });
+              uiEvents.push({ type: "hp", uid: t.uid, hp: t.hp, maxHp: t.maxHp });
+            });
+          } else if (skill.effects) {
+            // Debuff địch trước; morale_boost self áp sau reset sĩ khí
+            applyEffects(
+              actor,
+              targets,
+              skill.effects.filter(function (e) {
+                return !(e.type === "morale_boost" && e.target === "self");
+              }),
+              uiEvents
+            );
+          }
+
+          actor.morale = moraleCfg.resetAfterSkill != null ? moraleCfg.resetAfterSkill : 0;
+          if (skill.effects) {
+            applyEffects(
+              actor,
+              targets,
+              skill.effects.filter(function (e) {
+                return e.type === "morale_boost" && e.target === "self";
+              }),
+              uiEvents
+            );
+          }
+          entry.morale_after = actor.morale;
+          addMorale(actor, 0);
+          uiEvents.push({ type: "morale", uid: actor.uid, value: actor.morale, max: actor.maxMorale });
+        } else {
+          // NORMAL ATTACK
+          var target = pickNormalTarget(actor, myEnemies);
+          if (target) {
+            var hit2 = calcHit(actor, target, "physical", combatCfg.skillNormalPower != null ? combatCfg.skillNormalPower : 1, {});
+            pushTargetResult(entry, actor, target, hit2, uiEvents, moraleCfg);
+          }
+          addMorale(actor, moraleCfg.gainOnAttack != null ? moraleCfg.gainOnAttack : 25);
+          entry.morale_after = actor.morale;
+          uiEvents.push({ type: "morale", uid: actor.uid, value: actor.morale, max: actor.maxMorale });
+        }
+
+        battleLog.push(entry);
+        tickStatus(actor);
+        pushStatuses(uiEvents, actor);
+      }
+    }
+
+    var win = living(foes).length === 0 && living(allies).length > 0;
+    uiEvents.push({ type: "battle_end", win: win, rounds: round });
+
+    return {
+      win: win,
+      rounds: round,
+      battleLog: battleLog,
+      events: uiEvents,
+      allies: allies,
+      foes: foes,
+      playerFormation: pForm,
+      enemyFormation: eForm,
+    };
+  }
+
+  function pushTargetResult(entry, actor, target, hit, uiEvents, moraleCfg) {
+    if (hit.missed) {
+      entry.targets.push({
+        target_id: target.uid,
+        target_name: target.name,
+        damage_dealt: 0,
+        is_crit: false,
+        is_miss: true,
+        target_hp_left: target.hp,
+        is_defeated: false,
+        counter_mul: hit.counter,
+      });
+      uiEvents.push({ type: "float", uid: target.uid, text: "MISS", kind: "miss" });
+      uiEvents.push({
+        type: "attack",
+        from: actor.uid,
+        to: target.uid,
+        damage: 0,
+        missed: true,
+        crit: false,
+      });
+      return;
+    }
+
+    target.hp = Math.max(0, target.hp - hit.damage);
+    if (target.hp <= 0) target.alive = false;
+
+    // Bị đánh → + sĩ khí
+    addMorale(target, moraleCfg.gainOnHit != null ? moraleCfg.gainOnHit : 15);
+
+    entry.targets.push({
+      target_id: target.uid,
+      target_name: target.name,
+      damage_dealt: hit.damage,
+      is_crit: !!hit.crit,
+      is_miss: false,
+      target_hp_left: target.hp,
+      is_defeated: !target.alive,
+      counter_mul: hit.counter,
+    });
+
+    uiEvents.push({
+      type: "attack",
+      from: actor.uid,
+      to: target.uid,
+      damage: hit.damage,
+      missed: false,
+      crit: hit.crit,
+    });
+    uiEvents.push({
+      type: "float",
+      uid: target.uid,
+      text: (hit.crit ? "CRIT " : "") + hit.damage,
+      kind: hit.crit ? "crit" : "dmg",
+    });
+    uiEvents.push({ type: "hp", uid: target.uid, hp: target.hp, maxHp: target.maxHp });
+    uiEvents.push({ type: "morale", uid: target.uid, value: target.morale, max: target.maxMorale });
+    if (!target.alive) {
+      uiEvents.push({ type: "death", uid: target.uid, name: target.name });
+    }
+  }
+
+  function snapshot(units) {
+    return units.map(function (u) {
+      return {
+        uid: u.uid,
+        generalId: u.generalId,
+        name: u.name,
+        side: u.side,
+        slot: u.slot,
+        troop: u.troop,
+        troopPrimary: u.troopPrimary,
+        troop2: u.troop2,
+        horseId: u.horseId,
+        troopTier: u.troopTier,
+        troopTierName: u.troopTierName,
+        quality: u.quality,
+        level: u.level,
+        tongLinh: u.tongLinh,
+        vuLuc: u.vuLuc,
+        triLuc: u.triLuc,
+        hp: u.hp,
+        maxHp: u.maxHp,
+        morale: u.morale,
+        maxMorale: u.maxMorale,
+        skillId: u.skillId,
+        alive: u.alive,
+      };
+    });
+  }
+
+  function enemiesFromStage(stage) {
+    if (!NLDatabase) return [];
+    return NLDatabase.buildStageEnemies(stage);
+  }
+
+  // Patch troopMultiplier trên NLDatabase cho đồng bộ
+  function installDbPatch() {
+    if (!NLDatabase) return;
+    NLDatabase.troopMultiplier = counterMultiplier;
+  }
+  installDbPatch();
+
+  global.NLCombat = {
+    runBattle: runBattle,
+    normalizeUnit: normalizeUnit,
+    enemiesFromStage: enemiesFromStage,
+    counterMultiplier: counterMultiplier,
+    pickNormalTarget: pickNormalTarget,
+    VERSION: 3,
+  };
+})(window);

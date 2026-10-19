@@ -1,0 +1,1804 @@
+{
+  "schemaVersion": 3,
+  "id": "nl_arena_v3",
+  "dailyChallenges": 5,
+  "playerInitialRank": 36,
+  "evolution": {
+    "tickIntervalHours": 1,
+    "maxCatchupHours": 72,
+    "maxTyVuLevel": 180,
+    "tiers": {
+      "WEAK": {
+        "statGrowthPerHour": 0.004,
+        "levelHours": 12,
+        "silverPerHour": 1200,
+        "maxLevel": 40
+      },
+      "MEDIUM": {
+        "statGrowthPerHour": 0.007,
+        "levelHours": 8,
+        "silverPerHour": 4000,
+        "maxLevel": 90
+      },
+      "STRONG": {
+        "statGrowthPerHour": 0.01,
+        "levelHours": 6,
+        "silverPerHour": 9000,
+        "maxLevel": 180
+      }
+    }
+  },
+  "scaling": {
+    "neighborWindow": 4,
+    "minRatioToPlayer": 0.78,
+    "maxRatioToPlayer": 1.35
+  },
+  "rewards": {
+    "winBaseSilver": 300,
+    "winSilverPerTier": 150,
+    "winHonor": 25,
+    "winPrestige": 20,
+    "loseSilver": 60,
+    "loseHonor": 5,
+    "rankBonusTop10Gem": 5
+  },
+  "bots": [
+    {
+      "bot_id": "bot_npc_01",
+      "name": "Lã Bố (NPC)",
+      "rank": 1,
+      "tier": "STRONG",
+      "level": 45,
+      "resources": {
+        "silver": 1125000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 45
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "long_snake",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "lubu",
+            "hero_alias": "h_lubu",
+            "hero_level": 45,
+            "equip_level": 43
+          },
+          {
+            "slot": 2,
+            "hero_id": "huaxiong",
+            "hero_alias": "h_huaxiong",
+            "hero_level": 45,
+            "equip_level": 43
+          },
+          {
+            "slot": 3,
+            "hero_id": "zhangliao",
+            "hero_alias": "h_zhangliao",
+            "hero_level": 45,
+            "equip_level": 43
+          },
+          {
+            "slot": 4,
+            "hero_id": "veteran_rider",
+            "hero_alias": "h_veteran_rider",
+            "hero_level": 45,
+            "equip_level": 43
+          },
+          {
+            "slot": 5,
+            "hero_id": "veteran_archer",
+            "hero_alias": "h_veteran_archer",
+            "hero_level": 45,
+            "equip_level": 43
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_02",
+      "name": "Tào Tháo (NPC)",
+      "rank": 2,
+      "tier": "STRONG",
+      "level": 42,
+      "resources": {
+        "silver": 1050000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 42
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "crane_wing",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "caocao",
+            "hero_alias": "h_caocao",
+            "hero_level": 42,
+            "equip_level": 40
+          },
+          {
+            "slot": 2,
+            "hero_id": "simayi",
+            "hero_alias": "h_simayi",
+            "hero_level": 42,
+            "equip_level": 40
+          },
+          {
+            "slot": 3,
+            "hero_id": "xuchu",
+            "hero_alias": "h_xuchu",
+            "hero_level": 42,
+            "equip_level": 40
+          },
+          {
+            "slot": 4,
+            "hero_id": "dianwei",
+            "hero_alias": "h_dianwei",
+            "hero_level": 42,
+            "equip_level": 40
+          },
+          {
+            "slot": 5,
+            "hero_id": "guojia",
+            "hero_alias": "h_guojia",
+            "hero_level": 42,
+            "equip_level": 40
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_03",
+      "name": "Gia Cát Lượng (NPC)",
+      "rank": 3,
+      "tier": "STRONG",
+      "level": 40,
+      "resources": {
+        "silver": 1000000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 40
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "crane_wing",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "zhugeliang",
+            "hero_alias": "h_zhugeliang",
+            "hero_level": 40,
+            "equip_level": 38
+          },
+          {
+            "slot": 2,
+            "hero_id": "guanyu",
+            "hero_alias": "h_guanyu",
+            "hero_level": 40,
+            "equip_level": 38
+          },
+          {
+            "slot": 3,
+            "hero_id": "zhangfei",
+            "hero_alias": "h_zhangfei",
+            "hero_level": 40,
+            "equip_level": 38
+          },
+          {
+            "slot": 4,
+            "hero_id": "zhaoyun",
+            "hero_alias": "h_zhaoyun",
+            "hero_level": 40,
+            "equip_level": 38
+          },
+          {
+            "slot": 5,
+            "hero_id": "huangzhong",
+            "hero_alias": "h_huangzhong",
+            "hero_level": 40,
+            "equip_level": 38
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_04",
+      "name": "Chu Du (NPC)",
+      "rank": 4,
+      "tier": "STRONG",
+      "level": 38,
+      "resources": {
+        "silver": 950000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 38
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "arrow",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "zhouyu",
+            "hero_alias": "h_zhouyu",
+            "hero_level": 38,
+            "equip_level": 36
+          },
+          {
+            "slot": 2,
+            "hero_id": "sunce",
+            "hero_alias": "h_sunce",
+            "hero_level": 38,
+            "equip_level": 36
+          },
+          {
+            "slot": 3,
+            "hero_id": "taishici",
+            "hero_alias": "h_taishici",
+            "hero_level": 38,
+            "equip_level": 36
+          },
+          {
+            "slot": 4,
+            "hero_id": "ganning",
+            "hero_alias": "h_ganning",
+            "hero_level": 38,
+            "equip_level": 36
+          },
+          {
+            "slot": 5,
+            "hero_id": "luxun",
+            "hero_alias": "h_luxun",
+            "hero_level": 38,
+            "equip_level": 36
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_05",
+      "name": "Quan Vũ (NPC)",
+      "rank": 5,
+      "tier": "STRONG",
+      "level": 36,
+      "resources": {
+        "silver": 900000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 36
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "long_snake",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "guanyu",
+            "hero_alias": "h_guanyu",
+            "hero_level": 36,
+            "equip_level": 34
+          },
+          {
+            "slot": 2,
+            "hero_id": "guanying",
+            "hero_alias": "h_guanying",
+            "hero_level": 36,
+            "equip_level": 34
+          },
+          {
+            "slot": 3,
+            "hero_id": "liaohua",
+            "hero_alias": "h_liaohua",
+            "hero_level": 36,
+            "equip_level": 34
+          },
+          {
+            "slot": 4,
+            "hero_id": "wangping",
+            "hero_alias": "h_wangping",
+            "hero_level": 36,
+            "equip_level": 34
+          },
+          {
+            "slot": 5,
+            "hero_id": "madai",
+            "hero_alias": "h_madai",
+            "hero_level": 36,
+            "equip_level": 34
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_06",
+      "name": "Tư Mã Ý (NPC)",
+      "rank": 6,
+      "tier": "STRONG",
+      "level": 35,
+      "resources": {
+        "silver": 875000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 35
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "square",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "simayi",
+            "hero_alias": "h_simayi",
+            "hero_level": 35,
+            "equip_level": 33
+          },
+          {
+            "slot": 2,
+            "hero_id": "zhanghe",
+            "hero_alias": "h_zhanghe",
+            "hero_level": 35,
+            "equip_level": 33
+          },
+          {
+            "slot": 3,
+            "hero_id": "xuhuang",
+            "hero_alias": "h_xuhuang",
+            "hero_level": 35,
+            "equip_level": 33
+          },
+          {
+            "slot": 4,
+            "hero_id": "caoren",
+            "hero_alias": "h_caoren",
+            "hero_level": 35,
+            "equip_level": 33
+          },
+          {
+            "slot": 5,
+            "hero_id": "jiaxu",
+            "hero_alias": "h_jiaxu",
+            "hero_level": 35,
+            "equip_level": 33
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_07",
+      "name": "Triệu Vân (NPC)",
+      "rank": 7,
+      "tier": "STRONG",
+      "level": 34,
+      "resources": {
+        "silver": 850000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 34
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "fish_scale",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "zhaoyun",
+            "hero_alias": "h_zhaoyun",
+            "hero_level": 34,
+            "equip_level": 32
+          },
+          {
+            "slot": 2,
+            "hero_id": "machao",
+            "hero_alias": "h_machao",
+            "hero_level": 34,
+            "equip_level": 32
+          },
+          {
+            "slot": 3,
+            "hero_id": "weiyan",
+            "hero_alias": "h_weiyan",
+            "hero_level": 34,
+            "equip_level": 32
+          },
+          {
+            "slot": 4,
+            "hero_id": "fazheng",
+            "hero_alias": "h_fazheng",
+            "hero_level": 34,
+            "equip_level": 32
+          },
+          {
+            "slot": 5,
+            "hero_id": "xushu",
+            "hero_alias": "h_xushu",
+            "hero_level": 34,
+            "equip_level": 32
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_08",
+      "name": "Tôn Sách (NPC)",
+      "rank": 8,
+      "tier": "STRONG",
+      "level": 32,
+      "resources": {
+        "silver": 800000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 32
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "long_snake",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "sunce",
+            "hero_alias": "h_sunce",
+            "hero_level": 32,
+            "equip_level": 30
+          },
+          {
+            "slot": 2,
+            "hero_id": "zhouyu",
+            "hero_alias": "h_zhouyu",
+            "hero_level": 32,
+            "equip_level": 30
+          },
+          {
+            "slot": 3,
+            "hero_id": "chengpu",
+            "hero_alias": "h_chengpu",
+            "hero_level": 32,
+            "equip_level": 30
+          },
+          {
+            "slot": 4,
+            "hero_id": "huanggai",
+            "hero_alias": "h_huanggai",
+            "hero_level": 32,
+            "equip_level": 30
+          },
+          {
+            "slot": 5,
+            "hero_id": "handang",
+            "hero_alias": "h_handang",
+            "hero_level": 32,
+            "equip_level": 30
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_09",
+      "name": "Viên Thiệu (NPC)",
+      "rank": 9,
+      "tier": "STRONG",
+      "level": 30,
+      "resources": {
+        "silver": 750000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 30
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "square",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "yuanshao",
+            "hero_alias": "h_yuanshao",
+            "hero_level": 30,
+            "equip_level": 28
+          },
+          {
+            "slot": 2,
+            "hero_id": "yanliang",
+            "hero_alias": "h_yanliang",
+            "hero_level": 30,
+            "equip_level": 28
+          },
+          {
+            "slot": 3,
+            "hero_id": "wenchou",
+            "hero_alias": "h_wenchou",
+            "hero_level": 30,
+            "equip_level": 28
+          },
+          {
+            "slot": 4,
+            "hero_id": "tianfeng",
+            "hero_alias": "h_tianfeng",
+            "hero_level": 30,
+            "equip_level": 28
+          },
+          {
+            "slot": 5,
+            "hero_id": "jushou",
+            "hero_alias": "h_jushou",
+            "hero_level": 30,
+            "equip_level": 28
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_10",
+      "name": "Đổng Trác (NPC)",
+      "rank": 10,
+      "tier": "STRONG",
+      "level": 29,
+      "resources": {
+        "silver": 725000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 29
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "square",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "dongzhuo",
+            "hero_alias": "h_dongzhuo",
+            "hero_level": 29,
+            "equip_level": 27
+          },
+          {
+            "slot": 2,
+            "hero_id": "huaxiong",
+            "hero_alias": "h_huaxiong",
+            "hero_level": 29,
+            "equip_level": 27
+          },
+          {
+            "slot": 3,
+            "hero_id": "liru",
+            "hero_alias": "h_liru",
+            "hero_level": 29,
+            "equip_level": 27
+          },
+          {
+            "slot": 4,
+            "hero_id": "liuru",
+            "hero_alias": "h_liuru",
+            "hero_level": 29,
+            "equip_level": 27
+          },
+          {
+            "slot": 5,
+            "hero_id": "guosi",
+            "hero_alias": "h_guosi",
+            "hero_level": 29,
+            "equip_level": 27
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_11",
+      "name": "Trương Liêu (NPC)",
+      "rank": 11,
+      "tier": "MEDIUM",
+      "level": 27,
+      "resources": {
+        "silver": 675000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 27
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "crane_wing",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "zhangliao",
+            "hero_alias": "h_zhangliao",
+            "hero_level": 27,
+            "equip_level": 25
+          },
+          {
+            "slot": 2,
+            "hero_id": "yuejin",
+            "hero_alias": "h_yuejin",
+            "hero_level": 27,
+            "equip_level": 25
+          },
+          {
+            "slot": 3,
+            "hero_id": "licadian",
+            "hero_alias": "h_licadian",
+            "hero_level": 27,
+            "equip_level": 25
+          },
+          {
+            "slot": 4,
+            "hero_id": "veteran_rider",
+            "hero_alias": "h_veteran_rider",
+            "hero_level": 27,
+            "equip_level": 25
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_12",
+      "name": "Mã Siêu (NPC)",
+      "rank": 12,
+      "tier": "MEDIUM",
+      "level": 26,
+      "resources": {
+        "silver": 650000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 26
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "long_snake",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "machao",
+            "hero_alias": "h_machao",
+            "hero_level": 26,
+            "equip_level": 24
+          },
+          {
+            "slot": 2,
+            "hero_id": "madai",
+            "hero_alias": "h_madai",
+            "hero_level": 26,
+            "equip_level": 24
+          },
+          {
+            "slot": 3,
+            "hero_id": "recruit_guard",
+            "hero_alias": "h_recruit_guard",
+            "hero_level": 26,
+            "equip_level": 24
+          },
+          {
+            "slot": 4,
+            "hero_id": "veteran_rider",
+            "hero_alias": "h_veteran_rider",
+            "hero_level": 26,
+            "equip_level": 24
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_13",
+      "name": "Lục Tốn (NPC)",
+      "rank": 13,
+      "tier": "MEDIUM",
+      "level": 25,
+      "resources": {
+        "silver": 625000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 25
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "arrow",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "luxun",
+            "hero_alias": "h_luxun",
+            "hero_level": 25,
+            "equip_level": 23
+          },
+          {
+            "slot": 2,
+            "hero_id": "lusu",
+            "hero_alias": "h_lusu",
+            "hero_level": 25,
+            "equip_level": 23
+          },
+          {
+            "slot": 3,
+            "hero_id": "zhugejin",
+            "hero_alias": "h_zhugejin",
+            "hero_level": 25,
+            "equip_level": 23
+          },
+          {
+            "slot": 4,
+            "hero_id": "veteran_archer",
+            "hero_alias": "h_veteran_archer",
+            "hero_level": 25,
+            "equip_level": 23
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_14",
+      "name": "Lưu Bị (NPC)",
+      "rank": 14,
+      "tier": "MEDIUM",
+      "level": 24,
+      "resources": {
+        "silver": 600000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 24
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "square",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "liubei",
+            "hero_alias": "h_liubei",
+            "hero_level": 24,
+            "equip_level": 22
+          },
+          {
+            "slot": 2,
+            "hero_id": "zhangfei",
+            "hero_alias": "h_zhangfei",
+            "hero_level": 24,
+            "equip_level": 22
+          },
+          {
+            "slot": 3,
+            "hero_id": "pangtong",
+            "hero_alias": "h_pangtong",
+            "hero_level": 24,
+            "equip_level": 22
+          },
+          {
+            "slot": 4,
+            "hero_id": "liufeng",
+            "hero_alias": "h_liufeng",
+            "hero_level": 24,
+            "equip_level": 22
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_15",
+      "name": "Tôn Quyền (NPC)",
+      "rank": 15,
+      "tier": "MEDIUM",
+      "level": 20,
+      "resources": {
+        "silver": 500000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 20
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "crane_wing",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "sunquan",
+            "hero_alias": "h_sunquan",
+            "hero_level": 20,
+            "equip_level": 18
+          },
+          {
+            "slot": 2,
+            "hero_id": "zhouzhi",
+            "hero_alias": "h_zhouzhi",
+            "hero_level": 20,
+            "equip_level": 18
+          },
+          {
+            "slot": 3,
+            "hero_id": "lingtong",
+            "hero_alias": "h_lingtong",
+            "hero_level": 20,
+            "equip_level": 18
+          },
+          {
+            "slot": 4,
+            "hero_id": "zhangzhao",
+            "hero_alias": "h_zhangzhao",
+            "hero_level": 20,
+            "equip_level": 18
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_16",
+      "name": "Hứa Chử (NPC)",
+      "rank": 16,
+      "tier": "MEDIUM",
+      "level": 21,
+      "resources": {
+        "silver": 525000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 21
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "fish_scale",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "xuchu",
+            "hero_alias": "h_xuchu",
+            "hero_level": 21,
+            "equip_level": 19
+          },
+          {
+            "slot": 2,
+            "hero_id": "dianwei",
+            "hero_alias": "h_dianwei",
+            "hero_level": 21,
+            "equip_level": 19
+          },
+          {
+            "slot": 3,
+            "hero_id": "caopi",
+            "hero_alias": "h_caopi",
+            "hero_level": 21,
+            "equip_level": 19
+          },
+          {
+            "slot": 4,
+            "hero_id": "veteran_guard",
+            "hero_alias": "h_veteran_guard",
+            "hero_level": 21,
+            "equip_level": 19
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_17",
+      "name": "Hoàng Trung (NPC)",
+      "rank": 17,
+      "tier": "MEDIUM",
+      "level": 20,
+      "resources": {
+        "silver": 500000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 20
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "arrow",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "huangzhong",
+            "hero_alias": "h_huangzhong",
+            "hero_level": 20,
+            "equip_level": 18
+          },
+          {
+            "slot": 2,
+            "hero_id": "weiyan",
+            "hero_alias": "h_weiyan",
+            "hero_level": 20,
+            "equip_level": 18
+          },
+          {
+            "slot": 3,
+            "hero_id": "wangping",
+            "hero_alias": "h_wangping",
+            "hero_level": 20,
+            "equip_level": 18
+          },
+          {
+            "slot": 4,
+            "hero_id": "veteran_archer",
+            "hero_alias": "h_veteran_archer",
+            "hero_level": 20,
+            "equip_level": 18
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_18",
+      "name": "Cam Ninh (NPC)",
+      "rank": 18,
+      "tier": "MEDIUM",
+      "level": 19,
+      "resources": {
+        "silver": 475000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 19
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "long_snake",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "ganning",
+            "hero_alias": "h_ganning",
+            "hero_level": 19,
+            "equip_level": 17
+          },
+          {
+            "slot": 2,
+            "hero_id": "lingtong",
+            "hero_alias": "h_lingtong",
+            "hero_level": 19,
+            "equip_level": 17
+          },
+          {
+            "slot": 3,
+            "hero_id": "taishici",
+            "hero_alias": "h_taishici",
+            "hero_level": 19,
+            "equip_level": 17
+          },
+          {
+            "slot": 4,
+            "hero_id": "veteran_spear",
+            "hero_alias": "h_veteran_spear",
+            "hero_level": 19,
+            "equip_level": 17
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_19",
+      "name": "Hạ Hầu Đ惇 (NPC)",
+      "rank": 19,
+      "tier": "MEDIUM",
+      "level": 18,
+      "resources": {
+        "silver": 450000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 18
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "crane_wing",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "xiahou_dun",
+            "hero_alias": "h_xiahou_dun",
+            "hero_level": 18,
+            "equip_level": 16
+          },
+          {
+            "slot": 2,
+            "hero_id": "xiahou_yuan",
+            "hero_alias": "h_xiahou_yuan",
+            "hero_level": 18,
+            "equip_level": 16
+          },
+          {
+            "slot": 3,
+            "hero_id": "caoren",
+            "hero_alias": "h_caoren",
+            "hero_level": 18,
+            "equip_level": 16
+          },
+          {
+            "slot": 4,
+            "hero_id": "veteran_rider",
+            "hero_alias": "h_veteran_rider",
+            "hero_level": 18,
+            "equip_level": 16
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_20",
+      "name": "Khương Duy (NPC)",
+      "rank": 20,
+      "tier": "MEDIUM",
+      "level": 17,
+      "resources": {
+        "silver": 425000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 17
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "fish_scale",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "jiangwei",
+            "hero_alias": "h_jiangwei",
+            "hero_level": 17,
+            "equip_level": 15
+          },
+          {
+            "slot": 2,
+            "hero_id": "liaohua",
+            "hero_alias": "h_liaohua",
+            "hero_level": 17,
+            "equip_level": 15
+          },
+          {
+            "slot": 3,
+            "hero_id": "zhangbao_shu",
+            "hero_alias": "h_zhangbao_shu",
+            "hero_level": 17,
+            "equip_level": 15
+          },
+          {
+            "slot": 4,
+            "hero_id": "veteran_spear",
+            "hero_alias": "h_veteran_spear",
+            "hero_level": 17,
+            "equip_level": 15
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_21",
+      "name": "Công Tôn Toản (NPC)",
+      "rank": 21,
+      "tier": "MEDIUM",
+      "level": 16,
+      "resources": {
+        "silver": 400000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 16
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "long_snake",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "gongsunzan",
+            "hero_alias": "h_gongsunzan",
+            "hero_level": 16,
+            "equip_level": 14
+          },
+          {
+            "slot": 2,
+            "hero_id": "veteran_rider",
+            "hero_alias": "h_veteran_rider",
+            "hero_level": 16,
+            "equip_level": 14
+          },
+          {
+            "slot": 3,
+            "hero_id": "veteran_rider",
+            "hero_alias": "h_veteran_rider",
+            "hero_level": 16,
+            "equip_level": 14
+          },
+          {
+            "slot": 4,
+            "hero_id": "veteran_archer",
+            "hero_alias": "h_veteran_archer",
+            "hero_level": 16,
+            "equip_level": 14
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_22",
+      "name": "Trương Giác (NPC)",
+      "rank": 22,
+      "tier": "MEDIUM",
+      "level": 15,
+      "resources": {
+        "silver": 375000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 15
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "square",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "zhangjiao",
+            "hero_alias": "h_zhangjiao",
+            "hero_level": 15,
+            "equip_level": 13
+          },
+          {
+            "slot": 2,
+            "hero_id": "zhangbao",
+            "hero_alias": "h_zhangbao",
+            "hero_level": 15,
+            "equip_level": 13
+          },
+          {
+            "slot": 3,
+            "hero_id": "zhangliang",
+            "hero_alias": "h_zhangliang",
+            "hero_level": 15,
+            "equip_level": 13
+          },
+          {
+            "slot": 4,
+            "hero_id": "yellow_shaman",
+            "hero_alias": "h_yellow_shaman",
+            "hero_level": 15,
+            "equip_level": 13
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_23",
+      "name": "Lưu Biểu (NPC)",
+      "rank": 23,
+      "tier": "WEAK",
+      "level": 13,
+      "resources": {
+        "silver": 325000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 13
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "square",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "liubiao",
+            "hero_alias": "h_liubiao",
+            "hero_level": 13,
+            "equip_level": 11
+          },
+          {
+            "slot": 2,
+            "hero_id": "veteran_guard",
+            "hero_alias": "h_veteran_guard",
+            "hero_level": 13,
+            "equip_level": 11
+          },
+          {
+            "slot": 3,
+            "hero_id": "veteran_spear",
+            "hero_alias": "h_veteran_spear",
+            "hero_level": 13,
+            "equip_level": 11
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_24",
+      "name": "Đào Khiêm (NPC)",
+      "rank": 24,
+      "tier": "WEAK",
+      "level": 12,
+      "resources": {
+        "silver": 300000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 12
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "square",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "taogian",
+            "hero_alias": "h_taogian",
+            "hero_level": 12,
+            "equip_level": 10
+          },
+          {
+            "slot": 2,
+            "hero_id": "veteran_guard",
+            "hero_alias": "h_veteran_guard",
+            "hero_level": 12,
+            "equip_level": 10
+          },
+          {
+            "slot": 3,
+            "hero_id": "recruit_crossbow",
+            "hero_alias": "h_recruit_crossbow",
+            "hero_level": 12,
+            "equip_level": 10
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_25",
+      "name": "Hoa Hùng (NPC)",
+      "rank": 25,
+      "tier": "WEAK",
+      "level": 11,
+      "resources": {
+        "silver": 275000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 11
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "long_snake",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "huaxiong",
+            "hero_alias": "h_huaxiong",
+            "hero_level": 11,
+            "equip_level": 9
+          },
+          {
+            "slot": 2,
+            "hero_id": "recruit_rider",
+            "hero_alias": "h_recruit_rider",
+            "hero_level": 11,
+            "equip_level": 9
+          },
+          {
+            "slot": 3,
+            "hero_id": "recruit_spearman",
+            "hero_alias": "h_recruit_spearman",
+            "hero_level": 11,
+            "equip_level": 9
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_26",
+      "name": "Nhan Lương (NPC)",
+      "rank": 26,
+      "tier": "WEAK",
+      "level": 10,
+      "resources": {
+        "silver": 250000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 10
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "crane_wing",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "yanliang",
+            "hero_alias": "h_yanliang",
+            "hero_level": 10,
+            "equip_level": 8
+          },
+          {
+            "slot": 2,
+            "hero_id": "wenchou",
+            "hero_alias": "h_wenchou",
+            "hero_level": 10,
+            "equip_level": 8
+          },
+          {
+            "slot": 3,
+            "hero_id": "recruit_guard",
+            "hero_alias": "h_recruit_guard",
+            "hero_level": 10,
+            "equip_level": 8
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_27",
+      "name": "Trình Phổ (NPC)",
+      "rank": 27,
+      "tier": "WEAK",
+      "level": 9,
+      "resources": {
+        "silver": 225000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 9
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "square",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "chengpu",
+            "hero_alias": "h_chengpu",
+            "hero_level": 9,
+            "equip_level": 7
+          },
+          {
+            "slot": 2,
+            "hero_id": "handang",
+            "hero_alias": "h_handang",
+            "hero_level": 9,
+            "equip_level": 7
+          },
+          {
+            "slot": 3,
+            "hero_id": "recruit_spearman",
+            "hero_alias": "h_recruit_spearman",
+            "hero_level": 9,
+            "equip_level": 7
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_28",
+      "name": "Nhạc Tiến (NPC)",
+      "rank": 28,
+      "tier": "WEAK",
+      "level": 8,
+      "resources": {
+        "silver": 200000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 8
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "fish_scale",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "yuejin",
+            "hero_alias": "h_yuejin",
+            "hero_level": 8,
+            "equip_level": 6
+          },
+          {
+            "slot": 2,
+            "hero_id": "licadian",
+            "hero_alias": "h_licadian",
+            "hero_level": 8,
+            "equip_level": 6
+          },
+          {
+            "slot": 3,
+            "hero_id": "recruit_blade",
+            "hero_alias": "h_recruit_blade",
+            "hero_level": 8,
+            "equip_level": 6
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_29",
+      "name": "Liêu Hóa (NPC)",
+      "rank": 29,
+      "tier": "WEAK",
+      "level": 7,
+      "resources": {
+        "silver": 175000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 7
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "square",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "liaohua",
+            "hero_alias": "h_liaohua",
+            "hero_level": 7,
+            "equip_level": 5
+          },
+          {
+            "slot": 2,
+            "hero_id": "liufeng",
+            "hero_alias": "h_liufeng",
+            "hero_level": 7,
+            "equip_level": 5
+          },
+          {
+            "slot": 3,
+            "hero_id": "recruit_guard",
+            "hero_alias": "h_recruit_guard",
+            "hero_level": 7,
+            "equip_level": 5
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_30",
+      "name": "Trương Bảo (NPC)",
+      "rank": 30,
+      "tier": "WEAK",
+      "level": 6,
+      "resources": {
+        "silver": 150000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 6
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "square",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "zhangbao",
+            "hero_alias": "h_zhangbao",
+            "hero_level": 6,
+            "equip_level": 4
+          },
+          {
+            "slot": 2,
+            "hero_id": "yellow_zealot",
+            "hero_alias": "h_yellow_zealot",
+            "hero_level": 6,
+            "equip_level": 4
+          },
+          {
+            "slot": 3,
+            "hero_id": "yellow_shaman",
+            "hero_alias": "h_yellow_shaman",
+            "hero_level": 6,
+            "equip_level": 4
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_31",
+      "name": "Phàn Trù (NPC)",
+      "rank": 31,
+      "tier": "WEAK",
+      "level": 5,
+      "resources": {
+        "silver": 125000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 5
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "square",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "fancho",
+            "hero_alias": "h_fancho",
+            "hero_level": 5,
+            "equip_level": 3
+          },
+          {
+            "slot": 2,
+            "hero_id": "zhangji_dz",
+            "hero_alias": "h_zhangji_dz",
+            "hero_level": 5,
+            "equip_level": 3
+          },
+          {
+            "slot": 3,
+            "hero_id": "recruit_rider",
+            "hero_alias": "h_recruit_rider",
+            "hero_level": 5,
+            "equip_level": 3
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_32",
+      "name": "ừ Cừ帥 Khăn Vàng (NPC)",
+      "rank": 32,
+      "tier": "WEAK",
+      "level": 4,
+      "resources": {
+        "silver": 100000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 4
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "square",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "yellow_captain",
+            "hero_alias": "h_yellow_captain",
+            "hero_level": 4,
+            "equip_level": 2
+          },
+          {
+            "slot": 2,
+            "hero_id": "yellow_zealot",
+            "hero_alias": "h_yellow_zealot",
+            "hero_level": 4,
+            "equip_level": 2
+          },
+          {
+            "slot": 3,
+            "hero_id": "recruit_militia",
+            "hero_alias": "h_recruit_militia",
+            "hero_level": 4,
+            "equip_level": 2
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_33",
+      "name": "Đô Úy Kỵ Binh (NPC)",
+      "rank": 33,
+      "tier": "WEAK",
+      "level": 3,
+      "resources": {
+        "silver": 75000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 3
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "long_snake",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "veteran_rider",
+            "hero_alias": "h_veteran_rider",
+            "hero_level": 3,
+            "equip_level": 1
+          },
+          {
+            "slot": 2,
+            "hero_id": "recruit_rider",
+            "hero_alias": "h_recruit_rider",
+            "hero_level": 3,
+            "equip_level": 1
+          },
+          {
+            "slot": 3,
+            "hero_id": "recruit_scout",
+            "hero_alias": "h_recruit_scout",
+            "hero_level": 3,
+            "equip_level": 1
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_34",
+      "name": "Hiệu Úy Tuần Thành (NPC)",
+      "rank": 34,
+      "tier": "WEAK",
+      "level": 2,
+      "resources": {
+        "silver": 50000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 2
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "square",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "recruit_blade",
+            "hero_alias": "h_recruit_blade",
+            "hero_level": 2,
+            "equip_level": 1
+          },
+          {
+            "slot": 2,
+            "hero_id": "recruit_guard",
+            "hero_alias": "h_recruit_guard",
+            "hero_level": 2,
+            "equip_level": 1
+          },
+          {
+            "slot": 3,
+            "hero_id": "recruit_spearman",
+            "hero_alias": "h_recruit_spearman",
+            "hero_level": 2,
+            "equip_level": 1
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    },
+    {
+      "bot_id": "bot_npc_35",
+      "name": "Đội Trưởng Tân Binh (NPC)",
+      "rank": 35,
+      "tier": "WEAK",
+      "level": 1,
+      "resources": {
+        "silver": 25000
+      },
+      "buildings": [
+        {
+          "building_id": "b_tyvu",
+          "level": 1
+        }
+      ],
+      "deployed_formation": {
+        "formation_id": "square",
+        "formation_alias": "f_hacdieu",
+        "slots": [
+          {
+            "slot": 1,
+            "hero_id": "recruit_guard",
+            "hero_alias": "h_recruit_guard",
+            "hero_level": 1,
+            "equip_level": 1
+          },
+          {
+            "slot": 2,
+            "hero_id": "recruit_militia",
+            "hero_alias": "h_recruit_militia",
+            "hero_level": 1,
+            "equip_level": 1
+          }
+        ]
+      },
+      "last_updated_timestamp": 1711900000
+    }
+  ]
+}

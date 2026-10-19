@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 2,
+  "id": "nl_default_5",
+  "name": "Trận hình cơ bản",
+  "maxSlots": 5,
+  "rows": [
+    {
+      "id": "front",
+      "name": "Hàng trước",
+      "slots": [
+        { "index": 0, "row": 0, "col": 0, "label": "Tiền 1" },
+        { "index": 1, "row": 0, "col": 1, "label": "Tiền 2" },
+        { "index": 2, "row": 0, "col": 2, "label": "Tiền 3" }
+      ]
+    },
+    {
+      "id": "back",
+      "name": "Hàng sau",
+      "slots": [
+        { "index": 3, "row": 1, "col": 0, "label": "Hậu 1" },
+        { "index": 4, "row": 1, "col": 1, "label": "Hậu 2" }
+      ]
+    }
+  ],
+  "morale": {
+    "max": 100,
+    "start": 50,
+    "gainOnAttack": 25,
+    "gainOnHit": 15,
+    "skillThreshold": 100,
+    "resetAfterSkill": 0,
+    "gainPerHit": 25,
+    "gainPerDamageTaken": 15,
+    "gainPerKill": 0,
+    "skillCost": 100
+  },
+  "turnOrder": "by_speed_then_random",
+  "speedStat": "vuLuc"
+}
