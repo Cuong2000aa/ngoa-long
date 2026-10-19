@@ -458,12 +458,23 @@
         break;
       case "skill":
         if (this._battle3d) {
+          // 3D: chỉ BattleRenderer — KHÔNG playSkillFx DOM (veil/slash 2D đè sân → FX lỗi)
           var skillTargets = (ev.targets || []).map(function (t) {
             return typeof t === "string" ? t : t && (t.uid || t.target_id || t);
           }).filter(Boolean);
           this._battle3d.skillFlash(ev.uid, ev.flash || "gold", skillTargets);
+          if (global.NLCombatVfx && global.NLCombatVfx.showBanner) {
+            var Design = global.NLSkillDesign;
+            var prof = Design ? Design.resolve(ev.flash || "gold") : null;
+            global.NLCombatVfx.showBanner(
+              this.fxLayer || this.root,
+              ev.text || ev.name || "CHIẾN PHÁP",
+              prof
+            );
+          }
+        } else {
+          this.playSkillFx(ev);
         }
-        this.playSkillFx(ev);
         this.log(
           "<b>[CHIẾN PHÁP] " +
             (ev.text || ev.name) +

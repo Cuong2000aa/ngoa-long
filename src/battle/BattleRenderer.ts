@@ -759,7 +759,7 @@ export class BattleRenderer {
       };
     };
 
-    // Wave 2+: chá»‰ emission+impact gá»n
+    // Wave 2+: chỉ emission + impact gọn
     if (wave) {
       deliverToTargets("emission");
       setTimeout(() => deliverToTargets("impact"), 120);
@@ -791,11 +791,11 @@ export class BattleRenderer {
               };
             }
           } else if (phase === "cast") {
+            // 1 aura gắn tướng — không spawn lại ở emission (tránh lửa tím chồng / bay cao)
             spawnSkillAura(this.scene, at, kind, performance.now(), attach, { scale, phase: "cast" });
             if (isShield) spawnShieldBarrier(this.scene, at, performance.now(), scale);
             beginLunge();
           } else if (phase === "emission") {
-            spawnSkillAura(this.scene, at, kind, performance.now(), attach, { scale, phase: "emission" });
             deliverToTargets("emission");
             if (isShield && !targets.length) spawnShieldBarrier(this.scene, at, performance.now(), scale);
           } else if (phase === "impact") {

@@ -950,9 +950,11 @@ export function spawnSkillAura(
     : at.clone();
   const parent = attach?.root;
 
+  // Size giữ vừa ngực tướng — tránh aura che nửa sân
+  const mainSz = Math.min(1.45, (r.mainSize ?? 1.35) * sm);
   void playSheet(scene, chestLocal, r.main, {
-    size: (r.mainSize ?? 1.55) * sm,
-    life: Math.round((r.mainLife ?? 520) * (phase === "windup" ? 0.7 : 1.15)),
+    size: mainSz,
+    life: Math.round((r.mainLife ?? 480) * (phase === "windup" ? 0.7 : 1)),
     y: r.mainY ?? 0,
     color: tint,
     parent,
@@ -960,8 +962,8 @@ export function spawnSkillAura(
   });
   if (r.overlay?.length && phase !== "windup") {
     void playSheet(scene, chestLocal, r.overlay, {
-      size: (r.overlaySize ?? 1.2) * sm,
-      life: Math.round((r.overlayLife ?? 450) * 1.1),
+      size: Math.min(1.2, (r.overlaySize ?? 1.05) * sm),
+      life: Math.round((r.overlayLife ?? 400) * 1.05),
       y: r.overlayY ?? 0.05,
       color: r.overlayColor ?? tint,
       parent,
@@ -1264,14 +1266,22 @@ export function tickStatusMarkers(root: THREE.Object3D, now: number): void {
 export function spawnSlashArc(
   scene: THREE.Scene,
   at: THREE.Vector3,
-  _toward: THREE.Vector3,
+  toward: THREE.Vector3,
   _now: number,
   flash = "white"
 ): void {
+  // Neo giữa caster→đích, cao ngực — tránh slash khổng lồ / lệch sàn
+  const mid = at.clone().lerp(toward, 0.4);
+  mid.y = Math.max(at.y, toward.y * 0.15 + 0.55, 0.65);
   const sheet = slashSheetForFlash(flash);
-  void playSheet(scene, at, sheet, { size: 1.55, life: 360, y: 0.7 });
-  // Kenney slash phụ — đọc được trên sân nhỏ
-  void playSheet(scene, at, TEX.slash, { size: 1.15, life: 280, y: 0.85, color: 0xffe8c8 });
+  void playSheet(scene, mid, sheet, { size: 1.25, life: 340, y: 0, yMode: "abs" });
+  void playSheet(scene, mid, TEX.slash, {
+    size: 0.95,
+    life: 260,
+    y: 0.08,
+    yMode: "abs",
+    color: 0xffe8c8,
+  });
 }
 
 /**
