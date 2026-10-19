@@ -133,10 +133,16 @@ type Fighter = {
 };
 
 /**
- * Lưới 3×3 theo trận pháp wiki — quân ta PHẢI / địch TRÁI (icon nhìn trái).
+ * Lưới 3×3 theo trận pháp wiki — quân ta +X (phải) / địch −X (trái).
+ *
+ * Sân đá 15.2×9.8 → X∈[−7.6,7.6] Z∈[−4.9,4.9].
+ * Camera (0,7.4,12.4) nhìn về −Z (+Z = đáy màn hình).
+ * - COL_Z bước đều ~1.95, khối lệch nhẹ về +Z để lề trên/dưới nhìn cân
+ *   (tránh đội dồn mép trên / kỵ sát viền dưới).
+ * - ROW_DEPTH bước đều 1.2 — đội gọn nửa sân, đủ 5 slot không thưa giữa sân.
  */
-const COL_Z = [-2.45, 0, 2.45] as const;
-const ROW_DEPTH = [2.55, 3.95, 5.35] as const;
+const COL_Z = [-1.85, 0.15, 2.05] as const;
+const ROW_DEPTH = [2.2, 3.4, 4.6] as const;
 
 type Cell = { col: 0 | 1 | 2; row: 0 | 1 | 2 };
 
@@ -236,16 +242,29 @@ function readFormLayout(formationId?: string | null): Cell[] {
   return FORM_LAYOUT[fid] || FORM_LAYOUT.crane_wing;
 }
 
+/** Tâm Z nhìn trên sân (lệch nhẹ +Z vì phối cảnh camera) */
+const FORM_Z_CENTER = 0.3;
+
 function slotXZ(
   slot: number,
   enemy: boolean,
-  formationId?: string | null
+  formationId?: string | null,
+  /** Căn giữa khối Z theo các slot đang có người — đội 3 cũng cân sân */
+  occupiedSlots?: number[] | null
 ): { x: number; z: number } {
   const s = Math.max(0, Math.min(4, slot | 0));
   const layout = readFormLayout(formationId);
   const cell = layout[s] || layout[0];
   const depth = ROW_DEPTH[cell.row];
-  const z = COL_Z[cell.col];
+  let z = COL_Z[cell.col];
+  if (occupiedSlots && occupiedSlots.length > 0) {
+    const zs = occupiedSlots.map((os) => {
+      const c = layout[Math.max(0, Math.min(4, os | 0))] || layout[0];
+      return COL_Z[c.col];
+    });
+    const mid = (Math.min(...zs) + Math.max(...zs)) / 2;
+    z += FORM_Z_CENTER - mid;
+  }
   // Quân ta +X (phải), địch −X (trái)
   const x = enemy ? -depth : depth;
   return { x, z };
@@ -429,10 +448,17 @@ export class BattleRenderer {
     const scene = this.scene;
     const allyForm = (opts && opts.allyFormation) || "crane_wing";
     const enemyForm = (opts && opts.enemyFormation) || "square";
+    const allySlots = allies.map((u) => clampSlot(u.slot));
+    const enemySlots = foes.map((u) => clampSlot(u.slot));
     const add = async (u: BattleUnitSpec, enemy: boolean) => {
       const slot = clampSlot(u.slot);
       const seed = (u.uid || u.name || "").length * 17 + slot * 31 + (enemy ? 99 : 3);
-      const { x, z } = slotXZ(slot, enemy, enemy ? enemyForm : allyForm);
+      const { x, z } = slotXZ(
+        slot,
+        enemy,
+        enemy ? enemyForm : allyForm,
+        enemy ? enemySlots : allySlots
+      );
       const rimHex = enemy ? 0xef4444 : 0x2dd4bf;
       try {
         const tier = u.troopTier != null ? u.troopTier : 1;
