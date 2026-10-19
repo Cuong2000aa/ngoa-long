@@ -69,10 +69,9 @@ type Fighter = {
 };
 
 /**
- * Đội hình 3+2 kiểu Ngọa Long H5 (wiki “Xem kỹ năng”):
- * - Phe ta TRÁI / địch PHẢI — đối mặt qua giữa sân
- * - Hàng trước gần giữa; hàng sau lùi cánh — giãn Z rõ
- * - Mỗi ô = cụm lính (battleActors)
+ * Đội hình 3+2 kiểu Ngọa Long H5:
+ * - Quân ta PHẢI / địch TRÁI (icon wiki nhìn trái)
+ * - Hàng trước gần giữa; hàng sau lùi cánh
  */
 const FRONT_Z = [-2.2, 0, 2.2];
 const BACK_Z = [-1.15, 1.15];
@@ -134,24 +133,30 @@ export class BattleRenderer {
     hud.innerHTML = "";
     this.hudLayer = hud;
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    const dpr = this.preview
+      ? Math.min(window.devicePixelRatio || 1, 1.25)
+      : Math.min(window.devicePixelRatio || 1, 2);
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true,
+      powerPreference: "high-performance",
+    });
+    renderer.setPixelRatio(dpr);
     renderer.setClearColor(0x000000, 0);
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFShadowMap;
+    renderer.shadowMap.enabled = false;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.18;
+    renderer.toneMappingExposure = 1.12;
     renderer.domElement.className = "battle-gl";
     mount.appendChild(renderer.domElement);
     this.renderer = renderer;
 
     const scene = new THREE.Scene();
-    // Alpha: CSS battle-courtyard làm backdrop; fog ấm hòa sàn đá
-    scene.background = null;
+    const bg = 0x8a7358;
+    scene.background = new THREE.Color(bg);
     scene.fog = this.preview
-      ? new THREE.FogExp2(0x5a4030, 0.028)
-      : new THREE.FogExp2(0x5c4838, 0.018);
+      ? new THREE.FogExp2(0x8a7358, 0.012)
+      : new THREE.FogExp2(0x8a7358, 0.0035);
     this.scene = scene;
 
     const camera = new THREE.PerspectiveCamera(34, 1, 0.2, 90);
@@ -159,9 +164,8 @@ export class BattleRenderer {
       camera.position.set(-1.4, 5.8, 9.2);
       camera.lookAt(-2.4, 0.45, 0);
     } else {
-      // Góc thấp hơn — thấy điện/tháp phía sau, không chỉ nhìn đỉnh đầu
-      camera.position.set(0, 6.8, 13.2);
-      camera.lookAt(0, 0.55, -0.4);
+      camera.position.set(0, 7.4, 12.4);
+      camera.lookAt(0, 0.35, -0.2);
     }
     this.camera = camera;
 
@@ -177,101 +181,61 @@ export class BattleRenderer {
   }
 
   private buildArena(scene: THREE.Scene): void {
-    const loader = new THREE.TextureLoader();
-    const load = (url: string) => {
-      const t = loader.load(url);
-      t.colorSpace = THREE.SRGBColorSpace;
-      return t;
-    };
-
-    scene.add(new THREE.HemisphereLight(0xffe8d0, 0x3a2820, 1.15));
-    const sun = new THREE.DirectionalLight(0xffe0b8, 1.65);
-    sun.position.set(-3, 11, 9);
-    sun.castShadow = true;
-    sun.shadow.mapSize.set(1024, 1024);
-    sun.shadow.camera.left = -14;
-    sun.shadow.camera.right = 14;
-    sun.shadow.camera.top = 12;
-    sun.shadow.camera.bottom = -12;
+    // Sàn + backdrop texture (arena-floor / arena-back) — không plane nâu trong suốt
+    scene.add(new THREE.HemisphereLight(0xe8dcc8, 0x1a1410, 0.9));
+    const sun = new THREE.DirectionalLight(0xffe2c8, 0.85);
+    sun.position.set(-1.5, 11, 6);
+    sun.castShadow = false;
     scene.add(sun);
-    scene.add(new THREE.AmbientLight(0x7a6050, 0.5));
+    scene.add(new THREE.AmbientLight(0x5a4a3c, 0.4));
 
-    // Sàn đá bán trong — để ảnh cung CSS lộ quanh mép (kiểu NL)
-    const courtyard = new THREE.Mesh(
-      new THREE.PlaneGeometry(14.5, 9.2),
-      new THREE.MeshStandardMaterial({
-        color: 0x8f7358,
-        roughness: 0.94,
-        metalness: 0.04,
-        transparent: true,
-        opacity: 0.88,
-      })
-    );
+    const loader = new THREE.TextureLoader();
+    const aniso = Math.min(8, this.renderer?.capabilities.getMaxAnisotropy() || 1);
+
+    const groundMat = new THREE.MeshBasicMaterial({ color: 0xcbb89a });
+    const ground = new THREE.Mesh(new THREE.PlaneGeometry(36, 26), groundMat);
+    ground.rotation.x = -Math.PI / 2;
+    ground.position.set(0, -0.04, -1.2);
+    scene.add(ground);
+
+    const floorMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+    const courtyard = new THREE.Mesh(new THREE.PlaneGeometry(15.2, 9.8), floorMat);
     courtyard.rotation.x = -Math.PI / 2;
-    courtyard.receiveShadow = true;
+    courtyard.position.y = 0.01;
     scene.add(courtyard);
 
-    const grain = new THREE.Mesh(
-      new THREE.PlaneGeometry(13.8, 8.6),
-      new THREE.MeshBasicMaterial({
-        map: load("assets/fx/particles/scorch_01.png"),
-        color: 0x6b5340,
-        transparent: true,
-        opacity: 0.2,
-        depthWrite: false,
-      })
-    );
-    grain.rotation.x = -Math.PI / 2;
-    grain.position.y = 0.01;
-    scene.add(grain);
+    loader.load("assets/battle/arena-floor-3k.jpg", (tex) => {
+      tex.colorSpace = THREE.SRGBColorSpace;
+      tex.anisotropy = aniso;
+      floorMat.map = tex;
+      floorMat.needsUpdate = true;
+      const tiled = tex.clone();
+      tiled.colorSpace = THREE.SRGBColorSpace;
+      tiled.wrapS = THREE.RepeatWrapping;
+      tiled.wrapT = THREE.RepeatWrapping;
+      tiled.repeat.set(2.8, 2.2);
+      tiled.anisotropy = aniso;
+      tiled.needsUpdate = true;
+      groundMat.map = tiled;
+      groundMat.color.set(0xe2d2b6);
+      groundMat.needsUpdate = true;
+    });
 
-    const medal = new THREE.Mesh(
-      new THREE.CircleGeometry(1.35, 40),
-      new THREE.MeshBasicMaterial({
-        map: load("assets/fx/particles/circle_02.png"),
-        color: 0xc4a060,
-        transparent: true,
-        opacity: 0.18,
-        depthWrite: false,
-      })
-    );
-    medal.rotation.x = -Math.PI / 2;
-    medal.position.y = 0.02;
-    scene.add(medal);
-
-    const addBillboard = (
-      url: string,
-      x: number,
-      y: number,
-      z: number,
-      w: number,
-      h: number,
-      tint = 0xffffff
-    ) => {
-      const spr = new THREE.Sprite(
-        new THREE.SpriteMaterial({
-          map: load(url),
-          color: tint,
-          transparent: true,
-          depthWrite: false,
-          alphaTest: 0.12,
-        })
-      );
-      spr.position.set(x, y, z);
-      spr.scale.set(w, h, 1);
-      spr.center.set(0.5, 0);
-      scene.add(spr);
-      return spr;
-    };
-
-    // Chỉ asset cùng style (FreeGameSprites 2.5D) — bỏ cổng pixel lệch
-    addBillboard("assets/city/cn-palace/chinese-temple.webp", 0, 0, -4.5, 6.2, 4.9);
-    addBillboard("assets/city/cn-palace/chinese-pagoda-tower.webp", -6.8, 0, -2.8, 2.6, 3.8);
-    addBillboard("assets/city/cn-palace/pagoda.webp", 6.8, 0, -2.8, 2.6, 3.8);
-    addBillboard("assets/city/cn-palace/cherry-blossom-tree.png", -7.6, 0, 1.4, 2.1, 2.9);
-    addBillboard("assets/city/cn-palace/cherry-blossom-tree.png", 7.6, 0, 1.4, 2.1, 2.9);
-    addBillboard("assets/city/cn-palace/chinese-lantern-red.png", -5.8, 0, 3.5, 0.65, 1.05);
-    addBillboard("assets/city/cn-palace/chinese-lantern-red.png", 5.8, 0, 3.5, 0.65, 1.05);
+    const backMat = new THREE.MeshBasicMaterial({ color: 0xfff6ea });
+    const back = new THREE.Mesh(new THREE.PlaneGeometry(32, 11.5), backMat);
+    back.position.set(0, 3.85, -6.55);
+    scene.add(back);
+    loader.load("assets/battle/arena-back-3k.jpg", (tex) => {
+      tex.colorSpace = THREE.SRGBColorSpace;
+      tex.anisotropy = aniso;
+      tex.wrapS = THREE.ClampToEdgeWrapping;
+      tex.wrapT = THREE.ClampToEdgeWrapping;
+      tex.offset.set(0, 0.04);
+      tex.repeat.set(1, 0.96);
+      tex.needsUpdate = true;
+      backMat.map = tex;
+      backMat.needsUpdate = true;
+    });
   }
 
   spawn(allies: BattleUnitSpec[], foes: BattleUnitSpec[], _playerFaction = "shu"): void {

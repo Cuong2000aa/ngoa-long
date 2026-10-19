@@ -187,10 +187,7 @@
  * canvas phủ cả combat-stage; HUD thẻ nổi 2 bên, không khung hộp giữa màn.
  */
 .combat-overlay.mode-3d .combat-stage {
-  /* Sân cung Forbidden City full-bleed — canvas 3D alpha đè lên */
-  background:
-    linear-gradient(180deg, rgba(28, 18, 12, 0.22) 0%, rgba(18, 12, 8, 0.38) 55%, rgba(12, 8, 6, 0.52) 100%),
-    url("../assets/battle/battle-courtyard.jpg") center 42% / cover no-repeat;
+  /* Nền canvas 3D (arena-floor + arena-back) — CSS chỉ fallback tối */
   background-color: #2a1c14;
 }
 .combat-overlay.mode-3d .combat-atmosphere {
