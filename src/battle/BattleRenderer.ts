@@ -1012,8 +1012,17 @@ export class BattleRenderer {
     this.camera.updateProjectionMatrix();
   }
 
+  /** Hủy timeline chiêu đang chạy */
+  cancelSkillPlay(): void {
+    if (this.skillPlayCancel) {
+      this.skillPlayCancel();
+      this.skillPlayCancel = null;
+    }
+  }
+
   /** Xóa FX đang chạy — dùng trước khi bắn motif QA */
   clearFx(): void {
+    this.cancelSkillPlay();
     clearBattleVfx(this.scene);
   }
 

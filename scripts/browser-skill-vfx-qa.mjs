@@ -128,8 +128,24 @@ try {
       if (!allies.length) return { ok: false, reason: "no allies" };
       const caster = allies[0];
       let targets = foes.slice();
-      if (spec.pattern === "single" || spec.pattern === "self") targets = foes.slice(0, 1);
+      if (spec.pattern === "single") targets = foes.slice(0, 1);
       if (spec.pattern === "self") targets = [caster];
+      // Thời điểm peak = giữa emission (sau windup+cast)
+      let waitMs = 420;
+      try {
+        const sd = window.NLSkillDesign;
+        if (sd && sd.buildTimeline) {
+          const tl = sd.buildTimeline(spec.flash);
+          const em = (tl.steps || []).find((s) => s.phase === "emission");
+          if (em) waitMs = Math.round(em.atMs + em.durationMs * 0.35);
+          else {
+            const cast = (tl.steps || []).find((s) => s.phase === "cast");
+            waitMs = cast ? Math.round(cast.atMs + cast.durationMs * 0.6) : 400;
+          }
+        }
+      } catch (_) {
+        /* keep default */
+      }
       try {
         br.skillFlash(caster, spec.flash, targets, {
           pattern: spec.pattern,
@@ -144,16 +160,22 @@ try {
           hasCanvas: !!canvas,
           fighters: br.fighters.size,
           hasClearFx: typeof br.clearFx === "function",
+          waitMs,
         };
       } catch (e) {
         return { ok: false, reason: String(e && e.message ? e.message : e) };
       }
     }, c);
 
-    // Đợi peak motif (~220–280ms) rồi chụp
-    await page.waitForTimeout(260);
+    const waitMs = Math.max(280, Math.min(900, (info && info.waitMs) || 420));
+    await page.waitForTimeout(waitMs);
     const shot = resolve(outDir, `${c.label}.png`);
-    await page.screenshot({ path: shot, fullPage: false, type: "png" });
+    const canvas = page.locator("#combat-overlay canvas").first();
+    if (await canvas.count()) {
+      await canvas.screenshot({ path: shot, type: "png" });
+    } else {
+      await page.screenshot({ path: shot, fullPage: false, type: "png" });
+    }
 
     const pass = !!(info && info.ok && info.hasCanvas);
     if (!pass) failed++;

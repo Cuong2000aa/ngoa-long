@@ -205,11 +205,13 @@ const TEX = {
     "assets/fx/tiger/slam_08.png",
     "assets/fx/tiger/slam_09.png",
   ],
+  // Chỉ grayscale particle — tint xanh độc (tránh Arcane tím → vàng bẩn khi multiply)
   poison: [
-    "assets/fx/particles/magic_02.png",
-    "assets/fx/arcane/Arcane_Effect_3.png",
-    "assets/fx/arcane/Arcane_Effect_5.png",
-    "assets/fx/particles/flare_01.png",
+    "assets/fx/particles/magic_03.png",
+    "assets/fx/particles/circle_03.png",
+    "assets/fx/particles/magic_05.png",
+    "assets/fx/particles/star_01.png",
+    "assets/fx/particles/smoke_04.png",
   ],
   /** Kenney đã có alpha — aura chân sạch, tránh LightEffect hộp đen */
   kenneyAura: [
@@ -554,7 +556,7 @@ function slashSheetForFlash(flash: string): string[] {
 }
 
 function auraTint(flash: string): number {
-  if (flash === "green_poison" || flash === "poison" || flash === "snake" || flash === "fire_green") return 0x86efac;
+  if (flash === "green_poison" || flash === "poison" || flash === "snake" || flash === "fire_green") return 0x4ade80;
   if (flash === "dragon") return 0xffb347;
   if (flash === "tiger") return 0xfbbf24;
   if (flash === "thunder") return 0xc4b5fd;
@@ -660,33 +662,39 @@ function auraRecipe(flash: string): AuraRecipe {
       };
     case "snake":
       return {
-        main: TEX.snake,
-        mainSize: 1.35,
+        main: TEX.snake.length ? TEX.snake : TEX.poison,
+        mainSize: 1.4,
         mainLife: 540,
         mainY: 0.05,
-        mainColor: 0x86efac,
+        mainColor: 0x4ade80,
         overlay: TEX.poison,
-        overlaySize: 1.1,
+        overlaySize: 1.15,
         overlayLife: 440,
         overlayY: 0.08,
-        overlayColor: 0x4ade80,
-        footSize: 0.75,
+        overlayColor: 0x86efac,
+        ground: TEX.circle.length ? TEX.circle : TEX.poison,
+        groundColor: 0x22c55e,
+        footSize: 0.8,
       };
     case "green_poison":
     case "poison":
     case "fire_green":
       return {
         main: TEX.poison,
-        mainSize: 1.35,
-        mainLife: 540,
+        mainSize: 1.45,
+        mainLife: 560,
         mainY: 0.05,
-        mainColor: 0x86efac,
-        overlay: TEX.magic,
-        overlaySize: 1.1,
-        overlayLife: 440,
-        overlayY: 0.05,
+        // Xanh độc bão hòa (additive × grayscale → rõ lá/chanh)
+        mainColor: 0x4ade80,
+        overlay: TEX.poison,
+        overlaySize: 1.15,
+        overlayLife: 460,
+        overlayY: 0.08,
         overlayColor: 0xa3e635,
-        footSize: 0.75,
+        ground: TEX.circle.length ? TEX.circle : TEX.poison,
+        groundSize: 1.05,
+        groundColor: 0x22c55e,
+        footSize: 0.8,
       };
     case "fire_rain":
     case "red_fire":
