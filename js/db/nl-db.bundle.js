@@ -2022,11 +2022,12 @@
       "power": 1.5,
       "moraleCost": 100,
       "fx": {
-        "flash": "white",
+        "flash": "steel",
         "text": "MẠNH KÍCH",
         "motif": "slash"
       },
-      "desc": "Chiến pháp vật lý cơ bản."
+      "desc": "Chiến pháp vật lý cơ bản.",
+      "hits": 1
     },
     "basic_scheme": {
       "id": "basic_scheme",
@@ -2036,11 +2037,12 @@
       "power": 1.5,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue",
+        "flash": "steel",
         "text": "KỲ MƯU",
-        "motif": "arcane"
+        "motif": "slash"
       },
-      "desc": "Chiến pháp mưu lược cơ bản."
+      "desc": "Chiến pháp mưu lược cơ bản.",
+      "hits": 1
     },
     "wu_sheng": {
       "id": "wu_sheng",
@@ -2050,11 +2052,12 @@
       "power": 1.55,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_red",
+        "flash": "steel",
         "text": "VŨ THÁNH",
         "motif": "slash"
       },
-      "desc": "Chém thẳng hàng dọc địch."
+      "desc": "Chém thẳng hàng dọc địch.",
+      "hits": 1
     },
     "gam_thet": {
       "id": "gam_thet",
@@ -2063,19 +2066,14 @@
       "pattern": "front_row",
       "power": 1.25,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "stun",
-          "chance": 0.55,
-          "duration": 1
-        }
-      ],
+      "effects": [],
       "fx": {
-        "flash": "brown",
+        "flash": "steel",
         "text": "GẦM THÉT",
         "motif": "slash"
       },
-      "desc": "Gầm thét hàng trước, tỷ lệ Choáng."
+      "desc": "Gầm thét hàng trước, tỷ lệ Choáng.",
+      "hits": 1
     },
     "long_dam": {
       "id": "long_dam",
@@ -2089,7 +2087,8 @@
         "text": "LONG ĐẢM",
         "motif": "dragon"
       },
-      "desc": "Đâm một mục tiêu chí mạng."
+      "desc": "Đâm một mục tiêu chí mạng.",
+      "hits": 1
     },
     "khong_thanh": {
       "id": "khong_thanh",
@@ -2098,19 +2097,14 @@
       "pattern": "all",
       "power": 0.95,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "def_down",
-          "value": 0.15,
-          "duration": 2
-        }
-      ],
+      "effects": [],
       "fx": {
         "flash": "bagua",
         "text": "KHÔNG THÀNH",
         "motif": "bagua"
       },
-      "desc": "Giảm phòng toàn quân địch + dame Trí lực."
+      "desc": "Giảm phòng toàn quân địch + dame Trí lực.",
+      "hits": 1
     },
     "ho_khi": {
       "id": "ho_khi",
@@ -2119,44 +2113,30 @@
       "pattern": "ally_all",
       "power": 0,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "morale_boost",
-          "value": 35
-        },
-        {
-          "type": "atk_up",
-          "value": 0.2,
-          "duration": 2
-        }
-      ],
+      "effects": [],
       "fx": {
         "flash": "tiger",
         "text": "HỔ KHÍ",
         "motif": "tiger"
       },
-      "desc": "Buff sĩ khí và tấn công phe ta."
+      "desc": "Buff sĩ khí và tấn công phe ta.",
+      "hits": 1
     },
     "hoa_cong": {
       "id": "hoa_cong",
       "name": "Hỏa Công",
       "damageType": "strategy",
-      "pattern": "row",
+      "pattern": "single",
       "power": 1.45,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "burn",
-          "value": 0.08,
-          "duration": 2
-        }
-      ],
+      "effects": [],
       "fx": {
         "flash": "fire_rain",
         "text": "HỎA CÔNG",
         "motif": "fire"
       },
-      "desc": "Thiêu một hàng địch."
+      "desc": "Thiêu một hàng địch.",
+      "hits": 1
     },
     "an_muu": {
       "id": "an_muu",
@@ -2165,19 +2145,14 @@
       "pattern": "single",
       "power": 1.8,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "silence",
-          "chance": 0.4,
-          "duration": 1
-        }
-      ],
+      "effects": [],
       "fx": {
-        "flash": "purple",
+        "flash": "steel",
         "text": "ẨN MƯU",
-        "motif": "shadow"
+        "motif": "slash"
       },
-      "desc": "Đòn mưu + tỷ lệ Câm lặng."
+      "desc": "Đòn mưu + tỷ lệ Câm lặng.",
+      "hits": 1
     },
     "bach_bo": {
       "id": "bach_bo",
@@ -2188,11 +2163,12 @@
       "moraleCost": 100,
       "critBonus": 0.35,
       "fx": {
-        "flash": "yellow",
+        "flash": "steel",
         "text": "BÁCH BỘ",
-        "motif": "buff"
+        "motif": "pierce"
       },
-      "desc": "Bắn tỉa, tăng Crit."
+      "desc": "Bắn tỉa, tăng Crit.",
+      "hits": 1
     },
     "tay_luong": {
       "id": "tay_luong",
@@ -2206,28 +2182,24 @@
         "text": "THIẾT KỴ",
         "motif": "charge"
       },
-      "desc": "Xung phong hàng dọc."
+      "desc": "Xung phong hàng dọc.",
+      "hits": 1
     },
     "co_chien": {
       "id": "co_chien",
       "name": "Cổ Chiến",
       "damageType": "physical",
-      "pattern": "single",
+      "pattern": "self",
       "power": 1.7,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "self_def_up",
-          "value": 0.25,
-          "duration": 2
-        }
-      ],
+      "effects": [],
       "fx": {
-        "flash": "iron",
+        "flash": "gold_soft",
         "text": "CỔ CHIẾN",
-        "motif": "slash"
+        "motif": "buff"
       },
-      "desc": "Đánh mạnh + tăng phòng bản thân."
+      "desc": "Đánh mạnh + tăng phòng bản thân.",
+      "hits": 1
     },
     "ho_si": {
       "id": "ho_si",
@@ -2241,32 +2213,24 @@
         "text": "HỔ SI",
         "motif": "tiger"
       },
-      "desc": "Đập hàng trước."
+      "desc": "Đập hàng trước.",
+      "hits": 1
     },
     "dong_ngo": {
       "id": "dong_ngo",
       "name": "Đông Ngô Bá Nghiệp",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "single",
       "power": 0,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "heal_pct",
-          "value": 0.12
-        },
-        {
-          "type": "tonglinh_up",
-          "value": 0.15,
-          "duration": 2
-        }
-      ],
+      "effects": [],
       "fx": {
-        "flash": "blue_water",
+        "flash": "steel",
         "text": "ĐÔNG NGÔ",
-        "motif": "water"
+        "motif": "slash"
       },
-      "desc": "Hồi máu nhẹ + tăng Thống lĩnh."
+      "desc": "Hồi máu nhẹ + tăng Thống lĩnh.",
+      "hits": 1
     },
     "doc_muu": {
       "id": "doc_muu",
@@ -2275,76 +2239,61 @@
       "pattern": "all",
       "power": 0.85,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "poison",
-          "value": 0.1,
-          "duration": 3
-        }
-      ],
+      "effects": [],
       "fx": {
         "flash": "green_poison",
         "text": "ĐỘC MƯU",
         "motif": "poison"
       },
-      "desc": "Gieo độc toàn quân địch."
+      "desc": "Gieo độc toàn quân địch.",
+      "hits": 1
     },
     "phung_so": {
       "id": "phung_so",
       "name": "Phụng Sồ",
       "damageType": "strategy",
-      "pattern": "row",
+      "pattern": "single",
       "power": 1.35,
       "moraleCost": 100,
       "fx": {
-        "flash": "violet",
+        "flash": "steel",
         "text": "PHỤNG SỒ",
-        "motif": "shadow"
+        "motif": "slash"
       },
-      "desc": "Mưu kế đánh cả hàng."
+      "desc": "Mưu kế đánh cả hàng.",
+      "hits": 1
     },
     "lua_luc": {
       "id": "lua_luc",
       "name": "Lửa Lục",
       "damageType": "strategy",
-      "pattern": "all",
+      "pattern": "single",
       "power": 1.15,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "burn",
-          "value": 0.06,
-          "duration": 2
-        }
-      ],
+      "effects": [],
       "fx": {
-        "flash": "fire_rain",
+        "flash": "steel",
         "text": "LỬA LỤC",
-        "motif": "fire"
+        "motif": "slash"
       },
-      "desc": "Hỏa công diện rộng."
+      "desc": "Hỏa công diện rộng.",
+      "hits": 1
     },
     "phan_cot": {
       "id": "phan_cot",
       "name": "Phản Cốt",
       "damageType": "physical",
-      "pattern": "single",
+      "pattern": "self",
       "power": 1.6,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "atk_up",
-          "value": 0.3,
-          "duration": 2,
-          "self": true
-        }
-      ],
+      "effects": [],
       "fx": {
-        "flash": "dark_red",
+        "flash": "gold_soft",
         "text": "PHẢN CỐT",
-        "motif": "shadow"
+        "motif": "buff"
       },
-      "desc": "Đòn mạnh + tăng công bản thân."
+      "desc": "Đòn mạnh + tăng công bản thân.",
+      "hits": 1
     },
     "nhan_duc": {
       "id": "nhan_duc",
@@ -2355,12 +2304,10 @@
       "moraleCost": 100,
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.15
-        },
-        {
           "type": "morale_boost",
-          "value": 25
+          "value": 40,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ],
       "fx": {
@@ -2368,28 +2315,24 @@
         "text": "NHÂN ĐỨC",
         "motif": "heal"
       },
-      "desc": "Hồi máu + sĩ khí phe ta."
+      "desc": "Hồi máu + sĩ khí phe ta.",
+      "hits": 1
     },
     "huang_tian": {
       "id": "huang_tian",
       "name": "Hoàng Thiên Đương Lập",
       "damageType": "strategy",
-      "pattern": "all",
+      "pattern": "single",
       "power": 1.3,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "atk_down",
-          "value": 0.12,
-          "duration": 2
-        }
-      ],
+      "effects": [],
       "fx": {
-        "flash": "bagua",
+        "flash": "steel",
         "text": "HOÀNG THIÊN",
-        "motif": "bagua"
+        "motif": "slash"
       },
-      "desc": "Tà thuật Khăn Vàng."
+      "desc": "Tà thuật Khăn Vàng.",
+      "hits": 1
     },
     "hoa_hung_slash": {
       "id": "hoa_hung_slash",
@@ -2403,7 +2346,8 @@
         "text": "HỔ LAO",
         "motif": "tiger"
       },
-      "desc": "Chém mạnh một tướng."
+      "desc": "Chém mạnh một tướng.",
+      "hits": 1
     },
     "lu_bu_fury": {
       "id": "lu_bu_fury",
@@ -2413,11 +2357,12 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "crimson",
+        "flash": "steel",
         "text": "PHONG HẦU",
         "motif": "slash"
       },
-      "desc": "Xung kích hàng dọc tối thượng."
+      "desc": "Xung kích hàng dọc tối thượng.",
+      "hits": 1
     },
     "xiaoyaojin": {
       "id": "xiaoyaojin",
@@ -2426,19 +2371,14 @@
       "pattern": "front_row",
       "power": 1.5,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "atk_down",
-          "value": 0.1,
-          "duration": 1
-        }
-      ],
+      "effects": [],
       "fx": {
         "flash": "steel",
         "text": "TIÊU DAO TÂN",
         "motif": "slash"
       },
-      "desc": "Tập kích hàng trước — Trương Liêu."
+      "desc": "Tập kích hàng trước — Trương Liêu.",
+      "hits": 1
     },
     "shui_jian": {
       "id": "shui_jian",
@@ -2452,95 +2392,77 @@
         "text": "THỦY CHIẾN",
         "motif": "water"
       },
-      "desc": "Đòn hàng ngang kiểu Giang Đông."
+      "desc": "Đòn hàng ngang kiểu Giang Đông.",
+      "hits": 1
     },
     "bailian": {
       "id": "bailian",
       "name": "Bạch Mã Nghĩa Tòng",
       "damageType": "physical",
-      "pattern": "column",
+      "pattern": "single",
       "power": 1.45,
       "moraleCost": 100,
       "fx": {
-        "flash": "white",
+        "flash": "steel",
         "text": "BẠCH MÃ",
         "motif": "slash"
       },
-      "desc": "Kỵ binh Bạch Mã xung phong."
+      "desc": "Kỵ binh Bạch Mã xung phong.",
+      "hits": 1
     },
     "lianhuan": {
       "id": "lianhuan",
       "name": "Liên Hoàn Kế",
       "damageType": "strategy",
-      "pattern": "all",
+      "pattern": "single",
       "power": 0.7,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "def_down",
-          "value": 0.2,
-          "duration": 2
-        }
-      ],
+      "effects": [],
       "fx": {
-        "flash": "chain",
+        "flash": "steel",
         "text": "LIÊN HOÀN",
         "motif": "slash"
       },
-      "desc": "Giảm phòng diện rộng."
+      "desc": "Giảm phòng diện rộng.",
+      "hits": 1
     },
     "bagua_zhen": {
       "id": "bagua_zhen",
       "name": "Bát Quái Trận",
       "damageType": "strategy",
-      "pattern": "all",
+      "pattern": "single",
       "power": 1.15,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
-        },
-        {
-          "type": "atk_down",
-          "value": 0.08,
-          "duration": 2
-        }
-      ],
+      "effects": [],
       "fx": {
         "flash": "bagua",
         "text": "BÁT QUÁI TRẬN",
         "motif": "bagua"
       },
-      "desc": "Triệu hồi trận đồ Âm Dương, sát thương toàn quân + giảm công/thủ."
+      "desc": "Triệu hồi trận đồ Âm Dương, sát thương toàn quân + giảm công/thủ.",
+      "hits": 1
     },
     "thien_hoa": {
       "id": "thien_hoa",
       "name": "Thiên Hỏa",
       "damageType": "strategy",
-      "pattern": "row",
+      "pattern": "single",
       "power": 1.6,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "burn",
-          "value": 0.1,
-          "duration": 3
-        }
-      ],
+      "effects": [],
       "fx": {
         "flash": "fire_rain",
         "text": "THIÊN HỎA",
         "motif": "fire"
       },
-      "desc": "Mưa lửa từ trời thiêu cả hàng địch."
+      "desc": "Mưa lửa từ trời thiêu cả hàng địch.",
+      "hits": 1
     },
     "long_nu": {
       "id": "long_nu",
       "name": "Long Nỗ",
       "damageType": "physical",
-      "pattern": "column",
+      "pattern": "single",
       "power": 1.75,
       "critBonus": 0.15,
       "moraleCost": 100,
@@ -2549,7 +2471,8 @@
         "text": "LONG NỖ",
         "motif": "dragon"
       },
-      "desc": "Nỏ rồng xuyên thủng cả cột địch, tăng chí mạng."
+      "desc": "Nỏ rồng xuyên thủng cả cột địch, tăng chí mạng.",
+      "hits": 1
     },
     "phong_van": {
       "id": "phong_van",
@@ -2561,24 +2484,18 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.1
-        },
-        {
-          "type": "atk_up",
-          "value": 0.15,
-          "duration": 2
+          "value": 40,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ],
       "fx": {
-        "flash": "whirlwind",
+        "flash": "gold_soft",
         "text": "PHONG VÂN",
-        "motif": "whirlwind"
+        "motif": "buff"
       },
-      "desc": "Gió mây đổi hướng — hồi máu, sĩ khí và công phe ta."
+      "desc": "Gió mây đổi hướng — hồi máu, sĩ khí và công phe ta.",
+      "hits": 1
     },
     "sam_set": {
       "id": "sam_set",
@@ -2587,25 +2504,20 @@
       "pattern": "single",
       "power": 2.2,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "stun",
-          "chance": 0.45,
-          "duration": 1
-        }
-      ],
+      "effects": [],
       "fx": {
         "flash": "thunder",
         "text": "LÔI KÍCH",
         "motif": "thunder"
       },
-      "desc": "Sét đánh một mục tiêu, tỷ lệ Choáng."
+      "desc": "Sét đánh một mục tiêu, tỷ lệ Choáng.",
+      "hits": 1
     },
     "hoa_long": {
       "id": "hoa_long",
       "name": "Hỏa Long",
       "damageType": "strategy",
-      "pattern": "column",
+      "pattern": "single",
       "power": 1.85,
       "moraleCost": 100,
       "effects": [
@@ -2620,13 +2532,14 @@
         "text": "HỎA LONG",
         "motif": "dragon"
       },
-      "desc": "Hỏa long thiêu cột địch — [Thiêu đốt] (wiki hiệu ứng)."
+      "desc": "Hỏa long thiêu cột địch — [Thiêu đốt] (wiki hiệu ứng).",
+      "hits": 1
     },
     "doc_xa": {
       "id": "doc_xa",
       "name": "Độc Xà",
       "damageType": "strategy",
-      "pattern": "row",
+      "pattern": "single",
       "power": 1.2,
       "moraleCost": 100,
       "effects": [
@@ -2634,11 +2547,6 @@
           "type": "poison",
           "duration": 2,
           "label": "Trúng Độc"
-        },
-        {
-          "type": "atk_down",
-          "value": 0.1,
-          "duration": 2
         }
       ],
       "fx": {
@@ -2646,7 +2554,8 @@
         "text": "ĐỘC XÀ",
         "motif": "poison"
       },
-      "desc": "Rắn độc — [Trúng độc] + giảm công (wiki hiệu ứng)."
+      "desc": "Rắn độc — [Trúng độc] + giảm công (wiki hiệu ứng).",
+      "hits": 1
     },
     "basic_strike_chien": {
       "id": "basic_strike_chien",
@@ -2660,7 +2569,8 @@
         "text": "MẠNH KÍCH",
         "motif": "slash"
       },
-      "desc": "Chiến pháp vật lý — bậc Chiến."
+      "desc": "Chiến pháp vật lý — bậc Chiến.",
+      "hits": 1
     },
     "basic_strike_than": {
       "id": "basic_strike_than",
@@ -2670,11 +2580,12 @@
       "power": 1.45,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_red",
+        "flash": "steel",
         "text": "MẠNH KÍCH",
         "motif": "slash"
       },
-      "desc": "Chiến pháp vật lý — bậc Thần, quét hàng trước."
+      "desc": "Chiến pháp vật lý — bậc Thần, quét hàng trước.",
+      "hits": 1
     },
     "basic_strike_legend": {
       "id": "basic_strike_legend",
@@ -2688,7 +2599,8 @@
         "text": "MẠNH KÍCH",
         "motif": "slash"
       },
-      "desc": "Chiến pháp vật lý — Truyền thuyết, hàng dọc."
+      "desc": "Chiến pháp vật lý — Truyền thuyết, hàng dọc.",
+      "hits": 1
     },
     "basic_strike_king": {
       "id": "basic_strike_king",
@@ -2699,9 +2611,9 @@
       "hits": 2,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "steel",
         "text": "MẠNH KÍCH·HOÀNG",
-        "motif": "fire"
+        "motif": "slash"
       },
       "desc": "Chiến pháp vật lý tối thượng — 2 nhịp hàng dọc."
     },
@@ -2713,11 +2625,12 @@
       "power": 1.7,
       "moraleCost": 100,
       "fx": {
-        "flash": "cyan",
+        "flash": "steel",
         "text": "KỲ MƯU",
-        "motif": "arcane"
+        "motif": "slash"
       },
-      "desc": "Chiến pháp mưu — bậc Chiến."
+      "desc": "Chiến pháp mưu — bậc Chiến.",
+      "hits": 1
     },
     "basic_scheme_than": {
       "id": "basic_scheme_than",
@@ -2727,11 +2640,12 @@
       "power": 1.35,
       "moraleCost": 100,
       "fx": {
-        "flash": "bagua",
+        "flash": "steel",
         "text": "KỲ MƯU",
-        "motif": "bagua"
+        "motif": "slash"
       },
-      "desc": "Chiến pháp mưu — bậc Thần, hàng ngang."
+      "desc": "Chiến pháp mưu — bậc Thần, hàng ngang.",
+      "hits": 1
     },
     "basic_scheme_legend": {
       "id": "basic_scheme_legend",
@@ -2741,24 +2655,25 @@
       "power": 1.5,
       "moraleCost": 100,
       "fx": {
-        "flash": "thunder",
+        "flash": "crimson",
         "text": "KỲ MƯU",
-        "motif": "thunder"
+        "motif": "slash"
       },
-      "desc": "Chiến pháp mưu — Truyền thuyết, hàng dọc."
+      "desc": "Chiến pháp mưu — Truyền thuyết, hàng dọc.",
+      "hits": 1
     },
     "basic_scheme_king": {
       "id": "basic_scheme_king",
       "name": "Kỳ Mưu · Thần Hoàng",
       "damageType": "strategy",
-      "pattern": "all",
+      "pattern": "single",
       "power": 1.15,
       "hits": 2,
       "moraleCost": 100,
       "fx": {
-        "flash": "bagua",
+        "flash": "steel",
         "text": "KỲ MƯU·HOÀNG",
-        "motif": "bagua"
+        "motif": "slash"
       },
       "desc": "Chiến pháp mưu tối thượng — 2 nhịp toàn quân."
     },
@@ -2771,14 +2686,10 @@
       "moraleCost": 100,
       "effects": [
         {
-          "type": "silence",
-          "chance": 0.4,
-          "duration": 2
-        },
-        {
           "type": "morale_boost",
+          "value": 40,
           "target": "self",
-          "value": 45
+          "label": "Sĩ Khí"
         }
       ],
       "fx": {
@@ -2786,7 +2697,8 @@
         "text": "HỔ XUNG",
         "motif": "tiger"
       },
-      "desc": "Wiki Thường — 1 địch pháp công, tỷ lệ Tỏa Binh, hồi sĩ khí."
+      "desc": "Wiki Thường — 1 địch pháp công, tỷ lệ Tỏa Binh, hồi sĩ khí.",
+      "hits": 1
     },
     "tl_chien": {
       "id": "tl_chien",
@@ -2795,24 +2707,14 @@
       "pattern": "column",
       "power": 1.45,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "silence",
-          "chance": 0.4,
-          "duration": 2
-        },
-        {
-          "type": "morale_boost",
-          "target": "self",
-          "value": 45
-        }
-      ],
+      "effects": [],
       "fx": {
         "flash": "tiger",
         "text": "HỔ XUNG",
         "motif": "tiger"
       },
-      "desc": "Wiki Chiến — hàng dọc pháp công + Tỏa Binh."
+      "desc": "Wiki Chiến — hàng dọc pháp công + Tỏa Binh.",
+      "hits": 1
     },
     "tl_than": {
       "id": "tl_than",
@@ -2821,24 +2723,14 @@
       "pattern": "column",
       "power": 1.65,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "silence",
-          "chance": 0.55,
-          "duration": 2
-        },
-        {
-          "type": "morale_boost",
-          "target": "self",
-          "value": 45
-        }
-      ],
+      "effects": [],
       "fx": {
         "flash": "tiger",
         "text": "HỔ SÁT",
         "motif": "tiger"
       },
-      "desc": "Wiki Thần — hàng dọc mạnh hơn, Tỏa Binh cao."
+      "desc": "Wiki Thần — hàng dọc mạnh hơn, Tỏa Binh cao.",
+      "hits": 1
     },
     "tl_truyen": {
       "id": "tl_truyen",
@@ -2847,29 +2739,14 @@
       "pattern": "column",
       "power": 1.9,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "silence",
-          "chance": 0.8,
-          "duration": 2
-        },
-        {
-          "type": "atk_down",
-          "value": 0.12,
-          "duration": 2
-        },
-        {
-          "type": "morale_boost",
-          "target": "self",
-          "value": 45
-        }
-      ],
+      "effects": [],
       "fx": {
         "flash": "tiger",
         "text": "HỔ SÁT",
         "motif": "tiger"
       },
-      "desc": "Wiki Truyền thuyết — hàng dọc + Tỏa Binh / Huyết Cúc (atk_down)."
+      "desc": "Wiki Truyền thuyết — hàng dọc + Tỏa Binh / Huyết Cúc (atk_down).",
+      "hits": 1
     },
     "tl_thanhoang": {
       "id": "tl_thanhoang",
@@ -2879,23 +2756,7 @@
       "power": 1.55,
       "hits": 2,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "silence",
-          "chance": 0.8,
-          "duration": 2
-        },
-        {
-          "type": "atk_down",
-          "value": 0.15,
-          "duration": 2
-        },
-        {
-          "type": "morale_boost",
-          "target": "self",
-          "value": 45
-        }
-      ],
+      "effects": [],
       "fx": {
         "flash": "whirlwind",
         "text": "LƯỚT NHƯ GIÓ",
@@ -2907,21 +2768,22 @@
       "id": "wu_sheng_chien",
       "name": "Vũ Thánh · Chiến",
       "damageType": "physical",
-      "pattern": "column",
+      "pattern": "single",
       "power": 1.7,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_red",
+        "flash": "steel",
         "text": "VŨ THÁNH",
         "motif": "slash"
       },
-      "desc": "Quan Vũ — bậc Chiến."
+      "desc": "Quan Vũ — bậc Chiến.",
+      "hits": 1
     },
     "wu_sheng_legend": {
       "id": "wu_sheng_legend",
       "name": "Vũ Thánh · Truyền thuyết",
       "damageType": "physical",
-      "pattern": "column",
+      "pattern": "single",
       "power": 1.85,
       "moraleCost": 100,
       "fx": {
@@ -2929,20 +2791,21 @@
         "text": "VŨ THÁNH",
         "motif": "slash"
       },
-      "desc": "Quan Vũ — Truyền thuyết."
+      "desc": "Quan Vũ — Truyền thuyết.",
+      "hits": 1
     },
     "wu_sheng_king": {
       "id": "wu_sheng_king",
       "name": "Vũ Thánh · Thần Hoàng",
       "damageType": "physical",
-      "pattern": "column",
+      "pattern": "single",
       "power": 1.5,
       "hits": 2,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "steel",
         "text": "VŨ THÁNH·HOÀNG",
-        "motif": "fire"
+        "motif": "slash"
       },
       "desc": "Quan Vũ — Thần Hoàng, 2 nhịp."
     },
@@ -2950,80 +2813,59 @@
       "id": "gam_thet_legend",
       "name": "Gầm Thét · Truyền thuyết",
       "damageType": "physical",
-      "pattern": "front_row",
+      "pattern": "single",
       "power": 1.45,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "stun",
-          "chance": 0.7,
-          "duration": 1
-        }
-      ],
+      "effects": [],
       "fx": {
-        "flash": "brown",
+        "flash": "crimson",
         "text": "GẦM THÉT",
         "motif": "slash"
       },
-      "desc": "Trương Phi — Truyền thuyết."
+      "desc": "Trương Phi — Truyền thuyết.",
+      "hits": 1
     },
     "gam_thet_king": {
       "id": "gam_thet_king",
       "name": "Gầm Thét · Thần Hoàng",
       "damageType": "physical",
-      "pattern": "all",
+      "pattern": "single",
       "power": 1.2,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "stun",
-          "chance": 0.55,
-          "duration": 1
-        }
-      ],
+      "effects": [],
       "fx": {
-        "flash": "thunder",
+        "flash": "steel",
         "text": "GẦM THÉT·HOÀNG",
-        "motif": "thunder"
+        "motif": "slash"
       },
-      "desc": "Trương Phi — Thần Hoàng, gầm toàn quân."
+      "desc": "Trương Phi — Thần Hoàng, gầm toàn quân.",
+      "hits": 1
     },
     "khong_thanh_legend": {
       "id": "khong_thanh_legend",
       "name": "Không Thành · Truyền thuyết",
       "damageType": "strategy",
-      "pattern": "all",
+      "pattern": "single",
       "power": 1.15,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "def_down",
-          "value": 0.2,
-          "duration": 2
-        }
-      ],
+      "effects": [],
       "fx": {
         "flash": "bagua",
         "text": "KHÔNG THÀNH",
         "motif": "bagua"
       },
-      "desc": "Gia Cát — Truyền thuyết."
+      "desc": "Gia Cát — Truyền thuyết.",
+      "hits": 1
     },
     "khong_thanh_king": {
       "id": "khong_thanh_king",
       "name": "Không Thành · Thần Hoàng",
       "damageType": "strategy",
-      "pattern": "all",
+      "pattern": "single",
       "power": 1.05,
       "hits": 2,
       "moraleCost": 100,
-      "effects": [
-        {
-          "type": "def_down",
-          "value": 0.25,
-          "duration": 2
-        }
-      ],
+      "effects": [],
       "fx": {
         "flash": "bagua",
         "text": "KHÔNG THÀNH·HOÀNG",
@@ -3045,7 +2887,16 @@
       },
       "desc": "[Hỗ Trợ] Toàn phe địch giảm 15 sĩ khí, toàn phe ta hồi 55 sĩ khí.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "morale_boost",
+          "value": 55,
+          "target": "self",
+          "label": "Sĩ Khí"
+        }
+      ],
+      "hits": 1
     },
     "thien_menh": {
       "id": "thien_menh",
@@ -3061,7 +2912,16 @@
       },
       "desc": "[Hỗ Trợ] Tướng khác của phe ta hồi 75 sĩ khí, toàn phe địch giảm 15 sĩ khí.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "morale_boost",
+          "value": 75,
+          "target": "self",
+          "label": "Sĩ Khí"
+        }
+      ],
+      "hits": 1
     },
     "thien_chinh": {
       "id": "thien_chinh",
@@ -3077,7 +2937,16 @@
       },
       "desc": "[Hỗ Trợ] Tướng khác của phe ta hồi 85+{6} sĩ khí, toàn phe địch giảm 20 sĩ khí.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
+        }
+      ],
+      "hits": 1
     },
     "quan_lam": {
       "id": "quan_lam",
@@ -3102,8 +2971,15 @@
           "duration": 2,
           "label": "Tòng Long",
           "target": "ally"
+        },
+        {
+          "type": "morale_boost",
+          "value": 12,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thien_ha_chia_ba": {
       "id": "thien_ha_chia_ba",
@@ -3128,8 +3004,15 @@
           "duration": 2,
           "label": "Tòng Long",
           "target": "ally"
+        },
+        {
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "yen_nguyet": {
       "id": "yen_nguyet",
@@ -3161,7 +3044,8 @@
           "label": "Phản Kích",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thanh_long": {
       "id": "thanh_long",
@@ -3193,7 +3077,8 @@
           "label": "Phản Kích",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "vo_thanh": {
       "id": "vo_thanh",
@@ -3219,13 +3104,22 @@
         },
         {
           "type": "wiki_buff",
+          "id": "phuc_thu",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Phục Thù",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
           "id": "kich_no",
           "kind": "buff",
           "duration": 3,
           "label": "Kích Nộ",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thanh_long_tram": {
       "id": "thanh_long_tram",
@@ -3272,7 +3166,8 @@
           "target": "self",
           "label": "Kiên Thủ"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thanh_long_yen_nguyet": {
       "id": "thanh_long_yen_nguyet",
@@ -3319,7 +3214,8 @@
           "target": "self",
           "label": "Kiên Thủ"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thien_ly_don_ky": {
       "id": "thien_ly_don_ky",
@@ -3366,7 +3262,8 @@
           "target": "self",
           "label": "Kiên Thủ"
         }
-      ]
+      ],
+      "hits": 1
     },
     "uy_chan_hoa_ha": {
       "id": "uy_chan_hoa_ha",
@@ -3405,7 +3302,8 @@
           "label": "Hấp Huyết",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "no_sat": {
       "id": "no_sat",
@@ -3421,7 +3319,8 @@
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 126% Pháp Công, giảm 100 sĩ khí.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "bao_hao": {
       "id": "bao_hao",
@@ -3437,7 +3336,8 @@
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 178% Pháp Công, giảm 120 sĩ khí.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "manh_ho": {
       "id": "manh_ho",
@@ -3453,7 +3353,8 @@
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 300% Pháp Công, giảm 150+{2} sĩ khí, sĩ khí mục tiêu càng cao sát thương càng cao.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "ho_khieu": {
       "id": "ho_khieu",
@@ -3469,7 +3370,8 @@
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 69% Pháp Công, giảm 24 sĩ khí.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "van_nguoi_kho_do": {
       "id": "van_nguoi_kho_do",
@@ -3497,9 +3399,11 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ba_vuong_kich_dinh": {
       "id": "ba_vuong_kich_dinh",
@@ -3525,11 +3429,14 @@
           "label": "Nguyệt Hồn"
         },
         {
-          "type": "stun",
-          "chance": 0.55,
-          "duration": 1
+          "type": "wiki_buff",
+          "id": "nguyet_huy",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Nguyệt Huy"
         }
-      ]
+      ],
+      "hits": 1
     },
     "manh_ho_liet_son": {
       "id": "manh_ho_liet_son",
@@ -3553,13 +3460,9 @@
           "kind": "buff",
           "duration": 2,
           "label": "Nguyệt Hồn"
-        },
-        {
-          "type": "stun",
-          "chance": 0.55,
-          "duration": 1
         }
-      ]
+      ],
+      "hits": 1
     },
     "don_ky": {
       "id": "don_ky",
@@ -3579,10 +3482,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "than_phong": {
       "id": "than_phong",
@@ -3602,15 +3507,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "bach_long": {
       "id": "bach_long",
@@ -3630,15 +3532,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ngan_long": {
       "id": "ngan_long",
@@ -3665,15 +3564,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ngan_long_tuong": {
       "id": "ngan_long_tuong",
@@ -3700,15 +3596,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ngan_long_that_thiem": {
       "id": "ngan_long_that_thiem",
@@ -3735,15 +3628,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thien_long_thuc_tinh": {
       "id": "thien_long_thuc_tinh",
@@ -3762,16 +3652,27 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "atk_up",
+          "value": 0.12,
+          "duration": 2,
+          "target": "self",
+          "label": "Bá Chủ"
         },
         {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "type": "atk_up",
+          "value": 0.15,
+          "duration": 3,
+          "target": "self",
+          "label": "Võ Dũng"
+        },
+        {
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "dong_phong": {
       "id": "dong_phong",
@@ -3787,7 +3688,16 @@
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 132% Mưu Công, toàn phe ta hồi 25 sĩ khí.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "morale_boost",
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
+        }
+      ],
+      "hits": 1
     },
     "phuc_long": {
       "id": "phuc_long",
@@ -3803,7 +3713,16 @@
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 193% Mưu Công, giảm 10 sĩ khí, toàn phe ta hồi 25 sĩ khí.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "morale_boost",
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
+        }
+      ],
+      "hits": 1
     },
     "than_toan": {
       "id": "than_toan",
@@ -3828,8 +3747,15 @@
           "duration": 2,
           "label": "Nguyệt Hồn",
           "target": "self"
+        },
+        {
+          "type": "morale_boost",
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "bat_tran_do": {
       "id": "bat_tran_do",
@@ -3864,11 +3790,13 @@
           "target": "ally"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 60,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thien_dia_van_tuong": {
       "id": "thien_dia_van_tuong",
@@ -3897,15 +3825,18 @@
         },
         {
           "type": "wiki_buff",
+          "id": "thien_tuong",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Thiên Tượng",
+          "target": "ally"
+        },
+        {
+          "type": "wiki_buff",
           "id": "bat_quai",
           "kind": "buff",
           "duration": 2,
           "label": "Bát Quái",
-          "target": "ally"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
           "target": "ally"
         }
       ]
@@ -3937,15 +3868,18 @@
         },
         {
           "type": "wiki_buff",
+          "id": "thien_tuong",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Thiên Tượng",
+          "target": "ally"
+        },
+        {
+          "type": "wiki_buff",
           "id": "bat_quai",
           "kind": "buff",
           "duration": 2,
           "label": "Bát Quái",
-          "target": "ally"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
           "target": "ally"
         }
       ]
@@ -3974,7 +3908,8 @@
           "label": "Hội Tâm",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "liet_thi": {
       "id": "liet_thi",
@@ -3986,7 +3921,7 @@
       "fx": {
         "flash": "yellow",
         "text": "LIỆT THỈ",
-        "motif": "slash"
+        "motif": "pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 245% Pháp Công, bản thân nhận [Hội Tâm], duy trì 2 lượt.",
       "wikiQuality": "Chiến",
@@ -4000,7 +3935,8 @@
           "label": "Hội Tâm",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "nghe_xa": {
       "id": "nghe_xa",
@@ -4012,7 +3948,7 @@
       "fx": {
         "flash": "yellow",
         "text": "NGHỆ XẠ",
-        "motif": "slash"
+        "motif": "pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 460% Pháp Công, sĩ khí mục tiêu càng cao sát thương càng cao, bản thân nhận [Hội Tâm], duy trì 2 lượt, bản thân nhận [Nguyệt Hồn], duy trì 2 lượt.",
       "wikiQuality": "Thần",
@@ -4034,7 +3970,8 @@
           "label": "Nguyệt Hồn",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "truy_nguyet": {
       "id": "truy_nguyet",
@@ -4068,16 +4005,13 @@
           "label": "Anh Dũng"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "bach_ly_truy_hon": {
       "id": "bach_ly_truy_hon",
@@ -4096,23 +4030,20 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "atk_up",
           "value": 0.12,
           "duration": 2,
           "target": "ally",
           "label": "Anh Dũng"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "lac_nhat_than_tien": {
       "id": "lac_nhat_than_tien",
@@ -4124,7 +4055,7 @@
       "fx": {
         "flash": "yellow",
         "text": "LẠC NHẬT THẦN TIỄN",
-        "motif": "slash"
+        "motif": "pierce"
       },
       "desc": "[Thường] Khiến đơn vị địch lính ít nhất chịu 17000% sát thương vật lý, lính mục tiêu càng ít sát thương càng cao, bản thân nhận [Hội Tâm], [Anh Dũng], duy trì 3 lượt. Nếu diệt được mục tiêu, sẽ hồi 500 sĩ khí; nếu không, sẽ khiến mục tiêu bị [Hư Nhược] không thể giải trừ, duy trì",
       "wikiQuality": "Thái Sơ",
@@ -4146,16 +4077,19 @@
           "label": "Anh Dũng"
         },
         {
-          "type": "heal_pct",
+          "type": "atk_down",
           "value": 0.12,
-          "target": "ally"
+          "duration": 3,
+          "label": "Hư Nhược"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "xich_vu_quan_hong": {
       "id": "xich_vu_quan_hong",
@@ -4165,9 +4099,9 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "steel",
         "text": "XÍCH VŨ QUÁN HỒNG",
-        "motif": "fire"
+        "motif": "slash"
       },
       "desc": "[Thường] Khiến tướng địch lính ít nhất chịu 30800% sát thương vật lý, lính mục tiêu càng ít sát thương càng cao. Bản thân nhận [Hội Tâm], [Anh Dũng], duy trì 3 lượt. Nếu đánh bại mục tiêu, bản thân hồi 700 sĩ khí. Nếu không, khiến mục tiêu bị [Hư Nhược] không thể giải trừ, duy tr",
       "wikiQuality": "Thần Hoàng",
@@ -4189,16 +4123,19 @@
           "label": "Anh Dũng"
         },
         {
-          "type": "heal_pct",
+          "type": "atk_down",
           "value": 0.12,
-          "target": "ally"
+          "duration": 3,
+          "label": "Hư Nhược"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "pha_quan": {
       "id": "pha_quan",
@@ -4217,16 +4154,19 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thi_quan": {
       "id": "thi_quan",
@@ -4252,16 +4192,19 @@
           "label": "Thủ Hộ"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ky_than": {
       "id": "ky_than",
@@ -4288,14 +4231,16 @@
           "label": "Thủ Hộ"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -4332,14 +4277,16 @@
           "target": "self"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -4351,9 +4298,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "gold_soft",
         "text": "BẠCH HỒNG QUÁN NHẬ",
-        "motif": "fire"
+        "motif": "heal"
       },
       "desc": "[C.Pháp] Tấn công 500 sĩ khí, khiến địch trên hàng dọc chịu 2 lần 5400% Pháp Công, 40% khiến mục tiêu bị [Tê Liệt], duy trì 3 lượt. Bản thân nhận [Thần Tốc] và [Thủ Hộ], duy trì 3 lượt. Trị liệu tướng có lính ít nhất phe ta 2-3 lần (Mức trị liệu bằng 20% Pháp Công). Bản thân hồi ",
       "wikiQuality": "Thượng Cổ",
@@ -4385,12 +4332,8 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -4436,12 +4379,8 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -4530,14 +4469,10 @@
           "label": "Âm Hồn"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -4566,14 +4501,10 @@
           "label": "Âm Hồn"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -4602,14 +4533,10 @@
           "label": "Âm Hồn"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -4638,14 +4565,10 @@
           "label": "Âm Hồn"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -4671,7 +4594,8 @@
           "duration": 1,
           "label": "Hỗn Loạn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tau_sat": {
       "id": "tau_sat",
@@ -4698,10 +4622,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "dang_long": {
       "id": "dang_long",
@@ -4721,15 +4647,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tinh_ngu": {
       "id": "tinh_ngu",
@@ -4749,15 +4672,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "long_dang_tu_hai": {
       "id": "long_dang_tu_hai",
@@ -4777,15 +4697,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "troi_roi_sao_sang": {
       "id": "troi_roi_sao_sang",
@@ -4805,15 +4722,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tinh_van_dia_liep": {
       "id": "tinh_van_dia_liep",
@@ -4833,15 +4747,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "value": 75,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thu_kich": {
       "id": "thu_kich",
@@ -4867,7 +4778,8 @@
           "label": "Hội Tâm",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "phan_kich": {
       "id": "phan_kich",
@@ -4893,7 +4805,8 @@
           "label": "Phản Kích",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "nghich_chuyen": {
       "id": "nghich_chuyen",
@@ -4919,7 +4832,8 @@
           "label": "Phản Kích",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "bac_sat": {
       "id": "bac_sat",
@@ -4945,7 +4859,8 @@
           "label": "Phản Kích",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thanh_long_hon": {
       "id": "thanh_long_hon",
@@ -4965,13 +4880,22 @@
       "effects": [
         {
           "type": "wiki_buff",
+          "id": "phuc_thu",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Phục Thù",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
           "id": "bach_nhan",
           "kind": "buff",
           "duration": 5,
           "label": "Bạch Nhẫn",
           "target": "ally"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thanh_long_nguyen": {
       "id": "thanh_long_nguyen",
@@ -5005,7 +4929,8 @@
           "label": "Bạch Nhẫn",
           "target": "ally"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thanh_long_khieu_nguyet": {
       "id": "thanh_long_khieu_nguyet",
@@ -5033,19 +4958,28 @@
         },
         {
           "type": "wiki_buff",
+          "id": "thanh_long",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Thanh Long",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
           "id": "bach_nhan",
           "kind": "buff",
           "duration": 31,
           "label": "Bạch Nhẫn",
           "target": "ally"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ngu_giap": {
       "id": "ngu_giap",
       "name": "Ngự Giáp",
       "damageType": "physical",
-      "pattern": "ally_all",
+      "pattern": "single",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -5067,9 +5001,11 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "than_ngu": {
       "id": "than_ngu",
@@ -5100,7 +5036,8 @@
           "target": "ally",
           "label": "Hồi Phục"
         }
-      ]
+      ],
+      "hits": 1
     },
     "an_nghia": {
       "id": "an_nghia",
@@ -5112,7 +5049,7 @@
       "fx": {
         "flash": "gold_soft",
         "text": "ÂN NGHĨA",
-        "motif": "heal"
+        "motif": "buff"
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Thủ Hộ], [Hồi Phục], duy trì 2 lượt, tướng khác của phe ta hồi 10+{4} sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -5126,12 +5063,13 @@
           "label": "Thủ Hộ"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally",
-          "label": "Hồi Phục"
+          "type": "morale_boost",
+          "value": 10,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "bac_vong": {
       "id": "bac_vong",
@@ -5150,16 +5088,13 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "nghia_dam_hung_tam": {
       "id": "nghia_dam_hung_tam",
@@ -5178,6 +5113,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "tan_ta",
+          "kind": "debuff",
+          "duration": 31,
+          "label": "Tàn Tạ"
+        },
+        {
           "type": "wiki_buff",
           "id": "don_dien",
           "kind": "buff",
@@ -5186,16 +5128,13 @@
           "target": "ally"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "son_bang": {
       "id": "son_bang",
@@ -5219,7 +5158,8 @@
           "duration": 1,
           "label": "Hỗn Loạn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thap_thien": {
       "id": "thap_thien",
@@ -5243,7 +5183,8 @@
           "duration": 1,
           "label": "Hỗn Loạn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thien_bang": {
       "id": "thien_bang",
@@ -5267,7 +5208,8 @@
           "duration": 1,
           "label": "Hỗn Loạn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "liet_thien": {
       "id": "liet_thien",
@@ -5294,10 +5236,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 10,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thien_bang_dia_liep": {
       "id": "thien_bang_dia_liep",
@@ -5323,16 +5267,13 @@
           "label": "Tan Vỡ"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 10,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "troi_tru_dat_diet": {
       "id": "troi_tru_dat_diet",
@@ -5358,16 +5299,19 @@
           "label": "Tan Vỡ"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "atk_down",
+          "value": 0.1,
+          "duration": 2,
+          "label": "E Sợ"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 10,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "hu_vo": {
       "id": "hu_vo",
@@ -5416,7 +5360,8 @@
           "duration": 1,
           "label": "Ám Tế"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tham_uyen": {
       "id": "tham_uyen",
@@ -5440,7 +5385,8 @@
           "duration": 1,
           "label": "Ám Tế"
         }
-      ]
+      ],
+      "hits": 1
     },
     "doc_dia": {
       "id": "doc_dia",
@@ -5466,10 +5412,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "loan_the_ky_muu": {
       "id": "loan_the_ky_muu",
@@ -5493,11 +5441,6 @@
           "chance": 0.7,
           "duration": 1,
           "label": "Ám Tế"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
       ]
     },
@@ -5523,11 +5466,6 @@
           "chance": 0.7,
           "duration": 1,
           "label": "Ám Tế"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
       ]
     },
@@ -5553,11 +5491,6 @@
           "chance": 0.7,
           "duration": 1,
           "label": "Ám Tế"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
       ]
     },
@@ -5569,9 +5502,9 @@
       "power": 1.5,
       "moraleCost": 100,
       "fx": {
-        "flash": "whirlwind",
+        "flash": "steel",
         "text": "UY PHONG",
-        "motif": "whirlwind"
+        "motif": "slash"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 150% Pháp Công, giảm 34 sĩ khí, bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thường",
@@ -5579,10 +5512,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tang_phong": {
       "id": "tang_phong",
@@ -5592,9 +5527,9 @@
       "power": 1.82,
       "moraleCost": 100,
       "fx": {
-        "flash": "whirlwind",
+        "flash": "steel",
         "text": "TANG PHONG",
-        "motif": "whirlwind"
+        "motif": "slash"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 182% Pháp Công, giảm 75 sĩ khí, bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Chiến",
@@ -5602,10 +5537,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "khu_truc": {
       "id": "khu_truc",
@@ -5625,10 +5562,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "kiem_ham": {
       "id": "kiem_ham",
@@ -5648,10 +5587,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "dap_pha": {
       "id": "dap_pha",
@@ -5667,7 +5608,8 @@
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 132% Pháp Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "ky_liep": {
       "id": "ky_liep",
@@ -5687,10 +5629,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 15,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "kieu_hung": {
       "id": "kieu_hung",
@@ -5709,12 +5653,13 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "atk_up",
-          "value": 0.12,
-          "duration": 2,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 20,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "kinh_loi": {
       "id": "kinh_loi",
@@ -5738,7 +5683,8 @@
           "duration": 1,
           "label": "Hỗn Loạn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tu_than": {
       "id": "tu_than",
@@ -5757,22 +5703,19 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "stun",
           "chance": 0.55,
           "duration": 1,
           "label": "Hỗn Loạn"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "sinh_sat": {
       "id": "sinh_sat",
@@ -5789,23 +5732,19 @@
       "desc": "[Kế Sách] Chọn mục tiêu ít lính nhất, giải trừ tất cả hiệu quả có lợi và gây sát thương Kế Sách lính càng ít sát thương càng cao, nếu diệt thành công sẽ hồi 500 sĩ khí, nếu không gây Hỗn Loạn cho mục tiêu 1 lượt và bản thân hồi 50 sĩ khí, sau khi tấn công nhận Thấu Suốt 3 lượt, g",
       "wikiQuality": "Truyền thuyết",
       "source": "wiki-hero",
-      "hits": 2,
+      "hits": 1,
       "effects": [
+        {
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
         {
           "type": "stun",
           "chance": 0.55,
           "duration": 1,
           "label": "Hỗn Loạn"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
       ]
     },
@@ -5834,21 +5773,13 @@
           "target": "self"
         },
         {
-          "type": "stun",
-          "chance": 0.55,
-          "duration": 1
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thu_hon_doat_phach": {
       "id": "thu_hon_doat_phach",
@@ -5875,21 +5806,13 @@
           "target": "self"
         },
         {
-          "type": "stun",
-          "chance": 0.55,
-          "duration": 1
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "cuong_bao": {
       "id": "cuong_bao",
@@ -5909,10 +5832,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "chien_cuong": {
       "id": "chien_cuong",
@@ -5932,10 +5857,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "cuong_loan": {
       "id": "cuong_loan",
@@ -5954,16 +5881,13 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ho_tri": {
       "id": "ho_tri",
@@ -5982,20 +5906,29 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "poison",
-          "duration": 2
+          "type": "wiki_buff",
+          "id": "to_chi",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Tỏ Chí",
+          "target": "self"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "wiki_buff",
+          "id": "co_doc",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Cô Độc",
+          "target": "self"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ho_hau_san_no": {
       "id": "ho_hau_san_no",
@@ -6015,18 +5948,26 @@
       "hits": 2,
       "effects": [
         {
-          "type": "poison",
-          "duration": 2
+          "type": "wiki_buff",
+          "id": "to_chi",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Tỏ Chí",
+          "target": "self"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "wiki_buff",
+          "id": "co_doc",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Cô Độc",
+          "target": "self"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -6038,9 +5979,9 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "green_poison",
+        "flash": "steel",
         "text": "LÕA Y NỘ TẬP",
-        "motif": "poison"
+        "motif": "slash"
       },
       "desc": "[C.Pháp] cung cấp cho bản thân hiệu quả [Vô Tình], gây cho 1 kẻ địch 2 lần 13000% Pháp Công trong đó lính mục tiêu càng ít sát thương càng cao, mỗi lần kèm 5% sát thương bỏ qua phòng thủ từ lính hiện tại của bản thân, trước khi gây sát thương sẽ giải trừ 2 hiệu quả có lợi của mục",
       "wikiQuality": "Thái Sơ",
@@ -6048,18 +5989,11 @@
       "hits": 2,
       "effects": [
         {
-          "type": "poison",
-          "duration": 2
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "wiki_buff",
+          "id": "vo_tinh",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Vô Tình"
         }
       ]
     },
@@ -6071,7 +6005,7 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "HUYẾT CHIẾN BÁT PH",
         "motif": "slash"
       },
@@ -6088,16 +6022,13 @@
           "target": "self"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ac_lai": {
       "id": "ac_lai",
@@ -6124,16 +6055,13 @@
           "target": "self"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ac_quy_trien_than": {
       "id": "ac_quy_trien_than",
@@ -6168,16 +6096,13 @@
           "target": "self"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ac_lai_liet_phach": {
       "id": "ac_lai_liet_phach",
@@ -6213,14 +6138,10 @@
           "target": "self"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -6249,10 +6170,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ho_sat": {
       "id": "ho_sat",
@@ -6279,10 +6202,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "quy_sat": {
       "id": "quy_sat",
@@ -6309,10 +6234,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "huyet_quy_nhan": {
       "id": "huyet_quy_nhan",
@@ -6322,7 +6249,7 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "HUYẾT QUỶ NHẪN",
         "motif": "slash"
       },
@@ -6346,10 +6273,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "uy_chan_tieu_dao": {
       "id": "uy_chan_tieu_dao",
@@ -6381,16 +6310,6 @@
           "kind": "debuff",
           "duration": 2,
           "label": "Huyết Cúc"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
       ]
     },
@@ -6424,16 +6343,6 @@
           "kind": "debuff",
           "duration": 2,
           "label": "Huyết Cúc"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
       ]
     },
@@ -6467,16 +6376,6 @@
           "kind": "debuff",
           "duration": 2,
           "label": "Huyết Cúc"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
       ]
     },
@@ -6498,10 +6397,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "cuong_nguu": {
       "id": "cuong_nguu",
@@ -6521,10 +6422,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "dia_long": {
       "id": "dia_long",
@@ -6544,10 +6447,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "hoa_nguu_dap": {
       "id": "hoa_nguu_dap",
@@ -6565,13 +6470,7 @@
       "wikiQuality": "Truyền thuyết",
       "source": "wiki-hero",
       "hits": 3,
-      "effects": [
-        {
-          "type": "stun",
-          "chance": 0.55,
-          "duration": 1
-        }
-      ]
+      "effects": []
     },
     "man_nguu_khai_son": {
       "id": "man_nguu_khai_son",
@@ -6589,13 +6488,7 @@
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
       "hits": 3,
-      "effects": [
-        {
-          "type": "stun",
-          "chance": 0.55,
-          "duration": 1
-        }
-      ]
+      "effects": []
     },
     "troi_long_dat_lo": {
       "id": "troi_long_dat_lo",
@@ -6614,6 +6507,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "giam_dap",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Giẫm Đạp"
+        },
+        {
           "type": "stun",
           "chance": 0.55,
           "duration": 2,
@@ -6621,10 +6521,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "chien_ky": {
       "id": "chien_ky",
@@ -6651,10 +6553,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ho_uy": {
       "id": "ho_uy",
@@ -6673,16 +6577,13 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 10,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thien_bien": {
       "id": "thien_bien",
@@ -6707,18 +6608,9 @@
           "duration": 3,
           "label": "Thiên Vận",
           "target": "self"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tien_co_chien_tran": {
       "id": "tien_co_chien_tran",
@@ -6743,18 +6635,9 @@
           "duration": 3,
           "label": "Thiên Vận",
           "target": "self"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "binh_vo_thuong_hinh": {
       "id": "binh_vo_thuong_hinh",
@@ -6779,18 +6662,9 @@
           "duration": 3,
           "label": "Thiên Vận",
           "target": "self"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "binh_hinh_cuu_don": {
       "id": "binh_hinh_cuu_don",
@@ -6817,16 +6691,15 @@
           "target": "self"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
+          "type": "wiki_buff",
+          "id": "ky_tran",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Kỳ Trận",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "kich_thich": {
       "id": "kich_thich",
@@ -6842,7 +6715,8 @@
       },
       "desc": "[Thường] Gây cho 1 kẻ địch 165% sát thương vật lý.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "pha_kich": {
       "id": "pha_kich",
@@ -6858,7 +6732,8 @@
       },
       "desc": "[Thường] Gây cho 1 kẻ địch 240% sát thương vật lý.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "huy_diet": {
       "id": "huy_diet",
@@ -6878,15 +6753,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "viem_loi": {
       "id": "viem_loi",
@@ -6912,10 +6784,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "xich_loi": {
       "id": "xich_loi",
@@ -6941,16 +6815,18 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "quy_muu": {
       "id": "quy_muu",
       "name": "Quỷ Mưu",
       "damageType": "strategy",
-      "pattern": "row",
+      "pattern": "single",
       "power": 1.55,
       "moraleCost": 100,
       "fx": {
@@ -6961,13 +6837,8 @@
       "desc": "[Kế Sách] Tấn công ngang liên tục, có xác suất gây choáng cho kẻ địch đứng đầu, bản thân +145 sĩ khí.",
       "wikiQuality": "Thần",
       "source": "wiki-hero",
-      "effects": [
-        {
-          "type": "stun",
-          "chance": 0.55,
-          "duration": 1
-        }
-      ]
+      "effects": [],
+      "hits": 1
     },
     "quy_ke": {
       "id": "quy_ke",
@@ -6983,7 +6854,8 @@
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 356% Mưu Công, đoạt hết sĩ khí của mục tiêu.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "quyet_thang_thien_ly": {
       "id": "quyet_thang_thien_ly",
@@ -7016,13 +6888,11 @@
           "label": "Âm Hồn"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
+          "type": "wiki_buff",
+          "id": "di_ke",
+          "kind": "buff",
+          "duration": 1,
+          "label": "Di Kế",
           "target": "self"
         }
       ]
@@ -7058,13 +6928,11 @@
           "label": "Âm Hồn"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
+          "type": "wiki_buff",
+          "id": "di_ke",
+          "kind": "buff",
+          "duration": 1,
+          "label": "Di Kế",
           "target": "self"
         }
       ]
@@ -7091,7 +6959,8 @@
           "duration": 1,
           "label": "Hỗn Loạn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "dia_nha": {
       "id": "dia_nha",
@@ -7141,7 +7010,8 @@
           "duration": 1,
           "label": "Đóng Băng"
         }
-      ]
+      ],
+      "hits": 1
     },
     "bang_phong": {
       "id": "bang_phong",
@@ -7168,10 +7038,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thien_han_dia_bang": {
       "id": "thien_han_dia_bang",
@@ -7198,10 +7070,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thien_ly_bang_phong": {
       "id": "thien_ly_bang_phong",
@@ -7218,7 +7092,7 @@
       "desc": "[Kế Sách] Địch trên hàng ngang chịu 4000% Mưu Công, gây giảm 25 sĩ khí, sĩ khí mục tiêu càng cao sát thương càng cao, có xác suất 65% khiến mục tiêu bị [Đóng Băng] (Khi chiến đấu với người chơi khác, xác suất [Đóng Băng] là 39%), duy trì 1 lượt. Trong thời gian bị Đóng Băng, khi ",
       "wikiQuality": "Thái Sơ",
       "source": "wiki-hero",
-      "hits": 3,
+      "hits": 1,
       "effects": [
         {
           "type": "wiki_debuff",
@@ -7226,11 +7100,6 @@
           "kind": "control",
           "duration": 1,
           "label": "Đóng Băng"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
       ]
     },
@@ -7248,7 +7117,8 @@
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 100% Pháp Công, giảm 24 sĩ khí.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "cuong_hao": {
       "id": "cuong_hao",
@@ -7264,7 +7134,8 @@
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 155% Pháp Công, giảm 40+{2} sĩ khí.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "de_hon": {
       "id": "de_hon",
@@ -7280,7 +7151,8 @@
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 600% Pháp Công, giảm 40+{2} sĩ khí, 30% giải trừ 1 hiệu quả có lợi của mục tiêu (Khi chiến đấu với người chơi khác, không có hiệu quả Giải Trừ).",
       "wikiQuality": "Truyền thuyết",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "bao_no_hong": {
       "id": "bao_no_hong",
@@ -7296,7 +7168,8 @@
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 2600% Pháp Công, giảm 40+{2} sĩ khí, 80% giải trừ 1 hiệu quả có lợi của mục tiêu (Khi chiến đấu với người chơi khác, không có hiệu quả Giải Trừ).",
       "wikiQuality": "Thượng Cổ",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "pha_dam_no_hong": {
       "id": "pha_dam_no_hong",
@@ -7312,7 +7185,17 @@
       },
       "desc": "[C.Pháp] 50% tăng cho bản thân hiệu quả [Trảm Tiên], sau đó khiến toàn phe địch chịu 6800% Pháp Công, gây giảm 40 +{8} sĩ khí, 80% giải trừ 1 hiệu quả có lợi của mục tiêu (Khi chiến đấu với người chơi khác, sẽ không có hiệu quả Giải Trừ, sau khi gây sát thương, 50% tăng cho bản t",
       "wikiQuality": "Thái Sơ",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "tram_tien",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Trảm Tiên"
+        }
+      ],
+      "hits": 1
     },
     "cong_tam": {
       "id": "cong_tam",
@@ -7333,9 +7216,11 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tu_lap": {
       "id": "tu_lap",
@@ -7356,9 +7241,11 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "dang_co": {
       "id": "dang_co",
@@ -7386,9 +7273,11 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "quy_tam": {
       "id": "quy_tam",
@@ -7416,9 +7305,11 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "uy_ap": {
       "id": "uy_ap",
@@ -7446,9 +7337,11 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "binh_tien": {
       "id": "binh_tien",
@@ -7464,7 +7357,8 @@
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 154% Mưu Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "phong_tien": {
       "id": "phong_tien",
@@ -7487,7 +7381,8 @@
           "duration": 2,
           "label": "Thiêu Đốt"
         }
-      ]
+      ],
+      "hits": 1
     },
     "hoa_than": {
       "id": "hoa_than",
@@ -7510,7 +7405,8 @@
           "duration": 2,
           "label": "Thiêu Đốt"
         }
-      ]
+      ],
+      "hits": 1
     },
     "dai_viem_de": {
       "id": "dai_viem_de",
@@ -7536,7 +7432,8 @@
           "label": "Hỏa Thần",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "hong_lien_nghiep_hoa": {
       "id": "hong_lien_nghiep_hoa",
@@ -7615,10 +7512,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "hac_viem": {
       "id": "hac_viem",
@@ -7638,10 +7537,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "nhien_tan": {
       "id": "nhien_tan",
@@ -7673,16 +7574,13 @@
           "target": "self"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "hoa_thieu_lien_doanh": {
       "id": "hoa_thieu_lien_doanh",
@@ -7714,16 +7612,13 @@
           "target": "self"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "nghiep_viem_bao": {
       "id": "nghiep_viem_bao",
@@ -7763,16 +7658,13 @@
           "target": "self"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "hoa_the_ngut_troi": {
       "id": "hoa_the_ngut_troi",
@@ -7798,6 +7690,14 @@
         },
         {
           "type": "wiki_buff",
+          "id": "lien_tuc",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Liên Tục",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
           "id": "than_binh",
           "kind": "buff",
           "duration": 2,
@@ -7805,14 +7705,10 @@
           "target": "self"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -7840,6 +7736,14 @@
         },
         {
           "type": "wiki_buff",
+          "id": "lien_tuc",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Liên Tục",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
           "id": "than_binh",
           "kind": "buff",
           "duration": 2,
@@ -7847,19 +7751,10 @@
           "target": "self"
         },
         {
-          "type": "stun",
-          "chance": 0.55,
-          "duration": 1
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -7867,7 +7762,7 @@
       "id": "nghich_tap",
       "name": "Nghịch Tập",
       "damageType": "physical",
-      "pattern": "front_row",
+      "pattern": "single",
       "power": 1.5,
       "moraleCost": 100,
       "fx": {
@@ -7877,7 +7772,8 @@
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 150% Pháp Công, khiến 1 kẻ địch hàng sau chịu 140% Pháp Công, khiến 1 kẻ địch hàng trước chịu 130% Pháp Công",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "nghich_luu": {
       "id": "nghich_luu",
@@ -7893,7 +7789,8 @@
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 200% Pháp Công, khiến 1 kẻ địch hàng sau chịu 170% Pháp Công, khiến 1 kẻ địch hàng trước chịu 150% Pháp Công.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "lang_tuyen": {
       "id": "lang_tuyen",
@@ -7920,14 +7817,10 @@
           "label": "Thiết Bích"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -7956,14 +7849,10 @@
           "label": "Thiết Bích"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -7992,14 +7881,10 @@
           "label": "Thiết Bích"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -8028,14 +7913,10 @@
           "label": "Thiết Bích"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -8068,16 +7949,6 @@
           "duration": 1,
           "target": "self",
           "label": "Thiết Bích"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
       ]
     },
@@ -8095,7 +7966,8 @@
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 230% Pháp Công, bản thân chịu 52% Pháp Công.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "hy_sinh": {
       "id": "hy_sinh",
@@ -8111,7 +7983,8 @@
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 360% Pháp Công, bản thân chịu 100% Pháp Công.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "the_tu": {
       "id": "the_tu",
@@ -8127,7 +8000,8 @@
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 600% Pháp Công, bản thân chịu 150% Pháp Công.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "ngoc_thach_cu_diet": {
       "id": "ngoc_thach_cu_diet",
@@ -8153,16 +8027,21 @@
           "label": "Âm Hồn"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "wiki_buff",
+          "id": "bat_khuat",
+          "kind": "buff",
+          "duration": 4,
+          "label": "Bất Khuất",
+          "target": "self"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "xa_than_cuong_tap": {
       "id": "xa_than_cuong_tap",
@@ -8188,16 +8067,21 @@
           "label": "Âm Hồn"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "wiki_buff",
+          "id": "bat_khuat",
+          "kind": "buff",
+          "duration": 4,
+          "label": "Bất Khuất",
+          "target": "self"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "cang_gia_cang_cay": {
       "id": "cang_gia_cang_cay",
@@ -8224,14 +8108,18 @@
           "label": "Âm Hồn"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "wiki_buff",
+          "id": "bat_khuat",
+          "kind": "buff",
+          "duration": 4,
+          "label": "Bất Khuất",
+          "target": "self"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -8243,7 +8131,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "HUYẾT CHINH",
         "motif": "slash"
       },
@@ -8253,10 +8141,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "dung_manh": {
       "id": "dung_manh",
@@ -8283,10 +8173,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "phan_chien": {
       "id": "phan_chien",
@@ -8302,7 +8194,8 @@
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 143% Pháp Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "chien_than_can_dam": {
       "id": "chien_than_can_dam",
@@ -8328,16 +8221,21 @@
           "label": "Áp Ức"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "wiki_buff",
+          "id": "duc_huyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Dục Huyết",
+          "target": "self"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "chien_than_bat_khuat": {
       "id": "chien_than_bat_khuat",
@@ -8363,16 +8261,27 @@
           "label": "Áp Ức"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "wiki_debuff",
+          "id": "thuong_tich",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Thương Tích"
+        },
+        {
+          "type": "def_up",
+          "value": 0.2,
+          "duration": 31,
+          "target": "self",
+          "label": "Huyết Thuẫn"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "lay_than_lam_giap": {
       "id": "lay_than_lam_giap",
@@ -8399,14 +8308,24 @@
           "label": "Áp Ức"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "wiki_debuff",
+          "id": "thuong_tich",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Thương Tích"
+        },
+        {
+          "type": "def_up",
+          "value": 0.25,
+          "duration": 31,
+          "target": "self",
+          "label": "Huyết Thuẫn"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -8431,7 +8350,8 @@
           "duration": 3,
           "label": "Trúng Độc"
         }
-      ]
+      ],
+      "hits": 1
     },
     "xa_doc": {
       "id": "xa_doc",
@@ -8441,9 +8361,9 @@
       "power": 1.58,
       "moraleCost": 100,
       "fx": {
-        "flash": "snake",
+        "flash": "green_poison",
         "text": "XÀ ĐỘC",
-        "motif": "snake"
+        "motif": "poison"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 158% Pháp Công, 75% khiến mục tiêu bị [Trúng Độc], duy trì 2 lượt.",
       "wikiQuality": "Chiến",
@@ -8454,7 +8374,8 @@
           "duration": 2,
           "label": "Trúng Độc"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thu_ho": {
       "id": "thu_ho",
@@ -8479,7 +8400,8 @@
           "target": "ally",
           "label": "Thủ Hộ"
         }
-      ]
+      ],
+      "hits": 1
     },
     "han_ve": {
       "id": "han_ve",
@@ -8489,7 +8411,7 @@
       "power": 1.45,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "shield",
         "text": "HÃN VỆ",
         "motif": "shield"
       },
@@ -8511,7 +8433,8 @@
           "target": "ally",
           "label": "Thủ Hộ"
         }
-      ]
+      ],
+      "hits": 1
     },
     "bich_luy": {
       "id": "bich_luy",
@@ -8543,7 +8466,8 @@
           "target": "ally",
           "label": "Hộ Thuẫn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thuan_tuong": {
       "id": "thuan_tuong",
@@ -8577,10 +8501,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 10,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tuong_dong_vach_sat": {
       "id": "tuong_dong_vach_sat",
@@ -8613,16 +8539,19 @@
           "label": "Thủ Hộ"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 10,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "vung_nhu_ban_thach": {
       "id": "vung_nhu_ban_thach",
@@ -8655,16 +8584,19 @@
           "label": "Thủ Hộ"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 10,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "xung_ba": {
       "id": "xung_ba",
@@ -8680,7 +8612,16 @@
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 125% Pháp Công, toàn phe ta hồi 25 sĩ khí.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "morale_boost",
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
+        }
+      ],
+      "hits": 1
     },
     "ba_vuong": {
       "id": "ba_vuong",
@@ -8713,8 +8654,15 @@
           "duration": 3,
           "label": "Tòng Long",
           "target": "ally"
+        },
+        {
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thien_uy": {
       "id": "thien_uy",
@@ -8739,8 +8687,15 @@
           "duration": 2,
           "label": "Tịnh Hóa",
           "target": "self"
+        },
+        {
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ba_vuong_than_uy": {
       "id": "ba_vuong_than_uy",
@@ -8773,8 +8728,15 @@
           "duration": 3,
           "label": "Tòng Long",
           "target": "ally"
+        },
+        {
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "than_uy_pha_tran": {
       "id": "than_uy_pha_tran",
@@ -8807,8 +8769,22 @@
           "duration": 2,
           "label": "Tòng Long",
           "target": "ally"
+        },
+        {
+          "type": "atk_up",
+          "value": 0.12,
+          "duration": 3,
+          "target": "ally",
+          "label": "Võ Dũng"
+        },
+        {
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ba_vuong_liet_phach": {
       "id": "ba_vuong_liet_phach",
@@ -8833,8 +8809,30 @@
           "duration": 2,
           "label": "Tịnh Hóa",
           "target": "ally"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "tong_long",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Tòng Long",
+          "target": "ally"
+        },
+        {
+          "type": "atk_up",
+          "value": 0.12,
+          "duration": 3,
+          "target": "ally",
+          "label": "Võ Dũng"
+        },
+        {
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ham_dia": {
       "id": "ham_dia",
@@ -8850,7 +8848,8 @@
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 190% Pháp Công.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "san_bang": {
       "id": "san_bang",
@@ -8867,13 +8866,8 @@
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 250% Pháp Công, Pháp Phòng của mục tiêu giảm 25%, duy trì 2 lượt.",
       "wikiQuality": "Chiến",
       "source": "wiki-hero",
-      "effects": [
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
-        }
-      ]
+      "effects": [],
+      "hits": 1
     },
     "co_vu": {
       "id": "co_vu",
@@ -8889,7 +8883,16 @@
       },
       "desc": "[Hỗ Trợ] Tướng khác của phe ta hồi 45 sĩ khí.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "morale_boost",
+          "value": 45,
+          "target": "self",
+          "label": "Sĩ Khí"
+        }
+      ],
+      "hits": 1
     },
     "kich_duong": {
       "id": "kich_duong",
@@ -8909,10 +8912,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ngang_duong": {
       "id": "ngang_duong",
@@ -8932,10 +8937,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 55,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "uy_duong": {
       "id": "uy_duong",
@@ -8955,10 +8962,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 60,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tung_ca": {
       "id": "tung_ca",
@@ -8978,10 +8987,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 60,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "phan_chan_long_quan": {
       "id": "phan_chan_long_quan",
@@ -9008,16 +9019,13 @@
           "target": "self"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 60,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ca_tung_cong_duc": {
       "id": "ca_tung_cong_duc",
@@ -9045,10 +9053,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 60,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tuong_dong": {
       "id": "tuong_dong",
@@ -9073,7 +9083,8 @@
           "target": "ally",
           "label": "Thiết Bích"
         }
-      ]
+      ],
+      "hits": 1
     },
     "lac_thuy_tien": {
       "id": "lac_thuy_tien",
@@ -9098,14 +9109,21 @@
           "duration": 2,
           "label": "Hoạt Lực",
           "target": "ally"
+        },
+        {
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "lac_than_mac": {
       "id": "lac_than_mac",
       "name": "Lạc Thần Mạc",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "single",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -9125,17 +9143,25 @@
           "label": "Hoạt Lực"
         },
         {
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "khuynh_the_giai_nhan": {
       "id": "khuynh_the_giai_nhan",
       "name": "Khuynh Thế Giai Nhân",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "single",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -9156,17 +9182,25 @@
           "target": "ally"
         },
         {
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "vu_dieu_lac_than": {
       "id": "vu_dieu_lac_than",
       "name": "Vũ Điệu Lạc Thần",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "single",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -9188,9 +9222,16 @@
           "target": "ally"
         },
         {
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -9216,7 +9257,8 @@
           "duration": 1,
           "label": "Ám Tế"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ky_kich": {
       "id": "ky_kich",
@@ -9240,7 +9282,8 @@
           "duration": 1,
           "label": "Hỗn Loạn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ky_chien": {
       "id": "ky_chien",
@@ -9260,15 +9303,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "am_sat": {
       "id": "am_sat",
@@ -9292,7 +9332,8 @@
           "duration": 1,
           "label": "Hỗn Loạn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thich_sat": {
       "id": "thich_sat",
@@ -9304,7 +9345,7 @@
       "fx": {
         "flash": "steel",
         "text": "THÍCH SÁT",
-        "motif": "slash"
+        "motif": "pierce"
       },
       "desc": "[C.Pháp] Khiến 1 kẻ địch hàng sau chịu 210% Pháp Công, mục tiêu bị [Hỗn Loạn], duy trì 1 lượt.",
       "wikiQuality": "Chiến",
@@ -9316,7 +9357,8 @@
           "duration": 1,
           "label": "Hỗn Loạn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "hanh_thich": {
       "id": "hanh_thich",
@@ -9347,7 +9389,8 @@
           "duration": 1,
           "label": "Âm Hồn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "diet_gon": {
       "id": "diet_gon",
@@ -9385,7 +9428,8 @@
           "duration": 1,
           "label": "Âm Hồn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "am_da_thich_sat": {
       "id": "am_da_thich_sat",
@@ -9397,7 +9441,7 @@
       "fx": {
         "flash": "steel",
         "text": "ÁM DẠ THÍCH SÁT",
-        "motif": "slash"
+        "motif": "pierce"
       },
       "desc": "[C.Pháp] Khiến 1 kẻ địch hàng sau chịu 12000% Pháp Công, khiến mục tiêu bị [Hỗn Loạn], duy trì 1 lượt, khiến mục tiêu bị [Đào Binh], duy trì 3 lượt, khiến mục tiêu bị [Âm Hồn], duy trì đến khi kết thúc chiến đấu.",
       "wikiQuality": "Thái Sơ",
@@ -9423,7 +9467,8 @@
           "duration": 1,
           "label": "Âm Hồn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "huyen_thuat": {
       "id": "huyen_thuat",
@@ -9439,7 +9484,8 @@
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 52% Mưu Công, giảm 10 sĩ khí.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "huyen_phap": {
       "id": "huyen_phap",
@@ -9455,7 +9501,8 @@
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 70% Mưu Công, giảm 15 sĩ khí.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "huyet_lo": {
       "id": "huyet_lo",
@@ -9465,13 +9512,14 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "HUYẾT LỘ",
         "motif": "slash"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 262% Pháp Công, bản thân chịu 52% Pháp Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "yeu_thuat": {
       "id": "yeu_thuat",
@@ -9495,7 +9543,8 @@
           "duration": 1,
           "label": "Hỗn Loạn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "yeu_phap": {
       "id": "yeu_phap",
@@ -9519,7 +9568,8 @@
           "duration": 1,
           "label": "Hỗn Loạn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "binh_thuat": {
       "id": "binh_thuat",
@@ -9552,14 +9602,10 @@
           "label": "Treo Thưởng"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -9587,14 +9633,17 @@
           "label": "Hỗn Loạn"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "wiki_debuff",
+          "id": "treo_thuong",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Treo Thưởng"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -9629,14 +9678,10 @@
           "label": "Treo Thưởng"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -9654,7 +9699,8 @@
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 192% Pháp Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "giao_chien": {
       "id": "giao_chien",
@@ -9678,7 +9724,8 @@
           "duration": 3,
           "label": "Ám Tế"
         }
-      ]
+      ],
+      "hits": 1
     },
     "bac_kich": {
       "id": "bac_kich",
@@ -9694,7 +9741,8 @@
       },
       "desc": "[Thường] Địch trên hàng dọc chịu 165% sát thương vật lý.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "dung_manh_dot_kich": {
       "id": "dung_manh_dot_kich",
@@ -9719,7 +9767,8 @@
           "target": "self",
           "label": "Dũng Tuyệt"
         }
-      ]
+      ],
+      "hits": 1
     },
     "vo_cung_dung_manh": {
       "id": "vo_cung_dung_manh",
@@ -9744,7 +9793,8 @@
           "target": "self",
           "label": "Dũng Tuyệt"
         }
-      ]
+      ],
+      "hits": 1
     },
     "can_quet_bao_luc": {
       "id": "can_quet_bao_luc",
@@ -9769,7 +9819,8 @@
           "target": "self",
           "label": "Dũng Tuyệt"
         }
-      ]
+      ],
+      "hits": 1
     },
     "hung_ho_tien_phong": {
       "id": "hung_ho_tien_phong",
@@ -9793,24 +9844,34 @@
           "duration": 3,
           "target": "self",
           "label": "Dũng Tuyệt"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "ap_che",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Áp Chế",
+          "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "vo_song": {
       "id": "vo_song",
       "name": "Vô Song",
       "damageType": "physical",
-      "pattern": "self",
+      "pattern": "single",
       "power": 1.98,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "steel",
         "text": "VÔ SONG",
-        "motif": "buff"
+        "motif": "slash"
       },
       "desc": "[C.Pháp] Tất cả đơn vị trên sân ngoại trừ bản thân chịu 198% Pháp Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "ma_than": {
       "id": "ma_than",
@@ -9838,10 +9899,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "minh_vuong": {
       "id": "minh_vuong",
@@ -9877,10 +9940,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thien_ha_vo_song": {
       "id": "thien_ha_vo_song",
@@ -9912,11 +9977,6 @@
           "kind": "buff",
           "duration": 2,
           "label": "Điên Cuồng",
-          "target": "self"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
           "target": "self"
         }
       ]
@@ -9960,11 +10020,6 @@
           "duration": 3,
           "label": "Phá Thánh",
           "target": "self"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
       ]
     },
@@ -10007,11 +10062,6 @@
           "duration": 3,
           "label": "Phá Thánh",
           "target": "self"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
       ]
     },
@@ -10023,15 +10073,23 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue_water",
+        "flash": "steel",
         "text": "QUỶ THẦN LOẠN VŨ",
-        "motif": "water"
+        "motif": "slash"
       },
       "desc": "[C.Pháp] Bản thân nhận hiệu quả [Điên Cuồng 2], [Phá Thánh], duy trì 3 lượt, sau đó gây 15500% Pháp Công lên toàn bộ phe địch, có 18% xác suất khiến mục tiêu bị [Sợ Hãi] (Khi chiến đấu với người chơi khác, xác suất là 4.5%), duy trì 2 lượt. Tiếp theo gây 3 lần 22000% Pháp Công lê",
       "wikiQuality": "Thần Hoàng",
       "source": "wiki-hero",
       "hits": 3,
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "dien_cuong",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Điên Cuồng",
+          "target": "self"
+        },
         {
           "type": "wiki_debuff",
           "id": "pha_thanh",
@@ -10046,11 +10104,6 @@
           "kind": "debuff",
           "duration": 2,
           "label": "Sợ Hãi"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
       ]
     },
@@ -10068,7 +10121,8 @@
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 115% Pháp Công, giảm 100 sĩ khí.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "bang_hoai": {
       "id": "bang_hoai",
@@ -10093,7 +10147,8 @@
           "target": "self",
           "label": "Tử Thủ"
         }
-      ]
+      ],
+      "hits": 1
     },
     "bao_le": {
       "id": "bao_le",
@@ -10127,14 +10182,10 @@
           "label": "Bạo Nộ"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -10170,14 +10221,10 @@
           "label": "Bạo Nộ"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -10213,14 +10260,10 @@
           "label": "Bạo Nộ"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -10249,14 +10292,17 @@
           "label": "Bạo Nộ"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "def_up",
+          "value": 0.3,
+          "duration": 2,
+          "target": "self",
+          "label": "Tử Thủ"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -10274,7 +10320,8 @@
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 213% Mưu Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "am_loi": {
       "id": "am_loi",
@@ -10300,10 +10347,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "doc_loi": {
       "id": "doc_loi",
@@ -10313,9 +10362,9 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "green_poison",
+        "flash": "thunder",
         "text": "ĐỘC LÔI",
-        "motif": "poison"
+        "motif": "thunder"
       },
       "desc": "[Kế Sách] Địch trên hàng dọc chịu 2200% Mưu Công, kèm hiệu quả [Kịch Độc], duy trì 2 lượt, 30% khiến mục tiêu bị [Hỗn Loạn], duy trì 1 lượt, bản thân hồi 50 +{6} sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -10334,10 +10383,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tuyet_sach_doc_ke": {
       "id": "tuyet_sach_doc_ke",
@@ -10368,10 +10419,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "nao_loan_kinh_thanh": {
       "id": "nao_loan_kinh_thanh",
@@ -10402,10 +10455,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "lien_thanh": {
       "id": "lien_thanh",
@@ -10421,13 +10476,14 @@
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 75% Pháp Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "yeu_thuan": {
       "id": "yeu_thuan",
       "name": "Yêu Thuẫn",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "single",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -10442,15 +10498,17 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "dong_quan_phong_thu": {
       "id": "dong_quan_phong_thu",
       "name": "Đóng Quân Phòng Thủ",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "single",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -10470,11 +10528,19 @@
           "label": "Đề Kháng"
         },
         {
+          "type": "morale_boost",
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "loan_the_hao_kiet": {
       "id": "loan_the_hao_kiet",
@@ -10508,16 +10574,18 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "hung_cu": {
       "id": "hung_cu",
       "name": "Hùng Cứ",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "single",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -10552,17 +10620,25 @@
           "target": "ally"
         },
         {
+          "type": "morale_boost",
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "vang_danh_thien_ha": {
       "id": "vang_danh_thien_ha",
       "name": "Vang Danh Thiên Hạ",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "single",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -10597,23 +10673,31 @@
           "target": "ally"
         },
         {
+          "type": "morale_boost",
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "mon_sinh_tu_hai": {
       "id": "mon_sinh_tu_hai",
       "name": "Môn Sinh Tứ Hải",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "single",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "blue_water",
         "text": "MÔN SINH TỨ HẢI",
-        "motif": "heal"
+        "motif": "water"
       },
       "desc": "[Kế Sách] Trị liệu toàn phe ta (Mức trị liệu bằng 20% Mưu Công) và hồi 25+{4} sĩ khí. Toàn phe ta nhận [Kiên Thủ] và [Đề Kháng], duy trì 3 lượt, 1 đồng đội ngẫu nhiên nhận được [Đồn Điền], duy trì 2 lượt.",
       "wikiQuality": "Thần Hoàng",
@@ -10642,11 +10726,19 @@
           "target": "ally"
         },
         {
+          "type": "morale_boost",
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "doc_chu": {
       "id": "doc_chu",
@@ -10669,7 +10761,8 @@
           "duration": 3,
           "label": "Trúng Độc"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thuong_tran": {
       "id": "thuong_tran",
@@ -10697,10 +10790,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "rung_giao_tua_tua": {
       "id": "rung_giao_tua_tua",
@@ -10735,16 +10830,13 @@
           "target": "ally"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "bach_ma_tuong_quan": {
       "id": "bach_ma_tuong_quan",
@@ -10780,14 +10872,10 @@
           "target": "ally"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -10825,14 +10913,10 @@
           "target": "ally"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 75,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -10850,7 +10934,16 @@
       },
       "desc": "[Hỗ Trợ] Tướng khác của phe ta hồi 75 sĩ khí.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "morale_boost",
+          "value": 75,
+          "target": "self",
+          "label": "Sĩ Khí"
+        }
+      ],
+      "hits": 1
     },
     "hieu_trieu": {
       "id": "hieu_trieu",
@@ -10866,7 +10959,16 @@
       },
       "desc": "[Hỗ Trợ] Tướng khác của phe ta hồi 85+{4} sĩ khí.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
+        }
+      ],
+      "hits": 1
     },
     "dinh_quan_co": {
       "id": "dinh_quan_co",
@@ -10890,8 +10992,15 @@
           "duration": 3,
           "target": "self",
           "label": "Thủ Hộ"
+        },
+        {
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tu_thu_giu_minh": {
       "id": "tu_thu_giu_minh",
@@ -10916,7 +11025,8 @@
           "target": "ally",
           "label": "Kiên Thủ"
         }
-      ]
+      ],
+      "hits": 1
     },
     "bao_ve_kinh_giang": {
       "id": "bao_ve_kinh_giang",
@@ -10948,7 +11058,8 @@
           "target": "ally",
           "label": "Kiên Thủ"
         }
-      ]
+      ],
+      "hits": 1
     },
     "te_xa": {
       "id": "te_xa",
@@ -10964,7 +11075,8 @@
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 124% Pháp Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "vo_ngai": {
       "id": "vo_ngai",
@@ -10989,8 +11101,15 @@
           "duration": 2,
           "label": "Miễn Dịch",
           "target": "ally"
+        },
+        {
+          "type": "morale_boost",
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "no_tram": {
       "id": "no_tram",
@@ -11023,7 +11142,8 @@
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 450% Pháp Công, lính mục tiêu càng ít sát thương càng cao.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "kieu_tuong": {
       "id": "kieu_tuong",
@@ -11056,16 +11176,13 @@
           "label": "Treo Thưởng"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "nhat_ky_pha_thanh": {
       "id": "nhat_ky_pha_thanh",
@@ -11106,16 +11223,13 @@
           "target": "self"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "quy_tuong_pha_thanh": {
       "id": "quy_tuong_pha_thanh",
@@ -11162,18 +11276,9 @@
           "duration": 2,
           "label": "Thấu Suốt",
           "target": "self"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thiet_ky": {
       "id": "thiet_ky",
@@ -11229,13 +11334,13 @@
       "id": "dung_tuong",
       "name": "Dũng Tướng",
       "damageType": "physical",
-      "pattern": "self",
+      "pattern": "single",
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "steel",
         "text": "DŨNG TƯỚNG",
-        "motif": "buff"
+        "motif": "slash"
       },
       "desc": "[C.Pháp] Tấn công 500 sĩ khí 4 lần, lần lượt gây ra 300%, 400%, 500%, 600% Pháp Công lên mục tiêu ngẫu nhiên, bản thân nhận [Thấu Suốt], duy trì 1 lượt, bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -11252,8 +11357,9 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -11276,8 +11382,9 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -11285,13 +11392,13 @@
       "id": "quy_tuong_tru_than",
       "name": "Quỷ Tướng Tru Thần",
       "damageType": "physical",
-      "pattern": "self",
+      "pattern": "single",
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "steel",
         "text": "QUỶ TƯỚNG TRU THẦN",
-        "motif": "buff"
+        "motif": "slash"
       },
       "desc": "[C.Pháp] Tấn công 500 sĩ khí. Gây 5 lần 9000% Pháp Công. Bản thân nhận [Tru Thần] và [Thấu Suốt] không thể giải trừ, duy trì 1 lượt, bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thái Sơ",
@@ -11316,8 +11423,9 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -11343,7 +11451,8 @@
           "duration": 2,
           "label": "Khống Chế"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ky_mon": {
       "id": "ky_mon",
@@ -11368,7 +11477,8 @@
           "duration": 2,
           "label": "Treo Thưởng"
         }
-      ]
+      ],
+      "hits": 1
     },
     "quyen_muu": {
       "id": "quyen_muu",
@@ -11393,6 +11503,14 @@
           "kind": "debuff",
           "duration": 2,
           "label": "Treo Thưởng"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "tuoc_doat",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Tước Đoạt",
+          "target": "self"
         }
       ]
     },
@@ -11446,7 +11564,8 @@
           "label": "Kích Nộ",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "am_te": {
       "id": "am_te",
@@ -11523,10 +11642,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "mui_nhon": {
       "id": "mui_nhon",
@@ -11538,7 +11659,7 @@
       "fx": {
         "flash": "yellow",
         "text": "MŨI NHỌN",
-        "motif": "slash"
+        "motif": "pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 130% Pháp Công, khiến 1 kẻ địch hàng sau chịu 130% Pháp Công, bản thân nhận [Hội Tâm], duy trì 2 lượt.",
       "wikiQuality": "Chiến",
@@ -11552,7 +11673,8 @@
           "label": "Hội Tâm",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "dot_tien": {
       "id": "dot_tien",
@@ -11568,7 +11690,8 @@
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 154% Pháp Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "xa_sat": {
       "id": "xa_sat",
@@ -11594,7 +11717,8 @@
           "label": "Hội Tâm",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "dot_tap": {
       "id": "dot_tap",
@@ -11610,7 +11734,8 @@
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 192% Pháp Công, Vật Công của bản thân tăng 25%, duy trì 2 lượt.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "ly_gian": {
       "id": "ly_gian",
@@ -11631,15 +11756,17 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "yeu_giap": {
       "id": "yeu_giap",
       "name": "Yêu Giáp",
       "damageType": "physical",
-      "pattern": "self",
+      "pattern": "single",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -11652,17 +11779,21 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "self",
-          "label": "Hồi Phục"
+          "type": "wiki_buff",
+          "id": "kinh_cuc",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Kinh Cúc",
+          "target": "self"
         },
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "self",
+          "label": "Hồi Phục"
         }
-      ]
+      ],
+      "hits": 1
     },
     "hai_tieu": {
       "id": "hai_tieu",
@@ -11672,13 +11803,14 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue",
+        "flash": "blue_water",
         "text": "HẢI TIẾU",
-        "motif": "arcane"
+        "motif": "water"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 98% Mưu Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "mai_lang": {
       "id": "mai_lang",
@@ -11694,7 +11826,8 @@
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 125% Mưu Công.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "long_dao": {
       "id": "long_dao",
@@ -11710,7 +11843,8 @@
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 245% Mưu Công.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "thuy_cong": {
       "id": "thuy_cong",
@@ -11720,13 +11854,14 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue",
+        "flash": "blue_water",
         "text": "THỦY CÔNG",
-        "motif": "arcane"
+        "motif": "water"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 385% Mưu Công.",
       "wikiQuality": "Truyền thuyết",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "chan_kich": {
       "id": "chan_kich",
@@ -11743,13 +11878,8 @@
       "desc": "[Thường] Gây cho 1 kẻ địch 550% sát thương vật lý. Khiến Vật Phòng toàn phe địch giảm 50+{3%}%, duy trì 3 lượt.",
       "wikiQuality": "Thần",
       "source": "wiki-hero",
-      "effects": [
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
-        }
-      ]
+      "effects": [],
+      "hits": 1
     },
     "phi_xa": {
       "id": "phi_xa",
@@ -11777,10 +11907,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "lien_no": {
       "id": "lien_no",
@@ -11809,8 +11941,9 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -11822,7 +11955,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "HUYẾT NHẪN",
         "motif": "slash"
       },
@@ -11832,10 +11965,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "nhue_nhan": {
       "id": "nhue_nhan",
@@ -11855,10 +11990,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "lien_hoan": {
       "id": "lien_hoan",
@@ -11882,7 +12019,8 @@
           "duration": 1,
           "label": "Hỗn Loạn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "lien_kich": {
       "id": "lien_kich",
@@ -11902,10 +12040,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "con_thach": {
       "id": "con_thach",
@@ -11921,7 +12061,8 @@
       },
       "desc": "[Kế Sách] Địch trên hàng dọc chịu 157% Mưu Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "phien_dong": {
       "id": "phien_dong",
@@ -11942,9 +12083,11 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "muu_thu": {
       "id": "muu_thu",
@@ -11963,16 +12106,19 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "loan_the_pho_do": {
       "id": "loan_the_pho_do",
@@ -11992,19 +12138,16 @@
       "hits": 3,
       "effects": [
         {
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -12026,9 +12169,24 @@
       "hits": 2,
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "ap_che",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Áp Chế",
+          "target": "self"
+        },
+        {
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -12050,9 +12208,24 @@
       "hits": 2,
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "ap_che",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Áp Chế",
+          "target": "self"
+        },
+        {
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -12075,9 +12248,11 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ky_xa": {
       "id": "ky_xa",
@@ -12087,9 +12262,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "charge",
+        "flash": "steel",
         "text": "KỴ XẠ",
-        "motif": "charge"
+        "motif": "slash"
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 400% Pháp Công, Pháp Công của bản thân tăng 40%, duy trì 2 lượt, bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thần",
@@ -12098,9 +12273,11 @@
         {
           "type": "morale_boost",
           "value": 40,
-          "target": "self"
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "phi_ngua_giuong_cung": {
       "id": "phi_ngua_giuong_cung",
@@ -12126,16 +12303,13 @@
           "label": "Sợ Hãi"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "minh_hoa_lieu_nguyen": {
       "id": "minh_hoa_lieu_nguyen",
@@ -12154,6 +12328,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "vong_doan",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Vong Đoạn"
+        },
+        {
           "type": "wiki_debuff",
           "id": "so_hai",
           "kind": "debuff",
@@ -12167,16 +12348,13 @@
           "label": "Ngủ Say"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tru_than_diet_ma": {
       "id": "tru_than_diet_ma",
@@ -12195,6 +12373,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "vong_doan",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Vong Đoạn"
+        },
+        {
           "type": "wiki_debuff",
           "id": "so_hai",
           "kind": "debuff",
@@ -12206,18 +12391,9 @@
           "chance": 0.6,
           "duration": 2,
           "label": "Ngủ Say"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "no_kiem": {
       "id": "no_kiem",
@@ -12233,7 +12409,8 @@
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 140% Pháp Công, gây cho 1 đơn vị địch 125% Pháp Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "thiet_bich": {
       "id": "thiet_bich",
@@ -12258,7 +12435,8 @@
           "target": "self",
           "label": "Thiết Bích"
         }
-      ]
+      ],
+      "hits": 1
     },
     "dong_xoay": {
       "id": "dong_xoay",
@@ -12291,7 +12469,8 @@
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 168% Pháp Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "vien_binh": {
       "id": "vien_binh",
@@ -12312,9 +12491,11 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "cuong_tap": {
       "id": "cuong_tap",
@@ -12338,7 +12519,8 @@
           "duration": 1,
           "label": "Hỗn Loạn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "boc_viem": {
       "id": "boc_viem",
@@ -12354,7 +12536,8 @@
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 204% Mưu Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "xuyen_thich": {
       "id": "xuyen_thich",
@@ -12370,7 +12553,8 @@
       },
       "desc": "[Thường] Toàn phe địch chịu 400% sát thương vật lý.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "hoang_thien_quy_dao": {
       "id": "hoang_thien_quy_dao",
@@ -12410,8 +12594,17 @@
           "duration": 1,
           "label": "Liên Kích",
           "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "tu_chien",
+          "kind": "buff",
+          "duration": 4,
+          "label": "Tử Chiến",
+          "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "quy_coc_sach": {
       "id": "quy_coc_sach",
@@ -12459,8 +12652,16 @@
           "duration": 1,
           "label": "Liên Kích",
           "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "tu_chien",
+          "kind": "buff",
+          "duration": 4,
+          "label": "Tử Chiến"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ngu_hanh_pha_tran": {
       "id": "ngu_hanh_pha_tran",
@@ -12508,8 +12709,24 @@
           "duration": 1,
           "label": "Liên Kích",
           "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "tu_chien",
+          "kind": "buff",
+          "duration": 4,
+          "label": "Tử Chiến",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "diep_nhan",
+          "kind": "buff",
+          "duration": 1,
+          "label": "Điệp Nhẫn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "huyet_tram": {
       "id": "huyet_tram",
@@ -12530,9 +12747,11 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "pha_dich": {
       "id": "pha_dich",
@@ -12551,16 +12770,19 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 30,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "the_pha_dich": {
       "id": "the_pha_dich",
@@ -12579,16 +12801,19 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 30,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thong_quan_pha_dich": {
       "id": "thong_quan_pha_dich",
@@ -12607,16 +12832,34 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
+          "type": "atk_up",
           "value": 0.12,
+          "duration": 2,
+          "target": "ally",
+          "label": "Tăng Vật Công"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "thong_quan",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Thống Quân",
           "target": "ally"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "bay_tran_nhu_nui": {
       "id": "bay_tran_nhu_nui",
@@ -12635,16 +12878,34 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
+          "type": "atk_up",
           "value": 0.12,
+          "duration": 2,
+          "target": "ally",
+          "label": "Tăng Vật Công"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "thong_quan",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Thống Quân",
           "target": "ally"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thiet_thuong": {
       "id": "thiet_thuong",
@@ -12669,7 +12930,8 @@
           "target": "self",
           "label": "Thiết Bích"
         }
-      ]
+      ],
+      "hits": 1
     },
     "hoanh_tao": {
       "id": "hoanh_tao",
@@ -12685,7 +12947,8 @@
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 141% Pháp Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "doc_nhan": {
       "id": "doc_nhan",
@@ -12708,7 +12971,8 @@
           "duration": 3,
           "label": "Trúng Độc"
         }
-      ]
+      ],
+      "hits": 1
     },
     "xa_thich": {
       "id": "xa_thich",
@@ -12731,7 +12995,8 @@
           "duration": 2,
           "label": "Trúng Độc"
         }
-      ]
+      ],
+      "hits": 1
     },
     "liet_nhan": {
       "id": "liet_nhan",
@@ -12757,7 +13022,8 @@
           "label": "Kích Nộ",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "phan_thien": {
       "id": "phan_thien",
@@ -12774,24 +13040,8 @@
       "desc": "[Thường] Toàn phe địch chịu 1000% sát thương vật lý, khiến đơn vị địch lính nhiều nhất chịu 1400% sát thương vật lý, lính mục tiêu càng nhiều sát thương càng cao, khiến đơn vị địch lính ít nhất chịu 1400% sát thương vật lý, lính mục tiêu càng ít sát thương càng cao, bản thân nhận",
       "wikiQuality": "Truyền thuyết",
       "source": "wiki-hero",
-      "effects": [
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "atk_up",
-          "value": 0.12,
-          "duration": 2,
-          "target": "ally"
-        }
-      ]
+      "effects": [],
+      "hits": 1
     },
     "no_nguc_viem": {
       "id": "no_nguc_viem",
@@ -12808,19 +13058,8 @@
       "desc": "[Thường] Toàn phe địch chịu 9000% sát thương vật lý, khiến đơn vị địch lính nhiều nhất chịu 10500% sát thương vật lý, lính mục tiêu càng nhiều sát thương càng cao, sau đó khiến đơn vị địch lính ít nhất chịu 10500% sát thương vật lý, lính mục tiêu càng ít sát thương càng cao. Bản ",
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
-      "effects": [
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "atk_up",
-          "value": 0.12,
-          "duration": 2,
-          "target": "ally"
-        }
-      ]
+      "effects": [],
+      "hits": 1
     },
     "hong_hoang_no_hoa": {
       "id": "hong_hoang_no_hoa",
@@ -12837,19 +13076,8 @@
       "desc": "[Thường] Toàn phe địch chịu 11000% sát thương vật lý, khiến đơn vị địch lính nhiều nhất chịu 11000% sát thương vật lý, lính mục tiêu càng nhiều sát thương càng cao, sau đó khiến đơn vị địch lính ít nhất chịu 11000% sát thương vật lý, lính mục tiêu càng ít sát thương càng cao. Bản",
       "wikiQuality": "Thái Sơ",
       "source": "wiki-hero",
-      "effects": [
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "atk_up",
-          "value": 0.12,
-          "duration": 2,
-          "target": "ally"
-        }
-      ]
+      "effects": [],
+      "hits": 1
     },
     "than_hoa_hien_the": {
       "id": "than_hoa_hien_the",
@@ -12866,19 +13094,8 @@
       "desc": "[Thường] Toàn phe địch chịu 23000% sát thương vật lý, khiến đơn vị địch lính nhiều nhất chịu 25000% sát thương vật lý, lính mục tiêu càng nhiều sát thương càng cao. Sau đó khiến đơn vị địch lính ít nhất chịu 25000% sát thương vật lý, lính mục tiêu càng ít sát thương càng cao. Bản",
       "wikiQuality": "Thần Hoàng",
       "source": "wiki-hero",
-      "effects": [
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "atk_up",
-          "value": 0.12,
-          "duration": 2,
-          "target": "ally"
-        }
-      ]
+      "effects": [],
+      "hits": 1
     },
     "xa_thu": {
       "id": "xa_thu",
@@ -12894,7 +13111,8 @@
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 137% Pháp Công, tướng khác của phe ta chịu 54% Pháp Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "gio_loc": {
       "id": "gio_loc",
@@ -12918,7 +13136,8 @@
           "duration": 1,
           "label": "Hỗn Loạn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "pha_phu": {
       "id": "pha_phu",
@@ -12934,7 +13153,8 @@
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 180% Pháp Công, lính địch càng ít sát thương càng cao.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "kich_doc": {
       "id": "kich_doc",
@@ -12957,7 +13177,8 @@
           "duration": 5,
           "label": "Trúng Độc"
         }
-      ]
+      ],
+      "hits": 1
     },
     "doc_ke": {
       "id": "doc_ke",
@@ -12982,7 +13203,8 @@
           "duration": 3,
           "label": "Đào Binh"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tien_vu": {
       "id": "tien_vu",
@@ -12992,13 +13214,14 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue_water",
+        "flash": "yellow",
         "text": "TIỄN VŨ",
-        "motif": "water"
+        "motif": "pierce"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 87% Pháp Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "thi_huyet": {
       "id": "thi_huyet",
@@ -13008,7 +13231,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "THỊ HUYẾT",
         "motif": "slash"
       },
@@ -13024,7 +13247,8 @@
           "label": "Hấp Huyết",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "cuong_no": {
       "id": "cuong_no",
@@ -13056,23 +13280,9 @@
           "duration": 3,
           "label": "Thấu Suốt",
           "target": "self"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
         }
-      ]
+      ],
+      "hits": 1
     },
     "man_no_hong": {
       "id": "man_no_hong",
@@ -13096,23 +13306,9 @@
           "kind": "debuff",
           "duration": 2,
           "label": "Treo Thưởng"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
         }
-      ]
+      ],
+      "hits": 1
     },
     "di_toc_xam_nhap": {
       "id": "di_toc_xam_nhap",
@@ -13137,21 +13333,6 @@
           "kind": "debuff",
           "duration": 2,
           "label": "Treo Thưởng"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
         }
       ]
     },
@@ -13178,21 +13359,6 @@
           "kind": "debuff",
           "duration": 2,
           "label": "Treo Thưởng"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
         }
       ]
     },
@@ -13210,7 +13376,8 @@
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 110% Pháp Công.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "cuu_vien": {
       "id": "cuu_vien",
@@ -13231,9 +13398,11 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tran_hon": {
       "id": "tran_hon",
@@ -13252,17 +13421,19 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "atk_up",
+          "type": "heal_pct",
           "value": 0.12,
-          "duration": 2,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "phong_ngu_can_than": {
       "id": "phong_ngu_can_than",
@@ -13289,11 +13460,19 @@
           "target": "self"
         },
         {
+          "type": "morale_boost",
+          "value": 10,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "che_ngu_quan_dich": {
       "id": "che_ngu_quan_dich",
@@ -13321,9 +13500,16 @@
           "target": "self"
         },
         {
+          "type": "morale_boost",
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -13353,9 +13539,16 @@
           "target": "self"
         },
         {
+          "type": "morale_boost",
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -13384,10 +13577,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "phan_diet": {
       "id": "phan_diet",
@@ -13403,7 +13598,8 @@
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 400% Mưu Công, toàn phe ta chịu 52% Mưu Công.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "khai_trieu_thua_van": {
       "id": "khai_trieu_thua_van",
@@ -13419,7 +13615,32 @@
       },
       "desc": "[Hỗ Trợ] [200 Sĩ Khí] Tăng toàn bộ Chỉ Huy, Võ, Trí của ta 50+{4} điểm, hiệu quả không thể giải trừ, tất cả tướng phe ta nhận [Đóng Đô], bản thân nhận [Lôi Cổ 2], tất cả hiệu quả duy trì 3 lượt.",
       "wikiQuality": "Thượng Cổ",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "dong_do",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Đóng Đô",
+          "target": "ally"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "loi_co",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Lôi Cổ",
+          "target": "self"
+        },
+        {
+          "type": "morale_boost",
+          "value": 40,
+          "target": "self",
+          "label": "Sĩ Khí"
+        }
+      ],
+      "hits": 1
     },
     "tran_dinh_son_ha": {
       "id": "tran_dinh_son_ha",
@@ -13438,11 +13659,29 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
+          "type": "wiki_buff",
+          "id": "dong_do",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Đóng Đô",
           "target": "ally"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "loi_co",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Lôi Cổ",
+          "target": "self"
+        },
+        {
+          "type": "morale_boost",
+          "value": 40,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thinh_the_vuong_quyen": {
       "id": "thinh_the_vuong_quyen",
@@ -13462,9 +13701,26 @@
       "hits": 2,
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
+          "type": "wiki_buff",
+          "id": "dong_do",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Đóng Đô",
           "target": "ally"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "loi_co",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Lôi Cổ",
+          "target": "self"
+        },
+        {
+          "type": "morale_boost",
+          "value": 40,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -13482,7 +13738,8 @@
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 92% Pháp Công, tấn công của mục tiêu giảm 35%, duy trì 2 lượt.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "tuyen_muc_uy_nghi": {
       "id": "tuyen_muc_uy_nghi",
@@ -13509,14 +13766,16 @@
           "label": "Treo Thưởng"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "silence",
+          "chance": 0.65,
+          "duration": 2,
+          "label": "Vô Ngôn"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -13545,14 +13804,16 @@
           "label": "Treo Thưởng"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "silence",
+          "chance": 0.65,
+          "duration": 2,
+          "label": "Vô Ngôn"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -13570,7 +13831,8 @@
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 370% Pháp Công, giảm 125 sĩ khí.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "khich_le": {
       "id": "khich_le",
@@ -13590,10 +13852,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thi_doc": {
       "id": "thi_doc",
@@ -13622,7 +13886,8 @@
           "duration": 1,
           "label": "Hỗn Loạn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thuc_tam": {
       "id": "thuc_tam",
@@ -13639,17 +13904,8 @@
       "desc": "[Kế Sách] Tấn công 1 kẻ địch, gây Choáng 1 lượt, có xác suất gây hiệu quả Thi Độc trong 2 lượt. Bản thân nhận hiệu quả Thủ Hộ trong 2 lượt.",
       "wikiQuality": "Truyền thuyết",
       "source": "wiki-hero",
-      "effects": [
-        {
-          "type": "stun",
-          "chance": 0.55,
-          "duration": 1
-        },
-        {
-          "type": "poison",
-          "duration": 2
-        }
-      ]
+      "effects": [],
+      "hits": 1
     },
     "hu_thi_doc": {
       "id": "hu_thi_doc",
@@ -13685,7 +13941,8 @@
           "target": "self",
           "label": "Thủ Hộ"
         }
-      ]
+      ],
+      "hits": 1
     },
     "quy_mon_thi_doc": {
       "id": "quy_mon_thi_doc",
@@ -13721,7 +13978,8 @@
           "target": "self",
           "label": "Thủ Hộ"
         }
-      ]
+      ],
+      "hits": 1
     },
     "on_dich": {
       "id": "on_dich",
@@ -13772,8 +14030,9 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -13804,8 +14063,9 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -13836,8 +14096,9 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -13849,9 +14110,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "THẦN CƠ NỎ",
-        "motif": "slash"
+        "motif": "arcane"
       },
       "desc": "[Chiến+Kế] Địch trên hàng ngang chịu 2 lần 2000% Pháp Công và 1 lần 2000% Mưu Công, bản thân nhận [Loại Bỏ], duy trì 2 lượt, bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thượng Cổ",
@@ -13868,8 +14129,9 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -13895,7 +14157,8 @@
           "duration": 3,
           "label": "Ngủ Say"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tat_xung": {
       "id": "tat_xung",
@@ -13911,7 +14174,8 @@
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 130% Pháp Công, khiến 1 kẻ địch hàng sau chịu 130% Pháp Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "ham_tran_tien_dang": {
       "id": "ham_tran_tien_dang",
@@ -13921,13 +14185,30 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "rush",
         "text": "HÃM TRẬN TIÊN ĐĂNG",
-        "motif": "slash"
+        "motif": "rush"
       },
       "desc": "[Vật Lý] Dùng 500 sĩ khí gây 6500% sát thương lên địch trên hàng dọc, tỉ lệ lính bản thân càng thấp sát thương càng cao, sau đó nhận [Lực Đoạn], [Huyết Nhẫn 2], duy trì 4 lượt.",
       "wikiQuality": "Thượng Cổ",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "luc_doan",
+          "kind": "buff",
+          "duration": 4,
+          "label": "Lực Đoạn"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "huyet_nhan",
+          "kind": "buff",
+          "duration": 4,
+          "label": "Huyết Nhẫn"
+        }
+      ],
+      "hits": 1
     },
     "ham_doanh_thoi_nhue": {
       "id": "ham_doanh_thoi_nhue",
@@ -13943,7 +14224,31 @@
       },
       "desc": "[Vật Lý] Dùng 500 sĩ khí gây 20000% sát thương lên địch trên hàng dọc, tỉ lệ lính bản thân càng thấp sát thương càng cao, sau đó nhận [Lực Đoạn], [Huyết Nhẫn 2], [Bền Bỉ], duy trì 4 lượt.",
       "wikiQuality": "Thái Sơ",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "luc_doan",
+          "kind": "buff",
+          "duration": 4,
+          "label": "Lực Đoạn"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "huyet_nhan",
+          "kind": "buff",
+          "duration": 4,
+          "label": "Huyết Nhẫn"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "ben_bi",
+          "kind": "buff",
+          "duration": 4,
+          "label": "Bền Bỉ"
+        }
+      ],
+      "hits": 1
     },
     "tien_dang_tu_si": {
       "id": "tien_dang_tu_si",
@@ -13953,13 +14258,37 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "rush",
         "text": "TIÊN ĐĂNG TỬ SĨ",
-        "motif": "slash"
+        "motif": "rush"
       },
       "desc": "[Vật Lý] Dùng 700 sĩ khí gây 25000% sát thương lên địch trên hàng dọc, tỉ lệ lính bản thân càng thấp sát thương càng cao, sau đó nhận [Lực Đoạn], [Huyết Nhẫn 2], [Bền Bỉ], duy trì 4 lượt.",
       "wikiQuality": "Thần Hoàng",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "luc_doan",
+          "kind": "buff",
+          "duration": 4,
+          "label": "Lực Đoạn"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "huyet_nhan",
+          "kind": "buff",
+          "duration": 4,
+          "label": "Huyết Nhẫn"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "ben_bi",
+          "kind": "buff",
+          "duration": 4,
+          "label": "Bền Bỉ"
+        }
+      ],
+      "hits": 1
     },
     "ten_lac": {
       "id": "ten_lac",
@@ -13975,7 +14304,8 @@
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 92% Pháp Công, gây cho 1 đơn vị địch 160% Pháp Công.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "cu_ma": {
       "id": "cu_ma",
@@ -13991,7 +14321,8 @@
       },
       "desc": "[Thường] Địch trên hàng ngang chịu 128% sát thương vật lý, 75% khiến Pháp Công của địch giảm 25%, duy trì 2 lượt.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "chuoc_gioi": {
       "id": "chuoc_gioi",
@@ -14007,7 +14338,8 @@
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 150% Pháp Công, tấn công của mục tiêu giảm 100%, duy trì 1 lượt.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "tien_dap": {
       "id": "tien_dap",
@@ -14019,7 +14351,7 @@
       "fx": {
         "flash": "yellow",
         "text": "TIỄN ĐẠP",
-        "motif": "slash"
+        "motif": "pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 250% Pháp Công, 50% khiến mục tiêu bị [Hỗn Loạn], duy trì 1 lượt, bản thân hồi 50 sĩ khí.",
       "wikiQuality": "Chiến",
@@ -14033,10 +14365,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "nhieu_tap": {
       "id": "nhieu_tap",
@@ -14060,7 +14394,8 @@
           "duration": 1,
           "label": "Hỗn Loạn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "npc_troi_tru_dat_diet": {
       "id": "npc_troi_tru_dat_diet",
@@ -14086,16 +14421,19 @@
           "label": "Tan Vỡ"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "atk_down",
+          "value": 0.1,
+          "duration": 2,
+          "label": "E Sợ"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 10,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "bao_ho": {
       "id": "bao_ho",
@@ -14123,9 +14461,11 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "cau_phuc": {
       "id": "cau_phuc",
@@ -14151,16 +14491,19 @@
           "label": "Thủ Hộ"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "chien_ca": {
       "id": "chien_ca",
@@ -14189,12 +14532,8 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -14225,12 +14564,8 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -14261,12 +14596,8 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -14290,12 +14621,8 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -14324,10 +14651,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "long_thuong": {
       "id": "long_thuong",
@@ -14362,20 +14691,22 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ngam_tho_giai_sau": {
       "id": "ngam_tho_giai_sau",
       "name": "Ngâm Thơ Giải Sầu",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "self",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "shield",
         "text": "NGÂM THƠ GIẢI SẦU",
         "motif": "shield"
       },
@@ -14391,21 +14722,29 @@
           "label": "Thiết Bích"
         },
         {
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "bai_ca_bien_ai": {
       "id": "bai_ca_bien_ai",
       "name": "Bài Ca Biên Ải",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "self",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "shield",
         "text": "BÀI CA BIÊN ẢI",
         "motif": "shield"
       },
@@ -14421,11 +14760,19 @@
           "label": "Thiết Bích"
         },
         {
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thien_khai": {
       "id": "thien_khai",
@@ -14435,25 +14782,22 @@
       "power": 2.1,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue",
+        "flash": "blue_water",
         "text": "THIÊN KHẢI",
-        "motif": "arcane"
+        "motif": "water"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 210% Mưu Công, lính mục tiêu càng ít sát thương càng cao, bản thân hồi 50+{4} sĩ khí.",
       "wikiQuality": "Thần",
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "xua_duoi": {
       "id": "xua_duoi",
@@ -14473,10 +14817,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thanh_tam": {
       "id": "thanh_tam",
@@ -14496,10 +14842,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thanh_nha_can_chinh": {
       "id": "thanh_nha_can_chinh",
@@ -14518,17 +14866,27 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "ben_bi",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Bền Bỉ",
+          "target": "ally"
+        },
+        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tri_lieu": {
       "id": "tri_lieu",
       "name": "Trị Liệu",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "single",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -14543,15 +14901,17 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tri_du": {
       "id": "tri_du",
       "name": "Trị Dũ",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "self",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -14574,15 +14934,17 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "du_hop": {
       "id": "du_hop",
       "name": "Dũ Hợp",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "self",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -14606,7 +14968,8 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -14614,7 +14977,7 @@
       "id": "an_hue_chi_vu",
       "name": "Ân Huệ Chi Vũ",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "self",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -14636,9 +14999,17 @@
           "target": "self"
         },
         {
+          "type": "atk_up",
+          "value": 0.1,
+          "duration": 3,
+          "target": "ally",
+          "label": "Phấn Chấn"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -14646,7 +15017,7 @@
       "id": "mua_han",
       "name": "Mưa Hạn",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "self",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -14668,14 +15039,23 @@
           "target": "self"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "atk_up",
+          "value": 0.1,
+          "duration": 3,
+          "target": "ally",
+          "label": "Phấn Chấn"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -14693,7 +15073,8 @@
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 210% Mưu Công, mục tiêu mất hết sĩ khí.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "sat_khi": {
       "id": "sat_khi",
@@ -14713,10 +15094,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "xich_long": {
       "id": "xich_long",
@@ -14737,14 +15120,11 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "viem_long_pha": {
       "id": "viem_long_pha",
@@ -14764,19 +15144,16 @@
       "hits": 2,
       "effects": [
         {
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -14798,19 +15175,16 @@
       "hits": 3,
       "effects": [
         {
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -14832,19 +15206,16 @@
       "hits": 4,
       "effects": [
         {
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -14863,13 +15234,8 @@
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 550% Mưu Công, giải trừ hiệu quả có lợi của mục tiêu, Mưu Phòng của mục tiêu giảm 20%, duy trì 2 lượt.",
       "wikiQuality": "Thần",
       "source": "wiki-hero",
-      "effects": [
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
-        }
-      ]
+      "effects": [],
+      "hits": 1
     },
     "pha_hoang_sach": {
       "id": "pha_hoang_sach",
@@ -14889,15 +15255,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "dao_phap_thien_dia": {
       "id": "dao_phap_thien_dia",
@@ -14916,16 +15279,13 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thien_dia_vo_cuc": {
       "id": "thien_dia_vo_cuc",
@@ -14944,16 +15304,13 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "can_khon_ta_phap": {
       "id": "can_khon_ta_phap",
@@ -14980,14 +15337,10 @@
           "label": "Huyết Cúc"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -15009,10 +15362,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tien_tran": {
       "id": "tien_tran",
@@ -15024,7 +15379,7 @@
       "fx": {
         "flash": "yellow",
         "text": "TIỄN TRẬN",
-        "motif": "slash"
+        "motif": "pierce"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 320% Pháp Công. Bản thân nhận [Độ Hiểm] [Đề Kháng], duy trì 3 lượt, chống đỡ sát thương bằng 15% binh lực tối đa.",
       "wikiQuality": "Thần",
@@ -15045,7 +15400,8 @@
           "target": "self",
           "label": "Đề Kháng"
         }
-      ]
+      ],
+      "hits": 1
     },
     "hoa_long_tien": {
       "id": "hoa_long_tien",
@@ -15081,8 +15437,9 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -15094,9 +15451,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue_water",
+        "flash": "yellow",
         "text": "MẠN THIÊN TIỄN VŨ",
-        "motif": "water"
+        "motif": "pierce"
       },
       "desc": "[C.Pháp] Tấn công 500 sĩ khí, khiến toàn phe địch chịu 2 lần 4800% Pháp Công. Bản thân nhận [Độ Hiểm], [Đề Kháng], duy trì 3 lượt, chống đỡ sát thương bằng 15% binh lực tối đa. Bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thượng Cổ",
@@ -15120,8 +15477,9 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -15135,7 +15493,7 @@
       "fx": {
         "flash": "yellow",
         "text": "THẤT TINH TIỄN TRẬ",
-        "motif": "slash"
+        "motif": "pierce"
       },
       "desc": "[C.Pháp] Tấn công 500 sĩ khí, khiến toàn phe địch chịu 2 lần 6800% Pháp Công. Bản thân nhận [Độ Hiểm] [Đề Kháng], duy trì 3 lượt, chống đỡ 15% sát thương binh lực tối đa, duy trì 3 lượt, bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thái Sơ",
@@ -15159,8 +15517,9 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -15178,7 +15537,16 @@
       },
       "desc": "[Hỗ Trợ] Giải trừ hiệu quả trạng thái toàn phe ta, giúp tướng khác phe ta hồi 25 sĩ khí.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "morale_boost",
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
+        }
+      ],
+      "hits": 1
     },
     "giai_nan": {
       "id": "giai_nan",
@@ -15198,10 +15566,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "giai_tru": {
       "id": "giai_tru",
@@ -15221,10 +15591,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "phan_ke": {
       "id": "phan_ke",
@@ -15244,10 +15616,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "nho_thanh_ho_the": {
       "id": "nho_thanh_ho_the",
@@ -15266,11 +15640,21 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "minh_triet",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Minh Triết",
+          "target": "ally"
+        },
+        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "xuyen_duong": {
       "id": "xuyen_duong",
@@ -15282,11 +15666,12 @@
       "fx": {
         "flash": "steel",
         "text": "XUYÊN DƯƠNG",
-        "motif": "slash"
+        "motif": "pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 119% Pháp Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "thanh_huy": {
       "id": "thanh_huy",
@@ -15314,16 +15699,18 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "giao_nguyet_thanh_huy": {
       "id": "giao_nguyet_thanh_huy",
       "name": "Giảo Nguyệt Thanh Huy",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "self",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -15344,16 +15731,19 @@
           "target": "ally"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tu_huy": {
       "id": "tu_huy",
@@ -15369,7 +15759,8 @@
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 600% Pháp Công, bản thân chịu 1000% Pháp Công.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "huyet_che": {
       "id": "huyet_che",
@@ -15379,9 +15770,9 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue",
+        "flash": "crimson",
         "text": "HUYẾT CHẾ",
-        "motif": "arcane"
+        "motif": "slash"
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 12% Mưu Công, mục tiêu bị [Hỗn Loạn], duy trì 1 lượt, bản thân chịu 85% Mưu Công, bản thân hồi 100 sĩ khí.",
       "wikiQuality": "Chiến",
@@ -15395,10 +15786,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "kim_ham": {
       "id": "kim_ham",
@@ -15424,10 +15817,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "sach_phan": {
       "id": "sach_phan",
@@ -15453,10 +15848,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "bo_toi_theo_sang": {
       "id": "bo_toi_theo_sang",
@@ -15482,16 +15879,18 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "long_minh": {
       "id": "long_minh",
       "name": "Long Minh",
       "damageType": "physical",
-      "pattern": "row",
+      "pattern": "column",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -15501,13 +15900,14 @@
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 85% Pháp Công, địch trên hàng dọc chịu 110% Pháp Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "long_uy": {
       "id": "long_uy",
       "name": "Long Uy",
       "damageType": "physical",
-      "pattern": "row",
+      "pattern": "column",
       "power": 2.05,
       "moraleCost": 100,
       "fx": {
@@ -15529,16 +15929,18 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "no_long": {
       "id": "no_long",
       "name": "Nộ Long",
       "damageType": "physical",
-      "pattern": "row",
+      "pattern": "column",
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
@@ -15568,10 +15970,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "than_binh_xuat_hien": {
       "id": "than_binh_xuat_hien",
@@ -15592,8 +15996,9 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -15601,41 +16006,31 @@
       "id": "hanh_binh",
       "name": "Hành Binh",
       "damageType": "physical",
-      "pattern": "row",
+      "pattern": "column",
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "HÀNH BINH",
-        "motif": "slash"
+        "motif": "arcane"
       },
       "desc": "[Chiến+Kế+Thường] Tấn công 500 sĩ khí gây cho địch trên hàng ngang 3000% Pháp Công. Tấn công 500 sĩ khí gây cho địch trên hàng dọc 3000% Mưu Công. Tấn công 500 sĩ khí gây cho đơn vị địch lính ít nhất 1700% sát thương vật lý, lính mục tiêu càng ít sát thương càng cao, bản thân nhậ",
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
-      "effects": [
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        }
-      ]
+      "effects": [],
+      "hits": 1
     },
     "than_binh_am_do": {
       "id": "than_binh_am_do",
       "name": "Thần Binh Ám Độ",
       "damageType": "physical",
-      "pattern": "row",
+      "pattern": "column",
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "THẦN BINH ÁM ĐỘ",
-        "motif": "slash"
+        "motif": "arcane"
       },
       "desc": "[Chiến+Kế+Thường] Bản thân nhận [Tịnh Hóa], duy trì 2 lượt. Tấn công 500 sĩ khí, khiến địch trên hàng ngang chịu 7000% Pháp Công. Tấn công 500 sĩ khí, khiến địch trên hàng dọc chịu 7000% Mưu Công. Tấn công 500 sĩ khí, khiến đơn vị địch lính ít nhất chịu 4000% sát thương vật lý, l",
       "wikiQuality": "Thái Sơ",
@@ -15648,30 +16043,21 @@
           "duration": 2,
           "label": "Tịnh Hóa",
           "target": "self"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ky_binh_pha_thuc": {
       "id": "ky_binh_pha_thuc",
       "name": "Kỳ Binh Phá Thục",
       "damageType": "physical",
-      "pattern": "row",
+      "pattern": "column",
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "charge",
+        "flash": "blue",
         "text": "KỲ BINH PHÁ THỤC",
-        "motif": "charge"
+        "motif": "arcane"
       },
       "desc": "[Chiến Pháp + Kế Sách + Thường] khiến bản thân vào [Tịnh Hóa], [Độ Hiểm] và [Loại Bỏ] không thể giải trừ, duy trì 3 lượt, sau đó tiêu hao 700 sĩ khí lần lượt gây 12000% Pháp Công lên kẻ địch trên hàng ngang, gây 12000% Mưu Công lên kẻ địch trên hàng dọc, gây 7300% sát thương vật ",
       "wikiQuality": "Thần Hoàng",
@@ -15700,29 +16086,26 @@
           "duration": 3,
           "label": "Loại Bỏ",
           "target": "self"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "loi_nhan": {
       "id": "loi_nhan",
       "name": "Lợi Nhẫn",
       "damageType": "physical",
-      "pattern": "ally_all",
+      "pattern": "single",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "steel",
         "text": "LỢI NHẪN",
-        "motif": "buff"
+        "motif": "slash"
       },
       "desc": "[Hỗ Trợ] Vật Công của toàn phe ta tăng 25%, duy trì 2 lượt.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "ban_ly": {
       "id": "ban_ly",
@@ -15750,9 +16133,11 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "me_tran": {
       "id": "me_tran",
@@ -15780,9 +16165,11 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "cu_ngao_uy_ap": {
       "id": "cu_ngao_uy_ap",
@@ -15810,9 +16197,11 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tap_kich": {
       "id": "tap_kich",
@@ -15828,7 +16217,8 @@
       },
       "desc": "[C.Pháp] Đơn vị địch lính ít nhất chịu 400% Pháp Công, lính mục tiêu càng ít sát thương càng cao.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "loan_kich": {
       "id": "loan_kich",
@@ -15844,23 +16234,25 @@
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 315% Pháp Công, lính mục tiêu càng ít sát thương càng cao.",
       "wikiQuality": "Truyền thuyết",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "chuyen_chu": {
       "id": "chuyen_chu",
       "name": "Chuyên Chú",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "single",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "blue",
         "text": "CHUYÊN CHÚ",
-        "motif": "buff"
+        "motif": "arcane"
       },
       "desc": "[Hỗ Trợ] Mưu Công của toàn phe ta tăng 25%, duy trì 3 lượt.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "dia_thich": {
       "id": "dia_thich",
@@ -15876,7 +16268,8 @@
       },
       "desc": "[Thường] Toàn phe địch chịu 150% sát thương vật lý, lính bản thân càng ít sát thương càng cao.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "cot_thich": {
       "id": "cot_thich",
@@ -15892,7 +16285,8 @@
       },
       "desc": "[Thường] Đánh nhóm, lính ít sẽ gây nhiều sát thương, bản thân tăng bạo kích 2 lượt.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "diem_la_kich": {
       "id": "diem_la_kich",
@@ -15926,7 +16320,8 @@
           "label": "Thiên Vận",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thap_phuong_diet": {
       "id": "thap_phuong_diet",
@@ -15960,7 +16355,8 @@
           "label": "Thiên Vận",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "nghich_chuyen_sinh_tu": {
       "id": "nghich_chuyen_sinh_tu",
@@ -15994,7 +16390,8 @@
           "label": "Thiên Vận",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "lang_dao": {
       "id": "lang_dao",
@@ -16010,7 +16407,8 @@
       },
       "desc": "[Kế Sách] Địch trên hàng dọc chịu 171% Mưu Công.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "vong_xoay": {
       "id": "vong_xoay",
@@ -16030,10 +16428,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "ma_quan": {
       "id": "ma_quan",
@@ -16061,10 +16461,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "bac_thay_u_mich": {
       "id": "bac_thay_u_mich",
@@ -16092,10 +16494,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "huyet_ach_su": {
       "id": "huyet_ach_su",
@@ -16114,16 +16518,27 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
+          "type": "wiki_buff",
+          "id": "chuyen_doi",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Chuyển Đổi",
           "target": "ally"
         },
         {
           "type": "morale_boost",
           "value": 40,
-          "target": "self"
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "phan_chan": {
       "id": "phan_chan",
@@ -16143,10 +16558,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 34,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "hoa_tien": {
       "id": "hoa_tien",
@@ -16169,7 +16586,8 @@
           "duration": 2,
           "label": "Thiêu Đốt"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tien_lam": {
       "id": "tien_lam",
@@ -16181,11 +16599,12 @@
       "fx": {
         "flash": "yellow",
         "text": "TIỄN LAM",
-        "motif": "slash"
+        "motif": "pierce"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 380% Pháp Công.",
       "wikiQuality": "Truyền thuyết",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "trung_nghia_ho_chu": {
       "id": "trung_nghia_ho_chu",
@@ -16204,16 +16623,27 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "def_up",
+          "value": 0.18,
+          "duration": 2,
+          "target": "self",
+          "label": "Hộ Chủ"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "ally",
+          "label": "Bảo Hộ"
+        },
+        {
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "than_tien_ho_chu": {
       "id": "than_tien_ho_chu",
@@ -16223,24 +16653,28 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "yellow",
         "text": "THẦN TIỄN HỘ CHỦ",
-        "motif": "heal"
+        "motif": "pierce"
       },
       "desc": "[C.Pháp] Tấn công 500 sĩ khí, khiến toàn phe địch chịu 13000% Pháp Công, bản thân vào trạng thái [Hộ Chủ], duy trì đến khi kết thúc chiến đấu, giúp tướng có lính ít nhất phe ta (ngoài bản thân) giải trừ tất cả hiệu quả bất lợi và vào trạng thái [Bảo Hộ], duy trì 2 lượt, giúp mục ",
       "wikiQuality": "Thái Sơ",
       "source": "wiki-hero",
-      "hits": 2,
+      "hits": 1,
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "def_up",
+          "value": 0.18,
+          "duration": 2,
+          "target": "self",
+          "label": "Hộ Chủ"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "ally",
+          "label": "Bảo Hộ"
         }
       ]
     },
@@ -16262,10 +16696,12 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "dia_trach_van_vat": {
       "id": "dia_trach_van_vat",
@@ -16291,18 +16727,13 @@
           "label": "Thủ Hộ"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally",
-          "label": "Hồi Phục"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.15,
-          "target": "ally",
-          "label": "Hồi Xuân"
+          "type": "morale_boost",
+          "value": 10,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "than_huu_mot_phuong": {
       "id": "than_huu_mot_phuong",
@@ -16328,18 +16759,13 @@
           "label": "Thủ Hộ"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally",
-          "label": "Hồi Phục"
-        },
-        {
-          "type": "heal_pct",
-          "value": 0.15,
-          "target": "ally",
-          "label": "Hồi Xuân"
+          "type": "morale_boost",
+          "value": 10,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "tru_tam": {
       "id": "tru_tam",
@@ -16360,9 +16786,11 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "toa_hon": {
       "id": "toa_hon",
@@ -16388,16 +16816,19 @@
           "label": "Âm Hồn"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "am_van": {
       "id": "am_van",
@@ -16423,16 +16854,19 @@
           "label": "Âm Hồn"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "quyen_hanh": {
       "id": "quyen_hanh",
@@ -16458,16 +16892,19 @@
           "label": "Âm Hồn"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "vuong_trieu_tan_ra": {
       "id": "vuong_trieu_tan_ra",
@@ -16493,16 +16930,19 @@
           "label": "Âm Hồn"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "han_bang": {
       "id": "han_bang",
@@ -16518,7 +16958,16 @@
       },
       "desc": "[Kế Sách] Tấn công hàng ngang, hiệu quả hồi sĩ khí phe địch giảm (50+{3%})% trong 2 lượt.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "morale_boost",
+          "value": 40,
+          "target": "self",
+          "label": "Sĩ Khí"
+        }
+      ],
+      "hits": 1
     },
     "bong_lanh": {
       "id": "bong_lanh",
@@ -16545,10 +16994,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "nhieu_loan_quan_dich": {
       "id": "nhieu_loan_quan_dich",
@@ -16558,9 +17009,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue",
+        "flash": "green_poison",
         "text": "NHIỄU LOẠN QUÂN ĐỊ",
-        "motif": "arcane"
+        "motif": "poison"
       },
       "desc": "[Kế Sách] Địch trên hàng ngang chịu 16500% Mưu Công, sĩ khí mục tiêu càng thấp sát thương càng cao, khiến mục tiêu bị [Áp Ức], [Hủ Thực], duy trì 2 lượt, bản thân hồi 50 +{4} sĩ khí.",
       "wikiQuality": "Thượng Cổ",
@@ -16574,11 +17025,18 @@
           "label": "Áp Ức"
         },
         {
+          "type": "poison",
+          "duration": 2,
+          "label": "Hủ Thực"
+        },
+        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "bon_be_bua_vay": {
       "id": "bon_be_bua_vay",
@@ -16588,9 +17046,9 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue",
+        "flash": "green_poison",
         "text": "BỐN BỀ BỦA VÂY",
-        "motif": "arcane"
+        "motif": "poison"
       },
       "desc": "[Kế Sách] Địch trên hàng ngang chịu 2 lần 17500% Mưu Công, sĩ khí mục tiêu càng thấp sát thương càng cao, khiến mục tiêu bị [Áp Ức], [Hủ Thực], duy trì 2 lượt, bản thân hồi 50 +{6} sĩ khí.",
       "wikiQuality": "Thái Sơ",
@@ -16605,9 +17063,15 @@
           "label": "Áp Ức"
         },
         {
+          "type": "poison",
+          "duration": 2,
+          "label": "Hủ Thực"
+        },
+        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -16619,9 +17083,9 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "whirlwind",
+        "flash": "green_poison",
         "text": "PHONG HẠC",
-        "motif": "whirlwind"
+        "motif": "poison"
       },
       "desc": "[Kế Sách] Địch trên hàng ngang chịu 2 lần 29500% Mưu Công, sĩ khí đối phương càng thấp sát thương phải chịu càng cao, khiến mục tiêu bị [Mây Đen], [Áp Ức], [Hủ Thực], duy trì 2 lượt, bản thân hồi 75+{8} sĩ khí.",
       "wikiQuality": "Thần Hoàng",
@@ -16630,15 +17094,28 @@
       "effects": [
         {
           "type": "wiki_debuff",
+          "id": "may_den",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Mây Đen"
+        },
+        {
+          "type": "wiki_debuff",
           "id": "ap_uc",
           "kind": "debuff",
           "duration": 2,
           "label": "Áp Ức"
         },
         {
+          "type": "poison",
+          "duration": 2,
+          "label": "Hủ Thực"
+        },
+        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 75,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -16656,7 +17133,8 @@
       },
       "desc": "[Kế Sách] Địch trên hàng dọc chịu 190% Mưu Công, giải trừ tất cả hiệu quả trạng thái trên 1 kẻ địch.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "tat_tri": {
       "id": "tat_tri",
@@ -16677,8 +17155,9 @@
       "effects": [
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -16697,14 +17176,8 @@
       "desc": "[Hỗ Trợ] Tất cả tấn công của toàn phe ta tăng 25%, duy trì 2 lượt.",
       "wikiQuality": "Chiến",
       "source": "wiki-hero",
-      "effects": [
-        {
-          "type": "atk_up",
-          "value": 0.12,
-          "duration": 2,
-          "target": "ally"
-        }
-      ]
+      "effects": [],
+      "hits": 1
     },
     "khuynh_quoc": {
       "id": "khuynh_quoc",
@@ -16728,14 +17201,9 @@
           "kind": "control",
           "duration": 2,
           "label": "Mê Hoặc"
-        },
-        {
-          "type": "atk_up",
-          "value": 0.12,
-          "duration": 2,
-          "target": "ally"
         }
-      ]
+      ],
+      "hits": 1
     },
     "be_nguyet": {
       "id": "be_nguyet",
@@ -16752,14 +17220,8 @@
       "desc": "Toàn phe ta tăng 60% + {3%}% tấn công (Khi chiến đấu với người chơi khác, giảm hiệu quả Tăng Công), giảm tấn công của toàn phe địch (Ban đầu 20%), duy trì 2 lượt, có xác suất Mê Hoặc địch 2 lượt (Khi chiến đấu với người chơi khác, giảm xác suất Mê Hoặc).",
       "wikiQuality": "Truyền thuyết",
       "source": "wiki-hero",
-      "effects": [
-        {
-          "type": "atk_up",
-          "value": 0.12,
-          "duration": 2,
-          "target": "ally"
-        }
-      ]
+      "effects": [],
+      "hits": 1
     },
     "vu_dieu_duoi_trang": {
       "id": "vu_dieu_duoi_trang",
@@ -16783,14 +17245,9 @@
           "kind": "control",
           "duration": 2,
           "label": "Mê Hoặc"
-        },
-        {
-          "type": "atk_up",
-          "value": 0.12,
-          "duration": 2,
-          "target": "ally"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thien_vu_khuynh_thanh": {
       "id": "thien_vu_khuynh_thanh",
@@ -16814,14 +17271,9 @@
           "kind": "control",
           "duration": 2,
           "label": "Mê Hoặc"
-        },
-        {
-          "type": "atk_up",
-          "value": 0.12,
-          "duration": 2,
-          "target": "ally"
         }
-      ]
+      ],
+      "hits": 1
     },
     "nghe_thuong_thien_vu": {
       "id": "nghe_thuong_thien_vu",
@@ -16845,14 +17297,9 @@
           "kind": "control",
           "duration": 2,
           "label": "Mê Hoặc"
-        },
-        {
-          "type": "atk_up",
-          "value": 0.12,
-          "duration": 2,
-          "target": "ally"
         }
-      ]
+      ],
+      "hits": 1
     },
     "cung_ma": {
       "id": "cung_ma",
@@ -16872,14 +17319,10 @@
       "hits": 2,
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -16893,7 +17336,7 @@
       "fx": {
         "flash": "yellow",
         "text": "ĐOẠT TÂM TIỄN",
-        "motif": "slash"
+        "motif": "pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 3100% Pháp Công. Khiến tướng địch lính ít nhất chịu 2 lần 2400% Pháp Công, lính mục tiêu càng ít sát thương càng cao. Mỗi lần tấn công sẽ khiến mục tiêu giảm 10+{2} sĩ khí. Bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -16901,14 +17344,10 @@
       "hits": 2,
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -16920,9 +17359,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue_water",
+        "flash": "steel",
         "text": "PHƯỢNG VŨ CỬU THIÊ",
-        "motif": "water"
+        "motif": "slash"
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 7000% Pháp Công, lính mục tiêu càng nhiều sát thương càng cao, khiến tướng địch lính ít nhất chịu 2 lần 10000% Pháp Công, lính mục tiêu càng ít sát thương càng cao. Mỗi lần tấn công sẽ khiến mục tiêu giảm 10+{2} sĩ khí. Bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thượng Cổ",
@@ -16930,14 +17369,10 @@
       "hits": 2,
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -16949,25 +17384,22 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue_water",
+        "flash": "steel",
         "text": "LOAN HỒI PHƯỢNG VŨ",
-        "motif": "water"
+        "motif": "slash"
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 11000% Pháp Công, lính mục tiêu càng nhiều sát thương càng cao, khiến tướng địch lính ít nhất chịu 14500% Pháp Công, lính mục tiêu càng ít sát thương càng cao, mỗi lần tấn công sẽ khiến mục tiêu giảm 15+{2} sĩ khí. Bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thái Sơ",
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "phan_no": {
       "id": "phan_no",
@@ -16993,7 +17425,8 @@
           "label": "Hội Tâm",
           "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "hoa_nham": {
       "id": "hoa_nham",
@@ -17016,7 +17449,8 @@
           "duration": 2,
           "label": "Thiêu Đốt"
         }
-      ]
+      ],
+      "hits": 1
     },
     "pha_ke": {
       "id": "pha_ke",
@@ -17032,7 +17466,8 @@
       },
       "desc": "[Kế Sách] Địch trên hàng dọc chịu 143% Mưu Công, khiến Mưu Công của mục tiêu giảm 25%, duy trì 2 lượt.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "ho_chu": {
       "id": "ho_chu",
@@ -17058,16 +17493,19 @@
           "label": "Đào Binh"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "vien_ho": {
       "id": "vien_ho",
@@ -17102,14 +17540,11 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "sa_truong_ngu_dich": {
       "id": "sa_truong_ngu_dich",
@@ -17144,14 +17579,11 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "muc_huyet_ho_chu": {
       "id": "muc_huyet_ho_chu",
@@ -17187,12 +17619,8 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -17213,16 +17641,19 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "hien_thuc_luu_phuong": {
       "id": "hien_thuc_luu_phuong",
@@ -17249,16 +17680,19 @@
           "target": "self"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "dinh_ke_nhat_thong": {
       "id": "dinh_ke_nhat_thong",
@@ -17285,6 +17719,12 @@
         },
         {
           "type": "atk_down",
+          "value": 0.12,
+          "duration": 3,
+          "label": "Vô Lực"
+        },
+        {
+          "type": "atk_down",
           "value": 0.1,
           "duration": 3,
           "label": "Do Dự"
@@ -17297,11 +17737,19 @@
           "label": "Tê Liệt"
         },
         {
+          "type": "morale_boost",
+          "value": 40,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thau_tom_thien_ha": {
       "id": "thau_tom_thien_ha",
@@ -17328,6 +17776,12 @@
         },
         {
           "type": "atk_down",
+          "value": 0.12,
+          "duration": 3,
+          "label": "Vô Lực"
+        },
+        {
+          "type": "atk_down",
           "value": 0.1,
           "duration": 3,
           "label": "Do Dự"
@@ -17340,11 +17794,19 @@
           "label": "Tê Liệt"
         },
         {
+          "type": "morale_boost",
+          "value": 60,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
-      ]
+      ],
+      "hits": 1
     },
     "long_chien_vu_da": {
       "id": "long_chien_vu_da",
@@ -17369,13 +17831,9 @@
           "duration": 2,
           "label": "Tru Thần",
           "target": "self"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
         }
-      ]
+      ],
+      "hits": 1
     },
     "phi_long_tai_thien": {
       "id": "phi_long_tai_thien",
@@ -17402,11 +17860,14 @@
           "target": "self"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "atk_up",
+          "value": 0.1,
+          "duration": 2,
+          "target": "self",
+          "label": "Bá Chủ"
         }
-      ]
+      ],
+      "hits": 1
     },
     "khi_gioi": {
       "id": "khi_gioi",
@@ -17422,7 +17883,8 @@
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 200% Pháp Công, tấn công của mục tiêu giảm 100%, duy trì 1 lượt.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "duong_cong": {
       "id": "duong_cong",
@@ -17438,7 +17900,8 @@
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 400% Pháp Công, giải trừ hiệu quả có lợi của 1 kẻ địch, tấn công của mục tiêu giảm 100%, duy trì 1 lượt.",
       "wikiQuality": "Truyền thuyết",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "nhieu_loan_dot_tap": {
       "id": "nhieu_loan_dot_tap",
@@ -17454,7 +17917,8 @@
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 2400% Pháp Công, giải trừ hiệu quả có lợi của địch trên hàng dọc, khiến mục tiêu giảm 100% tất cả tấn công, khiến mục tiêu trên hàng dọc bị Hư Nhược (có thể giải trừ), không thể nhận hiệu quả có lợi, duy trì 1 lượt.",
       "wikiQuality": "Thượng Cổ",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "sat_y": {
       "id": "sat_y",
@@ -17470,7 +17934,8 @@
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 140% Pháp Công, tất cả tấn công của bản thân tăng 100%, duy trì 2 lượt.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "am_duong_diet": {
       "id": "am_duong_diet",
@@ -17489,16 +17954,20 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "wiki_debuff",
+          "id": "ma_am",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Ma Ám"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "bua_phep_tran_ta": {
       "id": "bua_phep_tran_ta",
@@ -17517,16 +17986,20 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "wiki_debuff",
+          "id": "ma_am",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Ma Ám"
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "dao_thuat_huyen_thong": {
       "id": "dao_thuat_huyen_thong",
@@ -17546,6 +18019,13 @@
       "effects": [
         {
           "type": "wiki_debuff",
+          "id": "di_nhieu",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Dị Nhiễu"
+        },
+        {
+          "type": "wiki_debuff",
           "id": "pha_thanh",
           "kind": "debuff",
           "duration": 3,
@@ -17553,16 +18033,13 @@
           "target": "self"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "no_thich": {
       "id": "no_thich",
@@ -17578,7 +18055,8 @@
       },
       "desc": "[Thường] Toàn phe địch chịu 105% sát thương vật lý.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "lien_thich": {
       "id": "lien_thich",
@@ -17628,7 +18106,8 @@
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 600% Mưu Công, đoạt hết sĩ khí của mục tiêu, tấn công của mục tiêu giảm 50%, duy trì 2 lượt.",
       "wikiQuality": "Truyền thuyết",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "bach_y_do_giang": {
       "id": "bach_y_do_giang",
@@ -17638,9 +18117,9 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "blue",
         "text": "BẠCH Y ĐỘ GIANG",
-        "motif": "fire"
+        "motif": "arcane"
       },
       "desc": "[Chiến+Kế] Tấn công 500 sĩ khí lên hàng sau phe địch, gây 1000% Pháp Công và 1000% Mưu Công, nếu mục tiêu có [Thiên Hỏa], sẽ bị [Vỡ Trận], duy trì 1 lượt, bản thân nhận [Thiên Vận], duy trì 3 lượt, bản thân hồi 50+{10} sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -17652,6 +18131,12 @@
           "label": "Thiên Hỏa"
         },
         {
+          "type": "def_down",
+          "value": 0.15,
+          "duration": 1,
+          "label": "Vỡ Trận"
+        },
+        {
           "type": "wiki_buff",
           "id": "thien_van",
           "kind": "buff",
@@ -17661,10 +18146,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thien_nhan": {
       "id": "thien_nhan",
@@ -17674,20 +18161,15 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "blue",
         "text": "THIÊN NHẪN",
-        "motif": "fire"
+        "motif": "arcane"
       },
       "desc": "[Chiến Pháp+Kế Sách] Phát động 2 lần Chiến Pháp và Mưu Công 500 sĩ khí, tấn công địch hàng sau ở phía đối diện với bản thân, đồng thời gây hiệu quả Vỡ Trận cho địch có Thiên Hỏa 1 lượt, bản thân nhận Thiên Vận 3 lượt (Có xác suất gây sát thương gấp 1-3 lần) và hồi phục 50+{10} sĩ",
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
       "hits": 2,
-      "effects": [
-        {
-          "type": "burn",
-          "duration": 2
-        }
-      ]
+      "effects": []
     },
     "bach_y_pha_lang": {
       "id": "bach_y_pha_lang",
@@ -17697,9 +18179,9 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "gold_soft",
         "text": "BẠCH Y PHÁ LÃNG",
-        "motif": "fire"
+        "motif": "heal"
       },
       "desc": "[Chiến+Kế] Tấn công 500 sĩ khí, khiến địch trên hàng ngang phía sau chịu 14000% Pháp Công và Mưu Công,. Nếu mục tiêu có [Thiên Hỏa], sẽ bị [Vỡ Trận] (Sát thương và trị liệu đều là 1 điểm, duy trì 1 lượt) và [Tỏa Binh] (Mục tiêu không thể tăng binh lực, duy trì 2 lượt), bản thân v",
       "wikiQuality": "Thái Sơ",
@@ -17711,6 +18193,12 @@
           "label": "Thiên Hỏa"
         },
         {
+          "type": "def_down",
+          "value": 0.15,
+          "duration": 1,
+          "label": "Vỡ Trận"
+        },
+        {
           "type": "wiki_debuff",
           "id": "toa_binh",
           "kind": "debuff",
@@ -17720,14 +18208,11 @@
         {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "huyen_bang": {
       "id": "huyen_bang",
@@ -17743,7 +18228,8 @@
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 210% Mưu Công, lính bản thân càng ít sát thương càng cao.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "thien_hoa_thieu": {
       "id": "thien_hoa_thieu",
@@ -17775,26 +18261,23 @@
           "target": "self"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "truong_ca": {
       "id": "truong_ca",
       "name": "Trường Ca",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "self",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "shield",
         "text": "TRƯỜNG CA",
         "motif": "shield"
       },
@@ -17810,11 +18293,19 @@
           "label": "Thiết Bích"
         },
         {
+          "type": "morale_boost",
+          "value": 25,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "chuy_kich": {
       "id": "chuy_kich",
@@ -17839,16 +18330,19 @@
           "label": "Hỗn Loạn"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "huyet_chien": {
       "id": "huyet_chien",
@@ -17858,13 +18352,14 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "HUYẾT CHIẾN",
         "motif": "slash"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 320% Pháp Công, bản thân chịu 100% Pháp Công.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "loan_the_muu": {
       "id": "loan_the_muu",
@@ -17884,19 +18379,16 @@
       "hits": 3,
       "effects": [
         {
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -17918,19 +18410,16 @@
       "hits": 3,
       "effects": [
         {
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -17952,19 +18441,16 @@
       "hits": 3,
       "effects": [
         {
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -17986,19 +18472,16 @@
       "hits": 4,
       "effects": [
         {
+          "type": "morale_boost",
+          "value": 50,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "def_down",
-          "value": 0.12,
-          "duration": 2
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -18006,7 +18489,7 @@
       "id": "do_chung_sinh",
       "name": "Độ Chúng Sinh",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "self",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -18026,16 +18509,19 @@
           "label": "Hộ Thuẫn"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 20,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "kinh_anh_son_ha": {
       "id": "kinh_anh_son_ha",
@@ -18061,22 +18547,19 @@
           "label": "Hộ Thuẫn"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
           "value": 40,
-          "target": "self"
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "atk_up",
+          "type": "heal_pct",
           "value": 0.12,
-          "duration": 2,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "kinh_dien_luan_hoi": {
       "id": "kinh_dien_luan_hoi",
@@ -18104,20 +18587,16 @@
           "target": "ally"
         },
         {
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
-          "target": "ally"
-        },
-        {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
-          "type": "atk_up",
-          "value": 0.12,
-          "duration": 2,
-          "target": "ally"
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -18125,7 +18604,7 @@
       "id": "cam_vu",
       "name": "Cam Vũ",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "self",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -18138,22 +18617,25 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "nhan_y": {
       "id": "nhan_y",
       "name": "Nhân Y",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "self",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -18173,22 +18655,25 @@
           "label": "Tử Thủ"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 20,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thanh_thu_hoi_xuan": {
       "id": "thanh_thu_hoi_xuan",
       "name": "Thánh Thủ Hồi Xuân",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "single",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -18214,22 +18699,19 @@
           "label": "Hồi Xuân"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 20,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "thanh_thu_te_the": {
       "id": "thanh_thu_te_the",
       "name": "Thánh Thủ Tề Thế",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "self",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -18256,14 +18738,10 @@
           "label": "Hồi Xuân"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
-        },
-        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 20,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
       ]
     },
@@ -18271,7 +18749,7 @@
       "id": "huyen_ho_te_chung",
       "name": "Huyền Hồ Tế Chúng",
       "damageType": "strategy",
-      "pattern": "ally_all",
+      "pattern": "single",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
@@ -18292,14 +18770,16 @@
           "label": "Tử Thủ"
         },
         {
-          "type": "heal_pct",
-          "value": 0.12,
-          "target": "ally"
+          "type": "morale_boost",
+          "value": 20,
+          "target": "self",
+          "label": "Sĩ Khí"
         },
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Trị Liệu"
         }
       ]
     },
@@ -18317,7 +18797,8 @@
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 1200% Pháp Công, đoạt hết sĩ khí của mục tiêu.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "hits": 1
     },
     "khai_son_huyet_phu": {
       "id": "khai_son_huyet_phu",
@@ -18327,7 +18808,7 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "KHAI SƠN HUYẾT PHỦ",
         "motif": "slash"
       },
@@ -18335,6 +18816,13 @@
       "wikiQuality": "Truyền thuyết",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "atk_up",
+          "value": 0.1,
+          "duration": 3,
+          "target": "self",
+          "label": "Tăng Uy"
+        },
         {
           "type": "wiki_buff",
           "id": "hap_huyet",
@@ -18345,10 +18833,12 @@
         },
         {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     },
     "vo_song_thuong_tuong": {
       "id": "vo_song_thuong_tuong",
@@ -18375,11 +18865,20 @@
           "target": "self"
         },
         {
+          "type": "atk_up",
+          "value": 0.1,
+          "duration": 3,
+          "target": "self",
+          "label": "Tăng Uy"
+        },
+        {
           "type": "morale_boost",
-          "value": 40,
-          "target": "self"
+          "value": 80,
+          "target": "self",
+          "label": "Sĩ Khí"
         }
-      ]
+      ],
+      "hits": 1
     }
   },
   "qualityLadders": {
@@ -52106,7 +52605,7 @@
   "source": "https://ngoalong.vnggames.com/ngoa-long-wiki/hieu-ung",
   "sourceNews": "https://ngoalong.vnggames.com/tin-tuc/tin-tuc/hieu-ung-chien-dau.html",
   "importedAt": "2026-10-19",
-  "note": "effects = map engine combat; wikiCatalog = snapshot tên wiki (fan remake).",
+  "note": "effects = map engine combat; wikiCatalog = snapshot tên wiki; combatProfiles = hệ số atk/def cho wiki_buff/debuff (fan remake).",
   "effects": {
     "stun": {
       "id": "stun",
@@ -56033,5 +56532,1435 @@
     "fromWikiMd": 0
   },
   "iconDir": "assets/ui/status",
-  "iconNote": "Icon wiki hieu-ung — tải bằng scripts/download-status-icons.py"
+  "iconNote": "Icon wiki hieu-ung — tải bằng scripts/download-status-icons.py",
+  "combatProfiles": {
+    "anh_dung": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "anh_dung_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "bai_uu": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "ba_chu": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "ba_chu_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "bat_quai": {
+      "kind": "buff",
+      "defMul": 0.2
+    },
+    "bac_nhuoc": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "bach_nhan": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "bao": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "bao_no": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "bao_phat": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "moralePerTurn": 10
+    },
+    "bao_thuong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "bao_ve": {
+      "kind": "unremovable",
+      "atkMul": 0.06
+    },
+    "bat_khuat": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "lifesteal": 0.08
+    },
+    "bat_khuat_chuyen_dung_bac_7": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "bat_khuat_2": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "lifesteal": 0.08
+    },
+    "ben_bi": {
+      "kind": "buff",
+      "defMul": 0.12
+    },
+    "bong_lanh": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "boi_thuy": {
+      "kind": "debuff",
+      "defDown": 0.12,
+      "atkDown": 0.1
+    },
+    "bo_phong_2": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "c_huy": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "chien_than": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "chuyen_doi": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "lifesteal": 0.08
+    },
+    "cham_ngoi": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "chem_giet": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "chuoc_gioi_chuyen_dung_bac_7": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "chi_huy_2": {
+      "kind": "unremovable",
+      "atkMul": 0.06
+    },
+    "chong_do": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "cung_cong_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "cuong_bao": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "cuong_chien": {
+      "kind": "debuff",
+      "defDown": 0.12,
+      "atkDown": 0.1
+    },
+    "co_doc": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "cong_tam": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "cuong_tap": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "cuong_vo_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "cam_quan": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "cap_cuu": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "atkMul": 0.06
+    },
+    "cap_cuu_2": {
+      "kind": "unremovable",
+      "lifesteal": 0.08,
+      "atkMul": 0.06
+    },
+    "di_ke": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "dieu_ke": {
+      "kind": "buff",
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "do_du": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "do_du_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "du_hop_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1,
+      "lifesteal": 0.08
+    },
+    "dung_tuyet": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "dung_tuyet_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "deo_dai": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "duc_huyet": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "lifesteal": 0.08
+    },
+    "e_so": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "e_so_2": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "giem_pha": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "giai_tru": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "giai_tru_bao_ho": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "giai_tru_0": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "giai_tru_2": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "giai_tru_2_bao_ho": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "giai_tru_3": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "giam_chien_cong": {
+      "kind": "debuff",
+      "defDown": 0.12,
+      "atkDown": 0.1
+    },
+    "giam_chien_phong": {
+      "kind": "debuff",
+      "defDown": 0.12
+    },
+    "giam_cong_2": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "giam_muu_cong": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "giam_muu_cong_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "giam_muu_phong": {
+      "kind": "debuff",
+      "defDown": 0.12,
+      "atkDown": 0.1
+    },
+    "giam_muu_phong_2": {
+      "kind": "debuff",
+      "defDown": 0.12,
+      "atkDown": 0.1
+    },
+    "giam_phap_cong": {
+      "kind": "debuff",
+      "defDown": 0.12,
+      "atkDown": 0.1
+    },
+    "giam_phap_cong_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "giam_phap_phong_2": {
+      "kind": "unremovable",
+      "defMul": 0.15
+    },
+    "giam_phong_2": {
+      "kind": "unremovable",
+      "defMul": 0.15
+    },
+    "giam_phong_thu": {
+      "kind": "debuff",
+      "defDown": 0.12
+    },
+    "giam_phong_thu_2": {
+      "kind": "unremovable",
+      "defMul": 0.15
+    },
+    "giam_sat_thuong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "giam_thuong": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "giam_tri_lieu": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "giam_tan_cong": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "giam_vo_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "giam_vat_cong": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "giam_vat_cong_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "giam_vat_phong": {
+      "kind": "debuff",
+      "defDown": 0.12
+    },
+    "giam_vat_phong_2": {
+      "kind": "unremovable",
+      "defMul": 0.15
+    },
+    "giam_dap": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "hoat_luc": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "atkMul": 0.06
+    },
+    "hoat_luc_2": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "atkMul": 0.06
+    },
+    "huyet_cuc": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "huyet_nhan_2": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "lifesteal": 0.08
+    },
+    "huyet_thuan_2": {
+      "kind": "unremovable",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "huyen_giap": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "ham_tran_chuyen_dung_bac_7": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "hon_me": {
+      "kind": "control",
+      "stun": true
+    },
+    "hu_nhuoc": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "hu_nhuoc_2": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "ha_thap_phong_thu": {
+      "kind": "debuff",
+      "defDown": 0.12
+    },
+    "hap_dan": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "hap_huyet": {
+      "kind": "buff",
+      "lifesteal": 0.12,
+      "atkMul": 0.05
+    },
+    "hap_huyet_2": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "lifesteal": 0.08
+    },
+    "hoa_than": {
+      "kind": "buff",
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "hoi_phuc": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "lifesteal": 0.08
+    },
+    "hoi_xuan": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "lifesteal": 0.08
+    },
+    "hon_loan": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "ho_chu": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "ho_thuan": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "ho_the": {
+      "kind": "unremovable",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "hoi_tam": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "defMul": 0.05
+    },
+    "hoi_tam_2": {
+      "kind": "unremovable",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "hu_thuc": {
+      "kind": "debuff",
+      "defDown": 0.12
+    },
+    "hu_thuc_2": {
+      "kind": "unremovable",
+      "defMul": 0.15
+    },
+    "khieu_khich": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "khat_mau": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "khoa_vay": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "khac_bo": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "khac_cung": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "khac_ky": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "khac_thuong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "khong_che": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "khong_hoa": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "kinh_cuc": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "kinh_cuc_2": {
+      "kind": "unremovable",
+      "atkMul": 0.06
+    },
+    "kinh_hon": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "kinh_hon_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "kien_nghi_2": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "kien_thu": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "kien_thu_2": {
+      "kind": "unremovable",
+      "defMul": 0.15
+    },
+    "kien_tri_2": {
+      "kind": "unremovable",
+      "defMul": 0.15
+    },
+    "kien_dinh": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "kieu_binh": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "kieu_binh_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "kich_duong": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "kich_hoat_kich_doc": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "kich_hoat_thien_hoa": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "kich_hoat_thieu_dot": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "kich_no": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "moralePerTurn": 10
+    },
+    "kich_no_2": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "moralePerTurn": 10
+    },
+    "kich_doc": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "ky_tran": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "ky_tran_2": {
+      "kind": "unremovable",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "ky_tap_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "lay_dong": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "lay_dong_2": {
+      "kind": "unremovable",
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "li_thuong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "lien_hoan": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "lien_kich": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "lien_tuc": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "long_hon": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "loai_bo": {
+      "kind": "debuff",
+      "defDown": 0.1
+    },
+    "loai_bo_may_tinh": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "ly_roi": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "loi_co": {
+      "kind": "buff",
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "loi_co_2": {
+      "kind": "unremovable",
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "lac_nguyet": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "loi_don": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "luc_doan": {
+      "kind": "buff",
+      "atkMul": 0.12
+    },
+    "ma_am": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "minh_triet": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "minh_tam": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "mien_dich": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "mien_dich_ma_am": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "mien_thuong": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "may_den": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "me_hoac": {
+      "kind": "control",
+      "stun": true
+    },
+    "muu_cong": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "lifesteal": 0.08,
+      "moralePerTurn": 10
+    },
+    "muu_dinh": {
+      "kind": "unremovable",
+      "atkMul": 0.1,
+      "lifesteal": 0.08,
+      "moralePerTurn": 10
+    },
+    "met_moi": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "nghia_dung": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "nghia_dung_1": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "nghia_dung_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "nghia_dung_3": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "nghia_tuyet": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "nghich_chien_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "nghich_chuyen": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "nghich_chuyen_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "nguyet_huy": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "nguyet_huy_2": {
+      "kind": "unremovable",
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "nguyet_hon": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "nguyet_hon_2": {
+      "kind": "unremovable",
+      "atkMul": 0.06
+    },
+    "ngu_say": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "ngu_hoanh": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "nhue_kich": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "nhan_tam_bo": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "atkMul": 0.06
+    },
+    "pha_thanh": {
+      "kind": "debuff",
+      "defDown": 0.15
+    },
+    "pha_dich": {
+      "kind": "debuff",
+      "defDown": 0.12
+    },
+    "phan": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "phan_cong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "phan_chan": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "moralePerTurn": 10
+    },
+    "phuc_thu": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "phuc_thu_3": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "quy_phong": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "song_hung": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "suy_yeu": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "sach_thuan": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "soi_suc": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "atkMul": 0.06
+    },
+    "sung_kiem": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "atkMul": 0.06
+    },
+    "so_hai": {
+      "kind": "debuff",
+      "atkDown": 0.12
+    },
+    "tan_vo": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "thanh_long_2": {
+      "kind": "unremovable",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "thi_ky": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "thi_ky_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "thi_doc": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "thien_cam": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "thien_hoa": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "thien_tuong": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "moralePerTurn": 10
+    },
+    "thien_van": {
+      "kind": "buff",
+      "atkMul": 0.08,
+      "defMul": 0.08
+    },
+    "thieu_thuong": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "thieu_dot": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "thiet_bich": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "thiet_y": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "thiet_y_chuyen_dung_bac_7": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "thien_chien_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "them_binh_linh": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "them_linh": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "thi_quan": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "thi_quan_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "thoi_mien": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "thuong_tich": {
+      "kind": "debuff",
+      "defDown": 0.1
+    },
+    "thau_suot": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "than_binh": {
+      "kind": "buff",
+      "atkMul": 0.12,
+      "defMul": 0.08
+    },
+    "than_loi": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "than_toc": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "than_toc_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "thi_huyet": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "thinh_no": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "thong_quan": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "thu_ho": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "thu_ho_2": {
+      "kind": "unremovable",
+      "defMul": 0.15
+    },
+    "thu_nghia": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "thu_ngu": {
+      "kind": "unremovable",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "thuy_kinh_2": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "tin_gia": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tien_cong": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "lifesteal": 0.08,
+      "moralePerTurn": 10
+    },
+    "toan_nang": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "toan_nang_chuyen_dung_bac_7": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "toan_nang_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "treo_thuong": {
+      "kind": "debuff",
+      "defDown": 0.1,
+      "atkDown": 0.05
+    },
+    "tru_than": {
+      "kind": "unremovable",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "truy_kich_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tri": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "tri_luc_2": {
+      "kind": "unremovable",
+      "atkMul": 0.06
+    },
+    "tri_tue": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tri_tue_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tru_sach_chuyen_dung_bac_7": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "trung_doc": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "tram_sat": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "tram_tien": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tran_quoc": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "tung_hoanh": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "tan_ta": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "tan_ta_2": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "tai_sinh": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "lifesteal": 0.08
+    },
+    "te_liet": {
+      "kind": "control",
+      "stun": true
+    },
+    "tong_long": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "defMul": 0.1
+    },
+    "tong_long_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "tang_chien_cong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tang_cong_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "tang_cuong": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "tang_muu_cong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tang_muu_cong_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tang_muu_phong_2": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "tang_phap_cong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tang_phap_cong_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tang_phap_phong_2": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "tang_st_chien_phap_2": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "tang_st_ke_sach_2": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "tang_st_vat_ly_2": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "tang_tan_cong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tang_tat_ca_cong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tang_uy": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tang_vat_cong": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tang_vat_cong_2": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tang_vat_phong_2": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "tuoc_doat": {
+      "kind": "buff",
+      "atkMul": 0.1,
+      "moralePerTurn": 10
+    },
+    "tan_cong_manh_me": {
+      "kind": "unremovable",
+      "atkMul": 0.1,
+      "lifesteal": 0.08,
+      "moralePerTurn": 10
+    },
+    "tat_hanh_chuyen_dung_bac_7": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "tinh_hoa": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "to_chi": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "toa_binh": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    },
+    "toa_binh_2": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "tu_chien": {
+      "kind": "buff",
+      "atkMul": 0.15
+    },
+    "tu_than": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "tu_than_2": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "tu_thu": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "tu_thu_2": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "vien_muu": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "vong_doan": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "vay_khon_2": {
+      "kind": "buff",
+      "lifesteal": 0.08,
+      "atkMul": 0.06
+    },
+    "vo_ngon": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "vo_ngon_2": {
+      "kind": "unremovable",
+      "atkMul": 0.06
+    },
+    "vo_tinh": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "vo_dung": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "vo_luc": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "vo_luc_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "vo_tran": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "vo_tran_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1,
+      "lifesteal": 0.08
+    },
+    "xua_duoi": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "xuyen_thau": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "xuyen_thau_2": {
+      "kind": "unremovable",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "xuyen_thau_2_chuyen_dung_bac_7": {
+      "kind": "unremovable",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "xao_bien": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "am_te": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "am_van": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "ap_che": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "ap_che_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "ap_uc": {
+      "kind": "debuff",
+      "atkDown": 0.1,
+      "defDown": 0.05
+    },
+    "am_hon": {
+      "kind": "buff",
+      "atkMul": 0.12
+    },
+    "am_hon_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "y_chi": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "dien_cuong": {
+      "kind": "buff",
+      "atkMul": 0.15
+    },
+    "dien_cuong_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "dieu_thong": {
+      "kind": "unremovable",
+      "atkMul": 0.06
+    },
+    "dieu_tri": {
+      "kind": "unremovable",
+      "atkMul": 0.06
+    },
+    "dieu_vo": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "diep_nhan": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "doat": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "doat_2": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "doat_khi": {
+      "kind": "buff",
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "doat_khi_3": {
+      "kind": "unremovable",
+      "lifesteal": 0.08,
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "dao_binh": {
+      "kind": "debuff",
+      "atkDown": 0.12
+    },
+    "dong_bang": {
+      "kind": "control",
+      "stun": true
+    },
+    "dong_do": {
+      "kind": "buff",
+      "defMul": 0.15
+    },
+    "dong_do_2": {
+      "kind": "unremovable",
+      "defMul": 0.15
+    },
+    "dau_tran_tang_si_khi": {
+      "kind": "buff",
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "day_si_khi": {
+      "kind": "buff",
+      "moralePerTurn": 10,
+      "atkMul": 0.06
+    },
+    "de_hon": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "de_khang": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "de_khang_2": {
+      "kind": "buff",
+      "defMul": 0.15,
+      "atkMul": 0.1
+    },
+    "do_luc": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "don_dien": {
+      "kind": "buff",
+      "atkMul": 0.06
+    },
+    "do_hiem": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "do_hiem_2": {
+      "kind": "unremovable",
+      "atkMul": 0.1
+    },
+    "doc_ke": {
+      "kind": "debuff",
+      "atkDown": 0.08
+    },
+    "an_nap_chuyen_dung_bac_7": {
+      "kind": "buff",
+      "atkMul": 0.1
+    },
+    "phan_kich": {
+      "kind": "buff",
+      "atkMul": 0.08
+    },
+    "huyet_nhan": {
+      "kind": "buff",
+      "atkMul": 0.12,
+      "lifesteal": 0.05
+    },
+    "thanh_long": {
+      "kind": "buff",
+      "atkMul": 0.12,
+      "defMul": 0.08
+    },
+    "di_nhieu": {
+      "kind": "debuff",
+      "atkDown": 0.1
+    }
+  }
 }};})(window);
