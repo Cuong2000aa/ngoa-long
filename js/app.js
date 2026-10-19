@@ -191,29 +191,67 @@
         refresh();
         var panelLayer = document.getElementById("panel-layer");
         if (r.ok && panelLayer && !panelLayer.hidden) {
-          UI.renderCityPanel(state, makeHandlers());
+          var focus = UI.renderBuildingDetail && UI.renderBuildingDetail._lastId;
+          if (focus) UI.renderBuildingDetail(state, focus, makeHandlers());
+          else UI.renderCityPanel(state, makeHandlers());
         }
+      },
+      openBuilding: function (id) {
+        UI.renderBuildingDetail(state, id, makeHandlers());
       },
       train: function (id) {
         var r = G.trainGeneral(state, id);
         UI.toast(r.ok ? "Huấn luyện xong" : r.msg, r.ok ? "good" : "bad");
         G.saveGame(state);
         refresh();
-        UI.renderGenerals(state, makeHandlers());
+        if (UI.refreshGeneralsView) UI.refreshGeneralsView(state, makeHandlers());
+        else UI.renderGenerals(state, makeHandlers());
       },
       enhance: function (id) {
         var r = G.enhanceGeneral(state, id);
         UI.toast(r.ok ? "Cường hóa thành công" : r.msg, r.ok ? "good" : "bad");
         G.saveGame(state);
         refresh();
-        UI.renderGenerals(state, makeHandlers());
+        if (UI.refreshGeneralsView) UI.refreshGeneralsView(state, makeHandlers());
+        else UI.renderGenerals(state, makeHandlers());
       },
       awaken: function (id) {
         var r = G.awakenGeneral(state, id);
         UI.toast(r.ok ? "Giác ngộ thành công" : r.msg, r.ok ? "good" : "bad");
         G.saveGame(state);
         refresh();
-        UI.renderGenerals(state, makeHandlers());
+        if (UI.refreshGeneralsView) UI.refreshGeneralsView(state, makeHandlers());
+        else UI.renderGenerals(state, makeHandlers());
+      },
+      switchActiveTroop: function (id) {
+        var r = G.switchHeroActiveTroop(state, id);
+        var troopName =
+          r.ok && typeof NLDatabase !== "undefined" && NLDatabase.getTroop
+            ? (NLDatabase.getTroop(r.activeTroop) || {}).name || r.activeTroop
+            : r.activeTroop;
+        UI.toast(r.ok ? "Đổi loại binh → " + troopName : r.msg, r.ok ? "good" : "bad");
+        if (r.ok) {
+          G.saveGame(state);
+          refresh();
+          if (UI.refreshGeneralsView) UI.refreshGeneralsView(state, makeHandlers());
+          else UI.renderGenerals(state, makeHandlers());
+        }
+      },
+      setActiveTroop: function (heroId, troopId) {
+        var r = G.setHeroActiveTroop
+          ? G.setHeroActiveTroop(state, heroId, troopId)
+          : G.switchHeroActiveTroop(state, heroId);
+        var troopName =
+          r.ok && typeof NLDatabase !== "undefined" && NLDatabase.getTroop
+            ? (NLDatabase.getTroop(r.activeTroop) || {}).name || r.activeTroop
+            : r.activeTroop;
+        UI.toast(r.ok ? "Đổi loại binh → " + troopName : r.msg, r.ok ? "good" : "bad");
+        if (r.ok) {
+          G.saveGame(state);
+          refresh();
+          if (UI.refreshGeneralsView) UI.refreshGeneralsView(state, makeHandlers());
+          else UI.renderGenerals(state, makeHandlers());
+        }
       },
       recruitSoul: function () {
         var r = G.recruitSoulGeneral(state);
@@ -249,11 +287,13 @@
         openNav(panel === "tower" ? "tower" : panel);
       },
       openGeneralsTavern: function () {
-        UI.renderGenerals._tab = "tavern";
+        UI.renderGenerals._sub = "chieumo";
+        UI.renderGenerals._tab = null;
         openNav("generals");
       },
       openGeneralsOwned: function () {
-        UI.renderGenerals._tab = "owned";
+        UI.renderGenerals._sub = "tuong";
+        UI.renderGenerals._tab = null;
         openNav("generals");
       },
       deploySlot: function (heroId, slot) {
@@ -261,13 +301,15 @@
         UI.toast(r.msg, r.ok ? "good" : "bad");
         G.saveGame(state);
         refresh();
-        UI.renderGenerals(state, makeHandlers());
+        if (UI.refreshGeneralsView) UI.refreshGeneralsView(state, makeHandlers());
+        else UI.renderGenerals(state, makeHandlers());
       },
       dismissHero: function (heroId) {
         var r = G.dismissHero(state, heroId);
         UI.toast(r.msg, r.ok ? "good" : "bad");
         G.saveGame(state);
         refresh();
+        UI.renderGenerals._detailId = null;
         UI.renderGenerals(state, makeHandlers());
       },
       attackTerritory: function (tid) {
@@ -415,8 +457,10 @@
     if (panel === "city") UI.renderCityPanel(state, h);
     else if (panel === "generals") {
       if (openNav._tavernNext) {
-        UI.renderGenerals._tab = "tavern";
+        UI.renderGenerals._sub = "chieumo";
         openNav._tavernNext = false;
+      } else if (!UI.renderGenerals._sub) {
+        UI.renderGenerals._sub = "tuong";
       }
       UI.renderGenerals(state, h);
     }
@@ -578,11 +622,48 @@
     enterGame(s);
   });
 
-  cont.addEventListener("click", function () {
+  var btnNewMax = document.getElementById("btn-new-max");
+  if (btnNewMax) {
+    btnNewMax.addEventListener("click", function () {
+      var name = document.getElementById("player-name").value.trim() || "Thành Chủ";
+      if (G.hasSave() && !confirm("Tạo mới MAX sẽ ghi đè save cũ?")) return;
+      var s = G.createNewGame(name, selectedFaction);
+      var r = G.debugMaxAllHeroes(s);
+      G.saveGame(s);
+      enterGame(s);
+      UI.toast(
+        r.ok ? "DEV: max " + r.count + " tướng · Ty Vũ 180 · bạc/lương đầy" : r.msg,
+        r.ok ? "good" : "bad"
+      );
+    });
+  }
+
+  cont.addEventListener("click", function (e) {
     var s = G.loadGame();
     if (!s) { alert("Không đọc được save."); return; }
+    if (e.shiftKey) {
+      G.debugMaxAllHeroes(s);
+      G.saveGame(s);
+    }
     enterGame(s);
+    if (e.shiftKey) UI.toast("DEV: đã max tướng trên save", "good");
   });
+
+  // Trong game: console → NLCheat.maxHeroes() hoặc ?cheat=max
+  window.NLCheat = {
+    maxHeroes: function () {
+      if (!state) {
+        UI.toast("Chưa vào game", "bad");
+        return;
+      }
+      var r = G.debugMaxAllHeroes(state);
+      G.saveGame(state);
+      refresh();
+      if (UI.refreshGeneralsView) UI.refreshGeneralsView(state, makeHandlers());
+      UI.toast(r.ok ? "Max " + r.count + " tướng" : r.msg, r.ok ? "good" : "bad");
+      return r;
+    },
+  };
 
   // HUD
   document.getElementById("btn-tick").addEventListener("click", function () {
@@ -676,5 +757,11 @@
       document.documentElement.setAttribute("data-smoke", "error");
       console.error(err);
     }
+  }
+
+  if (/\bcheat=max\b/.test(location.search)) {
+    setTimeout(function () {
+      if (state && window.NLCheat) window.NLCheat.maxHeroes();
+    }, 900);
   }
 })();

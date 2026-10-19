@@ -119,6 +119,68 @@
     return db().troops.types[id] || null;
   }
 
+  /** Map tên binh wiki (CN / VI / id) → troop id game. */
+  var WIKI_UNIT_TO_TROOP = {
+    "枪兵": "spear",
+    "骑兵": "cavalry",
+    "步兵": "infantry",
+    "弓兵": "archer",
+    "谋士": "strategist",
+    "文官": "strategist",
+    spear: "spear",
+    cavalry: "cavalry",
+    infantry: "infantry",
+    archer: "archer",
+    strategist: "strategist",
+    Thương: "spear",
+    "Thương binh": "spear",
+    Kỵ: "cavalry",
+    "Kỵ binh": "cavalry",
+    Bộ: "infantry",
+    "Bộ binh": "infantry",
+    Cung: "archer",
+    "Cung binh": "archer",
+    "Quan văn": "strategist",
+    Mưu: "strategist",
+  };
+
+  function normalizeTroopId(raw) {
+    if (!raw) return null;
+    if (getTroop(raw)) return raw;
+    return WIKI_UNIT_TO_TROOP[raw] || WIKI_UNIT_TO_TROOP[String(raw).trim()] || null;
+  }
+
+  /**
+   * Các loại binh theo wiki (units → troop + troop2).
+   * Chỉ 1 loại → không đổi được; có troop2 mới hiện nhiều thẻ.
+   */
+  function getGeneralTroopOptions(generalOrId) {
+    var g = typeof generalOrId === "string" ? getGeneral(generalOrId) : generalOrId;
+    if (!g) return ["infantry"];
+    var out = [];
+    function add(raw) {
+      var t = normalizeTroopId(raw);
+      if (t && out.indexOf(t) < 0) out.push(t);
+    }
+    add(g.troop);
+    add(g.troop2);
+    add(g.troopPrimary);
+    (g.wikiUnits || []).forEach(add);
+    if (g.key || g.generalId || g.id) {
+      var tpl = getGeneral(g.key || g.generalId || g.id);
+      if (tpl && tpl !== g) {
+        add(tpl.troop);
+        add(tpl.troop2);
+        (tpl.wikiUnits || []).forEach(add);
+      }
+    }
+    return out.length ? out : ["infantry"];
+  }
+
+  function getGeneralWikiTroops(generalOrId) {
+    return getGeneralTroopOptions(generalOrId);
+  }
+
   function getItem(id) {
     if (!id) return null;
     return db().items.list.find(function (i) { return i.id === id; }) || null;
@@ -292,6 +354,42 @@
     return mods[String(tier)] || mods["1"] || { atk: 1, def: 1, label: "Sơ cấp" };
   }
 
+  /** Level tối thiểu để đạt bậc binh chủng (tier 1 = Lv.1). */
+  function troopTierUnlockLevel(tier) {
+    var rows = (db().troops && db().troops.tierByLevel) || [];
+    var t = Math.max(1, Math.min(6, (tier | 0) || 1));
+    if (t <= 1) return 1;
+    for (var i = 0; i < rows.length; i++) {
+      if ((rows[i].tier || 1) === t - 1) {
+        return (rows[i].maxLevel || 0) + 1;
+      }
+    }
+    return 1;
+  }
+
+  /** Tên/mô tả bậc theo wiki (wikiTiers) + hệ số tierMods. */
+  function getTroopWikiTier(troopId, tier) {
+    var troop = getTroop(troopId);
+    if (!troop) return null;
+    var t = Math.max(1, Math.min(6, (tier | 0) || 1));
+    var wiki = (troop.wikiTiers && troop.wikiTiers[String(t)]) || null;
+    var mod = troopTierMod(t);
+    return {
+      tier: t,
+      name:
+        (wiki && wiki.name) ||
+        (troop.tierNames && troop.tierNames[t - 1]) ||
+        (troop.wikiTierNames && troop.wikiTierNames[t - 1]) ||
+        ("Bậc " + t),
+      desc: (wiki && wiki.desc) || "",
+      atk: mod.atk != null ? mod.atk : 1,
+      def: mod.def != null ? mod.def : 1,
+      label: mod.label || ("Bậc " + t),
+      unlockLevel: troopTierUnlockLevel(t),
+      statBias: (wiki && wiki.statBias) || null,
+    };
+  }
+
   /** Scale dùng hệ số từ formulas.json nếu có */
   function scaleGeneral(generalId, level, overrides) {
     var g = typeof generalId === "string" ? getGeneral(generalId) : generalId;
@@ -385,8 +483,13 @@
     awakenInfo: awakenInfo,
     generalPortraitUrl: generalPortraitUrl,
     getTroop: getTroop,
+    normalizeTroopId: normalizeTroopId,
+    getGeneralTroopOptions: getGeneralTroopOptions,
+    getGeneralWikiTroops: getGeneralWikiTroops,
     troopTierForLevel: troopTierForLevel,
     troopTierMod: troopTierMod,
+    troopTierUnlockLevel: troopTierUnlockLevel,
+    getTroopWikiTier: getTroopWikiTier,
     getItem: getItem,
     itemIconUrl: itemIconUrl,
     EQUIP_SLOTS: EQUIP_SLOTS,

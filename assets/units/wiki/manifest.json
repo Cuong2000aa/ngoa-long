@@ -1,0 +1,2351 @@
+[
+  {
+    "wikiId": "177",
+    "name": "Bệ Ngạn",
+    "troop": "infantry",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "177.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/96ac9a0d-97d3-4e99-ad92-621baa287b1e.ca0fa.png"
+  },
+  {
+    "wikiId": "1",
+    "name": "Bộ",
+    "troop": "infantry",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "1.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d179040c-c077-48d5-a26c-30284b1b0fc4.2ebfb.png"
+  },
+  {
+    "wikiId": "405",
+    "name": "Cùng Kỳ",
+    "troop": "infantry",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "405.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2af49e04-9259-4f26-9de2-8251d0782f84.543a8.png"
+  },
+  {
+    "wikiId": "322",
+    "name": "Hỗn Độn",
+    "troop": "infantry",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "322.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f1abdf8b-d97a-44c7-a468-4eff8a0f78bd.6a1bf.png"
+  },
+  {
+    "wikiId": "312",
+    "name": "Lữ Bố",
+    "troop": "infantry",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "312.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8df4540c-0575-470a-a179-0ac1ba83422f.c7152.png"
+  },
+  {
+    "wikiId": "345",
+    "name": "Người Gỗ Chịu Đòn",
+    "troop": "infantry",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "345.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d179040c-c077-48d5-a26c-30284b1b0fc4.2ebfb.png"
+  },
+  {
+    "wikiId": "344",
+    "name": "Người Gỗ Hồi Khí",
+    "troop": "infantry",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "344.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d179040c-c077-48d5-a26c-30284b1b0fc4.2ebfb.png"
+  },
+  {
+    "wikiId": "346",
+    "name": "Người Gỗ Thường",
+    "troop": "infantry",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "346.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d179040c-c077-48d5-a26c-30284b1b0fc4.2ebfb.png"
+  },
+  {
+    "wikiId": "215",
+    "name": "Sơn tặc",
+    "troop": "infantry",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "215.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c47d8426-9ddf-4e95-aecf-738d8ae14335.39050.png"
+  },
+  {
+    "wikiId": "297",
+    "name": "Test Bị Động",
+    "troop": "infantry",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "297.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b2ce99f0-5f3f-40d1-ba45-38f8e0ba67f7.5ddef.png"
+  },
+  {
+    "wikiId": "441",
+    "name": "Thao Thiết",
+    "troop": "infantry",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "441.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/53860957-7fba-405e-a15c-c244439f761e.143c7.png"
+  },
+  {
+    "wikiId": "173",
+    "name": "Thí Luyện Chi Lực",
+    "troop": "infantry",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "173.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/80c9fa81-a959-457a-88ed-473cefb10afd.8450d.png"
+  },
+  {
+    "wikiId": "348",
+    "name": "Tường Thành Quốc Chiến",
+    "troop": "infantry",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "348.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/252e75c0-2de1-4713-9b54-764431658f6e.5bbe9.png"
+  },
+  {
+    "wikiId": "15",
+    "name": "Thuẫn Binh",
+    "troop": "infantry",
+    "tier": 1,
+    "wikiCap": 1,
+    "file": "15.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f1ba745a-a0aa-4b36-8709-aa2f5b394552.4f43b.png"
+  },
+  {
+    "wikiId": "14",
+    "name": "Trùng Bộ",
+    "troop": "infantry",
+    "tier": 1,
+    "wikiCap": 1,
+    "file": "14.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0356d9e2-24d5-488b-bb85-e37854588b4f.68f12.png"
+  },
+  {
+    "wikiId": "2",
+    "name": "Đao Binh",
+    "troop": "infantry",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "2.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c858735e-593a-420d-ac7d-78247932d0dc.950d8.png"
+  },
+  {
+    "wikiId": "24",
+    "name": "Đằng Giáp",
+    "troop": "infantry",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "24.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bf3ecbf4-845f-4103-82cc-d0d769c5b9ad.3bf5d.png"
+  },
+  {
+    "wikiId": "34",
+    "name": "Hổ Việt Trảo",
+    "troop": "infantry",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "34.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/981bef48-498c-47df-b321-03fddce60882.e582e.png"
+  },
+  {
+    "wikiId": "5",
+    "name": "Kim Bộ",
+    "troop": "infantry",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "5.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b33bb0a6-4152-4adb-9542-0b4509392927.ec6c6.png"
+  },
+  {
+    "wikiId": "25",
+    "name": "Thạch Giáp",
+    "troop": "infantry",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "25.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/53f8a2af-6c58-4300-a54c-5bae95d69eb6.2972f.png"
+  },
+  {
+    "wikiId": "26",
+    "name": "Thủy Bộ",
+    "troop": "infantry",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "26.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/19a9b21d-456f-43af-a56e-c88cba828303.fd248.png"
+  },
+  {
+    "wikiId": "3",
+    "name": "Tử Thần Bộ",
+    "troop": "infantry",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "3.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/df978f64-1f94-43ae-9cf5-6e498958d211.59977.png"
+  },
+  {
+    "wikiId": "4",
+    "name": "Ưng Kiếm",
+    "troop": "infantry",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "4.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/593d1b73-2397-4e70-a9fa-51d213b97934.971f8.png"
+  },
+  {
+    "wikiId": "65",
+    "name": "Bàn Hộ Vệ",
+    "troop": "infantry",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "65.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/993a4c64-92fb-4737-b7ea-5336a5889326.4e97e.png"
+  },
+  {
+    "wikiId": "61",
+    "name": "Giáp Bộ",
+    "troop": "infantry",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "61.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/51cca56a-0bca-4966-94cd-9e010fc754b1.8e9b4.png"
+  },
+  {
+    "wikiId": "60",
+    "name": "Hoàng Bộ",
+    "troop": "infantry",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "60.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1e17cf23-6667-4fce-ab08-57530311f8fd.7b228.png"
+  },
+  {
+    "wikiId": "64",
+    "name": "Hổ Lực Sĩ",
+    "troop": "infantry",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "64.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8f9affb5-680c-418c-8625-4d9c4baa5afb.3f366.png"
+  },
+  {
+    "wikiId": "67",
+    "name": "Lang Tử Sĩ",
+    "troop": "infantry",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "67.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2c5db912-7197-434e-80bb-1cae1440b3c0.8cf5f.png"
+  },
+  {
+    "wikiId": "62",
+    "name": "Lôi Kiếm Sĩ",
+    "troop": "infantry",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "62.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1b824981-e293-4c5c-bdc9-35a3519d483f.748d7.png"
+  },
+  {
+    "wikiId": "63",
+    "name": "Phán Quan",
+    "troop": "infantry",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "63.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8b4f5d30-3c4d-4a3e-bfe5-5430e294dc57.40ea2.png"
+  },
+  {
+    "wikiId": "66",
+    "name": "Văn Khúc",
+    "troop": "infantry",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "66.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/cfcfcb6d-0390-4f64-9f8b-ebaa98346d26.5a7a8.png"
+  },
+  {
+    "wikiId": "138",
+    "name": "Bàn Cổ Vệ",
+    "troop": "infantry",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "138.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/79ee35f7-a4cc-413e-817b-079088f4f6ae.6a5fb.png"
+  },
+  {
+    "wikiId": "136",
+    "name": "Điện Sĩ",
+    "troop": "infantry",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "136.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d71fb2b3-c743-4ec0-83da-4c8c53ef64e7.c263f.png"
+  },
+  {
+    "wikiId": "133",
+    "name": "Hoành Đao Thủ",
+    "troop": "infantry",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "133.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/39dafecc-bb30-4db9-b682-756be8d42c2a.48eba.png"
+  },
+  {
+    "wikiId": "140",
+    "name": "Lang Hàng Giả",
+    "troop": "infantry",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "140.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7e1730fc-9c7b-44d4-822e-ea628cf8556c.9e402.png"
+  },
+  {
+    "wikiId": "135",
+    "name": "Lôi Binh",
+    "troop": "infantry",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "135.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7cca962f-6801-4531-94ca-d8d580379eb4.6e8f5.png"
+  },
+  {
+    "wikiId": "137",
+    "name": "Mặc Giáp Binh",
+    "troop": "infantry",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "137.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1112ba53-b417-4844-94fb-54b6c22cef28.6b4ac.png"
+  },
+  {
+    "wikiId": "139",
+    "name": "Trì Pháp Quan",
+    "troop": "infantry",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "139.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7afdca8f-3f4a-4a27-942f-e6340cdb54d7.11b40.png"
+  },
+  {
+    "wikiId": "134",
+    "name": "Tử Thần",
+    "troop": "infantry",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "134.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/964d16ca-d154-4e63-9b45-283ce85ac639.875ae.png"
+  },
+  {
+    "wikiId": "196",
+    "name": "Diệm Thủ",
+    "troop": "infantry",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "196.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f73f56e3-241d-4371-b20c-4c398ebaeac1.5c24e.png"
+  },
+  {
+    "wikiId": "181",
+    "name": "Hàn Giáp Bộ",
+    "troop": "infantry",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "181.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/76914d3e-ce39-49dc-b7f3-c6ff1decfc87.b8dfa.png"
+  },
+  {
+    "wikiId": "180",
+    "name": "Hắc Điện Sĩ",
+    "troop": "infantry",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "180.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7f71766f-f661-4715-adc4-736cfbd7787c.c0442.png"
+  },
+  {
+    "wikiId": "198",
+    "name": "Nham Giáp",
+    "troop": "infantry",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "198.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a0583998-b420-421a-ab2c-fdc45696c822.1b3a7.png"
+  },
+  {
+    "wikiId": "182",
+    "name": "Sương Hồn",
+    "troop": "infantry",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "182.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7c1c6dea-f862-4890-adaa-df66478ac1d9.0050b.png"
+  },
+  {
+    "wikiId": "219",
+    "name": "Thiên Giáp",
+    "troop": "infantry",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "219.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5c326886-1464-4fde-9923-fe291fcb4546.6b99b.png"
+  },
+  {
+    "wikiId": "220",
+    "name": "Thiên Vệ",
+    "troop": "infantry",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "220.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1899eb0b-f5e6-46b8-8407-1ad87595603c.285c0.png"
+  },
+  {
+    "wikiId": "197",
+    "name": "Viêm Vệ",
+    "troop": "infantry",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "197.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/661158ea-4a3a-4c02-b9d5-67c0b384bbb7.fcfd4.png"
+  },
+  {
+    "wikiId": "298",
+    "name": "Băng Chùy",
+    "troop": "infantry",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "298.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b54069a0-b937-4f97-b70b-fe8625341bc3.e79c4.png"
+  },
+  {
+    "wikiId": "299",
+    "name": "Băng Giáp",
+    "troop": "infantry",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "299.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0847d949-90ef-4f59-9d25-7b0a7b703cdb.9ead5.png"
+  },
+  {
+    "wikiId": "236",
+    "name": "Cô Hành Giả",
+    "troop": "infantry",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "236.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b38a4d01-b4b6-48cd-8aa9-0f327dc695e1.0d529.png"
+  },
+  {
+    "wikiId": "235",
+    "name": "Hắc Sơn Liệm",
+    "troop": "infantry",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "235.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6074599e-9bef-4adc-a319-37f0efd8834b.3bf92.png"
+  },
+  {
+    "wikiId": "273",
+    "name": "Minh Giới Lực Sĩ",
+    "troop": "infantry",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "273.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b2ce99f0-5f3f-40d1-ba45-38f8e0ba67f7.5ddef.png"
+  },
+  {
+    "wikiId": "274",
+    "name": "Trảm Phong Vệ Sĩ",
+    "troop": "infantry",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "274.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/059a1c00-086d-4eab-881d-542601b54a3d.14dad.png"
+  },
+  {
+    "wikiId": "234",
+    "name": "Trấn Ngục Giáp",
+    "troop": "infantry",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "234.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/74075b1a-22a4-4d8a-8112-5ad087efc385.cd057.png"
+  },
+  {
+    "wikiId": "275",
+    "name": "U Linh Giám Quân",
+    "troop": "infantry",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "275.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ec3d7746-cc00-4c5a-96a5-a726ef9a5d26.bae40.png"
+  },
+  {
+    "wikiId": "444",
+    "name": "Huyền Nhạc Minh Liêm",
+    "troop": "infantry",
+    "tier": 6,
+    "wikiCap": 7,
+    "file": "444.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/df13a9ad-cb6b-41b2-b8b1-2a94b255172e.1ed46.png"
+  },
+  {
+    "wikiId": "443",
+    "name": "Trấn Ngục Kim Cang",
+    "troop": "infantry",
+    "tier": 6,
+    "wikiCap": 7,
+    "file": "443.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/731d211a-fbc1-46d8-91ea-cdff8a9c2ca7.f40bf.png"
+  },
+  {
+    "wikiId": "217",
+    "name": "Hải tặc",
+    "troop": "spear",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "217.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/771ce7fb-c577-4dd8-abe0-0db55edfe7c5.3f46e.png"
+  },
+  {
+    "wikiId": "291",
+    "name": "Lữ Bố",
+    "troop": "spear",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "291.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8df4540c-0575-470a-a179-0ac1ba83422f.c7152.png"
+  },
+  {
+    "wikiId": "174",
+    "name": "Thí Luyện Vương",
+    "troop": "spear",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "174.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f65dbf3c-94b8-4325-9cf7-f5b107f64a9d.42c40.png"
+  },
+  {
+    "wikiId": "10",
+    "name": "Thương",
+    "troop": "spear",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "10.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5d3aadb2-1450-497f-93b9-a45320dd88d6.840fa.png"
+  },
+  {
+    "wikiId": "17",
+    "name": "Trùng Kích",
+    "troop": "spear",
+    "tier": 1,
+    "wikiCap": 1,
+    "file": "17.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/67f041ef-7cae-451c-bfd4-bd445b57805d.82f51.png"
+  },
+  {
+    "wikiId": "16",
+    "name": "Trùng Thương",
+    "troop": "spear",
+    "tier": 1,
+    "wikiCap": 1,
+    "file": "16.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/348fd010-33ae-46ce-a37b-32054f5fc50e.117ba.png"
+  },
+  {
+    "wikiId": "27",
+    "name": "Chùy Giáp",
+    "troop": "spear",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "27.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c073cfe3-acf2-4726-9959-2ebf5415a716.8a96c.png"
+  },
+  {
+    "wikiId": "33",
+    "name": "Đại Kích Sĩ",
+    "troop": "spear",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "33.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2182bafd-8722-4587-896e-ae0f9eabf1d3.85484.png"
+  },
+  {
+    "wikiId": "35",
+    "name": "Đoản Kích",
+    "troop": "spear",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "35.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8022ac54-dd0f-499c-82a5-975169fef88c.53326.png"
+  },
+  {
+    "wikiId": "31",
+    "name": "Huyền Vũ",
+    "troop": "spear",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "31.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/79732a0e-f67e-43ad-9ab6-c331aaea3efb.3856c.png"
+  },
+  {
+    "wikiId": "28",
+    "name": "Kim Thương",
+    "troop": "spear",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "28.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/528d8807-ca5f-4a54-b280-7945086ccb10.ebd67.png"
+  },
+  {
+    "wikiId": "32",
+    "name": "Kỳ Tập Mâu",
+    "troop": "spear",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "32.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5653daaf-de2b-4de3-b6c2-3321ceee4c62.e6f6f.png"
+  },
+  {
+    "wikiId": "30",
+    "name": "Liệt Hỏa",
+    "troop": "spear",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "30.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8e3ffe48-3d51-4929-9668-c2edbc86f802.b2d20.png"
+  },
+  {
+    "wikiId": "29",
+    "name": "Ngân Thương",
+    "troop": "spear",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "29.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/08107d21-bbcd-4ca2-a34a-2c96dc7fd6e9.e7851.png"
+  },
+  {
+    "wikiId": "74",
+    "name": "Cang Chùy",
+    "troop": "spear",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "74.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/62861b6d-e9f6-4e87-9a74-86b0a22c8349.4199c.png"
+  },
+  {
+    "wikiId": "68",
+    "name": "Diệm Long",
+    "troop": "spear",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "68.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3b25261f-f8ca-4fff-a870-2fa2765bfe06.0826d.png"
+  },
+  {
+    "wikiId": "75",
+    "name": "Đường Võ",
+    "troop": "spear",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "75.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/130dbe31-1b60-436d-84f6-72ab00bd8b2d.7ebac.png"
+  },
+  {
+    "wikiId": "70",
+    "name": "Hoàng Thương",
+    "troop": "spear",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "70.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2f127c2b-7074-4f03-9870-79af91d9beaf.a3113.png"
+  },
+  {
+    "wikiId": "72",
+    "name": "Lục Mâu",
+    "troop": "spear",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "72.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ba231255-4360-4ac4-b8d5-ab63d65c5802.37077.png"
+  },
+  {
+    "wikiId": "73",
+    "name": "Si Vưu Sĩ",
+    "troop": "spear",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "73.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6c7797e7-0f81-42d7-bb0c-3dc7aed71d21.058cd.png"
+  },
+  {
+    "wikiId": "71",
+    "name": "Thánh Thương",
+    "troop": "spear",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "71.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f46dd246-6fff-42ab-b7a5-1f799a9581bf.48fe6.png"
+  },
+  {
+    "wikiId": "69",
+    "name": "Viên Võ",
+    "troop": "spear",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "69.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/20ac1aed-6e67-4a7c-b31e-16e2cdc6175a.4fa55.png"
+  },
+  {
+    "wikiId": "145",
+    "name": "Huyết Lục",
+    "troop": "spear",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "145.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/08f85b9c-e4f8-4d35-b7c6-d2dfd4d3a47c.fc200.png"
+  },
+  {
+    "wikiId": "141",
+    "name": "Linh Thương",
+    "troop": "spear",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "141.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/50dd96e5-e873-4244-8e04-f5531b118ad0.e6bee.png"
+  },
+  {
+    "wikiId": "147",
+    "name": "Phá Không Chùy",
+    "troop": "spear",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "147.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/315a9d79-b2a7-45e5-8708-097ef5011ad2.31efc.png"
+  },
+  {
+    "wikiId": "148",
+    "name": "Song Kích",
+    "troop": "spear",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "148.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2bde402f-d563-4962-92cb-99be901496a4.fcbf1.png"
+  },
+  {
+    "wikiId": "144",
+    "name": "Thi Ma",
+    "troop": "spear",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "144.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8dc91101-75db-426b-907e-cdf4fee74945.f104c.png"
+  },
+  {
+    "wikiId": "143",
+    "name": "Võ Tăng",
+    "troop": "spear",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "143.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/269eb19a-735c-4b08-8f5f-c3f9fd3b5b26.a085c.png"
+  },
+  {
+    "wikiId": "146",
+    "name": "Xi Vưu Kích",
+    "troop": "spear",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "146.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f2889d38-f39a-46de-a740-d096c08cb118.e9f5e.png"
+  },
+  {
+    "wikiId": "221",
+    "name": "Cương Vệ",
+    "troop": "spear",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "221.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/df64e070-96fd-41b0-a591-35c20b73c51d.3b969.png"
+  },
+  {
+    "wikiId": "200",
+    "name": "Diệm Thương",
+    "troop": "spear",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "200.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/25eb1607-76d8-4e85-9e0b-c4891156478c.7e5db.png"
+  },
+  {
+    "wikiId": "199",
+    "name": "Hỏa Sư",
+    "troop": "spear",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "199.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/08223988-7b07-4577-b6b5-c365b9ff9953.e334e.png"
+  },
+  {
+    "wikiId": "222",
+    "name": "Kích Vương",
+    "troop": "spear",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "222.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2ede4e31-d050-46c9-9f18-4add3da8dc72.9e8b5.png"
+  },
+  {
+    "wikiId": "183",
+    "name": "Ma Thương",
+    "troop": "spear",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "183.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c6b1b6f9-ca42-4e02-bc49-9c249d621a45.d4984.png"
+  },
+  {
+    "wikiId": "185",
+    "name": "Võ Sư",
+    "troop": "spear",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "185.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a070a2c6-c7b0-4c89-b92e-f2acc9276d86.7e3cb.png"
+  },
+  {
+    "wikiId": "201",
+    "name": "Xi Vưu Phủ",
+    "troop": "spear",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "201.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/61a8bf47-ac37-4032-aac7-9a06f275920e.e7945.png"
+  },
+  {
+    "wikiId": "184",
+    "name": "Yêu Chùy",
+    "troop": "spear",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "184.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d90c9ccc-a153-4c91-b2db-803e228754d9.ce895.png"
+  },
+  {
+    "wikiId": "301",
+    "name": "Băng Kích",
+    "troop": "spear",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "301.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8a3f3367-362e-4adf-9e2c-1d977c664169.1ec55.png"
+  },
+  {
+    "wikiId": "300",
+    "name": "Băng Thương",
+    "troop": "spear",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "300.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/66265e54-5fe3-4b1b-832a-b24cdfa90677.990f3.png"
+  },
+  {
+    "wikiId": "277",
+    "name": "Linh Diệm Tử Sĩ",
+    "troop": "spear",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "277.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/4f0b7223-a9fa-4bef-925e-9f9b60f75fde.8185a.png"
+  },
+  {
+    "wikiId": "276",
+    "name": "Lôi Đình Võ Tăng",
+    "troop": "spear",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "276.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bf599014-44f8-4832-83ef-61b0d6fb56fc.74873.png"
+  },
+  {
+    "wikiId": "278",
+    "name": "Lực Phù Tướng",
+    "troop": "spear",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "278.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2df2e43a-f562-4618-8809-653866905960.5119e.png"
+  },
+  {
+    "wikiId": "237",
+    "name": "Trấn Ngục Thương",
+    "troop": "spear",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "237.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0fd217f1-e3d8-43a8-8f9b-8ce1ff321f5f.f559b.png"
+  },
+  {
+    "wikiId": "238",
+    "name": "Tu La Chùy",
+    "troop": "spear",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "238.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6e64d4f5-097b-47a9-95e9-6798c46dffc9.21dae.png"
+  },
+  {
+    "wikiId": "239",
+    "name": "Tử Hồn Trảo",
+    "troop": "spear",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "239.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c04823b7-4c2a-4304-b6aa-64d00b1f8131.bd944.png"
+  },
+  {
+    "wikiId": "445",
+    "name": "Hồng Hoang Thần Thương",
+    "troop": "spear",
+    "tier": 6,
+    "wikiCap": 7,
+    "file": "445.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e57bf416-d483-428e-9868-6243342aad1d.c8fa2.png"
+  },
+  {
+    "wikiId": "446",
+    "name": "Thông Thiên Minh Thương",
+    "troop": "spear",
+    "tier": 6,
+    "wikiCap": 7,
+    "file": "446.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/637f839b-5190-495e-ae20-b310546f022e.63688.png"
+  },
+  {
+    "wikiId": "11",
+    "name": "Kỵ",
+    "troop": "cavalry",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "11.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a3d9165a-cb29-4c75-8078-3f6567a926ce.94f44.png"
+  },
+  {
+    "wikiId": "314",
+    "name": "Lữ Bố",
+    "troop": "cavalry",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "314.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8df4540c-0575-470a-a179-0ac1ba83422f.c7152.png"
+  },
+  {
+    "wikiId": "213",
+    "name": "Trùng Binh",
+    "troop": "cavalry",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "213.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ee9a394c-abc2-46be-9a97-0458c0230166.1f39a.png"
+  },
+  {
+    "wikiId": "18",
+    "name": "Kích Kỵ",
+    "troop": "cavalry",
+    "tier": 1,
+    "wikiCap": 1,
+    "file": "18.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0b73e1e3-0eab-4059-9b0f-7e679791ec76.94594.png"
+  },
+  {
+    "wikiId": "19",
+    "name": "Trùng Kỵ",
+    "troop": "cavalry",
+    "tier": 1,
+    "wikiCap": 1,
+    "file": "19.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e1aae813-5d62-429a-b765-ebc504c075ff.758cb.png"
+  },
+  {
+    "wikiId": "37",
+    "name": "Bạch Mã",
+    "troop": "cavalry",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "37.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f8ac6c4b-23c8-4a80-adb2-e94c096155a0.6fadf.png"
+  },
+  {
+    "wikiId": "40",
+    "name": "Giáp Ngưu",
+    "troop": "cavalry",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "40.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/49d1193f-9d48-4412-9579-331a9328e59e.5a48d.png"
+  },
+  {
+    "wikiId": "38",
+    "name": "Hổ Báo Kỵ",
+    "troop": "cavalry",
+    "tier": 5,
+    "wikiCap": 2,
+    "file": "38.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f2ab025d-f46f-45d4-93cf-e34de8653b6d.1ae47.png"
+  },
+  {
+    "wikiId": "43",
+    "name": "Kim Kỵ",
+    "troop": "cavalry",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "43.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/116b3661-4e19-449e-854c-5cc1405dd528.909ae.png"
+  },
+  {
+    "wikiId": "39",
+    "name": "Ngân Kỵ",
+    "troop": "cavalry",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "39.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fa89a241-88a9-4417-bd56-dc30c8346d34.49695.png"
+  },
+  {
+    "wikiId": "42",
+    "name": "Phiêu Kỵ",
+    "troop": "cavalry",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "42.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9cfc534c-1d30-48f3-9808-d85a716182e5.231b6.png"
+  },
+  {
+    "wikiId": "36",
+    "name": "Vân Kỵ",
+    "troop": "cavalry",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "36.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d3ce2c2d-8aad-40bd-91ea-3206c977a0a8.a2919.png"
+  },
+  {
+    "wikiId": "41",
+    "name": "Voi Chiến",
+    "troop": "cavalry",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "41.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e9f41ae3-e9f0-488a-8ab8-38eb4ad630dd.86784.png"
+  },
+  {
+    "wikiId": "81",
+    "name": "Bạch Kỵ",
+    "troop": "cavalry",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "81.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f4fa033d-e772-46de-8a4b-df3572a325d9.32e90.png"
+  },
+  {
+    "wikiId": "83",
+    "name": "Di Tộc",
+    "troop": "cavalry",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "83.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/55523721-33a2-433e-83c8-8ba962c6a802.cc212.png"
+  },
+  {
+    "wikiId": "82",
+    "name": "Hỏa Ngưu",
+    "troop": "cavalry",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "82.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a0426484-6bf0-4343-be34-3fa82717e4a6.c9190.png"
+  },
+  {
+    "wikiId": "77",
+    "name": "Hoàng Kỵ",
+    "troop": "cavalry",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "77.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e2b5c31d-3576-4f62-bd39-ec72b294501e.bdf31.png"
+  },
+  {
+    "wikiId": "78",
+    "name": "Long Kỵ",
+    "troop": "cavalry",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "78.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fee0f2db-c535-4373-8797-d6ea3795f74d.4d0b6.png"
+  },
+  {
+    "wikiId": "80",
+    "name": "Nghê Kỵ",
+    "troop": "cavalry",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "80.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3ad4b235-0992-45d4-adee-2953043b6866.4e517.png"
+  },
+  {
+    "wikiId": "76",
+    "name": "Phủ Kỵ",
+    "troop": "cavalry",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "76.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9f256b2f-8c22-47e7-9370-4f45cdb2cb70.b0eb9.png"
+  },
+  {
+    "wikiId": "79",
+    "name": "Thần Kỵ",
+    "troop": "cavalry",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "79.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1173178b-95f8-45cc-8393-06f5d1d23d6b.97c66.png"
+  },
+  {
+    "wikiId": "151",
+    "name": "Bạch Hổ Kỵ",
+    "troop": "cavalry",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "151.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9e6a45ef-43a9-4128-8994-d8e4bc1a84b4.4e632.png"
+  },
+  {
+    "wikiId": "153",
+    "name": "Bách Luân Thú",
+    "troop": "cavalry",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "153.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/13b8e396-252b-4eb0-8c4a-67dbe841b9b9.48932.png"
+  },
+  {
+    "wikiId": "149",
+    "name": "Diêm Long Kỵ",
+    "troop": "cavalry",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "149.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fbe171fe-0e68-4cae-bf4e-b828aa1b043b.892c9.png"
+  },
+  {
+    "wikiId": "155",
+    "name": "Huyết Đồ",
+    "troop": "cavalry",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "155.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/cdbb42a7-52f1-4f51-b31e-4f4bd1e5bd42.aca1b.png"
+  },
+  {
+    "wikiId": "156",
+    "name": "Linh Kỵ",
+    "troop": "cavalry",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "156.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a9483a1a-7800-478c-b5cb-72a46fc33c06.b32f7.png"
+  },
+  {
+    "wikiId": "154",
+    "name": "Ma Mút",
+    "troop": "cavalry",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "154.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d0ddab64-ea31-41f7-bb7d-07a033f765c0.a40d9.png"
+  },
+  {
+    "wikiId": "152",
+    "name": "Ngân Luyện Kỵ",
+    "troop": "cavalry",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "152.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e8edf9ef-aaa6-4cdc-9dcd-24ac7bd81c49.f1491.png"
+  },
+  {
+    "wikiId": "150",
+    "name": "Phong Dực Kỵ",
+    "troop": "cavalry",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "150.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/910862ef-4790-4df2-b3da-8e5005aa21e4.237d3.png"
+  },
+  {
+    "wikiId": "204",
+    "name": "Diệm Kỵ",
+    "troop": "cavalry",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "204.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/23008d97-d1e6-4939-a57a-df1a8f685a11.240c3.png"
+  },
+  {
+    "wikiId": "187",
+    "name": "Hắc Diệu",
+    "troop": "cavalry",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "187.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/872817f6-b09e-45a4-abbd-eea1077858e9.04cc2.png"
+  },
+  {
+    "wikiId": "188",
+    "name": "Hắc Ma Kỵ",
+    "troop": "cavalry",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "188.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ef529946-0335-4208-b6fb-2e52dcc9ec03.22724.png"
+  },
+  {
+    "wikiId": "203",
+    "name": "Hỏa Kỵ",
+    "troop": "cavalry",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "203.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/82b11143-4377-4b0a-aa79-e65539bb9b95.eeaa1.png"
+  },
+  {
+    "wikiId": "223",
+    "name": "Thiên Kỵ",
+    "troop": "cavalry",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "223.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8c3f9b8e-5541-4ca2-b559-959a514ba137.222bf.png"
+  },
+  {
+    "wikiId": "186",
+    "name": "Thiên Ma Kỵ",
+    "troop": "cavalry",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "186.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/67594ee9-0d8f-48bc-92ca-d89ff09011e5.3f682.png"
+  },
+  {
+    "wikiId": "224",
+    "name": "Thiên Thú",
+    "troop": "cavalry",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "224.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d5b4e7cc-91c6-4a8b-b0c3-8b4ceade2b8f.2ad33.png"
+  },
+  {
+    "wikiId": "202",
+    "name": "Viêm Kỵ",
+    "troop": "cavalry",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "202.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/269169dc-61f8-4606-9fe6-484c83539814.e024b.png"
+  },
+  {
+    "wikiId": "281",
+    "name": "Bạo Nộ Chùy",
+    "troop": "cavalry",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "281.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/60b12600-cd8c-44e1-961c-05eefa92075c.c134a.png"
+  },
+  {
+    "wikiId": "302",
+    "name": "Băng Kỵ",
+    "troop": "cavalry",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "302.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/27652ef1-b553-49c2-a70c-00846e566d2d.143c5.png"
+  },
+  {
+    "wikiId": "303",
+    "name": "Băng Tượng",
+    "troop": "cavalry",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "303.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/08043fce-5f5d-4fd8-a203-1a2300806e85.2ab1e.png"
+  },
+  {
+    "wikiId": "240",
+    "name": "Dạ Tuần Kỵ",
+    "troop": "cavalry",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "240.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/84648607-fb56-4b42-a0f4-a9d15e0a090a.4bf2a.png"
+  },
+  {
+    "wikiId": "241",
+    "name": "Dị Ngục Quỷ",
+    "troop": "cavalry",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "241.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/70e5336f-a9f2-4d9f-a405-11d5d89be753.577c4.png"
+  },
+  {
+    "wikiId": "280",
+    "name": "Minh Hỏa Thiết Kỵ",
+    "troop": "cavalry",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "280.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/954fd4a1-35bf-4676-8c55-90375ec2160b.42a89.png"
+  },
+  {
+    "wikiId": "242",
+    "name": "Trấn Ngục Kỵ",
+    "troop": "cavalry",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "242.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/cc4f7f08-aeab-4884-85f1-85779a78ae6f.46330.png"
+  },
+  {
+    "wikiId": "279",
+    "name": "Tử Điện Kỵ",
+    "troop": "cavalry",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "279.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/22fec21e-a4ce-41d5-8637-6e619e727a46.bd4a7.png"
+  },
+  {
+    "wikiId": "448",
+    "name": "Ảm Diệt Thần Kỵ",
+    "troop": "cavalry",
+    "tier": 6,
+    "wikiCap": 7,
+    "file": "448.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f0131f98-88fb-43e2-b463-aed78b84729a.01733.png"
+  },
+  {
+    "wikiId": "447",
+    "name": "Tử Tiêu Lôi Kỵ",
+    "troop": "cavalry",
+    "tier": 6,
+    "wikiCap": 7,
+    "file": "447.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/59a19ac3-c6b1-4bb2-974e-6d17b661d374.e214e.png"
+  },
+  {
+    "wikiId": "109",
+    "name": "Bạch Hổ",
+    "troop": "archer",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "109.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a8c7d41b-daab-4b93-99fc-12f73da3b7e2.59f89.png"
+  },
+  {
+    "wikiId": "110",
+    "name": "Chu Tước",
+    "troop": "archer",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "110.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0df968eb-ac0e-4351-8d5f-57536912ce31.988d5.png"
+  },
+  {
+    "wikiId": "12",
+    "name": "Cung",
+    "troop": "archer",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "12.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e1c511e9-6d37-4098-b09c-9e531319c2f1.8cefc.png"
+  },
+  {
+    "wikiId": "111",
+    "name": "Huyền Vũ",
+    "troop": "archer",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "111.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c89de49c-8ea6-4645-b305-f43369cc5c66.a0ef8.png"
+  },
+  {
+    "wikiId": "108",
+    "name": "Thanh Long",
+    "troop": "archer",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "108.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f0b7d8f5-256f-4d79-bbf7-a65fceaa042f.722cf.png"
+  },
+  {
+    "wikiId": "20",
+    "name": "Nỏ Binh",
+    "troop": "archer",
+    "tier": 1,
+    "wikiCap": 1,
+    "file": "20.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a007c8a5-c02a-4676-8cdf-ae587e6e9c36.1fc4c.png"
+  },
+  {
+    "wikiId": "21",
+    "name": "Trường Cung",
+    "troop": "archer",
+    "tier": 1,
+    "wikiCap": 1,
+    "file": "21.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e63e9e7f-d666-4c6d-8e02-b5f25dcdece6.d89a5.png"
+  },
+  {
+    "wikiId": "48",
+    "name": "Hỏa Cung",
+    "troop": "archer",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "48.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a471bb6a-9311-41a9-b3eb-0180bd559b02.354d2.png"
+  },
+  {
+    "wikiId": "47",
+    "name": "Kim Nỏ",
+    "troop": "archer",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "47.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e617f9e1-7bcb-4a6d-a9f4-a9a791ff27b9.cb4c0.png"
+  },
+  {
+    "wikiId": "51",
+    "name": "Lôi Oanh",
+    "troop": "archer",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "51.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/80ef2cdc-4f73-442c-825a-3d177fb06a50.d80ef.png"
+  },
+  {
+    "wikiId": "45",
+    "name": "Nỏ Pháo Xa",
+    "troop": "archer",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "45.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c03fd01e-802f-41f3-9734-7c67fe10842a.573a0.png"
+  },
+  {
+    "wikiId": "44",
+    "name": "Phong Phiêu",
+    "troop": "archer",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "44.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3e37aa54-527e-40bd-8f79-369f14e8ea96.8e87e.png"
+  },
+  {
+    "wikiId": "46",
+    "name": "Thích Khách",
+    "troop": "archer",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "46.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ba151073-b31e-4500-a7fe-325b0b17107b.9c251.png"
+  },
+  {
+    "wikiId": "49",
+    "name": "Ưng Nhãn",
+    "troop": "archer",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "49.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7144c439-47bb-46dd-a16b-47fff2278d44.575e0.png"
+  },
+  {
+    "wikiId": "50",
+    "name": "Xung Xa",
+    "troop": "archer",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "50.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bd55864f-1b13-44b1-ab75-db870b315f60.1d2d0.png"
+  },
+  {
+    "wikiId": "84",
+    "name": "Ảnh Vệ",
+    "troop": "archer",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "84.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0a717e12-c685-4ff3-99d1-9271146d8522.54e4b.png"
+  },
+  {
+    "wikiId": "89",
+    "name": "Diệm Cung",
+    "troop": "archer",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "89.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b3f949f1-561d-4728-9e3e-79284bd63a68.97473.png"
+  },
+  {
+    "wikiId": "88",
+    "name": "Hỏa Lôi",
+    "troop": "archer",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "88.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5e338a68-180e-476a-a5ac-ac0b5d07bf97.20241.png"
+  },
+  {
+    "wikiId": "85",
+    "name": "Hoàng Nỏ",
+    "troop": "archer",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "85.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c98d318f-6865-4b5e-a9c4-1b18978574cc.d57cc.png"
+  },
+  {
+    "wikiId": "86",
+    "name": "Hồi Phiêu",
+    "troop": "archer",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "86.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ea9544d9-fed2-4fe7-a3cf-df2afee11077.6a63b.png"
+  },
+  {
+    "wikiId": "87",
+    "name": "Liên Nỏ Xa",
+    "troop": "archer",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "87.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a1afd356-1d41-4dbd-9ea1-e223583468ed.f472c.png"
+  },
+  {
+    "wikiId": "90",
+    "name": "Liệp Cung",
+    "troop": "archer",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "90.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bbfb41c4-67e8-404e-8df8-51de1d5015cd.dadeb.png"
+  },
+  {
+    "wikiId": "91",
+    "name": "Long Pháo",
+    "troop": "archer",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "91.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ddcd7480-b889-4d47-a702-ecb25c47e8fb.ddcd2.png"
+  },
+  {
+    "wikiId": "159",
+    "name": "Ảnh Hồn",
+    "troop": "archer",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "159.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/99e1f7dc-a61a-4504-89da-e1b1b40d931d.54697.png"
+  },
+  {
+    "wikiId": "164",
+    "name": "Cuồng Lôi",
+    "troop": "archer",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "164.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ead8225a-6eab-4c86-86fa-daf80305131c.a9ceb.png"
+  },
+  {
+    "wikiId": "157",
+    "name": "Liệp Binh",
+    "troop": "archer",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "157.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e6a3742d-e02f-479a-8760-7672b6aea190.3c6f0.png"
+  },
+  {
+    "wikiId": "160",
+    "name": "Linh Nỏ",
+    "troop": "archer",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "160.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/593fa57d-fe56-4be8-b8a1-77f28f091a64.36b50.png"
+  },
+  {
+    "wikiId": "163",
+    "name": "Long Chùy",
+    "troop": "archer",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "163.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/03e7feaf-2e0f-475e-8074-5a2b121a4c33.bd3a8.png"
+  },
+  {
+    "wikiId": "158",
+    "name": "Thiết Nỏ",
+    "troop": "archer",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "158.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d7099cb0-99f6-4cfc-a11c-e499da72bf58.fd144.png"
+  },
+  {
+    "wikiId": "162",
+    "name": "Tinh Không",
+    "troop": "archer",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "162.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7659fd35-2eee-4370-bf2c-359cf378f216.46a82.png"
+  },
+  {
+    "wikiId": "161",
+    "name": "Xích Cung",
+    "troop": "archer",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "161.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/da88124c-7fc3-49b0-ab96-5b491b721784.b3ed7.png"
+  },
+  {
+    "wikiId": "205",
+    "name": "Diệm Binh",
+    "troop": "archer",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "205.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a9dc6a09-4b2f-445f-b798-66ed289741ef.44d50.png"
+  },
+  {
+    "wikiId": "190",
+    "name": "Liệt Hồn",
+    "troop": "archer",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "190.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5e8f8f1b-0e07-4192-993e-d7fc524c4fcf.35026.png"
+  },
+  {
+    "wikiId": "191",
+    "name": "Phệ Thiên",
+    "troop": "archer",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "191.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d6e79ece-6b14-4b64-b4b3-a55d0804c41c.aa13c.png"
+  },
+  {
+    "wikiId": "225",
+    "name": "Thiên Nỏ",
+    "troop": "archer",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "225.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/30dccac8-5e2f-4a30-9934-efdc149e74a2.2a4bf.png"
+  },
+  {
+    "wikiId": "226",
+    "name": "Thiên Tiễn",
+    "troop": "archer",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "226.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/cd362062-1ee1-46ad-93b8-166786d22b4a.1d232.png"
+  },
+  {
+    "wikiId": "189",
+    "name": "Tu La Cung",
+    "troop": "archer",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "189.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e0a9bc7c-8fd8-43a8-b13b-4176652ed562.90101.png"
+  },
+  {
+    "wikiId": "207",
+    "name": "Viêm Pháo",
+    "troop": "archer",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "207.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/87f5d124-f09b-4c9f-b678-98c5fee5220d.2ca8e.png"
+  },
+  {
+    "wikiId": "305",
+    "name": "Băng Cung",
+    "troop": "archer",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "305.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c69c9e3d-7ff6-4b2b-8c51-07e627480b92.36465.png"
+  },
+  {
+    "wikiId": "304",
+    "name": "Băng Nỏ",
+    "troop": "archer",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "304.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3e133603-7c7f-460b-a870-4d3c15e3c916.d1946.png"
+  },
+  {
+    "wikiId": "245",
+    "name": "Minh Hỏa Xa",
+    "troop": "archer",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "245.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9bd29895-9b86-4fdf-a006-f4df136385be.9d16c.png"
+  },
+  {
+    "wikiId": "243",
+    "name": "Ngục Liên Nỏ",
+    "troop": "archer",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "243.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a2b3c408-2eee-4130-8c32-4cbcb12fba5c.45520.png"
+  },
+  {
+    "wikiId": "284",
+    "name": "Thiên Long Pháo",
+    "troop": "archer",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "284.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f94cb499-00ba-4719-94cb-d6f51cd32c2f.7d280.png"
+  },
+  {
+    "wikiId": "283",
+    "name": "Thiên Vũ Tinh Binh",
+    "troop": "archer",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "283.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8b0b9346-f2ab-4acf-a2cd-747a597295c9.d3988.png"
+  },
+  {
+    "wikiId": "244",
+    "name": "Truy Mệnh Ma Hồn",
+    "troop": "archer",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "244.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d32e0996-9e9d-4d72-aa92-515b9a679f61.31316.png"
+  },
+  {
+    "wikiId": "282",
+    "name": "Yêu Tiêu Thủ",
+    "troop": "archer",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "282.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/4c4d7326-38fb-4350-97ec-f28d0379d279.2866b.png"
+  },
+  {
+    "wikiId": "449",
+    "name": "Tật Phong Yêu Ẩn",
+    "troop": "archer",
+    "tier": 6,
+    "wikiCap": 7,
+    "file": "449.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b4d622b8-1a61-4e8e-9f44-899912026999.8b964.png"
+  },
+  {
+    "wikiId": "450",
+    "name": "Thiên Khiển Thần Cơ Nỏ",
+    "troop": "archer",
+    "tier": 6,
+    "wikiCap": 7,
+    "file": "450.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/cfa97b64-c054-4657-861a-05519e473428.5262d.png"
+  },
+  {
+    "wikiId": "178",
+    "name": "Áp Dữ",
+    "troop": "strategist",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "178.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/96ac9a0d-97d3-4e99-ad92-621baa287b1e.ca0fa.png"
+  },
+  {
+    "wikiId": "179",
+    "name": "Ba Xà",
+    "troop": "strategist",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "179.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/96ac9a0d-97d3-4e99-ad92-621baa287b1e.ca0fa.png"
+  },
+  {
+    "wikiId": "195",
+    "name": "Chu Yêm",
+    "troop": "strategist",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "195.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/96ac9a0d-97d3-4e99-ad92-621baa287b1e.ca0fa.png"
+  },
+  {
+    "wikiId": "126",
+    "name": "CơQuan Thú",
+    "troop": "strategist",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "126.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/378d5548-f1ed-4d1f-9737-8831bdef86b1.4e6f4.png"
+  },
+  {
+    "wikiId": "127",
+    "name": "CơQuan Thú Nhuệ",
+    "troop": "strategist",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "127.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/95d49966-7043-4f5b-9cbf-ff43e02f596b.7cc1f.png"
+  },
+  {
+    "wikiId": "260",
+    "name": "Cùng Kỳ",
+    "troop": "strategist",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "260.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/96ac9a0d-97d3-4e99-ad92-621baa287b1e.ca0fa.png"
+  },
+  {
+    "wikiId": "211",
+    "name": "Đào Ngột",
+    "troop": "strategist",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "211.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/96ac9a0d-97d3-4e99-ad92-621baa287b1e.ca0fa.png"
+  },
+  {
+    "wikiId": "218",
+    "name": "Hải Tặc Quan",
+    "troop": "strategist",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "218.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/771ce7fb-c577-4dd8-abe0-0db55edfe7c5.3f46e.png"
+  },
+  {
+    "wikiId": "132",
+    "name": "Man Hống Ngưu",
+    "troop": "strategist",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "132.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/378d5548-f1ed-4d1f-9737-8831bdef86b1.4e6f4.png"
+  },
+  {
+    "wikiId": "131",
+    "name": "Man Thạch Binh",
+    "troop": "strategist",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "131.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f8621e22-c12f-4548-8f8a-d785663a3992.e8acb.png"
+  },
+  {
+    "wikiId": "176",
+    "name": "Phi Liêm",
+    "troop": "strategist",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "176.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/96ac9a0d-97d3-4e99-ad92-621baa287b1e.ca0fa.png"
+  },
+  {
+    "wikiId": "13",
+    "name": "Quan văn",
+    "troop": "strategist",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "13.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/91e6670b-6c48-4528-823e-877c7dfec712.91b6b.png"
+  },
+  {
+    "wikiId": "216",
+    "name": "Sơn Tặc Quan",
+    "troop": "strategist",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "216.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c47d8426-9ddf-4e95-aecf-738d8ae14335.39050.png"
+  },
+  {
+    "wikiId": "121",
+    "name": "Thạch Binh",
+    "troop": "strategist",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "121.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f8621e22-c12f-4548-8f8a-d785663a3992.e8acb.png"
+  },
+  {
+    "wikiId": "123",
+    "name": "Thạch Binh Nhuệ",
+    "troop": "strategist",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "123.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3d0197a7-9b65-4677-a983-bd25eeeab885.8b156.png"
+  },
+  {
+    "wikiId": "175",
+    "name": "Thiên Lang",
+    "troop": "strategist",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "175.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/96ac9a0d-97d3-4e99-ad92-621baa287b1e.ca0fa.png"
+  },
+  {
+    "wikiId": "212",
+    "name": "Trùng Quan",
+    "troop": "strategist",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "212.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ee9a394c-abc2-46be-9a97-0458c0230166.1f39a.png"
+  },
+  {
+    "wikiId": "214",
+    "name": "Trùng Vương",
+    "troop": "strategist",
+    "tier": 1,
+    "wikiCap": 0,
+    "file": "214.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e0c2b2be-94ba-47bc-8219-d3fea5200924.48751.png"
+  },
+  {
+    "wikiId": "22",
+    "name": "Mưu Sĩ",
+    "troop": "strategist",
+    "tier": 1,
+    "wikiCap": 1,
+    "file": "22.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/987bde3c-371f-4f3f-af05-e36bc7e94106.a48da.png"
+  },
+  {
+    "wikiId": "23",
+    "name": "Sách Sĩ",
+    "troop": "strategist",
+    "tier": 1,
+    "wikiCap": 1,
+    "file": "23.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f2dfc7ec-3a8c-4712-908e-df25e8211fa0.2c698.png"
+  },
+  {
+    "wikiId": "52",
+    "name": "Hỏa Sách Sĩ",
+    "troop": "strategist",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "52.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/16c86551-2cfa-421c-a924-3120aa7f1150.c6024.png"
+  },
+  {
+    "wikiId": "54",
+    "name": "Khống Thuật",
+    "troop": "strategist",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "54.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/72e9f026-6ad0-4e01-b744-4fd045c8a7da.945a9.png"
+  },
+  {
+    "wikiId": "58",
+    "name": "Kỳ Cổ Thủ",
+    "troop": "strategist",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "58.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/cb0b9097-b723-40a0-8279-6c5768d06f35.02e97.png"
+  },
+  {
+    "wikiId": "53",
+    "name": "Phong Hành",
+    "troop": "strategist",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "53.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b950bb8b-8928-4ae3-a3c6-d27cd786ee0f.78b80.png"
+  },
+  {
+    "wikiId": "56",
+    "name": "Thủy Sách Sĩ",
+    "troop": "strategist",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "56.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/14882fb7-2653-49f2-861e-b29da6adbb24.04dec.png"
+  },
+  {
+    "wikiId": "55",
+    "name": "Tử Điện Sứ",
+    "troop": "strategist",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "55.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/83a3afc7-fe4c-4ffc-8b7f-b0ad14dd799a.d04f1.png"
+  },
+  {
+    "wikiId": "57",
+    "name": "Vũ Nữ",
+    "troop": "strategist",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "57.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/4cce6462-a162-418a-b8b0-32d76285df12.e0954.png"
+  },
+  {
+    "wikiId": "59",
+    "name": "Vu Thuật Sư",
+    "troop": "strategist",
+    "tier": 2,
+    "wikiCap": 2,
+    "file": "59.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8fcf5d27-55c0-4373-95e2-12dc3e2e935b.3b966.png"
+  },
+  {
+    "wikiId": "92",
+    "name": "Diệm Sách",
+    "troop": "strategist",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "92.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e25a3068-09cc-4d08-b885-4dfbb1fa4a55.e63b6.png"
+  },
+  {
+    "wikiId": "97",
+    "name": "Hoa Khôi",
+    "troop": "strategist",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "97.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/85c1c9b4-f657-4f46-a150-852b28839aff.3e6c7.png"
+  },
+  {
+    "wikiId": "96",
+    "name": "Lãng Sách",
+    "troop": "strategist",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "96.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b3eddd8b-c468-4103-b057-0abf3c025f88.f08f0.png"
+  },
+  {
+    "wikiId": "98",
+    "name": "Lôi Cổ",
+    "troop": "strategist",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "98.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/392005c9-0843-42cb-80ec-a0664e27e7bc.f382f.png"
+  },
+  {
+    "wikiId": "95",
+    "name": "Lôi Thuật",
+    "troop": "strategist",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "95.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1918e856-7027-4b1a-8436-b7fd135e7ba7.9c42d.png"
+  },
+  {
+    "wikiId": "94",
+    "name": "Ngự Thuật",
+    "troop": "strategist",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "94.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/339d993f-0b67-4fea-9430-0492767e1c3d.01b1f.png"
+  },
+  {
+    "wikiId": "93",
+    "name": "VânĐào",
+    "troop": "strategist",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "93.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/94ff804a-ad3f-4608-afa6-c5fdc7248dfe.e45d7.png"
+  },
+  {
+    "wikiId": "99",
+    "name": "VuĐộc Sĩ",
+    "troop": "strategist",
+    "tier": 3,
+    "wikiCap": 3,
+    "file": "99.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d232c04b-f7ae-4fae-9780-29a8e6e07409.ca3f8.png"
+  },
+  {
+    "wikiId": "169",
+    "name": "Băng Di",
+    "troop": "strategist",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "169.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a8ca0bda-dc44-4805-bb9c-277374a59ab8.898ef.png"
+  },
+  {
+    "wikiId": "171",
+    "name": "Cổ Hiệu Quân",
+    "troop": "strategist",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "171.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d4b5c94e-c664-4e3d-8845-20e0ab72e73f.22e5f.png"
+  },
+  {
+    "wikiId": "167",
+    "name": "Địa Sư",
+    "troop": "strategist",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "167.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c05a5b52-6fff-4fdc-a767-36c127a19052.13682.png"
+  },
+  {
+    "wikiId": "172",
+    "name": "Độc Âm Sư",
+    "troop": "strategist",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "172.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5480aaeb-490b-4f07-bd1e-ea253eae12b5.1aa2b.png"
+  },
+  {
+    "wikiId": "170",
+    "name": "Hoa Lạc Sư",
+    "troop": "strategist",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "170.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/15b860ef-4c97-4399-92ff-4169e440595e.e4734.png"
+  },
+  {
+    "wikiId": "166",
+    "name": "Khống Vân",
+    "troop": "strategist",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "166.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/873d3272-c39a-48b9-8212-46bd39aa69e3.79ff1.png"
+  },
+  {
+    "wikiId": "168",
+    "name": "Lôi Thần",
+    "troop": "strategist",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "168.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/4effc524-33d5-4ada-884e-285dbc9c8541.18dbc.png"
+  },
+  {
+    "wikiId": "165",
+    "name": "Viêm Thần",
+    "troop": "strategist",
+    "tier": 4,
+    "wikiCap": 4,
+    "file": "165.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f5d5180c-b323-42df-abd5-8cfea6dc8e0f.eb478.png"
+  },
+  {
+    "wikiId": "194",
+    "name": "Âm Minh Sư",
+    "troop": "strategist",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "194.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/754e8472-d630-4f0f-b77a-3a51da55562b.ca728.png"
+  },
+  {
+    "wikiId": "209",
+    "name": "Hỏa Sứ",
+    "troop": "strategist",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "209.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/357d43b2-8507-402f-9242-e7cf2c9ea76a.6f5e5.png"
+  },
+  {
+    "wikiId": "228",
+    "name": "Thiên Âm",
+    "troop": "strategist",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "228.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/70fb7def-7605-4a77-ac07-935a2f057a7b.ef1f6.png"
+  },
+  {
+    "wikiId": "210",
+    "name": "Thiên Ma",
+    "troop": "strategist",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "210.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/47555cde-c5d7-46ee-88e9-397f945d4ee3.acda7.png"
+  },
+  {
+    "wikiId": "227",
+    "name": "Thiên Nhan",
+    "troop": "strategist",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "227.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c073f105-29b2-48a8-8329-c7cba29cbd5e.7bf6f.png"
+  },
+  {
+    "wikiId": "193",
+    "name": "Thiên Sư",
+    "troop": "strategist",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "193.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/44e1a682-0885-417b-b10f-9af5d61daf3e.c9300.png"
+  },
+  {
+    "wikiId": "208",
+    "name": "Viêm Sư",
+    "troop": "strategist",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "208.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3ba623e2-a35e-444b-acf4-a1e3fe66aa93.212ab.png"
+  },
+  {
+    "wikiId": "192",
+    "name": "Yêu Sư",
+    "troop": "strategist",
+    "tier": 5,
+    "wikiCap": 5,
+    "file": "192.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/09448c6c-61c0-4c70-b57e-719a88c57ccd.61cdb.png"
+  },
+  {
+    "wikiId": "307",
+    "name": "Băng Cầm",
+    "troop": "strategist",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "307.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8a56f99e-12e2-413a-adce-5ec65dfccda3.87e1a.png"
+  },
+  {
+    "wikiId": "306",
+    "name": "Băng Hồ",
+    "troop": "strategist",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "306.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3fe1f6dc-72bd-40ea-beb5-78331f6c1acc.17570.png"
+  },
+  {
+    "wikiId": "287",
+    "name": "Chấp Hỏa Thiên Quan",
+    "troop": "strategist",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "287.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/eee479f9-217a-4234-814b-aa5c429e4706.3f71c.png"
+  },
+  {
+    "wikiId": "285",
+    "name": "Linh Hỏa Mưu Sĩ",
+    "troop": "strategist",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "285.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/dc1cc93e-156c-4f9d-8871-6917bead0dc1.5e2a5.png"
+  },
+  {
+    "wikiId": "248",
+    "name": "Ma Ngục Trưởng",
+    "troop": "strategist",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "248.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0551a3bc-a584-4248-b6b8-ae2fec878d34.24bc1.png"
+  },
+  {
+    "wikiId": "246",
+    "name": "Ngục Hỏa Thần Phán",
+    "troop": "strategist",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "246.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5fd6b5f7-1f3d-44a4-b720-6073a27e8a8c.94562.png"
+  },
+  {
+    "wikiId": "286",
+    "name": "Thiên Lôi Sứ",
+    "troop": "strategist",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "286.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9b8880cc-d304-4a6e-ab0b-76e87fed66dd.7aef4.png"
+  },
+  {
+    "wikiId": "247",
+    "name": "Thu Hồn Sứ",
+    "troop": "strategist",
+    "tier": 6,
+    "wikiCap": 6,
+    "file": "247.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f4ec7bc2-d8ff-486e-a9c9-81d2f755e0a2.9094c.png"
+  },
+  {
+    "wikiId": "451",
+    "name": "Cửu U Pháp Tôn",
+    "troop": "strategist",
+    "tier": 6,
+    "wikiCap": 7,
+    "file": "451.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/10f6316f-54f7-4cb6-b219-c0a1f9d696b7.68276.png"
+  },
+  {
+    "wikiId": "452",
+    "name": "Ly Hỏa Pháp Tôn",
+    "troop": "strategist",
+    "tier": 6,
+    "wikiCap": 7,
+    "file": "452.png",
+    "url": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/142cadb7-10d5-4a81-b811-647a1da94652.676c7.png"
+  }
+]

@@ -346,6 +346,46 @@
     return { ok: true };
   }
 
+  /** Đổi loại binh active (chỉ trong danh sách wiki của tướng). */
+  function setHeroActiveTroop(state, heroId, troopId) {
+    var h = (state.heroes || []).find(function (x) {
+      return x.hero_id === heroId;
+    });
+    if (!h) return { ok: false, msg: "Không tìm thấy tướng." };
+    var want =
+      typeof NLDatabase !== "undefined" && NLDatabase.normalizeTroopId
+        ? NLDatabase.normalizeTroopId(troopId)
+        : troopId;
+    if (!want) return { ok: false, msg: "Loại binh không hợp lệ." };
+    var opts =
+      typeof NLDatabase !== "undefined" && NLDatabase.getGeneralTroopOptions
+        ? NLDatabase.getGeneralTroopOptions(h.general_id || h)
+        : [h.troop, h.troop2].filter(Boolean);
+    if (opts.indexOf(want) < 0) {
+      return { ok: false, msg: "Tướng này không có thẻ binh «" + want + "» (wiki)." };
+    }
+    h.activeTroop = want;
+    if (typeof NLPlayer !== "undefined") NLPlayer.syncLegacyView(state);
+    return { ok: true, activeTroop: h.activeTroop };
+  }
+
+  /** Đổi binh chủng chính/phụ (troop ↔ troop2), lưu trên hero. */
+  function switchHeroActiveTroop(state, heroId) {
+    var h = (state.heroes || []).find(function (x) {
+      return x.hero_id === heroId;
+    });
+    if (!h) return { ok: false, msg: "Không tìm thấy tướng." };
+    var opts =
+      typeof NLDatabase !== "undefined" && NLDatabase.getGeneralTroopOptions
+        ? NLDatabase.getGeneralTroopOptions(h.general_id || h)
+        : [h.troop, h.troop2].filter(Boolean);
+    if (opts.length < 2) return { ok: false, msg: "Tướng này chỉ có 1 loại binh (wiki)." };
+    var cur = h.activeTroop || h.troop;
+    var idx = opts.indexOf(cur);
+    var next = opts[(idx < 0 ? 0 : idx + 1) % opts.length];
+    return setHeroActiveTroop(state, heroId, next);
+  }
+
   /**
    * Giác ngộ phẩm (wiki): white→…→gold theo awakenByQuality + inventory nguyên liệu.
    */
@@ -837,6 +877,84 @@
     return null;
   }
 
+  /**
+   * DEV/cheat: max Ty Vũ + tài nguyên + mọi tướng (phẩm cao nhất wiki, Lv max phẩm, +10).
+   */
+  function debugMaxAllHeroes(state) {
+    if (!state) return { ok: false, msg: "Chưa có save." };
+    applyElapsed(state);
+
+    // Trần cấp cao
+    if (typeof NLPlayer !== "undefined") {
+      var hall = NLPlayer.getBuilding(state, "ty_vu") || NLPlayer.ensureBuilding(state, "ty_vu");
+      if (hall) {
+        hall.level = Math.max(hall.level || 1, 180);
+        hall.upgrade_ends_at = null;
+      }
+      ["mo_bac", "nong_trai", "doanh_trai", "kho", "san_tap"].forEach(function (id) {
+        var b = NLPlayer.getBuilding(state, id) || NLPlayer.ensureBuilding(state, id);
+        if (b) {
+          b.level = Math.max(b.level || 1, 100);
+          b.upgrade_ends_at = null;
+        }
+      });
+    }
+
+    state.silver = Math.max(state.silver || 0, 99999999);
+    state.food = Math.max(state.food || 0, 99999999);
+    if (state.gold != null) state.gold = Math.max(state.gold || 0, 999999);
+    state.prestige = Math.max(state.prestige || 0, 50000);
+
+    var n = 0;
+    (state.heroes || []).forEach(function (h) {
+      var tpl =
+        typeof NLDatabase !== "undefined"
+          ? NLDatabase.getGeneral(h.general_id)
+          : null;
+      var order =
+        typeof NLDatabase !== "undefined" && NLDatabase.qualityOrder
+          ? NLDatabase.qualityOrder()
+          : ["white", "green", "blue", "purple", "orange", "red", "gold"];
+      var maxQ = (tpl && (tpl.wikiMaxQuality || tpl.quality)) || "gold";
+      var qi = order.indexOf(maxQ);
+      if (qi < 0) qi = order.length - 1;
+      // Chọn phẩm cao nhất trong order không vượt wikiMax
+      var qUse = order[qi];
+      var qMeta =
+        typeof NLDatabase !== "undefined" ? NLDatabase.getQuality(qUse) : null;
+      var lvCap = qMeta && qMeta.maxLevel ? qMeta.maxLevel : 120;
+      var trainCap =
+        typeof NLPlayer !== "undefined"
+          ? Math.max(20, NLPlayer.getBuildingLevel(state, "ty_vu") * 2 + 10)
+          : lvCap;
+      var lv = Math.min(lvCap, trainCap, 180);
+
+      h.quality = qUse;
+      h.level = lv;
+      h.enhance = 10;
+      h.exp = 0;
+      var scaled =
+        typeof NLDatabase !== "undefined"
+          ? NLDatabase.scaleGeneral(h.general_id, lv, { quality: qUse })
+          : null;
+      if (scaled) {
+        h.tongLinh = scaled.tongLinh;
+        h.vuLuc = scaled.vuLuc;
+        h.triLuc = scaled.triLuc;
+        h.maxHp = scaled.maxHp;
+        h.hp = scaled.maxHp;
+        h.skillId = scaled.skillId;
+        if (scaled.troop) h.troop = scaled.troop;
+        if (scaled.troop2) h.troop2 = scaled.troop2;
+      }
+      n++;
+    });
+
+    if (typeof NLPlayer !== "undefined") NLPlayer.syncLegacyView(state);
+    pushLog(state, "DEV: max " + n + " tướng + Ty Vũ Lv.180.", "good");
+    return { ok: true, count: n };
+  }
+
   global.NLGame = {
     FACTIONS: D.FACTIONS,
     TROOPS: D.TROOPS,
@@ -851,6 +969,8 @@
     upgradeBuilding: upgradeBuilding,
     enhanceGeneral: enhanceGeneral,
     trainGeneral: trainGeneral,
+    switchHeroActiveTroop: switchHeroActiveTroop,
+    setHeroActiveTroop: setHeroActiveTroop,
     awakenGeneral: awakenGeneral,
     recruitSoulGeneral: recruitSoulGeneral,
     recruitTavernHero: recruitTavernHero,
@@ -870,5 +990,6 @@
     enemyForTower: enemyForTower,
     enemyForArena: enemyForArena,
     citySnapshot: citySnapshot,
+    debugMaxAllHeroes: debugMaxAllHeroes,
   };
 })(window);

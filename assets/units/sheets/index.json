@@ -1,46 +1,3251 @@
 {
+  "schemaVersion": 2,
+  "note": "types = đại diện loại×bậc; byWikiId = từng binh chủng wiki; byTroopTier = pool skin theo bậc",
+  "types": {
+    "infantry": {
+      "1": {
+        "sheet": "assets/units/sheets/infantry-t1.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-infantry-t1.png",
+        "wikiId": "1"
+      },
+      "2": {
+        "sheet": "assets/units/sheets/infantry-t2.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-infantry-t2.png",
+        "wikiId": "5"
+      },
+      "3": {
+        "sheet": "assets/units/sheets/infantry-t3.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-infantry-t3.png",
+        "wikiId": "61"
+      },
+      "4": {
+        "sheet": "assets/units/sheets/infantry-t4.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-infantry-t4.png",
+        "wikiId": "136"
+      },
+      "5": {
+        "sheet": "assets/units/sheets/infantry-t5.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-infantry-t5.png",
+        "wikiId": "181"
+      },
+      "6": {
+        "sheet": "assets/units/sheets/infantry-t6.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-infantry-t6.png",
+        "wikiId": "298"
+      }
+    },
+    "spear": {
+      "1": {
+        "sheet": "assets/units/sheets/spear-t1.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-spear-t1.png",
+        "wikiId": "10"
+      },
+      "2": {
+        "sheet": "assets/units/sheets/spear-t2.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-spear-t2.png",
+        "wikiId": "28"
+      },
+      "3": {
+        "sheet": "assets/units/sheets/spear-t3.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-spear-t3.png",
+        "wikiId": "70"
+      },
+      "4": {
+        "sheet": "assets/units/sheets/spear-t4.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-spear-t4.png",
+        "wikiId": "141"
+      },
+      "5": {
+        "sheet": "assets/units/sheets/spear-t5.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-spear-t5.png",
+        "wikiId": "200"
+      },
+      "6": {
+        "sheet": "assets/units/sheets/spear-t6.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-spear-t6.png",
+        "wikiId": "300"
+      }
+    },
+    "cavalry": {
+      "1": {
+        "sheet": "assets/units/sheets/cavalry-t1.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-cavalry-t1.png",
+        "wikiId": "11"
+      },
+      "2": {
+        "sheet": "assets/units/sheets/cavalry-t2.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-cavalry-t2.png",
+        "wikiId": "43"
+      },
+      "3": {
+        "sheet": "assets/units/sheets/cavalry-t3.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-cavalry-t3.png",
+        "wikiId": "81"
+      },
+      "4": {
+        "sheet": "assets/units/sheets/cavalry-t4.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-cavalry-t4.png",
+        "wikiId": "151"
+      },
+      "5": {
+        "sheet": "assets/units/sheets/hobao-ky.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "hobao",
+        "icon": "assets/units/battle/wiki-cavalry-t5.png",
+        "wikiId": "38"
+      },
+      "6": {
+        "sheet": "assets/units/sheets/hobao-ky.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "hobao",
+        "icon": "assets/units/battle/wiki-cavalry-t6.png",
+        "wikiId": "302"
+      }
+    },
+    "archer": {
+      "1": {
+        "sheet": "assets/units/sheets/archer-t1.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-archer-t1.png",
+        "wikiId": "12"
+      },
+      "2": {
+        "sheet": "assets/units/sheets/archer-t2.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-archer-t2.png",
+        "wikiId": "48"
+      },
+      "3": {
+        "sheet": "assets/units/sheets/archer-t3.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-archer-t3.png",
+        "wikiId": "89"
+      },
+      "4": {
+        "sheet": "assets/units/sheets/archer-t4.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-archer-t4.png",
+        "wikiId": "161"
+      },
+      "5": {
+        "sheet": "assets/units/sheets/archer-t5.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-archer-t5.png",
+        "wikiId": "189"
+      },
+      "6": {
+        "sheet": "assets/units/sheets/archer-t6.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-archer-t6.png",
+        "wikiId": "305"
+      }
+    },
+    "strategist": {
+      "1": {
+        "sheet": "assets/units/sheets/strategist-t1.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-strategist-t1.png",
+        "wikiId": "13"
+      },
+      "2": {
+        "sheet": "assets/units/sheets/strategist-t2.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-strategist-t2.png",
+        "wikiId": "52"
+      },
+      "3": {
+        "sheet": "assets/units/sheets/strategist-t3.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-strategist-t3.png",
+        "wikiId": "98"
+      },
+      "4": {
+        "sheet": "assets/units/sheets/strategist-t4.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-strategist-t4.png",
+        "wikiId": "167"
+      },
+      "5": {
+        "sheet": "assets/units/sheets/strategist-t5.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-strategist-t5.png",
+        "wikiId": "209"
+      },
+      "6": {
+        "sheet": "assets/units/sheets/strategist-t6.png",
+        "cols": 8,
+        "rows": 2,
+        "kind": "wiki-derived",
+        "icon": "assets/units/battle/wiki-strategist-t6.png",
+        "wikiId": "285"
+      }
+    }
+  },
+  "byWikiId": {
+    "177": {
+      "sheet": "assets/units/sheets/units/177.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/177.png",
+      "name": "Bệ Ngạn",
+      "troop": "infantry",
+      "tier": 1
+    },
+    "1": {
+      "sheet": "assets/units/sheets/units/1.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/1.png",
+      "name": "Bộ",
+      "troop": "infantry",
+      "tier": 1
+    },
+    "405": {
+      "sheet": "assets/units/sheets/units/405.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/405.png",
+      "name": "Cùng Kỳ",
+      "troop": "infantry",
+      "tier": 1
+    },
+    "322": {
+      "sheet": "assets/units/sheets/units/322.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/322.png",
+      "name": "Hỗn Độn",
+      "troop": "infantry",
+      "tier": 1
+    },
+    "312": {
+      "sheet": "assets/units/sheets/units/312.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/312.png",
+      "name": "Lữ Bố",
+      "troop": "infantry",
+      "tier": 1
+    },
+    "345": {
+      "sheet": "assets/units/sheets/units/345.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/345.png",
+      "name": "Người Gỗ Chịu Đòn",
+      "troop": "infantry",
+      "tier": 1
+    },
+    "344": {
+      "sheet": "assets/units/sheets/units/344.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/344.png",
+      "name": "Người Gỗ Hồi Khí",
+      "troop": "infantry",
+      "tier": 1
+    },
+    "346": {
+      "sheet": "assets/units/sheets/units/346.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/346.png",
+      "name": "Người Gỗ Thường",
+      "troop": "infantry",
+      "tier": 1
+    },
+    "215": {
+      "sheet": "assets/units/sheets/units/215.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/215.png",
+      "name": "Sơn tặc",
+      "troop": "infantry",
+      "tier": 1
+    },
+    "297": {
+      "sheet": "assets/units/sheets/units/297.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/297.png",
+      "name": "Test Bị Động",
+      "troop": "infantry",
+      "tier": 1
+    },
+    "441": {
+      "sheet": "assets/units/sheets/units/441.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/441.png",
+      "name": "Thao Thiết",
+      "troop": "infantry",
+      "tier": 1
+    },
+    "173": {
+      "sheet": "assets/units/sheets/units/173.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/173.png",
+      "name": "Thí Luyện Chi Lực",
+      "troop": "infantry",
+      "tier": 1
+    },
+    "348": {
+      "sheet": "assets/units/sheets/units/348.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/348.png",
+      "name": "Tường Thành Quốc Chiến",
+      "troop": "infantry",
+      "tier": 1
+    },
+    "15": {
+      "sheet": "assets/units/sheets/units/15.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/15.png",
+      "name": "Thuẫn Binh",
+      "troop": "infantry",
+      "tier": 1
+    },
+    "14": {
+      "sheet": "assets/units/sheets/units/14.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/14.png",
+      "name": "Trùng Bộ",
+      "troop": "infantry",
+      "tier": 1
+    },
+    "2": {
+      "sheet": "assets/units/sheets/units/2.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/2.png",
+      "name": "Đao Binh",
+      "troop": "infantry",
+      "tier": 2
+    },
+    "24": {
+      "sheet": "assets/units/sheets/units/24.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/24.png",
+      "name": "Đằng Giáp",
+      "troop": "infantry",
+      "tier": 2
+    },
+    "34": {
+      "sheet": "assets/units/sheets/units/34.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/34.png",
+      "name": "Hổ Việt Trảo",
+      "troop": "infantry",
+      "tier": 2
+    },
+    "5": {
+      "sheet": "assets/units/sheets/units/5.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/5.png",
+      "name": "Kim Bộ",
+      "troop": "infantry",
+      "tier": 2
+    },
+    "25": {
+      "sheet": "assets/units/sheets/units/25.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/25.png",
+      "name": "Thạch Giáp",
+      "troop": "infantry",
+      "tier": 2
+    },
+    "26": {
+      "sheet": "assets/units/sheets/units/26.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/26.png",
+      "name": "Thủy Bộ",
+      "troop": "infantry",
+      "tier": 2
+    },
+    "3": {
+      "sheet": "assets/units/sheets/units/3.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/3.png",
+      "name": "Tử Thần Bộ",
+      "troop": "infantry",
+      "tier": 2
+    },
+    "4": {
+      "sheet": "assets/units/sheets/units/4.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/4.png",
+      "name": "Ưng Kiếm",
+      "troop": "infantry",
+      "tier": 2
+    },
+    "65": {
+      "sheet": "assets/units/sheets/units/65.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/65.png",
+      "name": "Bàn Hộ Vệ",
+      "troop": "infantry",
+      "tier": 3
+    },
+    "61": {
+      "sheet": "assets/units/sheets/units/61.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/61.png",
+      "name": "Giáp Bộ",
+      "troop": "infantry",
+      "tier": 3
+    },
+    "60": {
+      "sheet": "assets/units/sheets/units/60.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/60.png",
+      "name": "Hoàng Bộ",
+      "troop": "infantry",
+      "tier": 3
+    },
+    "64": {
+      "sheet": "assets/units/sheets/units/64.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/64.png",
+      "name": "Hổ Lực Sĩ",
+      "troop": "infantry",
+      "tier": 3
+    },
+    "67": {
+      "sheet": "assets/units/sheets/units/67.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/67.png",
+      "name": "Lang Tử Sĩ",
+      "troop": "infantry",
+      "tier": 3
+    },
+    "62": {
+      "sheet": "assets/units/sheets/units/62.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/62.png",
+      "name": "Lôi Kiếm Sĩ",
+      "troop": "infantry",
+      "tier": 3
+    },
+    "63": {
+      "sheet": "assets/units/sheets/units/63.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/63.png",
+      "name": "Phán Quan",
+      "troop": "infantry",
+      "tier": 3
+    },
+    "66": {
+      "sheet": "assets/units/sheets/units/66.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/66.png",
+      "name": "Văn Khúc",
+      "troop": "infantry",
+      "tier": 3
+    },
+    "138": {
+      "sheet": "assets/units/sheets/units/138.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/138.png",
+      "name": "Bàn Cổ Vệ",
+      "troop": "infantry",
+      "tier": 4
+    },
+    "136": {
+      "sheet": "assets/units/sheets/units/136.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/136.png",
+      "name": "Điện Sĩ",
+      "troop": "infantry",
+      "tier": 4
+    },
+    "133": {
+      "sheet": "assets/units/sheets/units/133.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/133.png",
+      "name": "Hoành Đao Thủ",
+      "troop": "infantry",
+      "tier": 4
+    },
+    "140": {
+      "sheet": "assets/units/sheets/units/140.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/140.png",
+      "name": "Lang Hàng Giả",
+      "troop": "infantry",
+      "tier": 4
+    },
+    "135": {
+      "sheet": "assets/units/sheets/units/135.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/135.png",
+      "name": "Lôi Binh",
+      "troop": "infantry",
+      "tier": 4
+    },
+    "137": {
+      "sheet": "assets/units/sheets/units/137.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/137.png",
+      "name": "Mặc Giáp Binh",
+      "troop": "infantry",
+      "tier": 4
+    },
+    "139": {
+      "sheet": "assets/units/sheets/units/139.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/139.png",
+      "name": "Trì Pháp Quan",
+      "troop": "infantry",
+      "tier": 4
+    },
+    "134": {
+      "sheet": "assets/units/sheets/units/134.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/134.png",
+      "name": "Tử Thần",
+      "troop": "infantry",
+      "tier": 4
+    },
+    "196": {
+      "sheet": "assets/units/sheets/units/196.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/196.png",
+      "name": "Diệm Thủ",
+      "troop": "infantry",
+      "tier": 5
+    },
+    "181": {
+      "sheet": "assets/units/sheets/units/181.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/181.png",
+      "name": "Hàn Giáp Bộ",
+      "troop": "infantry",
+      "tier": 5
+    },
+    "180": {
+      "sheet": "assets/units/sheets/units/180.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/180.png",
+      "name": "Hắc Điện Sĩ",
+      "troop": "infantry",
+      "tier": 5
+    },
+    "198": {
+      "sheet": "assets/units/sheets/units/198.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/198.png",
+      "name": "Nham Giáp",
+      "troop": "infantry",
+      "tier": 5
+    },
+    "182": {
+      "sheet": "assets/units/sheets/units/182.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/182.png",
+      "name": "Sương Hồn",
+      "troop": "infantry",
+      "tier": 5
+    },
+    "219": {
+      "sheet": "assets/units/sheets/units/219.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/219.png",
+      "name": "Thiên Giáp",
+      "troop": "infantry",
+      "tier": 5
+    },
+    "220": {
+      "sheet": "assets/units/sheets/units/220.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/220.png",
+      "name": "Thiên Vệ",
+      "troop": "infantry",
+      "tier": 5
+    },
+    "197": {
+      "sheet": "assets/units/sheets/units/197.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/197.png",
+      "name": "Viêm Vệ",
+      "troop": "infantry",
+      "tier": 5
+    },
+    "298": {
+      "sheet": "assets/units/sheets/units/298.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/298.png",
+      "name": "Băng Chùy",
+      "troop": "infantry",
+      "tier": 6
+    },
+    "299": {
+      "sheet": "assets/units/sheets/units/299.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/299.png",
+      "name": "Băng Giáp",
+      "troop": "infantry",
+      "tier": 6
+    },
+    "236": {
+      "sheet": "assets/units/sheets/units/236.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/236.png",
+      "name": "Cô Hành Giả",
+      "troop": "infantry",
+      "tier": 6
+    },
+    "235": {
+      "sheet": "assets/units/sheets/units/235.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/235.png",
+      "name": "Hắc Sơn Liệm",
+      "troop": "infantry",
+      "tier": 6
+    },
+    "273": {
+      "sheet": "assets/units/sheets/units/273.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/273.png",
+      "name": "Minh Giới Lực Sĩ",
+      "troop": "infantry",
+      "tier": 6
+    },
+    "274": {
+      "sheet": "assets/units/sheets/units/274.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/274.png",
+      "name": "Trảm Phong Vệ Sĩ",
+      "troop": "infantry",
+      "tier": 6
+    },
+    "234": {
+      "sheet": "assets/units/sheets/units/234.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/234.png",
+      "name": "Trấn Ngục Giáp",
+      "troop": "infantry",
+      "tier": 6
+    },
+    "275": {
+      "sheet": "assets/units/sheets/units/275.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/275.png",
+      "name": "U Linh Giám Quân",
+      "troop": "infantry",
+      "tier": 6
+    },
+    "444": {
+      "sheet": "assets/units/sheets/units/444.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/444.png",
+      "name": "Huyền Nhạc Minh Liêm",
+      "troop": "infantry",
+      "tier": 6
+    },
+    "443": {
+      "sheet": "assets/units/sheets/units/443.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/443.png",
+      "name": "Trấn Ngục Kim Cang",
+      "troop": "infantry",
+      "tier": 6
+    },
+    "217": {
+      "sheet": "assets/units/sheets/units/217.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/217.png",
+      "name": "Hải tặc",
+      "troop": "spear",
+      "tier": 1
+    },
+    "291": {
+      "sheet": "assets/units/sheets/units/291.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/291.png",
+      "name": "Lữ Bố",
+      "troop": "spear",
+      "tier": 1
+    },
+    "174": {
+      "sheet": "assets/units/sheets/units/174.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/174.png",
+      "name": "Thí Luyện Vương",
+      "troop": "spear",
+      "tier": 1
+    },
+    "10": {
+      "sheet": "assets/units/sheets/units/10.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/10.png",
+      "name": "Thương",
+      "troop": "spear",
+      "tier": 1
+    },
+    "17": {
+      "sheet": "assets/units/sheets/units/17.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/17.png",
+      "name": "Trùng Kích",
+      "troop": "spear",
+      "tier": 1
+    },
+    "16": {
+      "sheet": "assets/units/sheets/units/16.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/16.png",
+      "name": "Trùng Thương",
+      "troop": "spear",
+      "tier": 1
+    },
+    "27": {
+      "sheet": "assets/units/sheets/units/27.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/27.png",
+      "name": "Chùy Giáp",
+      "troop": "spear",
+      "tier": 2
+    },
+    "33": {
+      "sheet": "assets/units/sheets/units/33.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/33.png",
+      "name": "Đại Kích Sĩ",
+      "troop": "spear",
+      "tier": 2
+    },
+    "35": {
+      "sheet": "assets/units/sheets/units/35.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/35.png",
+      "name": "Đoản Kích",
+      "troop": "spear",
+      "tier": 2
+    },
+    "31": {
+      "sheet": "assets/units/sheets/units/31.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/31.png",
+      "name": "Huyền Vũ",
+      "troop": "spear",
+      "tier": 2
+    },
+    "28": {
+      "sheet": "assets/units/sheets/units/28.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/28.png",
+      "name": "Kim Thương",
+      "troop": "spear",
+      "tier": 2
+    },
+    "32": {
+      "sheet": "assets/units/sheets/units/32.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/32.png",
+      "name": "Kỳ Tập Mâu",
+      "troop": "spear",
+      "tier": 2
+    },
+    "30": {
+      "sheet": "assets/units/sheets/units/30.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/30.png",
+      "name": "Liệt Hỏa",
+      "troop": "spear",
+      "tier": 2
+    },
+    "29": {
+      "sheet": "assets/units/sheets/units/29.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/29.png",
+      "name": "Ngân Thương",
+      "troop": "spear",
+      "tier": 2
+    },
+    "74": {
+      "sheet": "assets/units/sheets/units/74.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/74.png",
+      "name": "Cang Chùy",
+      "troop": "spear",
+      "tier": 3
+    },
+    "68": {
+      "sheet": "assets/units/sheets/units/68.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/68.png",
+      "name": "Diệm Long",
+      "troop": "spear",
+      "tier": 3
+    },
+    "75": {
+      "sheet": "assets/units/sheets/units/75.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/75.png",
+      "name": "Đường Võ",
+      "troop": "spear",
+      "tier": 3
+    },
+    "70": {
+      "sheet": "assets/units/sheets/units/70.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/70.png",
+      "name": "Hoàng Thương",
+      "troop": "spear",
+      "tier": 3
+    },
+    "72": {
+      "sheet": "assets/units/sheets/units/72.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/72.png",
+      "name": "Lục Mâu",
+      "troop": "spear",
+      "tier": 3
+    },
+    "73": {
+      "sheet": "assets/units/sheets/units/73.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/73.png",
+      "name": "Si Vưu Sĩ",
+      "troop": "spear",
+      "tier": 3
+    },
+    "71": {
+      "sheet": "assets/units/sheets/units/71.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/71.png",
+      "name": "Thánh Thương",
+      "troop": "spear",
+      "tier": 3
+    },
+    "69": {
+      "sheet": "assets/units/sheets/units/69.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/69.png",
+      "name": "Viên Võ",
+      "troop": "spear",
+      "tier": 3
+    },
+    "145": {
+      "sheet": "assets/units/sheets/units/145.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/145.png",
+      "name": "Huyết Lục",
+      "troop": "spear",
+      "tier": 4
+    },
+    "141": {
+      "sheet": "assets/units/sheets/units/141.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/141.png",
+      "name": "Linh Thương",
+      "troop": "spear",
+      "tier": 4
+    },
+    "147": {
+      "sheet": "assets/units/sheets/units/147.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/147.png",
+      "name": "Phá Không Chùy",
+      "troop": "spear",
+      "tier": 4
+    },
+    "148": {
+      "sheet": "assets/units/sheets/units/148.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/148.png",
+      "name": "Song Kích",
+      "troop": "spear",
+      "tier": 4
+    },
+    "144": {
+      "sheet": "assets/units/sheets/units/144.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/144.png",
+      "name": "Thi Ma",
+      "troop": "spear",
+      "tier": 4
+    },
+    "143": {
+      "sheet": "assets/units/sheets/units/143.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/143.png",
+      "name": "Võ Tăng",
+      "troop": "spear",
+      "tier": 4
+    },
+    "146": {
+      "sheet": "assets/units/sheets/units/146.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/146.png",
+      "name": "Xi Vưu Kích",
+      "troop": "spear",
+      "tier": 4
+    },
+    "221": {
+      "sheet": "assets/units/sheets/units/221.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/221.png",
+      "name": "Cương Vệ",
+      "troop": "spear",
+      "tier": 5
+    },
+    "200": {
+      "sheet": "assets/units/sheets/units/200.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/200.png",
+      "name": "Diệm Thương",
+      "troop": "spear",
+      "tier": 5
+    },
+    "199": {
+      "sheet": "assets/units/sheets/units/199.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/199.png",
+      "name": "Hỏa Sư",
+      "troop": "spear",
+      "tier": 5
+    },
+    "222": {
+      "sheet": "assets/units/sheets/units/222.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/222.png",
+      "name": "Kích Vương",
+      "troop": "spear",
+      "tier": 5
+    },
+    "183": {
+      "sheet": "assets/units/sheets/units/183.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/183.png",
+      "name": "Ma Thương",
+      "troop": "spear",
+      "tier": 5
+    },
+    "185": {
+      "sheet": "assets/units/sheets/units/185.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/185.png",
+      "name": "Võ Sư",
+      "troop": "spear",
+      "tier": 5
+    },
+    "201": {
+      "sheet": "assets/units/sheets/units/201.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/201.png",
+      "name": "Xi Vưu Phủ",
+      "troop": "spear",
+      "tier": 5
+    },
+    "184": {
+      "sheet": "assets/units/sheets/units/184.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/184.png",
+      "name": "Yêu Chùy",
+      "troop": "spear",
+      "tier": 5
+    },
+    "301": {
+      "sheet": "assets/units/sheets/units/301.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/301.png",
+      "name": "Băng Kích",
+      "troop": "spear",
+      "tier": 6
+    },
+    "300": {
+      "sheet": "assets/units/sheets/units/300.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/300.png",
+      "name": "Băng Thương",
+      "troop": "spear",
+      "tier": 6
+    },
+    "277": {
+      "sheet": "assets/units/sheets/units/277.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/277.png",
+      "name": "Linh Diệm Tử Sĩ",
+      "troop": "spear",
+      "tier": 6
+    },
+    "276": {
+      "sheet": "assets/units/sheets/units/276.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/276.png",
+      "name": "Lôi Đình Võ Tăng",
+      "troop": "spear",
+      "tier": 6
+    },
+    "278": {
+      "sheet": "assets/units/sheets/units/278.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/278.png",
+      "name": "Lực Phù Tướng",
+      "troop": "spear",
+      "tier": 6
+    },
+    "237": {
+      "sheet": "assets/units/sheets/units/237.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/237.png",
+      "name": "Trấn Ngục Thương",
+      "troop": "spear",
+      "tier": 6
+    },
+    "238": {
+      "sheet": "assets/units/sheets/units/238.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/238.png",
+      "name": "Tu La Chùy",
+      "troop": "spear",
+      "tier": 6
+    },
+    "239": {
+      "sheet": "assets/units/sheets/units/239.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/239.png",
+      "name": "Tử Hồn Trảo",
+      "troop": "spear",
+      "tier": 6
+    },
+    "445": {
+      "sheet": "assets/units/sheets/units/445.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/445.png",
+      "name": "Hồng Hoang Thần Thương",
+      "troop": "spear",
+      "tier": 6
+    },
+    "446": {
+      "sheet": "assets/units/sheets/units/446.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/446.png",
+      "name": "Thông Thiên Minh Thương",
+      "troop": "spear",
+      "tier": 6
+    },
+    "11": {
+      "sheet": "assets/units/sheets/units/11.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/11.png",
+      "name": "Kỵ",
+      "troop": "cavalry",
+      "tier": 1
+    },
+    "314": {
+      "sheet": "assets/units/sheets/units/314.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/314.png",
+      "name": "Lữ Bố",
+      "troop": "cavalry",
+      "tier": 1
+    },
+    "213": {
+      "sheet": "assets/units/sheets/units/213.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/213.png",
+      "name": "Trùng Binh",
+      "troop": "cavalry",
+      "tier": 1
+    },
+    "18": {
+      "sheet": "assets/units/sheets/units/18.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/18.png",
+      "name": "Kích Kỵ",
+      "troop": "cavalry",
+      "tier": 1
+    },
+    "19": {
+      "sheet": "assets/units/sheets/units/19.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/19.png",
+      "name": "Trùng Kỵ",
+      "troop": "cavalry",
+      "tier": 1
+    },
+    "37": {
+      "sheet": "assets/units/sheets/units/37.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/37.png",
+      "name": "Bạch Mã",
+      "troop": "cavalry",
+      "tier": 2
+    },
+    "40": {
+      "sheet": "assets/units/sheets/units/40.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/40.png",
+      "name": "Giáp Ngưu",
+      "troop": "cavalry",
+      "tier": 2
+    },
+    "38": {
+      "sheet": "assets/units/sheets/units/38.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/38.png",
+      "name": "Hổ Báo Kỵ",
+      "troop": "cavalry",
+      "tier": 5
+    },
+    "43": {
+      "sheet": "assets/units/sheets/units/43.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/43.png",
+      "name": "Kim Kỵ",
+      "troop": "cavalry",
+      "tier": 2
+    },
+    "39": {
+      "sheet": "assets/units/sheets/units/39.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/39.png",
+      "name": "Ngân Kỵ",
+      "troop": "cavalry",
+      "tier": 2
+    },
+    "42": {
+      "sheet": "assets/units/sheets/units/42.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/42.png",
+      "name": "Phiêu Kỵ",
+      "troop": "cavalry",
+      "tier": 2
+    },
+    "36": {
+      "sheet": "assets/units/sheets/units/36.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/36.png",
+      "name": "Vân Kỵ",
+      "troop": "cavalry",
+      "tier": 2
+    },
+    "41": {
+      "sheet": "assets/units/sheets/units/41.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/41.png",
+      "name": "Voi Chiến",
+      "troop": "cavalry",
+      "tier": 2
+    },
+    "81": {
+      "sheet": "assets/units/sheets/units/81.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/81.png",
+      "name": "Bạch Kỵ",
+      "troop": "cavalry",
+      "tier": 3
+    },
+    "83": {
+      "sheet": "assets/units/sheets/units/83.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/83.png",
+      "name": "Di Tộc",
+      "troop": "cavalry",
+      "tier": 3
+    },
+    "82": {
+      "sheet": "assets/units/sheets/units/82.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/82.png",
+      "name": "Hỏa Ngưu",
+      "troop": "cavalry",
+      "tier": 3
+    },
+    "77": {
+      "sheet": "assets/units/sheets/units/77.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/77.png",
+      "name": "Hoàng Kỵ",
+      "troop": "cavalry",
+      "tier": 3
+    },
+    "78": {
+      "sheet": "assets/units/sheets/units/78.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/78.png",
+      "name": "Long Kỵ",
+      "troop": "cavalry",
+      "tier": 3
+    },
+    "80": {
+      "sheet": "assets/units/sheets/units/80.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/80.png",
+      "name": "Nghê Kỵ",
+      "troop": "cavalry",
+      "tier": 3
+    },
+    "76": {
+      "sheet": "assets/units/sheets/units/76.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/76.png",
+      "name": "Phủ Kỵ",
+      "troop": "cavalry",
+      "tier": 3
+    },
+    "79": {
+      "sheet": "assets/units/sheets/units/79.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/79.png",
+      "name": "Thần Kỵ",
+      "troop": "cavalry",
+      "tier": 3
+    },
+    "151": {
+      "sheet": "assets/units/sheets/units/151.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/151.png",
+      "name": "Bạch Hổ Kỵ",
+      "troop": "cavalry",
+      "tier": 4
+    },
+    "153": {
+      "sheet": "assets/units/sheets/units/153.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/153.png",
+      "name": "Bách Luân Thú",
+      "troop": "cavalry",
+      "tier": 4
+    },
+    "149": {
+      "sheet": "assets/units/sheets/units/149.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/149.png",
+      "name": "Diêm Long Kỵ",
+      "troop": "cavalry",
+      "tier": 4
+    },
+    "155": {
+      "sheet": "assets/units/sheets/units/155.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/155.png",
+      "name": "Huyết Đồ",
+      "troop": "cavalry",
+      "tier": 4
+    },
+    "156": {
+      "sheet": "assets/units/sheets/units/156.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/156.png",
+      "name": "Linh Kỵ",
+      "troop": "cavalry",
+      "tier": 4
+    },
+    "154": {
+      "sheet": "assets/units/sheets/units/154.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/154.png",
+      "name": "Ma Mút",
+      "troop": "cavalry",
+      "tier": 4
+    },
+    "152": {
+      "sheet": "assets/units/sheets/units/152.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/152.png",
+      "name": "Ngân Luyện Kỵ",
+      "troop": "cavalry",
+      "tier": 4
+    },
+    "150": {
+      "sheet": "assets/units/sheets/units/150.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/150.png",
+      "name": "Phong Dực Kỵ",
+      "troop": "cavalry",
+      "tier": 4
+    },
+    "204": {
+      "sheet": "assets/units/sheets/units/204.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/204.png",
+      "name": "Diệm Kỵ",
+      "troop": "cavalry",
+      "tier": 5
+    },
+    "187": {
+      "sheet": "assets/units/sheets/units/187.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/187.png",
+      "name": "Hắc Diệu",
+      "troop": "cavalry",
+      "tier": 5
+    },
+    "188": {
+      "sheet": "assets/units/sheets/units/188.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/188.png",
+      "name": "Hắc Ma Kỵ",
+      "troop": "cavalry",
+      "tier": 5
+    },
+    "203": {
+      "sheet": "assets/units/sheets/units/203.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/203.png",
+      "name": "Hỏa Kỵ",
+      "troop": "cavalry",
+      "tier": 5
+    },
+    "223": {
+      "sheet": "assets/units/sheets/units/223.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/223.png",
+      "name": "Thiên Kỵ",
+      "troop": "cavalry",
+      "tier": 5
+    },
+    "186": {
+      "sheet": "assets/units/sheets/units/186.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/186.png",
+      "name": "Thiên Ma Kỵ",
+      "troop": "cavalry",
+      "tier": 5
+    },
+    "224": {
+      "sheet": "assets/units/sheets/units/224.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/224.png",
+      "name": "Thiên Thú",
+      "troop": "cavalry",
+      "tier": 5
+    },
+    "202": {
+      "sheet": "assets/units/sheets/units/202.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/202.png",
+      "name": "Viêm Kỵ",
+      "troop": "cavalry",
+      "tier": 5
+    },
+    "281": {
+      "sheet": "assets/units/sheets/units/281.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/281.png",
+      "name": "Bạo Nộ Chùy",
+      "troop": "cavalry",
+      "tier": 6
+    },
+    "302": {
+      "sheet": "assets/units/sheets/units/302.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/302.png",
+      "name": "Băng Kỵ",
+      "troop": "cavalry",
+      "tier": 6
+    },
+    "303": {
+      "sheet": "assets/units/sheets/units/303.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/303.png",
+      "name": "Băng Tượng",
+      "troop": "cavalry",
+      "tier": 6
+    },
+    "240": {
+      "sheet": "assets/units/sheets/units/240.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/240.png",
+      "name": "Dạ Tuần Kỵ",
+      "troop": "cavalry",
+      "tier": 6
+    },
+    "241": {
+      "sheet": "assets/units/sheets/units/241.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/241.png",
+      "name": "Dị Ngục Quỷ",
+      "troop": "cavalry",
+      "tier": 6
+    },
+    "280": {
+      "sheet": "assets/units/sheets/units/280.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/280.png",
+      "name": "Minh Hỏa Thiết Kỵ",
+      "troop": "cavalry",
+      "tier": 6
+    },
+    "242": {
+      "sheet": "assets/units/sheets/units/242.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/242.png",
+      "name": "Trấn Ngục Kỵ",
+      "troop": "cavalry",
+      "tier": 6
+    },
+    "279": {
+      "sheet": "assets/units/sheets/units/279.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/279.png",
+      "name": "Tử Điện Kỵ",
+      "troop": "cavalry",
+      "tier": 6
+    },
+    "448": {
+      "sheet": "assets/units/sheets/units/448.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/448.png",
+      "name": "Ảm Diệt Thần Kỵ",
+      "troop": "cavalry",
+      "tier": 6
+    },
+    "447": {
+      "sheet": "assets/units/sheets/units/447.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/447.png",
+      "name": "Tử Tiêu Lôi Kỵ",
+      "troop": "cavalry",
+      "tier": 6
+    },
+    "109": {
+      "sheet": "assets/units/sheets/units/109.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/109.png",
+      "name": "Bạch Hổ",
+      "troop": "archer",
+      "tier": 1
+    },
+    "110": {
+      "sheet": "assets/units/sheets/units/110.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/110.png",
+      "name": "Chu Tước",
+      "troop": "archer",
+      "tier": 1
+    },
+    "12": {
+      "sheet": "assets/units/sheets/units/12.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/12.png",
+      "name": "Cung",
+      "troop": "archer",
+      "tier": 1
+    },
+    "111": {
+      "sheet": "assets/units/sheets/units/111.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/111.png",
+      "name": "Huyền Vũ",
+      "troop": "archer",
+      "tier": 1
+    },
+    "108": {
+      "sheet": "assets/units/sheets/units/108.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/108.png",
+      "name": "Thanh Long",
+      "troop": "archer",
+      "tier": 1
+    },
+    "20": {
+      "sheet": "assets/units/sheets/units/20.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/20.png",
+      "name": "Nỏ Binh",
+      "troop": "archer",
+      "tier": 1
+    },
+    "21": {
+      "sheet": "assets/units/sheets/units/21.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/21.png",
+      "name": "Trường Cung",
+      "troop": "archer",
+      "tier": 1
+    },
+    "48": {
+      "sheet": "assets/units/sheets/units/48.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/48.png",
+      "name": "Hỏa Cung",
+      "troop": "archer",
+      "tier": 2
+    },
+    "47": {
+      "sheet": "assets/units/sheets/units/47.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/47.png",
+      "name": "Kim Nỏ",
+      "troop": "archer",
+      "tier": 2
+    },
+    "51": {
+      "sheet": "assets/units/sheets/units/51.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/51.png",
+      "name": "Lôi Oanh",
+      "troop": "archer",
+      "tier": 2
+    },
+    "45": {
+      "sheet": "assets/units/sheets/units/45.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/45.png",
+      "name": "Nỏ Pháo Xa",
+      "troop": "archer",
+      "tier": 2
+    },
+    "44": {
+      "sheet": "assets/units/sheets/units/44.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/44.png",
+      "name": "Phong Phiêu",
+      "troop": "archer",
+      "tier": 2
+    },
+    "46": {
+      "sheet": "assets/units/sheets/units/46.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/46.png",
+      "name": "Thích Khách",
+      "troop": "archer",
+      "tier": 2
+    },
+    "49": {
+      "sheet": "assets/units/sheets/units/49.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/49.png",
+      "name": "Ưng Nhãn",
+      "troop": "archer",
+      "tier": 2
+    },
+    "50": {
+      "sheet": "assets/units/sheets/units/50.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/50.png",
+      "name": "Xung Xa",
+      "troop": "archer",
+      "tier": 2
+    },
+    "84": {
+      "sheet": "assets/units/sheets/units/84.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/84.png",
+      "name": "Ảnh Vệ",
+      "troop": "archer",
+      "tier": 3
+    },
+    "89": {
+      "sheet": "assets/units/sheets/units/89.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/89.png",
+      "name": "Diệm Cung",
+      "troop": "archer",
+      "tier": 3
+    },
+    "88": {
+      "sheet": "assets/units/sheets/units/88.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/88.png",
+      "name": "Hỏa Lôi",
+      "troop": "archer",
+      "tier": 3
+    },
+    "85": {
+      "sheet": "assets/units/sheets/units/85.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/85.png",
+      "name": "Hoàng Nỏ",
+      "troop": "archer",
+      "tier": 3
+    },
+    "86": {
+      "sheet": "assets/units/sheets/units/86.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/86.png",
+      "name": "Hồi Phiêu",
+      "troop": "archer",
+      "tier": 3
+    },
+    "87": {
+      "sheet": "assets/units/sheets/units/87.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/87.png",
+      "name": "Liên Nỏ Xa",
+      "troop": "archer",
+      "tier": 3
+    },
+    "90": {
+      "sheet": "assets/units/sheets/units/90.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/90.png",
+      "name": "Liệp Cung",
+      "troop": "archer",
+      "tier": 3
+    },
+    "91": {
+      "sheet": "assets/units/sheets/units/91.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/91.png",
+      "name": "Long Pháo",
+      "troop": "archer",
+      "tier": 3
+    },
+    "159": {
+      "sheet": "assets/units/sheets/units/159.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/159.png",
+      "name": "Ảnh Hồn",
+      "troop": "archer",
+      "tier": 4
+    },
+    "164": {
+      "sheet": "assets/units/sheets/units/164.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/164.png",
+      "name": "Cuồng Lôi",
+      "troop": "archer",
+      "tier": 4
+    },
+    "157": {
+      "sheet": "assets/units/sheets/units/157.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/157.png",
+      "name": "Liệp Binh",
+      "troop": "archer",
+      "tier": 4
+    },
+    "160": {
+      "sheet": "assets/units/sheets/units/160.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/160.png",
+      "name": "Linh Nỏ",
+      "troop": "archer",
+      "tier": 4
+    },
+    "163": {
+      "sheet": "assets/units/sheets/units/163.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/163.png",
+      "name": "Long Chùy",
+      "troop": "archer",
+      "tier": 4
+    },
+    "158": {
+      "sheet": "assets/units/sheets/units/158.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/158.png",
+      "name": "Thiết Nỏ",
+      "troop": "archer",
+      "tier": 4
+    },
+    "162": {
+      "sheet": "assets/units/sheets/units/162.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/162.png",
+      "name": "Tinh Không",
+      "troop": "archer",
+      "tier": 4
+    },
+    "161": {
+      "sheet": "assets/units/sheets/units/161.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/161.png",
+      "name": "Xích Cung",
+      "troop": "archer",
+      "tier": 4
+    },
+    "205": {
+      "sheet": "assets/units/sheets/units/205.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/205.png",
+      "name": "Diệm Binh",
+      "troop": "archer",
+      "tier": 5
+    },
+    "190": {
+      "sheet": "assets/units/sheets/units/190.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/190.png",
+      "name": "Liệt Hồn",
+      "troop": "archer",
+      "tier": 5
+    },
+    "191": {
+      "sheet": "assets/units/sheets/units/191.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/191.png",
+      "name": "Phệ Thiên",
+      "troop": "archer",
+      "tier": 5
+    },
+    "225": {
+      "sheet": "assets/units/sheets/units/225.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/225.png",
+      "name": "Thiên Nỏ",
+      "troop": "archer",
+      "tier": 5
+    },
+    "226": {
+      "sheet": "assets/units/sheets/units/226.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/226.png",
+      "name": "Thiên Tiễn",
+      "troop": "archer",
+      "tier": 5
+    },
+    "189": {
+      "sheet": "assets/units/sheets/units/189.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/189.png",
+      "name": "Tu La Cung",
+      "troop": "archer",
+      "tier": 5
+    },
+    "207": {
+      "sheet": "assets/units/sheets/units/207.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/207.png",
+      "name": "Viêm Pháo",
+      "troop": "archer",
+      "tier": 5
+    },
+    "305": {
+      "sheet": "assets/units/sheets/units/305.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/305.png",
+      "name": "Băng Cung",
+      "troop": "archer",
+      "tier": 6
+    },
+    "304": {
+      "sheet": "assets/units/sheets/units/304.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/304.png",
+      "name": "Băng Nỏ",
+      "troop": "archer",
+      "tier": 6
+    },
+    "245": {
+      "sheet": "assets/units/sheets/units/245.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/245.png",
+      "name": "Minh Hỏa Xa",
+      "troop": "archer",
+      "tier": 6
+    },
+    "243": {
+      "sheet": "assets/units/sheets/units/243.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/243.png",
+      "name": "Ngục Liên Nỏ",
+      "troop": "archer",
+      "tier": 6
+    },
+    "284": {
+      "sheet": "assets/units/sheets/units/284.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/284.png",
+      "name": "Thiên Long Pháo",
+      "troop": "archer",
+      "tier": 6
+    },
+    "283": {
+      "sheet": "assets/units/sheets/units/283.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/283.png",
+      "name": "Thiên Vũ Tinh Binh",
+      "troop": "archer",
+      "tier": 6
+    },
+    "244": {
+      "sheet": "assets/units/sheets/units/244.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/244.png",
+      "name": "Truy Mệnh Ma Hồn",
+      "troop": "archer",
+      "tier": 6
+    },
+    "282": {
+      "sheet": "assets/units/sheets/units/282.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/282.png",
+      "name": "Yêu Tiêu Thủ",
+      "troop": "archer",
+      "tier": 6
+    },
+    "449": {
+      "sheet": "assets/units/sheets/units/449.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/449.png",
+      "name": "Tật Phong Yêu Ẩn",
+      "troop": "archer",
+      "tier": 6
+    },
+    "450": {
+      "sheet": "assets/units/sheets/units/450.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/450.png",
+      "name": "Thiên Khiển Thần Cơ Nỏ",
+      "troop": "archer",
+      "tier": 6
+    },
+    "178": {
+      "sheet": "assets/units/sheets/units/178.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/178.png",
+      "name": "Áp Dữ",
+      "troop": "strategist",
+      "tier": 1
+    },
+    "179": {
+      "sheet": "assets/units/sheets/units/179.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/179.png",
+      "name": "Ba Xà",
+      "troop": "strategist",
+      "tier": 1
+    },
+    "195": {
+      "sheet": "assets/units/sheets/units/195.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/195.png",
+      "name": "Chu Yêm",
+      "troop": "strategist",
+      "tier": 1
+    },
+    "126": {
+      "sheet": "assets/units/sheets/units/126.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/126.png",
+      "name": "CơQuan Thú",
+      "troop": "strategist",
+      "tier": 1
+    },
+    "127": {
+      "sheet": "assets/units/sheets/units/127.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/127.png",
+      "name": "CơQuan Thú Nhuệ",
+      "troop": "strategist",
+      "tier": 1
+    },
+    "260": {
+      "sheet": "assets/units/sheets/units/260.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/260.png",
+      "name": "Cùng Kỳ",
+      "troop": "strategist",
+      "tier": 1
+    },
+    "211": {
+      "sheet": "assets/units/sheets/units/211.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/211.png",
+      "name": "Đào Ngột",
+      "troop": "strategist",
+      "tier": 1
+    },
+    "218": {
+      "sheet": "assets/units/sheets/units/218.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/218.png",
+      "name": "Hải Tặc Quan",
+      "troop": "strategist",
+      "tier": 1
+    },
+    "132": {
+      "sheet": "assets/units/sheets/units/132.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/132.png",
+      "name": "Man Hống Ngưu",
+      "troop": "strategist",
+      "tier": 1
+    },
+    "131": {
+      "sheet": "assets/units/sheets/units/131.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/131.png",
+      "name": "Man Thạch Binh",
+      "troop": "strategist",
+      "tier": 1
+    },
+    "176": {
+      "sheet": "assets/units/sheets/units/176.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/176.png",
+      "name": "Phi Liêm",
+      "troop": "strategist",
+      "tier": 1
+    },
+    "13": {
+      "sheet": "assets/units/sheets/units/13.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/13.png",
+      "name": "Quan văn",
+      "troop": "strategist",
+      "tier": 1
+    },
+    "216": {
+      "sheet": "assets/units/sheets/units/216.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/216.png",
+      "name": "Sơn Tặc Quan",
+      "troop": "strategist",
+      "tier": 1
+    },
+    "121": {
+      "sheet": "assets/units/sheets/units/121.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/121.png",
+      "name": "Thạch Binh",
+      "troop": "strategist",
+      "tier": 1
+    },
+    "123": {
+      "sheet": "assets/units/sheets/units/123.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/123.png",
+      "name": "Thạch Binh Nhuệ",
+      "troop": "strategist",
+      "tier": 1
+    },
+    "175": {
+      "sheet": "assets/units/sheets/units/175.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/175.png",
+      "name": "Thiên Lang",
+      "troop": "strategist",
+      "tier": 1
+    },
+    "212": {
+      "sheet": "assets/units/sheets/units/212.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/212.png",
+      "name": "Trùng Quan",
+      "troop": "strategist",
+      "tier": 1
+    },
+    "214": {
+      "sheet": "assets/units/sheets/units/214.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/214.png",
+      "name": "Trùng Vương",
+      "troop": "strategist",
+      "tier": 1
+    },
+    "22": {
+      "sheet": "assets/units/sheets/units/22.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/22.png",
+      "name": "Mưu Sĩ",
+      "troop": "strategist",
+      "tier": 1
+    },
+    "23": {
+      "sheet": "assets/units/sheets/units/23.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/23.png",
+      "name": "Sách Sĩ",
+      "troop": "strategist",
+      "tier": 1
+    },
+    "52": {
+      "sheet": "assets/units/sheets/units/52.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/52.png",
+      "name": "Hỏa Sách Sĩ",
+      "troop": "strategist",
+      "tier": 2
+    },
+    "54": {
+      "sheet": "assets/units/sheets/units/54.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/54.png",
+      "name": "Khống Thuật",
+      "troop": "strategist",
+      "tier": 2
+    },
+    "58": {
+      "sheet": "assets/units/sheets/units/58.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/58.png",
+      "name": "Kỳ Cổ Thủ",
+      "troop": "strategist",
+      "tier": 2
+    },
+    "53": {
+      "sheet": "assets/units/sheets/units/53.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/53.png",
+      "name": "Phong Hành",
+      "troop": "strategist",
+      "tier": 2
+    },
+    "56": {
+      "sheet": "assets/units/sheets/units/56.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/56.png",
+      "name": "Thủy Sách Sĩ",
+      "troop": "strategist",
+      "tier": 2
+    },
+    "55": {
+      "sheet": "assets/units/sheets/units/55.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/55.png",
+      "name": "Tử Điện Sứ",
+      "troop": "strategist",
+      "tier": 2
+    },
+    "57": {
+      "sheet": "assets/units/sheets/units/57.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/57.png",
+      "name": "Vũ Nữ",
+      "troop": "strategist",
+      "tier": 2
+    },
+    "59": {
+      "sheet": "assets/units/sheets/units/59.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/59.png",
+      "name": "Vu Thuật Sư",
+      "troop": "strategist",
+      "tier": 2
+    },
+    "92": {
+      "sheet": "assets/units/sheets/units/92.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/92.png",
+      "name": "Diệm Sách",
+      "troop": "strategist",
+      "tier": 3
+    },
+    "97": {
+      "sheet": "assets/units/sheets/units/97.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/97.png",
+      "name": "Hoa Khôi",
+      "troop": "strategist",
+      "tier": 3
+    },
+    "96": {
+      "sheet": "assets/units/sheets/units/96.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/96.png",
+      "name": "Lãng Sách",
+      "troop": "strategist",
+      "tier": 3
+    },
+    "98": {
+      "sheet": "assets/units/sheets/units/98.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/98.png",
+      "name": "Lôi Cổ",
+      "troop": "strategist",
+      "tier": 3
+    },
+    "95": {
+      "sheet": "assets/units/sheets/units/95.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/95.png",
+      "name": "Lôi Thuật",
+      "troop": "strategist",
+      "tier": 3
+    },
+    "94": {
+      "sheet": "assets/units/sheets/units/94.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/94.png",
+      "name": "Ngự Thuật",
+      "troop": "strategist",
+      "tier": 3
+    },
+    "93": {
+      "sheet": "assets/units/sheets/units/93.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/93.png",
+      "name": "VânĐào",
+      "troop": "strategist",
+      "tier": 3
+    },
+    "99": {
+      "sheet": "assets/units/sheets/units/99.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/99.png",
+      "name": "VuĐộc Sĩ",
+      "troop": "strategist",
+      "tier": 3
+    },
+    "169": {
+      "sheet": "assets/units/sheets/units/169.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/169.png",
+      "name": "Băng Di",
+      "troop": "strategist",
+      "tier": 4
+    },
+    "171": {
+      "sheet": "assets/units/sheets/units/171.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/171.png",
+      "name": "Cổ Hiệu Quân",
+      "troop": "strategist",
+      "tier": 4
+    },
+    "167": {
+      "sheet": "assets/units/sheets/units/167.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/167.png",
+      "name": "Địa Sư",
+      "troop": "strategist",
+      "tier": 4
+    },
+    "172": {
+      "sheet": "assets/units/sheets/units/172.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/172.png",
+      "name": "Độc Âm Sư",
+      "troop": "strategist",
+      "tier": 4
+    },
+    "170": {
+      "sheet": "assets/units/sheets/units/170.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/170.png",
+      "name": "Hoa Lạc Sư",
+      "troop": "strategist",
+      "tier": 4
+    },
+    "166": {
+      "sheet": "assets/units/sheets/units/166.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/166.png",
+      "name": "Khống Vân",
+      "troop": "strategist",
+      "tier": 4
+    },
+    "168": {
+      "sheet": "assets/units/sheets/units/168.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/168.png",
+      "name": "Lôi Thần",
+      "troop": "strategist",
+      "tier": 4
+    },
+    "165": {
+      "sheet": "assets/units/sheets/units/165.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/165.png",
+      "name": "Viêm Thần",
+      "troop": "strategist",
+      "tier": 4
+    },
+    "194": {
+      "sheet": "assets/units/sheets/units/194.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/194.png",
+      "name": "Âm Minh Sư",
+      "troop": "strategist",
+      "tier": 5
+    },
+    "209": {
+      "sheet": "assets/units/sheets/units/209.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/209.png",
+      "name": "Hỏa Sứ",
+      "troop": "strategist",
+      "tier": 5
+    },
+    "228": {
+      "sheet": "assets/units/sheets/units/228.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/228.png",
+      "name": "Thiên Âm",
+      "troop": "strategist",
+      "tier": 5
+    },
+    "210": {
+      "sheet": "assets/units/sheets/units/210.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/210.png",
+      "name": "Thiên Ma",
+      "troop": "strategist",
+      "tier": 5
+    },
+    "227": {
+      "sheet": "assets/units/sheets/units/227.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/227.png",
+      "name": "Thiên Nhan",
+      "troop": "strategist",
+      "tier": 5
+    },
+    "193": {
+      "sheet": "assets/units/sheets/units/193.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/193.png",
+      "name": "Thiên Sư",
+      "troop": "strategist",
+      "tier": 5
+    },
+    "208": {
+      "sheet": "assets/units/sheets/units/208.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/208.png",
+      "name": "Viêm Sư",
+      "troop": "strategist",
+      "tier": 5
+    },
+    "192": {
+      "sheet": "assets/units/sheets/units/192.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/192.png",
+      "name": "Yêu Sư",
+      "troop": "strategist",
+      "tier": 5
+    },
+    "307": {
+      "sheet": "assets/units/sheets/units/307.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/307.png",
+      "name": "Băng Cầm",
+      "troop": "strategist",
+      "tier": 6
+    },
+    "306": {
+      "sheet": "assets/units/sheets/units/306.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/306.png",
+      "name": "Băng Hồ",
+      "troop": "strategist",
+      "tier": 6
+    },
+    "287": {
+      "sheet": "assets/units/sheets/units/287.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/287.png",
+      "name": "Chấp Hỏa Thiên Quan",
+      "troop": "strategist",
+      "tier": 6
+    },
+    "285": {
+      "sheet": "assets/units/sheets/units/285.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/285.png",
+      "name": "Linh Hỏa Mưu Sĩ",
+      "troop": "strategist",
+      "tier": 6
+    },
+    "248": {
+      "sheet": "assets/units/sheets/units/248.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/248.png",
+      "name": "Ma Ngục Trưởng",
+      "troop": "strategist",
+      "tier": 6
+    },
+    "246": {
+      "sheet": "assets/units/sheets/units/246.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/246.png",
+      "name": "Ngục Hỏa Thần Phán",
+      "troop": "strategist",
+      "tier": 6
+    },
+    "286": {
+      "sheet": "assets/units/sheets/units/286.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/286.png",
+      "name": "Thiên Lôi Sứ",
+      "troop": "strategist",
+      "tier": 6
+    },
+    "247": {
+      "sheet": "assets/units/sheets/units/247.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/247.png",
+      "name": "Thu Hồn Sứ",
+      "troop": "strategist",
+      "tier": 6
+    },
+    "451": {
+      "sheet": "assets/units/sheets/units/451.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/451.png",
+      "name": "Cửu U Pháp Tôn",
+      "troop": "strategist",
+      "tier": 6
+    },
+    "452": {
+      "sheet": "assets/units/sheets/units/452.png",
+      "cols": 8,
+      "rows": 2,
+      "kind": "wiki-unit",
+      "icon": "assets/units/wiki/452.png",
+      "name": "Ly Hỏa Pháp Tôn",
+      "troop": "strategist",
+      "tier": 6
+    }
+  },
+  "byTroopTier": {
+    "infantry": {
+      "1": [
+        "177",
+        "1",
+        "405",
+        "322",
+        "312",
+        "345",
+        "344",
+        "346",
+        "215",
+        "297",
+        "441",
+        "173",
+        "348",
+        "15",
+        "14"
+      ],
+      "2": [
+        "2",
+        "24",
+        "34",
+        "5",
+        "25",
+        "26",
+        "3",
+        "4"
+      ],
+      "3": [
+        "65",
+        "61",
+        "60",
+        "64",
+        "67",
+        "62",
+        "63",
+        "66"
+      ],
+      "4": [
+        "138",
+        "136",
+        "133",
+        "140",
+        "135",
+        "137",
+        "139",
+        "134"
+      ],
+      "5": [
+        "196",
+        "181",
+        "180",
+        "198",
+        "182",
+        "219",
+        "220",
+        "197"
+      ],
+      "6": [
+        "298",
+        "299",
+        "236",
+        "235",
+        "273",
+        "274",
+        "234",
+        "275",
+        "444",
+        "443"
+      ]
+    },
+    "spear": {
+      "1": [
+        "217",
+        "291",
+        "174",
+        "10",
+        "17",
+        "16"
+      ],
+      "2": [
+        "27",
+        "33",
+        "35",
+        "31",
+        "28",
+        "32",
+        "30",
+        "29"
+      ],
+      "3": [
+        "74",
+        "68",
+        "75",
+        "70",
+        "72",
+        "73",
+        "71",
+        "69"
+      ],
+      "4": [
+        "145",
+        "141",
+        "147",
+        "148",
+        "144",
+        "143",
+        "146"
+      ],
+      "5": [
+        "221",
+        "200",
+        "199",
+        "222",
+        "183",
+        "185",
+        "201",
+        "184"
+      ],
+      "6": [
+        "301",
+        "300",
+        "277",
+        "276",
+        "278",
+        "237",
+        "238",
+        "239",
+        "445",
+        "446"
+      ]
+    },
+    "cavalry": {
+      "1": [
+        "11",
+        "314",
+        "213",
+        "18",
+        "19"
+      ],
+      "2": [
+        "37",
+        "40",
+        "43",
+        "39",
+        "42",
+        "36",
+        "41"
+      ],
+      "3": [
+        "81",
+        "83",
+        "82",
+        "77",
+        "78",
+        "80",
+        "76",
+        "79"
+      ],
+      "4": [
+        "151",
+        "153",
+        "149",
+        "155",
+        "156",
+        "154",
+        "152",
+        "150"
+      ],
+      "5": [
+        "38",
+        "204",
+        "187",
+        "188",
+        "203",
+        "223",
+        "186",
+        "224",
+        "202"
+      ],
+      "6": [
+        "281",
+        "302",
+        "303",
+        "240",
+        "241",
+        "280",
+        "242",
+        "279",
+        "448",
+        "447"
+      ]
+    },
+    "archer": {
+      "1": [
+        "109",
+        "110",
+        "12",
+        "111",
+        "108",
+        "20",
+        "21"
+      ],
+      "2": [
+        "48",
+        "47",
+        "51",
+        "45",
+        "44",
+        "46",
+        "49",
+        "50"
+      ],
+      "3": [
+        "84",
+        "89",
+        "88",
+        "85",
+        "86",
+        "87",
+        "90",
+        "91"
+      ],
+      "4": [
+        "159",
+        "164",
+        "157",
+        "160",
+        "163",
+        "158",
+        "162",
+        "161"
+      ],
+      "5": [
+        "205",
+        "190",
+        "191",
+        "225",
+        "226",
+        "189",
+        "207"
+      ],
+      "6": [
+        "305",
+        "304",
+        "245",
+        "243",
+        "284",
+        "283",
+        "244",
+        "282",
+        "449",
+        "450"
+      ]
+    },
+    "strategist": {
+      "1": [
+        "178",
+        "179",
+        "195",
+        "126",
+        "127",
+        "260",
+        "211",
+        "218",
+        "132",
+        "131",
+        "176",
+        "13",
+        "216",
+        "121",
+        "123",
+        "175",
+        "212",
+        "214",
+        "22",
+        "23"
+      ],
+      "2": [
+        "52",
+        "54",
+        "58",
+        "53",
+        "56",
+        "55",
+        "57",
+        "59"
+      ],
+      "3": [
+        "92",
+        "97",
+        "96",
+        "98",
+        "95",
+        "94",
+        "93",
+        "99"
+      ],
+      "4": [
+        "169",
+        "171",
+        "167",
+        "172",
+        "170",
+        "166",
+        "168",
+        "165"
+      ],
+      "5": [
+        "194",
+        "209",
+        "228",
+        "210",
+        "227",
+        "193",
+        "208",
+        "192"
+      ],
+      "6": [
+        "307",
+        "306",
+        "287",
+        "285",
+        "248",
+        "246",
+        "286",
+        "247",
+        "451",
+        "452"
+      ]
+    }
+  },
   "infantry": {
     "1": {
       "sheet": "assets/units/sheets/infantry-t1.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-infantry-t1.png"
+      "icon": "assets/units/battle/wiki-infantry-t1.png",
+      "wikiId": "1"
     },
     "2": {
       "sheet": "assets/units/sheets/infantry-t2.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-infantry-t2.png"
+      "icon": "assets/units/battle/wiki-infantry-t2.png",
+      "wikiId": "5"
     },
     "3": {
       "sheet": "assets/units/sheets/infantry-t3.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-infantry-t3.png"
+      "icon": "assets/units/battle/wiki-infantry-t3.png",
+      "wikiId": "61"
     },
     "4": {
       "sheet": "assets/units/sheets/infantry-t4.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-infantry-t4.png"
+      "icon": "assets/units/battle/wiki-infantry-t4.png",
+      "wikiId": "136"
     },
     "5": {
       "sheet": "assets/units/sheets/infantry-t5.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-infantry-t5.png"
+      "icon": "assets/units/battle/wiki-infantry-t5.png",
+      "wikiId": "181"
     },
     "6": {
       "sheet": "assets/units/sheets/infantry-t6.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-infantry-t6.png"
+      "icon": "assets/units/battle/wiki-infantry-t6.png",
+      "wikiId": "298"
     }
   },
   "spear": {
@@ -49,42 +3254,48 @@
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-spear-t1.png"
+      "icon": "assets/units/battle/wiki-spear-t1.png",
+      "wikiId": "10"
     },
     "2": {
       "sheet": "assets/units/sheets/spear-t2.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-spear-t2.png"
+      "icon": "assets/units/battle/wiki-spear-t2.png",
+      "wikiId": "28"
     },
     "3": {
       "sheet": "assets/units/sheets/spear-t3.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-spear-t3.png"
+      "icon": "assets/units/battle/wiki-spear-t3.png",
+      "wikiId": "70"
     },
     "4": {
       "sheet": "assets/units/sheets/spear-t4.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-spear-t4.png"
+      "icon": "assets/units/battle/wiki-spear-t4.png",
+      "wikiId": "141"
     },
     "5": {
       "sheet": "assets/units/sheets/spear-t5.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-spear-t5.png"
+      "icon": "assets/units/battle/wiki-spear-t5.png",
+      "wikiId": "200"
     },
     "6": {
       "sheet": "assets/units/sheets/spear-t6.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-spear-t6.png"
+      "icon": "assets/units/battle/wiki-spear-t6.png",
+      "wikiId": "300"
     }
   },
   "cavalry": {
@@ -93,42 +3304,48 @@
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-cavalry-t1.png"
+      "icon": "assets/units/battle/wiki-cavalry-t1.png",
+      "wikiId": "11"
     },
     "2": {
       "sheet": "assets/units/sheets/cavalry-t2.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-cavalry-t2.png"
+      "icon": "assets/units/battle/wiki-cavalry-t2.png",
+      "wikiId": "43"
     },
     "3": {
       "sheet": "assets/units/sheets/cavalry-t3.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-cavalry-t3.png"
+      "icon": "assets/units/battle/wiki-cavalry-t3.png",
+      "wikiId": "81"
     },
     "4": {
       "sheet": "assets/units/sheets/cavalry-t4.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-cavalry-t4.png"
+      "icon": "assets/units/battle/wiki-cavalry-t4.png",
+      "wikiId": "151"
     },
     "5": {
       "sheet": "assets/units/sheets/hobao-ky.png",
       "cols": 8,
       "rows": 2,
       "kind": "hobao",
-      "icon": "assets/units/battle/wiki-cavalry-t5.png"
+      "icon": "assets/units/battle/wiki-cavalry-t5.png",
+      "wikiId": "38"
     },
     "6": {
       "sheet": "assets/units/sheets/hobao-ky.png",
       "cols": 8,
       "rows": 2,
       "kind": "hobao",
-      "icon": "assets/units/battle/wiki-cavalry-t6.png"
+      "icon": "assets/units/battle/wiki-cavalry-t6.png",
+      "wikiId": "302"
     }
   },
   "archer": {
@@ -137,42 +3354,48 @@
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-archer-t1.png"
+      "icon": "assets/units/battle/wiki-archer-t1.png",
+      "wikiId": "12"
     },
     "2": {
       "sheet": "assets/units/sheets/archer-t2.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-archer-t2.png"
+      "icon": "assets/units/battle/wiki-archer-t2.png",
+      "wikiId": "48"
     },
     "3": {
       "sheet": "assets/units/sheets/archer-t3.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-archer-t3.png"
+      "icon": "assets/units/battle/wiki-archer-t3.png",
+      "wikiId": "89"
     },
     "4": {
       "sheet": "assets/units/sheets/archer-t4.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-archer-t4.png"
+      "icon": "assets/units/battle/wiki-archer-t4.png",
+      "wikiId": "161"
     },
     "5": {
       "sheet": "assets/units/sheets/archer-t5.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-archer-t5.png"
+      "icon": "assets/units/battle/wiki-archer-t5.png",
+      "wikiId": "189"
     },
     "6": {
       "sheet": "assets/units/sheets/archer-t6.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-archer-t6.png"
+      "icon": "assets/units/battle/wiki-archer-t6.png",
+      "wikiId": "305"
     }
   },
   "strategist": {
@@ -181,42 +3404,48 @@
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-strategist-t1.png"
+      "icon": "assets/units/battle/wiki-strategist-t1.png",
+      "wikiId": "13"
     },
     "2": {
       "sheet": "assets/units/sheets/strategist-t2.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-strategist-t2.png"
+      "icon": "assets/units/battle/wiki-strategist-t2.png",
+      "wikiId": "52"
     },
     "3": {
       "sheet": "assets/units/sheets/strategist-t3.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-strategist-t3.png"
+      "icon": "assets/units/battle/wiki-strategist-t3.png",
+      "wikiId": "98"
     },
     "4": {
       "sheet": "assets/units/sheets/strategist-t4.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-strategist-t4.png"
+      "icon": "assets/units/battle/wiki-strategist-t4.png",
+      "wikiId": "167"
     },
     "5": {
       "sheet": "assets/units/sheets/strategist-t5.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-strategist-t5.png"
+      "icon": "assets/units/battle/wiki-strategist-t5.png",
+      "wikiId": "209"
     },
     "6": {
       "sheet": "assets/units/sheets/strategist-t6.png",
       "cols": 8,
       "rows": 2,
       "kind": "wiki-derived",
-      "icon": "assets/units/battle/wiki-strategist-t6.png"
+      "icon": "assets/units/battle/wiki-strategist-t6.png",
+      "wikiId": "285"
     }
   }
 }

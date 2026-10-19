@@ -2,9 +2,8 @@ import * as THREE from "three";
 import sheetsIndex from "../../assets/units/sheets/index.json";
 
 /**
- * Unit chiến trường kiểu Ngọa Long H5:
- * mỗi ô = cụm lính (wiki icon), không token đơn.
- * Cavalry tier≥5: sheet Hổ Báo cho thủ lĩnh.
+ * Unit chiến trường: sheet wiki (icon → attack 8×2).
+ * index.json: types (loại×bậc) + byWikiId (từng binh chủng) + byTroopTier (pool skin).
  */
 
 type SheetMeta = {
@@ -13,14 +12,30 @@ type SheetMeta = {
   rows: number;
   kind: string;
   icon: string;
+  name?: string;
+  troop?: string;
+  tier?: number;
+  wikiId?: string;
 };
 
-type SheetsIndex = Record<string, Record<string, SheetMeta>>;
-const INDEX = sheetsIndex as SheetsIndex;
+type SheetsFile = {
+  schemaVersion?: number;
+  types?: Record<string, Record<string, SheetMeta>>;
+  byWikiId?: Record<string, SheetMeta>;
+  byTroopTier?: Record<string, Record<string, string[]>>;
+} & Record<string, unknown>;
 
-function sheetUrl(troop: string, tier: number): string {
-  const meta = INDEX[troop]?.[String(tier)] || INDEX[troop]?.["1"] || INDEX.infantry["1"];
-  return meta.sheet.startsWith("assets/") ? meta.sheet : `assets/units/sheets/${troop}-t${tier}.png`;
+const RAW = sheetsIndex as SheetsFile;
+const BY_WIKI = RAW.byWikiId || {};
+const BY_TROOP_TIER = RAW.byTroopTier || {};
+
+function typeTable(troop: string): Record<string, SheetMeta> | undefined {
+  if (RAW.types?.[troop]) return RAW.types[troop];
+  const flat = RAW[troop];
+  if (flat && typeof flat === "object" && !Array.isArray(flat)) {
+    return flat as Record<string, SheetMeta>;
+  }
+  return undefined;
 }
 
 function clampTier(tier: number | undefined): number {
@@ -28,10 +43,45 @@ function clampTier(tier: number | undefined): number {
   return Math.max(1, Math.min(6, n));
 }
 
-export function troopArtUrl(troop: string, tier = 1): string {
+function typeMeta(troop: string, tier: number): SheetMeta {
+  const table = typeTable(troop) || typeTable("infantry") || {};
+  return table[String(tier)] || table["1"] || {
+    sheet: `assets/units/sheets/infantry-t1.png`,
+    cols: 8,
+    rows: 2,
+    kind: "wiki-derived",
+    icon: `assets/units/battle/wiki-infantry-t1.png`,
+  };
+}
+
+/** Ưu tiên wikiId → khớp tên → pool bậc (seed) → đại diện loại×bậc */
+function resolveMeta(
+  troop: string,
+  tier: number,
+  seed: number,
+  wikiId?: string | null,
+  name?: string | null
+): SheetMeta {
+  if (wikiId && BY_WIKI[wikiId]) return BY_WIKI[wikiId];
+  if (name) {
+    const n = name.trim().toLowerCase();
+    for (const m of Object.values(BY_WIKI)) {
+      if (m.name && m.name.trim().toLowerCase() === n) return m;
+    }
+  }
+  const pool = BY_TROOP_TIER[troop]?.[String(tier)] || [];
+  if (pool.length) {
+    const id = pool[Math.abs(seed | 0) % pool.length];
+    if (id && BY_WIKI[id]) return BY_WIKI[id];
+  }
+  return typeMeta(troop, tier);
+}
+
+export function troopArtUrl(troop: string, tier = 1, seed = 0, wikiId?: string): string {
   const t = clampTier(tier);
-  const meta = INDEX[troop]?.[String(t)] || INDEX.infantry?.["1"];
-  return meta?.icon || `assets/units/battle/wiki-${troop}-t${t}.png`;
+  const kind = troop && typeTable(troop) ? troop : "infantry";
+  const meta = resolveMeta(kind, t, seed, wikiId);
+  return meta.icon || `assets/units/battle/wiki-${kind}-t${t}.png`;
 }
 
 function loadImage(url: string): Promise<HTMLImageElement> {
@@ -85,7 +135,7 @@ type SheetRuntime = {
   playing: string;
   frame: number;
   acc: number;
-  /** Wiki sheet mặc định nhìn TRÁI — true = lật canvas để nhìn PHẢI (phe ta) */
+  /** Wiki sheet mặc định nhìn TRÁI — true = lật canvas nhìn PHẢI (địch bên trái) */
   mirror: boolean;
   /** Cache key frame đã paint — tránh getImageData lặp khi idle */
   paintKey?: string;
@@ -119,9 +169,8 @@ function paintFrame(sh: SheetRuntime): void {
   sh.tex.needsUpdate = true;
 }
 
-async function loadSheet(troop: string, tier: number): Promise<SheetRuntime> {
-  const meta = INDEX[troop]?.[String(tier)] || INDEX[troop]?.["1"] || INDEX.infantry["1"];
-  const url = sheetUrl(troop, tier);
+async function loadSheetFromMeta(meta: SheetMeta): Promise<SheetRuntime> {
+  const url = meta.sheet.startsWith("assets/") ? meta.sheet : `assets/units/sheets/${meta.sheet}`;
   const img = await loadImage(url);
   const cols = meta.cols || 8;
   const rows = meta.rows || 2;
@@ -165,9 +214,9 @@ export type BattleActor = {
   sheet: SheetRuntime;
   members: THREE.Sprite[];
   enemy: boolean;
-  /** true = đã lật canvas nhìn phải (phe ta) */
+  /** true = đã lật canvas nhìn phải (địch); phe ta giữ nhìn trái */
   faceRight: boolean;
-  /** +1 phe ta / -1 địch — hướng tới đối phương trên trục X sân */
+  /** -1 phe ta (sang trái) / +1 địch (sang phải) — hướng tới đối phương */
   toward: number;
 };
 
@@ -177,22 +226,24 @@ const SOLO_LEADER_H = 0.95;
 export async function createBattleActor(
   troop: string | undefined,
   enemy: boolean,
-  _seed: number,
-  _name?: string,
-  troopTier?: number
+  seed: number,
+  name?: string,
+  troopTier?: number,
+  wikiId?: string | null
 ): Promise<BattleActor> {
-  const kind = troop && INDEX[troop] ? troop : "infantry";
+  const kind = troop && typeTable(troop) ? troop : "infantry";
   const tier = clampTier(troopTier);
-  // Wiki mặc định nhìn TRÁI → phe ta lật canvas nhìn PHẢI (đối địch)
-  const faceRight = !enemy;
-  const toward = enemy ? -1 : 1;
+  const meta = resolveMeta(kind, tier, seed, wikiId, name);
+  // Wiki mặc định nhìn TRÁI → quân ta (phải sân) giữ nguyên; địch (trái sân) lật nhìn phải
+  const faceRight = !!enemy;
+  const toward = enemy ? 1 : -1;
 
   let sheet: SheetRuntime;
   try {
-    sheet = await loadSheet(kind, tier);
+    sheet = await loadSheetFromMeta(meta);
   } catch (err) {
-    console.warn("[battle] sheet fail", kind, tier, err);
-    const wikiFallback = `assets/units/battle/wiki-${kind}-t1.png`;
+    console.warn("[battle] sheet fail", kind, tier, meta.sheet, err);
+    const wikiFallback = meta.icon || `assets/units/battle/wiki-${kind}-t1.png`;
     const img = await loadImage(wikiFallback).catch(() => loadImage(troopArtUrl("infantry", 1)));
     const canvas = document.createElement("canvas");
     canvas.width = 128;
@@ -333,7 +384,7 @@ export function playActor(actor: BattleActor, name: string, _fade = 0.15): void 
     });
   }
   if ((name === "skill" || name === "attack") && actor.members.length > 1) {
-    const toward = actor.toward || (actor.enemy ? -1 : 1);
+    const toward = actor.toward || (actor.enemy ? 1 : -1);
     actor.members.forEach((m, i) => {
       if (i === 0) return;
       m.position.x += 0.05 * toward;
@@ -343,9 +394,11 @@ export function playActor(actor: BattleActor, name: string, _fade = 0.15): void 
 }
 
 export function prefetchBattleActors(): void {
-  void loadSheet("infantry", 1).catch(() => undefined);
-  void loadSheet("cavalry", 1).catch(() => undefined);
-  void loadSheet("cavalry", 5).catch(() => undefined);
-  void loadSheet("spear", 1).catch(() => undefined);
-  void loadSheet("archer", 1).catch(() => undefined);
+  const warm = (troop: string, tier: number) =>
+    void loadSheetFromMeta(resolveMeta(troop, tier, 0)).catch(() => undefined);
+  warm("infantry", 1);
+  warm("cavalry", 1);
+  warm("cavalry", 5);
+  warm("spear", 1);
+  warm("archer", 1);
 }

@@ -49,6 +49,7 @@
         </label>
         <div class="start-actions">
           <button type="button" id="btn-new" class="btn-game primary">Khai quốc</button>
+          <button type="button" id="btn-new-max" class="btn-game" title="DEV: tướng max cấp + phẩm">Khai quốc MAX</button>
           <button type="button" id="btn-continue" class="btn-game" hidden>Tiếp tục</button>
         </div>
       </div>
@@ -110,16 +111,17 @@
         <!-- Right side -->
         <aside class="nl-side">
           <button type="button" class="side-btn" data-panel="city">Quốc Chính</button>
+          <button type="button" class="side-btn" data-panel="generals">Nhân vật</button>
           <button type="button" class="side-btn" data-panel="world">Thế Giới</button>
-          <button type="button" class="side-btn" data-panel="equip">Trang bị</button>
           <button type="button" class="side-btn" data-panel="thap">Tháp</button>
           <button type="button" class="side-btn" id="btn-day"><span id="day-label">Ngày 1</span></button>
         </aside>
 
-        <!-- Bottom nav chuẩn Ngọa Long: [Thành Chính], [Tửu Quán], [Phó Bản], [Lôi Đài] -->
+        <!-- Bottom nav: Thành Chính · Nhân vật · Trang bị · Phó Bản · Lôi Đài -->
         <nav class="nl-bottom" id="bottom-nav">
           <button type="button" class="nav-item active" data-panel="city-home"><i class="ni ni-home"></i><span>Thành Chính</span></button>
-          <button type="button" class="nav-item" data-panel="generals"><i class="ni ni-gen"></i><span>Tửu Quán</span></button>
+          <button type="button" class="nav-item" data-panel="generals"><i class="ni ni-gen"></i><span>Nhân vật</span></button>
+          <button type="button" class="nav-item" data-panel="equip"><i class="ni ni-equip"></i><span>Trang bị</span></button>
           <button type="button" class="nav-item" data-panel="tower"><i class="ni ni-dung"></i><span>Phó Bản</span></button>
           <button type="button" class="nav-item" data-panel="arena"><i class="ni ni-arena"></i><span>Lôi Đài</span></button>
         </nav>

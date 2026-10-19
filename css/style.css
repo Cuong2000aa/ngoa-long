@@ -1079,8 +1079,8 @@ textarea {
   flex-direction: column;
   align-items: center;
   gap: 0.1rem;
-  min-width: 54px;
-  padding: 0.25rem 0.35rem;
+  min-width: 46px;
+  padding: 0.25rem 0.28rem;
   border: 1px solid transparent;
   border-radius: 2px;
   background: transparent;
@@ -1104,10 +1104,12 @@ textarea {
 }
 .ni-home { background-image: url("../assets/ui/nav-city.svg"); }
 .ni-gen { background-image: url("../assets/ui/nav-tavern.svg"); }
+.ni-equip { background-image: url("../assets/ui/nav-equip.svg"); }
 .ni-dung { background-image: url("../assets/ui/nav-campaign.svg"); }
 .ni-arena { background-image: url("../assets/ui/nav-arena.svg"); }
 .ni-home::before,
 .ni-gen::before,
+.ni-equip::before,
 .ni-dung::before,
 .ni-arena::before { content: none; }
 .nav-item.active {
@@ -1181,10 +1183,10 @@ button:focus-visible,
 .panel-sheet {
   position: relative;
   z-index: 1;
-  width: min(460px, 94vw);
-  max-height: min(78vh, 580px);
+  width: min(920px, 96vw);
+  max-height: min(88vh, 820px);
   overflow: auto;
-  padding: 0.8rem 0.85rem 0.9rem;
+  padding: 0.9rem 1rem 1rem;
 }
 .panel-close {
   position: absolute;
@@ -1427,7 +1429,8 @@ button:focus-visible,
     width: min(260px, 18vw);
   }
   .panel-sheet {
-    width: min(520px, 36vw);
+    width: min(980px, 72vw);
+    max-height: min(90vh, 860px);
   }
 }
 

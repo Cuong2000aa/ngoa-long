@@ -298,6 +298,7 @@
         faction: h.faction || (tpl && tpl.faction) || null,
         troop: h.troop,
         troop2: h.troop2 || (tpl && tpl.troop2) || null,
+        activeTroop: h.activeTroop || h.troop || null,
         horseId: h.horseId || equip.horse || null,
         equip: equip,
         quality: h.quality,
