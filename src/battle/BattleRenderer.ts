@@ -7,8 +7,10 @@ import {
 } from "./battleActors";
 import {
   prefetchBattleVfx,
+  spawnAllyBless,
   spawnCavalryCharge,
   spawnHitBurst,
+  spawnPatternEmission,
   spawnPremiumImpact,
   spawnRushAssault,
   spawnShieldBarrier,
@@ -24,7 +26,21 @@ import {
 type SkillFlashOpts = {
   /** skill_wave — chỉ impact mục tiêu, không aura / cast lại */
   wave?: boolean;
+  /** single | column | row | front_row | all | ally_all | self */
+  pattern?: string | null;
+  /** white…gold — scale aura/impact */
+  quality?: string | null;
+  motif?: string | null;
+  hits?: number | null;
 };
+
+function qualityToScale(q?: string | null, fallback?: string | null): string {
+  const id = (q || "").toLowerCase();
+  if (id === "orange" || id === "red" || id === "gold") return "L";
+  if (id === "blue" || id === "purple") return "M";
+  if (id === "white" || id === "green") return "S";
+  return fallback || "M";
+}
 
 type SkillProfileLite = {
   delivery?: string;
@@ -645,21 +661,37 @@ export class BattleRenderer {
     const f = this.fighters.get(uid);
     if (!f || f.dead || !this.scene) return;
     const wave = !!(opts && opts.wave);
+    const pattern = (opts && opts.pattern) || "single";
     const kind =
       flash ||
       (f.troop === "strategist" ? "bagua" : f.troop === "archer" ? "thunder" : f.troop === "cavalry" ? "brown" : "steel");
     const profile = resolveSkillProfile(kind);
-    const scale = profile.scale || "M";
+    const scale = qualityToScale(opts?.quality, profile.scale || "M");
     const movement = profile.movement || "plant";
     const emission = profile.emission || "burst";
     const visual = profile.visual || "default";
     const delivery = profile.delivery || "arcane";
-    const support = delivery === "buff" || visual === "heal" || kind === "shield";
+    const support =
+      delivery === "buff" ||
+      visual === "heal" ||
+      kind === "shield" ||
+      pattern === "ally_all" ||
+      pattern === "self";
     const melee =
       delivery === "cut" || delivery === "crush" || delivery === "pierce" || visual === "slash" || visual === "pierce";
     const isCharge = kind === "charge" || (f.troop === "cavalry" && melee && !support && kind !== "rush");
     const isRush = kind === "rush";
     const isShield = kind === "shield";
+    const usePatternChoreo =
+      !isCharge &&
+      !isRush &&
+      !isShield &&
+      (pattern === "column" ||
+        pattern === "row" ||
+        pattern === "front_row" ||
+        pattern === "all" ||
+        pattern === "ally_all" ||
+        pattern === "self");
     const rangedEmit =
       emission === "projectile" ||
       emission === "rain" ||
@@ -671,10 +703,25 @@ export class BattleRenderer {
     const targets = targetUids.length ? targetUids : [];
     const firstTarget = targets.map((tid) => this.fighters.get(tid)).find((t) => t && !t.dead);
     const attach = { root: f.actor.root, leader: f.actor.sprite };
-    const punchAmp = scale === "L" ? 0.22 : scale === "S" ? 0.1 : 0.15;
+    const punchAmp = scale === "L" ? 0.28 : scale === "S" ? 0.1 : 0.16;
+
+    const targetPoints = (): THREE.Vector3[] =>
+      targets
+        .map((tid) => this.fighters.get(tid))
+        .filter((t): t is NonNullable<typeof t> => !!t && !t.dead)
+        .map((t) => this.casterFxAt(t));
 
     const deliverToTargets = (mode: "emission" | "impact") => {
       if (!this.scene) return;
+      if (mode === "emission" && usePatternChoreo) {
+        spawnPatternEmission(this.scene, this.casterFxAt(f), targetPoints(), kind, pattern, scale);
+        // Vẫn hit-react từng mục tiêu ở impact phase
+        return;
+      }
+      if (mode === "emission" && support && !isShield) {
+        spawnAllyBless(this.scene, targetPoints().length ? targetPoints() : [this.casterFxAt(f)], kind, scale);
+        return;
+      }
       targets.forEach((tid, i) => {
         const to = this.fighters.get(tid);
         if (!to || to.dead || !this.scene) return;
@@ -727,8 +774,24 @@ export class BattleRenderer {
         }, stagger);
       });
       if (mode === "impact") {
-        this.triggerCamPunch(punchAmp, scale === "L" ? 220 : 160);
-        this.hitStopUntil = performance.now() + (scale === "L" ? 70 : 45);
+        // Pattern choreo: vẫn cần hit-react + premium impact từng mục tiêu
+        if (usePatternChoreo) {
+          targets.forEach((tid, i) => {
+            const to = this.fighters.get(tid);
+            if (!to || to.dead || !this.scene) return;
+            setTimeout(() => {
+              if (!this.scene || to.dead) return;
+              const dest = this.casterFxAt(to);
+              spawnPremiumImpact(this.scene, dest, kind, scale);
+              if (!support) {
+                playActor(to.actor, "hit", 0.05);
+                to.hitFlashUntil = performance.now() + 560;
+              }
+            }, i * 45);
+          });
+        }
+        this.triggerCamPunch(punchAmp, scale === "L" ? 260 : 170);
+        this.hitStopUntil = performance.now() + (scale === "L" ? 85 : 50);
       }
     };
 

@@ -136,6 +136,16 @@ ok((motifCount.rush || 0) >= 5, `rush >= 5 (got ${motifCount.rush})`);
 ok((motifCount.charge || 0) >= 8, `charge >= 8 Kỵ* (got ${motifCount.charge})`);
 ok((motifCount.wolf || 0) >= 2, `wolf >= 2 (got ${motifCount.wolf})`);
 ok(skills.ky_liep?.fx?.motif === "charge", `ky_liep motif=charge (got ${skills.ky_liep?.fx?.motif})`);
+ok(skills.lang_tuyen?.fx?.style === "column_pierce" || skills.lang_tuyen?.pattern === "column", "lang_tuyen style/pattern column");
+ok(skills.thiet_bich?.fx?.style === "barrier" || skills.thiet_bich?.fx?.motif === "shield", "thiet_bich barrier/shield");
+ok(skills.ky_liep?.fx?.style === "cavalry_charge", `ky_liep style=cavalry_charge (got ${skills.ky_liep?.fx?.style})`);
+ok(skills.dot_kich?.fx?.style === "rush_assault", `dot_kich style=rush_assault (got ${skills.dot_kich?.fx?.style})`);
+
+// Secondary target desc (hàng sau) — Lang Tuyền thần
+const enginePath = path.join(ROOT, "js/combat/combat-engine.js");
+const engSrc = fs.readFileSync(enginePath, "utf8");
+ok(engSrc.includes("resolveSecondaryTargets"), "engine có resolveSecondaryTargets");
+ok(engSrc.includes("hàng\\s*sau") || engSrc.includes("hàng sau") || /hàng\\s\*sau/.test(engSrc), "engine parse hàng sau");
 
 // —— Combat engine: wiki_buff ảnh hưởng dame ——
 const engineSrc = fs.readFileSync(path.join(ROOT, "js/combat/combat-engine.js"), "utf8");

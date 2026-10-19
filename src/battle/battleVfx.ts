@@ -1441,6 +1441,225 @@ export function spawnRushAssault(
   }, 130);
 }
 
+/**
+ * Hàng dọc — tia đâm theo cột (Lang Tuyền / Thương Long…):
+ * vệt từ caster → từng mục tiêu trên cùng cột + motif sheet.
+ */
+export function spawnColumnStrike(
+  scene: THREE.Scene,
+  from: THREE.Vector3,
+  targets: THREE.Vector3[],
+  flash: string,
+  scale?: string | null
+): void {
+  const mul = fxScaleMul(scale);
+  const r = auraRecipe(flash);
+  const tint = r.mainColor ?? auraTint(flash);
+  const sheet = r.main.length ? r.main : sheetForFlash(flash);
+  const ordered = targets.slice().sort((a, b) => a.z - b.z);
+  // Trục dọc sân: nhiều nút sáng nối caster → đích xa nhất
+  const farthest = ordered[ordered.length - 1] || from;
+  const steps = Math.max(4, Math.min(7, 3 + ordered.length));
+  for (let i = 0; i < steps; i++) {
+    const t = (i + 0.15) / steps;
+    const p = from.clone().lerp(farthest, t);
+    setTimeout(() => {
+      if (!scene) return;
+      void playSheet(scene, p, sheet, {
+        size: (1.05 + i * 0.08) * mul,
+        life: 380 + i * 20,
+        y: 0.55 + (i % 2) * 0.12,
+        color: tint,
+      });
+      if (i % 2 === 0) {
+        void playSheet(scene, p, TEX.hit, {
+          size: 0.7 * mul,
+          life: 280,
+          y: 0.7,
+          color: 0xfff7ed,
+        });
+      }
+    }, i * 45);
+  }
+  ordered.forEach((to, i) => {
+    setTimeout(() => {
+      if (!scene) return;
+      spawnImpactAt(scene, to, flash);
+      void playSheet(scene, to, slashSheetForFlash(flash), {
+        size: 1.35 * mul,
+        life: 360,
+        y: 0.75,
+        color: tint,
+      });
+    }, 90 + i * 70);
+  });
+}
+
+/**
+ * Hàng ngang — quét ngang hàng (vệt slash nối các mục tiêu).
+ */
+export function spawnRowSweep(
+  scene: THREE.Scene,
+  from: THREE.Vector3,
+  targets: THREE.Vector3[],
+  flash: string,
+  scale?: string | null
+): void {
+  const mul = fxScaleMul(scale);
+  const tint = auraTint(flash);
+  const ordered = targets.slice().sort((a, b) => a.x - b.x);
+  if (ordered.length >= 2) {
+    const a = ordered[0];
+    const b = ordered[ordered.length - 1];
+    const mid = a.clone().lerp(b, 0.5);
+    mid.y = Math.max(from.y, 0.7);
+    void playSheet(scene, mid, slashSheetForFlash(flash), {
+      size: (1.8 + ordered.length * 0.15) * mul,
+      life: 420,
+      y: 0,
+      yMode: "abs",
+      color: tint,
+    });
+    void playSheet(scene, mid, TEX.slash, {
+      size: 1.4 * mul,
+      life: 360,
+      y: 0.05,
+      yMode: "abs",
+      color: 0xfffbeb,
+    });
+  }
+  ordered.forEach((to, i) => {
+    setTimeout(() => {
+      if (!scene) return;
+      spawnSlashArc(scene, from, to, performance.now(), flash);
+      spawnImpactAt(scene, to, flash);
+    }, i * 55);
+  });
+}
+
+/**
+ * Toàn địch — nổ vòng + mưa motif trên từng mục tiêu.
+ */
+export function spawnAoENova(
+  scene: THREE.Scene,
+  origin: THREE.Vector3,
+  targets: THREE.Vector3[],
+  flash: string,
+  scale?: string | null
+): void {
+  const mul = fxScaleMul(scale);
+  const r = auraRecipe(flash);
+  const tint = r.mainColor ?? auraTint(flash);
+  void playSheet(scene, origin, TEX.circle.length ? TEX.circle : TEX.kenneyAura, {
+    size: 2.4 * mul,
+    life: 700,
+    y: 0.35,
+    color: tint,
+  });
+  void playSheet(scene, origin, r.main.length ? r.main : sheetForFlash(flash), {
+    size: 1.8 * mul,
+    life: 560,
+    y: 0.65,
+    color: tint,
+  });
+  targets.forEach((to, i) => {
+    setTimeout(() => {
+      if (!scene) return;
+      void playSheet(scene, to, r.overlay?.length ? r.overlay : TEX.hit, {
+        size: 1.2 * mul,
+        life: 440,
+        y: 0.9,
+        color: r.overlayColor ?? tint,
+      });
+      spawnImpactAt(scene, to, flash);
+      // «mưa» nhẹ từ trên
+      void playSheet(scene, to, TEX.hit, {
+        size: 0.85 * mul,
+        life: 360,
+        y: 1.35,
+        color: 0xfff7ed,
+      });
+    }, 40 + i * 50);
+  });
+}
+
+/** Phe ta — hào quang trị liệu / buff vàng trên từng đồng minh. */
+export function spawnAllyBless(
+  scene: THREE.Scene,
+  targets: THREE.Vector3[],
+  flash: string,
+  scale?: string | null
+): void {
+  const mul = fxScaleMul(scale);
+  const tint = flash === "blue" || flash === "blue_water" ? 0x7dd3fc : 0xfde68a;
+  targets.forEach((to, i) => {
+    setTimeout(() => {
+      if (!scene) return;
+      void playSheet(scene, to, TEX.circle.length ? TEX.circle : TEX.kenneyAura, {
+        size: 1.55 * mul,
+        life: 820,
+        y: 0.4,
+        color: tint,
+      });
+      void playSheet(scene, to, TEX.pure.length ? TEX.pure : TEX.kenneyAura, {
+        size: 1.15 * mul,
+        life: 700,
+        y: 0.75,
+        color: 0xfffbeb,
+      });
+      void playSheet(scene, to, TEX.hit, {
+        size: 0.85 * mul,
+        life: 480,
+        y: 0.95,
+        color: tint,
+      });
+    }, i * 60);
+  });
+}
+
+/**
+ * Emission theo pattern trận — bám mô tả «hàng dọc / ngang / toàn địch».
+ */
+export function spawnPatternEmission(
+  scene: THREE.Scene,
+  from: THREE.Vector3,
+  targets: THREE.Vector3[],
+  flash: string,
+  pattern: string | null | undefined,
+  scale?: string | null
+): void {
+  const pat = (pattern || "single").toLowerCase();
+  if (!targets.length) {
+    if (pat === "self" || pat === "ally_all") {
+      spawnAllyBless(scene, [from], flash, scale);
+    }
+    return;
+  }
+  if (pat === "column") {
+    spawnColumnStrike(scene, from, targets, flash, scale);
+    return;
+  }
+  if (pat === "row" || pat === "front_row") {
+    spawnRowSweep(scene, from, targets, flash, scale);
+    return;
+  }
+  if (pat === "all") {
+    spawnAoENova(scene, from, targets, flash, scale);
+    return;
+  }
+  if (pat === "ally_all" || pat === "self") {
+    spawnAllyBless(scene, targets.length ? targets : [from], flash, scale);
+    return;
+  }
+  // single — beam / slash theo flash
+  targets.forEach((to, i) => {
+    setTimeout(() => {
+      if (!scene) return;
+      spawnSkillBeam(scene, from, to, flash, performance.now());
+    }, i * 40);
+  });
+}
+
 /** Animate sprite sheets + fade + đạn bay */
 export function tickBattleVfx(_scene: THREE.Scene, now: number, _dt: number): void {
   if (!ACTIVE_FX.size) return;

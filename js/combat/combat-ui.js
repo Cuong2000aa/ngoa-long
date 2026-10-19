@@ -462,7 +462,12 @@
           var skillTargets = (ev.targets || []).map(function (t) {
             return typeof t === "string" ? t : t && (t.uid || t.target_id || t);
           }).filter(Boolean);
-          this._battle3d.skillFlash(ev.uid, ev.flash || "gold", skillTargets);
+          this._battle3d.skillFlash(ev.uid, ev.flash || "gold", skillTargets, {
+            pattern: ev.pattern || "single",
+            quality: ev.quality || null,
+            motif: ev.motif || null,
+            hits: ev.hits || 1,
+          });
           if (global.NLCombatVfx && global.NLCombatVfx.showBanner) {
             var Design = global.NLSkillDesign;
             var prof = Design ? Design.resolve(ev.flash || "gold") : null;
@@ -480,6 +485,7 @@
             (ev.text || ev.name) +
             "</b>" +
             (ev.hits > 1 ? " ×" + ev.hits : "") +
+            (ev.pattern ? " <span style='opacity:.65'>[" + ev.pattern + "]</span>" : "") +
             (ev.quality ? " <span style='opacity:.7'>(" + ev.quality + ")</span>" : "")
         );
         break;
@@ -488,7 +494,12 @@
           var waveTargets = (ev.targets || []).map(function (t) {
             return typeof t === "string" ? t : t && (t.uid || t.target_id || t);
           }).filter(Boolean);
-          this._battle3d.skillFlash(ev.uid, ev.flash || "gold", waveTargets, { wave: true });
+          this._battle3d.skillFlash(ev.uid, ev.flash || "gold", waveTargets, {
+            wave: true,
+            pattern: ev.pattern || "single",
+            quality: ev.quality || null,
+            motif: ev.motif || null,
+          });
         }
         break;
       case "attack":
