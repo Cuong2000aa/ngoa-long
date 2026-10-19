@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "id": "main_progression_v1",
   "name": "Tiến trình Tam Quốc",
-  "inspiredBy": "Ngọa Long / 卧龙吟 — uy danh mở slot tướng; phó bản thu phục; tửu quán hội đàm theo điều kiện",
+  "inspiredBy": "Ngọa Long — uy danh mở slot tướng; phó bản thu phục; tửu quán hội đàm theo điều kiện",
   "notes": [
     "Danh vọng (prestige) ≈ Uy danh: mở thêm chỗ chứa tướng + mở chiêu mộ mốc.",
     "Qua ải lần đầu có thể nhận tướng (dã tướng) hoặc mở khóa Tửu Quán (required_stage).",
     "Tướng mở đầu theo phe — không trùng thưởng first-clear."
   ],
   "starters": {
-    "note": "Giống 卧龙吟: mở đầu tướng phụ (xanh/lam), minh chủ & ngũ hổ mở muộn bằng uy danh / phó bản — không tặng Quan Vũ/Tào Tháo lúc tạo nhân vật.",
+    "note": "Giống Ngọa Long gốc: mở đầu tướng phụ (xanh/lam), minh chủ & ngũ hổ mở muộn bằng uy danh / phó bản — không tặng Quan Vũ/Tào Tháo lúc tạo nhân vật.",
     "shu": {
       "generalIds": [
         "liaohua",
@@ -111,8 +111,10 @@
       "mission": "Dẹp toán nghĩa quân đầu tiên — làm quen bày trận 5 ô.",
       "firstClear": {
         "prestige": 25,
-        "hint": "Tửu Quán: mở chiêu mộ lính trắng / xanh cơ bản (danh vọng thấp)."
-      }
+        "hint": "Tửu Quán: mở chiêu mộ tướng tinh anh xanh / lam sớm (không chiêu mộ lính thường)."
+      },
+      "briefing": "Loạn Khăn Vàng bùng ở Trác Châu. Quan quân tập kết. Dẹp toán nghĩa quân đầu tiên — làm quen bày trận 5 ô.",
+      "epilogue": "Trác Châu tạm yên. Quân sĩ biết cách bày trận — còn nhiều toán Khăn Vàng phía trước."
     },
     "ch1_s2": {
       "story": "Khăn Vàng tập kết. Có thể thu phục nghĩa sĩ quy thuận.",
@@ -121,19 +123,24 @@
         "prestige": 40,
         "grantByFaction": {
           "shu": "liufeng",
-          "wei": "veteran_guard",
+          "wei": "xuhuang",
           "wu": "lingtong"
         },
-        "hint": "Thu phục thêm 1 tướng phụ. Tửu Quán mở thêm xanh/lam."
-      }
+        "hint": "Thu phục 1 tướng tinh anh theo phe (không phải lính thường)."
+      },
+      "briefing": "Khăn Vàng tập kết. Có thể thu phục nghĩa sĩ quy thuận. Phá vòng vây — thu phục tướng phụ đầu tiên theo phe.",
+      "epilogue": "Nghĩa sĩ quy thuận theo phe. Tửu Quán bắt đầu có tiếng vọng."
     },
     "ch1_s3": {
       "story": "Trương Bảo dùng yêu thuật. Elite đầu tiên.",
       "mission": "Hạ Trương Bảo — học ưu tiên mục tiêu.",
       "firstClear": {
         "prestige": 55,
-        "hint": "Mở thêm chiêu mộ tướng lam sớm tại Tửu Quán."
-      }
+        "grantGeneralId": "zhangbao",
+        "hint": "Thu phục Trương Bảo (tinh anh). Tửu Quán mở thêm tướng lam."
+      },
+      "briefing": "Trương Bảo dùng yêu thuật. Elite đầu tiên. Hạ Trương Bảo — học ưu tiên mục tiêu.",
+      "epilogue": "Trương Bảo thất thế. Yêu thuật không cứu nổi loạn đảng."
     },
     "ch1_s4": {
       "story": "Trương Lương phục binh. Mưu sĩ bắt đầu lộ diện.",
@@ -146,14 +153,18 @@
           "wu": "huanggai"
         },
         "hint": "Tửu Quán: mưu sĩ tím cần vượt ải này + ~500 danh vọng."
-      }
+      },
+      "briefing": "Trương Lương phục binh. Mưu sĩ bắt đầu lộ diện. Phá phục binh — mở chiêu mộ mưu sĩ (tím, cần danh vọng).",
+      "epilogue": "Phục binh tan. Mưu sĩ trong Tửu Quán dần lộ diện."
     },
     "ch1_s5": {
       "story": "Áp sát Quảng Tông — trước cửa đại doanh Trương Giác.",
       "mission": "Giữ đội hình, chuẩn bị boss chương.",
       "firstClear": {
         "prestige": 80
-      }
+      },
+      "briefing": "Áp sát Quảng Tông — trước cửa đại doanh Trương Giác. Giữ đội hình, chuẩn bị boss chương.",
+      "epilogue": "Quảng Tông đã gần — đại doanh Trương Giác trong tầm mắt."
     },
     "ch1_s6": {
       "story": "Trương Giác — Hoàng Thiên đã chết. Loạn Khăn Vàng tạm dẹp.",
@@ -166,14 +177,18 @@
           "wu": "daqiao"
         },
         "hint": "Mở Lôi đài. Minh chủ / ngũ hổ vẫn khóa danh vọng cao."
-      }
+      },
+      "briefing": "Trương Giác — Hoàng Thiên đã chết. Loạn Khăn Vàng tạm dẹp. Boss chương 1 — mở Lôi đài + chiêu mộ nâng cao.",
+      "epilogue": "Hoàng Thiên đã chết. Loạn Khăn Vàng tạm dẹp. Lôi đài mở cửa."
     },
     "ch2_s1": {
       "story": "Đổng Trác loạn chính. Liên quân tiến Dương Nhân.",
       "mission": "Bước vào chương Đổng Trác.",
       "firstClear": {
         "prestige": 60
-      }
+      },
+      "briefing": "Đổng Trác loạn chính. Liên quân tiến Dương Nhân. Bước vào chương Đổng Trác.",
+      "epilogue": "Liên quân tiến Dương Nhân. Loạn Đổng Trác bắt đầu."
     },
     "ch2_s2": {
       "story": "Phàn Trù chặn đường.",
@@ -184,7 +199,9 @@
           "wei": "xuchu",
           "wu": "lusu"
         }
-      }
+      },
+      "briefing": "Phàn Trù chặn đường.",
+      "epilogue": "Phàn Trù gục. Đường Hổ Lao còn dài."
     },
     "ch2_s3": {
       "story": "Hoa Hùng tại Hổ Lao — ải danh tướng.",
@@ -192,13 +209,17 @@
       "firstClear": {
         "prestige": 120,
         "hint": "Tửu Quán: mở thêm cam/tím (Khương Duy, Trương Liêu, Cam Ninh…) nếu đủ danh vọng."
-      }
+      },
+      "briefing": "Hoa Hùng tại Hổ Lao — ải danh tướng. Hạ Hoa Hùng — mở khóa danh tướng trung kỳ.",
+      "epilogue": "Hoa Hùng kinh thiên. Danh tướng ải này khiến thiên hạ biết tên."
     },
     "ch2_s4": {
       "story": "Lý Thôi · Quách Dĩ quấy phá.",
       "firstClear": {
         "prestige": 90
-      }
+      },
+      "briefing": "Lý Thôi · Quách Dĩ quấy phá.",
+      "epilogue": "Lý Thôi · Quách Dĩ lui. Áp sát Hổ Lao."
     },
     "ch2_s5": {
       "story": "Tam Anh chiến Lã Bố — đỉnh chương 2.",
@@ -211,7 +232,9 @@
           "wu": "ganning"
         },
         "hint": "Mở thêm tướng cam. Lưu Bị / Tào Tháo / Tôn Quyền cần danh vọng rất cao."
-      }
+      },
+      "briefing": "Tam Anh chiến Lã Bố — đỉnh chương 2. Sống sót trước Lã Bố — mở chiêu mộ cao cấp.",
+      "epilogue": "Tam Anh chiến Lã Bố — thiên hạ xôn xao."
     },
     "ch2_s6": {
       "story": "Đổng Trác bỏ Lạc Dương. Liên quân tan.",
@@ -219,7 +242,9 @@
       "firstClear": {
         "prestige": 200,
         "hint": "Chuẩn bị chương Quần Hùng — Thế giới & chiêu mộ rộng."
-      }
+      },
+      "briefing": "Đổng Trác bỏ Lạc Dương. Liên quân tan. Boss chương 2 — mở tính năng cao hơn.",
+      "epilogue": "Đổng Trác bỏ Lạc Dương. Liên quân tan — thời thế đổi."
     },
     "ch3_s1": {
       "story": "Tào Tháo khởi binh Trần Lưu — quần hùng phân tranh.",
@@ -230,13 +255,17 @@
           "wei": "guojia",
           "wu": "xiaoqiao"
         }
-      }
+      },
+      "briefing": "Tào Tháo khởi binh Trần Lưu — quần hùng phân tranh.",
+      "epilogue": "Tào Tháo khởi binh Trần Lưu. Quần hùng bắt đầu tranh thiên hạ."
     },
     "ch3_s2": {
       "story": "Đào Khiêm Từ Châu — nhân nghĩa hay quyền mưu.",
       "firstClear": {
         "prestige": 110
-      }
+      },
+      "briefing": "Đào Khiêm Từ Châu — nhân nghĩa hay quyền mưu.",
+      "epilogue": "Từ Châu rối ren — nhân nghĩa và quyền mưu đối đầu."
     },
     "ch3_s3": {
       "story": "Công Tôn Toản — Bạch Mã nghĩa tòng.",
@@ -248,13 +277,17 @@
           "wu": "taishici"
         },
         "hint": "Thục nhận Triệu Vân (đỏ). Ngụy/Ngô nhận danh tướng tương ứng."
-      }
+      },
+      "briefing": "Công Tôn Toản — Bạch Mã nghĩa tòng.",
+      "epilogue": "Bạch Mã nghĩa tòng. Công Tôn Toản còn sức."
     },
     "ch3_s4": {
       "story": "Nhan Lương · Văn Xú — hổ tướng Hà Bắc.",
       "firstClear": {
         "prestige": 130
-      }
+      },
+      "briefing": "Nhan Lương · Văn Xú — hổ tướng Hà Bắc.",
+      "epilogue": "Nhan Lương · Văn Xú — hổ tướng Hà Bắc đã lộ."
     },
     "ch3_s5": {
       "story": "Lưu Biểu Kinh Châu — đất dụng nhân.",
@@ -265,7 +298,9 @@
           "wei": "jiaxu",
           "wu": "zhugejin"
         }
-      }
+      },
+      "briefing": "Lưu Biểu Kinh Châu — đất dụng nhân.",
+      "epilogue": "Kinh Châu đất dụng nhân. Lưu Biểu giữ thế."
     },
     "ch3_s6": {
       "story": "Viên Thiệu — bá chủ Hà Bắc. Kết thúc chính tuyến v1.",
@@ -278,7 +313,9 @@
           "wu": "luxun"
         },
         "hint": "Mở thêm tính năng cao. Danh tướng đỏ còn lại: Tửu Quán + danh vọng rất cao."
-      }
+      },
+      "briefing": "Viên Thiệu — bá chủ Hà Bắc. Kết thúc chính tuyến v1. Boss chương 3 — mở endgame nhẹ (tháp / chiêu mộ huyền thoại).",
+      "epilogue": "Viên Thiệu bá chủ Hà Bắc. Chính tuyến v1 khép lại — còn nhiều chương phía trước."
     }
   },
   "tavernRules": {

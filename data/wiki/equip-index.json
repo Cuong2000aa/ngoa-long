@@ -1,0 +1,5149 @@
+{
+  "count": 399,
+  "bySlot": {
+    "weapon": 68,
+    "armor": 67,
+    "horse": 52,
+    "book": 52,
+    "cloak": 51,
+    "shield": 51,
+    "troop": 58
+  },
+  "items": [
+    {
+      "id": "wiki_eq_23",
+      "wikiId": "23",
+      "name": "Ám Ảnh Liềm",
+      "slot": "weapon",
+      "rarity": "blue",
+      "levelReq": 36,
+      "icon": "assets/items/wiki/9eebf3af-c95e-4c5f-ac1e-860b51d2ede7.9d045.jpg",
+      "bonuses": {
+        "vuLuc": 15,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_32",
+      "wikiId": "32",
+      "name": "Bách Lý",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 80,
+      "icon": "assets/items/wiki/08b17dd5-0fc7-406b-82b9-73bbccbb2a5b.eff96.jpg",
+      "bonuses": {
+        "vuLuc": 45,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_6",
+      "wikiId": "6",
+      "name": "Bách Thương",
+      "slot": "weapon",
+      "rarity": "white",
+      "levelReq": 13,
+      "icon": "assets/items/wiki/20f30695-f062-48f6-b069-5f9a16928d4c.698cf.jpg",
+      "bonuses": {
+        "vuLuc": 5,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_593",
+      "wikiId": "593",
+      "name": "Bàn Long Thương",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 210,
+      "icon": "assets/items/wiki/8604959e-33b3-4b5e-8970-0fc4b5a6f997.73a53.jpg",
+      "bonuses": {
+        "vuLuc": 778,
+        "hp": 22500
+      }
+    },
+    {
+      "id": "wiki_eq_209",
+      "wikiId": "209",
+      "name": "Chấn Tiên",
+      "slot": "weapon",
+      "rarity": "blue",
+      "levelReq": 36,
+      "icon": "assets/items/wiki/1cfb7642-1536-47ca-8d66-7eac79a7926b.e7a04.jpg",
+      "bonuses": {
+        "vuLuc": 16,
+        "hp": 225
+      }
+    },
+    {
+      "id": "wiki_eq_215",
+      "wikiId": "215",
+      "name": "Chiến Đồ Đao",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 95,
+      "icon": "assets/items/wiki/df6e3dd6-0970-4892-a0e9-e8d935d2a1f9.23191.jpg",
+      "bonuses": {
+        "vuLuc": 55,
+        "hp": 300
+      }
+    },
+    {
+      "id": "wiki_eq_33",
+      "wikiId": "33",
+      "name": "Chỉ Luật",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 95,
+      "icon": "assets/items/wiki/c150771c-16ba-4717-b434-fbfeabb3b154.b188f.jpg",
+      "bonuses": {
+        "vuLuc": 54,
+        "hp": 250
+      }
+    },
+    {
+      "id": "wiki_eq_367",
+      "wikiId": "367",
+      "name": "Chúc Âm Thương",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 120,
+      "icon": "assets/items/wiki/9a43eb39-0bf9-4f9f-b3cf-9aeb9dda052a.2dda9.jpg",
+      "bonuses": {
+        "vuLuc": 89,
+        "hp": 700
+      }
+    },
+    {
+      "id": "wiki_eq_1209",
+      "wikiId": "1209",
+      "name": "Cùng Kỳ Trảm Khung Thương",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 350,
+      "icon": "assets/items/wiki/e40952c6-9091-49fe-b80a-6823dc8e3845.c0b1d.png",
+      "bonuses": {
+        "vuLuc": 3122,
+        "hp": 90000
+      }
+    },
+    {
+      "id": "wiki_eq_28",
+      "wikiId": "28",
+      "name": "Cửu Thiên",
+      "slot": "weapon",
+      "rarity": "purple",
+      "levelReq": 64,
+      "icon": "assets/items/wiki/d9fc2308-d1d2-4fcf-8830-4e557d3749d5.b431c.jpg",
+      "bonuses": {
+        "vuLuc": 28,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_8",
+      "wikiId": "8",
+      "name": "Địa Chùy",
+      "slot": "weapon",
+      "rarity": "white",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/6fafcd08-d015-464a-9b6a-f2ac1f762d9c.d1ea9.jpg",
+      "bonuses": {
+        "vuLuc": 7,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_18",
+      "wikiId": "18",
+      "name": "Diệp Đao",
+      "slot": "weapon",
+      "rarity": "green",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/397bb3ea-9d59-4a73-8d0a-5e2f11db1b83.80365.jpg",
+      "bonuses": {
+        "vuLuc": 28,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_445",
+      "wikiId": "445",
+      "name": "Diệt Thế Kiếm",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 150,
+      "icon": "assets/items/wiki/3fd6a318-bf3e-428e-83dc-90f63db68e39.6806f.jpg",
+      "bonuses": {
+        "vuLuc": 278,
+        "hp": 2500
+      }
+    },
+    {
+      "id": "wiki_eq_9",
+      "wikiId": "9",
+      "name": "Hàn Đao",
+      "slot": "weapon",
+      "rarity": "white",
+      "levelReq": 24,
+      "icon": "assets/items/wiki/e4a13d9f-3e1b-4fe1-a304-0c9d66ac8094.09c46.jpg",
+      "bonuses": {
+        "vuLuc": 8,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_12",
+      "wikiId": "12",
+      "name": "Hàn Kiếm",
+      "slot": "weapon",
+      "rarity": "green",
+      "levelReq": 10,
+      "icon": "assets/items/wiki/d7546407-97ab-4ab9-a571-5592b676cb98.d5feb.jpg",
+      "bonuses": {
+        "vuLuc": 5,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_864",
+      "wikiId": "864",
+      "name": "Hình Thiên Thương",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 290,
+      "icon": "assets/items/wiki/ba4e3893-cf74-4eba-b227-b2f8ba7958c2.1fda2.png",
+      "bonuses": {
+        "vuLuc": 2056,
+        "hp": 60000
+      }
+    },
+    {
+      "id": "wiki_eq_24",
+      "wikiId": "24",
+      "name": "Hỏa Thương",
+      "slot": "weapon",
+      "rarity": "purple",
+      "levelReq": 40,
+      "icon": "assets/items/wiki/c2ed20ed-a3e5-47cc-826c-479ce36cc033.396eb.jpg",
+      "bonuses": {
+        "vuLuc": 19,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_565",
+      "wikiId": "565",
+      "name": "Hỗn Độn-Bàn Long Kiếm",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 190,
+      "icon": "assets/items/wiki/361cbb67-aad5-4008-8bb2-b833164759c9.f519c.jpg",
+      "bonuses": {
+        "vuLuc": 611,
+        "hp": 17500
+      }
+    },
+    {
+      "id": "wiki_eq_25",
+      "wikiId": "25",
+      "name": "Khuyết Kiếm",
+      "slot": "weapon",
+      "rarity": "purple",
+      "levelReq": 45,
+      "icon": "assets/items/wiki/5fccf86f-5112-409b-b995-8b0ddbeb0130.36f31.jpg",
+      "bonuses": {
+        "vuLuc": 21,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_335",
+      "wikiId": "335",
+      "name": "Kiếm Hải Tặc",
+      "slot": "weapon",
+      "rarity": "orange",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/314dbd11-389a-4cec-93c3-d9cf217d3288.e2c94.jpg",
+      "bonuses": {
+        "vuLuc": 31,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_342",
+      "wikiId": "342",
+      "name": "Kiếm Hải Tặc",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 80,
+      "icon": "assets/items/wiki/0334f788-c9d2-4a82-ac19-795dee90e3e8.5b994.jpg",
+      "bonuses": {
+        "vuLuc": 47,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_321",
+      "wikiId": "321",
+      "name": "Kiếm Hải Tặc",
+      "slot": "weapon",
+      "rarity": "blue",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/0cbb82bf-83a9-4d17-a2e7-4e876a2e75fb.9466e.jpg",
+      "bonuses": {
+        "vuLuc": 13,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_349",
+      "wikiId": "349",
+      "name": "Kiếm Hải Tặc",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 100,
+      "icon": "assets/items/wiki/e7c784f3-67a0-41d9-805f-09d4152d47ad.cc970.jpg",
+      "bonuses": {
+        "vuLuc": 61,
+        "hp": 500
+      }
+    },
+    {
+      "id": "wiki_eq_328",
+      "wikiId": "328",
+      "name": "Kiếm Hải Tặc",
+      "slot": "weapon",
+      "rarity": "purple",
+      "levelReq": 40,
+      "icon": "assets/items/wiki/1e8021b0-b1a4-4bff-89cf-fc3104e94f94.e3938.jpg",
+      "bonuses": {
+        "vuLuc": 24,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_7",
+      "wikiId": "7",
+      "name": "Kim Phủ",
+      "slot": "weapon",
+      "rarity": "white",
+      "levelReq": 16,
+      "icon": "assets/items/wiki/f5e17f38-5fec-4e54-851f-4b16d591e43c.e9193.jpg",
+      "bonuses": {
+        "vuLuc": 6,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_212",
+      "wikiId": "212",
+      "name": "Kim Tước Kiếm",
+      "slot": "weapon",
+      "rarity": "purple",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/86ae13ae-11b8-414a-b60c-e88f6a82c316.8651e.jpg",
+      "bonuses": {
+        "vuLuc": 28,
+        "hp": 225
+      }
+    },
+    {
+      "id": "wiki_eq_10",
+      "wikiId": "10",
+      "name": "Kinh Kiếm",
+      "slot": "weapon",
+      "rarity": "white",
+      "levelReq": 28,
+      "icon": "assets/items/wiki/41b31819-7f98-4d0b-9622-c6ade9909354.fe119.jpg",
+      "bonuses": {
+        "vuLuc": 9,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_207",
+      "wikiId": "207",
+      "name": "Liệt Địa Phủ",
+      "slot": "weapon",
+      "rarity": "green",
+      "levelReq": 24,
+      "icon": "assets/items/wiki/9ca0a06b-792f-440d-9126-8fa8c541615c.ae49e.jpg",
+      "bonuses": {
+        "vuLuc": 14,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_542",
+      "wikiId": "542",
+      "name": "Liệt Thiên Phủ",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 170,
+      "icon": "assets/items/wiki/6dc01160-d500-4584-adf0-fe19e8d933b9.8171f.jpg",
+      "bonuses": {
+        "vuLuc": 444,
+        "hp": 12500
+      }
+    },
+    {
+      "id": "wiki_eq_213",
+      "wikiId": "213",
+      "name": "Liêu Nha Nhẫn",
+      "slot": "weapon",
+      "rarity": "orange",
+      "levelReq": 64,
+      "icon": "assets/items/wiki/90acfba6-b030-4683-a0dc-482e3c68d86e.d7712.jpg",
+      "bonuses": {
+        "vuLuc": 34,
+        "hp": 250
+      }
+    },
+    {
+      "id": "wiki_eq_19",
+      "wikiId": "19",
+      "name": "Lôi Kích",
+      "slot": "weapon",
+      "rarity": "blue",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/ec28c3f8-d0ad-477a-b72b-b6985a559c65.ffba7.jpg",
+      "bonuses": {
+        "vuLuc": 9,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_286",
+      "wikiId": "286",
+      "name": "Lục Thương",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 100,
+      "icon": "assets/items/wiki/79e4efa8-0e91-491a-965f-c2cbbddc2af5.4cfb4.jpg",
+      "bonuses": {
+        "vuLuc": 66,
+        "hp": 550
+      }
+    },
+    {
+      "id": "wiki_eq_380",
+      "wikiId": "380",
+      "name": "Mặc Dương",
+      "slot": "weapon",
+      "rarity": "orange",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/af1f535d-37b9-47c2-a9c5-593f5ab1ebc5.aac08.jpg",
+      "bonuses": {
+        "vuLuc": 31,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_211",
+      "wikiId": "211",
+      "name": "Mặc Ngọc Nhẫn",
+      "slot": "weapon",
+      "rarity": "purple",
+      "levelReq": 55,
+      "icon": "assets/items/wiki/a6f94a74-567b-4ff4-999c-ea0e287c6aea.b15c5.jpg",
+      "bonuses": {
+        "vuLuc": 27,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_2",
+      "wikiId": "2",
+      "name": "Ngân Kiếm",
+      "slot": "weapon",
+      "rarity": "white",
+      "levelReq": 3,
+      "icon": "assets/items/wiki/e9ae701a-c8e7-4ae9-803f-dfb35afca4d6.451f6.jpg",
+      "bonuses": {
+        "vuLuc": 2,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_20",
+      "wikiId": "20",
+      "name": "Nguyệt Cung",
+      "slot": "weapon",
+      "rarity": "blue",
+      "levelReq": 24,
+      "icon": "assets/items/wiki/8c88f514-8752-48d3-aff5-16b12b94f523.d2a5a.jpg",
+      "bonuses": {
+        "vuLuc": 10,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_11",
+      "wikiId": "11",
+      "name": "Nguyệt Đao",
+      "slot": "weapon",
+      "rarity": "green",
+      "levelReq": 8,
+      "icon": "assets/items/wiki/b3bd1f47-59db-4785-9769-826ae7acffbf.52e1a.jpg",
+      "bonuses": {
+        "vuLuc": 4,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_27",
+      "wikiId": "27",
+      "name": "Nguyệt Phủ",
+      "slot": "weapon",
+      "rarity": "purple",
+      "levelReq": 55,
+      "icon": "assets/items/wiki/07a41734-990d-4313-880b-74cdfdabfd21.f49cd.jpg",
+      "bonuses": {
+        "vuLuc": 25,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_4",
+      "wikiId": "4",
+      "name": "Nhật Cung",
+      "slot": "weapon",
+      "rarity": "white",
+      "levelReq": 7,
+      "icon": "assets/items/wiki/31ce16d5-42ea-4d5e-a2a8-9b97f695f438.4612d.jpg",
+      "bonuses": {
+        "vuLuc": 3,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_718",
+      "wikiId": "718",
+      "name": "Nữ Oa Thương",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 250,
+      "icon": "assets/items/wiki/dfb1ff72-0b6c-42b3-9149-33d30b04964b.96880.png",
+      "bonuses": {
+        "vuLuc": 1444,
+        "hp": 40000
+      }
+    },
+    {
+      "id": "wiki_eq_210",
+      "wikiId": "210",
+      "name": "Phá Thương",
+      "slot": "weapon",
+      "rarity": "purple",
+      "levelReq": 45,
+      "icon": "assets/items/wiki/8a5a8869-00f5-4985-b4c2-6b7930cbb0bb.a1873.jpg",
+      "bonuses": {
+        "vuLuc": 25,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_884",
+      "wikiId": "884",
+      "name": "Phệ Đao",
+      "slot": "weapon",
+      "rarity": "purple",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/09b351cb-b83e-441e-9eff-536f34b4770a.7db05.jpg",
+      "bonuses": {
+        "vuLuc": 13,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_285",
+      "wikiId": "285",
+      "name": "Phong Đô Kiếm",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 90,
+      "icon": "assets/items/wiki/bbb2dc3d-c3e9-4459-a31b-9c4bfe68cf60.5514e.jpg",
+      "bonuses": {
+        "vuLuc": 60,
+        "hp": 500
+      }
+    },
+    {
+      "id": "wiki_eq_29",
+      "wikiId": "29",
+      "name": "Phong Hỏa",
+      "slot": "weapon",
+      "rarity": "orange",
+      "levelReq": 55,
+      "icon": "assets/items/wiki/a1ac4074-ef90-42e6-9fff-33e688c9a119.4fb99.jpg",
+      "bonuses": {
+        "vuLuc": 28,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_287",
+      "wikiId": "287",
+      "name": "Phong Tà Kiếm",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 110,
+      "icon": "assets/items/wiki/c5823224-1587-4db4-9576-3ea0b7774d6d.661c6.jpg",
+      "bonuses": {
+        "vuLuc": 71,
+        "hp": 600
+      }
+    },
+    {
+      "id": "wiki_eq_654",
+      "wikiId": "654",
+      "name": "Phục Hi Thương",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 230,
+      "icon": "assets/items/wiki/95abcf40-937b-40f0-a123-4766d9c873d7.bb52d.png",
+      "bonuses": {
+        "vuLuc": 1111,
+        "hp": 30000
+      }
+    },
+    {
+      "id": "wiki_eq_15",
+      "wikiId": "15",
+      "name": "Thái Cung",
+      "slot": "weapon",
+      "rarity": "green",
+      "levelReq": 16,
+      "icon": "assets/items/wiki/eb106a04-af7a-4e10-8a8d-b480e2b2887b.48bdd.jpg",
+      "bonuses": {
+        "vuLuc": 9,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_30",
+      "wikiId": "30",
+      "name": "Thái Kiếm",
+      "slot": "weapon",
+      "rarity": "orange",
+      "levelReq": 64,
+      "icon": "assets/items/wiki/88373b81-54f9-4112-902d-e4e5cda7055b.01741.jpg",
+      "bonuses": {
+        "vuLuc": 33,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_416",
+      "wikiId": "416",
+      "name": "Thần Nguyệt Cung",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 130,
+      "icon": "assets/items/wiki/586adf42-62f8-4270-aab4-7c2c7a771b05.6452a.jpg",
+      "bonuses": {
+        "vuLuc": 111,
+        "hp": 1000
+      }
+    },
+    {
+      "id": "wiki_eq_1121",
+      "wikiId": "1121",
+      "name": "Thao Thiết Thương",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 330,
+      "icon": "assets/items/wiki/4456c8d8-2756-4251-974c-015cacbfc19b.15612.png",
+      "bonuses": {
+        "vuLuc": 2750,
+        "hp": 80000
+      }
+    },
+    {
+      "id": "wiki_eq_1115",
+      "wikiId": "1115",
+      "name": "Thất Tinh Đao",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/25094e45-8e76-4d1a-bfad-19826e949b38.f5259.png",
+      "bonuses": {
+        "vuLuc": 50,
+        "hp": 500
+      }
+    },
+    {
+      "id": "wiki_eq_26",
+      "wikiId": "26",
+      "name": "Thí Đao",
+      "slot": "weapon",
+      "rarity": "purple",
+      "levelReq": 50,
+      "icon": "assets/items/wiki/09b351cb-b83e-441e-9eff-536f34b4770a.7db05.jpg",
+      "bonuses": {
+        "vuLuc": 23,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_214",
+      "wikiId": "214",
+      "name": "Thiên Kích",
+      "slot": "weapon",
+      "rarity": "orange",
+      "levelReq": 72,
+      "icon": "assets/items/wiki/504da3f0-e42d-4eac-a5ff-a0788c6acd1f.b3c20.jpg",
+      "bonuses": {
+        "vuLuc": 38,
+        "hp": 275
+      }
+    },
+    {
+      "id": "wiki_eq_21",
+      "wikiId": "21",
+      "name": "Thiên Lôi Kích",
+      "slot": "weapon",
+      "rarity": "blue",
+      "levelReq": 28,
+      "icon": "assets/items/wiki/1184ecac-5ccd-4e7d-a36c-2a542741d2d4.ed451.jpg",
+      "bonuses": {
+        "vuLuc": 12,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_208",
+      "wikiId": "208",
+      "name": "Thiên Tử Kiếm",
+      "slot": "weapon",
+      "rarity": "blue",
+      "levelReq": 32,
+      "icon": "assets/items/wiki/0f39f90d-2dc4-40a4-993b-49aa16eb581c.d5e97.jpg",
+      "bonuses": {
+        "vuLuc": 15,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_1",
+      "wikiId": "1",
+      "name": "Thiết Kiếm",
+      "slot": "weapon",
+      "rarity": "white",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/77f2115c-55b5-455a-a011-5bb49770559d.e10dd.jpg",
+      "bonuses": {
+        "vuLuc": 1,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_16",
+      "wikiId": "16",
+      "name": "Thiết Thương",
+      "slot": "weapon",
+      "rarity": "green",
+      "levelReq": 18,
+      "icon": "assets/items/wiki/eb9c9e07-e49b-4260-8e88-1178f8a47276.6d98d.jpg",
+      "bonuses": {
+        "vuLuc": 10,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_442",
+      "wikiId": "442",
+      "name": "Thiết Tích",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/61e98b6e-ea64-4508-9146-7e80401db642.8090e.jpg",
+      "bonuses": {
+        "vuLuc": 39,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_5",
+      "wikiId": "5",
+      "name": "Thủy Kiếm",
+      "slot": "weapon",
+      "rarity": "white",
+      "levelReq": 10,
+      "icon": "assets/items/wiki/2e2397da-28a5-4279-8e37-87630e3167b4.b5d6b.jpg",
+      "bonuses": {
+        "vuLuc": 4,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_3",
+      "wikiId": "3",
+      "name": "Tinh Đao",
+      "slot": "weapon",
+      "rarity": "white",
+      "levelReq": 5,
+      "icon": "assets/items/wiki/d054c436-e08b-4039-9183-56da03e3d012.de875.jpg",
+      "bonuses": {
+        "vuLuc": 2,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_22",
+      "wikiId": "22",
+      "name": "Tinh Kiếm",
+      "slot": "weapon",
+      "rarity": "blue",
+      "levelReq": 32,
+      "icon": "assets/items/wiki/ad8dd2c8-4fd3-433d-a860-8e981b80da17.fa852.jpg",
+      "bonuses": {
+        "vuLuc": 13,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_1030",
+      "wikiId": "1030",
+      "name": "Trảm Long Phủ",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 310,
+      "icon": "assets/items/wiki/79f5446e-f055-4df9-9f58-b9bf50322f74.e8369.png",
+      "bonuses": {
+        "vuLuc": 2378,
+        "hp": 70000
+      }
+    },
+    {
+      "id": "wiki_eq_14",
+      "wikiId": "14",
+      "name": "Trám Phủ",
+      "slot": "weapon",
+      "rarity": "green",
+      "levelReq": 14,
+      "icon": "assets/items/wiki/a36fac47-08fb-4e60-bb2d-5b942191bc4d.9267c.jpg",
+      "bonuses": {
+        "vuLuc": 8,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_31",
+      "wikiId": "31",
+      "name": "Tuế Nguyệt",
+      "slot": "weapon",
+      "rarity": "orange",
+      "levelReq": 72,
+      "icon": "assets/items/wiki/db87b0bc-8f87-4364-862b-d0b5b7c8b7b5.5d6df.jpg",
+      "bonuses": {
+        "vuLuc": 36,
+        "hp": 225
+      }
+    },
+    {
+      "id": "wiki_eq_13",
+      "wikiId": "13",
+      "name": "Tuyết Kiếm",
+      "slot": "weapon",
+      "rarity": "green",
+      "levelReq": 12,
+      "icon": "assets/items/wiki/f7fe805e-3e9d-4df1-836d-78f2f2932728.f6a6b.jpg",
+      "bonuses": {
+        "vuLuc": 6,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_366",
+      "wikiId": "366",
+      "name": "Ứng Long Đao",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 100,
+      "icon": "assets/items/wiki/f311fb3e-586a-4632-86c8-5920ebeecc60.c5b16.jpg",
+      "bonuses": {
+        "vuLuc": 69,
+        "hp": 400
+      }
+    },
+    {
+      "id": "wiki_eq_797",
+      "wikiId": "797",
+      "name": "Viêm Đế Thương",
+      "slot": "weapon",
+      "rarity": "red",
+      "levelReq": 270,
+      "icon": "assets/items/wiki/651fd7dc-b4ba-4a2d-9de8-4d7c9a0f5116.cd006.png",
+      "bonuses": {
+        "vuLuc": 1733,
+        "hp": 50000
+      }
+    },
+    {
+      "id": "wiki_eq_17",
+      "wikiId": "17",
+      "name": "Vương Kiếm",
+      "slot": "weapon",
+      "rarity": "green",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/237fa56b-be3b-4a6e-89ce-e446cea6e67a.d762c.jpg",
+      "bonuses": {
+        "vuLuc": 12,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_53",
+      "wikiId": "53",
+      "name": "Âm Dương Khải",
+      "slot": "armor",
+      "rarity": "blue",
+      "levelReq": 24,
+      "icon": "assets/items/wiki/47b2fae4-464d-475a-b3ef-70506977ccab.23789.jpg",
+      "bonuses": {
+        "tongLinh": 9,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_324",
+      "wikiId": "324",
+      "name": "Áo Hải Tặc",
+      "slot": "armor",
+      "rarity": "blue",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/ce87e104-b02e-4565-8d6a-77df7effa571.3776a.jpg",
+      "bonuses": {
+        "tongLinh": 8,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_352",
+      "wikiId": "352",
+      "name": "Áo Hải Tặc",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 100,
+      "icon": "assets/items/wiki/7a9f87a1-9617-46f2-872d-e0f8428deef0.ef82a.jpg",
+      "bonuses": {
+        "tongLinh": 44,
+        "hp": 500
+      }
+    },
+    {
+      "id": "wiki_eq_345",
+      "wikiId": "345",
+      "name": "Áo Hải Tặc",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 80,
+      "icon": "assets/items/wiki/0a50cbd4-97e3-4419-87b9-8a357aef8d2a.5d7c1.jpg",
+      "bonuses": {
+        "tongLinh": 33,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_338",
+      "wikiId": "338",
+      "name": "Áo Hải Tặc",
+      "slot": "armor",
+      "rarity": "orange",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/acab9183-6796-41f8-be35-29ef1d37b619.e29c4.jpg",
+      "bonuses": {
+        "tongLinh": 22,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_331",
+      "wikiId": "331",
+      "name": "Áo Hải Tặc",
+      "slot": "armor",
+      "rarity": "purple",
+      "levelReq": 40,
+      "icon": "assets/items/wiki/2cdd84dd-9413-48af-ab8a-ae2ddd1a2e1e.7bdec.jpg",
+      "bonuses": {
+        "tongLinh": 17,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_35",
+      "wikiId": "35",
+      "name": "Bách Thú Y",
+      "slot": "armor",
+      "rarity": "white",
+      "levelReq": 3,
+      "icon": "assets/items/wiki/d9d33234-9ae6-4d7a-9de5-5c4924039a97.1e78c.jpg",
+      "bonuses": {
+        "tongLinh": 1,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_65",
+      "wikiId": "65",
+      "name": "Bát Nhã Khải",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 80,
+      "icon": "assets/items/wiki/dfea50c2-77db-44c0-88b5-583d93489486.16228.jpg",
+      "bonuses": {
+        "tongLinh": 30,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_289",
+      "wikiId": "289",
+      "name": "Bế Phương Y",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 100,
+      "icon": "assets/items/wiki/332160e8-bea5-4046-9089-29f555dab692.f691c.jpg",
+      "bonuses": {
+        "tongLinh": 48,
+        "hp": 550
+      }
+    },
+    {
+      "id": "wiki_eq_34",
+      "wikiId": "34",
+      "name": "Bố Giáp",
+      "slot": "armor",
+      "rarity": "white",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/ee65d54d-9038-4817-9435-691724d94e23.ffe8c.jpg",
+      "bonuses": {
+        "tongLinh": 1,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_217",
+      "wikiId": "217",
+      "name": "Cẩm Mãng Bào",
+      "slot": "armor",
+      "rarity": "blue",
+      "levelReq": 24,
+      "icon": "assets/items/wiki/f0778109-de8c-471f-8eeb-cf689dcd1126.07393.jpg",
+      "bonuses": {
+        "tongLinh": 14,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_54",
+      "wikiId": "54",
+      "name": "Cẩm Ngọc Giáp",
+      "slot": "armor",
+      "rarity": "blue",
+      "levelReq": 28,
+      "icon": "assets/items/wiki/103362f2-855e-49ca-92ed-b59d1e5ed077.7cca4.jpg",
+      "bonuses": {
+        "tongLinh": 12,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_216",
+      "wikiId": "216",
+      "name": "Cấm Vệ Y",
+      "slot": "armor",
+      "rarity": "green",
+      "levelReq": 30,
+      "icon": "assets/items/wiki/a1e77014-cfba-4c5f-9b4a-63919327fd34.bcd34.jpg",
+      "bonuses": {
+        "tongLinh": 9,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_222",
+      "wikiId": "222",
+      "name": "Chiêu Võ Giáp",
+      "slot": "armor",
+      "rarity": "orange",
+      "levelReq": 64,
+      "icon": "assets/items/wiki/c698b5ba-1310-4790-9ba2-c3887eb2daca.7389b.jpg",
+      "bonuses": {
+        "tongLinh": 23,
+        "hp": 250
+      }
+    },
+    {
+      "id": "wiki_eq_369",
+      "wikiId": "369",
+      "name": "Chúc Âm Chiến Y",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 120,
+      "icon": "assets/items/wiki/2b824c88-c297-4a07-ab5e-479596418e1f.bf31c.jpg",
+      "bonuses": {
+        "tongLinh": 71,
+        "hp": 700
+      }
+    },
+    {
+      "id": "wiki_eq_1210",
+      "wikiId": "1210",
+      "name": "Cùng Kỳ Trấn Ngục Giáp",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 350,
+      "icon": "assets/items/wiki/6f3a20e6-e6de-4817-8966-14a3fb7a2150.920fb.png",
+      "bonuses": {
+        "tongLinh": 3122,
+        "hp": 90000
+      }
+    },
+    {
+      "id": "wiki_eq_543",
+      "wikiId": "543",
+      "name": "Đại Địa Giáp",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 170,
+      "icon": "assets/items/wiki/90284f8a-eb27-4e46-a910-1fc4e0896a8f.1672c.jpg",
+      "bonuses": {
+        "tongLinh": 356,
+        "hp": 12500
+      }
+    },
+    {
+      "id": "wiki_eq_63",
+      "wikiId": "63",
+      "name": "Đế Giáp",
+      "slot": "armor",
+      "rarity": "orange",
+      "levelReq": 64,
+      "icon": "assets/items/wiki/4c644654-afd7-4f37-9763-402e71435f11.d87a2.jpg",
+      "bonuses": {
+        "tongLinh": 25,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_41",
+      "wikiId": "41",
+      "name": "Diệp Giáp",
+      "slot": "armor",
+      "rarity": "white",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/b687839c-7356-4e4a-abf2-2fd8ebd8381d.438f8.jpg",
+      "bonuses": {
+        "tongLinh": 4,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_446",
+      "wikiId": "446",
+      "name": "Diệt Thế Giáp",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 150,
+      "icon": "assets/items/wiki/f6f417b5-65f7-4434-8598-4a186d95f53b.5a5b7.jpg",
+      "bonuses": {
+        "tongLinh": 208,
+        "hp": 2500
+      }
+    },
+    {
+      "id": "wiki_eq_46",
+      "wikiId": "46",
+      "name": "Định Giáp",
+      "slot": "armor",
+      "rarity": "green",
+      "levelReq": 12,
+      "icon": "assets/items/wiki/8fd96a4a-e666-4c7d-93a3-2d0d054b6c36.f951a.jpg",
+      "bonuses": {
+        "tongLinh": 4,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_36",
+      "wikiId": "36",
+      "name": "Đồng Giáp",
+      "slot": "armor",
+      "rarity": "white",
+      "levelReq": 5,
+      "icon": "assets/items/wiki/0158aea8-03c5-4b75-9be6-d80c8bbec6e9.cce12.jpg",
+      "bonuses": {
+        "tongLinh": 2,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_224",
+      "wikiId": "224",
+      "name": "Dương Khải",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 95,
+      "icon": "assets/items/wiki/760bdc79-d57a-467d-95f9-fc2fbb5a2593.cd1d4.jpg",
+      "bonuses": {
+        "tongLinh": 39,
+        "hp": 300
+      }
+    },
+    {
+      "id": "wiki_eq_762",
+      "wikiId": "762",
+      "name": "Hắc Quang Khải",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 10,
+      "icon": "assets/items/wiki/b3aa7cc0-e988-4d6b-b5c5-0e2eb6bfe21a.f8269.jpg",
+      "bonuses": {
+        "tongLinh": 33,
+        "hp": 500
+      }
+    },
+    {
+      "id": "wiki_eq_865",
+      "wikiId": "865",
+      "name": "Hình Thiên Khải",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 290,
+      "icon": "assets/items/wiki/5fb542e0-af50-4f13-a87f-3132361555f0.295e6.png",
+      "bonuses": {
+        "tongLinh": 2056,
+        "hp": 60000
+      }
+    },
+    {
+      "id": "wiki_eq_47",
+      "wikiId": "47",
+      "name": "Hỏa Khải",
+      "slot": "armor",
+      "rarity": "green",
+      "levelReq": 14,
+      "icon": "assets/items/wiki/a472cb1b-1df1-409d-890f-06a83d9e76bf.38ed4.jpg",
+      "bonuses": {
+        "tongLinh": 5,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_49",
+      "wikiId": "49",
+      "name": "Hoang Giáp",
+      "slot": "armor",
+      "rarity": "green",
+      "levelReq": 18,
+      "icon": "assets/items/wiki/0faca040-e278-4dc2-8277-bbcda2643589.0d694.jpg",
+      "bonuses": {
+        "tongLinh": 7,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_288",
+      "wikiId": "288",
+      "name": "Hoàng Giáp",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 90,
+      "icon": "assets/items/wiki/470f4262-d93f-4e09-99a1-ee33d0a21f7b.6bdb6.jpg",
+      "bonuses": {
+        "tongLinh": 44,
+        "hp": 500
+      }
+    },
+    {
+      "id": "wiki_eq_566",
+      "wikiId": "566",
+      "name": "Hỗn Độn-Phẫn Ảnh Y",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 190,
+      "icon": "assets/items/wiki/65fed7e0-c480-400c-bb63-962c65f51939.4c490.jpg",
+      "bonuses": {
+        "tongLinh": 556,
+        "hp": 17500
+      }
+    },
+    {
+      "id": "wiki_eq_50",
+      "wikiId": "50",
+      "name": "Hổ Nha Y",
+      "slot": "armor",
+      "rarity": "green",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/bdbb682c-dc80-4aa7-bc82-29977d4a8d78.35835.jpg",
+      "bonuses": {
+        "tongLinh": 8,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_40",
+      "wikiId": "40",
+      "name": "Kim Giáp",
+      "slot": "armor",
+      "rarity": "white",
+      "levelReq": 16,
+      "icon": "assets/items/wiki/0570a0e9-8164-4f93-95bc-fbe91d2667a0.fbc6d.jpg",
+      "bonuses": {
+        "tongLinh": 4,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_518",
+      "wikiId": "518",
+      "name": "Kim Ti Giáp",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/027d8e95-02fc-44b2-a311-bad59ed5dedb.3920c.jpg",
+      "bonuses": {
+        "tongLinh": 27,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_221",
+      "wikiId": "221",
+      "name": "Kim Tước Khải",
+      "slot": "armor",
+      "rarity": "purple",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/a1efef6b-bb5e-499b-a996-35cdec27acac.7f565.jpg",
+      "bonuses": {
+        "tongLinh": 22,
+        "hp": 250
+      }
+    },
+    {
+      "id": "wiki_eq_223",
+      "wikiId": "223",
+      "name": "Kỳ Lân Khải",
+      "slot": "armor",
+      "rarity": "orange",
+      "levelReq": 72,
+      "icon": "assets/items/wiki/e935414c-2c8a-4a06-82d4-fb1323f44101.83356.jpg",
+      "bonuses": {
+        "tongLinh": 26,
+        "hp": 275
+      }
+    },
+    {
+      "id": "wiki_eq_43",
+      "wikiId": "43",
+      "name": "La Lĩnh Giáp",
+      "slot": "armor",
+      "rarity": "white",
+      "levelReq": 28,
+      "icon": "assets/items/wiki/527b1f8f-0ce3-40be-855d-9767da5a94b5.5ccc6.jpg",
+      "bonuses": {
+        "tongLinh": 6,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_517",
+      "wikiId": "517",
+      "name": "Liên Hoàn Khải",
+      "slot": "armor",
+      "rarity": "orange",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/20cbbf43-2922-4e77-90fa-d28fc7985912.83930.jpg",
+      "bonuses": {
+        "tongLinh": 20,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_1031",
+      "wikiId": "1031",
+      "name": "Liệt Diệm Khải",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 310,
+      "icon": "assets/items/wiki/554b1698-e126-44a2-b668-9e635383cb29.edf99.png",
+      "bonuses": {
+        "tongLinh": 2378,
+        "hp": 70000
+      }
+    },
+    {
+      "id": "wiki_eq_66",
+      "wikiId": "66",
+      "name": "Long Lân Khải",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 95,
+      "icon": "assets/items/wiki/01f632b7-a946-4cba-82d3-b1b6606f9d83.0a6f0.jpg",
+      "bonuses": {
+        "tongLinh": 38,
+        "hp": 250
+      }
+    },
+    {
+      "id": "wiki_eq_62",
+      "wikiId": "62",
+      "name": "Lưỡng Giáp",
+      "slot": "armor",
+      "rarity": "orange",
+      "levelReq": 55,
+      "icon": "assets/items/wiki/2d9d84f5-5584-408c-a397-aa56a32706d6.2cee7.jpg",
+      "bonuses": {
+        "tongLinh": 19,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_57",
+      "wikiId": "57",
+      "name": "Luyện Giáp",
+      "slot": "armor",
+      "rarity": "purple",
+      "levelReq": 40,
+      "icon": "assets/items/wiki/db52c084-a1fa-4231-a7af-c4400601848a.6656c.jpg",
+      "bonuses": {
+        "tongLinh": 12,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_220",
+      "wikiId": "220",
+      "name": "Mặc Ngọc Giáp",
+      "slot": "armor",
+      "rarity": "purple",
+      "levelReq": 55,
+      "icon": "assets/items/wiki/d7a5a954-744e-41af-a2d8-d6b4fc3f01e8.e79d5.jpg",
+      "bonuses": {
+        "tongLinh": 21,
+        "hp": 225
+      }
+    },
+    {
+      "id": "wiki_eq_594",
+      "wikiId": "594",
+      "name": "Ngạo Long Y",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 210,
+      "icon": "assets/items/wiki/a2161866-14fa-4c77-b214-0ece13a05792.d79da.jpg",
+      "bonuses": {
+        "tongLinh": 778,
+        "hp": 22500
+      }
+    },
+    {
+      "id": "wiki_eq_61",
+      "wikiId": "61",
+      "name": "Nguyệt Giáp",
+      "slot": "armor",
+      "rarity": "purple",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/18646216-2e3f-4973-a44c-7dafdde8392b.58c6f.jpg",
+      "bonuses": {
+        "tongLinh": 25,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_52",
+      "wikiId": "52",
+      "name": "Nhuyễn Giáp",
+      "slot": "armor",
+      "rarity": "blue",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/7d7f9936-8f6e-47db-8346-ac6c6e005271.8edf7.jpg",
+      "bonuses": {
+        "tongLinh": 7,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_51",
+      "wikiId": "51",
+      "name": "Nộ Yến Khải",
+      "slot": "armor",
+      "rarity": "green",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/1431f973-0018-4abf-ba1b-9a03708c600f.cb583.jpg",
+      "bonuses": {
+        "tongLinh": 17,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_719",
+      "wikiId": "719",
+      "name": "Nữ Oa Y",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 250,
+      "icon": "assets/items/wiki/d4aeb8f7-cd5d-43d9-b496-f9d55ea1e42a.25178.png",
+      "bonuses": {
+        "tongLinh": 1433,
+        "hp": 40000
+      }
+    },
+    {
+      "id": "wiki_eq_39",
+      "wikiId": "39",
+      "name": "Ô Kim Giáp",
+      "slot": "armor",
+      "rarity": "white",
+      "levelReq": 13,
+      "icon": "assets/items/wiki/128ca00e-a805-4be6-b9be-c76cff4163bf.60895.jpg",
+      "bonuses": {
+        "tongLinh": 3,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_44",
+      "wikiId": "44",
+      "name": "Phá Giáp",
+      "slot": "armor",
+      "rarity": "green",
+      "levelReq": 8,
+      "icon": "assets/items/wiki/67383434-c845-4599-a788-0cf5b0557956.e4606.jpg",
+      "bonuses": {
+        "tongLinh": 2,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_219",
+      "wikiId": "219",
+      "name": "Phong Giáp",
+      "slot": "armor",
+      "rarity": "purple",
+      "levelReq": 50,
+      "icon": "assets/items/wiki/b4fb7f73-c265-4ec4-a88f-cd1f91709924.120ca.jpg",
+      "bonuses": {
+        "tongLinh": 19,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_218",
+      "wikiId": "218",
+      "name": "Phong Khải",
+      "slot": "armor",
+      "rarity": "blue",
+      "levelReq": 36,
+      "icon": "assets/items/wiki/bfde2f6f-2e39-482e-993a-e54de0e9e2ce.6bc1d.jpg",
+      "bonuses": {
+        "tongLinh": 17,
+        "hp": 225
+      }
+    },
+    {
+      "id": "wiki_eq_655",
+      "wikiId": "655",
+      "name": "Phục Hi Y",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 230,
+      "icon": "assets/items/wiki/a07342a6-3103-4c62-a3a2-a2d92e117cfc.b68d8.png",
+      "bonuses": {
+        "tongLinh": 1111,
+        "hp": 30000
+      }
+    },
+    {
+      "id": "wiki_eq_59",
+      "wikiId": "59",
+      "name": "Thạch Khải",
+      "slot": "armor",
+      "rarity": "purple",
+      "levelReq": 50,
+      "icon": "assets/items/wiki/be1a2d7d-6809-4f1c-9dda-b23595774b0a.12300.jpg",
+      "bonuses": {
+        "tongLinh": 18,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_1122",
+      "wikiId": "1122",
+      "name": "Thao Thiết Giáp",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 330,
+      "icon": "assets/items/wiki/8fa4050b-3287-4c93-8c4a-f9f274b80ba8.847c4.png",
+      "bonuses": {
+        "tongLinh": 2750,
+        "hp": 80000
+      }
+    },
+    {
+      "id": "wiki_eq_417",
+      "wikiId": "417",
+      "name": "Thất Hải Giáp",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 130,
+      "icon": "assets/items/wiki/81715035-f3d3-4bc9-9b35-f97c8975f662.1b50c.jpg",
+      "bonuses": {
+        "tongLinh": 83,
+        "hp": 1000
+      }
+    },
+    {
+      "id": "wiki_eq_55",
+      "wikiId": "55",
+      "name": "Thất Khải",
+      "slot": "armor",
+      "rarity": "blue",
+      "levelReq": 32,
+      "icon": "assets/items/wiki/ccee8fb1-38ad-4fe9-8c8d-f67552441381.7e588.jpg",
+      "bonuses": {
+        "tongLinh": 14,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_56",
+      "wikiId": "56",
+      "name": "Thiên Giáp",
+      "slot": "armor",
+      "rarity": "blue",
+      "levelReq": 36,
+      "icon": "assets/items/wiki/d63426fe-a081-4b2d-a800-7f38b07fb4d7.28cc4.jpg",
+      "bonuses": {
+        "tongLinh": 16,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_45",
+      "wikiId": "45",
+      "name": "Thiên Khải",
+      "slot": "armor",
+      "rarity": "green",
+      "levelReq": 10,
+      "icon": "assets/items/wiki/157d32b3-0c24-4e74-997a-5c9680ae0dc2.b1e8a.jpg",
+      "bonuses": {
+        "tongLinh": 3,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_42",
+      "wikiId": "42",
+      "name": "Thiên Tàm Y",
+      "slot": "armor",
+      "rarity": "white",
+      "levelReq": 24,
+      "icon": "assets/items/wiki/31c91b21-6ea8-4ca2-801e-21f4cbc995ef.5d028.jpg",
+      "bonuses": {
+        "tongLinh": 5,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_60",
+      "wikiId": "60",
+      "name": "Tỏa Hoàn Giáp",
+      "slot": "armor",
+      "rarity": "purple",
+      "levelReq": 55,
+      "icon": "assets/items/wiki/2d2cfb09-e15a-4642-962b-31afb825ab4a.bc52f.jpg",
+      "bonuses": {
+        "tongLinh": 22,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_38",
+      "wikiId": "38",
+      "name": "Tố Ngân Khải",
+      "slot": "armor",
+      "rarity": "white",
+      "levelReq": 10,
+      "icon": "assets/items/wiki/a14af5ef-36bf-4ba9-8c14-8fb911b21436.46b08.jpg",
+      "bonuses": {
+        "tongLinh": 3,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_368",
+      "wikiId": "368",
+      "name": "Ứng Long Khải",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 100,
+      "icon": "assets/items/wiki/08a9ff88-268f-4428-a48b-92efc2b6f4e7.8f60b.jpg",
+      "bonuses": {
+        "tongLinh": 53,
+        "hp": 400
+      }
+    },
+    {
+      "id": "wiki_eq_48",
+      "wikiId": "48",
+      "name": "Vân Giáp",
+      "slot": "armor",
+      "rarity": "green",
+      "levelReq": 16,
+      "icon": "assets/items/wiki/837b4860-274f-40b1-9619-a110851b00b2.fde72.jpg",
+      "bonuses": {
+        "tongLinh": 6,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_290",
+      "wikiId": "290",
+      "name": "Vạn Kiếp Khải",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 110,
+      "icon": "assets/items/wiki/26d421c5-c5e6-4e9a-9e8c-753336ad4679.791b0.jpg",
+      "bonuses": {
+        "tongLinh": 53,
+        "hp": 600
+      }
+    },
+    {
+      "id": "wiki_eq_798",
+      "wikiId": "798",
+      "name": "Viêm Đế Y",
+      "slot": "armor",
+      "rarity": "red",
+      "levelReq": 270,
+      "icon": "assets/items/wiki/b304afb6-da1a-4088-8019-15ca39c873c1.0babf.png",
+      "bonuses": {
+        "tongLinh": 1722,
+        "hp": 50000
+      }
+    },
+    {
+      "id": "wiki_eq_58",
+      "wikiId": "58",
+      "name": "Vũ Khúc Giáp",
+      "slot": "armor",
+      "rarity": "purple",
+      "levelReq": 45,
+      "icon": "assets/items/wiki/e030ea17-841b-493e-97af-f5a72cf008ab.3a720.jpg",
+      "bonuses": {
+        "tongLinh": 15,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_64",
+      "wikiId": "64",
+      "name": "Xích Dực Vũ",
+      "slot": "armor",
+      "rarity": "orange",
+      "levelReq": 72,
+      "icon": "assets/items/wiki/f0d9c519-7fc2-45cb-961d-7650827016be.b6ba5.jpg",
+      "bonuses": {
+        "tongLinh": 31,
+        "hp": 225
+      }
+    },
+    {
+      "id": "wiki_eq_37",
+      "wikiId": "37",
+      "name": "Xích Giáp",
+      "slot": "armor",
+      "rarity": "white",
+      "levelReq": 7,
+      "icon": "assets/items/wiki/35652804-a428-481e-8957-66e18ea82100.5c501.jpg",
+      "bonuses": {
+        "tongLinh": 2,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_291",
+      "wikiId": "291",
+      "name": "Ảnh Tầm Câu",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 90,
+      "icon": "assets/items/wiki/752e0ddb-46e9-44a0-85d3-6d15871b8617.db470.jpg",
+      "bonuses": {
+        "vuLuc": 60,
+        "hp": 500
+      }
+    },
+    {
+      "id": "wiki_eq_90",
+      "wikiId": "90",
+      "name": "Bạch Long",
+      "slot": "horse",
+      "rarity": "orange",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/9186aa3c-3737-4b8a-ac06-eae90263c738.16c7a.jpg",
+      "bonuses": {
+        "vuLuc": 19,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_78",
+      "wikiId": "78",
+      "name": "Bão Nguyệt",
+      "slot": "horse",
+      "rarity": "green",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/f3d0da25-1be1-4fde-a7a9-c85196b6a47f.e06c3.jpg",
+      "bonuses": {
+        "vuLuc": 18,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_75",
+      "wikiId": "75",
+      "name": "Bôn Tiêu",
+      "slot": "horse",
+      "rarity": "green",
+      "levelReq": 12,
+      "icon": "assets/items/wiki/b0121e2e-3059-4d67-8277-abece0c895cb.8786d.jpg",
+      "bonuses": {
+        "vuLuc": 6,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_443",
+      "wikiId": "443",
+      "name": "Chiếu Dạ Sư",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/3b6cdc76-04e9-48ce-910a-bbe8453382cd.5cf93.jpg",
+      "bonuses": {
+        "vuLuc": 25,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_81",
+      "wikiId": "81",
+      "name": "Chiếu Dạ Sư",
+      "slot": "horse",
+      "rarity": "blue",
+      "levelReq": 28,
+      "icon": "assets/items/wiki/17ff5328-14b3-453b-a7d5-4289380049e6.53c23.jpg",
+      "bonuses": {
+        "vuLuc": 12,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_371",
+      "wikiId": "371",
+      "name": "Chúc Âm Câu",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 120,
+      "icon": "assets/items/wiki/3b7c3c30-927f-4624-84d1-fb0ccfe5fa39.c3439.jpg",
+      "bonuses": {
+        "vuLuc": 89,
+        "hp": 700
+      }
+    },
+    {
+      "id": "wiki_eq_1214",
+      "wikiId": "1214",
+      "name": "Cùng Kỳ Đạp Uyên Thú",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 350,
+      "icon": "assets/items/wiki/ddab8ace-6bf4-46a2-a220-ae11535d4ed2.95095.png",
+      "bonuses": {
+        "vuLuc": 3122,
+        "hp": 90000
+      }
+    },
+    {
+      "id": "wiki_eq_69",
+      "wikiId": "69",
+      "name": "Đại Uyển",
+      "slot": "horse",
+      "rarity": "white",
+      "levelReq": 12,
+      "icon": "assets/items/wiki/d5e4ea7f-7706-4012-8e6c-5e0206c8030a.59c86.jpg",
+      "bonuses": {
+        "vuLuc": 3,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_87",
+      "wikiId": "87",
+      "name": "Đằng Vụ",
+      "slot": "horse",
+      "rarity": "purple",
+      "levelReq": 50,
+      "icon": "assets/items/wiki/ce667e72-5a5b-4200-9f04-12ce699cf122.a5868.jpg",
+      "bonuses": {
+        "vuLuc": 19,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_77",
+      "wikiId": "77",
+      "name": "Đạp Lãng Truy",
+      "slot": "horse",
+      "rarity": "green",
+      "levelReq": 16,
+      "icon": "assets/items/wiki/0e65cf6c-fbd4-474e-b36a-47bd257f07fb.9f9b7.jpg",
+      "bonuses": {
+        "vuLuc": 9,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_86",
+      "wikiId": "86",
+      "name": "Đạp Tuyết",
+      "slot": "horse",
+      "rarity": "purple",
+      "levelReq": 45,
+      "icon": "assets/items/wiki/2ca2f235-f5f3-4b56-a094-912274a332e4.dead0.jpg",
+      "bonuses": {
+        "vuLuc": 16,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_80",
+      "wikiId": "80",
+      "name": "Đích Lô",
+      "slot": "horse",
+      "rarity": "blue",
+      "levelReq": 24,
+      "icon": "assets/items/wiki/d8021158-bb50-4993-ade4-c600b814ccdf.edac1.jpg",
+      "bonuses": {
+        "vuLuc": 10,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_447",
+      "wikiId": "447",
+      "name": "Diệt Thế Lân",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 150,
+      "icon": "assets/items/wiki/2781db7f-ada9-4c45-8c0f-a08390b3bbe6.d0442.jpg",
+      "bonuses": {
+        "vuLuc": 278,
+        "hp": 2500
+      }
+    },
+    {
+      "id": "wiki_eq_93",
+      "wikiId": "93",
+      "name": "Giác Kỳ Lân",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 80,
+      "icon": "assets/items/wiki/65eda990-1ca9-44b2-ac9c-532392dae206.cfd02.jpg",
+      "bonuses": {
+        "vuLuc": 29,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_94",
+      "wikiId": "94",
+      "name": "Hắc Long",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 95,
+      "icon": "assets/items/wiki/544b7fdd-0a54-4d27-85dd-f3f80ca7a845.0c8db.jpg",
+      "bonuses": {
+        "vuLuc": 38,
+        "hp": 250
+      }
+    },
+    {
+      "id": "wiki_eq_71",
+      "wikiId": "71",
+      "name": "Hãn Huyết",
+      "slot": "horse",
+      "rarity": "white",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/d39c23d9-3c73-4d68-bdf5-98d3f9f4ebc0.2929f.jpg",
+      "bonuses": {
+        "vuLuc": 5,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_869",
+      "wikiId": "869",
+      "name": "Hình Thiên Hổ",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 290,
+      "icon": "assets/items/wiki/0c20d35e-5e5c-464e-a810-2558c2b4cc4e.9e7b9.png",
+      "bonuses": {
+        "vuLuc": 2056,
+        "hp": 60000
+      }
+    },
+    {
+      "id": "wiki_eq_91",
+      "wikiId": "91",
+      "name": "Hỏa Long",
+      "slot": "horse",
+      "rarity": "orange",
+      "levelReq": 70,
+      "icon": "assets/items/wiki/972459f5-78f3-4a91-b060-5463ef136b24.a4936.jpg",
+      "bonuses": {
+        "vuLuc": 24,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_67",
+      "wikiId": "67",
+      "name": "Hoàng Phiêu",
+      "slot": "horse",
+      "rarity": "white",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/59fff61b-4d03-4d84-8653-a05ef2e0c4f8.b13a1.jpg",
+      "bonuses": {
+        "vuLuc": 1,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_92",
+      "wikiId": "92",
+      "name": "Hỏa Phượng",
+      "slot": "horse",
+      "rarity": "orange",
+      "levelReq": 80,
+      "icon": "assets/items/wiki/0990f814-4c9c-4b2d-a046-0b46bfd57d5f.c5de7.jpg",
+      "bonuses": {
+        "vuLuc": 29,
+        "hp": 225
+      }
+    },
+    {
+      "id": "wiki_eq_79",
+      "wikiId": "79",
+      "name": "Hổ Lôi Báo",
+      "slot": "horse",
+      "rarity": "blue",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/3869ca43-d9ef-4b44-b9f3-56eaf71290fd.071c9.jpg",
+      "bonuses": {
+        "vuLuc": 8,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_544",
+      "wikiId": "544",
+      "name": "Hỗn Độn Thú",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 170,
+      "icon": "assets/items/wiki/903b8bb3-2c9c-4d2c-8605-123d1c863f56.ede01.jpg",
+      "bonuses": {
+        "vuLuc": 444,
+        "hp": 12500
+      }
+    },
+    {
+      "id": "wiki_eq_567",
+      "wikiId": "567",
+      "name": "Hỗn Độn-Tinh Viên Thú",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 190,
+      "icon": "assets/items/wiki/f668fdd7-e359-4353-9649-53b0fd1f4dfe.b1591.jpg",
+      "bonuses": {
+        "vuLuc": 611,
+        "hp": 17500
+      }
+    },
+    {
+      "id": "wiki_eq_89",
+      "wikiId": "89",
+      "name": "Kim Giáp Truy",
+      "slot": "horse",
+      "rarity": "purple",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/45b5b5c8-4f59-4820-9b55-68ac7088587a.44480.jpg",
+      "bonuses": {
+        "vuLuc": 26,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_83",
+      "wikiId": "83",
+      "name": "Ngân Hà",
+      "slot": "horse",
+      "rarity": "blue",
+      "levelReq": 36,
+      "icon": "assets/items/wiki/0459dc5c-d8d1-4f14-a4c4-2275948d5160.28c27.jpg",
+      "bonuses": {
+        "vuLuc": 16,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_723",
+      "wikiId": "723",
+      "name": "Nữ Oa Kỵ",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 250,
+      "icon": "assets/items/wiki/bed4aaf6-05a4-478d-9dfc-8578817adabe.3ef9d.png",
+      "bonuses": {
+        "vuLuc": 1444,
+        "hp": 40000
+      }
+    },
+    {
+      "id": "wiki_eq_68",
+      "wikiId": "68",
+      "name": "Ô Truy",
+      "slot": "horse",
+      "rarity": "white",
+      "levelReq": 7,
+      "icon": "assets/items/wiki/9ad86d86-88cd-494a-873f-c2d5e7dd30c9.0e129.jpg",
+      "bonuses": {
+        "vuLuc": 2,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_292",
+      "wikiId": "292",
+      "name": "Phần Hổ",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 100,
+      "icon": "assets/items/wiki/4c9b4454-0aeb-44a4-9c9d-1469bbc8fc50.d0d03.jpg",
+      "bonuses": {
+        "vuLuc": 66,
+        "hp": 550
+      }
+    },
+    {
+      "id": "wiki_eq_1035",
+      "wikiId": "1035",
+      "name": "Phệ Hồn Thú",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 310,
+      "icon": "assets/items/wiki/6e95b376-1e9c-4827-9175-70c869292f45.1148c.png",
+      "bonuses": {
+        "vuLuc": 2378,
+        "hp": 70000
+      }
+    },
+    {
+      "id": "wiki_eq_598",
+      "wikiId": "598",
+      "name": "Phiên Vũ Kỵ",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 210,
+      "icon": "assets/items/wiki/b43f1847-37d6-462f-8634-e65906588d74.7be07.jpg",
+      "bonuses": {
+        "vuLuc": 778,
+        "hp": 22500
+      }
+    },
+    {
+      "id": "wiki_eq_659",
+      "wikiId": "659",
+      "name": "Phục Hi Kỵ",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 230,
+      "icon": "assets/items/wiki/b2eeee63-9952-41a1-b1d9-4721f7e48889.b4fc2.png",
+      "bonuses": {
+        "vuLuc": 1111,
+        "hp": 30000
+      }
+    },
+    {
+      "id": "wiki_eq_70",
+      "wikiId": "70",
+      "name": "Quyển Địa",
+      "slot": "horse",
+      "rarity": "white",
+      "levelReq": 16,
+      "icon": "assets/items/wiki/3cf33a06-f04a-4a23-896e-1bf4757b276c.46327.jpg",
+      "bonuses": {
+        "vuLuc": 4,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_322",
+      "wikiId": "322",
+      "name": "Sói Hải Tặc",
+      "slot": "horse",
+      "rarity": "blue",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/a9deb2d3-67b3-438c-a266-7c8ea3e84730.d9a59.jpg",
+      "bonuses": {
+        "vuLuc": 11,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_329",
+      "wikiId": "329",
+      "name": "Sói Hải Tặc",
+      "slot": "horse",
+      "rarity": "purple",
+      "levelReq": 40,
+      "icon": "assets/items/wiki/dd157475-44db-4fb0-ab24-a7d3b3c7d15e.23da8.jpg",
+      "bonuses": {
+        "vuLuc": 17,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_336",
+      "wikiId": "336",
+      "name": "Sói Hải Tặc",
+      "slot": "horse",
+      "rarity": "orange",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/127c5d5c-f188-442d-990b-801b2033f35a.ae9ff.jpg",
+      "bonuses": {
+        "vuLuc": 25,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_343",
+      "wikiId": "343",
+      "name": "Sói Hải Tặc",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 80,
+      "icon": "assets/items/wiki/3ec0eab6-7831-46ea-9c6f-3bfbcb37fcdf.d1b44.jpg",
+      "bonuses": {
+        "vuLuc": 33,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_350",
+      "wikiId": "350",
+      "name": "Sói Hải Tặc",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 100,
+      "icon": "assets/items/wiki/54ac2bce-bd52-4a65-8b32-9675db808df2.ef376.jpg",
+      "bonuses": {
+        "vuLuc": 61,
+        "hp": 500
+      }
+    },
+    {
+      "id": "wiki_eq_418",
+      "wikiId": "418",
+      "name": "Thần Hoàng Hổ",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 130,
+      "icon": "assets/items/wiki/251de971-1412-415b-a0ac-98f4bd3eb535.77213.jpg",
+      "bonuses": {
+        "vuLuc": 111,
+        "hp": 1000
+      }
+    },
+    {
+      "id": "wiki_eq_1126",
+      "wikiId": "1126",
+      "name": "Thao Thiết Thú",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 330,
+      "icon": "assets/items/wiki/239802e0-3d5e-432c-8c2f-9f9c2fbf3a6a.d8927.png",
+      "bonuses": {
+        "vuLuc": 2750,
+        "hp": 80000
+      }
+    },
+    {
+      "id": "wiki_eq_76",
+      "wikiId": "76",
+      "name": "Thiên Lý",
+      "slot": "horse",
+      "rarity": "green",
+      "levelReq": 14,
+      "icon": "assets/items/wiki/41439b58-b423-43d2-8fef-98987752ac52.215e7.jpg",
+      "bonuses": {
+        "vuLuc": 7,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_84",
+      "wikiId": "84",
+      "name": "Trảo Hoàng",
+      "slot": "horse",
+      "rarity": "blue",
+      "levelReq": 40,
+      "icon": "assets/items/wiki/7c0938db-ac62-40cb-861f-ddce06115195.997c7.jpg",
+      "bonuses": {
+        "vuLuc": 19,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_88",
+      "wikiId": "88",
+      "name": "Truy Phong",
+      "slot": "horse",
+      "rarity": "purple",
+      "levelReq": 55,
+      "icon": "assets/items/wiki/4cf4c472-b558-4190-af63-6a426ea0e2cd.22361.jpg",
+      "bonuses": {
+        "vuLuc": 22,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_293",
+      "wikiId": "293",
+      "name": "Tử Kỳ Lân",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 110,
+      "icon": "assets/items/wiki/31da48ca-315a-4650-8364-a9a82ddbb3f5.662cb.jpg",
+      "bonuses": {
+        "vuLuc": 71,
+        "hp": 600
+      }
+    },
+    {
+      "id": "wiki_eq_381",
+      "wikiId": "381",
+      "name": "Tử Tinh",
+      "slot": "horse",
+      "rarity": "orange",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/0fa2d206-5849-486a-ab23-af8c43ecf195.42e33.jpg",
+      "bonuses": {
+        "vuLuc": 19,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_72",
+      "wikiId": "72",
+      "name": "Tuyệt Ảnh",
+      "slot": "horse",
+      "rarity": "white",
+      "levelReq": 24,
+      "icon": "assets/items/wiki/f59e9d4c-794f-4f66-8091-3f36b5eda1f0.1a912.jpg",
+      "bonuses": {
+        "vuLuc": 6,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_74",
+      "wikiId": "74",
+      "name": "Tuyết Bạch",
+      "slot": "horse",
+      "rarity": "green",
+      "levelReq": 10,
+      "icon": "assets/items/wiki/fde14987-a509-4c30-9cfe-8bb24e956d7d.687e8.jpg",
+      "bonuses": {
+        "vuLuc": 5,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_73",
+      "wikiId": "73",
+      "name": "Tuyệt Trần",
+      "slot": "horse",
+      "rarity": "green",
+      "levelReq": 8,
+      "icon": "assets/items/wiki/edde187e-6b17-4f69-a7e3-c80cb11de56f.0a5ce.jpg",
+      "bonuses": {
+        "vuLuc": 3,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_370",
+      "wikiId": "370",
+      "name": "Ứng Long Câu",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 100,
+      "icon": "assets/items/wiki/71b1e21d-8fb0-4828-94c9-b708a5b88d9f.c294e.jpg",
+      "bonuses": {
+        "vuLuc": 52,
+        "hp": 400
+      }
+    },
+    {
+      "id": "wiki_eq_802",
+      "wikiId": "802",
+      "name": "Viêm Đế Thú",
+      "slot": "horse",
+      "rarity": "red",
+      "levelReq": 270,
+      "icon": "assets/items/wiki/295191d3-9bc1-4490-9268-023de39c2b1b.8983f.png",
+      "bonuses": {
+        "vuLuc": 1733,
+        "hp": 50000
+      }
+    },
+    {
+      "id": "wiki_eq_85",
+      "wikiId": "85",
+      "name": "Xích Thố Thú",
+      "slot": "horse",
+      "rarity": "purple",
+      "levelReq": 40,
+      "icon": "assets/items/wiki/72f99e75-295b-4eba-87ab-cfdd606a7913.914e1.jpg",
+      "bonuses": {
+        "vuLuc": 12,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_82",
+      "wikiId": "82",
+      "name": "Yên Vân Thú",
+      "slot": "horse",
+      "rarity": "blue",
+      "levelReq": 32,
+      "icon": "assets/items/wiki/86897f1b-d18a-4e0f-9eef-a431db26e2c0.d8185.jpg",
+      "bonuses": {
+        "vuLuc": 14,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_148",
+      "wikiId": "148",
+      "name": "24 Binh Pháp",
+      "slot": "book",
+      "rarity": "orange",
+      "levelReq": 80,
+      "icon": "assets/items/wiki/37c3e5b5-fca3-468c-bb5d-1f39f4506db1.eb3be.jpg",
+      "bonuses": {
+        "triLuc": 29,
+        "hp": 225
+      }
+    },
+    {
+      "id": "wiki_eq_444",
+      "wikiId": "444",
+      "name": "Anh Tử",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/efad2adc-1169-4352-ac20-f7bd4443727c.4ee2b.jpg",
+      "bonuses": {
+        "triLuc": 25,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_147",
+      "wikiId": "147",
+      "name": "Bình Thuật",
+      "slot": "book",
+      "rarity": "orange",
+      "levelReq": 70,
+      "icon": "assets/items/wiki/e2918dcd-d334-4a60-81d2-96a5f443e157.e9308.jpg",
+      "bonuses": {
+        "triLuc": 24,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_150",
+      "wikiId": "150",
+      "name": "Binh Võ Kinh",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 95,
+      "icon": "assets/items/wiki/166dde8d-6d23-486a-a3e0-0b5996d5b6e9.f0395.jpg",
+      "bonuses": {
+        "triLuc": 38,
+        "hp": 250
+      }
+    },
+    {
+      "id": "wiki_eq_144",
+      "wikiId": "144",
+      "name": "Càn Tượng Chú",
+      "slot": "book",
+      "rarity": "purple",
+      "levelReq": 55,
+      "icon": "assets/items/wiki/b4bfcc94-fde0-4680-ad9f-73a0b40c2839.9614e.jpg",
+      "bonuses": {
+        "triLuc": 22,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_133",
+      "wikiId": "133",
+      "name": "Chiến Sách",
+      "slot": "book",
+      "rarity": "green",
+      "levelReq": 16,
+      "icon": "assets/items/wiki/be3ed18d-428f-444c-9fb9-b0feaeeeb8f2.0fc21.jpg",
+      "bonuses": {
+        "triLuc": 9,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_375",
+      "wikiId": "375",
+      "name": "Chúc Âm Yếu Quyết",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 120,
+      "icon": "assets/items/wiki/fbacf307-dfe3-438e-b99f-6c20a6433b49.c9aa4.jpg",
+      "bonuses": {
+        "triLuc": 89,
+        "hp": 700
+      }
+    },
+    {
+      "id": "wiki_eq_132",
+      "wikiId": "132",
+      "name": "Chu ThưPhù",
+      "slot": "book",
+      "rarity": "green",
+      "levelReq": 14,
+      "icon": "assets/items/wiki/f8c8cf16-501c-46ac-bbd8-59d2ec6784fe.bf783.jpg",
+      "bonuses": {
+        "triLuc": 7,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_1212",
+      "wikiId": "1212",
+      "name": "Cùng Kỳ Phệ Tà Giản",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 350,
+      "icon": "assets/items/wiki/d8b32a43-e6a0-4270-ba18-831506b59c52.a0594.png",
+      "bonuses": {
+        "triLuc": 3122,
+        "hp": 90000
+      }
+    },
+    {
+      "id": "wiki_eq_1033",
+      "wikiId": "1033",
+      "name": "Cửu Lê Thư",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 310,
+      "icon": "assets/items/wiki/aa5226c9-8f89-4573-b822-1809f1e65449.95473.png",
+      "bonuses": {
+        "triLuc": 2378,
+        "hp": 70000
+      }
+    },
+    {
+      "id": "wiki_eq_125",
+      "wikiId": "125",
+      "name": "Điển Luận",
+      "slot": "book",
+      "rarity": "white",
+      "levelReq": 12,
+      "icon": "assets/items/wiki/258cb2f4-de7d-419a-acc5-f6f880a804cd.98c4d.jpg",
+      "bonuses": {
+        "triLuc": 3,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_449",
+      "wikiId": "449",
+      "name": "Diệt Thế Quyết",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 150,
+      "icon": "assets/items/wiki/9f560dc3-4ee2-49e0-8e34-23a56f0bf777.b0adb.jpg",
+      "bonuses": {
+        "triLuc": 278,
+        "hp": 2500
+      }
+    },
+    {
+      "id": "wiki_eq_149",
+      "wikiId": "149",
+      "name": "Độn Giáp Thư",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 80,
+      "icon": "assets/items/wiki/ca699cff-3787-4877-879b-0d93762570bb.ea2f3.jpg",
+      "bonuses": {
+        "triLuc": 29,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_382",
+      "wikiId": "382",
+      "name": "Hàn Phi Tử",
+      "slot": "book",
+      "rarity": "orange",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/f4ab0abd-6c18-47b7-bd97-b87a633ef6ae.eed70.jpg",
+      "bonuses": {
+        "triLuc": 19,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_135",
+      "wikiId": "135",
+      "name": "Hán Thư",
+      "slot": "book",
+      "rarity": "blue",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/2db726ba-2d87-418a-b116-8aa1d88607c2.1fb99.jpg",
+      "bonuses": {
+        "triLuc": 8,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_128",
+      "wikiId": "128",
+      "name": "Hiếu Kinh",
+      "slot": "book",
+      "rarity": "white",
+      "levelReq": 24,
+      "icon": "assets/items/wiki/c0d9305b-a4d6-4440-bd62-5024a4aa0c1f.4da79.jpg",
+      "bonuses": {
+        "triLuc": 6,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_867",
+      "wikiId": "867",
+      "name": "Hình Thiên Thư",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 290,
+      "icon": "assets/items/wiki/fe82cd6e-74f6-4a77-a7d6-1e509da02f0a.1f137.png",
+      "bonuses": {
+        "triLuc": 2056,
+        "hp": 60000
+      }
+    },
+    {
+      "id": "wiki_eq_141",
+      "wikiId": "141",
+      "name": "Hoài Nam Tử",
+      "slot": "book",
+      "rarity": "purple",
+      "levelReq": 40,
+      "icon": "assets/items/wiki/72d8488b-1b69-4d49-93ec-81681304eb87.09ad7.jpg",
+      "bonuses": {
+        "triLuc": 12,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_569",
+      "wikiId": "569",
+      "name": "Hỗn Độn-Thiên Khởi Lục",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 190,
+      "icon": "assets/items/wiki/ea9aa67a-e031-4de1-a117-9b22415fa289.93631.jpg",
+      "bonuses": {
+        "triLuc": 611,
+        "hp": 17500
+      }
+    },
+    {
+      "id": "wiki_eq_123",
+      "wikiId": "123",
+      "name": "Kinh Thi",
+      "slot": "book",
+      "rarity": "white",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/706403ca-70d9-4eeb-819b-b861f2ad41c0.8b333.jpg",
+      "bonuses": {
+        "triLuc": 1,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_129",
+      "wikiId": "129",
+      "name": "Kinh Thư",
+      "slot": "book",
+      "rarity": "green",
+      "levelReq": 8,
+      "icon": "assets/items/wiki/8aab7304-0c50-45cc-b874-495583be90f4.be1fb.jpg",
+      "bonuses": {
+        "triLuc": 3,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_337",
+      "wikiId": "337",
+      "name": "La Bàn Hải Tặc",
+      "slot": "book",
+      "rarity": "orange",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/594a8313-5d4a-4fdf-9b0d-5404a1f0d557.22f73.jpg",
+      "bonuses": {
+        "triLuc": 25,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_344",
+      "wikiId": "344",
+      "name": "La Bàn Hải Tặc",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 80,
+      "icon": "assets/items/wiki/a68ca8be-156c-4749-858f-a50ee5d1bce2.f0779.jpg",
+      "bonuses": {
+        "triLuc": 33,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_351",
+      "wikiId": "351",
+      "name": "La Bàn Hải Tặc",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 100,
+      "icon": "assets/items/wiki/b5b13dc8-5526-4ce4-ba62-73f68e2961cb.1d405.jpg",
+      "bonuses": {
+        "triLuc": 61,
+        "hp": 500
+      }
+    },
+    {
+      "id": "wiki_eq_323",
+      "wikiId": "323",
+      "name": "La Bàn Hải Tặc",
+      "slot": "book",
+      "rarity": "blue",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/70449721-0c80-471f-a4dd-2927ed68912a.ef709.jpg",
+      "bonuses": {
+        "triLuc": 11,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_330",
+      "wikiId": "330",
+      "name": "La Bàn Hải Tặc",
+      "slot": "book",
+      "rarity": "purple",
+      "levelReq": 40,
+      "icon": "assets/items/wiki/23bcb6cb-3288-491f-a313-8e9b5054a8bc.d7e30.jpg",
+      "bonuses": {
+        "triLuc": 17,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_131",
+      "wikiId": "131",
+      "name": "Lễ Ký",
+      "slot": "book",
+      "rarity": "green",
+      "levelReq": 12,
+      "icon": "assets/items/wiki/b2c94cb7-38a3-4953-9e3f-a39b7e8671b6.80e61.jpg",
+      "bonuses": {
+        "triLuc": 6,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_140",
+      "wikiId": "140",
+      "name": "Liệt Nữ",
+      "slot": "book",
+      "rarity": "blue",
+      "levelReq": 40,
+      "icon": "assets/items/wiki/a874c95b-cee3-4aad-8e69-bd852774f592.12571.jpg",
+      "bonuses": {
+        "triLuc": 19,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_596",
+      "wikiId": "596",
+      "name": "Linh Tê Quyết",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 210,
+      "icon": "assets/items/wiki/4602b64f-2de3-44e7-a620-422aaf3bf9b4.6f1f0.jpg",
+      "bonuses": {
+        "triLuc": 778,
+        "hp": 22500
+      }
+    },
+    {
+      "id": "wiki_eq_298",
+      "wikiId": "298",
+      "name": "Long Điển",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 100,
+      "icon": "assets/items/wiki/2d26a9e5-f7be-49e4-b8d7-883317799b55.22409.jpg",
+      "bonuses": {
+        "triLuc": 66,
+        "hp": 550
+      }
+    },
+    {
+      "id": "wiki_eq_299",
+      "wikiId": "299",
+      "name": "Lục Đạo Quyết",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 110,
+      "icon": "assets/items/wiki/063433ec-4107-490b-9941-c24b32385908.fb090.jpg",
+      "bonuses": {
+        "triLuc": 71,
+        "hp": 600
+      }
+    },
+    {
+      "id": "wiki_eq_137",
+      "wikiId": "137",
+      "name": "Lục Thao",
+      "slot": "book",
+      "rarity": "blue",
+      "levelReq": 28,
+      "icon": "assets/items/wiki/1c50b7ba-e46b-48f5-88b0-746698214de7.93537.jpg",
+      "bonuses": {
+        "triLuc": 12,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_126",
+      "wikiId": "126",
+      "name": "Mặc Tử",
+      "slot": "book",
+      "rarity": "white",
+      "levelReq": 16,
+      "icon": "assets/items/wiki/d99685a2-8f34-4c64-a95a-eb6238c87a04.aaccb.jpg",
+      "bonuses": {
+        "triLuc": 4,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_146",
+      "wikiId": "146",
+      "name": "Mãnh Đức Thư",
+      "slot": "book",
+      "rarity": "orange",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/a5c8526c-3a64-4c3b-95ed-85ab0736f3b0.0da6b.jpg",
+      "bonuses": {
+        "triLuc": 19,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_145",
+      "wikiId": "145",
+      "name": "Ngô Việt",
+      "slot": "book",
+      "rarity": "purple",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/8eaa7a98-57e0-40fb-9fb3-a8bd439212b4.d5972.jpg",
+      "bonuses": {
+        "triLuc": 26,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_297",
+      "wikiId": "297",
+      "name": "Ngự Binh Nghệ",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 90,
+      "icon": "assets/items/wiki/126e6742-0bd8-4852-8126-cbab316a370d.d6b89.jpg",
+      "bonuses": {
+        "triLuc": 60,
+        "hp": 500
+      }
+    },
+    {
+      "id": "wiki_eq_546",
+      "wikiId": "546",
+      "name": "Niết Bàn Điển",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 170,
+      "icon": "assets/items/wiki/08d3bef7-173b-427a-b0f5-20c242421261.20d43.jpg",
+      "bonuses": {
+        "triLuc": 444,
+        "hp": 12500
+      }
+    },
+    {
+      "id": "wiki_eq_721",
+      "wikiId": "721",
+      "name": "Nữ Oa Quyết",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 250,
+      "icon": "assets/items/wiki/9b4078d3-9302-4c82-9697-b8a43a40a50a.51217.png",
+      "bonuses": {
+        "triLuc": 1444,
+        "hp": 40000
+      }
+    },
+    {
+      "id": "wiki_eq_657",
+      "wikiId": "657",
+      "name": "Phục Hi Quyết",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 230,
+      "icon": "assets/items/wiki/a940aabc-47f8-4e4a-99ea-23d6cb1cd50d.e11e4.png",
+      "bonuses": {
+        "triLuc": 1111,
+        "hp": 30000
+      }
+    },
+    {
+      "id": "wiki_eq_127",
+      "wikiId": "127",
+      "name": "Quốc Luận",
+      "slot": "book",
+      "rarity": "white",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/3d24bc26-50bf-4d4f-a58c-156e64fd6bd8.5d700.jpg",
+      "bonuses": {
+        "triLuc": 5,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_130",
+      "wikiId": "130",
+      "name": "Tam Lược",
+      "slot": "book",
+      "rarity": "green",
+      "levelReq": 10,
+      "icon": "assets/items/wiki/2d1c61f2-d267-4012-96ab-2c869c5c8833.ac6ea.jpg",
+      "bonuses": {
+        "triLuc": 5,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_143",
+      "wikiId": "143",
+      "name": "Thanh Lĩnh",
+      "slot": "book",
+      "rarity": "purple",
+      "levelReq": 50,
+      "icon": "assets/items/wiki/c28f64f6-c951-4cad-9bb8-a53c982cdd47.e2a86.jpg",
+      "bonuses": {
+        "triLuc": 19,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_142",
+      "wikiId": "142",
+      "name": "Thanh Nang",
+      "slot": "book",
+      "rarity": "purple",
+      "levelReq": 45,
+      "icon": "assets/items/wiki/1e6f7eef-4ce4-4e77-98dd-438f5f794085.2337a.jpg",
+      "bonuses": {
+        "triLuc": 16,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_419",
+      "wikiId": "419",
+      "name": "Thần Nhật Quyển",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 130,
+      "icon": "assets/items/wiki/0635e8d6-5aa5-4e18-88fa-6a14b045c50e.1e112.jpg",
+      "bonuses": {
+        "triLuc": 111,
+        "hp": 1000
+      }
+    },
+    {
+      "id": "wiki_eq_1124",
+      "wikiId": "1124",
+      "name": "Thao Thiết Đồ",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 330,
+      "icon": "assets/items/wiki/17335ec8-4b3c-483d-a733-85c7c58f7fca.f1655.png",
+      "bonuses": {
+        "triLuc": 2750,
+        "hp": 80000
+      }
+    },
+    {
+      "id": "wiki_eq_138",
+      "wikiId": "138",
+      "name": "Thương Quân",
+      "slot": "book",
+      "rarity": "blue",
+      "levelReq": 32,
+      "icon": "assets/items/wiki/4d52f448-4a80-419a-98a8-0ec5588d87a1.26ec7.jpg",
+      "bonuses": {
+        "triLuc": 14,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_134",
+      "wikiId": "134",
+      "name": "Tứ Dân Lệnh",
+      "slot": "book",
+      "rarity": "green",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/5b53d08c-42c9-43be-aaa8-bf3a74233666.5c9a4.jpg",
+      "bonuses": {
+        "triLuc": 18,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_124",
+      "wikiId": "124",
+      "name": "Tư Mã Pháp",
+      "slot": "book",
+      "rarity": "white",
+      "levelReq": 7,
+      "icon": "assets/items/wiki/a4d5889d-247f-4cf4-be18-850e12564295.a25f4.jpg",
+      "bonuses": {
+        "triLuc": 2,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_139",
+      "wikiId": "139",
+      "name": "Tứ Tượng",
+      "slot": "book",
+      "rarity": "blue",
+      "levelReq": 36,
+      "icon": "assets/items/wiki/96168dc0-dab1-4bc5-8720-d9038dfae87b.de012.jpg",
+      "bonuses": {
+        "triLuc": 16,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_374",
+      "wikiId": "374",
+      "name": "Ứng Long Bí Điển",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 100,
+      "icon": "assets/items/wiki/1ae90c1b-3a05-427a-bdb1-56d84eb1136d.dbfa4.jpg",
+      "bonuses": {
+        "triLuc": 52,
+        "hp": 400
+      }
+    },
+    {
+      "id": "wiki_eq_136",
+      "wikiId": "136",
+      "name": "Úy Liêu Tử",
+      "slot": "book",
+      "rarity": "blue",
+      "levelReq": 24,
+      "icon": "assets/items/wiki/e976eb85-a565-45cb-8d9f-854c35e904a7.c59b8.jpg",
+      "bonuses": {
+        "triLuc": 10,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_800",
+      "wikiId": "800",
+      "name": "Viêm Đế Giản",
+      "slot": "book",
+      "rarity": "red",
+      "levelReq": 270,
+      "icon": "assets/items/wiki/700c4bfd-2685-49bc-b8f2-787c2963bdfe.00c89.png",
+      "bonuses": {
+        "triLuc": 1733,
+        "hp": 50000
+      }
+    },
+    {
+      "id": "wiki_eq_294",
+      "wikiId": "294",
+      "name": "Bách Thế Sa",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 90,
+      "icon": "assets/items/wiki/f43f4c24-1033-424b-b8d4-1015aa8f44c1.55092.jpg",
+      "bonuses": {
+        "tongLinh": 44,
+        "hp": 500
+      }
+    },
+    {
+      "id": "wiki_eq_100",
+      "wikiId": "100",
+      "name": "Báo Văn",
+      "slot": "cloak",
+      "rarity": "white",
+      "levelReq": 24,
+      "icon": "assets/items/wiki/167365a1-7df6-4ff3-9981-270b9b8e7eec.2541b.jpg",
+      "bonuses": {
+        "tongLinh": 6,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_597",
+      "wikiId": "597",
+      "name": "Bích Uyên Bào",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 210,
+      "icon": "assets/items/wiki/5b10bec0-a9b6-4eee-ab47-2968115b37f9.df685.jpg",
+      "bonuses": {
+        "tongLinh": 778,
+        "hp": 22500
+      }
+    },
+    {
+      "id": "wiki_eq_95",
+      "wikiId": "95",
+      "name": "Choàng Gấm",
+      "slot": "cloak",
+      "rarity": "white",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/26b8b177-6789-401f-b254-1bb436fe7194.dcdae.jpg",
+      "bonuses": {
+        "tongLinh": 1,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_353",
+      "wikiId": "353",
+      "name": "Choàng Hải Tặc",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 100,
+      "icon": "assets/items/wiki/d0791eea-a1eb-4488-bff6-895349e4b190.3e1ba.jpg",
+      "bonuses": {
+        "tongLinh": 44,
+        "hp": 500
+      }
+    },
+    {
+      "id": "wiki_eq_346",
+      "wikiId": "346",
+      "name": "Choàng Hải Tặc",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 80,
+      "icon": "assets/items/wiki/c07b59f5-ff98-43ef-a2c9-ded6a345a036.781c2.jpg",
+      "bonuses": {
+        "tongLinh": 33,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_325",
+      "wikiId": "325",
+      "name": "Choàng Hải Tặc",
+      "slot": "cloak",
+      "rarity": "blue",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/e07cf479-4218-4b70-a8ed-da3afc481185.a4395.jpg",
+      "bonuses": {
+        "tongLinh": 11,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_332",
+      "wikiId": "332",
+      "name": "Choàng Hải Tặc",
+      "slot": "cloak",
+      "rarity": "purple",
+      "levelReq": 40,
+      "icon": "assets/items/wiki/ee3c4d9a-02e2-4abb-b001-a9babcfd20ff.82652.jpg",
+      "bonuses": {
+        "tongLinh": 17,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_339",
+      "wikiId": "339",
+      "name": "Choàng Hải Tặc",
+      "slot": "cloak",
+      "rarity": "orange",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/6c4eb87e-f35f-4ba4-9054-8cdc6f74adb8.a81aa.jpg",
+      "bonuses": {
+        "tongLinh": 25,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_96",
+      "wikiId": "96",
+      "name": "Choàng Lụa",
+      "slot": "cloak",
+      "rarity": "white",
+      "levelReq": 7,
+      "icon": "assets/items/wiki/fd7e7cf6-c8da-4fb1-9106-ca5afabd297f.757b5.jpg",
+      "bonuses": {
+        "tongLinh": 2,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_372",
+      "wikiId": "372",
+      "name": "Choàng Ứng Long",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 100,
+      "icon": "assets/items/wiki/fba95ed5-781a-43df-a197-de3ba0514853.40adb.jpg",
+      "bonuses": {
+        "tongLinh": 53,
+        "hp": 400
+      }
+    },
+    {
+      "id": "wiki_eq_373",
+      "wikiId": "373",
+      "name": "Chúc Âm Long Văn",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 120,
+      "icon": "assets/items/wiki/13db3d64-9dd1-4a08-ab14-9a633218f4e1.f969a.jpg",
+      "bonuses": {
+        "tongLinh": 71,
+        "hp": 700
+      }
+    },
+    {
+      "id": "wiki_eq_1213",
+      "wikiId": "1213",
+      "name": "Cùng Kỳ Phần Thiên Bào",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 350,
+      "icon": "assets/items/wiki/47ac86f8-50a2-4942-bb10-8a91d9a54ac7.3ac45.png",
+      "bonuses": {
+        "tongLinh": 3122,
+        "hp": 90000
+      }
+    },
+    {
+      "id": "wiki_eq_105",
+      "wikiId": "105",
+      "name": "Đằng Vân",
+      "slot": "cloak",
+      "rarity": "green",
+      "levelReq": 16,
+      "icon": "assets/items/wiki/cb740918-dbee-448b-8b7d-f70df32cbe9a.fd717.jpg",
+      "bonuses": {
+        "tongLinh": 8,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_295",
+      "wikiId": "295",
+      "name": "Đế Phần Văn",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 100,
+      "icon": "assets/items/wiki/03561e43-552c-46de-b35b-7d0ca9a9425c.15084.jpg",
+      "bonuses": {
+        "tongLinh": 48,
+        "hp": 550
+      }
+    },
+    {
+      "id": "wiki_eq_448",
+      "wikiId": "448",
+      "name": "Diệt Thế Thiên",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 150,
+      "icon": "assets/items/wiki/f617e0a3-7514-4313-adb9-e8087b10c807.24199.jpg",
+      "bonuses": {
+        "tongLinh": 208,
+        "hp": 2500
+      }
+    },
+    {
+      "id": "wiki_eq_115",
+      "wikiId": "115",
+      "name": "Đoạn Giang",
+      "slot": "cloak",
+      "rarity": "purple",
+      "levelReq": 50,
+      "icon": "assets/items/wiki/70b2623c-3fae-4f6b-8b77-60dbe6c28809.eda45.jpg",
+      "bonuses": {
+        "tongLinh": 19,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_97",
+      "wikiId": "97",
+      "name": "Giảo Thố",
+      "slot": "cloak",
+      "rarity": "white",
+      "levelReq": 12,
+      "icon": "assets/items/wiki/35e9c645-85a2-4232-bb27-311d20215943.cb601.jpg",
+      "bonuses": {
+        "tongLinh": 3,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_868",
+      "wikiId": "868",
+      "name": "Hình Thiên Bào",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 290,
+      "icon": "assets/items/wiki/dd656a04-73df-454f-978a-03d167f345b7.02e9b.png",
+      "bonuses": {
+        "tongLinh": 2056,
+        "hp": 60000
+      }
+    },
+    {
+      "id": "wiki_eq_119",
+      "wikiId": "119",
+      "name": "Hoàng Đỉnh",
+      "slot": "cloak",
+      "rarity": "orange",
+      "levelReq": 70,
+      "icon": "assets/items/wiki/9fa2614d-db48-41c3-ad13-8d467d3e4615.aba7b.jpg",
+      "bonuses": {
+        "tongLinh": 24,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_98",
+      "wikiId": "98",
+      "name": "Hổ Ban",
+      "slot": "cloak",
+      "rarity": "white",
+      "levelReq": 16,
+      "icon": "assets/items/wiki/f296cd0f-f3b4-4995-ae34-659cc9c6e56f.ed9d0.jpg",
+      "bonuses": {
+        "tongLinh": 4,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_520",
+      "wikiId": "520",
+      "name": "Hổ Bì Xưởng",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/94dd6323-bd34-4b62-9b85-31e756e20ca1.bb644.jpg",
+      "bonuses": {
+        "tongLinh": 26,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_568",
+      "wikiId": "568",
+      "name": "Hỗn Độn-Thông Thiên Lạp",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 190,
+      "icon": "assets/items/wiki/8b71009e-fc85-4d87-a3a8-16a9ee36098c.71652.jpg",
+      "bonuses": {
+        "tongLinh": 556,
+        "hp": 17500
+      }
+    },
+    {
+      "id": "wiki_eq_106",
+      "wikiId": "106",
+      "name": "Kim Tước",
+      "slot": "cloak",
+      "rarity": "green",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/f699001e-508f-4374-83dd-7aaeab9557d9.2e7cb.jpg",
+      "bonuses": {
+        "tongLinh": 17,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_109",
+      "wikiId": "109",
+      "name": "Lạc Phượng",
+      "slot": "cloak",
+      "rarity": "blue",
+      "levelReq": 28,
+      "icon": "assets/items/wiki/3c021918-f0b2-415a-8625-66ac23d29447.43216.jpg",
+      "bonuses": {
+        "tongLinh": 12,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_111",
+      "wikiId": "111",
+      "name": "Lạc Tinh",
+      "slot": "cloak",
+      "rarity": "blue",
+      "levelReq": 36,
+      "icon": "assets/items/wiki/a5c52aab-3839-43c7-b930-bcbf459e59af.35c13.jpg",
+      "bonuses": {
+        "tongLinh": 16,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_112",
+      "wikiId": "112",
+      "name": "Long Tường",
+      "slot": "cloak",
+      "rarity": "blue",
+      "levelReq": 40,
+      "icon": "assets/items/wiki/441e43b7-c64c-4579-8e56-4aaf218ba9e6.c7dba.jpg",
+      "bonuses": {
+        "tongLinh": 18,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_118",
+      "wikiId": "118",
+      "name": "Mộng Cảnh Sa",
+      "slot": "cloak",
+      "rarity": "orange",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/2f872937-618a-43c0-9491-a0c25db7a303.262e7.jpg",
+      "bonuses": {
+        "tongLinh": 19,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_296",
+      "wikiId": "296",
+      "name": "Mũ Đại Vũ",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 110,
+      "icon": "assets/items/wiki/58e25204-3d5a-4e4d-9556-171947bbaf17.13346.jpg",
+      "bonuses": {
+        "tongLinh": 53,
+        "hp": 600
+      }
+    },
+    {
+      "id": "wiki_eq_102",
+      "wikiId": "102",
+      "name": "Ngự Phong",
+      "slot": "cloak",
+      "rarity": "green",
+      "levelReq": 10,
+      "icon": "assets/items/wiki/8b5897f3-ebbf-4d2e-9e28-a8019c9bd2bc.6d41a.jpg",
+      "bonuses": {
+        "tongLinh": 4,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_722",
+      "wikiId": "722",
+      "name": "Nữ Oa Bào",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 250,
+      "icon": "assets/items/wiki/77a1cdba-31ef-4f48-8e75-8b4c7e295d5f.a1db9.png",
+      "bonuses": {
+        "tongLinh": 1433,
+        "hp": 40000
+      }
+    },
+    {
+      "id": "wiki_eq_107",
+      "wikiId": "107",
+      "name": "Oanh Minh",
+      "slot": "cloak",
+      "rarity": "blue",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/3aa170d2-09dd-47fe-b21c-c7b896078cf1.0933b.jpg",
+      "bonuses": {
+        "tongLinh": 7,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_420",
+      "wikiId": "420",
+      "name": "Phần Hoàng Văn",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 130,
+      "icon": "assets/items/wiki/56321645-cd84-4085-87c4-2fc26312051c.45998.jpg",
+      "bonuses": {
+        "tongLinh": 83,
+        "hp": 1000
+      }
+    },
+    {
+      "id": "wiki_eq_99",
+      "wikiId": "99",
+      "name": "Phi Hồ",
+      "slot": "cloak",
+      "rarity": "white",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/5e44cb09-f56d-474d-a7bc-1d1772941ef1.5e8d2.jpg",
+      "bonuses": {
+        "tongLinh": 5,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_545",
+      "wikiId": "545",
+      "name": "Phi Tinh Văn",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 170,
+      "icon": "assets/items/wiki/222ca206-e027-4037-b7f3-dc0dc1cd45ad.9dbca.jpg",
+      "bonuses": {
+        "tongLinh": 356,
+        "hp": 12500
+      }
+    },
+    {
+      "id": "wiki_eq_658",
+      "wikiId": "658",
+      "name": "Phục Hi Bào",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 230,
+      "icon": "assets/items/wiki/d061b97b-6f3d-4b05-b9ef-f3df1d884f3f.40207.png",
+      "bonuses": {
+        "tongLinh": 1111,
+        "hp": 30000
+      }
+    },
+    {
+      "id": "wiki_eq_116",
+      "wikiId": "116",
+      "name": "Tam Tài",
+      "slot": "cloak",
+      "rarity": "purple",
+      "levelReq": 55,
+      "icon": "assets/items/wiki/1ebf569e-c028-42f9-84fc-c75f1e0f9dd9.b0a46.jpg",
+      "bonuses": {
+        "tongLinh": 22,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_1125",
+      "wikiId": "1125",
+      "name": "Thao Thiết Bào",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 330,
+      "icon": "assets/items/wiki/b3156e25-c252-4f07-a517-da0b3462e075.a3ca0.png",
+      "bonuses": {
+        "tongLinh": 2750,
+        "hp": 80000
+      }
+    },
+    {
+      "id": "wiki_eq_110",
+      "wikiId": "110",
+      "name": "Thất Tuyệt",
+      "slot": "cloak",
+      "rarity": "blue",
+      "levelReq": 32,
+      "icon": "assets/items/wiki/340af151-9fdd-4cb5-8b3c-ca77e70487f6.d67d1.jpg",
+      "bonuses": {
+        "tongLinh": 14,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_122",
+      "wikiId": "122",
+      "name": "Thiên Diểu",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 95,
+      "icon": "assets/items/wiki/f07faff1-eb20-4373-8864-2d831ef40f18.7311f.jpg",
+      "bonuses": {
+        "tongLinh": 38,
+        "hp": 250
+      }
+    },
+    {
+      "id": "wiki_eq_120",
+      "wikiId": "120",
+      "name": "Thương Huyền",
+      "slot": "cloak",
+      "rarity": "orange",
+      "levelReq": 80,
+      "icon": "assets/items/wiki/fb39de02-f5a6-4581-96f8-3fb720bb531d.90791.jpg",
+      "bonuses": {
+        "tongLinh": 29,
+        "hp": 225
+      }
+    },
+    {
+      "id": "wiki_eq_101",
+      "wikiId": "101",
+      "name": "Trích Tinh",
+      "slot": "cloak",
+      "rarity": "green",
+      "levelReq": 8,
+      "icon": "assets/items/wiki/f86493c2-7da1-41b4-98eb-9bf81b6179f2.8ce40.jpg",
+      "bonuses": {
+        "tongLinh": 3,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_103",
+      "wikiId": "103",
+      "name": "Trường Hà",
+      "slot": "cloak",
+      "rarity": "green",
+      "levelReq": 12,
+      "icon": "assets/items/wiki/9b2016cb-6802-41b4-8d17-5f5414ae69ef.562d0.jpg",
+      "bonuses": {
+        "tongLinh": 6,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_104",
+      "wikiId": "104",
+      "name": "Truy Nguyệt",
+      "slot": "cloak",
+      "rarity": "green",
+      "levelReq": 14,
+      "icon": "assets/items/wiki/f090175c-7ef1-4d49-a805-cf39f2a803fe.26718.jpg",
+      "bonuses": {
+        "tongLinh": 7,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_114",
+      "wikiId": "114",
+      "name": "Tử Hà",
+      "slot": "cloak",
+      "rarity": "purple",
+      "levelReq": 45,
+      "icon": "assets/items/wiki/81f34ac8-f9d9-45a2-9215-0463a6714ab4.be3f2.jpg",
+      "bonuses": {
+        "tongLinh": 16,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_1034",
+      "wikiId": "1034",
+      "name": "U Minh Bào",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 310,
+      "icon": "assets/items/wiki/8f8c083f-d66c-4580-921e-ae8fc2f42304.910f5.png",
+      "bonuses": {
+        "tongLinh": 2378,
+        "hp": 70000
+      }
+    },
+    {
+      "id": "wiki_eq_113",
+      "wikiId": "113",
+      "name": "Vãn Khê",
+      "slot": "cloak",
+      "rarity": "purple",
+      "levelReq": 40,
+      "icon": "assets/items/wiki/af6e8f07-37b9-4ac4-a823-be18e7752205.19060.jpg",
+      "bonuses": {
+        "tongLinh": 12,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_801",
+      "wikiId": "801",
+      "name": "Viêm Đế Bào",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 270,
+      "icon": "assets/items/wiki/0b452af6-30c2-4898-8bb9-edcdf960277a.80282.png",
+      "bonuses": {
+        "tongLinh": 1722,
+        "hp": 50000
+      }
+    },
+    {
+      "id": "wiki_eq_108",
+      "wikiId": "108",
+      "name": "Vọng Nguyệt",
+      "slot": "cloak",
+      "rarity": "blue",
+      "levelReq": 24,
+      "icon": "assets/items/wiki/02c1a2a9-1fda-488f-8ba7-12486d8c5778.61858.jpg",
+      "bonuses": {
+        "tongLinh": 9,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_121",
+      "wikiId": "121",
+      "name": "Võ Thánh",
+      "slot": "cloak",
+      "rarity": "red",
+      "levelReq": 80,
+      "icon": "assets/items/wiki/63b2448a-2251-4a5b-a69b-9dad94735b64.eda86.jpg",
+      "bonuses": {
+        "tongLinh": 29,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_117",
+      "wikiId": "117",
+      "name": "Xích Ngấn",
+      "slot": "cloak",
+      "rarity": "purple",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/8dd30f35-48b9-4752-911b-56765d3f1a0f.ac06c.jpg",
+      "bonuses": {
+        "tongLinh": 26,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_171",
+      "wikiId": "171",
+      "name": "Bắc Đẩu Thuẫn",
+      "slot": "shield",
+      "rarity": "purple",
+      "levelReq": 50,
+      "icon": "assets/items/wiki/51f63054-5df8-4c71-8990-ef58b9abc171.752e4.jpg",
+      "bonuses": {
+        "tongLinh": 19,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_155",
+      "wikiId": "155",
+      "name": "Bạch Thuẫn",
+      "slot": "shield",
+      "rarity": "white",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/753d1886-cedb-4c91-9207-3176a9b48b9b.56d54.jpg",
+      "bonuses": {
+        "tongLinh": 5,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_377",
+      "wikiId": "377",
+      "name": "Chúc Âm Bảo Hộ",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 120,
+      "icon": "assets/items/wiki/87704fe9-de6e-454d-8684-5d1067cb0545.e2725.jpg",
+      "bonuses": {
+        "tongLinh": 71,
+        "hp": 700
+      }
+    },
+    {
+      "id": "wiki_eq_167",
+      "wikiId": "167",
+      "name": "Chùy Thuẫn",
+      "slot": "shield",
+      "rarity": "blue",
+      "levelReq": 36,
+      "icon": "assets/items/wiki/49b64832-ffbd-4bbd-a81d-0b1723d76881.52a41.jpg",
+      "bonuses": {
+        "tongLinh": 16,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_1211",
+      "wikiId": "1211",
+      "name": "Cùng Kỳ Băng Sơn Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 350,
+      "icon": "assets/items/wiki/55264252-edc5-41fb-b0be-f96046848ea4.d8d97.png",
+      "bonuses": {
+        "tongLinh": 3122,
+        "hp": 90000
+      }
+    },
+    {
+      "id": "wiki_eq_172",
+      "wikiId": "172",
+      "name": "Cự Thuẫn",
+      "slot": "shield",
+      "rarity": "purple",
+      "levelReq": 55,
+      "icon": "assets/items/wiki/7db2d298-fe64-425d-813b-e7262c17eb52.06e5c.jpg",
+      "bonuses": {
+        "tongLinh": 22,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_301",
+      "wikiId": "301",
+      "name": "Cứu Viêm Kính",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 100,
+      "icon": "assets/items/wiki/d5c1d054-1d80-4826-911f-99c1d9ba52fa.59d4a.jpg",
+      "bonuses": {
+        "tongLinh": 48,
+        "hp": 550
+      }
+    },
+    {
+      "id": "wiki_eq_450",
+      "wikiId": "450",
+      "name": "Diệt Thế Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 150,
+      "icon": "assets/items/wiki/ea744ac2-a31c-4c36-b2e3-8c99ab55af32.49b29.jpg",
+      "bonuses": {
+        "tongLinh": 208,
+        "hp": 2500
+      }
+    },
+    {
+      "id": "wiki_eq_164",
+      "wikiId": "164",
+      "name": "Định Thuẫn",
+      "slot": "shield",
+      "rarity": "blue",
+      "levelReq": 24,
+      "icon": "assets/items/wiki/3fa8356a-3b0e-4649-baab-dddd5eeba58f.3e983.jpg",
+      "bonuses": {
+        "tongLinh": 9,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_302",
+      "wikiId": "302",
+      "name": "Độ Luân Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 110,
+      "icon": "assets/items/wiki/bf9715e4-0547-4997-936a-52b04f7753d9.0d637.jpg",
+      "bonuses": {
+        "tongLinh": 53,
+        "hp": 600
+      }
+    },
+    {
+      "id": "wiki_eq_152",
+      "wikiId": "152",
+      "name": "Đồng Thuẫn",
+      "slot": "shield",
+      "rarity": "white",
+      "levelReq": 7,
+      "icon": "assets/items/wiki/51a58c48-f085-4421-bae1-327e9d5b1c6e.ab789.jpg",
+      "bonuses": {
+        "tongLinh": 2,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_866",
+      "wikiId": "866",
+      "name": "Hình Thiên Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 290,
+      "icon": "assets/items/wiki/75fb45d4-0fc6-47ae-a087-a73cd5a5586b.a3cb9.png",
+      "bonuses": {
+        "tongLinh": 2056,
+        "hp": 60000
+      }
+    },
+    {
+      "id": "wiki_eq_570",
+      "wikiId": "570",
+      "name": "Hỗn Độn-Tu Di Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 190,
+      "icon": "assets/items/wiki/30314457-8a16-4089-817f-409fde12d3c4.f722c.jpg",
+      "bonuses": {
+        "tongLinh": 556,
+        "hp": 17500
+      }
+    },
+    {
+      "id": "wiki_eq_595",
+      "wikiId": "595",
+      "name": "Hỗn Nguyên Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 210,
+      "icon": "assets/items/wiki/8a5c7792-bd36-4b73-baff-e311e7d21f7c.0a344.jpg",
+      "bonuses": {
+        "tongLinh": 778,
+        "hp": 22500
+      }
+    },
+    {
+      "id": "wiki_eq_521",
+      "wikiId": "521",
+      "name": "Hổ Sĩ Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/017ec904-135c-4d6b-9673-f8d967232386.c1b88.jpg",
+      "bonuses": {
+        "tongLinh": 26,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_168",
+      "wikiId": "168",
+      "name": "Hùng SưThuẫn",
+      "slot": "shield",
+      "rarity": "blue",
+      "levelReq": 40,
+      "icon": "assets/items/wiki/e8338418-e287-4d3b-82aa-3b04b3023467.da188.jpg",
+      "bonuses": {
+        "tongLinh": 18,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_156",
+      "wikiId": "156",
+      "name": "Kim Thuẫn",
+      "slot": "shield",
+      "rarity": "white",
+      "levelReq": 24,
+      "icon": "assets/items/wiki/f7e98a0f-a3c8-4d96-acfd-67fe7d6f89fb.32400.jpg",
+      "bonuses": {
+        "tongLinh": 6,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_176",
+      "wikiId": "176",
+      "name": "Lang Tà Thuẫn",
+      "slot": "shield",
+      "rarity": "orange",
+      "levelReq": 80,
+      "icon": "assets/items/wiki/be611e0c-cf21-480a-831b-13009a8348a3.e3c08.jpg",
+      "bonuses": {
+        "tongLinh": 29,
+        "hp": 225
+      }
+    },
+    {
+      "id": "wiki_eq_159",
+      "wikiId": "159",
+      "name": "Lân Thuẫn",
+      "slot": "shield",
+      "rarity": "green",
+      "levelReq": 12,
+      "icon": "assets/items/wiki/96773f96-0b78-4ccf-bab2-c44e16258fa2.76561.jpg",
+      "bonuses": {
+        "tongLinh": 6,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_1032",
+      "wikiId": "1032",
+      "name": "Liệt Địa Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 310,
+      "icon": "assets/items/wiki/05448979-e852-4f6f-8daf-e6f0a634559a.9089c.png",
+      "bonuses": {
+        "tongLinh": 2378,
+        "hp": 70000
+      }
+    },
+    {
+      "id": "wiki_eq_177",
+      "wikiId": "177",
+      "name": "Long Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 80,
+      "icon": "assets/items/wiki/e3478bb3-2649-4c96-b13e-400991a5d32e.84226.jpg",
+      "bonuses": {
+        "tongLinh": 29,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_166",
+      "wikiId": "166",
+      "name": "Mai Thuẫn",
+      "slot": "shield",
+      "rarity": "blue",
+      "levelReq": 32,
+      "icon": "assets/items/wiki/cb57c276-cab8-4d07-8957-d81f68381b61.3f5ca.jpg",
+      "bonuses": {
+        "tongLinh": 14,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_151",
+      "wikiId": "151",
+      "name": "Mộc Thuẫn",
+      "slot": "shield",
+      "rarity": "white",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/6769cd20-b5b9-4d73-a21f-9133f80ccce9.24037.jpg",
+      "bonuses": {
+        "tongLinh": 1,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_154",
+      "wikiId": "154",
+      "name": "Ngân Thuẫn",
+      "slot": "shield",
+      "rarity": "white",
+      "levelReq": 16,
+      "icon": "assets/items/wiki/38abdecb-f97d-4970-aa72-47fb888f2d85.43016.jpg",
+      "bonuses": {
+        "tongLinh": 4,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_547",
+      "wikiId": "547",
+      "name": "Nguyên Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 170,
+      "icon": "assets/items/wiki/caebddc5-9636-407b-9de4-8e0448bfad43.cbbe6.jpg",
+      "bonuses": {
+        "tongLinh": 356,
+        "hp": 12500
+      }
+    },
+    {
+      "id": "wiki_eq_421",
+      "wikiId": "421",
+      "name": "Nguyệt Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 130,
+      "icon": "assets/items/wiki/00a31ec4-6226-425e-b6d7-2d7215fc8828.722c8.jpg",
+      "bonuses": {
+        "tongLinh": 83,
+        "hp": 1000
+      }
+    },
+    {
+      "id": "wiki_eq_720",
+      "wikiId": "720",
+      "name": "Nữ Oa Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 250,
+      "icon": "assets/items/wiki/017f6d5f-e480-4b6d-8058-c01d02f5fc56.b11ae.png",
+      "bonuses": {
+        "tongLinh": 1433,
+        "hp": 40000
+      }
+    },
+    {
+      "id": "wiki_eq_157",
+      "wikiId": "157",
+      "name": "Ô Thuẫn",
+      "slot": "shield",
+      "rarity": "green",
+      "levelReq": 8,
+      "icon": "assets/items/wiki/8a603779-50fb-4f30-8e58-ec19d33542e7.51a0c.jpg",
+      "bonuses": {
+        "tongLinh": 3,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_163",
+      "wikiId": "163",
+      "name": "Phong Thuẫn",
+      "slot": "shield",
+      "rarity": "blue",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/2c9a8f52-4f0d-44b3-8ea7-f7d86b3aee31.807b7.jpg",
+      "bonuses": {
+        "tongLinh": 7,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_656",
+      "wikiId": "656",
+      "name": "Phục Hi Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 230,
+      "icon": "assets/items/wiki/177ec6ae-8eca-4496-bd7a-cc000c8655dd.acf39.png",
+      "bonuses": {
+        "tongLinh": 1111,
+        "hp": 30000
+      }
+    },
+    {
+      "id": "wiki_eq_161",
+      "wikiId": "161",
+      "name": "Phương Thuẫn",
+      "slot": "shield",
+      "rarity": "green",
+      "levelReq": 16,
+      "icon": "assets/items/wiki/ef5887db-3dc3-4571-a86c-61d4f641793c.631e8.jpg",
+      "bonuses": {
+        "tongLinh": 8,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_334",
+      "wikiId": "334",
+      "name": "Quần Hải Tặc",
+      "slot": "shield",
+      "rarity": "orange",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/aad1567d-16a2-41f5-b2c6-8ebd4e2cbb76.b9591.jpg",
+      "bonuses": {
+        "tongLinh": 23,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_348",
+      "wikiId": "348",
+      "name": "Quần Hải Tặc",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 100,
+      "icon": "assets/items/wiki/816dfba1-69bc-4ae1-9eca-16ebcac98590.28e4e.jpg",
+      "bonuses": {
+        "tongLinh": 44,
+        "hp": 500
+      }
+    },
+    {
+      "id": "wiki_eq_341",
+      "wikiId": "341",
+      "name": "Quần Hải Tặc",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 80,
+      "icon": "assets/items/wiki/a52970be-19c7-4e9a-8f8e-e9d26c519edc.c8e04.jpg",
+      "bonuses": {
+        "tongLinh": 33,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_320",
+      "wikiId": "320",
+      "name": "Quần Hải Tặc",
+      "slot": "shield",
+      "rarity": "blue",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/e9597a6f-22a8-4c6e-b659-736f44addc15.56429.jpg",
+      "bonuses": {
+        "tongLinh": 11,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_327",
+      "wikiId": "327",
+      "name": "Quần Hải Tặc",
+      "slot": "shield",
+      "rarity": "purple",
+      "levelReq": 40,
+      "icon": "assets/items/wiki/1675fbdb-d8c1-41eb-8e47-48782d8b6f66.82ebe.jpg",
+      "bonuses": {
+        "tongLinh": 16,
+        "hp": 150
+      }
+    },
+    {
+      "id": "wiki_eq_165",
+      "wikiId": "165",
+      "name": "Quy Thuẫn",
+      "slot": "shield",
+      "rarity": "blue",
+      "levelReq": 28,
+      "icon": "assets/items/wiki/fae45bc3-e14a-432c-bed1-c65fec19586f.e69db.jpg",
+      "bonuses": {
+        "tongLinh": 12,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_170",
+      "wikiId": "170",
+      "name": "Quỷ Thuẫn",
+      "slot": "shield",
+      "rarity": "purple",
+      "levelReq": 45,
+      "icon": "assets/items/wiki/c9b69b8d-bf82-4c77-9d48-fb1781af7698.ea175.jpg",
+      "bonuses": {
+        "tongLinh": 16,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_162",
+      "wikiId": "162",
+      "name": "Thánh Thuẫn",
+      "slot": "shield",
+      "rarity": "green",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/3e8b87f1-f976-41b5-b4c4-23aa25d8ebb4.388ba.jpg",
+      "bonuses": {
+        "tongLinh": 17,
+        "hp": 200
+      }
+    },
+    {
+      "id": "wiki_eq_1123",
+      "wikiId": "1123",
+      "name": "Thao Thiết Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 330,
+      "icon": "assets/items/wiki/aa95149d-6a50-4248-9c68-ec641d5a8d9a.ca0a1.png",
+      "bonuses": {
+        "tongLinh": 2750,
+        "hp": 80000
+      }
+    },
+    {
+      "id": "wiki_eq_160",
+      "wikiId": "160",
+      "name": "Thích Thuẫn",
+      "slot": "shield",
+      "rarity": "green",
+      "levelReq": 14,
+      "icon": "assets/items/wiki/6b7d666a-a96a-4613-b3e1-a6e28e414602.924f3.jpg",
+      "bonuses": {
+        "tongLinh": 7,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_178",
+      "wikiId": "178",
+      "name": "Thiên Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 95,
+      "icon": "assets/items/wiki/666f7737-4393-4f1b-b33d-e1b1b02d9bae.7a9d9.jpg",
+      "bonuses": {
+        "tongLinh": 38,
+        "hp": 250
+      }
+    },
+    {
+      "id": "wiki_eq_158",
+      "wikiId": "158",
+      "name": "Thiết Thuẫn",
+      "slot": "shield",
+      "rarity": "green",
+      "levelReq": 10,
+      "icon": "assets/items/wiki/1733213d-9ed8-415c-90e8-dfe1a3737b36.3e531.jpg",
+      "bonuses": {
+        "tongLinh": 4,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_173",
+      "wikiId": "173",
+      "name": "Thí Thuẫn",
+      "slot": "shield",
+      "rarity": "purple",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/2e47e9ad-a2f4-4aec-8932-454e44e3f4ee.bfa1c.jpg",
+      "bonuses": {
+        "tongLinh": 26,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_169",
+      "wikiId": "169",
+      "name": "Thú Xỉ Thuẫn",
+      "slot": "shield",
+      "rarity": "purple",
+      "levelReq": 40,
+      "icon": "assets/items/wiki/30708230-2867-4a1e-bdd0-9edd77503eb5.1e67a.jpg",
+      "bonuses": {
+        "tongLinh": 12,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_174",
+      "wikiId": "174",
+      "name": "Tinh Thuẫn",
+      "slot": "shield",
+      "rarity": "orange",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/07f15920-45b7-4bb7-adac-5dfe97750470.14efe.jpg",
+      "bonuses": {
+        "tongLinh": 19,
+        "hp": 125
+      }
+    },
+    {
+      "id": "wiki_eq_300",
+      "wikiId": "300",
+      "name": "Tử Hiên Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 90,
+      "icon": "assets/items/wiki/c3e4a371-7292-4734-ba1c-1f573fa22053.79637.jpg",
+      "bonuses": {
+        "tongLinh": 44,
+        "hp": 500
+      }
+    },
+    {
+      "id": "wiki_eq_376",
+      "wikiId": "376",
+      "name": "Ứng Long Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 100,
+      "icon": "assets/items/wiki/1e60486e-7b45-454e-802b-5985881500a8.f1936.jpg",
+      "bonuses": {
+        "tongLinh": 53,
+        "hp": 400
+      }
+    },
+    {
+      "id": "wiki_eq_153",
+      "wikiId": "153",
+      "name": "Văn Thuẫn",
+      "slot": "shield",
+      "rarity": "white",
+      "levelReq": 12,
+      "icon": "assets/items/wiki/16341753-6ea7-48ac-a7f7-b9a29167d9d5.37c5a.jpg",
+      "bonuses": {
+        "tongLinh": 3,
+        "hp": 100
+      }
+    },
+    {
+      "id": "wiki_eq_799",
+      "wikiId": "799",
+      "name": "Viêm Đế Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "levelReq": 270,
+      "icon": "assets/items/wiki/e1996899-a1e0-4592-8269-8f8496e0a43b.6214e.png",
+      "bonuses": {
+        "tongLinh": 1722,
+        "hp": 50000
+      }
+    },
+    {
+      "id": "wiki_eq_175",
+      "wikiId": "175",
+      "name": "Vương Thuẫn",
+      "slot": "shield",
+      "rarity": "orange",
+      "levelReq": 70,
+      "icon": "assets/items/wiki/cdc52f30-de02-4c71-b1c9-6f012952b916.ee1d8.jpg",
+      "bonuses": {
+        "tongLinh": 24,
+        "hp": 175
+      }
+    },
+    {
+      "id": "wiki_eq_548",
+      "wikiId": "548",
+      "name": "Âm Dương Phù",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 170,
+      "icon": "assets/items/wiki/f7d74b5e-7dc4-4d83-9c99-c9bbafc694e6.a4025.jpg",
+      "bonuses": {
+        "hp": 150000
+      }
+    },
+    {
+      "id": "wiki_eq_189",
+      "wikiId": "189",
+      "name": "Bác Sơn Lư",
+      "slot": "troop",
+      "rarity": "green",
+      "levelReq": 16,
+      "icon": "assets/items/wiki/074c393e-9a1e-4f30-a407-3bc880454c40.fdaa0.jpg",
+      "bonuses": {
+        "hp": 2750
+      }
+    },
+    {
+      "id": "wiki_eq_519",
+      "wikiId": "519",
+      "name": "Bàn Long Ấn",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/e597e1d5-6e61-4055-9d6f-84de1d4ffff1.3fcdd.jpg",
+      "bonuses": {
+        "hp": 8000
+      }
+    },
+    {
+      "id": "wiki_eq_205",
+      "wikiId": "205",
+      "name": "Bát Quái Kính",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 72,
+      "icon": "assets/items/wiki/6d434245-9b35-4ae2-a7c6-02abd5e92417.9b598.jpg",
+      "bonuses": {
+        "hp": 9250
+      }
+    },
+    {
+      "id": "wiki_eq_200",
+      "wikiId": "200",
+      "name": "Binh Phù",
+      "slot": "troop",
+      "rarity": "purple",
+      "levelReq": 55,
+      "icon": "assets/items/wiki/05c11b89-d159-4f84-8839-4ead720b88b1.2fa14.jpg",
+      "bonuses": {
+        "hp": 6100
+      }
+    },
+    {
+      "id": "wiki_eq_379",
+      "wikiId": "379",
+      "name": "Chúc Âm Ngọc",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 120,
+      "icon": "assets/items/wiki/53e52f47-0abc-48d1-9ca5-4965c4fa5be3.153be.jpg",
+      "bonuses": {
+        "hp": 37500
+      }
+    },
+    {
+      "id": "wiki_eq_1215",
+      "wikiId": "1215",
+      "name": "Cùng Kỳ Thôn Thiên Ấn",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 350,
+      "icon": "assets/items/wiki/56cba629-66ef-4bc9-8422-e96d155663fb.459cf.png",
+      "bonuses": {
+        "hp": 1457500
+      }
+    },
+    {
+      "id": "wiki_eq_202",
+      "wikiId": "202",
+      "name": "Cửu Tích",
+      "slot": "troop",
+      "rarity": "orange",
+      "levelReq": 55,
+      "icon": "assets/items/wiki/c1e9794f-a959-443e-8888-a0a2a31d09d2.5e835.jpg",
+      "bonuses": {
+        "hp": 5750
+      }
+    },
+    {
+      "id": "wiki_eq_201",
+      "wikiId": "201",
+      "name": "Dạ Minh Châu",
+      "slot": "troop",
+      "rarity": "purple",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/8c435868-7405-45f4-8ce1-13ee0ae65f8a.01ff7.jpg",
+      "bonuses": {
+        "hp": 7000
+      }
+    },
+    {
+      "id": "wiki_eq_451",
+      "wikiId": "451",
+      "name": "Diệt Thế Khí",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 150,
+      "icon": "assets/items/wiki/9f4bf0d1-e2ed-4388-8cf8-5d3013a70cfd.11a32.jpg",
+      "bonuses": {
+        "hp": 125000
+      }
+    },
+    {
+      "id": "wiki_eq_182",
+      "wikiId": "182",
+      "name": "Đồng Tước",
+      "slot": "troop",
+      "rarity": "white",
+      "levelReq": 36,
+      "icon": "assets/items/wiki/3eb44773-7ec7-4428-8c9b-094592207bc5.4c974.jpg",
+      "bonuses": {
+        "hp": 1050
+      }
+    },
+    {
+      "id": "wiki_eq_190",
+      "wikiId": "190",
+      "name": "Đồ Tất Đỉnh",
+      "slot": "troop",
+      "rarity": "green",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/de8902b5-dfba-486b-9575-65fc08084b39.fa7fa.jpg",
+      "bonuses": {
+        "hp": 5200
+      }
+    },
+    {
+      "id": "wiki_eq_599",
+      "wikiId": "599",
+      "name": "Hiên Viên Phù",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 210,
+      "icon": "assets/items/wiki/0d90d894-58ed-4c28-96d5-50c8f8927247.80a42.jpg",
+      "bonuses": {
+        "hp": 390000
+      }
+    },
+    {
+      "id": "wiki_eq_870",
+      "wikiId": "870",
+      "name": "Hình Thiên Ấn",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 290,
+      "icon": "assets/items/wiki/1b823e73-23c6-4eb0-a33e-4cf4b0cb20f4.8e9bd.png",
+      "bonuses": {
+        "hp": 960000
+      }
+    },
+    {
+      "id": "wiki_eq_571",
+      "wikiId": "571",
+      "name": "Hỗn Độn-Phạm Âm Chung",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 190,
+      "icon": "assets/items/wiki/e81e77ea-9918-4346-8c4a-5acbd807906d.2ec1b.jpg",
+      "bonuses": {
+        "hp": 300000
+      }
+    },
+    {
+      "id": "wiki_eq_187",
+      "wikiId": "187",
+      "name": "Hổ Phách Hoàn",
+      "slot": "troop",
+      "rarity": "green",
+      "levelReq": 12,
+      "icon": "assets/items/wiki/8467bd3b-3afb-4205-937c-4893d88c7dd7.efe52.jpg",
+      "bonuses": {
+        "hp": 1950
+      }
+    },
+    {
+      "id": "wiki_eq_391",
+      "wikiId": "391",
+      "name": "Hổ Phách Liên",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/61c69fd9-d94b-4542-933f-82b7adfd98e7.f036f.jpg",
+      "bonuses": {
+        "hp": 10500,
+        "speed": 3
+      }
+    },
+    {
+      "id": "wiki_eq_390",
+      "wikiId": "390",
+      "name": "Hổ Phách Trụy",
+      "slot": "troop",
+      "rarity": "orange",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/7472357f-71fa-4bb6-85ac-756f6400218b.9ffae.jpg",
+      "bonuses": {
+        "hp": 7500,
+        "speed": 3
+      }
+    },
+    {
+      "id": "wiki_eq_393",
+      "wikiId": "393",
+      "name": "HuânChương Lv1",
+      "slot": "troop",
+      "rarity": "orange",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/80f8911e-0b3d-4a85-afe8-715885ff9151.9c5aa.jpg",
+      "bonuses": {
+        "hp": 7500,
+        "speed": 3
+      }
+    },
+    {
+      "id": "wiki_eq_394",
+      "wikiId": "394",
+      "name": "HuânChương Lv2",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/1c3ca8e3-00c9-4bd3-a897-a0178acd635c.496b4.jpg",
+      "bonuses": {
+        "hp": 10500,
+        "speed": 6
+      }
+    },
+    {
+      "id": "wiki_eq_395",
+      "wikiId": "395",
+      "name": "HuânChương Lv3",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/38d26daf-c4ab-4d1d-a3c9-a004f1886e20.818a0.jpg",
+      "bonuses": {
+        "hp": 15000,
+        "speed": 6
+      }
+    },
+    {
+      "id": "wiki_eq_179",
+      "wikiId": "179",
+      "name": "Hương Nang",
+      "slot": "troop",
+      "rarity": "white",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/5d29755b-2277-453c-a9e7-9ac83e077abe.e5a96.jpg",
+      "bonuses": {
+        "hp": 450
+      }
+    },
+    {
+      "id": "wiki_eq_392",
+      "wikiId": "392",
+      "name": "Kim Phách Trụy",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/e188a267-2312-4c69-b03b-2da9da96ea8f.46525.jpg",
+      "bonuses": {
+        "hp": 15000,
+        "speed": 3
+      }
+    },
+    {
+      "id": "wiki_eq_198",
+      "wikiId": "198",
+      "name": "Kim Tượng Hồ",
+      "slot": "troop",
+      "rarity": "purple",
+      "levelReq": 45,
+      "icon": "assets/items/wiki/b8e283e4-ad3a-4ac1-8235-a11abcc615ae.a1c36.jpg",
+      "bonuses": {
+        "hp": 4300
+      }
+    },
+    {
+      "id": "wiki_eq_195",
+      "wikiId": "195",
+      "name": "Long Hồ",
+      "slot": "troop",
+      "rarity": "blue",
+      "levelReq": 36,
+      "icon": "assets/items/wiki/41c593dd-7000-4246-827a-3eae2eb947e1.8aa3e.jpg",
+      "bonuses": {
+        "hp": 3750
+      }
+    },
+    {
+      "id": "wiki_eq_305",
+      "wikiId": "305",
+      "name": "Long Lệnh",
+      "slot": "troop",
+      "rarity": "orange",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/0af5ebb4-fccc-42ab-b471-ce57cbba6655.61fa5.jpg",
+      "bonuses": {
+        "hp": 5000
+      }
+    },
+    {
+      "id": "wiki_eq_194",
+      "wikiId": "194",
+      "name": "Lữ Thị Bích",
+      "slot": "troop",
+      "rarity": "blue",
+      "levelReq": 32,
+      "icon": "assets/items/wiki/c6bc8591-823f-4534-b5fe-8673e2fab819.ca5af.jpg",
+      "bonuses": {
+        "hp": 3250
+      }
+    },
+    {
+      "id": "wiki_eq_197",
+      "wikiId": "197",
+      "name": "Ngọc Bích",
+      "slot": "troop",
+      "rarity": "purple",
+      "levelReq": 40,
+      "icon": "assets/items/wiki/6fbbdea2-65ec-4988-bdaa-6894a728ac63.88dbb.jpg",
+      "bonuses": {
+        "hp": 3400
+      }
+    },
+    {
+      "id": "wiki_eq_180",
+      "wikiId": "180",
+      "name": "Ngọc Cầm",
+      "slot": "troop",
+      "rarity": "white",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/410298be-08ba-4866-b533-702c3ba9e4e0.3aa89.jpg",
+      "bonuses": {
+        "hp": 650
+      }
+    },
+    {
+      "id": "wiki_eq_204",
+      "wikiId": "204",
+      "name": "Ngọc Tỉ",
+      "slot": "troop",
+      "rarity": "orange",
+      "levelReq": 85,
+      "icon": null,
+      "bonuses": {
+        "hp": 8750
+      }
+    },
+    {
+      "id": "wiki_eq_185",
+      "wikiId": "185",
+      "name": "Ngọc Trạc",
+      "slot": "troop",
+      "rarity": "green",
+      "levelReq": 8,
+      "icon": "assets/items/wiki/a82a8b4f-06f7-4436-a1de-50dbaba14366.9b44b.jpg",
+      "bonuses": {
+        "hp": 1150
+      }
+    },
+    {
+      "id": "wiki_eq_183",
+      "wikiId": "183",
+      "name": "Ngưu Đăng",
+      "slot": "troop",
+      "rarity": "white",
+      "levelReq": 44,
+      "icon": "assets/items/wiki/82bcd6a8-29f8-4260-b196-7144b909c012.b18d1.jpg",
+      "bonuses": {
+        "hp": 1250
+      }
+    },
+    {
+      "id": "wiki_eq_181",
+      "wikiId": "181",
+      "name": "Nhĩ Hoàn",
+      "slot": "troop",
+      "rarity": "white",
+      "levelReq": 28,
+      "icon": "assets/items/wiki/0b468d02-23a3-4b8f-ac6d-5e386954ebe9.58370.jpg",
+      "bonuses": {
+        "hp": 850
+      }
+    },
+    {
+      "id": "wiki_eq_724",
+      "wikiId": "724",
+      "name": "Nữ Oa Ấn",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 250,
+      "icon": "assets/items/wiki/bf9f9691-ac19-48a4-b2fe-7363347f33ba.eaa65.png",
+      "bonuses": {
+        "hp": 676875
+      }
+    },
+    {
+      "id": "wiki_eq_1036",
+      "wikiId": "1036",
+      "name": "Phần Thiên Ấn",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 310,
+      "icon": "assets/items/wiki/8e5b4335-1dfc-43c9-aa89-1351d52abedb.6067f.png",
+      "bonuses": {
+        "hp": 1110000
+      }
+    },
+    {
+      "id": "wiki_eq_184",
+      "wikiId": "184",
+      "name": "Phỉ Thúy",
+      "slot": "troop",
+      "rarity": "white",
+      "levelReq": 52,
+      "icon": null,
+      "bonuses": {
+        "hp": 1450
+      }
+    },
+    {
+      "id": "wiki_eq_660",
+      "wikiId": "660",
+      "name": "Phục Hi Ấn",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 230,
+      "icon": "assets/items/wiki/694161b3-ba4e-439e-8a90-6d438fe88afb.93482.png",
+      "bonuses": {
+        "hp": 550000
+      }
+    },
+    {
+      "id": "wiki_eq_304",
+      "wikiId": "304",
+      "name": "Tài Quyết Ấn",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 95,
+      "icon": "assets/items/wiki/b36eb2fb-96c9-483b-9233-3cf13402eafe.8ba80.jpg",
+      "bonuses": {
+        "hp": 24625
+      }
+    },
+    {
+      "id": "wiki_eq_422",
+      "wikiId": "422",
+      "name": "Thần Đỉnh",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 130,
+      "icon": "assets/items/wiki/18aa7617-508b-45cc-8631-4967d041d9db.af12e.jpg",
+      "bonuses": {
+        "hp": 50000
+      }
+    },
+    {
+      "id": "wiki_eq_1127",
+      "wikiId": "1127",
+      "name": "Thao Thiết Ấn",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 330,
+      "icon": "assets/items/wiki/2eced62d-fa00-4480-aa3c-520a18226be4.71772.png",
+      "bonuses": {
+        "hp": 1283750
+      }
+    },
+    {
+      "id": "wiki_eq_199",
+      "wikiId": "199",
+      "name": "Thú Nghiên",
+      "slot": "troop",
+      "rarity": "purple",
+      "levelReq": 50,
+      "icon": "assets/items/wiki/ffb8b101-5a05-44fb-8e54-1f600be4db8d.a3a0c.jpg",
+      "bonuses": {
+        "hp": 5200
+      }
+    },
+    {
+      "id": "wiki_eq_191",
+      "wikiId": "191",
+      "name": "Thương Từ Bôi",
+      "slot": "troop",
+      "rarity": "blue",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/01fa7cda-0f2b-4a96-b96d-28e7f666fc3d.6e113.jpg",
+      "bonuses": {
+        "hp": 1750
+      }
+    },
+    {
+      "id": "wiki_eq_192",
+      "wikiId": "192",
+      "name": "Tiêu Vĩ Cầm",
+      "slot": "troop",
+      "rarity": "blue",
+      "levelReq": 24,
+      "icon": "assets/items/wiki/8d5cd359-652f-42cf-b081-377a55bacb6c.ad1bd.jpg",
+      "bonuses": {
+        "hp": 2250
+      }
+    },
+    {
+      "id": "wiki_eq_196",
+      "wikiId": "196",
+      "name": "Tín Đăng",
+      "slot": "troop",
+      "rarity": "blue",
+      "levelReq": 40,
+      "icon": "assets/items/wiki/8ed8a76b-16ec-4a8f-accc-717361a55f3e.bf095.jpg",
+      "bonuses": {
+        "hp": 4250
+      }
+    },
+    {
+      "id": "wiki_eq_193",
+      "wikiId": "193",
+      "name": "Túi La Khởi",
+      "slot": "troop",
+      "rarity": "blue",
+      "levelReq": 28,
+      "icon": "assets/items/wiki/1d965f35-90ff-4bcb-99d0-29b3654901ef.fbd03.jpg",
+      "bonuses": {
+        "hp": 2750
+      }
+    },
+    {
+      "id": "wiki_eq_188",
+      "wikiId": "188",
+      "name": "Túi Phượng Tú",
+      "slot": "troop",
+      "rarity": "green",
+      "levelReq": 14,
+      "icon": "assets/items/wiki/e53d4161-ff16-46d0-a3e3-01a085567444.66ace.jpg",
+      "bonuses": {
+        "hp": 2350
+      }
+    },
+    {
+      "id": "wiki_eq_206",
+      "wikiId": "206",
+      "name": "Túy Thái Bình",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 95,
+      "icon": "assets/items/wiki/64a050fb-120a-496f-9f1b-5aa1b803e2ed.af4a5.jpg",
+      "bonuses": {
+        "hp": 12125
+      }
+    },
+    {
+      "id": "wiki_eq_312",
+      "wikiId": "312",
+      "name": "U Hồn Lệnh",
+      "slot": "troop",
+      "rarity": "orange",
+      "levelReq": 1,
+      "icon": "assets/items/wiki/0af5ebb4-fccc-42ab-b471-ce57cbba6655.61fa5.jpg",
+      "bonuses": {
+        "hp": 10000
+      }
+    },
+    {
+      "id": "wiki_eq_378",
+      "wikiId": "378",
+      "name": "Ứng Long Cốt Điêu",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 100,
+      "icon": "assets/items/wiki/93e616dd-8b2d-4ce1-8025-4cadb9aa1265.e1a27.jpg",
+      "bonuses": {
+        "hp": 23750
+      }
+    },
+    {
+      "id": "wiki_eq_186",
+      "wikiId": "186",
+      "name": "Văn Kim Giới",
+      "slot": "troop",
+      "rarity": "green",
+      "levelReq": 10,
+      "icon": "assets/items/wiki/a90c4271-248d-4ac8-ab59-b8a6941a61c2.35360.jpg",
+      "bonuses": {
+        "hp": 1550
+      }
+    },
+    {
+      "id": "wiki_eq_803",
+      "wikiId": "803",
+      "name": "Viêm Đế Ấn",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 270,
+      "icon": "assets/items/wiki/9ced938d-1782-404e-b686-1f3c4a0eaee8.4d3d1.png",
+      "bonuses": {
+        "hp": 810000
+      }
+    },
+    {
+      "id": "wiki_eq_340",
+      "wikiId": "340",
+      "name": "Vớ Hải Tặc",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 80,
+      "icon": "assets/items/wiki/1c0df788-7028-4919-92d7-12e6d4de5065.7370a.jpg",
+      "bonuses": {
+        "hp": 10000
+      }
+    },
+    {
+      "id": "wiki_eq_347",
+      "wikiId": "347",
+      "name": "Vớ Hải Tặc",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 100,
+      "icon": "assets/items/wiki/e24d34e9-a940-46f3-8135-f4bdfe1e1986.2b56e.jpg",
+      "bonuses": {
+        "hp": 10500
+      }
+    },
+    {
+      "id": "wiki_eq_319",
+      "wikiId": "319",
+      "name": "Vớ Hải Tặc",
+      "slot": "troop",
+      "rarity": "blue",
+      "levelReq": 20,
+      "icon": "assets/items/wiki/60fd4422-3a3e-4fc5-816f-7b30edf56442.f8bdb.jpg",
+      "bonuses": {
+        "hp": 3750
+      }
+    },
+    {
+      "id": "wiki_eq_326",
+      "wikiId": "326",
+      "name": "Vớ Hải Tặc",
+      "slot": "troop",
+      "rarity": "purple",
+      "levelReq": 40,
+      "icon": "assets/items/wiki/0d918b11-4b39-42f4-a946-3d571d560de0.357ad.jpg",
+      "bonuses": {
+        "hp": 6250
+      }
+    },
+    {
+      "id": "wiki_eq_333",
+      "wikiId": "333",
+      "name": "Vớ Hải Tặc",
+      "slot": "troop",
+      "rarity": "orange",
+      "levelReq": 60,
+      "icon": "assets/items/wiki/4b45317c-b8dc-4090-8363-8378051415d9.6adaa.jpg",
+      "bonuses": {
+        "hp": 7500
+      }
+    },
+    {
+      "id": "wiki_eq_203",
+      "wikiId": "203",
+      "name": "Vũ Vương Đỉnh",
+      "slot": "troop",
+      "rarity": "orange",
+      "levelReq": 70,
+      "icon": "assets/items/wiki/1caa56b7-5064-4c39-868e-3697b498d8a6.62399.jpg",
+      "bonuses": {
+        "hp": 7250
+      }
+    },
+    {
+      "id": "wiki_eq_303",
+      "wikiId": "303",
+      "name": "Xích Nhãn",
+      "slot": "troop",
+      "rarity": "red",
+      "levelReq": 72,
+      "icon": "assets/items/wiki/fa9528b3-5444-428b-b5d9-0a45963bc54e.d6f28.jpg",
+      "bonuses": {
+        "hp": 9250
+      }
+    }
+  ]
+}

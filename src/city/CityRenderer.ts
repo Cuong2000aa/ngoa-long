@@ -71,6 +71,8 @@ export class CityRenderer {
   private readonly reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
   /** Resolve khi tường + công trình + (scape/folk soft) xong — FE loading dùng. */
   private bootPromise: Promise<void> | null = null;
+  /** Tạm dừng loop khi mở trận / overlay — tránh 2 WebGL cùng chạy. */
+  private paused = false;
 
   constructor(_canvas: HTMLCanvasElement | null, labelsEl: HTMLElement | null) {
     this.labelsEl = labelsEl;
@@ -115,8 +117,13 @@ export class CityRenderer {
       this.labelsEl.innerHTML = "";
     }
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    // Thành: nét hơn (AA + DPR 1.5), shadow 1024 — không 4K (lag). Trận thì pause hẳn.
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      powerPreference: "high-performance",
+    });
+    renderer.setPixelRatio(dpr);
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFShadowMap;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -139,11 +146,11 @@ export class CityRenderer {
     const sun = new THREE.DirectionalLight(0xffe2bf, 2.4);
     sun.position.set(30, 46, 22);
     sun.castShadow = true;
-    sun.shadow.mapSize.set(4096, 4096);
+    sun.shadow.mapSize.set(1024, 1024);
     Object.assign(sun.shadow.camera, { near: 5, far: 150, left: -44, right: 44, top: 44, bottom: -44 });
     sun.shadow.bias = -0.0004;
     sun.shadow.normalBias = 0.02;
-    sun.shadow.radius = 3;
+    sun.shadow.radius = 2;
     scene.add(sun);
 
     this.M = createMaterials();
@@ -165,6 +172,30 @@ export class CityRenderer {
     new ResizeObserver(() => this.resize()).observe(map);
     this.resize();
     renderer.setAnimationLoop(() => this.tick());
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) this.pause();
+      else if (!document.getElementById("combat-overlay") || document.getElementById("combat-overlay")!.hidden) {
+        this.resume();
+      }
+    });
+  }
+
+  /** Dừng render Thành Chính (khi mở trận / bày trận). */
+  pause(): void {
+    if (this.paused) return;
+    this.paused = true;
+    this.renderer?.setAnimationLoop(null);
+  }
+
+  /** Tiếp tục render Thành Chính. */
+  resume(): void {
+    if (!this.paused || !this.renderer) return;
+    this.paused = false;
+    this.renderer.setAnimationLoop(() => this.tick());
+  }
+
+  isPaused(): boolean {
+    return this.paused;
   }
 
   /** Soft timeout: asset phụ fail/chậm không chặn UI. */
@@ -299,7 +330,7 @@ export class CityRenderer {
   }
 
   private tick(): void {
-    if (!this.renderer || !this.scene || !this.camera) return;
+    if (this.paused || !this.renderer || !this.scene || !this.camera) return;
     this.timer.update();
     const t = this.timer.getElapsed();
     const dt = this.timer.getDelta();

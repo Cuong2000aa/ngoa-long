@@ -43,7 +43,7 @@
             <div class="combat-formation-mark" aria-hidden="true">
               <span class="bagua-ring-deco"></span>
               <span class="bagua-core">☯</span>
-              <span class="bagua-text">八卦陣</span>
+              <span class="bagua-text">Bát Quái Trận</span>
             </div>
             <div id="combat-player" class="combat-grid"></div>
             <div class="combat-side-label ally-label">Phe ta</div>
@@ -64,7 +64,7 @@
       archer: "assets/units/general-archer.svg",
       strategist: "assets/units/general-strategist.svg"
     };
-    var CHAR = { cavalry: "騎", infantry: "步", spear: "槍", archer: "弓", strategist: "謀" };
+    var CHAR = { cavalry: "Kỵ", infantry: "Bộ", spear: "Thương", archer: "Cung", strategist: "Mưu" };
     var LBL = { cavalry: "Kỵ", infantry: "Bộ", spear: "Thương", archer: "Cung", strategist: "Mưu" };
 
     function card(u) {
@@ -121,14 +121,16 @@
     ], false);
 
     var demos = [
+      { flash: "gold_soft", text: "THIẾT BÍCH", label: "Thiết Bích", motif: "shield" },
+      { flash: "tiger", text: "HỔ KHIẾU", label: "Hổ Khiếu", motif: "tiger" },
       { flash: "bagua", text: "BÁT QUÁI TRẬN", label: "Bát Quái" },
       { flash: "fire_rain", text: "THIÊN HỎA", label: "Thiên Hỏa" },
       { flash: "thunder", text: "LÔI KÍCH", label: "Lôi Kích" },
       { flash: "gold_pierce", text: "LONG NỖ", label: "Long Nỗ" },
-      { flash: "wind", text: "PHONG VÂN", label: "Phong Vân" },
+      { flash: "whirlwind", text: "DÒNG XOÁY", label: "Dòng Xoáy", motif: "whirlwind" },
       { flash: "gold_red", text: "VŨ THÁNH", label: "Vũ Thánh" },
       { flash: "green_poison", text: "ĐỘC MƯU", label: "Độc Mưu" },
-      { flash: "gold_soft", text: "NHÂN ĐỨC", label: "Nhân Đức" }
+      { flash: "dragon", text: "HỎA LONG", label: "Hỏa Long", motif: "dragon" }
     ];
 
     var bar = document.getElementById("demo-bar");

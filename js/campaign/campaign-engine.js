@@ -492,21 +492,52 @@
               : link && link.firstClear
                 ? link.firstClear.grantGeneralId || null
                 : null;
+          var efId = st.enemy_formation_id || enemyFormationId(st);
+          var efName = efId;
+          try {
+            var flist =
+              (NLDatabase.raw && NLDatabase.raw() && NLDatabase.raw().formations && NLDatabase.raw().formations.list) ||
+              {};
+            if (flist[efId] && flist[efId].name) efName = flist[efId].name;
+          } catch (e1) {}
+          var enemyPreview = [];
+          if (unlocked) {
+            try {
+              enemyPreview = buildEnemies(st).map(function (u) {
+                return {
+                  name: u.name || "Địch",
+                  level: u.level || 1,
+                  troop: u.troop || "infantry",
+                  slot: u.slot != null ? u.slot : 0,
+                };
+              });
+            } catch (e2) {
+              enemyPreview = [];
+            }
+          }
+          var rw = st.rewards || {};
           return {
             stage_id: st.id,
             name: st.name,
             type: st.type,
             index: st.index,
             stamina_cost: cost,
-            enemy_formation_id: st.enemy_formation_id || enemyFormationId(st),
-            enemyFormationId: enemyFormationId(st),
+            enemy_formation_id: efId,
+            enemyFormationId: efId,
+            enemy_formation_name: efName,
+            enemy_preview: enemyPreview,
             unlocked: unlocked,
             cleared: cleared,
             can_fight: unlocked && food >= cost,
-            rewards: st.rewards || {},
+            rewards: rw,
+            reward_silver: rw.silver || 0,
+            reward_food: rw.food || 0,
+            reward_exp: rw.exp || 0,
             unlockFeatures: st.unlockFeatures || [],
             story: link ? link.story || null : null,
             mission: link ? link.mission || null : null,
+            briefing: link ? link.briefing || link.story || null : null,
+            epilogue: link ? link.epilogue || null : null,
             first_clear_prestige: link && link.firstClear ? link.firstClear.prestige || 0 : 0,
             first_clear_general: grantId,
             first_clear_hint: link && link.firstClear ? link.firstClear.hint || null : null,
@@ -558,6 +589,19 @@
     return !!player.campaign.unlockedFeatures[featureId];
   }
 
+  /** Lấy story/briefing/epilogue ải (progression.stageLinks). */
+  function stageNarrative(stageId) {
+    var link = stageLink(stageId);
+    if (!link) return { story: null, mission: null, briefing: null, epilogue: null };
+    return {
+      story: link.story || null,
+      mission: link.mission || null,
+      briefing: link.briefing || link.story || null,
+      epilogue: link.epilogue || null,
+      firstClear: link.firstClear || null,
+    };
+  }
+
   global.NLCampaign = {
     ensureProgress: ensureProgress,
     resolveChapter: resolveChapter,
@@ -577,5 +621,7 @@
     buildEnemies: buildEnemies,
     nextStage: nextStage,
     featureLabel: featureLabel,
+    stageLink: stageLink,
+    stageNarrative: stageNarrative,
   };
 })(window);

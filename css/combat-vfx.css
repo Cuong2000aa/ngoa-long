@@ -178,6 +178,7 @@
 .c-skill-banner.skd-frost { border-color: #38bdf8; color: #e0f2fe; }
 .c-skill-banner.skd-storm { border-color: #a78bfa; color: #ede9fe; }
 .c-skill-banner.skd-bagua { border-color: #fde047; color: #fef9c3; }
+.c-skill-banner.skd-beast { border-color: #fbbf24; color: #fff7ed; text-shadow: 0 0 18px rgba(251, 191, 36, 0.55); }
 
 .c-screen-flash {
   position: absolute;
@@ -192,6 +193,7 @@
 .c-screen-flash.skd-frost { background: radial-gradient(ellipse at 50% 40%, rgba(56, 189, 248, 0.4), transparent 60%); }
 .c-screen-flash.skd-storm { background: radial-gradient(ellipse at 50% 40%, rgba(167, 139, 250, 0.4), transparent 60%); }
 .c-screen-flash.skd-bagua { background: radial-gradient(ellipse at 50% 40%, rgba(253, 224, 71, 0.35), transparent 60%); }
+.c-screen-flash.skd-beast { background: radial-gradient(ellipse at 50% 42%, rgba(251, 191, 36, 0.45), transparent 58%); }
 
 .c-bagua-ring {
   position: absolute;

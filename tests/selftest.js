@@ -34,6 +34,21 @@
   NL_DB.campaign.chapters.forEach(function (c) { stages += c.stages.length; });
   assert(stages >= 18, "Stages >= 18 (got " + stages + ")");
   assert(!!NL_DB.formations && !!NL_DB.formations.list.crane_wing, "formations.json Hạc Dực");
+  assert(NL_DB.formations.schemaVersion >= 5, "formations schema v5+ (layout 3×3)");
+  var formFocus = {};
+  var formShape = {};
+  Object.keys(NL_DB.formations.list).forEach(function (fid) {
+    var f = NL_DB.formations.list[fid];
+    assert(!!f.teamBonus && !!f.focus, "formation " + fid + " có teamBonus + focus");
+    assert(f.layout && f.layout.length === 5, "formation " + fid + " layout 5 ô");
+    assert(!!f.shape, "formation " + fid + " có shape");
+    assert(!formFocus[f.focus], "mỗi trận 1 focus khác nhau (trùng: " + f.focus + ")");
+    assert(!formShape[f.shape], "mỗi trận 1 hình khác nhau (trùng: " + f.shape + ")");
+    formFocus[f.focus] = fid;
+    formShape[f.shape] = fid;
+  });
+  assert(Object.keys(formFocus).length >= 5, "≥5 trận pháp focus khác nhau");
+  assert(Object.keys(formShape).length >= 5, "≥5 hình dàn trận khác nhau");
   assert(NL_DB.formulas.morale.start === 50, "formulas morale.start = 50");
   assert(NL_DB.formulas.morale.gainOnAttack === 25, "formulas gainOnAttack = 25");
   assert(NL_DB.formulas.morale.gainOnHit === 15, "formulas gainOnHit = 15");
@@ -357,7 +372,7 @@
 
   // —— P5 Recruit / Tavern / Prestige / Heroes ——
   assert(typeof NLRecruit === "object", "NLRecruit loaded");
-  assert(NL_DB.recruit.schemaVersion >= 3 && NL_DB.recruit.list.length >= 60, "recruit.json v3 entries >= 60");
+  assert(NL_DB.recruit.schemaVersion >= 3 && NL_DB.recruit.list.length >= 50, "recruit.json v3 entries >= 50 (tinh anh only)");
 
   var rp = NLPlayer.createPlayer("TavernLord", "wei"); // starters: yuejin, licadian, caoren (không có guanyu / caocao)
   rp.resources.silver = 100000;
@@ -376,14 +391,12 @@
   var tryFail = NLRecruit.recruitHero(rp, "guanyu");
   assert(tryFail.ok === false && tryFail.status === "LOCKED", "recruitHero chặn khi LOCKED");
 
-  // tướng trắng ở Tửu Quán AVAILABLE ngay ở Lv1
-  var white = NLRecruit.evaluateEntry(rp, NLRecruit.findEntry("recruit_guard"));
-  assert(white && white.status === "AVAILABLE", "tướng trắng AVAILABLE ở Ty Vũ Lv1");
-  var sBefore = rp.resources.silver;
-  var rWhite = NLRecruit.recruitHero(rp, "recruit_guard");
-  assert(rWhite.ok && rWhite.hero.general_id === "recruit_guard", "chiêu mộ tướng trắng thành công");
-  assert(rp.resources.silver === sBefore - white.cost_silver, "trừ bạc đúng giá");
-  assert(NLRecruit.ownsGeneral(rp, "recruit_guard"), "ownsGeneral = true sau chiêu mộ");
+  // Lính thường / generic: không chiêu mộ / không grant
+  assert(!NLRecruit.findEntry("recruit_guard"), "lính thường không có trong recruit.list");
+  var blockGrant = NLRecruit.grantHero(rp, "recruit_guard", { obtain: "test" });
+  assert(blockGrant.ok === false && blockGrant.npcOnly, "grantHero chặn lính thường");
+  var blockVet = NLRecruit.grantHero(rp, "veteran_guard", { obtain: "test" });
+  assert(blockVet.ok === false && blockVet.npcOnly, "grantHero chặn Lão Binh");
 
   // đủ điều kiện danh vọng + cấp + Ty Vũ + ải + unlock recruit_advanced → Quan Vũ AVAILABLE
   rp.prestige = 5000;

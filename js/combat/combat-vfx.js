@@ -45,7 +45,7 @@
   };
 
   function essenceSheet(essenceId) {
-    if (essenceId === "ember" || essenceId === "iron") return "earth";
+    if (essenceId === "ember" || essenceId === "iron" || essenceId === "beast") return "earth";
     if (essenceId === "frost" || essenceId === "radiance" || essenceId === "wind") return "light";
     return "arcane";
   }
@@ -359,17 +359,27 @@
   }
 
   function showBanner(layer, text, profile) {
+    profile = profile || {
+      essence: "radiance",
+      delivery: "buff",
+      scale: "M",
+      durations: { castMs: 200, emissionMs: 400 },
+    };
     var delivery = (global.NLSkillDesign && global.NLSkillDesign.DELIVERY[profile.delivery]) || {};
     var banner = el(
       "div",
       "c-skill-banner skd-" + profile.essence + " skd-del-" + profile.delivery + " skd-scale-" + profile.scale,
       '<span class="skd-glyph">' +
-        (delivery.glyph || "術") +
+        (delivery.glyph || "Thuật") +
         '</span><span class="skd-text">' +
         (text || "CHIẾN PHÁP") +
         "</span>"
     );
-    spawn(layer, banner, Math.max(700, profile.durations.castMs + profile.durations.emissionMs));
+    var life =
+      profile.durations && profile.durations.castMs != null
+        ? Math.max(700, profile.durations.castMs + (profile.durations.emissionMs || 0))
+        : 900;
+    spawn(layer, banner, life);
   }
 
   function showVeil(layer, profile) {
@@ -512,6 +522,7 @@
     skillBurst: skillBurst,
     screenShake: screenShake,
     playSkill: playSkill,
+    showBanner: showBanner,
     ensureParticles: ensureParticles,
     playSpriteSheet: playSpriteSheet,
   };

@@ -8,6 +8,7 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
+    "test:fx": "node scripts/test-skill-fx.mjs",
     "shot": "node scripts/shot-city.mjs",
     "test:click": "node scripts/click-city.mjs"
   },

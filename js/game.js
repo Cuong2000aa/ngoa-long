@@ -313,9 +313,12 @@
     if (!canAfford(state, cost)) return { ok: false, msg: "Không đủ tài nguyên." };
     pay(state, cost);
     var nextLv = g.level + 1;
-    var scaled = typeof NLDatabase !== "undefined"
-      ? NLDatabase.scaleGeneral(g.key || g.generalId, nextLv)
-      : null;
+    var scaled =
+      typeof NLDatabase !== "undefined"
+        ? NLDatabase.scaleGeneral(g.key || g.generalId, nextLv, {
+            quality: g.quality,
+          })
+        : null;
     if (state.heroes) {
       state.heroes.forEach(function (h) {
         if (h.hero_id === g.id) {
@@ -326,6 +329,8 @@
             h.triLuc = scaled.triLuc;
             h.maxHp = scaled.maxHp;
             h.hp = scaled.maxHp;
+            h.skillId = scaled.skillId;
+            h.quality = scaled.quality || h.quality;
           } else {
             h.tongLinh = Math.round((h.tongLinh || g.def) * 1.04);
             h.vuLuc = Math.round((h.vuLuc || g.atk) * 1.04);
@@ -339,6 +344,84 @@
     if (typeof NLPlayer !== "undefined") NLPlayer.syncLegacyView(state);
     pushLog(state, g.name + " lên cấp " + nextLv + ".", "good");
     return { ok: true };
+  }
+
+  /**
+   * Giác ngộ phẩm (wiki): white→…→gold theo awakenByQuality + inventory nguyên liệu.
+   */
+  function awakenGeneral(state, genId) {
+    applyElapsed(state);
+    if (typeof NLDatabase === "undefined") return { ok: false, msg: "Database chưa sẵn sàng." };
+    var g = state.generals.find(function (x) {
+      return x.id === genId;
+    });
+    if (!g) return { ok: false, msg: "Không tìm thấy tướng." };
+    var tpl = NLDatabase.getGeneral(g.key || g.generalId);
+    if (!tpl) return { ok: false, msg: "Không có mẫu tướng wiki." };
+    var info = NLDatabase.awakenInfo(tpl, g.quality);
+    if (!info) return { ok: false, msg: "Đã max phẩm hoặc chưa có dữ liệu giác ngộ." };
+
+    var costs = info.cost || [];
+    // Kiểm tra kho (inventory: {itemId, qty} hoặc {id, count})
+    function invQty(itemId) {
+      var n = 0;
+      (state.inventory || []).forEach(function (it) {
+        var id = it.itemId || it.id;
+        if (id === itemId) n += it.qty != null ? it.qty : it.count != null ? it.count : 1;
+      });
+      return n;
+    }
+    var missing = [];
+    costs.forEach(function (c) {
+      var need = c.qty || 0;
+      var have = invQty(c.itemId);
+      if (have < need) missing.push((c.name || c.itemId) + " " + have + "/" + need);
+    });
+    if (missing.length) {
+      return { ok: false, msg: "Thiếu nguyên liệu: " + missing.join(", ") };
+    }
+    // Trừ kho
+    costs.forEach(function (c) {
+      var left = c.qty || 0;
+      (state.inventory || []).forEach(function (it) {
+        if (left <= 0) return;
+        var id = it.itemId || it.id;
+        if (id !== c.itemId) return;
+        var have = it.qty != null ? it.qty : it.count != null ? it.count : 1;
+        var use = Math.min(have, left);
+        if (it.qty != null) it.qty -= use;
+        else if (it.count != null) it.count -= use;
+        left -= use;
+      });
+    });
+    state.inventory = (state.inventory || []).filter(function (it) {
+      var q = it.qty != null ? it.qty : it.count != null ? it.count : 1;
+      return q > 0;
+    });
+
+    var scaled = NLDatabase.scaleGeneral(tpl.id, g.level || 1, { quality: info.to });
+    if (state.heroes) {
+      state.heroes.forEach(function (h) {
+        if (h.hero_id !== g.id) return;
+        h.quality = info.to;
+        if (scaled) {
+          h.tongLinh = scaled.tongLinh;
+          h.vuLuc = scaled.vuLuc;
+          h.triLuc = scaled.triLuc;
+          h.maxHp = scaled.maxHp;
+          h.hp = scaled.maxHp;
+          h.skillId = scaled.skillId;
+        }
+      });
+    }
+    if (typeof NLPlayer !== "undefined") NLPlayer.syncLegacyView(state);
+    var qTo = NLDatabase.getQuality(info.to);
+    pushLog(
+      state,
+      g.name + " giác ngộ → " + (qTo ? qTo.name : info.to) + (info.access ? " (" + info.access + ")" : "") + ".",
+      "good"
+    );
+    return { ok: true, quality: info.to };
   }
 
   function recruitSoulGeneral(state) {
@@ -439,7 +522,13 @@
       unit.troopPrimary = unit.troopPrimary || unit.troop;
       if (s.activeTroop) unit.activeTroop = s.activeTroop;
       unit.troop = unit.activeTroop || unit.troop;
-      if (unit.horseId && typeof NLDatabase !== "undefined") {
+      // Trang bị wiki — cộng chỉ số trước khi vào combat engine
+      if (typeof NLDatabase !== "undefined" && NLDatabase.applyEquipBonuses) {
+        var eqMap = NLDatabase.resolveEquipMap(unit);
+        if (eqMap.horse) unit.horseId = eqMap.horse;
+        NLDatabase.applyEquipBonuses(unit, eqMap);
+        if (unit.hp != null) unit.maxHp = unit.hp;
+      } else if (unit.horseId && typeof NLDatabase !== "undefined") {
         var horse = NLDatabase.getItem(unit.horseId);
         if (horse && horse.bonuses) {
           Object.keys(horse.bonuses).forEach(function (k) {
@@ -762,6 +851,7 @@
     upgradeBuilding: upgradeBuilding,
     enhanceGeneral: enhanceGeneral,
     trainGeneral: trainGeneral,
+    awakenGeneral: awakenGeneral,
     recruitSoulGeneral: recruitSoulGeneral,
     recruitTavernHero: recruitTavernHero,
     deployHeroSlot: deployHeroSlot,

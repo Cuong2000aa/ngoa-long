@@ -1,11 +1,18 @@
 # Import chiêu võ tướng (wiki → game)
 
-- Matched: **69** (playable 50 · NPC 19)
+- Matched: **373** (playable 50 · NPC 323)
 - Unmatched: **23** (recruit generic / thiếu wiki)
-- New skills added: **252**
+- New skills added: **0**
 
 ## Ví dụ Bàng Đức
 
+- **Thường**: `nghich_tap` — Nghịch Tập (motif `slash`, flash `steel`)
+- **Chiến**: `dong_xoay` — Dòng Xoáy (motif `whirlwind`, flash `wind`)
+- **Thần**: `lang_tuyen` — Lang Tuyền (motif `wolf`, flash `crimson`)
+- **Truyền thuyết**: `to_luu_nghich_tap` — Tố Lưu Nghịch Tập (motif `slash`, flash `steel`)
+- **Thượng Cổ**: `thuong_long_xuat_hai` — Thương Long Xuất Hải (motif `dragon`, flash `dragon`)
+- **Thái Sơ**: `lung_hoan_tang_dich` — Lung Hoàn Táng Địch (motif `slash`, flash `steel`)
+- **Thần Hoàng**: `lang_tuyen_khon_tran` — Lang Tuyền Khốn Trận (motif `wolf`, flash `crimson`)
 
 ## Unmatched
 

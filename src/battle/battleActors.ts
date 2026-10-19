@@ -54,6 +54,15 @@ const CLIPS_WIKI: Record<string, Clip> = {
   death: { row: 1, start: 0, frames: 1, fps: 1, loop: false },
 };
 
+/** Sheet solo: idle đứng yên (1 frame — không rung), attack có trail */
+const CLIPS_SOLO: Record<string, Clip> = {
+  idle: { row: 1, start: 0, frames: 1, fps: 1, loop: true },
+  attack: { row: 0, start: 1, frames: 6, fps: 14, loop: false },
+  skill: { row: 0, start: 2, frames: 4, fps: 12, loop: false },
+  hit: { row: 1, start: 6, frames: 1, fps: 8, loop: false },
+  death: { row: 1, start: 6, frames: 1, fps: 1, loop: false },
+};
+
 const CLIPS_HOBAO: Record<string, Clip> = {
   idle: { row: 1, start: 0, frames: 2, fps: 4, loop: true },
   attack: { row: 0, start: 0, frames: 8, fps: 15, loop: false },
@@ -78,10 +87,16 @@ type SheetRuntime = {
   acc: number;
   /** Wiki sheet mặc định nhìn TRÁI — true = lật canvas để nhìn PHẢI (phe ta) */
   mirror: boolean;
+  /** Cache key frame đã paint — tránh getImageData lặp khi idle */
+  paintKey?: string;
 };
 
 function paintFrame(sh: SheetRuntime): void {
-  const col = sh.clip.start + Math.min(sh.frame, sh.clip.frames - 1);
+  const fi = Math.min(sh.frame, sh.clip.frames - 1);
+  const col = sh.clip.start + fi;
+  const key = `${sh.clip.row}:${col}:${sh.mirror ? 1 : 0}`;
+  if (sh.paintKey === key) return;
+  sh.paintKey = key;
   const { ctx, fw, fh } = sh;
   ctx.clearRect(0, 0, fw, fh);
   ctx.save();
@@ -118,7 +133,7 @@ async function loadSheet(troop: string, tier: number): Promise<SheetRuntime> {
   const ctx = canvas.getContext("2d")!;
   const tex = new THREE.CanvasTexture(canvas);
   tex.colorSpace = THREE.SRGBColorSpace;
-  const clips = meta.kind === "hobao" ? CLIPS_HOBAO : CLIPS_WIKI;
+  const clips = meta.kind === "hobao" ? CLIPS_HOBAO : CLIPS_SOLO;
   const sh: SheetRuntime = {
     img,
     canvas,
@@ -139,46 +154,6 @@ async function loadSheet(troop: string, tier: number): Promise<SheetRuntime> {
   return sh;
 }
 
-async function iconTexture(troop: string, tier: number, mirror = false): Promise<THREE.CanvasTexture> {
-  const url = troopArtUrl(troop, tier);
-  const img = await loadImage(url);
-  const size = 96;
-  const canvas = document.createElement("canvas");
-  canvas.width = size;
-  canvas.height = size;
-  const ctx = canvas.getContext("2d")!;
-  const scale = Math.min(size / img.naturalWidth, size / img.naturalHeight) * 0.92;
-  const w = img.naturalWidth * scale;
-  const h = img.naturalHeight * scale;
-  const x = (size - w) / 2;
-  const y = size - h - 2;
-  ctx.save();
-  if (mirror) {
-    ctx.translate(size, 0);
-    ctx.scale(-1, 1);
-  }
-  ctx.drawImage(img, x, y, w, h);
-  ctx.restore();
-  const tex = new THREE.CanvasTexture(canvas);
-  tex.colorSpace = THREE.SRGBColorSpace;
-  return tex;
-}
-
-/**
- * Offset cục bộ: +X = hướng ĐỐI PHƯƠNG (phe ta sang phải, địch sang trái).
- * Hàng 3–2–3 gọn, không loang.
- */
-const SQUAD_OFFSETS: [number, number][] = [
-  [0.22, 0.0], // thủ lĩnh phía trước
-  [0.05, 0.2],
-  [0.05, -0.2],
-  [-0.12, 0.0],
-  [-0.28, 0.22],
-  [-0.28, -0.22],
-  [-0.42, 0.1],
-  [-0.42, -0.1],
-];
-
 export type BattleActor = {
   root: THREE.Group;
   sprite: THREE.Sprite;
@@ -196,13 +171,13 @@ export type BattleActor = {
   toward: number;
 };
 
-const LEADER_H = 0.82;
-const MEMBER_H = 0.48;
+/** 1 chủ lực / ô — ~70% size đợt trước (1.35 → 0.95) */
+const SOLO_LEADER_H = 0.95;
 
 export async function createBattleActor(
   troop: string | undefined,
   enemy: boolean,
-  seed: number,
+  _seed: number,
   _name?: string,
   troopTier?: number
 ): Promise<BattleActor> {
@@ -245,15 +220,14 @@ export async function createBattleActor(
   }
 
   sheet.mirror = faceRight;
-  sheet.frame = seed % Math.max(1, sheet.clips.idle.frames);
-  sheet.acc = (seed % 7) * 0.05;
+  sheet.frame = 0;
+  sheet.acc = 0;
   paintFrame(sheet);
 
   const root = new THREE.Group();
   const members: THREE.Sprite[] = [];
-  const iconTex = await iconTexture(kind, tier, faceRight).catch(() => sheet.tex);
 
-  // Thủ lĩnh — sheet anim (scale luôn dương; hướng nằm ở canvas mirror)
+  // 1 chủ lực / ô — không lính nhỏ; scale ~70% đợt trước
   const leadMat = new THREE.SpriteMaterial({
     map: sheet.tex,
     transparent: true,
@@ -263,67 +237,45 @@ export async function createBattleActor(
   });
   const leader = new THREE.Sprite(leadMat);
   const leadAspect = sheet.fw / Math.max(sheet.fh, 1);
-  const hobao = INDEX[kind]?.[String(tier)]?.kind === "hobao";
-  const lh = LEADER_H * (hobao ? 1.12 : 1) * (0.97 + (seed % 4) * 0.01);
+  // Cùng world-height mọi ô — BattleRenderer bù perspective để nhìn bằng nhau
+  const lh = SOLO_LEADER_H;
   const baseScale = new THREE.Vector2(lh * leadAspect, lh);
   leader.scale.set(baseScale.x, baseScale.y, 1);
   leader.center.set(0.5, 0);
-  leader.position.set(SQUAD_OFFSETS[0][0] * toward, 0.02, SQUAD_OFFSETS[0][1]);
+  leader.position.set(0, 0.02, 0);
   leader.renderOrder = 3;
   root.add(leader);
   members.push(leader);
 
-  // Lính phụ — hàng gọn hướng địch
-  const nMembers = kind === "cavalry" ? 6 : kind === "strategist" ? 5 : 8;
-  for (let i = 1; i < nMembers && i < SQUAD_OFFSETS.length; i++) {
-    const mat = new THREE.SpriteMaterial({
-      map: iconTex,
-      transparent: true,
-      depthWrite: false,
-      alphaTest: 0.05,
-      color: enemy ? 0xffd5d0 : 0xffffff,
-    });
-    const sp = new THREE.Sprite(mat);
-    const h = MEMBER_H * (0.94 + ((seed + i * 3) % 5) * 0.015);
-    sp.scale.set(h, h, 1);
-    sp.center.set(0.5, 0);
-    const [ox, oz] = SQUAD_OFFSETS[i];
-    sp.position.set(ox * toward, 0.02, oz);
-    sp.renderOrder = 2;
-    sp.userData.bobPhase = seed * 0.4 + i * 1.1;
-    root.add(sp);
-    members.push(sp);
-  }
-
-  // Đế vòng phe nhỏ hơn — bớt chồng chéo
+  // Pad tròn kiểu Ngọa Long — xanh phe ta / đỏ địch (như ảnh có unit)
+  const padR = 0.34;
   const pad = new THREE.Mesh(
-    new THREE.CircleGeometry(0.42, 28),
-    new THREE.MeshStandardMaterial({
-      color: enemy ? 0x3a1818 : 0x1a3028,
-      roughness: 0.92,
-      metalness: 0.04,
+    new THREE.CircleGeometry(padR, 32),
+    new THREE.MeshBasicMaterial({
+      color: enemy ? 0xdc2626 : 0x22c55e,
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.72,
+      depthWrite: false,
     })
   );
   pad.rotation.x = -Math.PI / 2;
-  pad.position.y = 0.006;
-  pad.receiveShadow = true;
+  pad.position.y = 0.008;
+  pad.renderOrder = 1;
   root.add(pad);
 
   const ring = new THREE.Mesh(
-    new THREE.RingGeometry(0.43, 0.5, 40),
+    new THREE.RingGeometry(padR + 0.01, padR + 0.06, 16),
     new THREE.MeshBasicMaterial({
-      color: enemy ? 0xb91c1c : 0x166534,
+      color: enemy ? 0xfca5a5 : 0x86efac,
       transparent: true,
-      opacity: 0.75,
+      opacity: 0.85,
       side: THREE.DoubleSide,
       depthWrite: false,
     })
   );
   ring.rotation.x = -Math.PI / 2;
-  ring.position.y = 0.014;
-  ring.renderOrder = 1;
+  ring.position.y = 0.012;
+  ring.renderOrder = 2;
   root.add(ring);
 
   const actor: BattleActor = {
@@ -332,6 +284,8 @@ export async function createBattleActor(
     mixer: {
       update(dt: number) {
         const sh = actor.sheet;
+        // Idle 1 frame — không tốn CPU mỗi tick
+        if (sh.playing === "idle" && sh.clip.frames <= 1) return;
         sh.acc += dt;
         const step = 1 / Math.max(1, sh.clip.fps);
         while (sh.acc >= step) {
@@ -378,8 +332,7 @@ export function playActor(actor: BattleActor, name: string, _fade = 0.15): void 
       m.scale.y *= 0.55;
     });
   }
-  if (name === "skill" || name === "attack") {
-    // Lính phụ dồn về phía đối phương
+  if ((name === "skill" || name === "attack") && actor.members.length > 1) {
     const toward = actor.toward || (actor.enemy ? -1 : 1);
     actor.members.forEach((m, i) => {
       if (i === 0) return;

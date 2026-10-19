@@ -26,9 +26,19 @@
   → `assets/fx/skill/starsteel/`
 - **Fire Dragon Roller** by Nineball — CC0  
   → `assets/fx/dragon/`
+- **Whirlwind for effects** by n4 — CC0  
+  https://opengameart.org/content/whirlwind-for-effects  
+  → `assets/fx/whirlwind/`
+- **Wolf Game Character** (Attack frames) by Segel2D — CC0  
+  https://opengameart.org/content/wolf-game-character  
+  → `assets/fx/wolf/` (tint tối cho bóng sói trận)
+- **SpritePilot Combat Effects** (claw slash, shockwave, ground slam, critical hit) — CC0  
+  https://spritepilot.com/free-game-assets/combat  
+  → `assets/fx/tiger/` (Hổ Khiếu / motif tiger: roar + claw + slam)
 
 Flash map: `assets/fx/FLASH_MAP.md` · runtime `src/battle/battleVfx.ts`  
-Buff/debuff: wiki [Hiệu ứng](https://ngoalong.vnggames.com/ngoa-long-wiki/hieu-ung) → `data/status-effects.json`
+Buff/debuff: wiki [Hiệu ứng](https://ngoalong.vnggames.com/ngoa-long-wiki/hieu-ung) → `data/status-effects.json`  
+  Icon: `assets/ui/status/*.png` (CDN wiki icons, fan remake) · `scripts/download-status-icons.py`
 
 ## Fonts
 - **Be Vietnam Pro** — OFL — `assets/fonts/BeVietnamPro-*.ttf`

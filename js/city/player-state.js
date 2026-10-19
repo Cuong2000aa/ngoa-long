@@ -55,6 +55,55 @@
     });
   }
 
+  /** Bộ đồ trắng khởi đầu (wiki) — 2 bộ để đeo 2 tướng. */
+  var STARTER_EQUIP_IDS = [
+    "wiki_eq_1", // Thiết Kiếm
+    "wiki_eq_34", // Bố Giáp
+    "wiki_eq_67", // Hoàng Phiêu
+    "wiki_eq_123", // Kinh Thi
+    "wiki_eq_95", // Choàng Gấm
+    "wiki_eq_151", // Mộc Thuẫn
+    "wiki_eq_179", // Hương Nang
+    "wiki_eq_6", // Bách Thương
+    "wiki_eq_35", // Bách Thú Y
+    "wiki_eq_69", // Đại Uyển
+    "wiki_eq_125", // Điển Luận
+    "wiki_eq_100", // Báo Văn
+    "wiki_eq_155", // Bạch Thuẫn
+    "wiki_eq_182", // Đồng Tước
+  ];
+
+  function seedStarterEquip() {
+    var now = Date.now();
+    return STARTER_EQUIP_IDS.map(function (id) {
+      return { itemId: id, at: now, from: "starter" };
+    });
+  }
+
+  /** Ghi trang bị vào heroes (source of truth) — generals chỉ là view. */
+  function setHeroEquip(player, heroId, slot, itemId) {
+    if (!player || !heroId || !slot) return false;
+    var hero = null;
+    (player.heroes || []).forEach(function (h) {
+      if (h.hero_id === heroId) hero = h;
+    });
+    if (!hero) return false;
+    if (!hero.equip) hero.equip = {};
+    if (itemId) hero.equip[slot] = itemId;
+    else delete hero.equip[slot];
+    if (slot === "horse") hero.horseId = itemId || null;
+    else if (hero.equip.horse) hero.horseId = hero.equip.horse;
+    syncLegacyView(player);
+    return true;
+  }
+
+  function ensureInventorySeed(player) {
+    if (!player) return;
+    if (!Array.isArray(player.inventory) || !player.inventory.length) {
+      player.inventory = seedStarterEquip();
+    }
+  }
+
   function buildingList(player) {
     if (!player) return [];
     if (Array.isArray(player._buildingList)) return player._buildingList;
@@ -114,6 +163,8 @@
           troops: 100,
           status: i < 3 ? "DEPLOYED" : "STANDBY",
           deployed_slot: i < 3 ? i + 1 : null,
+          horseId: null,
+          equip: {},
         };
       });
     }
@@ -153,7 +204,7 @@
         unlockedFeatures: { campaign: true },
         current: { chapterId: null, stageId: null },
       },
-      inventory: [],
+      inventory: seedStarterEquip(),
       world: null,
       towerFloor: 1,
       arenaLeft: 3,
@@ -179,6 +230,7 @@
     if (!player.resources) {
       player.resources = { silver: 0, food: 0, gem: 0 };
     }
+    ensureInventorySeed(player);
     var list = buildingList(player);
 
     player.playerName = player.username;
@@ -212,13 +264,32 @@
 
     player.generals = (player.heroes || []).map(function (h) {
       if (h.exp == null) h.exp = 0;
+      if (!h.equip) h.equip = {};
+      // Đồng bộ horseId legacy ↔ equip.horse
+      if (h.equip.horse && !h.horseId) h.horseId = h.equip.horse;
+      if (h.horseId && !h.equip.horse) h.equip.horse = h.horseId;
       var slot = deployedMap[h.hero_id] || null;
       h.deployed_slot = slot;
       h.status = slot ? "DEPLOYED" : "STANDBY";
-      var sk = typeof NLDatabase !== "undefined" ? NLDatabase.getSkill(h.skillId) : null;
       var tpl =
         typeof NLDatabase !== "undefined" ? NLDatabase.getGeneral(h.general_id) : null;
       if (tpl && !h.troop2 && tpl.troop2) h.troop2 = tpl.troop2;
+      // Đồng bộ chiêu theo phẩm wiki (skillsByQuality)
+      if (tpl && typeof NLDatabase !== "undefined" && NLDatabase.resolveSkillId) {
+        h.skillId = NLDatabase.resolveSkillId(tpl, h.quality || tpl.quality);
+      }
+      var sk = typeof NLDatabase !== "undefined" ? NLDatabase.getSkill(h.skillId) : null;
+      var qMeta =
+        typeof NLDatabase !== "undefined" ? NLDatabase.getQuality(h.quality) : null;
+      var portrait =
+        typeof NLDatabase !== "undefined" && NLDatabase.generalPortraitUrl
+          ? NLDatabase.generalPortraitUrl(tpl || h.general_id)
+          : null;
+      var awaken =
+        tpl && typeof NLDatabase !== "undefined" && NLDatabase.awakenInfo
+          ? NLDatabase.awakenInfo(tpl, h.quality)
+          : null;
+      var equip = Object.assign({}, h.equip);
       return {
         id: h.hero_id,
         key: h.general_id,
@@ -227,10 +298,16 @@
         faction: h.faction || (tpl && tpl.faction) || null,
         troop: h.troop,
         troop2: h.troop2 || (tpl && tpl.troop2) || null,
-        horseId: h.horseId || null,
+        horseId: h.horseId || equip.horse || null,
+        equip: equip,
         quality: h.quality,
+        qualityName: qMeta ? qMeta.name : h.quality,
         skillId: h.skillId,
         skill: sk ? sk.name : h.skillId,
+        portraitUrl: portrait,
+        canAwaken: !!awaken,
+        awakenTo: awaken ? awaken.to : null,
+        awakenCost: awaken ? awaken.cost : null,
         tongLinh: h.tongLinh,
         vuLuc: h.vuLuc,
         triLuc: h.triLuc,
@@ -313,9 +390,15 @@
             level: g.level || 1,
             enhance: g.enhance || 0,
             troops: g.troops || 100,
+            horseId: g.horseId || null,
+            equip: g.equip || {},
           };
         });
       }
+      (p3.heroes || []).forEach(function (h) {
+        if (!h.equip) h.equip = {};
+      });
+      ensureInventorySeed(p3);
       return syncLegacyView(p3);
     }
 
@@ -365,12 +448,15 @@
           level: g.level || 1,
           enhance: g.enhance || 0,
           troops: g.troops || 100,
+          horseId: g.horseId || null,
+          equip: g.equip || {},
         };
       });
       p.deployed_formation.slots = p.heroes.slice(0, 3).map(function (h, i) {
         return { slot: i + 1, hero_id: h.hero_id };
       });
     }
+    ensureInventorySeed(p);
     return syncLegacyView(p);
   }
 
@@ -429,6 +515,8 @@
     hasSave: hasSave,
     syncLegacyView: syncLegacyView,
     serialize: serialize,
+    setHeroEquip: setHeroEquip,
+    seedStarterEquip: seedStarterEquip,
     buildingList: buildingList,
     getBuilding: getBuilding,
     ensureBuilding: ensureBuilding,

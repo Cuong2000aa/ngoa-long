@@ -23,12 +23,12 @@
 
   /** Delivery = cách ra đòn (màu / silhouette chính) */
   var DELIVERY = {
-    cut: { color: "#ff6b5a", glyph: "斬", scale: "S" },
-    pierce: { color: "#ffe484", glyph: "貫", scale: "S" },
-    crush: { color: "#c9a070", glyph: "碎", scale: "S" },
-    arcane: { color: "#b57aff", glyph: "術", scale: "M" },
-    buff: { color: "#86efac", glyph: "援", scale: "M" },
-    ultimate: { color: "#fb923c", glyph: "絕", scale: "L" },
+    cut: { color: "#ff6b5a", glyph: "Chém", scale: "S" },
+    pierce: { color: "#ffe484", glyph: "Đâm", scale: "S" },
+    crush: { color: "#c9a070", glyph: "Đập", scale: "S" },
+    arcane: { color: "#b57aff", glyph: "Thuật", scale: "M" },
+    buff: { color: "#86efac", glyph: "Trợ", scale: "M" },
+    ultimate: { color: "#fb923c", glyph: "Tuyệt", scale: "L" },
   };
 
   /** Essence = nguyên tố / khí (particle palette) */
@@ -42,7 +42,61 @@
     poison: { colors: ["#ecfccb", "#a3e635", "#65a30d"], particle: "poison" },
     iron: { colors: ["#e2e8f0", "#94a3b8", "#475569"], particle: "sparks" },
     bagua: { colors: ["#fef08a", "#67e8f9", "#c084fc"], particle: "bagua" },
+    beast: { colors: ["#fef3c7", "#fbbf24", "#ea580c"], particle: "sparks" },
   };
+
+  /** Motif có recipe/sheet riêng — thắng flash generic */
+  var MOTIF_DEDICATED_FLASH = {
+    tiger: "tiger",
+    wolf: "wolf",
+    whirlwind: "whirlwind",
+    dragon: "dragon",
+    snake: "snake",
+    poison: "green_poison",
+    fire: "fire_rain",
+    thunder: "thunder",
+    water: "blue_water",
+    bagua: "bagua",
+    shield: "shield",
+    charge: "charge",
+    rush: "rush",
+    pierce: "steel",
+  };
+  var MOTIF_FALLBACK_FLASH = {
+    tiger: "tiger",
+    wolf: "wolf",
+    whirlwind: "whirlwind",
+    dragon: "dragon",
+    snake: "snake",
+    poison: "green_poison",
+    fire: "fire_rain",
+    thunder: "thunder",
+    water: "blue_water",
+    bagua: "bagua",
+    shield: "shield",
+    heal: "gold_soft",
+    buff: "gold_soft",
+    shadow: "purple",
+    arcane: "blue",
+    slash: "steel",
+    pierce: "steel",
+    charge: "charge",
+    rush: "rush",
+  };
+  var MOTIF_TO_FLASH = MOTIF_FALLBACK_FLASH;
+
+  function resolveFxKey(flashOrFx, motif) {
+    var flash = flashOrFx;
+    var m = motif;
+    if (flashOrFx && typeof flashOrFx === "object") {
+      flash = flashOrFx.flash;
+      m = flashOrFx.motif || motif;
+    }
+    if (m && MOTIF_DEDICATED_FLASH[m]) return MOTIF_DEDICATED_FLASH[m];
+    if (flash) return flash;
+    if (m && MOTIF_FALLBACK_FLASH[m]) return MOTIF_FALLBACK_FLASH[m];
+    return "gold";
+  }
 
   function profile(cfg) {
     return {
@@ -74,9 +128,52 @@
     gold_red: profile({ id: "vu_thanh", delivery: "cut", essence: "radiance", movement: "lunge", emission: "burst", visual: "slash", scale: "M",
       durations: { windupMs: 140, castMs: 100, emissionMs: 120, impactMs: 220, recoveryMs: 200 } }),
     brown: profile({ id: "gam_thet", delivery: "crush", essence: "iron", movement: "plant", emission: "burst", visual: "shockwave", scale: "M" }),
+    /** Kỵ xung kích — ngựa tông skill (Kỵ Liệp / Kỵ Kích). Scale L ≠ đánh thường S. */
+    charge: profile({
+      id: "ky_xung",
+      delivery: "crush",
+      essence: "iron",
+      movement: "lunge",
+      emission: "burst",
+      visual: "shockwave",
+      scale: "L",
+      durations: { windupMs: 140, castMs: 100, emissionMs: 280, impactMs: 360, recoveryMs: 220 },
+    }),
+    /** Đột kích bộ/thương — xông đâm (Chu Thương Đột Kích), không phải ngựa */
+    rush: profile({
+      id: "dot_kich",
+      delivery: "pierce",
+      essence: "iron",
+      movement: "thrust",
+      emission: "trail",
+      visual: "pierce",
+      scale: "M",
+      durations: { windupMs: 90, castMs: 70, emissionMs: 180, impactMs: 260, recoveryMs: 180 },
+    }),
+    /** Thiết Bích / hộ thể — khiên vàng */
+    shield: profile({
+      id: "thiet_bich",
+      delivery: "buff",
+      essence: "radiance",
+      movement: "plant",
+      emission: "ring",
+      visual: "heal",
+      scale: "M",
+      durations: { windupMs: 120, castMs: 160, emissionMs: 520, impactMs: 200, recoveryMs: 180 },
+    }),
     white_blue: profile({ id: "long_dam", delivery: "pierce", essence: "frost", movement: "thrust", emission: "trail", visual: "pierce" }),
     cyan: profile({ id: "khong_thanh", delivery: "arcane", essence: "frost", movement: "plant", emission: "ring", visual: "sigil" }),
     orange: profile({ id: "ho_khi", delivery: "crush", essence: "ember", movement: "lunge", emission: "burst", visual: "slash" }),
+    tiger: profile({
+      id: "ho_khieu",
+      delivery: "crush",
+      essence: "beast",
+      movement: "plant",
+      emission: "ring",
+      visual: "roar",
+      scale: "L",
+      durations: { windupMs: 160, castMs: 140, emissionMs: 520, impactMs: 280, recoveryMs: 200 },
+    }),
     red_fire: profile({ id: "hoa_cong", delivery: "arcane", essence: "ember", movement: "plant", emission: "rain", visual: "fireball", scale: "M" }),
     purple: profile({ id: "an_muu", delivery: "arcane", essence: "umbral", movement: "plant", emission: "burst", visual: "sigil" }),
     yellow: profile({ id: "bach_bo", delivery: "pierce", essence: "radiance", movement: "plant", emission: "projectile", visual: "arrow" }),
@@ -135,7 +232,8 @@
   };
 
   function resolve(flash) {
-    return BY_FLASH[flash] || BY_FLASH.gold;
+    var key = typeof flash === "string" ? flash : resolveFxKey(flash);
+    return BY_FLASH[key] || BY_FLASH.gold;
   }
 
   function totalMs(p) {
@@ -197,6 +295,10 @@
     DELIVERY: DELIVERY,
     ESSENCE: ESSENCE,
     BY_FLASH: BY_FLASH,
+    MOTIF_TO_FLASH: MOTIF_TO_FLASH,
+    MOTIF_DEDICATED_FLASH: MOTIF_DEDICATED_FLASH,
+    MOTIF_FALLBACK_FLASH: MOTIF_FALLBACK_FLASH,
+    resolveFxKey: resolveFxKey,
     resolve: resolve,
     totalMs: totalMs,
     buildTimeline: buildTimeline,

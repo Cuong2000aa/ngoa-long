@@ -4,6 +4,30 @@ Chỉ sprite CC0 đã tải — không geometry procedural. Runtime: `src/battle
 **AI handoff đầy đủ:** `docs/AI-HANDOFF-VISUAL-VFX.md`  
 **Kenney:** chỉ `PNG (Transparent)` — không Black background (gây bóng hộp).
 
+## Tấn công thường theo binh chủng (BattleRenderer.attack)
+
+| Troop | FX |
+|-------|-----|
+| infantry | slash classic (`white`) |
+| spear | slash `steel` + pierce beam |
+| cavalry | **xung kích** `spawnCavalryCharge` (bụi vó + earth impact + địch đẩy lùi) |
+| archer | projectile `thunder` |
+| strategist | projectile `bagua` |
+
+## Chiêu bám tên (QA)
+
+| Tên / motif | Flash | VFX |
+|-------------|-------|-----|
+| Thiết Bích / hộ thể | `shield` | vòng khiên vàng (`spawnShieldBarrier`) |
+| Đột Kích / Tập Kích | `rush` | xông đâm thương/bộ (`spawnRushAssault`) — **không** ngựa |
+| Kỵ Liệp / Kỵ Kích | `charge` | ngựa tông (`spawnCavalryCharge`) |
+| *Thích (Liên/Xuyên…) | `steel` + pierce | đâm thép |
+| Hổ / Lôi / Độc / Lốc… | tiger/thunder/poison/whirlwind | sheet đúng motif |
+
+Chiêu (`skillFlash`): **timeline** `NLSkillDesign.playTimeline` — windup → cast → emission → impact (mọi skill).  
+Juice: windup glow, aura theo scale S/M/L, `spawnPremiumImpact`, camera punch, hit-stop.  
+Motif đặc biệt: charge / rush / shield vẫn choreography riêng. `skill_wave` chỉ emission+impact.
+
 ## Theo loại chiêu
 
 | Loại | Flash ví dụ | Folder / sheet |
@@ -16,8 +40,29 @@ Chỉ sprite CC0 đã tải — không geometry procedural. Runtime: `src/battle
 | Độc / hỏa lục | `poison`, `green_poison`, `fire_green` | Kenney + `arcane/` tint lục |
 | Rắn | `snake` | Kenney + `water/` tint lục |
 | Rồng | `dragon` | `dragon/` + `fire-wrath/` |
-| Lốc / gió | `wind` `whirlwind` | `water/` + Kenney aura (tạm; chờ pack whirlwind CC0) |
-| Sói | `wolf` | `blood/` + slash fire tối (tạm; chờ sprite sói CC0) |
+| Lốc / gió | `wind` `whirlwind` | `whirlwind/` (n4 CC0) |
+| Sói | `wolf` | `wolf/` (Segel2D Attack, tint tối) |
+| Hổ / gầm | `tiger` | `tiger/` roar+claw+slam (SpritePilot CC0) — **không** dùng fireball |
+
+**Motif → flash:** `resolveFxKey` — motif *dedicated* (tiger/wolf/dragon/fire/…) thắng flash generic; slash/arcane/heal giữ flash chi tiết trong data.
+
+## Recipe aura (mọi motif)
+
+| Motif | Flash | Aura chính + overlay |
+|-------|-------|----------------------|
+| slash | white/steel/crimson… | slash sheet + Kenney slash + earth |
+| arcane | blue | slash blue + arcane |
+| heal / buff / shield | gold_soft / pure | pure + hit spark |
+| shadow | purple | arcane + slash purple |
+| fire | fire_rain | fire-wrath + fireball |
+| thunder | thunder | thundersphere + pure |
+| water | blue_water | water + slash blue |
+| poison / snake | green_poison / snake | poison + magic/snake |
+| dragon | dragon | dragon + fire-wrath |
+| tiger | tiger | roar + claw + slam |
+| wolf | wolf | wolf + slash fire |
+| whirlwind | whirlwind | whirlwind + aura |
+| bagua | bagua | arcane + pure |
 | Khiên / Thiết Bích | `gold_soft` | `pure/` |
 | Fire projectile | `orange`, `fire` | `skill/starsteel/Fireball*` |
 | Thunder | `thunder` | `skill/starsteel/Thundersphere*` |

@@ -22,15 +22,15 @@ OUT_MATCH = ROOT / "data" / "wiki" / "hero-match.json"
 OUT_MOTIFS = ROOT / "data" / "wiki" / "skill-motifs.json"
 DOCS = ROOT / "docs" / "wiki" / "VO-TUONG-SKILLS.md"
 
-# wiki q → game quality key (6 bậc app)
+# wiki q → game quality key (7 bậc — Thượng Cổ ≠ Thái Sơ ≠ Thần Hoàng)
 WIKI_Q_TO_GAME = {
     1: "white",  # Thường
     2: "green",  # Chiến
     3: "blue",  # Thần
     5: "purple",  # Truyền thuyết
     6: "orange",  # Thượng Cổ
-    7: "orange",  # Thái Sơ (ưu tiên ghi đè nếu có)
-    8: "red",  # Thần Hoàng
+    7: "red",  # Thái Sơ
+    8: "gold",  # Thần Hoàng
 }
 
 NAME_ALIASES = {
@@ -177,11 +177,11 @@ def infer_motif_flash(name: str, desc: str) -> tuple[str, str]:
     blob = n + " " + d
 
     if any(k in blob for k in ("xoáy", "lốc", "dòng xoáy", "cuồng phong", "phong")):
-        return "whirlwind", "wind"
+        return "whirlwind", "whirlwind"
     if any(k in blob for k in ("lang ", "lang tuyền", "sói", "lang tuyen")):
-        return "wolf", "crimson"
+        return "wolf", "wolf"
     if any(k in n for k in ("hổ", "ho khi", "hổ khí", "hổ sát", "hổ xung")) or "hổ" in n:
-        return "tiger", "orange"
+        return "tiger", "tiger"
     if any(k in blob for k in ("rồng", "long ", "thương long", "hỏa long", "long nỗ")):
         return "dragon", "dragon"
     if "xà" in n or "rắn" in blob or "độc xà" in blob:
@@ -224,9 +224,9 @@ def load_wiki_hero(hid: str) -> dict | None:
 
 
 def build_wiki_name_index() -> dict[str, str]:
-    """norm name → wiki id"""
-    idx = {}
-    for p in DL_HERO.glob("*.json"):
+    """norm name → wiki id (id lớn hơn thắng nếu trùng tên — thường bản VNG mới hơn)."""
+    idx: dict[str, str] = {}
+    for p in sorted(DL_HERO.glob("*.json"), key=lambda x: int(x.stem) if x.stem.isdigit() else 0):
         d = json.loads(p.read_text(encoding="utf-8"))
         name = d.get("name") or ""
         idx[norm(name)] = str(d.get("id"))
@@ -237,6 +237,10 @@ def build_wiki_name_index() -> dict[str, str]:
 
 
 def match_general(g: dict, wiki_by_name: dict[str, str]) -> str | None:
+    # Ưu tiên wikiHeroId đã gắn (tránh trùng tên đè id khác)
+    existing = g.get("wikiHeroId")
+    if existing is not None and str(existing).strip() != "":
+        return str(existing)
     name = g.get("name") or ""
     alias = NAME_ALIASES.get(name, name)
     return wiki_by_name.get(norm(alias)) or wiki_by_name.get(norm(name))
@@ -271,8 +275,8 @@ def skill_from_tier(name: str, desc: str, q: int, q_name: str) -> dict:
 
 
 def fill_skills_by_quality(tier_map: dict[str, str]) -> dict[str, str]:
-    """Ensure white→red cascade filled."""
-    order = ["white", "green", "blue", "purple", "orange", "red"]
+    """Ensure white→gold cascade filled."""
+    order = ["white", "green", "blue", "purple", "orange", "red", "gold"]
     out = {}
     last = None
     for q in order:

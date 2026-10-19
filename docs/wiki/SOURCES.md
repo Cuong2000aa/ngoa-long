@@ -9,6 +9,18 @@ Fan remake chỉ **học data / tên / mô tả**. Không scrape asset client ga
 | Hiệu ứng (tin tức bảng) | https://ngoalong.vnggames.com/tin-tuc/tin-tuc/hieu-ung-chien-dau.html |cùng HIEU-UNG | cùng HIEU-UNG |
 | Binh chủng | https://ngoalong.vnggames.com/ngoa-long-wiki/binh-chung | `data/troops-wiki.json` | `docs/wiki/BINH-CHUNG.md` |
 | Võ tướng (full JSON) | CDN `…/data/hero/{id}.json` + wiki vo-tuong | `_dl/wiki-heroes/` · `data/wiki/heroes-index.json` | `docs/wiki/VO-TUONG.md` |
+| Trang bị / Ngựa / Sách | CDN `…/equip-detail.json` · `horse-detail.json` · `books-detail.json` + `icons/` | `data/items.json` · `assets/items/wiki/` | dưới đây |
+
+## Trang bị — tải lại + import
+
+```bash
+python3 scripts/fetch-wiki-equip.py
+python3 scripts/import-wiki-equip.py
+python3 scripts/rebuild-bundle-utf8.py
+```
+
+Slot: vũ khí · giáp · ngựa · sách · choàng · thuẫn · dẫn binh. Icon local trong `assets/items/wiki/`.
+Bonus map: Vật/Pháp → `vuLuc`, Mưu → `triLuc`, Phòng → `tongLinh`, Lính → `hp`. Áp trong `NLDatabase.applyEquipBonuses` / combat `fightWithTeam`.
 
 ## Võ tướng — tải lại + import chiêu
 
@@ -21,6 +33,8 @@ python3 scripts/rebuild-bundle-utf8.py
 
 Gồm **toàn bộ** tướng wiki (Ngụy/Thục/Ngô/Quần/Trung lập — playable + NPC). Full body trong `_dl/` (gitignore); index nhẹ trong `data/wiki/`.
 Chiêu theo phẩm → `skillsByQuality` · motif trong `fx.motif` · báo cáo `docs/wiki/VO-TUONG-SKILLS.md`.
+
+**Core tướng (stats/awaken/portrait/troop/effects):** xem `docs/wiki/GENERAL-CORE.md`.
 
 ## Rebuild backend
 

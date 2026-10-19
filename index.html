@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
@@ -8,18 +8,18 @@
   <link rel="preload" href="assets/fonts/BeVietnamPro-Regular.ttf" as="font" type="font/ttf" crossorigin />
   <link rel="preload" href="assets/fonts/BeVietnamPro-Bold.ttf" as="font" type="font/ttf" crossorigin />
   <link rel="preload" href="assets/fonts/BeVietnamPro-ExtraBold.ttf" as="font" type="font/ttf" crossorigin />
-  <link rel="stylesheet" href="assets/fonts/be-vietnam-pro.css?v=31" />
-  <link rel="stylesheet" href="css/style.css?v=31" />
-  <link rel="stylesheet" href="css/game-ui.css?v=31" />
-  <link rel="stylesheet" href="css/combat.css?v=31" />
-  <link rel="stylesheet" href="css/combat-vfx.css?v=31" />
+  <link rel="stylesheet" href="assets/fonts/be-vietnam-pro.css?v=32" />
+  <link rel="stylesheet" href="css/style.css?v=32" />
+  <link rel="stylesheet" href="css/game-ui.css?v=32" />
+  <link rel="stylesheet" href="css/combat.css?v=32" />
+  <link rel="stylesheet" href="css/combat-vfx.css?v=32" />
 </head>
 <body>
   <!-- Loading full-screen: hiện ngay, ẩn khi NLBoot gate xong -->
   <div id="nl-loading" class="nl-loading" role="status" aria-live="polite" aria-busy="true">
     <div class="nl-loading-veil" aria-hidden="true"></div>
     <div class="nl-loading-panel">
-      <div class="nl-loading-crest" aria-hidden="true">龍</div>
+      <div class="nl-loading-crest" aria-hidden="true">3Q</div>
       <div class="nl-loading-title">3Q DIỄN NGHĨA</div>
       <p class="nl-loading-tag" id="nl-loading-label">Đang mở bản đồ…</p>
       <div class="nl-loading-track" aria-hidden="true">
@@ -104,6 +104,7 @@
             <span class="dock-sub" id="dock-tyvu-cap">Trần cấp: Lv.1</span>
           </div>
           <div id="city-dock-list" class="city-dock-list"></div>
+          <div id="city-dock-cta" class="city-dock-cta" hidden></div>
         </aside>
 
         <!-- Right side -->
@@ -153,7 +154,7 @@
                 <span class="side-sub ally" id="combat-ally-sub">Đạo quân</span>
               </div>
             </div>
-            <span class="combat-vs-medallion" aria-hidden="true"><i>對</i></span>
+            <span class="combat-vs-medallion" aria-hidden="true"><i>VS</i></span>
             <div class="vs-side enemy">
               <div class="vs-meta enemy">
                 <span class="side-name enemy" id="combat-enemy-name">Địch</span>
@@ -172,7 +173,7 @@
             <div class="combat-side-label enemy-label">ĐỊCH QUÂN</div>
             <div id="combat-enemy" class="combat-grid"></div>
             <div class="combat-formation-mark" aria-hidden="true">
-              <span class="bagua-core">陣</span>
+              <span class="bagua-core">Trận</span>
               <span class="bagua-text">Sĩ khí 0–100</span>
             </div>
             <div id="combat-player" class="combat-grid"></div>
@@ -190,11 +191,11 @@
             <span class="c-round-lbl">Bỏ qua</span>
           </button>
           <button type="button" id="btn-combat-log-toggle" class="c-round-btn" title="Chiến báo">
-            <span class="c-round-ico">報</span>
+            <span class="c-round-ico">Báo</span>
             <span class="c-round-lbl">Chiến báo</span>
           </button>
           <button type="button" id="btn-combat-close" class="c-round-btn primary" hidden title="Nhận thưởng">
-            <span class="c-round-ico">賞</span>
+            <span class="c-round-ico">Quà</span>
             <span class="c-round-lbl">Thưởng</span>
           </button>
         </aside>
@@ -203,22 +204,46 @@
 
     <!-- Formation 3+2 -->
     <div id="form-overlay" class="overlay" hidden>
-      <div class="form-modal ornate form-modal-nl">
+      <div class="form-modal ornate form-modal-nl form-modal-v2">
         <div class="nl-panel-head" style="border:none;padding:0;margin:0 0 0.35rem">
-          <div class="nl-panel-ico" aria-hidden="true">陣</div>
+          <div class="nl-panel-ico" aria-hidden="true">Trận</div>
           <div>
             <h2 style="margin:0">Bày binh bố trận</h2>
-            <p class="nl-panel-sub">Hàng trước 3 · Hàng sau 2 · Tối đa 5 tướng</p>
+            <p class="nl-panel-sub" id="form-mission-sub">Chọn trận pháp · Lưới 3×3 · 5 tướng theo hình trận</p>
           </div>
         </div>
-        <div id="form-preview-3d" class="form-preview-3d" aria-label="Xem trước đội hình 3D"></div>
-        <div class="form-arena form-grid-wrap">
-          <div class="form-row-label">Hàng trước</div>
-          <div id="form-front" class="form-slots front"></div>
-          <div class="form-row-label">Hàng sau</div>
-          <div id="form-back" class="form-slots back"></div>
+        <div class="form-pick-wrap">
+          <div class="form-pick-label">Trận pháp</div>
+          <div id="form-pick" class="form-pick" role="group" aria-label="Chọn trận pháp"></div>
+          <p id="form-pick-hint" class="form-pick-hint"></p>
+          <div id="form-bonus-bar" class="form-bonus-bar" aria-live="polite"></div>
         </div>
-        <p class="form-pool-hint">Kho tướng · chạm thẻ để xếp / gỡ · dual ⇄ đổi binh chủng</p>
+        <div class="form-stage-row">
+          <div class="form-stage-main">
+            <div id="form-preview-3d" class="form-preview-3d" aria-label="Xem trước đội hình 3D">
+              <div id="form-preview-badge" class="form-preview-badge" hidden></div>
+            </div>
+            <div class="form-arena form-grid-wrap">
+              <div class="form-grid-head">
+                <span class="form-grid-side ally">QUÂN TA</span>
+                <span id="form-swap-hint" class="form-swap-hint">Chạm ô đầy → chạm ô khác để đổi chỗ</span>
+              </div>
+              <div class="form-grid-labels" aria-hidden="true">
+                <span></span><span>Trên</span><span>Giữa</span><span>Dưới</span>
+              </div>
+              <div id="form-grid" class="form-grid-3x3" role="grid" aria-label="Lưới bày trận 3×3"></div>
+            </div>
+          </div>
+          <aside id="form-scout" class="form-scout" hidden>
+            <div class="form-scout-head">
+              <span class="form-grid-side enemy">ĐỊCH</span>
+              <span id="form-scout-form" class="form-scout-form"></span>
+            </div>
+            <div id="form-scout-grid" class="form-scout-grid" aria-label="Đội hình địch"></div>
+            <p id="form-scout-hint" class="form-scout-hint"></p>
+          </aside>
+        </div>
+        <p class="form-pool-hint">Kho tướng · chạm thẻ xếp / gỡ · dual ⇄ binh chủng · chạm 2 ô để đổi chỗ</p>
         <div id="form-pool" class="form-pool"></div>
         <div class="battle-actions">
           <button type="button" id="btn-form-cancel" class="btn-game">Hủy</button>

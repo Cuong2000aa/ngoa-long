@@ -1,76 +1,888 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 6,
   "defaultId": "crane_wing",
+  "note": "10 trận pháp theo Khoa kỹ Ngọa Long Mobile (wiki/Gamebank): 4 công · 4 thủ · 2 đặc biệt. Lưới 3×3, 5 ô/trận. kind + counters dùng UI khắc chế.",
+  "grid": {
+    "cols": [
+      "tren",
+      "giua",
+      "duoi"
+    ],
+    "rows": [
+      "truoc",
+      "giua",
+      "sau"
+    ],
+    "colLabels": [
+      "Trên",
+      "Giữa",
+      "Dưới"
+    ],
+    "rowLabels": [
+      "Trước",
+      "Giữa",
+      "Sau"
+    ]
+  },
+  "kinds": {
+    "atk": {
+      "label": "Tấn công",
+      "color": "#f87171"
+    },
+    "def": {
+      "label": "Phòng thủ",
+      "color": "#5eead4"
+    },
+    "special": {
+      "label": "Đặc biệt",
+      "color": "#fbbf24"
+    }
+  },
   "slots": {
     "front": [
-      { "slot": 0, "label": "Ô 1 — Trước Trên" },
-      { "slot": 1, "label": "Ô 2 — Trước Giữa" },
-      { "slot": 2, "label": "Ô 3 — Trước Dưới" }
+      {
+        "slot": 0,
+        "label": "Ô 1"
+      },
+      {
+        "slot": 1,
+        "label": "Ô 2"
+      },
+      {
+        "slot": 2,
+        "label": "Ô 3"
+      }
     ],
     "back": [
-      { "slot": 3, "label": "Ô 4 — Sau Giữa" },
-      { "slot": 4, "label": "Ô 5 — Sau Dưới" }
+      {
+        "slot": 3,
+        "label": "Ô 4"
+      },
+      {
+        "slot": 4,
+        "label": "Ô 5"
+      }
     ]
   },
   "list": {
-    "crane_wing": {
-      "id": "crane_wing",
-      "name": "Hạc Dực",
-      "desc": "Hai cánh mạnh công, giữa vững.",
+    "fish_scale": {
+      "id": "fish_scale",
+      "name": "Ngư Lân",
+      "wikiName": "Ngư Lân Trận",
+      "shape": "+",
+      "shapeLabel": "Hình + / vảy cá",
+      "desc": "[Công] Đánh thường — cột giữa xuyên + hai cánh. (Ngư Lân)",
+      "kind": "atk",
+      "channel": "phys",
+      "focus": "vuLuc",
+      "focusLabel": "+ Đánh thường",
+      "counters": [
+        "wild_goose",
+        "qi_xing"
+      ],
+      "counteredBy": [
+        "square",
+        "chaotic_sword"
+      ],
+      "wikiOrder": "Phải · Giữa·Trên · Giữa·Giữa · Giữa·Dưới · Trái",
+      "layout": [
+        {
+          "slot": 0,
+          "col": 1,
+          "row": 0,
+          "label": "Trước · Giữa"
+        },
+        {
+          "slot": 1,
+          "col": 0,
+          "row": 1,
+          "label": "Giữa · Trên"
+        },
+        {
+          "slot": 2,
+          "col": 1,
+          "row": 1,
+          "label": "Giữa · Giữa"
+        },
+        {
+          "slot": 3,
+          "col": 2,
+          "row": 1,
+          "label": "Giữa · Dưới"
+        },
+        {
+          "slot": 4,
+          "col": 1,
+          "row": 2,
+          "label": "Sau · Giữa"
+        }
+      ],
+      "teamBonus": {
+        "vuLuc": 1.16,
+        "tongLinh": 0.96,
+        "triLuc": 1.0,
+        "hp": 1.04,
+        "speed": 1.0
+      },
       "slotMods": {
-        "0": { "atk": 1.1, "def": 0.95 },
-        "1": { "atk": 1.0, "def": 1.1 },
-        "2": { "atk": 1.1, "def": 0.95 },
-        "3": { "atk": 1.05, "def": 1.0 },
-        "4": { "atk": 1.05, "def": 1.0 }
+        "0": {
+          "atk": 1.06,
+          "def": 0.98
+        },
+        "1": {
+          "atk": 1.02,
+          "def": 1.02
+        },
+        "2": {
+          "atk": 1.04,
+          "def": 1.0
+        },
+        "3": {
+          "atk": 1.02,
+          "def": 1.02
+        },
+        "4": {
+          "atk": 1.0,
+          "def": 1.04
+        }
       }
     },
     "long_snake": {
       "id": "long_snake",
       "name": "Trường Xà",
-      "desc": "Xuyên kích theo cột; hàng trước áp lực cao.",
+      "wikiName": "Trường Xà Trận",
+      "shape": "snake",
+      "shapeLabel": "Hình rắn / xéo cột",
+      "desc": "[Công] Đánh thường — thân dài xuyên kích, ưu tốc. (Trường Xà)",
+      "kind": "atk",
+      "channel": "phys",
+      "focus": "speed",
+      "focusLabel": "+ Tốc / đánh thường",
+      "counters": [
+        "wild_goose",
+        "square"
+      ],
+      "counteredBy": [
+        "chaotic_sword",
+        "hammer_march"
+      ],
+      "wikiOrder": "Phải · Giữa·Trên · Giữa·Giữa · Giữa·Dưới · Trái·Dưới",
+      "layout": [
+        {
+          "slot": 0,
+          "col": 1,
+          "row": 0,
+          "label": "Trước · Giữa"
+        },
+        {
+          "slot": 1,
+          "col": 0,
+          "row": 1,
+          "label": "Giữa · Trên"
+        },
+        {
+          "slot": 2,
+          "col": 1,
+          "row": 1,
+          "label": "Giữa · Giữa"
+        },
+        {
+          "slot": 3,
+          "col": 2,
+          "row": 1,
+          "label": "Giữa · Dưới"
+        },
+        {
+          "slot": 4,
+          "col": 2,
+          "row": 2,
+          "label": "Sau · Dưới"
+        }
+      ],
+      "teamBonus": {
+        "vuLuc": 1.08,
+        "tongLinh": 0.94,
+        "triLuc": 1.0,
+        "hp": 1.0,
+        "speed": 1.16
+      },
       "slotMods": {
-        "0": { "atk": 1.15, "def": 0.9 },
-        "1": { "atk": 1.15, "def": 0.9 },
-        "2": { "atk": 1.15, "def": 0.9 },
-        "3": { "atk": 1.0, "def": 1.05 },
-        "4": { "atk": 1.0, "def": 1.05 }
+        "0": {
+          "atk": 1.08,
+          "def": 0.92
+        },
+        "1": {
+          "atk": 1.04,
+          "def": 0.96
+        },
+        "2": {
+          "atk": 1.06,
+          "def": 0.94
+        },
+        "3": {
+          "atk": 1.04,
+          "def": 0.96
+        },
+        "4": {
+          "atk": 1.0,
+          "def": 1.04
+        }
+      }
+    },
+    "arrow": {
+      "id": "arrow",
+      "name": "Phong Thỉ",
+      "wikiName": "Phong Thỉ Trận",
+      "shape": "T",
+      "shapeLabel": "Hình T / mũi tên",
+      "desc": "[Công] Pháp công — hàng trước mở, thân xuyên. (Phong Thỉ)",
+      "kind": "atk",
+      "channel": "magic",
+      "focus": "triLuc",
+      "focusLabel": "+ Pháp công",
+      "counters": [
+        "crane_wing",
+        "wild_goose"
+      ],
+      "counteredBy": [
+        "crane_wing",
+        "qi_xing"
+      ],
+      "wikiOrder": "Phải·Trên · Phải·Giữa · Phải·Dưới · Giữa · Trái",
+      "layout": [
+        {
+          "slot": 0,
+          "col": 0,
+          "row": 0,
+          "label": "Trước · Trên"
+        },
+        {
+          "slot": 1,
+          "col": 1,
+          "row": 0,
+          "label": "Trước · Giữa"
+        },
+        {
+          "slot": 2,
+          "col": 2,
+          "row": 0,
+          "label": "Trước · Dưới"
+        },
+        {
+          "slot": 3,
+          "col": 1,
+          "row": 1,
+          "label": "Giữa · Giữa"
+        },
+        {
+          "slot": 4,
+          "col": 1,
+          "row": 2,
+          "label": "Sau · Giữa"
+        }
+      ],
+      "teamBonus": {
+        "vuLuc": 0.96,
+        "tongLinh": 0.94,
+        "triLuc": 1.18,
+        "hp": 1.0,
+        "speed": 1.02
+      },
+      "slotMods": {
+        "0": {
+          "atk": 1.0,
+          "def": 0.96
+        },
+        "1": {
+          "atk": 1.02,
+          "def": 0.96
+        },
+        "2": {
+          "atk": 1.0,
+          "def": 0.96
+        },
+        "3": {
+          "atk": 1.06,
+          "def": 0.94
+        },
+        "4": {
+          "atk": 1.08,
+          "def": 0.92
+        }
+      }
+    },
+    "qi_xing": {
+      "id": "qi_xing",
+      "name": "Cơ Hành",
+      "wikiName": "Cơ Hành Trận",
+      "shape": "Z",
+      "shapeLabel": "Hình Z / kỳ hành",
+      "desc": "[Công] Mưu công — đội hình lệch, đánh bất ngờ. (Kỳ Hành)",
+      "kind": "atk",
+      "channel": "strat",
+      "focus": "triLuc",
+      "focusLabel": "+ Mưu công",
+      "counters": [
+        "crane_wing",
+        "square"
+      ],
+      "counteredBy": [
+        "wild_goose",
+        "fish_scale"
+      ],
+      "wikiOrder": "Phải·Trên · Giữa·Giữa · Giữa·Dưới · Trái·Trên · Trái·Dưới",
+      "layout": [
+        {
+          "slot": 0,
+          "col": 0,
+          "row": 0,
+          "label": "Trước · Trên"
+        },
+        {
+          "slot": 1,
+          "col": 1,
+          "row": 1,
+          "label": "Giữa · Giữa"
+        },
+        {
+          "slot": 2,
+          "col": 2,
+          "row": 1,
+          "label": "Giữa · Dưới"
+        },
+        {
+          "slot": 3,
+          "col": 0,
+          "row": 2,
+          "label": "Sau · Trên"
+        },
+        {
+          "slot": 4,
+          "col": 2,
+          "row": 2,
+          "label": "Sau · Dưới"
+        }
+      ],
+      "teamBonus": {
+        "vuLuc": 0.94,
+        "tongLinh": 0.96,
+        "triLuc": 1.2,
+        "hp": 0.98,
+        "speed": 1.06
+      },
+      "slotMods": {
+        "0": {
+          "atk": 1.05,
+          "def": 0.94
+        },
+        "1": {
+          "atk": 1.08,
+          "def": 0.92
+        },
+        "2": {
+          "atk": 1.04,
+          "def": 0.96
+        },
+        "3": {
+          "atk": 1.02,
+          "def": 1.0
+        },
+        "4": {
+          "atk": 1.02,
+          "def": 1.0
+        }
       }
     },
     "square": {
       "id": "square",
       "name": "Phương Viên",
-      "desc": "Phòng thủ vững; công giảm nhẹ.",
+      "wikiName": "Phương Trận",
+      "shape": "U",
+      "shapeLabel": "Hình U / bán nguyệt",
+      "desc": "[Thủ] Phòng thường — hàng trước vững, hai cánh giữa. (Phương Viên)",
+      "kind": "def",
+      "channel": "phys",
+      "focus": "tongLinh",
+      "focusLabel": "+ Phòng thủ",
+      "counters": [
+        "fish_scale",
+        "long_snake"
+      ],
+      "counteredBy": [
+        "qi_xing",
+        "tiger_strategy"
+      ],
+      "wikiOrder": "Phải·Trên · Phải·Giữa · Phải·Dưới · Giữa·Trên · Giữa·Dưới",
+      "layout": [
+        {
+          "slot": 0,
+          "col": 0,
+          "row": 0,
+          "label": "Trước · Trên"
+        },
+        {
+          "slot": 1,
+          "col": 1,
+          "row": 0,
+          "label": "Trước · Giữa"
+        },
+        {
+          "slot": 2,
+          "col": 2,
+          "row": 0,
+          "label": "Trước · Dưới"
+        },
+        {
+          "slot": 3,
+          "col": 0,
+          "row": 1,
+          "label": "Giữa · Trên"
+        },
+        {
+          "slot": 4,
+          "col": 2,
+          "row": 1,
+          "label": "Giữa · Dưới"
+        }
+      ],
+      "teamBonus": {
+        "vuLuc": 0.94,
+        "tongLinh": 1.16,
+        "triLuc": 1.0,
+        "hp": 1.06,
+        "speed": 0.96
+      },
       "slotMods": {
-        "0": { "atk": 0.95, "def": 1.15 },
-        "1": { "atk": 0.95, "def": 1.2 },
-        "2": { "atk": 0.95, "def": 1.15 },
-        "3": { "atk": 0.9, "def": 1.1 },
-        "4": { "atk": 0.9, "def": 1.1 }
+        "0": {
+          "atk": 0.97,
+          "def": 1.06
+        },
+        "1": {
+          "atk": 0.95,
+          "def": 1.1
+        },
+        "2": {
+          "atk": 0.97,
+          "def": 1.06
+        },
+        "3": {
+          "atk": 0.96,
+          "def": 1.08
+        },
+        "4": {
+          "atk": 0.96,
+          "def": 1.08
+        }
       }
     },
-    "fish_scale": {
-      "id": "fish_scale",
-      "name": "Ngư Lân",
-      "desc": "Cân bằng công thủ.",
+    "chaotic_sword": {
+      "id": "chaotic_sword",
+      "name": "Loạn Kiếm",
+      "wikiName": "Loạn Kiếm Trận",
+      "shape": "X",
+      "shapeLabel": "Hình X / loạn kiếm",
+      "desc": "[Thủ] Phòng thường — bốn góc + tâm, khó xuyên. (Loạn Kiếm)",
+      "kind": "def",
+      "channel": "phys",
+      "focus": "tongLinh",
+      "focusLabel": "+ Phòng thủ",
+      "counters": [
+        "fish_scale",
+        "tiger_strategy"
+      ],
+      "counteredBy": [
+        "arrow",
+        "qi_xing"
+      ],
+      "wikiOrder": "Phải·Trên · Phải·Dưới · Giữa · Trái·Trên · Trái·Dưới",
+      "layout": [
+        {
+          "slot": 0,
+          "col": 0,
+          "row": 0,
+          "label": "Trước · Trên"
+        },
+        {
+          "slot": 1,
+          "col": 2,
+          "row": 0,
+          "label": "Trước · Dưới"
+        },
+        {
+          "slot": 2,
+          "col": 1,
+          "row": 1,
+          "label": "Giữa · Giữa"
+        },
+        {
+          "slot": 3,
+          "col": 0,
+          "row": 2,
+          "label": "Sau · Trên"
+        },
+        {
+          "slot": 4,
+          "col": 2,
+          "row": 2,
+          "label": "Sau · Dưới"
+        }
+      ],
+      "teamBonus": {
+        "vuLuc": 0.96,
+        "tongLinh": 1.14,
+        "triLuc": 0.98,
+        "hp": 1.08,
+        "speed": 0.94
+      },
       "slotMods": {
-        "0": { "atk": 1.05, "def": 1.05 },
-        "1": { "atk": 1.05, "def": 1.05 },
-        "2": { "atk": 1.05, "def": 1.05 },
-        "3": { "atk": 1.0, "def": 1.0 },
-        "4": { "atk": 1.0, "def": 1.0 }
+        "0": {
+          "atk": 0.98,
+          "def": 1.06
+        },
+        "1": {
+          "atk": 0.98,
+          "def": 1.06
+        },
+        "2": {
+          "atk": 0.94,
+          "def": 1.12
+        },
+        "3": {
+          "atk": 0.96,
+          "def": 1.08
+        },
+        "4": {
+          "atk": 0.96,
+          "def": 1.08
+        }
       }
     },
-    "arrow": {
-      "id": "arrow",
-      "name": "Nhuệ Tiễn",
-      "desc": "Hàng sau tăng công (cung/mưu); hàng trước mỏng hơn.",
+    "crane_wing": {
+      "id": "crane_wing",
+      "name": "Hạc Dực",
+      "wikiName": "Hạc Dực Trận",
+      "shape": "V",
+      "shapeLabel": "Hình V / cánh hạc",
+      "desc": "[Thủ] Pháp phòng — hai cánh mở trước, thân sau. (Hạc Dực)",
+      "kind": "def",
+      "channel": "magic",
+      "focus": "tongLinh",
+      "focusLabel": "+ Pháp phòng",
+      "counters": [
+        "arrow",
+        "qi_xing"
+      ],
+      "counteredBy": [
+        "fish_scale",
+        "tiger_strategy"
+      ],
+      "wikiOrder": "Phải·Trên · Phải·Dưới · Trái·Trên · Trái·Giữa · Trái·Dưới",
+      "layout": [
+        {
+          "slot": 0,
+          "col": 0,
+          "row": 0,
+          "label": "Trước · Trên"
+        },
+        {
+          "slot": 1,
+          "col": 2,
+          "row": 0,
+          "label": "Trước · Dưới"
+        },
+        {
+          "slot": 2,
+          "col": 0,
+          "row": 2,
+          "label": "Sau · Trên"
+        },
+        {
+          "slot": 3,
+          "col": 1,
+          "row": 2,
+          "label": "Sau · Giữa"
+        },
+        {
+          "slot": 4,
+          "col": 2,
+          "row": 2,
+          "label": "Sau · Dưới"
+        }
+      ],
+      "teamBonus": {
+        "vuLuc": 0.98,
+        "tongLinh": 1.12,
+        "triLuc": 1.06,
+        "hp": 1.02,
+        "speed": 1.0
+      },
       "slotMods": {
-        "0": { "atk": 1.0, "def": 0.95 },
-        "1": { "atk": 1.0, "def": 0.95 },
-        "2": { "atk": 1.0, "def": 0.95 },
-        "3": { "atk": 1.2, "def": 0.9 },
-        "4": { "atk": 1.2, "def": 0.9 }
+        "0": {
+          "atk": 1.02,
+          "def": 1.04
+        },
+        "1": {
+          "atk": 1.02,
+          "def": 1.04
+        },
+        "2": {
+          "atk": 0.98,
+          "def": 1.08
+        },
+        "3": {
+          "atk": 1.0,
+          "def": 1.06
+        },
+        "4": {
+          "atk": 0.98,
+          "def": 1.08
+        }
+      }
+    },
+    "wild_goose": {
+      "id": "wild_goose",
+      "name": "Nhạn Hành",
+      "wikiName": "Nhạn Hành Trận",
+      "shape": "/",
+      "shapeLabel": "Hình / / hàng nhạn",
+      "desc": "[Thủ] Mưu phòng — đội hình chéo như đàn nhạn. (Nhạn Hành)",
+      "kind": "def",
+      "channel": "strat",
+      "focus": "tongLinh",
+      "focusLabel": "+ Mưu phòng",
+      "counters": [
+        "qi_xing",
+        "arrow"
+      ],
+      "counteredBy": [
+        "fish_scale",
+        "long_snake"
+      ],
+      "wikiOrder": "Phải·Trên · Giữa·Trên · Giữa·Giữa · Giữa·Dưới · Trái·Dưới",
+      "layout": [
+        {
+          "slot": 0,
+          "col": 0,
+          "row": 0,
+          "label": "Trước · Trên"
+        },
+        {
+          "slot": 1,
+          "col": 0,
+          "row": 1,
+          "label": "Giữa · Trên"
+        },
+        {
+          "slot": 2,
+          "col": 1,
+          "row": 1,
+          "label": "Giữa · Giữa"
+        },
+        {
+          "slot": 3,
+          "col": 2,
+          "row": 1,
+          "label": "Giữa · Dưới"
+        },
+        {
+          "slot": 4,
+          "col": 2,
+          "row": 2,
+          "label": "Sau · Dưới"
+        }
+      ],
+      "teamBonus": {
+        "vuLuc": 0.94,
+        "tongLinh": 1.1,
+        "triLuc": 1.08,
+        "hp": 1.04,
+        "speed": 0.98
+      },
+      "slotMods": {
+        "0": {
+          "atk": 0.98,
+          "def": 1.05
+        },
+        "1": {
+          "atk": 0.96,
+          "def": 1.08
+        },
+        "2": {
+          "atk": 0.98,
+          "def": 1.06
+        },
+        "3": {
+          "atk": 1.0,
+          "def": 1.04
+        },
+        "4": {
+          "atk": 0.96,
+          "def": 1.08
+        }
+      }
+    },
+    "hammer_march": {
+      "id": "hammer_march",
+      "name": "Chùy Hành",
+      "wikiName": "Chùy Hành Trận",
+      "shape": "I",
+      "shapeLabel": "Hình I / chùy đâm",
+      "desc": "[Đặc biệt] Phản kích — đội hình cột, đánh trả mạnh. (Chùy Hành)",
+      "kind": "special",
+      "channel": "counter",
+      "focus": "vuLuc",
+      "focusLabel": "+ Phản kích",
+      "counters": [
+        "fish_scale",
+        "long_snake"
+      ],
+      "counteredBy": [
+        "arrow",
+        "wild_goose"
+      ],
+      "wikiOrder": "Phải · Giữa · Trái·Trên · Trái·Giữa · Trái·Dưới",
+      "layout": [
+        {
+          "slot": 0,
+          "col": 1,
+          "row": 0,
+          "label": "Trước · Giữa"
+        },
+        {
+          "slot": 1,
+          "col": 1,
+          "row": 1,
+          "label": "Giữa · Giữa"
+        },
+        {
+          "slot": 2,
+          "col": 0,
+          "row": 2,
+          "label": "Sau · Trên"
+        },
+        {
+          "slot": 3,
+          "col": 1,
+          "row": 2,
+          "label": "Sau · Giữa"
+        },
+        {
+          "slot": 4,
+          "col": 2,
+          "row": 2,
+          "label": "Sau · Dưới"
+        }
+      ],
+      "teamBonus": {
+        "vuLuc": 1.12,
+        "tongLinh": 1.06,
+        "triLuc": 0.96,
+        "hp": 1.02,
+        "speed": 0.98
+      },
+      "slotMods": {
+        "0": {
+          "atk": 1.08,
+          "def": 1.02
+        },
+        "1": {
+          "atk": 1.06,
+          "def": 1.04
+        },
+        "2": {
+          "atk": 1.0,
+          "def": 1.06
+        },
+        "3": {
+          "atk": 1.04,
+          "def": 1.04
+        },
+        "4": {
+          "atk": 1.0,
+          "def": 1.06
+        }
+      }
+    },
+    "tiger_strategy": {
+      "id": "tiger_strategy",
+      "name": "Hổ Thao",
+      "wikiName": "Hổ Thao Trận",
+      "shape": "Y",
+      "shapeLabel": "Hình Y / hổ thao",
+      "desc": "[Đặc biệt] Bạo kích — mũi nhọn trước, hai cánh sau. (Hổ Thao)",
+      "kind": "special",
+      "channel": "crit",
+      "focus": "vuLuc",
+      "focusLabel": "+ Bạo kích",
+      "counters": [
+        "square",
+        "crane_wing"
+      ],
+      "counteredBy": [
+        "chaotic_sword",
+        "wild_goose"
+      ],
+      "wikiOrder": "Phải · Giữa·Trên · Giữa·Dưới · Trái·Trên · Trái·Dưới",
+      "layout": [
+        {
+          "slot": 0,
+          "col": 1,
+          "row": 0,
+          "label": "Trước · Giữa"
+        },
+        {
+          "slot": 1,
+          "col": 0,
+          "row": 1,
+          "label": "Giữa · Trên"
+        },
+        {
+          "slot": 2,
+          "col": 2,
+          "row": 1,
+          "label": "Giữa · Dưới"
+        },
+        {
+          "slot": 3,
+          "col": 0,
+          "row": 2,
+          "label": "Sau · Trên"
+        },
+        {
+          "slot": 4,
+          "col": 2,
+          "row": 2,
+          "label": "Sau · Dưới"
+        }
+      ],
+      "teamBonus": {
+        "vuLuc": 1.18,
+        "tongLinh": 0.92,
+        "triLuc": 1.0,
+        "hp": 0.98,
+        "speed": 1.04
+      },
+      "slotMods": {
+        "0": {
+          "atk": 1.12,
+          "def": 0.9
+        },
+        "1": {
+          "atk": 1.06,
+          "def": 0.94
+        },
+        "2": {
+          "atk": 1.06,
+          "def": 0.94
+        },
+        "3": {
+          "atk": 1.02,
+          "def": 0.98
+        },
+        "4": {
+          "atk": 1.02,
+          "def": 0.98
+        }
       }
     }
   }

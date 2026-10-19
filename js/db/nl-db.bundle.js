@@ -4,7 +4,7 @@
 (function(g){g.NL_DB={"meta": {
   "id": "ngoa-long-offline-db",
   "version": "3.1.0",
-  "inspiredBy": "Ngọa Long / 卧龙吟 (UQEE→VNG 2011) ",
+  "inspiredBy": "Ngọa Long (UQEE→VNG 2011) ",
   "locale": "vi-VN",
   "wiki": {
     "hub": "https://ngoalong.vnggames.com/ngoa-long-wiki",
@@ -134,15 +134,25 @@
   }
 },
 "qualities": {
-  "order": ["white", "green", "blue", "purple", "orange", "red"],
+  "order": ["white", "green", "blue", "purple", "orange", "red", "gold"],
   "wikiMap": {
-    "comment": "Map bậc remake ↔ tab phẩm wiki VNG (vo-tuong quality=)",
+    "comment": "Map bậc remake ↔ tab phẩm wiki VNG (vo-tuong quality=). 7 phẩm wiki → 7 key.",
     "white": "Thường",
-    "green": "Chiến*",
-    "blue": "Chiến",
-    "purple": "Thần",
-    "orange": "Truyền thuyết",
-    "red": "Thần Hoàng"
+    "green": "Chiến",
+    "blue": "Thần",
+    "purple": "Truyền thuyết",
+    "orange": "Thượng Cổ",
+    "red": "Thái Sơ",
+    "gold": "Thần Hoàng"
+  },
+  "wikiQToGame": {
+    "1": "white",
+    "2": "green",
+    "3": "blue",
+    "5": "purple",
+    "6": "orange",
+    "7": "red",
+    "8": "gold"
   },
   "tiers": {
     "white": {
@@ -177,7 +187,7 @@
       "id": "blue",
       "name": "Xanh dương",
       "nameFull": "Dũng tướng",
-      "wikiName": "Chiến",
+      "wikiName": "Thần",
       "color": "#93c5fd",
       "border": "#2563eb",
       "maxLevel": 60,
@@ -191,7 +201,7 @@
       "id": "purple",
       "name": "Tím",
       "nameFull": "Danh tướng",
-      "wikiName": "Thần",
+      "wikiName": "Truyền thuyết",
       "color": "#c4b5fd",
       "border": "#7c3aed",
       "maxLevel": 80,
@@ -205,7 +215,7 @@
       "id": "orange",
       "name": "Cam",
       "nameFull": "Thần tướng",
-      "wikiName": "Truyền thuyết",
+      "wikiName": "Thượng Cổ",
       "color": "#fdba74",
       "border": "#ea580c",
       "maxLevel": 100,
@@ -219,15 +229,29 @@
       "id": "red",
       "name": "Đỏ",
       "nameFull": "Vương tướng",
-      "wikiName": "Thần Hoàng",
+      "wikiName": "Thái Sơ",
       "color": "#fca5a5",
       "border": "#dc2626",
       "maxLevel": 120,
       "growth": { "tongLinh": 2.0, "vuLuc": 2.0, "triLuc": 2.0 },
       "starCap": 5,
-      "recruitWeight": 1,
+      "recruitWeight": 2,
       "statBand": { "min": 85, "max": 100 },
-      "hpBand": { "min": 3000, "max": 5500 }
+      "hpBand": { "min": 3000, "max": 5000 }
+    },
+    "gold": {
+      "id": "gold",
+      "name": "Kim",
+      "nameFull": "Hoàng tướng",
+      "wikiName": "Thần Hoàng",
+      "color": "#fde68a",
+      "border": "#e8c547",
+      "maxLevel": 140,
+      "growth": { "tongLinh": 2.25, "vuLuc": 2.25, "triLuc": 2.25 },
+      "starCap": 6,
+      "recruitWeight": 1,
+      "statBand": { "min": 90, "max": 110 },
+      "hpBand": { "min": 3400, "max": 6000 }
     }
   }
 },
@@ -915,78 +939,890 @@
   "speedStat": "vuLuc"
 },
 "formations": {
-  "schemaVersion": 3,
+  "schemaVersion": 6,
   "defaultId": "crane_wing",
+  "note": "10 trận pháp theo Khoa kỹ Ngọa Long Mobile (wiki/Gamebank): 4 công · 4 thủ · 2 đặc biệt. Lưới 3×3, 5 ô/trận. kind + counters dùng UI khắc chế.",
+  "grid": {
+    "cols": [
+      "tren",
+      "giua",
+      "duoi"
+    ],
+    "rows": [
+      "truoc",
+      "giua",
+      "sau"
+    ],
+    "colLabels": [
+      "Trên",
+      "Giữa",
+      "Dưới"
+    ],
+    "rowLabels": [
+      "Trước",
+      "Giữa",
+      "Sau"
+    ]
+  },
+  "kinds": {
+    "atk": {
+      "label": "Tấn công",
+      "color": "#f87171"
+    },
+    "def": {
+      "label": "Phòng thủ",
+      "color": "#5eead4"
+    },
+    "special": {
+      "label": "Đặc biệt",
+      "color": "#fbbf24"
+    }
+  },
   "slots": {
     "front": [
-      { "slot": 0, "label": "Ô 1 — Trước Trên" },
-      { "slot": 1, "label": "Ô 2 — Trước Giữa" },
-      { "slot": 2, "label": "Ô 3 — Trước Dưới" }
+      {
+        "slot": 0,
+        "label": "Ô 1"
+      },
+      {
+        "slot": 1,
+        "label": "Ô 2"
+      },
+      {
+        "slot": 2,
+        "label": "Ô 3"
+      }
     ],
     "back": [
-      { "slot": 3, "label": "Ô 4 — Sau Giữa" },
-      { "slot": 4, "label": "Ô 5 — Sau Dưới" }
+      {
+        "slot": 3,
+        "label": "Ô 4"
+      },
+      {
+        "slot": 4,
+        "label": "Ô 5"
+      }
     ]
   },
   "list": {
-    "crane_wing": {
-      "id": "crane_wing",
-      "name": "Hạc Dực",
-      "desc": "Hai cánh mạnh công, giữa vững.",
+    "fish_scale": {
+      "id": "fish_scale",
+      "name": "Ngư Lân",
+      "wikiName": "Ngư Lân Trận",
+      "shape": "+",
+      "shapeLabel": "Hình + / vảy cá",
+      "desc": "[Công] Đánh thường — cột giữa xuyên + hai cánh. (Ngư Lân)",
+      "kind": "atk",
+      "channel": "phys",
+      "focus": "vuLuc",
+      "focusLabel": "+ Đánh thường",
+      "counters": [
+        "wild_goose",
+        "qi_xing"
+      ],
+      "counteredBy": [
+        "square",
+        "chaotic_sword"
+      ],
+      "wikiOrder": "Phải · Giữa·Trên · Giữa·Giữa · Giữa·Dưới · Trái",
+      "layout": [
+        {
+          "slot": 0,
+          "col": 1,
+          "row": 0,
+          "label": "Trước · Giữa"
+        },
+        {
+          "slot": 1,
+          "col": 0,
+          "row": 1,
+          "label": "Giữa · Trên"
+        },
+        {
+          "slot": 2,
+          "col": 1,
+          "row": 1,
+          "label": "Giữa · Giữa"
+        },
+        {
+          "slot": 3,
+          "col": 2,
+          "row": 1,
+          "label": "Giữa · Dưới"
+        },
+        {
+          "slot": 4,
+          "col": 1,
+          "row": 2,
+          "label": "Sau · Giữa"
+        }
+      ],
+      "teamBonus": {
+        "vuLuc": 1.16,
+        "tongLinh": 0.96,
+        "triLuc": 1.0,
+        "hp": 1.04,
+        "speed": 1.0
+      },
       "slotMods": {
-        "0": { "atk": 1.1, "def": 0.95 },
-        "1": { "atk": 1.0, "def": 1.1 },
-        "2": { "atk": 1.1, "def": 0.95 },
-        "3": { "atk": 1.05, "def": 1.0 },
-        "4": { "atk": 1.05, "def": 1.0 }
+        "0": {
+          "atk": 1.06,
+          "def": 0.98
+        },
+        "1": {
+          "atk": 1.02,
+          "def": 1.02
+        },
+        "2": {
+          "atk": 1.04,
+          "def": 1.0
+        },
+        "3": {
+          "atk": 1.02,
+          "def": 1.02
+        },
+        "4": {
+          "atk": 1.0,
+          "def": 1.04
+        }
       }
     },
     "long_snake": {
       "id": "long_snake",
       "name": "Trường Xà",
-      "desc": "Xuyên kích theo cột; hàng trước áp lực cao.",
+      "wikiName": "Trường Xà Trận",
+      "shape": "snake",
+      "shapeLabel": "Hình rắn / xéo cột",
+      "desc": "[Công] Đánh thường — thân dài xuyên kích, ưu tốc. (Trường Xà)",
+      "kind": "atk",
+      "channel": "phys",
+      "focus": "speed",
+      "focusLabel": "+ Tốc / đánh thường",
+      "counters": [
+        "wild_goose",
+        "square"
+      ],
+      "counteredBy": [
+        "chaotic_sword",
+        "hammer_march"
+      ],
+      "wikiOrder": "Phải · Giữa·Trên · Giữa·Giữa · Giữa·Dưới · Trái·Dưới",
+      "layout": [
+        {
+          "slot": 0,
+          "col": 1,
+          "row": 0,
+          "label": "Trước · Giữa"
+        },
+        {
+          "slot": 1,
+          "col": 0,
+          "row": 1,
+          "label": "Giữa · Trên"
+        },
+        {
+          "slot": 2,
+          "col": 1,
+          "row": 1,
+          "label": "Giữa · Giữa"
+        },
+        {
+          "slot": 3,
+          "col": 2,
+          "row": 1,
+          "label": "Giữa · Dưới"
+        },
+        {
+          "slot": 4,
+          "col": 2,
+          "row": 2,
+          "label": "Sau · Dưới"
+        }
+      ],
+      "teamBonus": {
+        "vuLuc": 1.08,
+        "tongLinh": 0.94,
+        "triLuc": 1.0,
+        "hp": 1.0,
+        "speed": 1.16
+      },
       "slotMods": {
-        "0": { "atk": 1.15, "def": 0.9 },
-        "1": { "atk": 1.15, "def": 0.9 },
-        "2": { "atk": 1.15, "def": 0.9 },
-        "3": { "atk": 1.0, "def": 1.05 },
-        "4": { "atk": 1.0, "def": 1.05 }
+        "0": {
+          "atk": 1.08,
+          "def": 0.92
+        },
+        "1": {
+          "atk": 1.04,
+          "def": 0.96
+        },
+        "2": {
+          "atk": 1.06,
+          "def": 0.94
+        },
+        "3": {
+          "atk": 1.04,
+          "def": 0.96
+        },
+        "4": {
+          "atk": 1.0,
+          "def": 1.04
+        }
+      }
+    },
+    "arrow": {
+      "id": "arrow",
+      "name": "Phong Thỉ",
+      "wikiName": "Phong Thỉ Trận",
+      "shape": "T",
+      "shapeLabel": "Hình T / mũi tên",
+      "desc": "[Công] Pháp công — hàng trước mở, thân xuyên. (Phong Thỉ)",
+      "kind": "atk",
+      "channel": "magic",
+      "focus": "triLuc",
+      "focusLabel": "+ Pháp công",
+      "counters": [
+        "crane_wing",
+        "wild_goose"
+      ],
+      "counteredBy": [
+        "crane_wing",
+        "qi_xing"
+      ],
+      "wikiOrder": "Phải·Trên · Phải·Giữa · Phải·Dưới · Giữa · Trái",
+      "layout": [
+        {
+          "slot": 0,
+          "col": 0,
+          "row": 0,
+          "label": "Trước · Trên"
+        },
+        {
+          "slot": 1,
+          "col": 1,
+          "row": 0,
+          "label": "Trước · Giữa"
+        },
+        {
+          "slot": 2,
+          "col": 2,
+          "row": 0,
+          "label": "Trước · Dưới"
+        },
+        {
+          "slot": 3,
+          "col": 1,
+          "row": 1,
+          "label": "Giữa · Giữa"
+        },
+        {
+          "slot": 4,
+          "col": 1,
+          "row": 2,
+          "label": "Sau · Giữa"
+        }
+      ],
+      "teamBonus": {
+        "vuLuc": 0.96,
+        "tongLinh": 0.94,
+        "triLuc": 1.18,
+        "hp": 1.0,
+        "speed": 1.02
+      },
+      "slotMods": {
+        "0": {
+          "atk": 1.0,
+          "def": 0.96
+        },
+        "1": {
+          "atk": 1.02,
+          "def": 0.96
+        },
+        "2": {
+          "atk": 1.0,
+          "def": 0.96
+        },
+        "3": {
+          "atk": 1.06,
+          "def": 0.94
+        },
+        "4": {
+          "atk": 1.08,
+          "def": 0.92
+        }
+      }
+    },
+    "qi_xing": {
+      "id": "qi_xing",
+      "name": "Cơ Hành",
+      "wikiName": "Cơ Hành Trận",
+      "shape": "Z",
+      "shapeLabel": "Hình Z / kỳ hành",
+      "desc": "[Công] Mưu công — đội hình lệch, đánh bất ngờ. (Kỳ Hành)",
+      "kind": "atk",
+      "channel": "strat",
+      "focus": "triLuc",
+      "focusLabel": "+ Mưu công",
+      "counters": [
+        "crane_wing",
+        "square"
+      ],
+      "counteredBy": [
+        "wild_goose",
+        "fish_scale"
+      ],
+      "wikiOrder": "Phải·Trên · Giữa·Giữa · Giữa·Dưới · Trái·Trên · Trái·Dưới",
+      "layout": [
+        {
+          "slot": 0,
+          "col": 0,
+          "row": 0,
+          "label": "Trước · Trên"
+        },
+        {
+          "slot": 1,
+          "col": 1,
+          "row": 1,
+          "label": "Giữa · Giữa"
+        },
+        {
+          "slot": 2,
+          "col": 2,
+          "row": 1,
+          "label": "Giữa · Dưới"
+        },
+        {
+          "slot": 3,
+          "col": 0,
+          "row": 2,
+          "label": "Sau · Trên"
+        },
+        {
+          "slot": 4,
+          "col": 2,
+          "row": 2,
+          "label": "Sau · Dưới"
+        }
+      ],
+      "teamBonus": {
+        "vuLuc": 0.94,
+        "tongLinh": 0.96,
+        "triLuc": 1.2,
+        "hp": 0.98,
+        "speed": 1.06
+      },
+      "slotMods": {
+        "0": {
+          "atk": 1.05,
+          "def": 0.94
+        },
+        "1": {
+          "atk": 1.08,
+          "def": 0.92
+        },
+        "2": {
+          "atk": 1.04,
+          "def": 0.96
+        },
+        "3": {
+          "atk": 1.02,
+          "def": 1.0
+        },
+        "4": {
+          "atk": 1.02,
+          "def": 1.0
+        }
       }
     },
     "square": {
       "id": "square",
       "name": "Phương Viên",
-      "desc": "Phòng thủ vững; công giảm nhẹ.",
+      "wikiName": "Phương Trận",
+      "shape": "U",
+      "shapeLabel": "Hình U / bán nguyệt",
+      "desc": "[Thủ] Phòng thường — hàng trước vững, hai cánh giữa. (Phương Viên)",
+      "kind": "def",
+      "channel": "phys",
+      "focus": "tongLinh",
+      "focusLabel": "+ Phòng thủ",
+      "counters": [
+        "fish_scale",
+        "long_snake"
+      ],
+      "counteredBy": [
+        "qi_xing",
+        "tiger_strategy"
+      ],
+      "wikiOrder": "Phải·Trên · Phải·Giữa · Phải·Dưới · Giữa·Trên · Giữa·Dưới",
+      "layout": [
+        {
+          "slot": 0,
+          "col": 0,
+          "row": 0,
+          "label": "Trước · Trên"
+        },
+        {
+          "slot": 1,
+          "col": 1,
+          "row": 0,
+          "label": "Trước · Giữa"
+        },
+        {
+          "slot": 2,
+          "col": 2,
+          "row": 0,
+          "label": "Trước · Dưới"
+        },
+        {
+          "slot": 3,
+          "col": 0,
+          "row": 1,
+          "label": "Giữa · Trên"
+        },
+        {
+          "slot": 4,
+          "col": 2,
+          "row": 1,
+          "label": "Giữa · Dưới"
+        }
+      ],
+      "teamBonus": {
+        "vuLuc": 0.94,
+        "tongLinh": 1.16,
+        "triLuc": 1.0,
+        "hp": 1.06,
+        "speed": 0.96
+      },
       "slotMods": {
-        "0": { "atk": 0.95, "def": 1.15 },
-        "1": { "atk": 0.95, "def": 1.2 },
-        "2": { "atk": 0.95, "def": 1.15 },
-        "3": { "atk": 0.9, "def": 1.1 },
-        "4": { "atk": 0.9, "def": 1.1 }
+        "0": {
+          "atk": 0.97,
+          "def": 1.06
+        },
+        "1": {
+          "atk": 0.95,
+          "def": 1.1
+        },
+        "2": {
+          "atk": 0.97,
+          "def": 1.06
+        },
+        "3": {
+          "atk": 0.96,
+          "def": 1.08
+        },
+        "4": {
+          "atk": 0.96,
+          "def": 1.08
+        }
       }
     },
-    "fish_scale": {
-      "id": "fish_scale",
-      "name": "Ngư Lân",
-      "desc": "Cân bằng công thủ.",
+    "chaotic_sword": {
+      "id": "chaotic_sword",
+      "name": "Loạn Kiếm",
+      "wikiName": "Loạn Kiếm Trận",
+      "shape": "X",
+      "shapeLabel": "Hình X / loạn kiếm",
+      "desc": "[Thủ] Phòng thường — bốn góc + tâm, khó xuyên. (Loạn Kiếm)",
+      "kind": "def",
+      "channel": "phys",
+      "focus": "tongLinh",
+      "focusLabel": "+ Phòng thủ",
+      "counters": [
+        "fish_scale",
+        "tiger_strategy"
+      ],
+      "counteredBy": [
+        "arrow",
+        "qi_xing"
+      ],
+      "wikiOrder": "Phải·Trên · Phải·Dưới · Giữa · Trái·Trên · Trái·Dưới",
+      "layout": [
+        {
+          "slot": 0,
+          "col": 0,
+          "row": 0,
+          "label": "Trước · Trên"
+        },
+        {
+          "slot": 1,
+          "col": 2,
+          "row": 0,
+          "label": "Trước · Dưới"
+        },
+        {
+          "slot": 2,
+          "col": 1,
+          "row": 1,
+          "label": "Giữa · Giữa"
+        },
+        {
+          "slot": 3,
+          "col": 0,
+          "row": 2,
+          "label": "Sau · Trên"
+        },
+        {
+          "slot": 4,
+          "col": 2,
+          "row": 2,
+          "label": "Sau · Dưới"
+        }
+      ],
+      "teamBonus": {
+        "vuLuc": 0.96,
+        "tongLinh": 1.14,
+        "triLuc": 0.98,
+        "hp": 1.08,
+        "speed": 0.94
+      },
       "slotMods": {
-        "0": { "atk": 1.05, "def": 1.05 },
-        "1": { "atk": 1.05, "def": 1.05 },
-        "2": { "atk": 1.05, "def": 1.05 },
-        "3": { "atk": 1.0, "def": 1.0 },
-        "4": { "atk": 1.0, "def": 1.0 }
+        "0": {
+          "atk": 0.98,
+          "def": 1.06
+        },
+        "1": {
+          "atk": 0.98,
+          "def": 1.06
+        },
+        "2": {
+          "atk": 0.94,
+          "def": 1.12
+        },
+        "3": {
+          "atk": 0.96,
+          "def": 1.08
+        },
+        "4": {
+          "atk": 0.96,
+          "def": 1.08
+        }
       }
     },
-    "arrow": {
-      "id": "arrow",
-      "name": "Nhuệ Tiễn",
-      "desc": "Hàng sau tăng công (cung/mưu); hàng trước mỏng hơn.",
+    "crane_wing": {
+      "id": "crane_wing",
+      "name": "Hạc Dực",
+      "wikiName": "Hạc Dực Trận",
+      "shape": "V",
+      "shapeLabel": "Hình V / cánh hạc",
+      "desc": "[Thủ] Pháp phòng — hai cánh mở trước, thân sau. (Hạc Dực)",
+      "kind": "def",
+      "channel": "magic",
+      "focus": "tongLinh",
+      "focusLabel": "+ Pháp phòng",
+      "counters": [
+        "arrow",
+        "qi_xing"
+      ],
+      "counteredBy": [
+        "fish_scale",
+        "tiger_strategy"
+      ],
+      "wikiOrder": "Phải·Trên · Phải·Dưới · Trái·Trên · Trái·Giữa · Trái·Dưới",
+      "layout": [
+        {
+          "slot": 0,
+          "col": 0,
+          "row": 0,
+          "label": "Trước · Trên"
+        },
+        {
+          "slot": 1,
+          "col": 2,
+          "row": 0,
+          "label": "Trước · Dưới"
+        },
+        {
+          "slot": 2,
+          "col": 0,
+          "row": 2,
+          "label": "Sau · Trên"
+        },
+        {
+          "slot": 3,
+          "col": 1,
+          "row": 2,
+          "label": "Sau · Giữa"
+        },
+        {
+          "slot": 4,
+          "col": 2,
+          "row": 2,
+          "label": "Sau · Dưới"
+        }
+      ],
+      "teamBonus": {
+        "vuLuc": 0.98,
+        "tongLinh": 1.12,
+        "triLuc": 1.06,
+        "hp": 1.02,
+        "speed": 1.0
+      },
       "slotMods": {
-        "0": { "atk": 1.0, "def": 0.95 },
-        "1": { "atk": 1.0, "def": 0.95 },
-        "2": { "atk": 1.0, "def": 0.95 },
-        "3": { "atk": 1.2, "def": 0.9 },
-        "4": { "atk": 1.2, "def": 0.9 }
+        "0": {
+          "atk": 1.02,
+          "def": 1.04
+        },
+        "1": {
+          "atk": 1.02,
+          "def": 1.04
+        },
+        "2": {
+          "atk": 0.98,
+          "def": 1.08
+        },
+        "3": {
+          "atk": 1.0,
+          "def": 1.06
+        },
+        "4": {
+          "atk": 0.98,
+          "def": 1.08
+        }
+      }
+    },
+    "wild_goose": {
+      "id": "wild_goose",
+      "name": "Nhạn Hành",
+      "wikiName": "Nhạn Hành Trận",
+      "shape": "/",
+      "shapeLabel": "Hình / / hàng nhạn",
+      "desc": "[Thủ] Mưu phòng — đội hình chéo như đàn nhạn. (Nhạn Hành)",
+      "kind": "def",
+      "channel": "strat",
+      "focus": "tongLinh",
+      "focusLabel": "+ Mưu phòng",
+      "counters": [
+        "qi_xing",
+        "arrow"
+      ],
+      "counteredBy": [
+        "fish_scale",
+        "long_snake"
+      ],
+      "wikiOrder": "Phải·Trên · Giữa·Trên · Giữa·Giữa · Giữa·Dưới · Trái·Dưới",
+      "layout": [
+        {
+          "slot": 0,
+          "col": 0,
+          "row": 0,
+          "label": "Trước · Trên"
+        },
+        {
+          "slot": 1,
+          "col": 0,
+          "row": 1,
+          "label": "Giữa · Trên"
+        },
+        {
+          "slot": 2,
+          "col": 1,
+          "row": 1,
+          "label": "Giữa · Giữa"
+        },
+        {
+          "slot": 3,
+          "col": 2,
+          "row": 1,
+          "label": "Giữa · Dưới"
+        },
+        {
+          "slot": 4,
+          "col": 2,
+          "row": 2,
+          "label": "Sau · Dưới"
+        }
+      ],
+      "teamBonus": {
+        "vuLuc": 0.94,
+        "tongLinh": 1.1,
+        "triLuc": 1.08,
+        "hp": 1.04,
+        "speed": 0.98
+      },
+      "slotMods": {
+        "0": {
+          "atk": 0.98,
+          "def": 1.05
+        },
+        "1": {
+          "atk": 0.96,
+          "def": 1.08
+        },
+        "2": {
+          "atk": 0.98,
+          "def": 1.06
+        },
+        "3": {
+          "atk": 1.0,
+          "def": 1.04
+        },
+        "4": {
+          "atk": 0.96,
+          "def": 1.08
+        }
+      }
+    },
+    "hammer_march": {
+      "id": "hammer_march",
+      "name": "Chùy Hành",
+      "wikiName": "Chùy Hành Trận",
+      "shape": "I",
+      "shapeLabel": "Hình I / chùy đâm",
+      "desc": "[Đặc biệt] Phản kích — đội hình cột, đánh trả mạnh. (Chùy Hành)",
+      "kind": "special",
+      "channel": "counter",
+      "focus": "vuLuc",
+      "focusLabel": "+ Phản kích",
+      "counters": [
+        "fish_scale",
+        "long_snake"
+      ],
+      "counteredBy": [
+        "arrow",
+        "wild_goose"
+      ],
+      "wikiOrder": "Phải · Giữa · Trái·Trên · Trái·Giữa · Trái·Dưới",
+      "layout": [
+        {
+          "slot": 0,
+          "col": 1,
+          "row": 0,
+          "label": "Trước · Giữa"
+        },
+        {
+          "slot": 1,
+          "col": 1,
+          "row": 1,
+          "label": "Giữa · Giữa"
+        },
+        {
+          "slot": 2,
+          "col": 0,
+          "row": 2,
+          "label": "Sau · Trên"
+        },
+        {
+          "slot": 3,
+          "col": 1,
+          "row": 2,
+          "label": "Sau · Giữa"
+        },
+        {
+          "slot": 4,
+          "col": 2,
+          "row": 2,
+          "label": "Sau · Dưới"
+        }
+      ],
+      "teamBonus": {
+        "vuLuc": 1.12,
+        "tongLinh": 1.06,
+        "triLuc": 0.96,
+        "hp": 1.02,
+        "speed": 0.98
+      },
+      "slotMods": {
+        "0": {
+          "atk": 1.08,
+          "def": 1.02
+        },
+        "1": {
+          "atk": 1.06,
+          "def": 1.04
+        },
+        "2": {
+          "atk": 1.0,
+          "def": 1.06
+        },
+        "3": {
+          "atk": 1.04,
+          "def": 1.04
+        },
+        "4": {
+          "atk": 1.0,
+          "def": 1.06
+        }
+      }
+    },
+    "tiger_strategy": {
+      "id": "tiger_strategy",
+      "name": "Hổ Thao",
+      "wikiName": "Hổ Thao Trận",
+      "shape": "Y",
+      "shapeLabel": "Hình Y / hổ thao",
+      "desc": "[Đặc biệt] Bạo kích — mũi nhọn trước, hai cánh sau. (Hổ Thao)",
+      "kind": "special",
+      "channel": "crit",
+      "focus": "vuLuc",
+      "focusLabel": "+ Bạo kích",
+      "counters": [
+        "square",
+        "crane_wing"
+      ],
+      "counteredBy": [
+        "chaotic_sword",
+        "wild_goose"
+      ],
+      "wikiOrder": "Phải · Giữa·Trên · Giữa·Dưới · Trái·Trên · Trái·Dưới",
+      "layout": [
+        {
+          "slot": 0,
+          "col": 1,
+          "row": 0,
+          "label": "Trước · Giữa"
+        },
+        {
+          "slot": 1,
+          "col": 0,
+          "row": 1,
+          "label": "Giữa · Trên"
+        },
+        {
+          "slot": 2,
+          "col": 2,
+          "row": 1,
+          "label": "Giữa · Dưới"
+        },
+        {
+          "slot": 3,
+          "col": 0,
+          "row": 2,
+          "label": "Sau · Trên"
+        },
+        {
+          "slot": 4,
+          "col": 2,
+          "row": 2,
+          "label": "Sau · Dưới"
+        }
+      ],
+      "teamBonus": {
+        "vuLuc": 1.18,
+        "tongLinh": 0.92,
+        "triLuc": 1.0,
+        "hp": 0.98,
+        "speed": 1.04
+      },
+      "slotMods": {
+        "0": {
+          "atk": 1.12,
+          "def": 0.9
+        },
+        "1": {
+          "atk": 1.06,
+          "def": 0.94
+        },
+        "2": {
+          "atk": 1.06,
+          "def": 0.94
+        },
+        "3": {
+          "atk": 1.02,
+          "def": 0.98
+        },
+        "4": {
+          "atk": 1.02,
+          "def": 0.98
+        }
       }
     }
   }
@@ -1187,7 +2023,8 @@
       "moraleCost": 100,
       "fx": {
         "flash": "white",
-        "text": "MẠNH KÍCH"
+        "text": "MẠNH KÍCH",
+        "motif": "slash"
       },
       "desc": "Chiến pháp vật lý cơ bản."
     },
@@ -1200,7 +2037,8 @@
       "moraleCost": 100,
       "fx": {
         "flash": "blue",
-        "text": "KỲ MƯU"
+        "text": "KỲ MƯU",
+        "motif": "arcane"
       },
       "desc": "Chiến pháp mưu lược cơ bản."
     },
@@ -1213,7 +2051,8 @@
       "moraleCost": 100,
       "fx": {
         "flash": "gold_red",
-        "text": "VŨ THÁNH"
+        "text": "VŨ THÁNH",
+        "motif": "slash"
       },
       "desc": "Chém thẳng hàng dọc địch."
     },
@@ -1233,7 +2072,8 @@
       ],
       "fx": {
         "flash": "brown",
-        "text": "GẦM THÉT"
+        "text": "GẦM THÉT",
+        "motif": "slash"
       },
       "desc": "Gầm thét hàng trước, tỷ lệ Choáng."
     },
@@ -1245,8 +2085,9 @@
       "power": 2.1,
       "moraleCost": 100,
       "fx": {
-        "flash": "white_blue",
-        "text": "LONG ĐẢM"
+        "flash": "dragon",
+        "text": "LONG ĐẢM",
+        "motif": "dragon"
       },
       "desc": "Đâm một mục tiêu chí mạng."
     },
@@ -1265,8 +2106,9 @@
         }
       ],
       "fx": {
-        "flash": "cyan",
-        "text": "KHÔNG THÀNH"
+        "flash": "bagua",
+        "text": "KHÔNG THÀNH",
+        "motif": "bagua"
       },
       "desc": "Giảm phòng toàn quân địch + dame Trí lực."
     },
@@ -1289,8 +2131,9 @@
         }
       ],
       "fx": {
-        "flash": "orange",
-        "text": "HỔ KHÍ"
+        "flash": "tiger",
+        "text": "HỔ KHÍ",
+        "motif": "tiger"
       },
       "desc": "Buff sĩ khí và tấn công phe ta."
     },
@@ -1309,8 +2152,9 @@
         }
       ],
       "fx": {
-        "flash": "red_fire",
-        "text": "HỎA CÔNG"
+        "flash": "fire_rain",
+        "text": "HỎA CÔNG",
+        "motif": "fire"
       },
       "desc": "Thiêu một hàng địch."
     },
@@ -1330,7 +2174,8 @@
       ],
       "fx": {
         "flash": "purple",
-        "text": "ẨN MƯU"
+        "text": "ẨN MƯU",
+        "motif": "shadow"
       },
       "desc": "Đòn mưu + tỷ lệ Câm lặng."
     },
@@ -1344,7 +2189,8 @@
       "critBonus": 0.35,
       "fx": {
         "flash": "yellow",
-        "text": "BÁCH BỘ"
+        "text": "BÁCH BỘ",
+        "motif": "buff"
       },
       "desc": "Bắn tỉa, tăng Crit."
     },
@@ -1356,8 +2202,9 @@
       "power": 1.4,
       "moraleCost": 100,
       "fx": {
-        "flash": "silver",
-        "text": "THIẾT KỴ"
+        "flash": "charge",
+        "text": "THIẾT KỴ",
+        "motif": "charge"
       },
       "desc": "Xung phong hàng dọc."
     },
@@ -1377,7 +2224,8 @@
       ],
       "fx": {
         "flash": "iron",
-        "text": "CỔ CHIẾN"
+        "text": "CỔ CHIẾN",
+        "motif": "slash"
       },
       "desc": "Đánh mạnh + tăng phòng bản thân."
     },
@@ -1389,8 +2237,9 @@
       "power": 1.35,
       "moraleCost": 100,
       "fx": {
-        "flash": "brown",
-        "text": "HỔ SI"
+        "flash": "tiger",
+        "text": "HỔ SI",
+        "motif": "tiger"
       },
       "desc": "Đập hàng trước."
     },
@@ -1413,8 +2262,9 @@
         }
       ],
       "fx": {
-        "flash": "teal",
-        "text": "ĐÔNG NGÔ"
+        "flash": "blue_water",
+        "text": "ĐÔNG NGÔ",
+        "motif": "water"
       },
       "desc": "Hồi máu nhẹ + tăng Thống lĩnh."
     },
@@ -1434,7 +2284,8 @@
       ],
       "fx": {
         "flash": "green_poison",
-        "text": "ĐỘC MƯU"
+        "text": "ĐỘC MƯU",
+        "motif": "poison"
       },
       "desc": "Gieo độc toàn quân địch."
     },
@@ -1447,7 +2298,8 @@
       "moraleCost": 100,
       "fx": {
         "flash": "violet",
-        "text": "PHỤNG SỒ"
+        "text": "PHỤNG SỒ",
+        "motif": "shadow"
       },
       "desc": "Mưu kế đánh cả hàng."
     },
@@ -1466,8 +2318,9 @@
         }
       ],
       "fx": {
-        "flash": "fire_green",
-        "text": "LỬA LỤC"
+        "flash": "fire_rain",
+        "text": "LỬA LỤC",
+        "motif": "fire"
       },
       "desc": "Hỏa công diện rộng."
     },
@@ -1488,7 +2341,8 @@
       ],
       "fx": {
         "flash": "dark_red",
-        "text": "PHẢN CỐT"
+        "text": "PHẢN CỐT",
+        "motif": "shadow"
       },
       "desc": "Đòn mạnh + tăng công bản thân."
     },
@@ -1511,7 +2365,8 @@
       ],
       "fx": {
         "flash": "gold_soft",
-        "text": "NHÂN ĐỨC"
+        "text": "NHÂN ĐỨC",
+        "motif": "heal"
       },
       "desc": "Hồi máu + sĩ khí phe ta."
     },
@@ -1530,8 +2385,9 @@
         }
       ],
       "fx": {
-        "flash": "yellow_cult",
-        "text": "HOÀNG THIÊN"
+        "flash": "bagua",
+        "text": "HOÀNG THIÊN",
+        "motif": "bagua"
       },
       "desc": "Tà thuật Khăn Vàng."
     },
@@ -1543,8 +2399,9 @@
       "power": 1.85,
       "moraleCost": 100,
       "fx": {
-        "flash": "red",
-        "text": "HỔ LAO"
+        "flash": "tiger",
+        "text": "HỔ LAO",
+        "motif": "tiger"
       },
       "desc": "Chém mạnh một tướng."
     },
@@ -1557,7 +2414,8 @@
       "moraleCost": 100,
       "fx": {
         "flash": "crimson",
-        "text": "PHONG HẦU"
+        "text": "PHONG HẦU",
+        "motif": "slash"
       },
       "desc": "Xung kích hàng dọc tối thượng."
     },
@@ -1577,7 +2435,8 @@
       ],
       "fx": {
         "flash": "steel",
-        "text": "TIÊU DAO TÂN"
+        "text": "TIÊU DAO TÂN",
+        "motif": "slash"
       },
       "desc": "Tập kích hàng trước — Trương Liêu."
     },
@@ -1590,7 +2449,8 @@
       "moraleCost": 100,
       "fx": {
         "flash": "blue_water",
-        "text": "THỦY CHIẾN"
+        "text": "THỦY CHIẾN",
+        "motif": "water"
       },
       "desc": "Đòn hàng ngang kiểu Giang Đông."
     },
@@ -1603,7 +2463,8 @@
       "moraleCost": 100,
       "fx": {
         "flash": "white",
-        "text": "BẠCH MÃ"
+        "text": "BẠCH MÃ",
+        "motif": "slash"
       },
       "desc": "Kỵ binh Bạch Mã xung phong."
     },
@@ -1623,7 +2484,8 @@
       ],
       "fx": {
         "flash": "chain",
-        "text": "LIÊN HOÀN"
+        "text": "LIÊN HOÀN",
+        "motif": "slash"
       },
       "desc": "Giảm phòng diện rộng."
     },
@@ -1648,7 +2510,8 @@
       ],
       "fx": {
         "flash": "bagua",
-        "text": "BÁT QUÁI TRẬN"
+        "text": "BÁT QUÁI TRẬN",
+        "motif": "bagua"
       },
       "desc": "Triệu hồi trận đồ Âm Dương, sát thương toàn quân + giảm công/thủ."
     },
@@ -1668,7 +2531,8 @@
       ],
       "fx": {
         "flash": "fire_rain",
-        "text": "THIÊN HỎA"
+        "text": "THIÊN HỎA",
+        "motif": "fire"
       },
       "desc": "Mưa lửa từ trời thiêu cả hàng địch."
     },
@@ -1682,7 +2546,8 @@
       "moraleCost": 100,
       "fx": {
         "flash": "dragon",
-        "text": "LONG NỖ"
+        "text": "LONG NỖ",
+        "motif": "dragon"
       },
       "desc": "Nỏ rồng xuyên thủng cả cột địch, tăng chí mạng."
     },
@@ -1709,8 +2574,9 @@
         }
       ],
       "fx": {
-        "flash": "wind",
-        "text": "PHONG VÂN"
+        "flash": "whirlwind",
+        "text": "PHONG VÂN",
+        "motif": "whirlwind"
       },
       "desc": "Gió mây đổi hướng — hồi máu, sĩ khí và công phe ta."
     },
@@ -1730,7 +2596,8 @@
       ],
       "fx": {
         "flash": "thunder",
-        "text": "LÔI KÍCH"
+        "text": "LÔI KÍCH",
+        "motif": "thunder"
       },
       "desc": "Sét đánh một mục tiêu, tỷ lệ Choáng."
     },
@@ -1744,8 +2611,8 @@
       "effects": [
         {
           "type": "burn",
-          "value": 0.08,
-          "duration": 2
+          "duration": 2,
+          "label": "Thiêu Đốt"
         }
       ],
       "fx": {
@@ -1765,8 +2632,8 @@
       "effects": [
         {
           "type": "poison",
-          "value": 0.12,
-          "duration": 3
+          "duration": 2,
+          "label": "Trúng Độc"
         },
         {
           "type": "atk_down",
@@ -1775,8 +2642,9 @@
         }
       ],
       "fx": {
-        "flash": "snake",
-        "text": "ĐỘC XÀ"
+        "flash": "green_poison",
+        "text": "ĐỘC XÀ",
+        "motif": "poison"
       },
       "desc": "Rắn độc — [Trúng độc] + giảm công (wiki hiệu ứng)."
     },
@@ -1789,7 +2657,8 @@
       "moraleCost": 100,
       "fx": {
         "flash": "steel",
-        "text": "MẠNH KÍCH"
+        "text": "MẠNH KÍCH",
+        "motif": "slash"
       },
       "desc": "Chiến pháp vật lý — bậc Chiến."
     },
@@ -1802,7 +2671,8 @@
       "moraleCost": 100,
       "fx": {
         "flash": "gold_red",
-        "text": "MẠNH KÍCH"
+        "text": "MẠNH KÍCH",
+        "motif": "slash"
       },
       "desc": "Chiến pháp vật lý — bậc Thần, quét hàng trước."
     },
@@ -1815,7 +2685,8 @@
       "moraleCost": 100,
       "fx": {
         "flash": "crimson",
-        "text": "MẠNH KÍCH"
+        "text": "MẠNH KÍCH",
+        "motif": "slash"
       },
       "desc": "Chiến pháp vật lý — Truyền thuyết, hàng dọc."
     },
@@ -1829,7 +2700,8 @@
       "moraleCost": 100,
       "fx": {
         "flash": "fire_rain",
-        "text": "MẠNH KÍCH·HOÀNG"
+        "text": "MẠNH KÍCH·HOÀNG",
+        "motif": "fire"
       },
       "desc": "Chiến pháp vật lý tối thượng — 2 nhịp hàng dọc."
     },
@@ -1842,7 +2714,8 @@
       "moraleCost": 100,
       "fx": {
         "flash": "cyan",
-        "text": "KỲ MƯU"
+        "text": "KỲ MƯU",
+        "motif": "arcane"
       },
       "desc": "Chiến pháp mưu — bậc Chiến."
     },
@@ -1855,7 +2728,8 @@
       "moraleCost": 100,
       "fx": {
         "flash": "bagua",
-        "text": "KỲ MƯU"
+        "text": "KỲ MƯU",
+        "motif": "bagua"
       },
       "desc": "Chiến pháp mưu — bậc Thần, hàng ngang."
     },
@@ -1868,7 +2742,8 @@
       "moraleCost": 100,
       "fx": {
         "flash": "thunder",
-        "text": "KỲ MƯU"
+        "text": "KỲ MƯU",
+        "motif": "thunder"
       },
       "desc": "Chiến pháp mưu — Truyền thuyết, hàng dọc."
     },
@@ -1882,7 +2757,8 @@
       "moraleCost": 100,
       "fx": {
         "flash": "bagua",
-        "text": "KỲ MƯU·HOÀNG"
+        "text": "KỲ MƯU·HOÀNG",
+        "motif": "bagua"
       },
       "desc": "Chiến pháp mưu tối thượng — 2 nhịp toàn quân."
     },
@@ -1906,8 +2782,9 @@
         }
       ],
       "fx": {
-        "flash": "steel",
-        "text": "HỔ XUNG"
+        "flash": "tiger",
+        "text": "HỔ XUNG",
+        "motif": "tiger"
       },
       "desc": "Wiki Thường — 1 địch pháp công, tỷ lệ Tỏa Binh, hồi sĩ khí."
     },
@@ -1931,8 +2808,9 @@
         }
       ],
       "fx": {
-        "flash": "steel",
-        "text": "HỔ XUNG"
+        "flash": "tiger",
+        "text": "HỔ XUNG",
+        "motif": "tiger"
       },
       "desc": "Wiki Chiến — hàng dọc pháp công + Tỏa Binh."
     },
@@ -1956,8 +2834,9 @@
         }
       ],
       "fx": {
-        "flash": "crimson",
-        "text": "HỔ SÁT"
+        "flash": "tiger",
+        "text": "HỔ SÁT",
+        "motif": "tiger"
       },
       "desc": "Wiki Thần — hàng dọc mạnh hơn, Tỏa Binh cao."
     },
@@ -1986,8 +2865,9 @@
         }
       ],
       "fx": {
-        "flash": "gold_red",
-        "text": "HỔ SÁT"
+        "flash": "tiger",
+        "text": "HỔ SÁT",
+        "motif": "tiger"
       },
       "desc": "Wiki Truyền thuyết — hàng dọc + Tỏa Binh / Huyết Cúc (atk_down)."
     },
@@ -2017,8 +2897,9 @@
         }
       ],
       "fx": {
-        "flash": "fire_rain",
-        "text": "LƯỚT NHƯ GIÓ"
+        "flash": "whirlwind",
+        "text": "LƯỚT NHƯ GIÓ",
+        "motif": "whirlwind"
       },
       "desc": "Wiki Thần Hoàng — 2 nhịp pháp công hàng dọc."
     },
@@ -2031,7 +2912,8 @@
       "moraleCost": 100,
       "fx": {
         "flash": "gold_red",
-        "text": "VŨ THÁNH"
+        "text": "VŨ THÁNH",
+        "motif": "slash"
       },
       "desc": "Quan Vũ — bậc Chiến."
     },
@@ -2044,7 +2926,8 @@
       "moraleCost": 100,
       "fx": {
         "flash": "crimson",
-        "text": "VŨ THÁNH"
+        "text": "VŨ THÁNH",
+        "motif": "slash"
       },
       "desc": "Quan Vũ — Truyền thuyết."
     },
@@ -2058,7 +2941,8 @@
       "moraleCost": 100,
       "fx": {
         "flash": "fire_rain",
-        "text": "VŨ THÁNH·HOÀNG"
+        "text": "VŨ THÁNH·HOÀNG",
+        "motif": "fire"
       },
       "desc": "Quan Vũ — Thần Hoàng, 2 nhịp."
     },
@@ -2078,7 +2962,8 @@
       ],
       "fx": {
         "flash": "brown",
-        "text": "GẦM THÉT"
+        "text": "GẦM THÉT",
+        "motif": "slash"
       },
       "desc": "Trương Phi — Truyền thuyết."
     },
@@ -2098,7 +2983,8 @@
       ],
       "fx": {
         "flash": "thunder",
-        "text": "GẦM THÉT·HOÀNG"
+        "text": "GẦM THÉT·HOÀNG",
+        "motif": "thunder"
       },
       "desc": "Trương Phi — Thần Hoàng, gầm toàn quân."
     },
@@ -2118,7 +3004,8 @@
       ],
       "fx": {
         "flash": "bagua",
-        "text": "KHÔNG THÀNH"
+        "text": "KHÔNG THÀNH",
+        "motif": "bagua"
       },
       "desc": "Gia Cát — Truyền thuyết."
     },
@@ -2139,7 +3026,8 @@
       ],
       "fx": {
         "flash": "bagua",
-        "text": "KHÔNG THÀNH·HOÀNG"
+        "text": "KHÔNG THÀNH·HOÀNG",
+        "motif": "bagua"
       },
       "desc": "Gia Cát — Thần Hoàng, 2 nhịp."
     },
@@ -2205,7 +3093,17 @@
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Tòng Long] (Khi chiến đấu với người chơi khác, sát thương tăng 12%), duy trì 2 lượt, tướng khác của phe ta hồi 85+{6} sĩ khí, toàn phe địch giảm 20 sĩ khí.",
       "wikiQuality": "Truyền thuyết",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "tong_long",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Tòng Long",
+          "target": "ally"
+        }
+      ]
     },
     "thien_ha_chia_ba": {
       "id": "thien_ha_chia_ba",
@@ -2221,7 +3119,17 @@
       },
       "desc": "[Hỗ Trợ] Tướng khác của phe ta tăng 85+{6} sĩ khí, giảm 20 sĩ khí toàn phe địch, toàn phe ta nhận [Tòng Long], duy trì 2 lượt (Khi chiến đấu với người chơi khác, sát thương tăng 15%).",
       "wikiQuality": "Thái Sơ",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "tong_long",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Tòng Long",
+          "target": "ally"
+        }
+      ]
     },
     "yen_nguyet": {
       "id": "yen_nguyet",
@@ -2242,7 +3150,16 @@
         {
           "type": "silence",
           "chance": 0.7,
-          "duration": 2
+          "duration": 3,
+          "label": "Ám Tế"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "phan_kich",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Phản Kích",
+          "target": "self"
         }
       ]
     },
@@ -2265,7 +3182,16 @@
         {
           "type": "silence",
           "chance": 0.7,
-          "duration": 2
+          "duration": 3,
+          "label": "Ám Tế"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "phan_kich",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Phản Kích",
+          "target": "self"
         }
       ]
     },
@@ -2288,7 +3214,16 @@
         {
           "type": "silence",
           "chance": 0.7,
-          "duration": 2
+          "duration": 3,
+          "label": "Ám Tế"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "kich_no",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Kích Nộ",
+          "target": "self"
         }
       ]
     },
@@ -2311,7 +3246,31 @@
         {
           "type": "silence",
           "chance": 0.7,
-          "duration": 2
+          "duration": 3,
+          "label": "Ám Tế"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "nghia_tuyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Nghĩa Tuyệt",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "hap_huyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Hấp Huyết",
+          "target": "self"
+        },
+        {
+          "type": "def_up",
+          "value": 0.2,
+          "duration": 3,
+          "target": "self",
+          "label": "Kiên Thủ"
         }
       ]
     },
@@ -2334,7 +3293,31 @@
         {
           "type": "silence",
           "chance": 0.7,
-          "duration": 2
+          "duration": 3,
+          "label": "Ám Tế"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "nghia_tuyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Nghĩa Tuyệt",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "hap_huyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Hấp Huyết",
+          "target": "self"
+        },
+        {
+          "type": "def_up",
+          "value": 0.2,
+          "duration": 3,
+          "target": "self",
+          "label": "Kiên Thủ"
         }
       ]
     },
@@ -2346,9 +3329,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "purple",
+        "flash": "charge",
         "text": "THIÊN LÝ ĐƠN KỴ",
-        "motif": "shadow"
+        "motif": "charge"
       },
       "desc": "[Thường] Địch trên hàng dọc chịu 300% sát thương vật lý, khiến 1 kẻ địch bị [Ám Tế], duy trì 3 lượt. Bản thân vào trạng thái [Nghĩa Tuyệt], duy trì đến khi kết thúc chiến đấu. Bản thân vào trạng thái [Hấp Huyết], nhận hiệu quả [Kiên Thủ] không thể giải trừ, duy trì 3 lượt.",
       "wikiQuality": "Thái Sơ",
@@ -2357,7 +3340,31 @@
         {
           "type": "silence",
           "chance": 0.7,
-          "duration": 2
+          "duration": 3,
+          "label": "Ám Tế"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "nghia_tuyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Nghĩa Tuyệt",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "hap_huyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Hấp Huyết",
+          "target": "self"
+        },
+        {
+          "type": "def_up",
+          "value": 0.2,
+          "duration": 3,
+          "target": "self",
+          "label": "Kiên Thủ"
         }
       ]
     },
@@ -2378,9 +3385,25 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "nghia_tuyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Nghĩa Tuyệt"
+        },
+        {
           "type": "silence",
           "chance": 0.7,
-          "duration": 2
+          "duration": 3,
+          "label": "Ám Tế"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "hap_huyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Hấp Huyết",
+          "target": "self"
         }
       ]
     },
@@ -2424,7 +3447,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "orange",
+        "flash": "tiger",
         "text": "MÃNH HỔ",
         "motif": "tiger"
       },
@@ -2436,24 +3459,17 @@
       "id": "ho_khieu",
       "name": "Hổ Khiếu",
       "damageType": "physical",
-      "pattern": "column",
-      "power": 1.6700000000000002,
+      "pattern": "all",
+      "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "orange",
+        "flash": "tiger",
         "text": "HỔ KHIẾU",
         "motif": "tiger"
       },
-      "desc": "[C.Pháp] Địch trên hàng dọc chịu 2000% Pháp Công, giảm 150+{2} sĩ khí, gây giảm càng nhiều sĩ khí sát thương càng cao, địch trên hàng dọc chịu 2000% Pháp Công, sĩ khí mục tiêu càng thấp sát thương càng cao, nếu địch trước mặt có [Nguyệt Hồn], sẽ gây Hỗn Loạn, không thể hành động,",
-      "wikiQuality": "Truyền thuyết",
-      "source": "wiki-hero",
-      "effects": [
-        {
-          "type": "stun",
-          "chance": 0.55,
-          "duration": 1
-        }
-      ]
+      "desc": "[C.Pháp] Toàn phe địch chịu 69% Pháp Công, giảm 24 sĩ khí.",
+      "wikiQuality": "Thường",
+      "source": "wiki-hero"
     },
     "van_nguoi_kho_do": {
       "id": "van_nguoi_kho_do",
@@ -2471,6 +3487,13 @@
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "nguyet_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Nguyệt Hồn"
+        },
         {
           "type": "stun",
           "chance": 0.55,
@@ -2495,6 +3518,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "nguyet_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Nguyệt Hồn"
+        },
+        {
           "type": "stun",
           "chance": 0.55,
           "duration": 1
@@ -2509,7 +3539,7 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "orange",
+        "flash": "tiger",
         "text": "MÃNH HỔ LIỆT SƠN",
         "motif": "tiger"
       },
@@ -2517,6 +3547,13 @@
       "wikiQuality": "Thần Hoàng",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "nguyet_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Nguyệt Hồn"
+        },
         {
           "type": "stun",
           "chance": 0.55,
@@ -2532,12 +3569,12 @@
       "power": 1.6,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "charge",
         "text": "ĐƠN KỴ",
-        "motif": "slash"
+        "motif": "charge"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 160% Pháp Công, bản thân hồi 145 sĩ khí.",
-      "wikiQuality": "Thường",
+      "wikiQuality": "Chiến",
       "source": "wiki-hero",
       "effects": [
         {
@@ -2555,7 +3592,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "wind",
+        "flash": "whirlwind",
         "text": "THẦN PHONG",
         "motif": "whirlwind"
       },
@@ -2620,6 +3657,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "atk_up",
+          "value": 0.12,
+          "duration": 3,
+          "target": "self",
+          "label": "Anh Dũng"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -2628,12 +3672,6 @@
           "type": "def_down",
           "value": 0.12,
           "duration": 2
-        },
-        {
-          "type": "atk_up",
-          "value": 0.12,
-          "duration": 2,
-          "target": "ally"
         }
       ]
     },
@@ -2654,6 +3692,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "atk_up",
+          "value": 0.12,
+          "duration": 3,
+          "target": "self",
+          "label": "Anh Dũng"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -2662,12 +3707,6 @@
           "type": "def_down",
           "value": 0.12,
           "duration": 2
-        },
-        {
-          "type": "atk_up",
-          "value": 0.12,
-          "duration": 2,
-          "target": "ally"
         }
       ]
     },
@@ -2688,6 +3727,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "atk_up",
+          "value": 0.12,
+          "duration": 3,
+          "target": "self",
+          "label": "Anh Dũng"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -2696,12 +3742,6 @@
           "type": "def_down",
           "value": 0.12,
           "duration": 2
-        },
-        {
-          "type": "atk_up",
-          "value": 0.12,
-          "duration": 2,
-          "target": "ally"
         }
       ]
     },
@@ -2741,7 +3781,7 @@
       "power": 1.32,
       "moraleCost": 100,
       "fx": {
-        "flash": "wind",
+        "flash": "whirlwind",
         "text": "ĐÔNG PHONG",
         "motif": "whirlwind"
       },
@@ -2779,7 +3819,17 @@
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 255% Mưu Công, giảm 25 sĩ khí, bản thân nhận [Nguyệt Hồn], duy trì 2 lượt, toàn phe ta hồi 25 sĩ khí.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "nguyet_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Nguyệt Hồn",
+          "target": "self"
+        }
+      ]
     },
     "bat_tran_do": {
       "id": "bat_tran_do",
@@ -2797,6 +3847,22 @@
       "wikiQuality": "Truyền thuyết",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "nguyet_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Nguyệt Hồn",
+          "target": "ally"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "bat_quai",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Bát Quái",
+          "target": "ally"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -2822,6 +3888,22 @@
       "hits": 2,
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "nguyet_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Nguyệt Hồn",
+          "target": "ally"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "bat_quai",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Bát Quái",
+          "target": "ally"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -2846,6 +3928,22 @@
       "hits": 2,
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "nguyet_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Nguyệt Hồn",
+          "target": "ally"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "bat_quai",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Bát Quái",
+          "target": "ally"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -2866,7 +3964,17 @@
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 160% Pháp Công, bản thân nhận [Hội Tâm], duy trì 2 lượt.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "hoi_tam",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Hội Tâm",
+          "target": "self"
+        }
+      ]
     },
     "liet_thi": {
       "id": "liet_thi",
@@ -2876,13 +3984,23 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "yellow",
         "text": "LIỆT THỈ",
         "motif": "slash"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 245% Pháp Công, bản thân nhận [Hội Tâm], duy trì 2 lượt.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "hoi_tam",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Hội Tâm",
+          "target": "self"
+        }
+      ]
     },
     "nghe_xa": {
       "id": "nghe_xa",
@@ -2892,13 +4010,31 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "yellow",
         "text": "NGHỆ XẠ",
         "motif": "slash"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 460% Pháp Công, sĩ khí mục tiêu càng cao sát thương càng cao, bản thân nhận [Hội Tâm], duy trì 2 lượt, bản thân nhận [Nguyệt Hồn], duy trì 2 lượt.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "hoi_tam",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Hội Tâm",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "nguyet_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Nguyệt Hồn",
+          "target": "self"
+        }
+      ]
     },
     "truy_nguyet": {
       "id": "truy_nguyet",
@@ -2917,6 +4053,21 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "hoi_tam",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Hội Tâm",
+          "target": "self"
+        },
+        {
+          "type": "atk_up",
+          "value": 0.12,
+          "duration": 3,
+          "target": "self",
+          "label": "Anh Dũng"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -2925,12 +4076,6 @@
           "type": "morale_boost",
           "value": 40,
           "target": "self"
-        },
-        {
-          "type": "atk_up",
-          "value": 0.12,
-          "duration": 2,
-          "target": "ally"
         }
       ]
     },
@@ -2951,6 +4096,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "atk_up",
+          "value": 0.12,
+          "duration": 2,
+          "target": "ally",
+          "label": "Anh Dũng"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -2959,12 +4111,6 @@
           "type": "morale_boost",
           "value": 40,
           "target": "self"
-        },
-        {
-          "type": "atk_up",
-          "value": 0.12,
-          "duration": 2,
-          "target": "ally"
         }
       ]
     },
@@ -2976,7 +4122,7 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "yellow",
         "text": "LẠC NHẬT THẦN TIỄN",
         "motif": "slash"
       },
@@ -2984,6 +4130,21 @@
       "wikiQuality": "Thái Sơ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "hoi_tam",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Hội Tâm",
+          "target": "self"
+        },
+        {
+          "type": "atk_up",
+          "value": 0.12,
+          "duration": 3,
+          "target": "self",
+          "label": "Anh Dũng"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -2993,12 +4154,6 @@
           "type": "morale_boost",
           "value": 40,
           "target": "self"
-        },
-        {
-          "type": "atk_up",
-          "value": 0.12,
-          "duration": 2,
-          "target": "ally"
         }
       ]
     },
@@ -3019,6 +4174,21 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "hoi_tam",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Hội Tâm",
+          "target": "self"
+        },
+        {
+          "type": "atk_up",
+          "value": 0.12,
+          "duration": 3,
+          "target": "self",
+          "label": "Anh Dũng"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -3027,12 +4197,6 @@
           "type": "morale_boost",
           "value": 40,
           "target": "self"
-        },
-        {
-          "type": "atk_up",
-          "value": 0.12,
-          "duration": 2,
-          "target": "ally"
         }
       ]
     },
@@ -3081,6 +4245,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "self",
+          "label": "Thủ Hộ"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -3110,6 +4281,13 @@
       "hits": 2,
       "effects": [
         {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "self",
+          "label": "Thủ Hộ"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -3129,7 +4307,7 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "wind",
+        "flash": "whirlwind",
         "text": "PHONG LÔI",
         "motif": "whirlwind"
       },
@@ -3138,6 +4316,21 @@
       "source": "wiki-hero",
       "hits": 2,
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "te_liet",
+          "kind": "control",
+          "duration": 3,
+          "label": "Tê Liệt"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "than_toc",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Thần Tốc",
+          "target": "self"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -3168,6 +4361,28 @@
       "hits": 2,
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "te_liet",
+          "kind": "control",
+          "duration": 3,
+          "label": "Tê Liệt"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "than_toc",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Thần Tốc",
+          "target": "self"
+        },
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 3,
+          "target": "self",
+          "label": "Thủ Hộ"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -3196,6 +4411,28 @@
       "source": "wiki-hero",
       "hits": 2,
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "te_liet",
+          "kind": "control",
+          "duration": 3,
+          "label": "Tê Liệt"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "than_toc",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Thần Tốc",
+          "target": "self"
+        },
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 3,
+          "target": "self",
+          "label": "Thủ Hộ"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -3257,7 +4494,16 @@
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 5 lần sát thương, lần lượt là 220%, 209%, 198%, 181%, 165% Mưu Công, lính mục tiêu càng ít sát thương càng cao, mục tiêu bị [Âm Hồn], duy trì đến khi kết thúc chiến đấu.",
       "wikiQuality": "Thần",
       "source": "wiki-hero",
-      "hits": 5
+      "hits": 5,
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "am_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Âm Hồn"
+        }
+      ]
     },
     "cuu_thien_than_loi": {
       "id": "cuu_thien_than_loi",
@@ -3276,6 +4522,13 @@
       "source": "wiki-hero",
       "hits": 5,
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "am_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Âm Hồn"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -3306,6 +4559,13 @@
       "hits": 5,
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "am_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Âm Hồn"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -3335,6 +4595,13 @@
       "hits": 5,
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "am_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Âm Hồn"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -3363,6 +4630,13 @@
       "source": "wiki-hero",
       "hits": 5,
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "am_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Âm Hồn"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -3394,7 +4668,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
       ]
     },
@@ -3414,6 +4689,13 @@
       "wikiQuality": "Chiến",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "dao_binh",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Đào Binh"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -3575,7 +4857,17 @@
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 185% Pháp Công, bản thân nhận [Hội Tâm], duy trì 2 lượt.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "hoi_tam",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Hội Tâm",
+          "target": "self"
+        }
+      ]
     },
     "phan_kich": {
       "id": "phan_kich",
@@ -3591,7 +4883,17 @@
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 100% Pháp Công, bản thân nhận [Phản Kích], duy trì 2 lượt.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "phan_kich",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Phản Kích",
+          "target": "self"
+        }
+      ]
     },
     "nghich_chuyen": {
       "id": "nghich_chuyen",
@@ -3607,7 +4909,17 @@
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 140% Pháp Công, bản thân nhận [Phản Kích], duy trì 1 lượt.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "phan_kich",
+          "kind": "buff",
+          "duration": 1,
+          "label": "Phản Kích",
+          "target": "self"
+        }
+      ]
     },
     "bac_sat": {
       "id": "bac_sat",
@@ -3623,7 +4935,17 @@
       },
       "desc": "[Thường] Địch trên hàng dọc chịu 400% sát thương vật lý, bản thân nhận [Phản Kích], duy trì 3 lượt.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "phan_kich",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Phản Kích",
+          "target": "self"
+        }
+      ]
     },
     "thanh_long_hon": {
       "id": "thanh_long_hon",
@@ -3639,7 +4961,17 @@
       },
       "desc": "[Thường] Địch trên hàng dọc chịu 2400% sát thương vật lý, Vật Công của bản thân tăng 100%. Bản thân nhận [Phục Thù] không thể giải trừ, duy trì 3 lượt, toàn phe ta nhận [Bạch Nhẫn], duy trì 5 lượt.",
       "wikiQuality": "Truyền thuyết",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "bach_nhan",
+          "kind": "buff",
+          "duration": 5,
+          "label": "Bạch Nhẫn",
+          "target": "ally"
+        }
+      ]
     },
     "thanh_long_nguyen": {
       "id": "thanh_long_nguyen",
@@ -3655,7 +4987,25 @@
       },
       "desc": "[Thường] Địch trên hàng dọc chịu 550% sát thương vật lý. Bản thân nhận [Nghĩa Tuyệt] không thể giải trừ, duy trì 3 lượt, toàn phe ta nhận [Bạch Nhẫn], duy trì 31 lượt.",
       "wikiQuality": "Thượng Cổ",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "nghia_tuyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Nghĩa Tuyệt",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "bach_nhan",
+          "kind": "buff",
+          "duration": 31,
+          "label": "Bạch Nhẫn",
+          "target": "ally"
+        }
+      ]
     },
     "thanh_long_khieu_nguyet": {
       "id": "thanh_long_khieu_nguyet",
@@ -3671,7 +5021,25 @@
       },
       "desc": "[Thường] Địch trên hàng dọc chịu 550% sát thương vật lý, bản thân nhận hiệu quả [Nghĩa Tuyệt] [Thanh Long 2] không thể giải trừ (Mỗi tầng tăng 5% công phòng, tối đa cộng dồn 7 tầng), duy trì 3 lượt, toàn phe ta nhận [Bạch Nhẫn], duy trì 31 lượt.",
       "wikiQuality": "Thái Sơ",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "nghia_tuyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Nghĩa Tuyệt",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "bach_nhan",
+          "kind": "buff",
+          "duration": 31,
+          "label": "Bạch Nhẫn",
+          "target": "ally"
+        }
+      ]
     },
     "ngu_giap": {
       "id": "ngu_giap",
@@ -3681,14 +5049,21 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "shield",
         "text": "NGỰ GIÁP",
-        "motif": "heal"
+        "motif": "shield"
       },
       "desc": "[C.Pháp] Bản thân nhận trị liệu (Mức trị liệu bằng 11% Pháp Công). Toàn phe ta nhận [Thủ Hộ], duy trì 2 lượt.",
       "wikiQuality": "Chiến",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "ally",
+          "label": "Thủ Hộ"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -3710,7 +5085,22 @@
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Thủ Hộ], duy trì 2 lượt, toàn phe ta nhận [Hồi Phục], duy trì 2 lượt.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "ally",
+          "label": "Thủ Hộ"
+        },
+        {
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Hồi Phục"
+        }
+      ]
     },
     "an_nghia": {
       "id": "an_nghia",
@@ -3726,7 +5116,22 @@
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Thủ Hộ], [Hồi Phục], duy trì 2 lượt, tướng khác của phe ta hồi 10+{4} sĩ khí.",
       "wikiQuality": "Truyền thuyết",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "ally",
+          "label": "Thủ Hộ"
+        },
+        {
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Hồi Phục"
+        }
+      ]
     },
     "bac_vong": {
       "id": "bac_vong",
@@ -3773,6 +5178,14 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "don_dien",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Đồn Điền",
+          "target": "ally"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -3803,7 +5216,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
       ]
     },
@@ -3826,7 +5240,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
       ]
     },
@@ -3849,7 +5264,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
       ]
     },
@@ -3869,6 +5285,13 @@
       "wikiQuality": "Truyền thuyết",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "tan_vo",
+          "kind": "debuff",
+          "duration": 1,
+          "label": "Tan Vỡ"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -3892,6 +5315,13 @@
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "tan_vo",
+          "kind": "debuff",
+          "duration": 1,
+          "label": "Tan Vỡ"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -3920,6 +5350,13 @@
       "wikiQuality": "Thái Sơ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "tan_vo",
+          "kind": "debuff",
+          "duration": 1,
+          "label": "Tan Vỡ"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -3952,7 +5389,8 @@
         {
           "type": "silence",
           "chance": 0.7,
-          "duration": 2
+          "duration": 1,
+          "label": "Ám Tế"
         }
       ]
     },
@@ -3975,7 +5413,8 @@
         {
           "type": "silence",
           "chance": 0.7,
-          "duration": 2
+          "duration": 1,
+          "label": "Ám Tế"
         }
       ]
     },
@@ -3998,7 +5437,8 @@
         {
           "type": "silence",
           "chance": 0.7,
-          "duration": 2
+          "duration": 1,
+          "label": "Ám Tế"
         }
       ]
     },
@@ -4021,7 +5461,8 @@
         {
           "type": "silence",
           "chance": 0.7,
-          "duration": 2
+          "duration": 1,
+          "label": "Ám Tế"
         },
         {
           "type": "morale_boost",
@@ -4050,7 +5491,8 @@
         {
           "type": "silence",
           "chance": 0.7,
-          "duration": 2
+          "duration": 1,
+          "label": "Ám Tế"
         },
         {
           "type": "morale_boost",
@@ -4079,7 +5521,8 @@
         {
           "type": "silence",
           "chance": 0.7,
-          "duration": 2
+          "duration": 1,
+          "label": "Ám Tế"
         },
         {
           "type": "morale_boost",
@@ -4108,7 +5551,8 @@
         {
           "type": "silence",
           "chance": 0.7,
-          "duration": 2
+          "duration": 1,
+          "label": "Ám Tế"
         },
         {
           "type": "morale_boost",
@@ -4125,7 +5569,7 @@
       "power": 1.5,
       "moraleCost": 100,
       "fx": {
-        "flash": "wind",
+        "flash": "whirlwind",
         "text": "UY PHONG",
         "motif": "whirlwind"
       },
@@ -4148,7 +5592,7 @@
       "power": 1.82,
       "moraleCost": 100,
       "fx": {
-        "flash": "wind",
+        "flash": "whirlwind",
         "text": "TANG PHONG",
         "motif": "whirlwind"
       },
@@ -4233,12 +5677,12 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "charge",
         "text": "KỴ LIỆP",
-        "motif": "slash"
+        "motif": "charge"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 240% Pháp Công, Pháp Công của bản thân tăng 15%, duy trì 2 lượt, bản thân hồi 145 sĩ khí.",
-      "wikiQuality": "Thần",
+      "wikiQuality": "Chiến",
       "source": "wiki-hero",
       "effects": [
         {
@@ -4291,7 +5735,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
       ]
     },
@@ -4314,7 +5759,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         },
         {
           "type": "heal_pct",
@@ -4348,7 +5794,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         },
         {
           "type": "heal_pct",
@@ -4378,6 +5825,14 @@
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "thau_suot",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Thấu Suốt",
+          "target": "self"
+        },
         {
           "type": "stun",
           "chance": 0.55,
@@ -4411,6 +5866,14 @@
       "wikiQuality": "Thái Sơ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "thau_suot",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Thấu Suốt",
+          "target": "self"
+        },
         {
           "type": "stun",
           "chance": 0.55,
@@ -4510,7 +5973,7 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "orange",
+        "flash": "tiger",
         "text": "HỔ TRI",
         "motif": "tiger"
       },
@@ -4542,7 +6005,7 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "orange",
+        "flash": "tiger",
         "text": "HỔ HẦU SÂN NỘ",
         "motif": "tiger"
       },
@@ -4617,6 +6080,14 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "thi_huyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Thị Huyết",
+          "target": "self"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -4645,6 +6116,14 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "thi_huyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Thị Huyết",
+          "target": "self"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -4672,6 +6151,22 @@
       "wikiQuality": "Thái Sơ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "thi_huyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Thị Huyết",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "hap_huyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Hấp Huyết",
+          "target": "self"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -4702,6 +6197,22 @@
       "hits": 2,
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "thi_huyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Thị Huyết",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "hap_huyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Hấp Huyết",
+          "target": "self"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -4721,7 +6232,7 @@
       "power": 1.95,
       "moraleCost": 100,
       "fx": {
-        "flash": "orange",
+        "flash": "tiger",
         "text": "HỔ XUNG",
         "motif": "tiger"
       },
@@ -4729,6 +6240,13 @@
       "wikiQuality": "Thường",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "toa_binh",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Tỏa Binh"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -4744,7 +6262,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "orange",
+        "flash": "tiger",
         "text": "HỔ SÁT",
         "motif": "tiger"
       },
@@ -4752,6 +6270,13 @@
       "wikiQuality": "Chiến",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "toa_binh",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Tỏa Binh"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -4776,6 +6301,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "toa_binh",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Tỏa Binh"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -4798,6 +6330,20 @@
       "wikiQuality": "Truyền thuyết",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "toa_binh",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Tỏa Binh"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "huyet_cuc",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Huyết Cúc"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -4823,6 +6369,20 @@
       "hits": 2,
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "toa_binh",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Tỏa Binh"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "huyet_cuc",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Huyết Cúc"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -4842,15 +6402,29 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "whirlwind",
         "text": "LƯỚT NHANH NHƯ GIÓ",
-        "motif": "slash"
+        "motif": "whirlwind"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu lần lượt 2 lần 16500% và 16500% Pháp Công, lần thứ 1 sĩ khí mục tiêu càng cao sát thương càng cao, lần thứ 2 lính mục tiêu càng ít sát thương càng cao, khiến mục tiêu bị [Tỏa Binh], [Huyết Cúc] không thể giải trừ, duy trì 2 lượt, bản thân vào trạn",
       "wikiQuality": "Thái Sơ",
       "source": "wiki-hero",
       "hits": 2,
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "toa_binh",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Tỏa Binh"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "huyet_cuc",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Huyết Cúc"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -4871,7 +6445,7 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "orange",
+        "flash": "tiger",
         "text": "TRIỆU HỔ PHÁ TRẬN",
         "motif": "tiger"
       },
@@ -4880,6 +6454,20 @@
       "source": "wiki-hero",
       "hits": 2,
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "toa_binh",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Tỏa Binh"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "huyet_cuc",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Huyết Cúc"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -5028,7 +6616,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 2,
+          "label": "Hỗn Loạn"
         },
         {
           "type": "morale_boost",
@@ -5045,14 +6634,21 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "charge",
         "text": "CHIẾN KỴ",
-        "motif": "slash"
+        "motif": "charge"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 245% Pháp Công, khiến 1 kẻ địch bị [Đào Binh], duy trì 2 lượt, bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Chiến",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "dao_binh",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Đào Binh"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -5068,7 +6664,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "orange",
+        "flash": "tiger",
         "text": "HỔ UY",
         "motif": "tiger"
       },
@@ -5105,6 +6701,14 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "thien_van",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Thiên Vận",
+          "target": "self"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -5132,6 +6736,14 @@
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "thien_van",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Thiên Vận",
+          "target": "self"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -5161,6 +6773,14 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "thien_van",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Thiên Vận",
+          "target": "self"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -5189,6 +6809,14 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "thien_van",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Thiên Vận",
+          "target": "self"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -5210,7 +6838,7 @@
       "fx": {
         "flash": "steel",
         "text": "KÍCH THÍCH",
-        "motif": "slash"
+        "motif": "pierce"
       },
       "desc": "[Thường] Gây cho 1 kẻ địch 165% sát thương vật lý.",
       "wikiQuality": "Thường",
@@ -5279,7 +6907,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         },
         {
           "type": "morale_boost",
@@ -5307,7 +6936,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         },
         {
           "type": "morale_boost",
@@ -5343,24 +6973,17 @@
       "id": "quy_ke",
       "name": "Quỷ Kế",
       "damageType": "strategy",
-      "pattern": "all",
-      "power": 1.65,
+      "pattern": "single",
+      "power": 2.2,
       "moraleCost": 100,
       "fx": {
         "flash": "blue",
         "text": "QUỶ KẾ",
         "motif": "arcane"
       },
-      "desc": "[Kế Sách] Tấn công ngang liên tục, lính địch càng ít sát thương càng cao, khiến địch trước mặt bị Hỗn Loạn (Khi đấu với người khác giảm xác suất gây Hỗn Loạn), gây hiệu quả Âm Hồn. Bản thân nhận Di Kế (Khi chiến đấu với người chơi sẽ nhận Ma Ám, mỗi tầng giảm Lính tối đa của bản ",
-      "wikiQuality": "Truyền thuyết",
-      "source": "wiki-hero",
-      "effects": [
-        {
-          "type": "stun",
-          "chance": 0.55,
-          "duration": 1
-        }
-      ]
+      "desc": "[Kế Sách] Gây cho 1 kẻ địch 356% Mưu Công, đoạt hết sĩ khí của mục tiêu.",
+      "wikiQuality": "Thần",
+      "source": "wiki-hero"
     },
     "quyet_thang_thien_ly": {
       "id": "quyet_thang_thien_ly",
@@ -5382,7 +7005,15 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "am_hon",
+          "kind": "buff",
+          "duration": 1,
+          "label": "Âm Hồn"
         },
         {
           "type": "heal_pct",
@@ -5416,7 +7047,15 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "am_hon",
+          "kind": "buff",
+          "duration": 1,
+          "label": "Âm Hồn"
         },
         {
           "type": "heal_pct",
@@ -5449,7 +7088,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
       ]
     },
@@ -5473,7 +7113,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
       ]
     },
@@ -5491,7 +7132,16 @@
       },
       "desc": "[Kế Sách] Địch trên hàng ngang chịu 400% Mưu Công, 65% khiến mục tiêu bị [Đóng Băng], duy trì 1 lượt.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "dong_bang",
+          "kind": "control",
+          "duration": 1,
+          "label": "Đóng Băng"
+        }
+      ]
     },
     "bang_phong": {
       "id": "bang_phong",
@@ -5501,7 +7151,7 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "wind",
+        "flash": "whirlwind",
         "text": "BĂNG PHONG",
         "motif": "whirlwind"
       },
@@ -5509,6 +7159,13 @@
       "wikiQuality": "Truyền thuyết",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "dong_bang",
+          "kind": "control",
+          "duration": 1,
+          "label": "Đóng Băng"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -5533,6 +7190,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "dong_bang",
+          "kind": "control",
+          "duration": 1,
+          "label": "Đóng Băng"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -5547,7 +7211,7 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "wind",
+        "flash": "whirlwind",
         "text": "THIÊN LÝ BĂNG PHON",
         "motif": "whirlwind"
       },
@@ -5556,6 +7220,13 @@
       "source": "wiki-hero",
       "hits": 3,
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "dong_bang",
+          "kind": "control",
+          "duration": 1,
+          "label": "Đóng Băng"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -5656,7 +7327,7 @@
         "motif": "heal"
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 176% Mưu Công. Bản thân nhận trị liệu (Mức trị liệu bằng 50% Mưu Công).",
-      "wikiQuality": "Thường",
+      "wikiQuality": "Thần",
       "source": "wiki-hero",
       "effects": [
         {
@@ -5706,6 +7377,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "dao_binh",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Đào Binh"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -5729,6 +7407,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "dao_binh",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Đào Binh"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -5751,6 +7436,13 @@
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "dao_binh",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Đào Binh"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -5782,7 +7474,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "wind",
+        "flash": "whirlwind",
         "text": "PHONG TIỄN",
         "motif": "whirlwind"
       },
@@ -5792,7 +7484,8 @@
       "effects": [
         {
           "type": "burn",
-          "duration": 2
+          "duration": 2,
+          "label": "Thiêu Đốt"
         }
       ]
     },
@@ -5814,7 +7507,8 @@
       "effects": [
         {
           "type": "burn",
-          "duration": 2
+          "duration": 2,
+          "label": "Thiêu Đốt"
         }
       ]
     },
@@ -5832,7 +7526,17 @@
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 1350% Mưu Công, lính mục tiêu càng nhiều sát thương càng cao. Khiến toàn phe địch chịu 1600% Mưu Công, lính mục tiêu càng ít sát thương càng cao. Bản thân nhận [Hỏa Thần], duy trì 4 lượt.",
       "wikiQuality": "Truyền thuyết",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "hoa_than",
+          "kind": "buff",
+          "duration": 4,
+          "label": "Hỏa Thần",
+          "target": "self"
+        }
+      ]
     },
     "hong_lien_nghiep_hoa": {
       "id": "hong_lien_nghiep_hoa",
@@ -5849,7 +7553,17 @@
       "desc": "[Kế Sách] Bản thân nhận [Hỏa Thần] 3 lượt, khiến toàn phe địch chịu 3750% Mưu Công, lính mục tiêu càng nhiều sát thương càng cao. Tiếp tục khiến toàn phe địch chịu 2 lần 6750% Mưu Công, lính mục tiêu càng ít sát thương càng cao.",
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
-      "hits": 2
+      "hits": 2,
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "hoa_than",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Hỏa Thần",
+          "target": "self"
+        }
+      ]
     },
     "luyen_nguc_hoa_hai": {
       "id": "luyen_nguc_hoa_hai",
@@ -5869,8 +7583,17 @@
       "hits": 2,
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "hoa_than",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Hỏa Thần",
+          "target": "self"
+        },
+        {
           "type": "burn",
-          "duration": 2
+          "duration": 2,
+          "label": "Thiêu Đốt"
         }
       ]
     },
@@ -5938,7 +7661,16 @@
       "effects": [
         {
           "type": "burn",
-          "duration": 2
+          "duration": 2,
+          "label": "Thiêu Đốt"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "than_binh",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Thần Binh",
+          "target": "self"
         },
         {
           "type": "heal_pct",
@@ -5970,7 +7702,16 @@
       "effects": [
         {
           "type": "burn",
-          "duration": 2
+          "duration": 2,
+          "label": "Thiên Hỏa"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "than_binh",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Thần Binh",
+          "target": "self"
         },
         {
           "type": "heal_pct",
@@ -6002,7 +7743,24 @@
       "effects": [
         {
           "type": "burn",
-          "duration": 2
+          "duration": 2,
+          "label": "Thiên Hỏa"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "than_binh",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Thần Binh",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "hoa_than",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Hỏa Thần",
+          "target": "self"
         },
         {
           "type": "heal_pct",
@@ -6035,7 +7793,16 @@
       "effects": [
         {
           "type": "burn",
-          "duration": 2
+          "duration": 2,
+          "label": "Thiên Hỏa"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "than_binh",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Thần Binh",
+          "target": "self"
         },
         {
           "type": "heal_pct",
@@ -6067,13 +7834,22 @@
       "hits": 2,
       "effects": [
         {
+          "type": "burn",
+          "duration": 2,
+          "label": "Thiên Hỏa"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "than_binh",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Thần Binh",
+          "target": "self"
+        },
+        {
           "type": "stun",
           "chance": 0.55,
           "duration": 1
-        },
-        {
-          "type": "burn",
-          "duration": 2
         },
         {
           "type": "heal_pct",
@@ -6095,9 +7871,9 @@
       "power": 1.5,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "rush",
         "text": "NGHỊCH TẬP",
-        "motif": "slash"
+        "motif": "rush"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 150% Pháp Công, khiến 1 kẻ địch hàng sau chịu 140% Pháp Công, khiến 1 kẻ địch hàng trước chịu 130% Pháp Công",
       "wikiQuality": "Thường",
@@ -6127,7 +7903,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "crimson",
+        "flash": "wolf",
         "text": "LANG TUYỀN",
         "motif": "wolf"
       },
@@ -6140,7 +7916,8 @@
           "type": "def_up",
           "value": 0.35,
           "duration": 1,
-          "target": "self"
+          "target": "self",
+          "label": "Thiết Bích"
         },
         {
           "type": "heal_pct",
@@ -6162,9 +7939,9 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "rush",
         "text": "TỐ LƯU NGHỊCH TẬP",
-        "motif": "slash"
+        "motif": "rush"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 2 lần 1500% Pháp Công, lính mục tiêu càng ít sát thương càng cao. 80% Khiến 1 kẻ địch hàng sau chịu 1900% Pháp Công, lính mục tiêu càng ít sát thương càng cao. Bản thân nhận [Thiết Bích], duy trì 1 lượt. Bản thân hồi 50+{8} sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -6175,7 +7952,8 @@
           "type": "def_up",
           "value": 0.35,
           "duration": 1,
-          "target": "self"
+          "target": "self",
+          "label": "Thiết Bích"
         },
         {
           "type": "heal_pct",
@@ -6210,7 +7988,8 @@
           "type": "def_up",
           "value": 0.35,
           "duration": 1,
-          "target": "self"
+          "target": "self",
+          "label": "Thiết Bích"
         },
         {
           "type": "heal_pct",
@@ -6245,7 +8024,8 @@
           "type": "def_up",
           "value": 0.35,
           "duration": 1,
-          "target": "self"
+          "target": "self",
+          "label": "Thiết Bích"
         },
         {
           "type": "heal_pct",
@@ -6267,7 +8047,7 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "crimson",
+        "flash": "wolf",
         "text": "LANG TUYỀN KHỐN TR",
         "motif": "wolf"
       },
@@ -6277,15 +8057,17 @@
       "hits": 2,
       "effects": [
         {
+          "type": "stun",
+          "chance": 1.0,
+          "duration": 1,
+          "label": "Khóa Vây"
+        },
+        {
           "type": "def_up",
           "value": 0.35,
           "duration": 1,
-          "target": "self"
-        },
-        {
-          "type": "stun",
-          "chance": 1.0,
-          "duration": 1
+          "target": "self",
+          "label": "Thiết Bích"
         },
         {
           "type": "heal_pct",
@@ -6307,7 +8089,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "orange",
+        "flash": "tiger",
         "text": "KHỔ KẾ",
         "motif": "tiger"
       },
@@ -6364,6 +8146,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "am_hon",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Âm Hồn"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -6391,6 +8180,13 @@
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "am_hon",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Âm Hồn"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -6420,6 +8216,13 @@
       "source": "wiki-hero",
       "hits": 2,
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "am_hon",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Âm Hồn"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -6472,6 +8275,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "ap_uc",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Áp Ức"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -6511,6 +8321,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "ap_uc",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Áp Ức"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -6539,6 +8356,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "ap_uc",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Áp Ức"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -6558,15 +8382,22 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "shield",
         "text": "LẤY THÂN LÀM GIÁP",
-        "motif": "slash"
+        "motif": "shield"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 2 lần 20000% Pháp Công, lính bản thân càng thấp sát thương càng cao. Khiến mục tiêu bị [Áp Ức], [Thương Tích], duy trì 2 lượt. Bản thân nhận [Huyết Thuẫn 2] không thể giải trừ, duy trì 31 lượt. Bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thần Hoàng",
       "source": "wiki-hero",
       "hits": 2,
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "ap_uc",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Áp Ức"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -6592,12 +8423,13 @@
         "motif": "poison"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 158% Pháp Công, mục tiêu bị [Trúng Độc], duy trì 3 lượt.",
-      "wikiQuality": "Thường",
+      "wikiQuality": "Chiến",
       "source": "wiki-hero",
       "effects": [
         {
           "type": "poison",
-          "duration": 2
+          "duration": 3,
+          "label": "Trúng Độc"
         }
       ]
     },
@@ -6619,7 +8451,8 @@
       "effects": [
         {
           "type": "poison",
-          "duration": 2
+          "duration": 2,
+          "label": "Trúng Độc"
         }
       ]
     },
@@ -6631,13 +8464,22 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue",
+        "flash": "shield",
         "text": "THỦ HỘ",
-        "motif": "arcane"
+        "motif": "shield"
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 55% Mưu Công, toàn phe ta nhận [Thủ Hộ], duy trì 2 lượt.",
       "wikiQuality": "Thường",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "ally",
+          "label": "Thủ Hộ"
+        }
+      ]
     },
     "han_ve": {
       "id": "han_ve",
@@ -6659,7 +8501,15 @@
           "type": "def_up",
           "value": 0.35,
           "duration": 1,
-          "target": "self"
+          "target": "self",
+          "label": "Thiết Bích"
+        },
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "ally",
+          "label": "Thủ Hộ"
         }
       ]
     },
@@ -6677,7 +8527,23 @@
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Thủ Hộ], duy trì 2 lượt, 85% khiến toàn phe ta nhận [Hộ Thuẫn], duy trì 2 lượt.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "ally",
+          "label": "Thủ Hộ"
+        },
+        {
+          "type": "def_up",
+          "value": 0.2,
+          "duration": 2,
+          "target": "ally",
+          "label": "Hộ Thuẫn"
+        }
+      ]
     },
     "thuan_tuong": {
       "id": "thuan_tuong",
@@ -6695,6 +8561,20 @@
       "wikiQuality": "Truyền thuyết",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "def_up",
+          "value": 0.2,
+          "duration": 2,
+          "target": "ally",
+          "label": "Hộ Thuẫn"
+        },
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "ally",
+          "label": "Thủ Hộ"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -6718,6 +8598,20 @@
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "def_up",
+          "value": 0.2,
+          "duration": 2,
+          "target": "ally",
+          "label": "Hộ Thuẫn"
+        },
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "ally",
+          "label": "Thủ Hộ"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -6746,6 +8640,20 @@
       "wikiQuality": "Thái Sơ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "def_up",
+          "value": 0.2,
+          "duration": 2,
+          "target": "ally",
+          "label": "Hộ Thuẫn"
+        },
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "ally",
+          "label": "Thủ Hộ"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -6788,7 +8696,25 @@
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 9000% Pháp Công, toàn phe ta nhận [Tịnh Hóa], duy trì 2 lượt, toàn phe ta nhận [Tòng Long], duy trì 3 lượt, toàn phe ta hồi 50+{4} sĩ khí.",
       "wikiQuality": "Thượng Cổ",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "tinh_hoa",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Tịnh Hóa",
+          "target": "ally"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "tong_long",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Tòng Long",
+          "target": "ally"
+        }
+      ]
     },
     "thien_uy": {
       "id": "thien_uy",
@@ -6804,7 +8730,17 @@
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 220% Pháp Công, bản thân nhận [Tịnh Hóa], duy trì 2 lượt, toàn phe ta hồi 50 sĩ khí.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "tinh_hoa",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Tịnh Hóa",
+          "target": "self"
+        }
+      ]
     },
     "ba_vuong_than_uy": {
       "id": "ba_vuong_than_uy",
@@ -6820,7 +8756,25 @@
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 2000% Pháp Công, toàn phe ta nhận [Tịnh Hóa], duy trì 2 lượt, toàn phe ta nhận [Tòng Long], duy trì 3 lượt, toàn phe ta hồi 50+{4} sĩ khí.",
       "wikiQuality": "Truyền thuyết",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "tinh_hoa",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Tịnh Hóa",
+          "target": "ally"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "tong_long",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Tòng Long",
+          "target": "ally"
+        }
+      ]
     },
     "than_uy_pha_tran": {
       "id": "than_uy_pha_tran",
@@ -6836,7 +8790,25 @@
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 9500% Pháp Công, toàn phe ta nhận [Tịnh Hóa], duy trì 2 lượt, toàn phe ta nhận [Tòng Long], [Võ Dũng], duy trì 3 lượt, toàn phe ta hồi 50 +{4} sĩ khí.",
       "wikiQuality": "Thái Sơ",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "tinh_hoa",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Tịnh Hóa",
+          "target": "ally"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "tong_long",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Tòng Long",
+          "target": "ally"
+        }
+      ]
     },
     "ba_vuong_liet_phach": {
       "id": "ba_vuong_liet_phach",
@@ -6852,7 +8824,17 @@
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 15500% Pháp Công, toàn phe ta nhận [Tịnh Hóa], duy trì 2 lượt, toàn phe ta nhận [Tòng Long 2], [Võ Dũng], duy trì 3 lượt, toàn phe ta hồi 50 +{4} sĩ khí.",
       "wikiQuality": "Thần Hoàng",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "tinh_hoa",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Tịnh Hóa",
+          "target": "ally"
+        }
+      ]
     },
     "ham_dia": {
       "id": "ham_dia",
@@ -6867,7 +8849,7 @@
         "motif": "slash"
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 190% Pháp Công.",
-      "wikiQuality": "Thường",
+      "wikiQuality": "Chiến",
       "source": "wiki-hero"
     },
     "san_bang": {
@@ -7018,6 +9000,14 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "nguyet_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Nguyệt Hồn",
+          "target": "self"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -7046,6 +9036,14 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "nguyet_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Nguyệt Hồn",
+          "target": "self"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -7065,14 +9063,15 @@
         "motif": "arcane"
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 55% Mưu Công, 35% giúp toàn phe ta nhận [Thiết Bích], duy trì 2 lượt.",
-      "wikiQuality": "Thần",
+      "wikiQuality": "Chiến",
       "source": "wiki-hero",
       "effects": [
         {
           "type": "def_up",
           "value": 0.35,
-          "duration": 1,
-          "target": "self"
+          "duration": 2,
+          "target": "ally",
+          "label": "Thiết Bích"
         }
       ]
     },
@@ -7084,13 +9083,23 @@
       "power": 1.65,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "blue_water",
         "text": "LẠC THỦY TIÊN",
-        "motif": "buff"
+        "motif": "water"
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Hoạt Lực], duy trì 2 lượt, tướng khác của phe ta hồi 80+{4} sĩ khí.",
       "wikiQuality": "Truyền thuyết",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "hoat_luc",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Hoạt Lực",
+          "target": "ally"
+        }
+      ]
     },
     "lac_than_mac": {
       "id": "lac_than_mac",
@@ -7108,6 +9117,13 @@
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "hoat_luc",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Hoạt Lực"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -7132,6 +9148,14 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "hoat_luc",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Hoạt Lực",
+          "target": "ally"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -7155,6 +9179,14 @@
       "source": "wiki-hero",
       "hits": 2,
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "hoat_luc",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Hoạt Lực",
+          "target": "ally"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -7181,7 +9213,8 @@
         {
           "type": "silence",
           "chance": 0.7,
-          "duration": 2
+          "duration": 1,
+          "label": "Ám Tế"
         }
       ]
     },
@@ -7193,9 +9226,9 @@
       "power": 1.26,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "charge",
         "text": "KỴ KÍCH",
-        "motif": "slash"
+        "motif": "charge"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 126% Pháp Công, 35% khiến mục tiêu bị [Hỗn Loạn], duy trì 1 lượt.",
       "wikiQuality": "Thường",
@@ -7204,7 +9237,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
       ]
     },
@@ -7216,9 +9250,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "charge",
         "text": "KỴ CHIẾN",
-        "motif": "slash"
+        "motif": "charge"
       },
       "desc": "[Thường] Địch trên hàng dọc chịu 350% sát thương vật lý, Vật Phòng của mục tiêu giảm 30%, duy trì 2 lượt, bản thân hồi 50 sĩ khí.",
       "wikiQuality": "Thần",
@@ -7255,7 +9289,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
       ]
     },
@@ -7278,7 +9313,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
       ]
     },
@@ -7292,7 +9328,7 @@
       "fx": {
         "flash": "steel",
         "text": "HÀNH THÍCH",
-        "motif": "slash"
+        "motif": "pierce"
       },
       "desc": "[C.Pháp] Khiến 1 kẻ địch hàng sau chịu 350% Pháp Công, mục tiêu bị [Hỗn Loạn], duy trì 1 lượt, mục tiêu bị [Âm Hồn], duy trì đến khi kết thúc chiến đấu.",
       "wikiQuality": "Truyền thuyết",
@@ -7301,7 +9337,15 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "am_hon",
+          "kind": "buff",
+          "duration": 1,
+          "label": "Âm Hồn"
         }
       ]
     },
@@ -7324,7 +9368,22 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "dao_binh",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Đào Binh"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "am_hon",
+          "kind": "buff",
+          "duration": 1,
+          "label": "Âm Hồn"
         }
       ]
     },
@@ -7347,7 +9406,22 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "dao_binh",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Đào Binh"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "am_hon",
+          "kind": "buff",
+          "duration": 1,
+          "label": "Âm Hồn"
         }
       ]
     },
@@ -7418,7 +9492,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
       ]
     },
@@ -7441,7 +9516,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
       ]
     },
@@ -7465,7 +9541,15 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "treo_thuong",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Treo Thưởng"
         },
         {
           "type": "heal_pct",
@@ -7499,7 +9583,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         },
         {
           "type": "heal_pct",
@@ -7533,7 +9618,15 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "treo_thuong",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Treo Thưởng"
         },
         {
           "type": "heal_pct",
@@ -7555,9 +9648,9 @@
       "power": 1.92,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "rush",
         "text": "ĐỘT KÍCH",
-        "motif": "slash"
+        "motif": "rush"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 192% Pháp Công.",
       "wikiQuality": "Thường",
@@ -7582,7 +9675,8 @@
         {
           "type": "silence",
           "chance": 0.7,
-          "duration": 2
+          "duration": 3,
+          "label": "Ám Tế"
         }
       ]
     },
@@ -7610,13 +9704,22 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "rush",
         "text": "DŨNG MÃNH ĐỘT KÍCH",
-        "motif": "slash"
+        "motif": "rush"
       },
       "desc": "[Thường] Tấn công 500 sĩ khí, khiến địch trên hàng ngang chịu 920% sát thương vật lý, lính mục tiêu càng nhiều sát thương càng cao. Bản thân nhận [Dũng Tuyệt] không thể giải trừ, duy trì đến khi kết thúc chiến đấu.",
       "wikiQuality": "Truyền thuyết",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "atk_up",
+          "value": 0.15,
+          "duration": 3,
+          "target": "self",
+          "label": "Dũng Tuyệt"
+        }
+      ]
     },
     "vo_cung_dung_manh": {
       "id": "vo_cung_dung_manh",
@@ -7632,7 +9735,16 @@
       },
       "desc": "[Thường] Tấn công 500 sĩ khí, khiến địch trên hàng ngang chịu 1600% sát thương vật lý, lính mục tiêu càng nhiều sát thương càng cao. Bản thân nhận [Dũng Tuyệt] không thể giải trừ, duy trì đến khi kết thúc chiến đấu.",
       "wikiQuality": "Thượng Cổ",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "atk_up",
+          "value": 0.15,
+          "duration": 3,
+          "target": "self",
+          "label": "Dũng Tuyệt"
+        }
+      ]
     },
     "can_quet_bao_luc": {
       "id": "can_quet_bao_luc",
@@ -7648,7 +9760,16 @@
       },
       "desc": "[Thường] Tấn công 500 sĩ khí, khiến địch trên hàng ngang chịu 5800% sát thương vật lý, lính mục tiêu càng nhiều sát thương càng cao. Bản thân nhận [Dũng Tuyệt] không thể giải trừ, duy trì đến khi kết thúc chiến đấu.",
       "wikiQuality": "Thái Sơ",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "atk_up",
+          "value": 0.15,
+          "duration": 3,
+          "target": "self",
+          "label": "Dũng Tuyệt"
+        }
+      ]
     },
     "hung_ho_tien_phong": {
       "id": "hung_ho_tien_phong",
@@ -7658,13 +9779,22 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "wind",
+        "flash": "tiger",
         "text": "HÙNG HỔ TIÊN PHONG",
-        "motif": "whirlwind"
+        "motif": "tiger"
       },
       "desc": "[Thường] Tấn công 500 sĩ khí, khiến địch trên hàng ngang chịu 10800% sát thương vật lý, lính mục tiêu càng nhiều sát thương càng cao. Bản thân vào [Dũng Tuyệt] [Áp Chế 2] không thể giải trừ, duy trì đến khi kết thúc chiến đấu.",
       "wikiQuality": "Thần Hoàng",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "atk_up",
+          "value": 0.15,
+          "duration": 3,
+          "target": "self",
+          "label": "Dũng Tuyệt"
+        }
+      ]
     },
     "vo_song": {
       "id": "vo_song",
@@ -7699,6 +9829,14 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "hoi_tam",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Hội Tâm",
+          "target": "self"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -7721,6 +9859,22 @@
       "wikiQuality": "Thần",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "dien_cuong",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Điên Cuồng",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "hoi_tam",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Hội Tâm",
+          "target": "self"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -7746,6 +9900,21 @@
       "hits": 3,
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "so_hai",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Sợ Hãi"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "dien_cuong",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Điên Cuồng",
+          "target": "self"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -7769,6 +9938,29 @@
       "source": "wiki-hero",
       "hits": 3,
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "so_hai",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Sợ Hãi"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "dien_cuong",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Điên Cuồng",
+          "target": "self"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "pha_thanh",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Phá Thánh",
+          "target": "self"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -7794,6 +9986,29 @@
       "hits": 3,
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "so_hai",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Sợ Hãi"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "dien_cuong",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Điên Cuồng",
+          "target": "self"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "pha_thanh",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Phá Thánh",
+          "target": "self"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -7818,6 +10033,21 @@
       "hits": 3,
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "pha_thanh",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Phá Thánh",
+          "target": "self"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "so_hai",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Sợ Hãi"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -7837,7 +10067,7 @@
         "motif": "slash"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 115% Pháp Công, giảm 100 sĩ khí.",
-      "wikiQuality": "Thường",
+      "wikiQuality": "Chiến",
       "source": "wiki-hero"
     },
     "bang_hoai": {
@@ -7854,7 +10084,16 @@
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 330% Pháp Công, lính mục tiêu càng ít sát thương càng cao, bản thân chịu 100% Pháp Công, bản thân nhận [Tử Thủ], duy trì 2 lượt.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "def_up",
+          "value": 0.25,
+          "duration": 2,
+          "target": "self",
+          "label": "Tử Thủ"
+        }
+      ]
     },
     "bao_le": {
       "id": "bao_le",
@@ -7873,6 +10112,20 @@
       "source": "wiki-hero",
       "hits": 2,
       "effects": [
+        {
+          "type": "def_up",
+          "value": 0.25,
+          "duration": 2,
+          "target": "self",
+          "label": "Tử Thủ"
+        },
+        {
+          "type": "atk_up",
+          "value": 0.12,
+          "duration": 2,
+          "target": "self",
+          "label": "Bạo Nộ"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -7903,6 +10156,20 @@
       "hits": 2,
       "effects": [
         {
+          "type": "def_up",
+          "value": 0.25,
+          "duration": 2,
+          "target": "self",
+          "label": "Tử Thủ"
+        },
+        {
+          "type": "atk_up",
+          "value": 0.12,
+          "duration": 2,
+          "target": "self",
+          "label": "Bạo Nộ"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -7932,6 +10199,20 @@
       "hits": 2,
       "effects": [
         {
+          "type": "def_up",
+          "value": 0.25,
+          "duration": 2,
+          "target": "self",
+          "label": "Tử Thủ"
+        },
+        {
+          "type": "atk_up",
+          "value": 0.12,
+          "duration": 2,
+          "target": "self",
+          "label": "Bạo Nộ"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -7960,6 +10241,13 @@
       "source": "wiki-hero",
       "hits": 2,
       "effects": [
+        {
+          "type": "atk_up",
+          "value": 0.12,
+          "duration": 2,
+          "target": "self",
+          "label": "Bạo Nộ"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -8007,7 +10295,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         },
         {
           "type": "morale_boost",
@@ -8024,22 +10313,24 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "thunder",
+        "flash": "green_poison",
         "text": "ĐỘC LÔI",
-        "motif": "thunder"
+        "motif": "poison"
       },
       "desc": "[Kế Sách] Địch trên hàng dọc chịu 2200% Mưu Công, kèm hiệu quả [Kịch Độc], duy trì 2 lượt, 30% khiến mục tiêu bị [Hỗn Loạn], duy trì 1 lượt, bản thân hồi 50 +{6} sĩ khí.",
       "wikiQuality": "Truyền thuyết",
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "stun",
-          "chance": 0.55,
-          "duration": 1
+          "type": "poison",
+          "duration": 2,
+          "label": "Kịch Độc"
         },
         {
-          "type": "poison",
-          "duration": 2
+          "type": "stun",
+          "chance": 0.55,
+          "duration": 1,
+          "label": "Hỗn Loạn"
         },
         {
           "type": "morale_boost",
@@ -8065,13 +10356,15 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "stun",
-          "chance": 0.55,
-          "duration": 1
+          "type": "poison",
+          "duration": 2,
+          "label": "Kịch Độc"
         },
         {
-          "type": "poison",
-          "duration": 2
+          "type": "stun",
+          "chance": 0.55,
+          "duration": 1,
+          "label": "Hỗn Loạn"
         },
         {
           "type": "morale_boost",
@@ -8097,13 +10390,15 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "stun",
-          "chance": 0.55,
-          "duration": 1
+          "type": "poison",
+          "duration": 2,
+          "label": "Kịch Độc"
         },
         {
-          "type": "poison",
-          "duration": 2
+          "type": "stun",
+          "chance": 0.55,
+          "duration": 1,
+          "label": "Hỗn Loạn"
         },
         {
           "type": "morale_boost",
@@ -8168,6 +10463,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 3,
+          "target": "ally",
+          "label": "Đề Kháng"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -8190,6 +10492,20 @@
       "wikiQuality": "Truyền thuyết",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "toa_binh",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Tỏa Binh"
+        },
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 3,
+          "target": "ally",
+          "label": "Đề Kháng"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -8214,6 +10530,28 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "def_up",
+          "value": 0.2,
+          "duration": 3,
+          "target": "ally",
+          "label": "Kiên Thủ"
+        },
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 3,
+          "target": "ally",
+          "label": "Đề Kháng"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "don_dien",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Đồn Điền",
+          "target": "ally"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -8237,6 +10575,28 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "def_up",
+          "value": 0.2,
+          "duration": 3,
+          "target": "ally",
+          "label": "Kiên Thủ"
+        },
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 3,
+          "target": "ally",
+          "label": "Đề Kháng"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "don_dien",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Đồn Điền",
+          "target": "ally"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -8259,6 +10619,28 @@
       "wikiQuality": "Thần Hoàng",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "def_up",
+          "value": 0.2,
+          "duration": 3,
+          "target": "ally",
+          "label": "Kiên Thủ"
+        },
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 3,
+          "target": "ally",
+          "label": "Đề Kháng"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "don_dien",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Đồn Điền",
+          "target": "ally"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -8284,7 +10666,8 @@
       "effects": [
         {
           "type": "poison",
-          "duration": 2
+          "duration": 3,
+          "label": "Trúng Độc"
         }
       ]
     },
@@ -8304,6 +10687,14 @@
       "wikiQuality": "Truyền thuyết",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "phan_kich",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Phản Kích",
+          "target": "ally"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -8327,6 +10718,22 @@
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "than_binh",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Thần Binh",
+          "target": "ally"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "kieu_binh",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Kiêu Binh",
+          "target": "ally"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -8357,6 +10764,22 @@
       "hits": 2,
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "than_binh",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Thần Binh",
+          "target": "ally"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "kieu_binh",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Kiêu Binh",
+          "target": "ally"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -8376,15 +10799,31 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "charge",
         "text": "BẠCH KỴ DƯƠNG KỲ",
-        "motif": "slash"
+        "motif": "charge"
       },
       "desc": "[Vật Lý] Địch trên hàng dọc chịu 2 lần 19000% sát thương vật lý, lính mục tiêu càng ít sát thương càng cao. Toàn phe ta nhận hiệu quả [Thần Binh], [Kiêu Binh], duy trì 3 lượt. Bản thân hồi 75+{8} sĩ khí.",
       "wikiQuality": "Thần Hoàng",
       "source": "wiki-hero",
       "hits": 2,
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "than_binh",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Thần Binh",
+          "target": "ally"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "kieu_binh",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Kiêu Binh",
+          "target": "ally"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -8443,7 +10882,16 @@
       },
       "desc": "[Hỗ Trợ] Bản thân nhận [Thủ Hộ], duy trì 3 lượt, tướng khác của phe ta hồi 85+{4} sĩ khí.",
       "wikiQuality": "Truyền thuyết",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 3,
+          "target": "self",
+          "label": "Thủ Hộ"
+        }
+      ]
     },
     "tu_thu_giu_minh": {
       "id": "tu_thu_giu_minh",
@@ -8459,7 +10907,16 @@
       },
       "desc": "[Hỗ Trợ] Tăng cho đồng đội 85+{4} sĩ khí, toàn phe ta nhận hiệu quả [Kiên Thủ], duy trì 3 lượt.",
       "wikiQuality": "Thượng Cổ",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "def_up",
+          "value": 0.2,
+          "duration": 3,
+          "target": "ally",
+          "label": "Kiên Thủ"
+        }
+      ]
     },
     "bao_ve_kinh_giang": {
       "id": "bao_ve_kinh_giang",
@@ -8480,8 +10937,16 @@
         {
           "type": "atk_up",
           "value": 0.12,
-          "duration": 2,
-          "target": "ally"
+          "duration": 3,
+          "target": "ally",
+          "label": "Anh Dũng"
+        },
+        {
+          "type": "def_up",
+          "value": 0.2,
+          "duration": 3,
+          "target": "ally",
+          "label": "Kiên Thủ"
         }
       ]
     },
@@ -8515,7 +10980,17 @@
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Miễn Dịch], duy trì 2 lượt, toàn phe ta hồi 25 sĩ khí.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "mien_dich",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Miễn Dịch",
+          "target": "ally"
+        }
+      ]
     },
     "no_tram": {
       "id": "no_tram",
@@ -8567,6 +11042,20 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "def_up",
+          "value": 0.2,
+          "duration": 2,
+          "target": "ally",
+          "label": "Hộ Thuẫn"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "treo_thuong",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Treo Thưởng"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -8586,14 +11075,36 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "charge",
         "text": "NHẤT KỴ PHÁ THÁNH",
-        "motif": "slash"
+        "motif": "charge"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 2000% Pháp Công, đồng đội lính ít nhất nhận [Hộ Thuẫn], duy trì 2 lượt. Khiến 2 kẻ địch ngẫu nhiên bị [Treo Thưởng] không thể giải trừ, duy trì 2 lượt. Bản thân nhận [Thấu Suốt] không thể giải trừ, duy trì 3 lượt. Bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "def_up",
+          "value": 0.2,
+          "duration": 2,
+          "target": "ally",
+          "label": "Hộ Thuẫn"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "treo_thuong",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Treo Thưởng"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "thau_suot",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Thấu Suốt",
+          "target": "self"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -8623,6 +11134,36 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "def_up",
+          "value": 0.2,
+          "duration": 2,
+          "target": "self",
+          "label": "Hộ Thuẫn"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "treo_thuong",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Treo Thưởng"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "pha_thanh",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Phá Thánh",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "thau_suot",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Thấu Suốt",
+          "target": "self"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -8642,9 +11183,9 @@
       "power": 1.35,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "charge",
         "text": "THIẾT KỴ",
-        "motif": "slash"
+        "motif": "charge"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 2 lần 135% Pháp Công. Mỗi lần sát thương, 25% khiến mục tiêu bị [Hỗn Loạn], duy trì 1 lượt.",
       "wikiQuality": "Chiến",
@@ -8654,7 +11195,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
       ]
     },
@@ -8678,7 +11220,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
       ]
     },
@@ -8700,6 +11243,14 @@
       "hits": 4,
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "thau_suot",
+          "kind": "buff",
+          "duration": 1,
+          "label": "Thấu Suốt",
+          "target": "self"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -8714,9 +11265,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "charge",
         "text": "NHẤT KỴ ĐƯƠNG THIÊ",
-        "motif": "slash"
+        "motif": "charge"
       },
       "desc": "[C.Pháp] Pháp Công liên tục 5 lần 500 sĩ khí lên mục tiêu địch ngẫu nhiên, gây sát thương x2.5 cho mục tiêu có Treo Thưởng, bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thượng Cổ",
@@ -8748,6 +11299,22 @@
       "hits": 5,
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "tru_than",
+          "kind": "debuff",
+          "duration": 1,
+          "label": "Tru Thần",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "thau_suot",
+          "kind": "buff",
+          "duration": 1,
+          "label": "Thấu Suốt",
+          "target": "self"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -8768,7 +11335,15 @@
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 205% Mưu Công. Có 12% khiến mục tiêu bị [Khống Chế], duy trì 2 lượt.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "stun",
+          "chance": 0.4,
+          "duration": 2,
+          "label": "Khống Chế"
+        }
+      ]
     },
     "ky_mon": {
       "id": "ky_mon",
@@ -8778,13 +11353,22 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue",
+        "flash": "bagua",
         "text": "KỲ MÔN",
-        "motif": "arcane"
+        "motif": "bagua"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 320% Mưu Công, 24% khiến mục tiêu bị [Treo Thưởng], duy trì 2 lượt.",
       "wikiQuality": "Truyền thuyết",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "treo_thuong",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Treo Thưởng"
+        }
+      ]
     },
     "quyen_muu": {
       "id": "quyen_muu",
@@ -8801,7 +11385,16 @@
       "desc": "[Kế Sách] Toàn phe địch chịu 2 lần 5500% Mưu Công, 40% khiến tướng địch bị [Treo Thưởng] không thể giải trừ, duy trì 2 lượt, bản thân nhận [Tước Đoạt], duy trì 2 lượt.",
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
-      "hits": 2
+      "hits": 2,
+      "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "treo_thuong",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Treo Thưởng"
+        }
+      ]
     },
     "quyen_bien": {
       "id": "quyen_bien",
@@ -8818,7 +11411,16 @@
       "desc": "[Kế Sách] Toàn phe địch chịu 2 lần 9000% Mưu Công, gây cho mục tiêu lính ít nhất 1 lần 29000% Mưu Công, chênh lệch điểm Trí giữa bản thân và mục tiêu càng lớn sát thương càng cao, 40% khiến tướng địch bị [Treo Thưởng] không thể giải trừ ((Nếu mục tiêu bị [Treo Thưởng] tử vong, cả",
       "wikiQuality": "Thái Sơ",
       "source": "wiki-hero",
-      "hits": 2
+      "hits": 2,
+      "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "treo_thuong",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Treo Thưởng"
+        }
+      ]
     },
     "kich_no": {
       "id": "kich_no",
@@ -8834,7 +11436,17 @@
       },
       "desc": "[Thường] Gây cho 1 kẻ địch 500% sát thương vật lý, bản thân nhận [Kích Nộ], duy trì 3 lượt.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "kich_no",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Kích Nộ",
+          "target": "self"
+        }
+      ]
     },
     "am_te": {
       "id": "am_te",
@@ -8849,14 +11461,15 @@
         "motif": "shadow"
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 2 lần 128% Mưu Công, mục tiêu bị [Ám Tế], duy trì 2 lượt.",
-      "wikiQuality": "Thường",
+      "wikiQuality": "Thần",
       "source": "wiki-hero",
       "hits": 2,
       "effects": [
         {
           "type": "silence",
           "chance": 0.7,
-          "duration": 2
+          "duration": 2,
+          "label": "Ám Tế"
         }
       ]
     },
@@ -8880,7 +11493,8 @@
         {
           "type": "silence",
           "chance": 0.7,
-          "duration": 2
+          "duration": 3,
+          "label": "Ám Tế"
         }
       ]
     },
@@ -8897,9 +11511,16 @@
         "motif": "slash"
       },
       "desc": "[Thường] Gây cho 1 kẻ địch 125% sát thương vật lý, bản thân nhận [Thủ Hộ], duy trì 2 lượt, bản thân hồi 145 sĩ khí.",
-      "wikiQuality": "Thường",
+      "wikiQuality": "Chiến",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "self",
+          "label": "Thủ Hộ"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -8915,13 +11536,23 @@
       "power": 1.3,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "yellow",
         "text": "MŨI NHỌN",
         "motif": "slash"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 130% Pháp Công, khiến 1 kẻ địch hàng sau chịu 130% Pháp Công, bản thân nhận [Hội Tâm], duy trì 2 lượt.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "hoi_tam",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Hội Tâm",
+          "target": "self"
+        }
+      ]
     },
     "dot_tien": {
       "id": "dot_tien",
@@ -8953,7 +11584,17 @@
       },
       "desc": "[C.Pháp] Khiến 1 kẻ địch hàng sau chịu 235% Pháp Công, bản thân nhận [Hội Tâm], duy trì 2 lượt.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "hoi_tam",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Hội Tâm",
+          "target": "self"
+        }
+      ]
     },
     "dot_tap": {
       "id": "dot_tap",
@@ -8968,7 +11609,7 @@
         "motif": "slash"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 192% Pháp Công, Vật Công của bản thân tăng 25%, duy trì 2 lượt.",
-      "wikiQuality": "Thường",
+      "wikiQuality": "Chiến",
       "source": "wiki-hero"
     },
     "ly_gian": {
@@ -8984,7 +11625,7 @@
         "motif": "heal"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 92% Mưu Công. Bản thân nhận trị liệu (Mức trị liệu bằng 50% Mưu Công).",
-      "wikiQuality": "Chiến",
+      "wikiQuality": "Thường",
       "source": "wiki-hero",
       "effects": [
         {
@@ -9002,14 +11643,20 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "shield",
         "text": "YÊU GIÁP",
-        "motif": "heal"
+        "motif": "shield"
       },
       "desc": "[C.Pháp] Bản thân nhận trị liệu (Mức trị liệu bằng 40% Pháp Công). Binh lực tối đa của bản thân tăng 20%, duy trì 2 lượt. Bản thân nhận [Kinh Cúc], [Hồi Phục], duy trì 2 lượt.",
       "wikiQuality": "Thần",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "self",
+          "label": "Hồi Phục"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -9121,6 +11768,14 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "mien_dich",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Miễn Dịch",
+          "target": "self"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -9144,6 +11799,14 @@
       "source": "wiki-hero",
       "hits": 2,
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "mien_dich",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Miễn Dịch",
+          "target": "self"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -9216,7 +11879,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
       ]
     },
@@ -9318,7 +11982,7 @@
       "power": 1.65,
       "moraleCost": 100,
       "fx": {
-        "flash": "orange",
+        "flash": "tiger",
         "text": "LOẠN THẾ PHỔ ĐỘ",
         "motif": "tiger"
       },
@@ -9405,7 +12069,7 @@
         "motif": "heal"
       },
       "desc": "[Kế Sách] Bản thân nhận trị liệu (Mức trị liệu bằng 294% Mưu Công).",
-      "wikiQuality": "Thường",
+      "wikiQuality": "Chiến",
       "source": "wiki-hero",
       "effects": [
         {
@@ -9423,9 +12087,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "charge",
         "text": "KỴ XẠ",
-        "motif": "slash"
+        "motif": "charge"
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 400% Pháp Công, Pháp Công của bản thân tăng 40%, duy trì 2 lượt, bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thần",
@@ -9455,6 +12119,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "so_hai",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Sợ Hãi"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -9483,6 +12154,19 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "so_hai",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Sợ Hãi"
+        },
+        {
+          "type": "stun",
+          "chance": 0.6,
+          "duration": 2,
+          "label": "Ngủ Say"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -9510,6 +12194,19 @@
       "wikiQuality": "Thái Sơ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "so_hai",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Sợ Hãi"
+        },
+        {
+          "type": "stun",
+          "chance": 0.6,
+          "duration": 2,
+          "label": "Ngủ Say"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -9546,7 +12243,7 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "shield",
         "text": "THIẾT BÍCH",
         "motif": "shield"
       },
@@ -9558,7 +12255,8 @@
           "type": "def_up",
           "value": 0.35,
           "duration": 1,
-          "target": "self"
+          "target": "self",
+          "label": "Thiết Bích"
         }
       ]
     },
@@ -9570,7 +12268,7 @@
       "power": 1.7,
       "moraleCost": 100,
       "fx": {
-        "flash": "wind",
+        "flash": "whirlwind",
         "text": "DÒNG XOÁY",
         "motif": "whirlwind"
       },
@@ -9637,7 +12335,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
       ]
     },
@@ -9667,7 +12366,7 @@
       "fx": {
         "flash": "steel",
         "text": "XUYÊN THÍCH",
-        "motif": "slash"
+        "motif": "pierce"
       },
       "desc": "[Thường] Toàn phe địch chịu 400% sát thương vật lý.",
       "wikiQuality": "Thần",
@@ -9693,6 +12392,23 @@
           "type": "def_up",
           "value": 0.35,
           "duration": 1,
+          "target": "self",
+          "label": "Thiết Bích"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "loai_bo",
+          "kind": "debuff",
+          "duration": 1,
+          "label": "Loại Bỏ",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "lien_kich",
+          "kind": "buff",
+          "duration": 1,
+          "label": "Liên Kích",
           "target": "self"
         }
       ]
@@ -9717,6 +12433,31 @@
           "type": "def_up",
           "value": 0.35,
           "duration": 1,
+          "target": "self",
+          "label": "Thiết Bích"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "loai_bo",
+          "kind": "debuff",
+          "duration": 1,
+          "label": "Loại Bỏ",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "hoi_tam",
+          "kind": "buff",
+          "duration": 1,
+          "label": "Hội Tâm",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "lien_kich",
+          "kind": "buff",
+          "duration": 1,
+          "label": "Liên Kích",
           "target": "self"
         }
       ]
@@ -9741,6 +12482,31 @@
           "type": "def_up",
           "value": 0.35,
           "duration": 1,
+          "target": "self",
+          "label": "Thiết Bích"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "loai_bo",
+          "kind": "debuff",
+          "duration": 1,
+          "label": "Loại Bỏ",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "hoi_tam",
+          "kind": "buff",
+          "duration": 1,
+          "label": "Hội Tâm",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "lien_kich",
+          "kind": "buff",
+          "duration": 1,
+          "label": "Liên Kích",
           "target": "self"
         }
       ]
@@ -9893,14 +12659,15 @@
         "motif": "slash"
       },
       "desc": "[Thường] Gây cho 1 kẻ địch 130% sát thương vật lý, bản thân nhận [Thiết Bích], duy trì 1 lượt.",
-      "wikiQuality": "Chiến",
+      "wikiQuality": "Thường",
       "source": "wiki-hero",
       "effects": [
         {
           "type": "def_up",
           "value": 0.35,
           "duration": 1,
-          "target": "self"
+          "target": "self",
+          "label": "Thiết Bích"
         }
       ]
     },
@@ -9938,7 +12705,8 @@
       "effects": [
         {
           "type": "poison",
-          "duration": 2
+          "duration": 3,
+          "label": "Trúng Độc"
         }
       ]
     },
@@ -9950,9 +12718,9 @@
       "power": 1.58,
       "moraleCost": 100,
       "fx": {
-        "flash": "snake",
+        "flash": "steel",
         "text": "XÀ THÍCH",
-        "motif": "snake"
+        "motif": "pierce"
       },
       "desc": "[Thường] Địch trên hàng dọc chịu 158% sát thương vật lý, 75% khiến mục tiêu bị [Trúng Độc], duy trì 2 lượt.",
       "wikiQuality": "Chiến",
@@ -9960,7 +12728,8 @@
       "effects": [
         {
           "type": "poison",
-          "duration": 2
+          "duration": 2,
+          "label": "Trúng Độc"
         }
       ]
     },
@@ -9978,7 +12747,17 @@
       },
       "desc": "[Thường] Địch trên hàng dọc chịu 320% sát thương vật lý, bản thân nhận [Kích Nộ], duy trì 2 lượt.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "kich_no",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Kích Nộ",
+          "target": "self"
+        }
+      ]
     },
     "phan_thien": {
       "id": "phan_thien",
@@ -10125,18 +12904,19 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "wind",
+        "flash": "whirlwind",
         "text": "GIÓ LỐC",
         "motif": "whirlwind"
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 37% Mưu Công, mục tiêu bị [Hỗn Loạn], duy trì 1 lượt.",
-      "wikiQuality": "Thường",
+      "wikiQuality": "Chiến",
       "source": "wiki-hero",
       "effects": [
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
       ]
     },
@@ -10174,7 +12954,8 @@
       "effects": [
         {
           "type": "poison",
-          "duration": 2
+          "duration": 5,
+          "label": "Trúng Độc"
         }
       ]
     },
@@ -10192,7 +12973,16 @@
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 205% Mưu Công, mục tiêu bị [Đào Binh], duy trì 3 lượt.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "dao_binh",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Đào Binh"
+        }
+      ]
     },
     "tien_vu": {
       "id": "tien_vu",
@@ -10224,7 +13014,17 @@
       },
       "desc": "[Thường] Địch trên hàng dọc chịu 300% sát thương vật lý, bản thân nhận [Hấp Huyết], duy trì 3 lượt.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "hap_huyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Hấp Huyết",
+          "target": "self"
+        }
+      ]
     },
     "cuong_no": {
       "id": "cuong_no",
@@ -10242,6 +13042,21 @@
       "wikiQuality": "Truyền thuyết",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "treo_thuong",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Treo Thưởng"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "thau_suot",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Thấu Suốt",
+          "target": "self"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -10275,6 +13090,13 @@
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "treo_thuong",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Treo Thưởng"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -10310,6 +13132,13 @@
       "hits": 2,
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "treo_thuong",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Treo Thưởng"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -10343,6 +13172,13 @@
       "source": "wiki-hero",
       "hits": 2,
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "treo_thuong",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Treo Thưởng"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -10445,6 +13281,14 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "nguyet_hon",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Nguyệt Hồn",
+          "target": "self"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -10468,6 +13312,14 @@
       "source": "wiki-hero",
       "hits": 2,
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "nguyet_hon",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Nguyệt Hồn",
+          "target": "self"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -10493,6 +13345,14 @@
       "hits": 3,
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "nguyet_hon",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Nguyệt Hồn",
+          "target": "self"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -10516,15 +13376,16 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "morale_boost",
-          "value": 40,
-          "target": "self"
-        },
-        {
           "type": "atk_up",
           "value": 0.12,
           "duration": 2,
-          "target": "ally"
+          "target": "self",
+          "label": "Anh Dũng"
+        },
+        {
+          "type": "morale_boost",
+          "value": 40,
+          "target": "self"
         }
       ]
     },
@@ -10641,6 +13502,13 @@
       "hits": 3,
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "treo_thuong",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Treo Thưởng"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -10669,6 +13537,13 @@
       "source": "wiki-hero",
       "hits": 3,
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "treo_thuong",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Treo Thưởng"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -10702,7 +13577,7 @@
       "name": "Khích Lệ",
       "damageType": "physical",
       "pattern": "ally_all",
-      "power": 1.35,
+      "power": 1.45,
       "moraleCost": 100,
       "fx": {
         "flash": "gold_soft",
@@ -10710,7 +13585,7 @@
         "motif": "buff"
       },
       "desc": "[Hỗ Trợ] Một đơn vị phe ta ngãu nhiên hồi 100 sĩ khí, bản thân hồi 145 sĩ khí.",
-      "wikiQuality": "Thường",
+      "wikiQuality": "Chiến",
       "source": "wiki-hero",
       "effects": [
         {
@@ -10737,13 +13612,15 @@
       "source": "wiki-hero",
       "effects": [
         {
-          "type": "stun",
-          "chance": 0.55,
-          "duration": 1
+          "type": "poison",
+          "duration": 2,
+          "label": "Thi Độc"
         },
         {
-          "type": "poison",
-          "duration": 2
+          "type": "stun",
+          "chance": 0.55,
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
       ]
     },
@@ -10793,11 +13670,20 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         },
         {
           "type": "poison",
-          "duration": 2
+          "duration": 2,
+          "label": "Thi Độc"
+        },
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "self",
+          "label": "Thủ Hộ"
         }
       ]
     },
@@ -10820,11 +13706,20 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         },
         {
           "type": "poison",
-          "duration": 2
+          "duration": 2,
+          "label": "Thi Độc"
+        },
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "self",
+          "label": "Thủ Hộ"
         }
       ]
     },
@@ -10848,11 +13743,13 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         },
         {
           "type": "poison",
-          "duration": 2
+          "duration": 2,
+          "label": "Trúng Độc"
         }
       ]
     },
@@ -10898,6 +13795,14 @@
       "hits": 2,
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "mien_dich",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Miễn Dịch",
+          "target": "self"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -10921,6 +13826,14 @@
       "source": "wiki-hero",
       "hits": 2,
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "loai_bo",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Loại Bỏ",
+          "target": "self"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -10946,6 +13859,14 @@
       "hits": 2,
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "loai_bo",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Loại Bỏ",
+          "target": "self"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -10966,7 +13887,15 @@
       },
       "desc": "[Hỗ Trợ] 20% khiến toàn phe địch bị [Ngủ Say], duy trì 3 lượt.",
       "wikiQuality": "Chiến",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "stun",
+          "chance": 0.6,
+          "duration": 3,
+          "label": "Ngủ Say"
+        }
+      ]
     },
     "tat_xung": {
       "id": "tat_xung",
@@ -11077,7 +14006,7 @@
         "motif": "slash"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 150% Pháp Công, tấn công của mục tiêu giảm 100%, duy trì 1 lượt.",
-      "wikiQuality": "Thường",
+      "wikiQuality": "Chiến",
       "source": "wiki-hero"
     },
     "tien_dap": {
@@ -11088,7 +14017,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "yellow",
         "text": "TIỄN ĐẠP",
         "motif": "slash"
       },
@@ -11099,7 +14028,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         },
         {
           "type": "morale_boost",
@@ -11127,7 +14057,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         }
       ]
     },
@@ -11147,6 +14078,13 @@
       "wikiQuality": "Thường",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "tan_vo",
+          "kind": "debuff",
+          "duration": 1,
+          "label": "Tan Vỡ"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -11176,6 +14114,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "ally",
+          "label": "Thủ Hộ"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -11198,6 +14143,13 @@
       "wikiQuality": "Thần",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "ally",
+          "label": "Thủ Hộ"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -11228,6 +14180,13 @@
       "hits": 2,
       "effects": [
         {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 1,
+          "target": "ally",
+          "label": "Thủ Hộ"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -11257,6 +14216,13 @@
       "hits": 2,
       "effects": [
         {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "ally",
+          "label": "Thủ Hộ"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -11285,6 +14251,13 @@
       "source": "wiki-hero",
       "hits": 2,
       "effects": [
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "ally",
+          "label": "Thủ Hộ"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -11346,7 +14319,8 @@
           "type": "def_up",
           "value": 0.35,
           "duration": 1,
-          "target": "self"
+          "target": "self",
+          "label": "Thiết Bích"
         },
         {
           "type": "morale_boost",
@@ -11375,6 +14349,15 @@
           "type": "def_up",
           "value": 0.35,
           "duration": 1,
+          "target": "self",
+          "label": "Thiết Bích"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "tong_long",
+          "kind": "buff",
+          "duration": 4,
+          "label": "Tòng Long",
           "target": "self"
         },
         {
@@ -11403,8 +14386,9 @@
         {
           "type": "def_up",
           "value": 0.35,
-          "duration": 1,
-          "target": "self"
+          "duration": 2,
+          "target": "ally",
+          "label": "Thiết Bích"
         },
         {
           "type": "heal_pct",
@@ -11432,8 +14416,9 @@
         {
           "type": "def_up",
           "value": 0.35,
-          "duration": 1,
-          "target": "self"
+          "duration": 2,
+          "target": "ally",
+          "label": "Thiết Bích"
         },
         {
           "type": "heal_pct",
@@ -11475,7 +14460,7 @@
       "name": "Xua Đuổi",
       "damageType": "physical",
       "pattern": "all",
-      "power": 1.55,
+      "power": 1.65,
       "moraleCost": 100,
       "fx": {
         "flash": "steel",
@@ -11483,7 +14468,7 @@
         "motif": "slash"
       },
       "desc": "[Hỗ Trợ] Giải trừ hiệu quả có lợi toàn phe địch (Khí chiến đấu với người chơi khác, giải trừ tối đa 2 hiệu quả có lợi của mỗi tướng địch), giúp tướng khác phe ta hồi 25+{4} sĩ khí, bản thân hồi 100 sĩ khí.",
-      "wikiQuality": "Thần",
+      "wikiQuality": "Truyền thuyết",
       "source": "wiki-hero",
       "effects": [
         {
@@ -11552,7 +14537,7 @@
         "motif": "heal"
       },
       "desc": "[Kế Sách] Trị liệu toàn phe ta (Mức trị liệu bằng 75% Mưu Công).",
-      "wikiQuality": "Thường",
+      "wikiQuality": "Chiến",
       "source": "wiki-hero",
       "effects": [
         {
@@ -11575,9 +14560,17 @@
         "motif": "heal"
       },
       "desc": "[Kế Sách] Trị liệu toàn phe ta (Mức trị liệu bằng 75% Mưu Công). Bản thân nhận [Miễn Dịch], duy trì 3 lượt.",
-      "wikiQuality": "Chiến",
+      "wikiQuality": "Thần",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "mien_dich",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Miễn Dịch",
+          "target": "self"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -11603,6 +14596,14 @@
       "hits": 2,
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "loai_bo",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Loại Bỏ",
+          "target": "self"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -11627,6 +14628,14 @@
       "hits": 2,
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "loai_bo",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Loại Bỏ",
+          "target": "self"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -11650,6 +14659,14 @@
       "source": "wiki-hero",
       "hits": 5,
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "loai_bo",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Loại Bỏ",
+          "target": "self"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -11956,6 +14973,13 @@
       "hits": 2,
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "huyet_cuc",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Huyết Cúc"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -11998,13 +15022,30 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "yellow",
         "text": "TIỄN TRẬN",
         "motif": "slash"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 320% Pháp Công. Bản thân nhận [Độ Hiểm] [Đề Kháng], duy trì 3 lượt, chống đỡ sát thương bằng 15% binh lực tối đa.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "do_hiem",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Độ Hiểm",
+          "target": "self"
+        },
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 3,
+          "target": "self",
+          "label": "Đề Kháng"
+        }
+      ]
     },
     "hoa_long_tien": {
       "id": "hoa_long_tien",
@@ -12023,6 +15064,21 @@
       "source": "wiki-hero",
       "hits": 2,
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "do_hiem",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Độ Hiểm",
+          "target": "self"
+        },
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 3,
+          "target": "self",
+          "label": "Đề Kháng"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -12048,6 +15104,21 @@
       "hits": 2,
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "do_hiem",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Độ Hiểm",
+          "target": "self"
+        },
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 3,
+          "target": "self",
+          "label": "Đề Kháng"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -12062,7 +15133,7 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "yellow",
         "text": "THẤT TINH TIỄN TRẬ",
         "motif": "slash"
       },
@@ -12071,6 +15142,21 @@
       "source": "wiki-hero",
       "hits": 2,
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "do_hiem",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Độ Hiểm",
+          "target": "self"
+        },
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 3,
+          "target": "self",
+          "label": "Đề Kháng"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -12145,7 +15231,7 @@
       "name": "Phản Kế",
       "damageType": "physical",
       "pattern": "ally_all",
-      "power": 1.65,
+      "power": 1.75,
       "moraleCost": 100,
       "fx": {
         "flash": "gold_soft",
@@ -12153,7 +15239,7 @@
         "motif": "buff"
       },
       "desc": "[Hỗ Trợ] Giải trừ hiệu quả bất lợi toàn phe ta (Khi chiến đấu với người chơi khác, giải trừ tối đa 2 hiệu quả bất lợi cho mỗi tướng phe ta), giúp tướng khác phe ta hồi 25+{4} sĩ khí. Mỗi giải trừ một trạng thái bất lợi, giúp tướng tương ứng hồi 10 sĩ khí, bản thân hồi 145 sĩ khí.",
-      "wikiQuality": "Truyền thuyết",
+      "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
       "effects": [
         {
@@ -12171,9 +15257,9 @@
       "power": 1.85,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "shield",
         "text": "NHO THÁNH HỘ THỂ",
-        "motif": "buff"
+        "motif": "shield"
       },
       "desc": "[Hỗ Trợ] Giải trừ hiệu quả bất lợi toàn phe ta (Khi chiến đấu với người chơi khác, giải trừ tối đa 3 hiệu quả bất lợi cho mỗi tướng phe ta), tăng cho toàn phe ta hiệu quả [Minh Triết], duy trì 2 lượt, giúp các đồng đội khác hồi 50 +{4} sĩ khí, mỗi giải trừ 1 hiệu quả bất lợi, tướ",
       "wikiQuality": "Thái Sơ",
@@ -12207,7 +15293,7 @@
       "name": "Thanh Huy",
       "damageType": "physical",
       "pattern": "ally_all",
-      "power": 1.65,
+      "power": 1.75,
       "moraleCost": 100,
       "fx": {
         "flash": "gold_soft",
@@ -12215,9 +15301,17 @@
         "motif": "buff"
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Nguyệt Hồn], duy trì 2 lượt, tướng khác của phe ta hồi 25+{2} sĩ khí, bản thân hồi 50+{4} sĩ khí.",
-      "wikiQuality": "Truyền thuyết",
+      "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "nguyet_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Nguyệt Hồn",
+          "target": "ally"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -12242,6 +15336,14 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "nguyet_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Nguyệt Hồn",
+          "target": "ally"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -12258,7 +15360,7 @@
       "name": "Tự Hủy",
       "damageType": "physical",
       "pattern": "single",
-      "power": 1.4300000000000002,
+      "power": 1.51,
       "moraleCost": 100,
       "fx": {
         "flash": "steel",
@@ -12266,7 +15368,7 @@
         "motif": "slash"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 600% Pháp Công, bản thân chịu 1000% Pháp Công.",
-      "wikiQuality": "Thường",
+      "wikiQuality": "Chiến",
       "source": "wiki-hero"
     },
     "huyet_che": {
@@ -12282,13 +15384,14 @@
         "motif": "arcane"
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 12% Mưu Công, mục tiêu bị [Hỗn Loạn], duy trì 1 lượt, bản thân chịu 85% Mưu Công, bản thân hồi 100 sĩ khí.",
-      "wikiQuality": "Thường",
+      "wikiQuality": "Chiến",
       "source": "wiki-hero",
       "effects": [
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         },
         {
           "type": "morale_boost",
@@ -12316,7 +15419,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         },
         {
           "type": "morale_boost",
@@ -12338,9 +15442,15 @@
         "motif": "arcane"
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 350% Mưu Công, khiến mục tiêu bị [Khống Chế], duy trì 1 lượt. Bản thân hồi 100 sĩ khí.",
-      "wikiQuality": "Truyền thuyết",
+      "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "stun",
+          "chance": 0.4,
+          "duration": 1,
+          "label": "Khống Chế"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -12364,6 +15474,12 @@
       "wikiQuality": "Thái Sơ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "stun",
+          "chance": 0.4,
+          "duration": 1,
+          "label": "Khống Chế"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -12404,6 +15520,14 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "tinh_hoa",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Tịnh Hóa",
+          "target": "self"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -12426,6 +15550,22 @@
       "wikiQuality": "Thần",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "tinh_hoa",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Tịnh Hóa",
+          "target": "self"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "loai_bo",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Loại Bỏ",
+          "target": "self"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -12502,6 +15642,14 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "tinh_hoa",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Tịnh Hóa",
+          "target": "self"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -12521,14 +15669,38 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "charge",
         "text": "KỲ BINH PHÁ THỤC",
-        "motif": "slash"
+        "motif": "charge"
       },
       "desc": "[Chiến Pháp + Kế Sách + Thường] khiến bản thân vào [Tịnh Hóa], [Độ Hiểm] và [Loại Bỏ] không thể giải trừ, duy trì 3 lượt, sau đó tiêu hao 700 sĩ khí lần lượt gây 12000% Pháp Công lên kẻ địch trên hàng ngang, gây 12000% Mưu Công lên kẻ địch trên hàng dọc, gây 7300% sát thương vật ",
       "wikiQuality": "Thần Hoàng",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "tinh_hoa",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Tịnh Hóa",
+          "target": "self"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "do_hiem",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Độ Hiểm",
+          "target": "self"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "loai_bo",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Loại Bỏ",
+          "target": "self"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -12569,6 +15741,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "dao_binh",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Đào Binh"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -12591,6 +15770,13 @@
       "wikiQuality": "Truyền thuyết",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "dao_binh",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Đào Binh"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -12615,6 +15801,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "dao_binh",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Đào Binh"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -12629,9 +15822,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "rush",
         "text": "TẬP KÍCH",
-        "motif": "slash"
+        "motif": "rush"
       },
       "desc": "[C.Pháp] Đơn vị địch lính ít nhất chịu 400% Pháp Công, lính mục tiêu càng ít sát thương càng cao.",
       "wikiQuality": "Thần",
@@ -12679,7 +15872,7 @@
       "fx": {
         "flash": "steel",
         "text": "ĐỊA THÍCH",
-        "motif": "slash"
+        "motif": "pierce"
       },
       "desc": "[Thường] Toàn phe địch chịu 150% sát thương vật lý, lính bản thân càng ít sát thương càng cao.",
       "wikiQuality": "Chiến",
@@ -12693,9 +15886,9 @@
       "power": 1.55,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "steel",
         "text": "CỐT THÍCH",
-        "motif": "buff"
+        "motif": "pierce"
       },
       "desc": "[Thường] Đánh nhóm, lính ít sẽ gây nhiều sát thương, bản thân tăng bạo kích 2 lượt.",
       "wikiQuality": "Thần",
@@ -12715,7 +15908,25 @@
       },
       "desc": "[Thường] Tấn công 200 sĩ khí, khiến toàn phe địch chịu 300% sát thương vật lý, lính bản thân càng ít sát thương càng cao, bản thân nhận [Hội Tâm], [Thiên Vận], duy trì 2 lượt.",
       "wikiQuality": "Truyền thuyết",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "hoi_tam",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Hội Tâm",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "thien_van",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Thiên Vận",
+          "target": "self"
+        }
+      ]
     },
     "thap_phuong_diet": {
       "id": "thap_phuong_diet",
@@ -12731,7 +15942,25 @@
       },
       "desc": "[Thường] Tấn công 500 sĩ khí gây cho toàn phe địch 700% sát thương vật lý, lính bản thân càng ít sát thương càng cao, bản thân nhận [Hội Tâm], [Thiên Vận], duy trì 2 lượt.",
       "wikiQuality": "Thượng Cổ",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "hoi_tam",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Hội Tâm",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "thien_van",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Thiên Vận",
+          "target": "self"
+        }
+      ]
     },
     "nghich_chuyen_sinh_tu": {
       "id": "nghich_chuyen_sinh_tu",
@@ -12747,7 +15976,25 @@
       },
       "desc": "[Thường] Tấn công 500 sĩ khí. Toàn phe địch chịu 1800% sát thương vật lý, lính bản thân càng ít sát thương càng cao. Bản thân nhận [Hội Tâm], [Thiên Vận], duy trì 2 lượt.",
       "wikiQuality": "Thái Sơ",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "hoi_tam",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Hội Tâm",
+          "target": "self"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "thien_van",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Thiên Vận",
+          "target": "self"
+        }
+      ]
     },
     "lang_dao": {
       "id": "lang_dao",
@@ -12773,7 +16020,7 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "wind",
+        "flash": "whirlwind",
         "text": "VÒNG XOÁY",
         "motif": "whirlwind"
       },
@@ -12805,6 +16052,14 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "hap_huyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Hấp Huyết",
+          "target": "ally"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -12827,6 +16082,14 @@
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "hap_huyet",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Hấp Huyết",
+          "target": "ally"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -12903,7 +16166,8 @@
       "effects": [
         {
           "type": "burn",
-          "duration": 2
+          "duration": 2,
+          "label": "Thiêu Đốt"
         }
       ]
     },
@@ -12915,7 +16179,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "yellow",
         "text": "TIỄN LAM",
         "motif": "slash"
       },
@@ -13017,7 +16281,28 @@
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Thủ Hộ], [Hồi Phục], [Hồi Xuân], duy trì 2 lượt. Giúp các đồng đội khác hồi 10+{4} sĩ khí.",
       "wikiQuality": "Thượng Cổ",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "ally",
+          "label": "Thủ Hộ"
+        },
+        {
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Hồi Phục"
+        },
+        {
+          "type": "heal_pct",
+          "value": 0.15,
+          "target": "ally",
+          "label": "Hồi Xuân"
+        }
+      ]
     },
     "than_huu_mot_phuong": {
       "id": "than_huu_mot_phuong",
@@ -13033,7 +16318,28 @@
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Thủ Hộ], [Hồi Phục], nhận 2 tầng [Hồi Xuân], duy trì 2 lượt, các tướng khác trong phe ta hồi 20+{4} sĩ khí.",
       "wikiQuality": "Thái Sơ",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "def_up",
+          "value": 0.15,
+          "duration": 2,
+          "target": "ally",
+          "label": "Thủ Hộ"
+        },
+        {
+          "type": "heal_pct",
+          "value": 0.12,
+          "target": "ally",
+          "label": "Hồi Phục"
+        },
+        {
+          "type": "heal_pct",
+          "value": 0.15,
+          "target": "ally",
+          "label": "Hồi Xuân"
+        }
+      ]
     },
     "tru_tam": {
       "id": "tru_tam",
@@ -13075,6 +16381,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "am_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Âm Hồn"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -13102,6 +16415,13 @@
       "wikiQuality": "Truyền thuyết",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "am_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Âm Hồn"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -13131,6 +16451,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "am_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Âm Hồn"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -13158,6 +16485,13 @@
       "wikiQuality": "Thái Sơ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "am_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Âm Hồn"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -13203,6 +16537,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "ap_uc",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Áp Ức"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -13225,6 +16566,13 @@
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "ap_uc",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Áp Ức"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -13250,6 +16598,13 @@
       "hits": 2,
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "ap_uc",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Áp Ức"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -13264,7 +16619,7 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "wind",
+        "flash": "whirlwind",
         "text": "PHONG HẠC",
         "motif": "whirlwind"
       },
@@ -13273,6 +16628,13 @@
       "source": "wiki-hero",
       "hits": 2,
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "ap_uc",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Áp Ức"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -13361,6 +16723,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "me_hoac",
+          "kind": "control",
+          "duration": 2,
+          "label": "Mê Hoặc"
+        },
+        {
           "type": "atk_up",
           "value": 0.12,
           "duration": 2,
@@ -13409,6 +16778,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "me_hoac",
+          "kind": "control",
+          "duration": 2,
+          "label": "Mê Hoặc"
+        },
+        {
           "type": "atk_up",
           "value": 0.12,
           "duration": 2,
@@ -13433,6 +16809,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "me_hoac",
+          "kind": "control",
+          "duration": 2,
+          "label": "Mê Hoặc"
+        },
+        {
           "type": "atk_up",
           "value": 0.12,
           "duration": 2,
@@ -13456,6 +16839,13 @@
       "wikiQuality": "Thần Hoàng",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "me_hoac",
+          "kind": "control",
+          "duration": 2,
+          "label": "Mê Hoặc"
+        },
         {
           "type": "atk_up",
           "value": 0.12,
@@ -13501,7 +16891,7 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "yellow",
         "text": "ĐOẠT TÂM TIỄN",
         "motif": "slash"
       },
@@ -13593,7 +16983,17 @@
       },
       "desc": "[Thường] Gây cho 1 kẻ địch 500% sát thương vật lý, bản thân nhận [Hội Tâm], duy trì 3 lượt.",
       "wikiQuality": "Thần",
-      "source": "wiki-hero"
+      "source": "wiki-hero",
+      "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "hoi_tam",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Hội Tâm",
+          "target": "self"
+        }
+      ]
     },
     "hoa_nham": {
       "id": "hoa_nham",
@@ -13613,7 +17013,8 @@
       "effects": [
         {
           "type": "burn",
-          "duration": 2
+          "duration": 2,
+          "label": "Thiêu Đốt"
         }
       ]
     },
@@ -13650,6 +17051,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "dao_binh",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Đào Binh"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -13677,6 +17085,20 @@
       "wikiQuality": "Truyền thuyết",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "dao_binh",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Đào Binh"
+        },
+        {
+          "type": "def_up",
+          "value": 0.25,
+          "duration": 3,
+          "target": "self",
+          "label": "Tử Thủ"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -13706,6 +17128,20 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "dao_binh",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Đào Binh"
+        },
+        {
+          "type": "def_up",
+          "value": 0.25,
+          "duration": 3,
+          "target": "self",
+          "label": "Tử Thủ"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -13734,6 +17170,20 @@
       "source": "wiki-hero",
       "hits": 2,
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "dao_binh",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Đào Binh"
+        },
+        {
+          "type": "def_up",
+          "value": 0.25,
+          "duration": 3,
+          "target": "self",
+          "label": "Tử Thủ"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -13791,6 +17241,14 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "nguyet_hon",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Nguyệt Hồn",
+          "target": "self"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -13819,6 +17277,26 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "dien_cuong",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Điên Cuồng"
+        },
+        {
+          "type": "atk_down",
+          "value": 0.1,
+          "duration": 3,
+          "label": "Do Dự"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "te_liet",
+          "kind": "control",
+          "duration": 3,
+          "label": "Tê Liệt"
+        },
+        {
           "type": "stun",
           "chance": 0.55,
           "duration": 1
@@ -13841,6 +17319,26 @@
       "wikiQuality": "Thái Sơ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "dien_cuong",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Điên Cuồng"
+        },
+        {
+          "type": "atk_down",
+          "value": 0.1,
+          "duration": 3,
+          "label": "Do Dự"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "te_liet",
+          "kind": "control",
+          "duration": 3,
+          "label": "Tê Liệt"
+        },
         {
           "type": "stun",
           "chance": 0.55,
@@ -13865,6 +17363,14 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "tru_than",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Tru Thần",
+          "target": "self"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -13887,6 +17393,14 @@
       "wikiQuality": "Thái Sơ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_debuff",
+          "id": "tru_than",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Tru Thần",
+          "target": "self"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -14031,6 +17545,14 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_debuff",
+          "id": "pha_thanh",
+          "kind": "debuff",
+          "duration": 3,
+          "label": "Phá Thánh",
+          "target": "self"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -14052,7 +17574,7 @@
       "fx": {
         "flash": "steel",
         "text": "NỘ THÍCH",
-        "motif": "slash"
+        "motif": "pierce"
       },
       "desc": "[Thường] Toàn phe địch chịu 105% sát thương vật lý.",
       "wikiQuality": "Chiến",
@@ -14068,7 +17590,7 @@
       "fx": {
         "flash": "steel",
         "text": "LIÊN THÍCH",
-        "motif": "slash"
+        "motif": "pierce"
       },
       "desc": "[Thường] Toàn phe địch chịu 355% sát thương vật lý, gây cho 1 đơn vị địch 2 lần 300% sát thương vật lý.",
       "wikiQuality": "Truyền thuyết",
@@ -14085,7 +17607,7 @@
       "fx": {
         "flash": "steel",
         "text": "XUYÊN VÂN THÍCH",
-        "motif": "slash"
+        "motif": "pierce"
       },
       "desc": "[Thường] Toàn phe địch chịu 2000% sát thương vật lý, gây cho 1 đơn vị địch 3 lần 2500% sát thương vật lý.",
       "wikiQuality": "Thượng Cổ",
@@ -14126,7 +17648,16 @@
       "effects": [
         {
           "type": "burn",
-          "duration": 2
+          "duration": 1,
+          "label": "Thiên Hỏa"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "thien_van",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Thiên Vận",
+          "target": "self"
         },
         {
           "type": "morale_boost",
@@ -14176,7 +17707,15 @@
       "effects": [
         {
           "type": "burn",
-          "duration": 2
+          "duration": 1,
+          "label": "Thiên Hỏa"
+        },
+        {
+          "type": "wiki_debuff",
+          "id": "toa_binh",
+          "kind": "debuff",
+          "duration": 2,
+          "label": "Tỏa Binh"
         },
         {
           "type": "heal_pct",
@@ -14224,7 +17763,16 @@
       "effects": [
         {
           "type": "burn",
-          "duration": 2
+          "duration": 2,
+          "label": "Thiên Hỏa"
+        },
+        {
+          "type": "wiki_buff",
+          "id": "than_binh",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Thần Binh",
+          "target": "self"
         },
         {
           "type": "heal_pct",
@@ -14257,8 +17805,9 @@
         {
           "type": "def_up",
           "value": 0.35,
-          "duration": 1,
-          "target": "self"
+          "duration": 2,
+          "target": "ally",
+          "label": "Thiết Bích"
         },
         {
           "type": "heal_pct",
@@ -14286,7 +17835,8 @@
         {
           "type": "stun",
           "chance": 0.55,
-          "duration": 1
+          "duration": 1,
+          "label": "Hỗn Loạn"
         },
         {
           "type": "heal_pct",
@@ -14469,6 +18019,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "def_up",
+          "value": 0.2,
+          "duration": 2,
+          "target": "ally",
+          "label": "Hộ Thuẫn"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -14496,6 +18053,13 @@
       "wikiQuality": "Thái Sơ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "def_up",
+          "value": 0.2,
+          "duration": 2,
+          "target": "ally",
+          "label": "Hộ Thuẫn"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -14532,6 +18096,14 @@
       "hits": 2,
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "bat_quai",
+          "kind": "buff",
+          "duration": 2,
+          "label": "Bát Quái",
+          "target": "ally"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -14562,7 +18134,7 @@
         "motif": "heal"
       },
       "desc": "[Kế Sách] Trị liệu toàn phe ta (Mức trị liệu bằng 54% Mưu Công). Bản thân hồi 145 sĩ khí.",
-      "wikiQuality": "Thường",
+      "wikiQuality": "Thần",
       "source": "wiki-hero",
       "effects": [
         {
@@ -14594,6 +18166,13 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "def_up",
+          "value": 0.25,
+          "duration": 3,
+          "target": "self",
+          "label": "Tử Thủ"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -14621,6 +18200,19 @@
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "def_up",
+          "value": 0.25,
+          "duration": 3,
+          "target": "self",
+          "label": "Tử Thủ"
+        },
+        {
+          "type": "heal_pct",
+          "value": 0.15,
+          "target": "ally",
+          "label": "Hồi Xuân"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -14651,6 +18243,19 @@
       "hits": 2,
       "effects": [
         {
+          "type": "def_up",
+          "value": 0.25,
+          "duration": 3,
+          "target": "self",
+          "label": "Tử Thủ"
+        },
+        {
+          "type": "heal_pct",
+          "value": 0.15,
+          "target": "ally",
+          "label": "Hồi Xuân"
+        },
+        {
           "type": "heal_pct",
           "value": 0.12,
           "target": "ally"
@@ -14679,6 +18284,13 @@
       "source": "wiki-hero",
       "hits": 3,
       "effects": [
+        {
+          "type": "def_up",
+          "value": 0.25,
+          "duration": 2,
+          "target": "self",
+          "label": "Tử Thủ"
+        },
         {
           "type": "heal_pct",
           "value": 0.12,
@@ -14724,6 +18336,14 @@
       "source": "wiki-hero",
       "effects": [
         {
+          "type": "wiki_buff",
+          "id": "hap_huyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Hấp Huyết",
+          "target": "self"
+        },
+        {
           "type": "morale_boost",
           "value": 40,
           "target": "self"
@@ -14746,6 +18366,14 @@
       "wikiQuality": "Thượng Cổ",
       "source": "wiki-hero",
       "effects": [
+        {
+          "type": "wiki_buff",
+          "id": "hap_huyet",
+          "kind": "buff",
+          "duration": 3,
+          "label": "Hấp Huyết",
+          "target": "self"
+        },
         {
           "type": "morale_boost",
           "value": 40,
@@ -14809,23 +18437,26 @@
       "blue": "thien_chinh",
       "purple": "quan_lam",
       "orange": "thien_ha_chia_ba",
-      "red": "thien_ha_chia_ba"
+      "red": "thien_ha_chia_ba",
+      "gold": "thien_ha_chia_ba"
     },
     "yen_nguyet": {
       "white": "yen_nguyet",
       "green": "thanh_long",
       "blue": "vo_thanh",
       "purple": "thanh_long_tram",
-      "orange": "thien_ly_don_ky",
-      "red": "uy_chan_hoa_ha"
+      "orange": "thanh_long_yen_nguyet",
+      "red": "thien_ly_don_ky",
+      "gold": "uy_chan_hoa_ha"
     },
     "no_sat": {
       "white": "no_sat",
       "green": "bao_hao",
       "blue": "manh_ho",
       "purple": "ho_khieu",
-      "orange": "ba_vuong_kich_dinh",
-      "red": "manh_ho_liet_son"
+      "orange": "van_nguoi_kho_do",
+      "red": "ba_vuong_kich_dinh",
+      "gold": "manh_ho_liet_son"
     },
     "don_ky": {
       "white": "don_ky",
@@ -14833,47 +18464,53 @@
       "blue": "ky_xa",
       "purple": "ky_xa",
       "orange": "ky_xa",
-      "red": "ky_xa"
+      "red": "ky_xa",
+      "gold": "ky_xa"
     },
     "dong_phong": {
       "white": "dong_phong",
       "green": "phuc_long",
       "blue": "than_toan",
       "purple": "bat_tran_do",
-      "orange": "ky_mon_bat_tran_do",
-      "red": "ky_mon_bat_tran_do"
+      "orange": "thien_dia_van_tuong",
+      "red": "ky_mon_bat_tran_do",
+      "gold": "ky_mon_bat_tran_do"
     },
     "loi_tien": {
       "white": "loi_tien",
       "green": "loi_tien",
       "blue": "nghe_xa",
       "purple": "truy_nguyet",
-      "orange": "lac_nhat_than_tien",
-      "red": "xich_vu_quan_hong"
+      "orange": "bach_ly_truy_hon",
+      "red": "lac_nhat_than_tien",
+      "gold": "xich_vu_quan_hong"
     },
     "pha_quan": {
       "white": "pha_quan",
       "green": "thi_quan",
       "blue": "ky_than",
       "purple": "phong_loi",
-      "orange": "te_nhat_thien_ky",
-      "red": "te_nhat_thien_ky"
+      "orange": "bach_hong_quan_nhat",
+      "red": "te_nhat_thien_ky",
+      "gold": "te_nhat_thien_ky"
     },
     "tu_dien": {
       "white": "tu_dien",
       "green": "than_loi",
       "blue": "loi_oanh",
       "purple": "cuu_thien_than_loi",
-      "orange": "kinh_thien_bao_loi",
-      "red": "cuu_tieu_than_loi"
+      "orange": "diet_the_thien_loi",
+      "red": "kinh_thien_bao_loi",
+      "gold": "cuu_tieu_than_loi"
     },
     "hoanh_hoa": {
       "white": "hoanh_hoa",
       "green": "san_bang",
       "blue": "ho_chu",
       "purple": "vien_ho",
-      "orange": "muc_huyet_ho_chu",
-      "red": "muc_huyet_ho_chu"
+      "orange": "sa_truong_ngu_dich",
+      "red": "muc_huyet_ho_chu",
+      "gold": "muc_huyet_ho_chu"
     },
     "thu_kich": {
       "white": "thu_kich",
@@ -14881,39 +18518,44 @@
       "blue": "hoa_no",
       "purple": "kinh_no",
       "orange": "than_co_no",
-      "red": "than_co_no"
+      "red": "than_co_no",
+      "gold": "than_co_no"
     },
     "phan_kich": {
       "white": "phan_kich",
       "green": "nghich_chuyen",
       "blue": "huyet_tram",
       "purple": "pha_dich",
-      "orange": "thong_quan_pha_dich",
-      "red": "bay_tran_nhu_nui"
+      "orange": "the_pha_dich",
+      "red": "thong_quan_pha_dich",
+      "gold": "bay_tran_nhu_nui"
     },
     "ngu_giap": {
       "white": "ngu_giap",
       "green": "ngu_giap",
       "blue": "than_ngu",
       "purple": "bach_y_do_giang",
-      "orange": "bach_y_pha_lang",
-      "red": "bach_y_pha_lang"
+      "orange": "thien_nhan",
+      "red": "bach_y_pha_lang",
+      "gold": "bach_y_pha_lang"
     },
     "son_bang": {
       "white": "son_bang",
       "green": "thap_thien",
       "blue": "thien_bang",
       "purple": "liet_thien",
-      "orange": "troi_tru_dat_diet",
-      "red": "troi_tru_dat_diet"
+      "orange": "thien_bang_dia_liep",
+      "red": "troi_tru_dat_diet",
+      "gold": "troi_tru_dat_diet"
     },
     "hu_vo": {
       "white": "hu_vo",
       "green": "hac_dong",
       "blue": "quy_mon",
       "purple": "ky_mon",
-      "orange": "quyen_bien",
-      "red": "quyen_bien"
+      "orange": "quyen_muu",
+      "red": "quyen_bien",
+      "gold": "quyen_bien"
     },
     "uy_phong": {
       "white": "uy_phong",
@@ -14921,7 +18563,8 @@
       "blue": "khu_truc",
       "purple": "kiem_ham",
       "orange": "kiem_ham",
-      "red": "kiem_ham"
+      "red": "kiem_ham",
+      "gold": "kiem_ham"
     },
     "dap_pha": {
       "white": "dap_pha",
@@ -14929,7 +18572,8 @@
       "blue": "tat_tri",
       "purple": "ky_than",
       "orange": "ky_than",
-      "red": "ky_than"
+      "red": "ky_than",
+      "gold": "ky_than"
     },
     "kinh_loi": {
       "white": "kinh_loi",
@@ -14937,94 +18581,106 @@
       "blue": "kich_no",
       "purple": "kich_no",
       "orange": "kich_no",
-      "red": "kich_no"
+      "red": "kich_no",
+      "gold": "kich_no"
     },
     "cuong_bao": {
       "white": "cuong_bao",
       "green": "chien_cuong",
       "blue": "thi_huyet",
       "purple": "cuong_no",
-      "orange": "di_toc_xam_nhap",
-      "red": "dai_vuong_than_chinh"
+      "orange": "man_no_hong",
+      "red": "di_toc_xam_nhap",
+      "gold": "dai_vuong_than_chinh"
     },
     "ho_xung": {
       "white": "ho_xung",
       "green": "ho_sat",
       "blue": "quy_sat",
       "purple": "huyet_quy_nhan",
-      "orange": "luot_nhanh_nhu_gio",
-      "red": "trieu_ho_pha_tran"
+      "orange": "uy_chan_tieu_dao",
+      "red": "luot_nhanh_nhu_gio",
+      "gold": "trieu_ho_pha_tran"
     },
     "man_nguu": {
       "white": "man_nguu",
       "green": "cuong_nguu",
       "blue": "dia_long",
       "purple": "hoa_nguu_dap",
-      "orange": "troi_long_dat_lo",
-      "red": "troi_long_dat_lo"
+      "orange": "man_nguu_khai_son",
+      "red": "troi_long_dat_lo",
+      "gold": "troi_long_dat_lo"
     },
     "kich_thich": {
       "white": "kich_thich",
       "green": "bac_kich",
       "blue": "thi_huyet",
       "purple": "ma_quan",
-      "orange": "huyet_ach_su",
-      "red": "huyet_ach_su"
+      "orange": "bac_thay_u_mich",
+      "red": "huyet_ach_su",
+      "gold": "huyet_ach_su"
     },
     "viem_loi": {
       "white": "viem_loi",
       "green": "xich_loi",
       "blue": "quy_muu",
       "purple": "quy_ke",
-      "orange": "bien_sao_lap_lanh",
-      "red": "bien_sao_lap_lanh"
+      "orange": "quyet_thang_thien_ly",
+      "red": "bien_sao_lap_lanh",
+      "gold": "bien_sao_lap_lanh"
     },
     "dia_liep": {
       "white": "dia_liep",
       "green": "dia_nha",
       "blue": "bang_chuy",
       "purple": "bang_phong",
-      "orange": "thien_ly_bang_phong",
-      "red": "thien_ly_bang_phong"
+      "orange": "thien_han_dia_bang",
+      "red": "thien_ly_bang_phong",
+      "gold": "thien_ly_bang_phong"
     },
     "ho_khieu": {
       "white": "ho_khieu",
       "green": "su_hong",
       "blue": "cuong_hao",
       "purple": "de_hon",
-      "orange": "pha_dam_no_hong",
-      "red": "pha_dam_no_hong"
+      "orange": "bao_no_hong",
+      "red": "pha_dam_no_hong",
+      "gold": "pha_dam_no_hong"
     },
     "cong_tam": {
       "green": "cong_tam",
       "blue": "cong_tam",
       "purple": "ly_gian",
-      "orange": "tuyet_tinh_vo_hoi",
-      "red": "tuyet_tinh_vo_hoi"
+      "orange": "tuyen_muc_uy_nghi",
+      "red": "tuyet_tinh_vo_hoi",
+      "gold": "tuyet_tinh_vo_hoi"
     },
     "binh_tien": {
       "white": "binh_tien",
       "green": "phong_tien",
       "blue": "hoa_than",
       "purple": "dai_viem_de",
-      "orange": "luyen_nguc_hoa_hai",
-      "red": "luyen_nguc_hoa_hai"
+      "orange": "hong_lien_nghiep_hoa",
+      "red": "luyen_nguc_hoa_hai",
+      "gold": "luyen_nguc_hoa_hai"
     },
     "hong_viem": {
       "white": "hong_viem",
       "green": "hac_viem",
       "blue": "nhien_tan",
       "purple": "thien_hoa_thieu",
-      "orange": "hoa_the_ngut_troi",
-      "red": "xich_lua_tri_tue"
+      "orange": "nghiep_viem_bao",
+      "red": "hoa_the_ngut_troi",
+      "gold": "xich_lua_tri_tue"
     },
     "nghich_tap": {
       "white": "nghich_tap",
       "green": "dong_xoay",
       "blue": "lang_tuyen",
       "purple": "to_luu_nghich_tap",
-      "orange": "lung_hoan_tang_dich",
-      "red": "lang_tuyen_khon_tran"
+      "orange": "thuong_long_xuat_hai",
+      "red": "lung_hoan_tang_dich",
+      "gold": "lang_tuyen_khon_tran"
     },
     "kho_ke": {
       "white": "kho_ke",
@@ -15032,7 +18688,8 @@
       "blue": "kho_ke",
       "purple": "kho_ke",
       "orange": "kho_ke",
-      "red": "kho_ke"
+      "red": "kho_ke",
+      "gold": "kho_ke"
     },
     "doc_tieu": {
       "white": "doc_tieu",
@@ -15040,31 +18697,35 @@
       "blue": "xa_doc",
       "purple": "xa_doc",
       "orange": "xa_doc",
-      "red": "xa_doc"
+      "red": "xa_doc",
+      "gold": "xa_doc"
     },
     "thu_ho": {
       "white": "thu_ho",
       "green": "bao_ho",
       "blue": "cau_phuc",
       "purple": "chien_ca",
-      "orange": "song_sao_ruc_ro",
-      "red": "bi_ngan_tinh_kieu"
+      "orange": "nguyet_loan_vu",
+      "red": "song_sao_ruc_ro",
+      "gold": "bi_ngan_tinh_kieu"
     },
     "xung_ba": {
       "white": "xung_ba",
       "green": "ba_vuong",
       "blue": "thien_uy",
       "purple": "ba_vuong_than_uy",
-      "orange": "than_uy_pha_tran",
-      "red": "ba_vuong_liet_phach"
+      "orange": "ba_vuong",
+      "red": "than_uy_pha_tran",
+      "gold": "ba_vuong_liet_phach"
     },
     "ham_dia": {
       "white": "ham_dia",
       "green": "no_tram",
       "blue": "tram_sat",
       "purple": "kieu_tuong",
-      "orange": "quy_tuong_pha_thanh",
-      "red": "quy_tuong_pha_thanh"
+      "orange": "nhat_ky_pha_thanh",
+      "red": "quy_tuong_pha_thanh",
+      "gold": "quy_tuong_pha_thanh"
     },
     "co_vu": {
       "white": "co_vu",
@@ -15072,7 +18733,8 @@
       "blue": "hieu_trieu",
       "purple": "dinh_quan_co",
       "orange": "dinh_quan_co",
-      "red": "dinh_quan_co"
+      "red": "dinh_quan_co",
+      "gold": "dinh_quan_co"
     },
     "tuong_dong": {
       "white": "tuong_dong",
@@ -15080,31 +18742,35 @@
       "blue": "truong_ca",
       "purple": "truong_ca",
       "orange": "truong_ca",
-      "red": "truong_ca"
+      "red": "truong_ca",
+      "gold": "truong_ca"
     },
     "nhuc_ma": {
       "white": "nhuc_ma",
       "green": "nhuc_ma",
       "blue": "xua_duoi",
       "purple": "xua_duoi",
-      "orange": "thanh_nha_can_chinh",
-      "red": "thanh_nha_can_chinh"
+      "orange": "thanh_tam",
+      "red": "thanh_nha_can_chinh",
+      "gold": "thanh_nha_can_chinh"
     },
     "ky_kich": {
       "white": "ky_kich",
       "green": "don_ky",
       "blue": "cuu_vien",
       "purple": "tran_hon",
-      "orange": "che_ngu_quan_dich",
-      "red": "tran_thu_han_thuy"
+      "orange": "phong_ngu_can_than",
+      "red": "che_ngu_quan_dich",
+      "gold": "tran_thu_han_thuy"
     },
     "am_sat": {
       "white": "am_sat",
       "green": "thich_sat",
       "blue": "hanh_thich",
       "purple": "hanh_thich",
-      "orange": "am_da_thich_sat",
-      "red": "am_da_thich_sat"
+      "orange": "diet_gon",
+      "red": "am_da_thich_sat",
+      "gold": "am_da_thich_sat"
     },
     "huyen_thuat": {
       "white": "huyen_thuat",
@@ -15112,7 +18778,8 @@
       "blue": "huyen_thuat",
       "purple": "huyen_thuat",
       "orange": "huyen_thuat",
-      "red": "huyen_thuat"
+      "red": "huyen_thuat",
+      "gold": "huyen_thuat"
     },
     "huyet_lo": {
       "white": "huyet_lo",
@@ -15120,7 +18787,8 @@
       "blue": "huyet_chien",
       "purple": "huyet_chien",
       "orange": "huyet_chien",
-      "red": "huyet_chien"
+      "red": "huyet_chien",
+      "gold": "huyet_chien"
     },
     "yeu_thuat": {
       "white": "yeu_thuat",
@@ -15128,7 +18796,8 @@
       "blue": "phan_diet",
       "purple": "phan_diet",
       "orange": "phan_diet",
-      "red": "phan_diet"
+      "red": "phan_diet",
+      "gold": "phan_diet"
     },
     "dot_kich": {
       "white": "dot_kich",
@@ -15136,15 +18805,17 @@
       "blue": "khi_gioi",
       "purple": "duong_cong",
       "orange": "nhieu_loan_dot_tap",
-      "red": "nhieu_loan_dot_tap"
+      "red": "nhieu_loan_dot_tap",
+      "gold": "nhieu_loan_dot_tap"
     },
     "vo_song": {
       "white": "vo_song",
       "green": "ma_than",
       "blue": "minh_vuong",
       "purple": "thien_ha_vo_song",
-      "orange": "ma_than_no_hoa",
-      "red": "quy_than_loan_vu"
+      "orange": "quy_than_nhat_kich",
+      "red": "ma_than_no_hoa",
+      "gold": "quy_than_loan_vu"
     },
     "no_hong": {
       "white": "no_hong",
@@ -15152,7 +18823,8 @@
       "blue": "no_xich",
       "purple": "no_xich",
       "orange": "no_xich",
-      "red": "no_xich"
+      "red": "no_xich",
+      "gold": "no_xich"
     },
     "lac_loi": {
       "white": "lac_loi",
@@ -15160,7 +18832,8 @@
       "blue": "lac_loi",
       "purple": "lac_loi",
       "orange": "lac_loi",
-      "red": "lac_loi"
+      "red": "lac_loi",
+      "gold": "lac_loi"
     },
     "phan_chien": {
       "white": "phan_chien",
@@ -15168,7 +18841,8 @@
       "blue": "phan_chien",
       "purple": "phan_chien",
       "orange": "phan_chien",
-      "red": "phan_chien"
+      "red": "phan_chien",
+      "gold": "phan_chien"
     },
     "lien_thanh": {
       "white": "lien_thanh",
@@ -15176,15 +18850,17 @@
       "blue": "huy_hoai",
       "purple": "huy_hoai",
       "orange": "huy_hoai",
-      "red": "huy_hoai"
+      "red": "huy_hoai",
+      "gold": "huy_hoai"
     },
     "doc_chu": {
       "white": "doc_chu",
       "green": "tru_tam",
       "blue": "toa_hon",
       "purple": "am_van",
-      "orange": "vuong_trieu_tan_ra",
-      "red": "vuong_trieu_tan_ra"
+      "orange": "quyen_hanh",
+      "red": "vuong_trieu_tan_ra",
+      "gold": "vuong_trieu_tan_ra"
     },
     "te_xa": {
       "white": "te_xa",
@@ -15192,7 +18868,8 @@
       "blue": "te_xa",
       "purple": "te_xa",
       "orange": "te_xa",
-      "red": "te_xa"
+      "red": "te_xa",
+      "gold": "te_xa"
     },
     "dot_tien": {
       "white": "dot_tien",
@@ -15200,7 +18877,8 @@
       "blue": "dot_tien",
       "purple": "dot_tien",
       "orange": "dot_tien",
-      "red": "dot_tien"
+      "red": "dot_tien",
+      "gold": "dot_tien"
     },
     "thiet_bich": {
       "white": "thiet_bich",
@@ -15208,7 +18886,8 @@
       "blue": "dot_kich",
       "purple": "lien_thich",
       "orange": "xuyen_van_thich",
-      "red": "xuyen_van_thich"
+      "red": "xuyen_van_thich",
+      "gold": "xuyen_van_thich"
     },
     "hoanh_tao": {
       "white": "hoanh_tao",
@@ -15216,7 +18895,8 @@
       "blue": "tap_kich",
       "purple": "loan_kich",
       "orange": "loan_kich",
-      "red": "loan_kich"
+      "red": "loan_kich",
+      "gold": "loan_kich"
     },
     "phan_tan": {
       "white": "phan_tan",
@@ -15224,7 +18904,8 @@
       "blue": "phan_tan",
       "purple": "phan_tan",
       "orange": "phan_tan",
-      "red": "phan_tan"
+      "red": "phan_tan",
+      "gold": "phan_tan"
     },
     "giao_chien": {
       "white": "giao_chien",
@@ -15232,7 +18913,8 @@
       "blue": "giao_chien",
       "purple": "giao_chien",
       "orange": "giao_chien",
-      "red": "giao_chien"
+      "red": "giao_chien",
+      "gold": "giao_chien"
     },
     "cuong_tap": {
       "white": "cuong_tap",
@@ -15240,7 +18922,8 @@
       "blue": "nhieu_tap",
       "purple": "nhieu_tap",
       "orange": "nhieu_tap",
-      "red": "nhieu_tap"
+      "red": "nhieu_tap",
+      "gold": "nhieu_tap"
     },
     "kich_doc": {
       "white": "kich_doc",
@@ -15248,7 +18931,8 @@
       "blue": "on_dich",
       "purple": "on_dich",
       "orange": "on_dich",
-      "red": "on_dich"
+      "red": "on_dich",
+      "gold": "on_dich"
     },
     "gio_loc": {
       "white": "gio_loc",
@@ -15256,23 +18940,26 @@
       "blue": "gio_loc",
       "purple": "gio_loc",
       "orange": "gio_loc",
-      "red": "gio_loc"
+      "red": "gio_loc",
+      "gold": "gio_loc"
     },
     "tri_lieu": {
       "white": "tri_lieu",
       "green": "tri_lieu",
       "blue": "bich_luy",
       "purple": "thuan_tuong",
-      "orange": "vung_nhu_ban_thach",
-      "red": "vung_nhu_ban_thach"
+      "orange": "tuong_dong_vach_sat",
+      "red": "vung_nhu_ban_thach",
+      "gold": "vung_nhu_ban_thach"
     },
     "am_te": {
       "white": "am_te",
       "green": "am_te",
       "blue": "am_te",
       "purple": "lac_thuy_tien",
-      "orange": "khuynh_the_giai_nhan",
-      "red": "vu_dieu_lac_than"
+      "orange": "lac_than_mac",
+      "red": "khuynh_the_giai_nhan",
+      "gold": "vu_dieu_lac_than"
     },
     "boc_viem": {
       "white": "boc_viem",
@@ -15280,15 +18967,17 @@
       "blue": "hoa_nham",
       "purple": "hoa_nham",
       "orange": "hoa_nham",
-      "red": "hoa_nham"
+      "red": "hoa_nham",
+      "gold": "hoa_nham"
     },
     "tu_sanh": {
       "white": "tu_sanh",
       "green": "tu_sanh",
       "blue": "yeu_giap",
       "purple": "yeu_giap",
-      "orange": "tran_dinh_son_ha",
-      "red": "thinh_the_vuong_quyen"
+      "orange": "khai_trieu_thua_van",
+      "red": "tran_dinh_son_ha",
+      "gold": "thinh_the_vuong_quyen"
     },
     "tu_huy": {
       "white": "tu_huy",
@@ -15296,7 +18985,8 @@
       "blue": "tuyet_sat",
       "purple": "khai_son_huyet_phu",
       "orange": "vo_song_thuong_tuong",
-      "red": "vo_song_thuong_tuong"
+      "red": "vo_song_thuong_tuong",
+      "gold": "vo_song_thuong_tuong"
     },
     "xuyen_duong": {
       "white": "xuyen_duong",
@@ -15304,7 +18994,8 @@
       "blue": "xuyen_duong",
       "purple": "xuyen_duong",
       "orange": "xuyen_duong",
-      "red": "xuyen_duong"
+      "red": "xuyen_duong",
+      "gold": "xuyen_duong"
     },
     "lien_kich": {
       "white": "lien_kich",
@@ -15312,15 +19003,17 @@
       "blue": "tieu_sat",
       "purple": "tieu_sat",
       "orange": "tieu_sat",
-      "red": "tieu_sat"
+      "red": "tieu_sat",
+      "gold": "tieu_sat"
     },
     "hoa_long": {
       "white": "hoa_long",
       "green": "bao_loi",
       "blue": "than_ngu",
       "purple": "an_nghia",
-      "orange": "than_huu_mot_phuong",
-      "red": "than_huu_mot_phuong"
+      "orange": "dia_trach_van_vat",
+      "red": "than_huu_mot_phuong",
+      "gold": "than_huu_mot_phuong"
     },
     "xa_thu": {
       "white": "xa_thu",
@@ -15328,15 +19021,17 @@
       "blue": "xa_thu",
       "purple": "xa_thu",
       "orange": "xa_thu",
-      "red": "xa_thu"
+      "red": "xa_thu",
+      "gold": "xa_thu"
     },
     "tien_vu": {
       "white": "tien_vu",
       "green": "ten_lac",
       "blue": "hoa_tien",
       "purple": "tien_lam",
-      "orange": "than_tien_ho_chu",
-      "red": "than_tien_ho_chu"
+      "orange": "trung_nghia_ho_chu",
+      "red": "than_tien_ho_chu",
+      "gold": "than_tien_ho_chu"
     },
     "con_thach": {
       "white": "con_thach",
@@ -15344,15 +19039,17 @@
       "blue": "quy_ke",
       "purple": "doat_tam",
       "orange": "doat_tam",
-      "red": "doat_tam"
+      "red": "doat_tam",
+      "gold": "doat_tam"
     },
     "ly_gian": {
       "white": "ly_gian",
       "green": "phien_dong",
       "blue": "muu_thu",
       "purple": "loan_the_muu",
-      "orange": "cu_cong_ngao_thuong",
-      "red": "gia_chieu_cu_binh"
+      "orange": "ngao_nghe_thien_ha",
+      "red": "cu_cong_ngao_thuong",
+      "gold": "gia_chieu_cu_binh"
     },
     "thuan_kich": {
       "white": "thuan_kich",
@@ -15360,15 +19057,17 @@
       "blue": "yeu_giap",
       "purple": "yeu_giap",
       "orange": "yeu_giap",
-      "red": "yeu_giap"
+      "red": "yeu_giap",
+      "gold": "yeu_giap"
     },
     "lien_hoan": {
       "white": "lien_hoan",
       "green": "ten_lac",
       "blue": "tien_tran",
       "purple": "hoa_long_tien",
-      "orange": "that_tinh_tien_tran",
-      "red": "that_tinh_tien_tran"
+      "orange": "man_thien_tien_vu",
+      "red": "that_tinh_tien_tran",
+      "gold": "that_tinh_tien_tran"
     },
     "dot_tap": {
       "white": "dot_tap",
@@ -15376,7 +19075,8 @@
       "blue": "dot_tap",
       "purple": "dot_tap",
       "orange": "dot_tap",
-      "red": "dot_tap"
+      "red": "dot_tap",
+      "gold": "dot_tap"
     },
     "cu_ma": {
       "white": "cu_ma",
@@ -15384,7 +19084,8 @@
       "blue": "cu_ma",
       "purple": "cu_ma",
       "orange": "cu_ma",
-      "red": "cu_ma"
+      "red": "cu_ma",
+      "gold": "cu_ma"
     },
     "pha_phu": {
       "white": "pha_phu",
@@ -15392,7 +19093,8 @@
       "blue": "pha_phu",
       "purple": "pha_phu",
       "orange": "pha_phu",
-      "red": "pha_phu"
+      "red": "pha_phu",
+      "gold": "pha_phu"
     },
     "chuyen_chu": {
       "white": "chuyen_chu",
@@ -15400,7 +19102,8 @@
       "blue": "chuyen_chu",
       "purple": "chuyen_chu",
       "orange": "chuyen_chu",
-      "red": "chuyen_chu"
+      "red": "chuyen_chu",
+      "gold": "chuyen_chu"
     },
     "loi_nhan": {
       "white": "loi_nhan",
@@ -15408,7 +19111,8 @@
       "blue": "loi_nhan",
       "purple": "loi_nhan",
       "orange": "loi_nhan",
-      "red": "loi_nhan"
+      "red": "loi_nhan",
+      "gold": "loi_nhan"
     },
     "lang_dao": {
       "white": "lang_dao",
@@ -15416,7 +19120,8 @@
       "blue": "huyen_bang",
       "purple": "huyen_bang",
       "orange": "huyen_bang",
-      "red": "huyen_bang"
+      "red": "huyen_bang",
+      "gold": "huyen_bang"
     },
     "hai_tieu": {
       "white": "hai_tieu",
@@ -15424,15 +19129,17 @@
       "blue": "long_dao",
       "purple": "thuy_cong",
       "orange": "thuy_cong",
-      "red": "thuy_cong"
+      "red": "thuy_cong",
+      "gold": "thuy_cong"
     },
     "tat_xung": {
       "white": "tat_xung",
       "green": "sat_khi",
       "blue": "xich_long",
       "purple": "viem_long_pha",
-      "orange": "viem_long_ky_tap",
-      "red": "viem_long_ky_tap"
+      "orange": "viem_long_sat",
+      "red": "viem_long_ky_tap",
+      "gold": "viem_long_ky_tap"
     },
     "chuoc_gioi": {
       "white": "chuoc_gioi",
@@ -15440,7 +19147,8 @@
       "blue": "tien_dap",
       "purple": "tien_dap",
       "orange": "tien_dap",
-      "red": "tien_dap"
+      "red": "tien_dap",
+      "gold": "tien_dap"
     },
     "npc_troi_tru_dat_diet": {
       "white": "npc_troi_tru_dat_diet",
@@ -15448,43 +19156,49 @@
       "blue": "hoa_no",
       "purple": "hoa_no",
       "orange": "hoa_no",
-      "red": "hoa_no"
+      "red": "hoa_no",
+      "gold": "hoa_no"
     },
     "no_kiem": {
       "white": "no_kiem",
       "green": "no_tram",
       "blue": "dang_long",
       "purple": "tinh_ngu",
-      "orange": "troi_roi_sao_sang",
-      "red": "tinh_van_dia_liep"
+      "orange": "long_dang_tu_hai",
+      "red": "troi_roi_sao_sang",
+      "gold": "tinh_van_dia_liep"
     },
     "huyet_che": {
       "white": "huyet_che",
       "green": "huyet_che",
       "blue": "kim_ham",
       "purple": "sach_phan",
-      "orange": "bo_toi_theo_sang",
-      "red": "bo_toi_theo_sang"
+      "orange": "sach_phan",
+      "red": "bo_toi_theo_sang",
+      "gold": "bo_toi_theo_sang"
     },
     "phi_xa": {
       "white": "phi_xa",
       "green": "lien_no",
       "blue": "cung_ma",
       "purple": "doat_tam_tien",
-      "orange": "loan_hoi_phuong_vu",
-      "red": "loan_hoi_phuong_vu"
+      "orange": "phuong_vu_cuu_thien",
+      "red": "loan_hoi_phuong_vu",
+      "gold": "loan_hoi_phuong_vu"
     },
     "kich_duong": {
       "blue": "kich_duong",
       "purple": "thanh_huy",
-      "orange": "giao_nguyet_thanh_huy",
-      "red": "giao_nguyet_thanh_huy"
+      "orange": "thanh_huy",
+      "red": "giao_nguyet_thanh_huy",
+      "gold": "giao_nguyet_thanh_huy"
     },
     "xuyen_thich": {
       "blue": "xuyen_thich",
       "purple": "hoang_thien_quy_dao",
-      "orange": "ngu_hanh_pha_tran",
-      "red": "ngu_hanh_pha_tran"
+      "orange": "quy_coc_sach",
+      "red": "ngu_hanh_pha_tran",
+      "gold": "ngu_hanh_pha_tran"
     },
     "kinh_anh_son_ha": {
       "orange": "kinh_anh_son_ha",
@@ -15495,28 +19209,32 @@
       "green": "giai_nan",
       "blue": "giai_tru",
       "purple": "phan_ke",
-      "orange": "nho_thanh_ho_the",
-      "red": "nho_thanh_ho_the"
+      "orange": "phan_ke",
+      "red": "nho_thanh_ho_the",
+      "gold": "nho_thanh_ho_the"
     },
     "toa_hon": {
       "blue": "toa_hon",
       "purple": "am_van",
-      "orange": "thau_tom_thien_ha",
-      "red": "thau_tom_thien_ha"
+      "orange": "dinh_ke_nhat_thong",
+      "red": "thau_tom_thien_ha",
+      "gold": "thau_tom_thien_ha"
     },
     "khich_le": {
       "white": "khich_le",
       "green": "khich_le",
       "blue": "thi_doc",
       "purple": "thuc_tam",
-      "orange": "quy_mon_thi_doc",
-      "red": "quy_mon_thi_doc"
+      "orange": "hu_thi_doc",
+      "red": "quy_mon_thi_doc",
+      "gold": "quy_mon_thi_doc"
     },
     "xua_duoi": {
       "blue": "xua_duoi",
       "purple": "xua_duoi",
-      "orange": "hien_thuc_luu_phuong",
-      "red": "hien_thuc_luu_phuong"
+      "orange": "thanh_u_thu_tuyet",
+      "red": "hien_thuc_luu_phuong",
+      "gold": "hien_thuc_luu_phuong"
     },
     "lac_nhat_than_tien": {
       "orange": "lac_nhat_than_tien",
@@ -15535,8 +19253,9 @@
       "green": "dia_thich",
       "blue": "cot_thich",
       "purple": "diem_la_kich",
-      "orange": "nghich_chuyen_sinh_tu",
-      "red": "nghich_chuyen_sinh_tu"
+      "orange": "thap_phuong_diet",
+      "red": "nghich_chuyen_sinh_tu",
+      "gold": "nghich_chuyen_sinh_tu"
     },
     "bai_ca_bien_ai": {
       "orange": "bai_ca_bien_ai",
@@ -15552,21 +19271,24 @@
       "blue": "ngang_duong",
       "purple": "tung_ca",
       "orange": "phan_chan_long_quan",
-      "red": "ca_tung_cong_duc"
+      "red": "phan_chan_long_quan",
+      "gold": "ca_tung_cong_duc"
     },
     "tan_ra": {
       "blue": "tan_ra",
       "purple": "pha_hoang_sach",
-      "orange": "thien_dia_vo_cuc",
-      "red": "can_khon_ta_phap"
+      "orange": "dao_phap_thien_dia",
+      "red": "thien_dia_vo_cuc",
+      "gold": "can_khon_ta_phap"
     },
     "doc_nhan": {
       "white": "doc_nhan",
       "green": "xa_thich",
       "blue": "liet_nhan",
       "purple": "phan_thien",
-      "orange": "hong_hoang_no_hoa",
-      "red": "than_hoa_hien_the"
+      "orange": "no_nguc_viem",
+      "red": "hong_hoang_no_hoa",
+      "gold": "than_hoa_hien_the"
     },
     "tran_dinh_son_ha": {
       "orange": "tran_dinh_son_ha",
@@ -15577,8 +19299,9 @@
       "green": "long_uy",
       "blue": "no_long",
       "purple": "than_binh_xuat_hien",
-      "orange": "than_binh_am_do",
-      "red": "ky_binh_pha_thuc"
+      "orange": "hanh_binh",
+      "red": "than_binh_am_do",
+      "gold": "ky_binh_pha_thuc"
     },
     "bua_phep_tran_ta": {
       "orange": "bua_phep_tran_ta",
@@ -15589,8 +19312,49 @@
       "green": "cam_vu",
       "blue": "cam_vu",
       "purple": "nhan_y",
-      "orange": "thanh_thu_te_the",
-      "red": "huyen_ho_te_chung"
+      "orange": "thanh_thu_hoi_xuan",
+      "red": "thanh_thu_te_the",
+      "gold": "huyen_ho_te_chung"
+    },
+    "do_chung_sinh": {
+      "orange": "do_chung_sinh",
+      "red": "kinh_anh_son_ha",
+      "gold": "kinh_dien_luan_hoi"
+    },
+    "bach_ly_truy_hon": {
+      "orange": "bach_ly_truy_hon",
+      "red": "lac_nhat_than_tien",
+      "gold": "lac_nhat_than_tien"
+    },
+    "thuong_long_xuat_hai": {
+      "orange": "thuong_long_xuat_hai",
+      "red": "lung_hoan_tang_dich",
+      "gold": "lung_hoan_tang_dich"
+    },
+    "diet_the_thien_loi": {
+      "orange": "diet_the_thien_loi",
+      "red": "kinh_thien_bao_loi",
+      "gold": "kinh_thien_bao_loi"
+    },
+    "ngam_tho_giai_sau": {
+      "orange": "ngam_tho_giai_sau",
+      "red": "bai_ca_bien_ai",
+      "gold": "bai_ca_bien_ai"
+    },
+    "long_chien_vu_da": {
+      "orange": "long_chien_vu_da",
+      "red": "phi_long_tai_thien",
+      "gold": "phi_long_tai_thien"
+    },
+    "khai_trieu_thua_van": {
+      "orange": "khai_trieu_thua_van",
+      "red": "tran_dinh_son_ha",
+      "gold": "thinh_the_vuong_quyen"
+    },
+    "am_duong_diet": {
+      "orange": "am_duong_diet",
+      "red": "bua_phep_tran_ta",
+      "gold": "dao_thuat_huyen_thong"
     }
   }
 },
@@ -26430,26 +30194,13 @@
   },
   "dailyFree": 3,
   "pools": {
-    "white": [
-      "recruit_guard",
-      "recruit_scout",
-      "recruit_militia",
-      "recruit_porter"
-    ],
+    "white": [],
     "green": [
-      "recruit_rider",
-      "recruit_spearman",
-      "recruit_crossbow",
-      "recruit_blade",
       "liaohua",
       "chengpu",
       "handang"
     ],
     "blue": [
-      "veteran_guard",
-      "veteran_rider",
-      "veteran_spear",
-      "veteran_archer",
       "liufeng",
       "guanying",
       "zhangbao_shu",
@@ -26479,9 +30230,7 @@
       "ganning",
       "lusu",
       "xiaoqiao",
-      "sunjian",
-      "elite_vanguard",
-      "elite_raider"
+      "sunjian"
     ],
     "orange": [
       "huangzhong",
@@ -26506,7 +30255,7 @@
       "zhouyu"
     ]
   },
-  "note": "Chỉ general !npcOnly. Weight theo qualities.recruitWeight khi random phẩm.",
+  "note": "Chỉ general !npcOnly. Weight theo qualities.recruitWeight khi random phẩm. | Chỉ tinh anh (không lính generic / npcOnly).",
   "maxHeroSlotsBase": 8,
   "maxHeroSlotsPerTyVu": 1,
   "list": [
@@ -27294,234 +31043,32 @@
       "required_player_level": 2,
       "required_ty_vu_level": 2,
       "required_stage": null
-    },
-    {
-      "recruit_id": "rec_053",
-      "hero_id": "recruit_guard",
-      "hero_alias": "h_053",
-      "name": "Thủ Vệ",
-      "faction": "other",
-      "quality": "white",
-      "troop": "infantry",
-      "source": "tavern",
-      "cost_silver": 500,
-      "required_prestige": 0,
-      "required_player_level": 1,
-      "required_ty_vu_level": 1,
-      "required_stage": null
-    },
-    {
-      "recruit_id": "rec_054",
-      "hero_id": "recruit_scout",
-      "hero_alias": "h_054",
-      "name": "Do Thám",
-      "faction": "other",
-      "quality": "white",
-      "troop": "archer",
-      "source": "tavern",
-      "cost_silver": 500,
-      "required_prestige": 0,
-      "required_player_level": 1,
-      "required_ty_vu_level": 1,
-      "required_stage": null
-    },
-    {
-      "recruit_id": "rec_055",
-      "hero_id": "recruit_militia",
-      "hero_alias": "h_055",
-      "name": "Dân Binh",
-      "faction": "other",
-      "quality": "white",
-      "troop": "spear",
-      "source": "tavern",
-      "cost_silver": 500,
-      "required_prestige": 0,
-      "required_player_level": 1,
-      "required_ty_vu_level": 1,
-      "required_stage": null
-    },
-    {
-      "recruit_id": "rec_056",
-      "hero_id": "recruit_porter",
-      "hero_alias": "h_056",
-      "name": "Phu Dịch",
-      "faction": "other",
-      "quality": "white",
-      "troop": "infantry",
-      "source": "tavern",
-      "cost_silver": 500,
-      "required_prestige": 0,
-      "required_player_level": 1,
-      "required_ty_vu_level": 1,
-      "required_stage": null
-    },
-    {
-      "recruit_id": "rec_057",
-      "hero_id": "recruit_rider",
-      "hero_alias": "h_057",
-      "name": "Kỵ Binh",
-      "faction": "other",
-      "quality": "green",
-      "troop": "cavalry",
-      "source": "tavern",
-      "cost_silver": 1550,
-      "required_prestige": 40,
-      "required_player_level": 2,
-      "required_ty_vu_level": 2,
-      "required_stage": null
-    },
-    {
-      "recruit_id": "rec_058",
-      "hero_id": "recruit_spearman",
-      "hero_alias": "h_058",
-      "name": "Thương Thủ",
-      "faction": "other",
-      "quality": "green",
-      "troop": "spear",
-      "source": "tavern",
-      "cost_silver": 1550,
-      "required_prestige": 40,
-      "required_player_level": 2,
-      "required_ty_vu_level": 2,
-      "required_stage": null
-    },
-    {
-      "recruit_id": "rec_059",
-      "hero_id": "recruit_crossbow",
-      "hero_alias": "h_059",
-      "name": "Nỏ Thủ",
-      "faction": "other",
-      "quality": "green",
-      "troop": "archer",
-      "source": "tavern",
-      "cost_silver": 1550,
-      "required_prestige": 40,
-      "required_player_level": 2,
-      "required_ty_vu_level": 2,
-      "required_stage": null
-    },
-    {
-      "recruit_id": "rec_060",
-      "hero_id": "recruit_blade",
-      "hero_alias": "h_060",
-      "name": "Đao Phủ",
-      "faction": "other",
-      "quality": "green",
-      "troop": "infantry",
-      "source": "tavern",
-      "cost_silver": 1550,
-      "required_prestige": 40,
-      "required_player_level": 2,
-      "required_ty_vu_level": 2,
-      "required_stage": null
-    },
-    {
-      "recruit_id": "rec_061",
-      "hero_id": "veteran_guard",
-      "hero_alias": "h_061",
-      "name": "Lão Binh",
-      "faction": "other",
-      "quality": "blue",
-      "troop": "infantry",
-      "source": "tavern",
-      "cost_silver": 4250,
-      "required_prestige": 150,
-      "required_player_level": 4,
-      "required_ty_vu_level": 4,
-      "required_stage": "ch1_s2"
-    },
-    {
-      "recruit_id": "rec_062",
-      "hero_id": "veteran_rider",
-      "hero_alias": "h_062",
-      "name": "Thiết Kỵ",
-      "faction": "other",
-      "quality": "blue",
-      "troop": "cavalry",
-      "source": "tavern",
-      "cost_silver": 4250,
-      "required_prestige": 150,
-      "required_player_level": 4,
-      "required_ty_vu_level": 4,
-      "required_stage": "ch1_s2"
-    },
-    {
-      "recruit_id": "rec_063",
-      "hero_id": "veteran_spear",
-      "hero_alias": "h_063",
-      "name": "Trường Thương",
-      "faction": "other",
-      "quality": "blue",
-      "troop": "spear",
-      "source": "tavern",
-      "cost_silver": 4250,
-      "required_prestige": 150,
-      "required_player_level": 4,
-      "required_ty_vu_level": 4,
-      "required_stage": "ch1_s2"
-    },
-    {
-      "recruit_id": "rec_064",
-      "hero_id": "veteran_archer",
-      "hero_alias": "h_064",
-      "name": "Thiện Xạ",
-      "faction": "other",
-      "quality": "blue",
-      "troop": "archer",
-      "source": "tavern",
-      "cost_silver": 4350,
-      "required_prestige": 150,
-      "required_player_level": 4,
-      "required_ty_vu_level": 4,
-      "required_stage": "ch1_s2"
-    },
-    {
-      "recruit_id": "rec_065",
-      "hero_id": "elite_vanguard",
-      "hero_alias": "h_065",
-      "name": "Tinh Nhuệ",
-      "faction": "other",
-      "quality": "purple",
-      "troop": "infantry",
-      "source": "prestige",
-      "cost_silver": 14550,
-      "required_prestige": 500,
-      "required_player_level": 8,
-      "required_ty_vu_level": 6,
-      "required_stage": "ch1_s4"
-    },
-    {
-      "recruit_id": "rec_066",
-      "hero_id": "elite_raider",
-      "hero_alias": "h_066",
-      "name": "Kỳ Binh",
-      "faction": "other",
-      "quality": "purple",
-      "troop": "cavalry",
-      "source": "prestige",
-      "cost_silver": 14550,
-      "required_prestige": 500,
-      "required_player_level": 8,
-      "required_ty_vu_level": 6,
-      "required_stage": "ch1_s4"
     }
   ]
 },
 "items": {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "slots": [
     "weapon",
     "armor",
     "horse",
     "book",
-    "accessory"
+    "cloak",
+    "shield",
+    "troop",
+    "accessory",
+    "material"
   ],
   "slotNames": {
     "weapon": "Vũ khí",
     "armor": "Giáp",
     "horse": "Ngựa",
-    "book": "Sách",
-    "accessory": "Đồ phổ"
+    "book": "Sách / Binh thư",
+    "cloak": "Áo choàng",
+    "shield": "Thuẫn",
+    "troop": "Dẫn binh",
+    "accessory": "Đồ phổ",
+    "material": "Nguyên liệu"
   },
   "rarities": [
     "white",
@@ -27531,485 +31078,17753 @@
     "orange",
     "red"
   ],
+  "wiki": {
+    "categories": [
+      {
+        "slot": 1,
+        "label": "Vũ Khí"
+      },
+      {
+        "slot": 2,
+        "label": "Giáp"
+      },
+      {
+        "slot": 3,
+        "label": "Ngựa"
+      },
+      {
+        "slot": 4,
+        "label": "Sách"
+      },
+      {
+        "slot": 5,
+        "label": "Áo Choàng"
+      },
+      {
+        "slot": 6,
+        "label": "Thuẫn"
+      },
+      {
+        "slot": 7,
+        "label": "Dẫn Binh"
+      }
+    ],
+    "tiers": {
+      "1": {
+        "name": "Thường",
+        "color": "#ffffff",
+        "coef": 1
+      },
+      "2": {
+        "name": "Chiến",
+        "color": "#33ccff",
+        "coef": 1
+      },
+      "3": {
+        "name": "Thần",
+        "color": "#3ab683",
+        "coef": 1
+      },
+      "4": {
+        "name": "Sử Thi",
+        "color": "#feffaa",
+        "coef": 1
+      },
+      "5": {
+        "name": "Truyền thuyết",
+        "color": "#e73f5e",
+        "coef": 1
+      },
+      "6": {
+        "name": "Thượng Cổ",
+        "color": "#a750ff",
+        "coef": 1
+      },
+      "7": {
+        "name": "Thái Sơ",
+        "color": "#f0803c",
+        "coef": 2
+      },
+      "8": {
+        "name": "Thần Hoàng",
+        "color": "#ff9933",
+        "coef": 4
+      },
+      "9": {
+        "name": "Ám Kim",
+        "color": "#ff6600",
+        "coef": 4
+      },
+      "10": {
+        "name": "Bàn Cổ",
+        "color": "#ff6666",
+        "coef": 6
+      },
+      "11": {
+        "name": "Hỗn Độn",
+        "color": "#cc9933",
+        "coef": 7
+      },
+      "12": {
+        "name": "Hiên Viên",
+        "color": "#ffcc33",
+        "coef": 8
+      },
+      "13": {
+        "name": "Phục Hi",
+        "color": "#ffcc66",
+        "coef": 8
+      },
+      "14": {
+        "name": "Nữ Oa",
+        "color": "#ffcc66",
+        "coef": 8
+      },
+      "15": {
+        "name": "Viêm Đế",
+        "color": "#ffcc99",
+        "coef": 8
+      },
+      "16": {
+        "name": "Hình Thiên",
+        "color": "#ffcc99",
+        "coef": 9
+      },
+      "17": {
+        "name": "Xi Vưu",
+        "color": "#ffcc99",
+        "coef": 9
+      },
+      "18": {
+        "name": "Thao Thiết",
+        "color": "#ffcc99",
+        "coef": 9
+      },
+      "19": {
+        "name": "Cùng Kỳ",
+        "color": "#ffcc99",
+        "coef": 9
+      }
+    },
+    "source": "wiki equip-detail.json",
+    "count": 399
+  },
   "list": [
     {
-      "id": "sword_common",
-      "name": "Thanh Phong Kiếm",
-      "slot": "weapon",
-      "rarity": "white",
-      "bonuses": {
-        "vuLuc": 5
-      },
-      "desc": "Kiếm lính."
-    },
-    {
-      "id": "sword_iron",
-      "name": "Thiết Kiếm",
-      "slot": "weapon",
-      "rarity": "green",
-      "bonuses": {
-        "vuLuc": 10
-      },
-      "desc": "Kiếm sắt."
-    },
-    {
-      "id": "blade_steel",
-      "name": "Cương Đao",
+      "id": "wiki_eq_23",
+      "wikiId": "23",
+      "name": "Ám Ảnh Liềm",
       "slot": "weapon",
       "rarity": "blue",
-      "bonuses": {
-        "vuLuc": 18,
-        "tongLinh": 3
-      },
-      "desc": "Đao thép."
-    },
-    {
-      "id": "spear_long",
-      "name": "Trường Thương",
-      "slot": "weapon",
-      "rarity": "blue",
-      "bonuses": {
-        "vuLuc": 16,
-        "tongLinh": 5
-      },
-      "desc": "Thương dài."
-    },
-    {
-      "id": "bow_composite",
-      "name": "Củng Nỏ",
-      "slot": "weapon",
-      "rarity": "blue",
-      "bonuses": {
-        "vuLuc": 17,
-        "triLuc": 4
-      },
-      "desc": "Nỏ cứng."
-    },
-    {
-      "id": "blade_qinglong",
-      "name": "Thanh Long Yển Nguyệt",
-      "slot": "weapon",
-      "rarity": "orange",
-      "bonuses": {
-        "vuLuc": 35,
-        "tongLinh": 8
-      },
-      "desc": "Đại đao danh tướng."
-    },
-    {
-      "id": "spear_fangtian",
-      "name": "Phương Thiên Họa Kích",
-      "slot": "weapon",
-      "rarity": "red",
-      "bonuses": {
-        "vuLuc": 48,
-        "tongLinh": 10
-      },
-      "desc": "Kích Lã Bố."
-    },
-    {
-      "id": "sword_yitian",
-      "name": "Ỷ Thiên Kiếm",
-      "slot": "weapon",
-      "rarity": "orange",
-      "bonuses": {
-        "vuLuc": 30,
-        "triLuc": 12
-      },
-      "desc": "Kiếm Ỷ Thiên."
-    },
-    {
-      "id": "halberd_snake",
-      "name": "Xà Mâu",
-      "slot": "weapon",
-      "rarity": "purple",
-      "bonuses": {
-        "vuLuc": 26,
-        "tongLinh": 6
-      },
-      "desc": "Mâu Xà."
-    },
-    {
-      "id": "armor_cloth",
-      "name": "Bố Bào",
-      "slot": "armor",
-      "rarity": "white",
-      "bonuses": {
-        "tongLinh": 4,
-        "hp": 80
-      },
-      "desc": "Áo vải."
-    },
-    {
-      "id": "armor_leather",
-      "name": "Bì Giáp",
-      "slot": "armor",
-      "rarity": "green",
-      "bonuses": {
-        "tongLinh": 8,
-        "hp": 150
-      },
-      "desc": "Giáp da."
-    },
-    {
-      "id": "armor_scale",
-      "name": "Lân Giáp",
-      "slot": "armor",
-      "rarity": "blue",
-      "bonuses": {
-        "tongLinh": 14,
-        "hp": 280
-      },
-      "desc": "Giáp vảy."
-    },
-    {
-      "id": "armor_tiger",
-      "name": "Hổ Báo Khôi",
-      "slot": "armor",
-      "rarity": "purple",
-      "bonuses": {
-        "tongLinh": 22,
-        "hp": 450
-      },
-      "desc": "Giáp hổ."
-    },
-    {
-      "id": "armor_dragon",
-      "name": "Long Lân Khôi",
-      "slot": "armor",
-      "rarity": "orange",
-      "bonuses": {
-        "tongLinh": 30,
-        "hp": 600
-      },
-      "desc": "Giáp long."
-    },
-    {
-      "id": "armor_imperial",
-      "name": "Đế Vương Khôi",
-      "slot": "armor",
-      "rarity": "red",
-      "bonuses": {
-        "tongLinh": 40,
-        "hp": 800,
-        "triLuc": 8
-      },
-      "desc": "Giáp đế."
-    },
-    {
-      "id": "horse_grey",
-      "name": "Thanh Kỵ",
-      "slot": "horse",
-      "rarity": "white",
-      "bonuses": {
-        "vuLuc": 4,
-        "tongLinh": 3
-      },
-      "desc": "Ngựa thường."
-    },
-    {
-      "id": "horse_brown",
-      "name": "Hoàng Bưu",
-      "slot": "horse",
-      "rarity": "green",
-      "bonuses": {
-        "vuLuc": 8,
-        "tongLinh": 6
-      },
-      "desc": "Ngựa tốt."
-    },
-    {
-      "id": "horse_white",
-      "name": "Bạch Long",
-      "slot": "horse",
-      "rarity": "blue",
-      "bonuses": {
-        "vuLuc": 12,
-        "tongLinh": 10
-      },
-      "desc": "Ngựa trắng."
-    },
-    {
-      "id": "horse_red",
-      "name": "Xích Thố",
-      "slot": "horse",
-      "rarity": "orange",
+      "qualityWiki": "Thần",
+      "levelReq": 36,
       "bonuses": {
         "vuLuc": 15,
-        "tongLinh": 12
+        "hp": 200
       },
-      "desc": "Xích Thố."
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 267,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/9eebf3af-c95e-4c5f-ac1e-860b51d2ede7.9d045.jpg",
+      "desc": "Vũ Khí · Thần Lv.36",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "18",
+        "name": "Diệp Đao"
+      },
+      "upgradeTo": {
+        "id": "28",
+        "name": "Cửu Thiên"
+      },
+      "sell": 12500
     },
     {
-      "id": "horse_jueying",
-      "name": "Tuyệt Ảnh",
-      "slot": "horse",
+      "id": "wiki_eq_32",
+      "wikiId": "32",
+      "name": "Bách Lý",
+      "slot": "weapon",
       "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 80,
       "bonuses": {
-        "vuLuc": 20,
-        "tongLinh": 18
+        "vuLuc": 45,
+        "hp": 200
       },
-      "desc": "Tuyệt Ảnh."
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 815,
+          "growth": 32,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/08b17dd5-0fc7-406b-82b9-73bbccbb2a5b.eff96.jpg",
+      "desc": "Vũ Khí · Thượng Cổ Lv.80",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 32,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "335",
+        "name": "Kiếm Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "367",
+        "name": "Chúc Âm Thương"
+      },
+      "sell": 60
     },
     {
-      "id": "horse_dilu",
-      "name": "Đích Lư",
-      "slot": "horse",
+      "id": "wiki_eq_6",
+      "wikiId": "6",
+      "name": "Bách Thương",
+      "slot": "weapon",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 13,
+      "bonuses": {
+        "vuLuc": 5,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 85,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/20f30695-f062-48f6-b069-5f9a16928d4c.698cf.jpg",
+      "desc": "Vũ Khí · Thường Lv.13",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 7
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "18",
+        "name": "Diệp Đao"
+      },
+      "sell": 5400
+    },
+    {
+      "id": "wiki_eq_593",
+      "wikiId": "593",
+      "name": "Bàn Long Thương",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Hiên Viên",
+      "levelReq": 210,
+      "bonuses": {
+        "vuLuc": 778,
+        "hp": 22500
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 14000,
+          "growth": 160,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 900,
+          "growth": 200,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/8604959e-33b3-4b5e-8970-0fc4b5a6f997.73a53.jpg",
+      "desc": "Vũ Khí · Hiên Viên Lv.210",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 160,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "565",
+        "name": "Hỗn Độn-Bàn Long Kiếm"
+      },
+      "upgradeTo": {
+        "id": "654",
+        "name": "Phục Hi Thương"
+      },
+      "sell": 20000
+    },
+    {
+      "id": "wiki_eq_209",
+      "wikiId": "209",
+      "name": "Chấn Tiên",
+      "slot": "weapon",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 36,
+      "bonuses": {
+        "vuLuc": 16,
+        "hp": 225
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 295,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 9,
+          "growth": 9,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/1cfb7642-1536-47ca-8d66-7eac79a7926b.e7a04.jpg",
+      "desc": "Vũ Khí · Thần Lv.36",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "18",
+        "name": "Diệp Đao"
+      },
+      "upgradeTo": {
+        "id": "28",
+        "name": "Cửu Thiên"
+      },
+      "sell": 14000
+    },
+    {
+      "id": "wiki_eq_215",
+      "wikiId": "215",
+      "name": "Chiến Đồ Đao",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 95,
+      "bonuses": {
+        "vuLuc": 55,
+        "hp": 300
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 990,
+          "growth": 32,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 12,
+          "growth": 12,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/df6e3dd6-0970-4892-a0e9-e8d935d2a1f9.23191.jpg",
+      "desc": "Vũ Khí · Thượng Cổ Lv.95",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 32,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "335",
+        "name": "Kiếm Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "367",
+        "name": "Chúc Âm Thương"
+      },
+      "sell": 64
+    },
+    {
+      "id": "wiki_eq_33",
+      "wikiId": "33",
+      "name": "Chỉ Luật",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 95,
+      "bonuses": {
+        "vuLuc": 54,
+        "hp": 250
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 965,
+          "growth": 32,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 10,
+          "growth": 10,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/c150771c-16ba-4717-b434-fbfeabb3b154.b188f.jpg",
+      "desc": "Vũ Khí · Thượng Cổ Lv.95",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 32,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "335",
+        "name": "Kiếm Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "367",
+        "name": "Chúc Âm Thương"
+      },
+      "sell": 80
+    },
+    {
+      "id": "wiki_eq_367",
+      "wikiId": "367",
+      "name": "Chúc Âm Thương",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 120,
+      "bonuses": {
+        "vuLuc": 89,
+        "hp": 700
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 1600,
+          "growth": 38,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 28,
+          "growth": 28,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/9a43eb39-0bf9-4f9f-b3cf-9aeb9dda052a.2dda9.jpg",
+      "desc": "Vũ Khí · Thái Sơ Lv.120",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 38,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "32",
+        "name": "Bách Lý"
+      },
+      "upgradeTo": {
+        "id": "416",
+        "name": "Thần Nguyệt Cung"
+      },
+      "sell": 500
+    },
+    {
+      "id": "wiki_eq_1209",
+      "wikiId": "1209",
+      "name": "Cùng Kỳ Trảm Khung Thương",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Cùng Kỳ",
+      "levelReq": 350,
+      "bonuses": {
+        "vuLuc": 3122,
+        "hp": 90000
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 56200,
+          "growth": 494,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 3600,
+          "growth": 710,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/e40952c6-9091-49fe-b80a-6823dc8e3845.c0b1d.png",
+      "desc": "Vũ Khí · Cùng Kỳ Lv.350",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 494,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "1121",
+        "name": "Thao Thiết Thương"
+      },
+      "upgradeTo": null,
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_28",
+      "wikiId": "28",
+      "name": "Cửu Thiên",
+      "slot": "weapon",
       "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 64,
+      "bonuses": {
+        "vuLuc": 28,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 495,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/d9fc2308-d1d2-4fcf-8830-4e557d3749d5.b431c.jpg",
+      "desc": "Vũ Khí · Sử Thi Lv.64",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "209",
+        "name": "Chấn Tiên"
+      },
+      "upgradeTo": {
+        "id": "335",
+        "name": "Kiếm Hải Tặc"
+      },
+      "sell": 18200
+    },
+    {
+      "id": "wiki_eq_8",
+      "wikiId": "8",
+      "name": "Địa Chùy",
+      "slot": "weapon",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 20,
+      "bonuses": {
+        "vuLuc": 7,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 120,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/6fafcd08-d015-464a-9b6a-f2ac1f762d9c.d1ea9.jpg",
+      "desc": "Vũ Khí · Thường Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 7
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "18",
+        "name": "Diệp Đao"
+      },
+      "sell": 8100
+    },
+    {
+      "id": "wiki_eq_18",
+      "wikiId": "18",
+      "name": "Diệp Đao",
+      "slot": "weapon",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 20,
+      "bonuses": {
+        "vuLuc": 28,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 495,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/397bb3ea-9d59-4a73-8d0a-5e2f11db1b83.80365.jpg",
+      "desc": "Vũ Khí · Chiến Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "6",
+        "name": "Bách Thương"
+      },
+      "upgradeTo": {
+        "id": "209",
+        "name": "Chấn Tiên"
+      },
+      "sell": 32
+    },
+    {
+      "id": "wiki_eq_445",
+      "wikiId": "445",
+      "name": "Diệt Thế Kiếm",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Ám Kim",
+      "levelReq": 150,
+      "bonuses": {
+        "vuLuc": 278,
+        "hp": 2500
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 5000,
+          "growth": 70,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 100,
+          "growth": 100,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/3fd6a318-bf3e-428e-83dc-90f63db68e39.6806f.jpg",
+      "desc": "Vũ Khí · Ám Kim Lv.150",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 70,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "416",
+        "name": "Thần Nguyệt Cung"
+      },
+      "upgradeTo": {
+        "id": "542",
+        "name": "Liệt Thiên Phủ"
+      },
+      "sell": 4000
+    },
+    {
+      "id": "wiki_eq_9",
+      "wikiId": "9",
+      "name": "Hàn Đao",
+      "slot": "weapon",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 24,
+      "bonuses": {
+        "vuLuc": 8,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 145,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/e4a13d9f-3e1b-4fe1-a304-0c9d66ac8094.09c46.jpg",
+      "desc": "Vũ Khí · Thường Lv.24",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 7
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "18",
+        "name": "Diệp Đao"
+      },
+      "sell": 9300
+    },
+    {
+      "id": "wiki_eq_12",
+      "wikiId": "12",
+      "name": "Hàn Kiếm",
+      "slot": "weapon",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 10,
+      "bonuses": {
+        "vuLuc": 5,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 87,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/d7546407-97ab-4ab9-a571-5592b676cb98.d5feb.jpg",
+      "desc": "Vũ Khí · Chiến Lv.10",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "6",
+        "name": "Bách Thương"
+      },
+      "upgradeTo": {
+        "id": "209",
+        "name": "Chấn Tiên"
+      },
+      "sell": 6200
+    },
+    {
+      "id": "wiki_eq_864",
+      "wikiId": "864",
+      "name": "Hình Thiên Thương",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Hình Thiên",
+      "levelReq": 290,
+      "bonuses": {
+        "vuLuc": 2056,
+        "hp": 60000
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 37000,
+          "growth": 338,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 2400,
+          "growth": 465,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/ba4e3893-cf74-4eba-b227-b2f8ba7958c2.1fda2.png",
+      "desc": "Vũ Khí · Hình Thiên Lv.290",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 338,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "797",
+        "name": "Viêm Đế Thương"
+      },
+      "upgradeTo": {
+        "id": "1030",
+        "name": "Trảm Long Phủ"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_24",
+      "wikiId": "24",
+      "name": "Hỏa Thương",
+      "slot": "weapon",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 40,
+      "bonuses": {
+        "vuLuc": 19,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 335,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/c2ed20ed-a3e5-47cc-826c-479ce36cc033.396eb.jpg",
+      "desc": "Vũ Khí · Sử Thi Lv.40",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "209",
+        "name": "Chấn Tiên"
+      },
+      "upgradeTo": {
+        "id": "335",
+        "name": "Kiếm Hải Tặc"
+      },
+      "sell": 9600
+    },
+    {
+      "id": "wiki_eq_565",
+      "wikiId": "565",
+      "name": "Hỗn Độn-Bàn Long Kiếm",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Hỗn Độn",
+      "levelReq": 190,
+      "bonuses": {
+        "vuLuc": 611,
+        "hp": 17500
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 11000,
+          "growth": 130,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 700,
+          "growth": 175,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/361cbb67-aad5-4008-8bb2-b833164759c9.f519c.jpg",
+      "desc": "Vũ Khí · Hỗn Độn Lv.190",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 130,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "542",
+        "name": "Liệt Thiên Phủ"
+      },
+      "upgradeTo": {
+        "id": "593",
+        "name": "Bàn Long Thương"
+      },
+      "sell": 16000
+    },
+    {
+      "id": "wiki_eq_25",
+      "wikiId": "25",
+      "name": "Khuyết Kiếm",
+      "slot": "weapon",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 45,
+      "bonuses": {
+        "vuLuc": 21,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 375,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/5fccf86f-5112-409b-b995-8b0ddbeb0130.36f31.jpg",
+      "desc": "Vũ Khí · Sử Thi Lv.45",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "209",
+        "name": "Chấn Tiên"
+      },
+      "upgradeTo": {
+        "id": "335",
+        "name": "Kiếm Hải Tặc"
+      },
+      "sell": 10800
+    },
+    {
+      "id": "wiki_eq_335",
+      "wikiId": "335",
+      "name": "Kiếm Hải Tặc",
+      "slot": "weapon",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 60,
+      "bonuses": {
+        "vuLuc": 31,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 550,
+          "growth": 28,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/314dbd11-389a-4cec-93c3-d9cf217d3288.e2c94.jpg",
+      "desc": "Vũ Khí · Truyền thuyết Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 28,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "28",
+        "name": "Cửu Thiên"
+      },
+      "upgradeTo": {
+        "id": "32",
+        "name": "Bách Lý"
+      },
+      "sell": 80
+    },
+    {
+      "id": "wiki_eq_342",
+      "wikiId": "342",
+      "name": "Kiếm Hải Tặc",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 80,
+      "bonuses": {
+        "vuLuc": 47,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 850,
+          "growth": 32,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/0334f788-c9d2-4a82-ac19-795dee90e3e8.5b994.jpg",
+      "desc": "Vũ Khí · Thượng Cổ Lv.80",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 32,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "335",
+        "name": "Kiếm Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "367",
+        "name": "Chúc Âm Thương"
+      },
+      "sell": 160
+    },
+    {
+      "id": "wiki_eq_321",
+      "wikiId": "321",
+      "name": "Kiếm Hải Tặc",
+      "slot": "weapon",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 20,
+      "bonuses": {
+        "vuLuc": 13,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 230,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/0cbb82bf-83a9-4d17-a2e7-4e876a2e75fb.9466e.jpg",
+      "desc": "Vũ Khí · Thần Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "18",
+        "name": "Diệp Đao"
+      },
+      "upgradeTo": {
+        "id": "28",
+        "name": "Cửu Thiên"
+      },
+      "sell": 20
+    },
+    {
+      "id": "wiki_eq_349",
+      "wikiId": "349",
+      "name": "Kiếm Hải Tặc",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 100,
+      "bonuses": {
+        "vuLuc": 61,
+        "hp": 500
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 1100,
+          "growth": 38,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 20,
+          "growth": 20,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/e7c784f3-67a0-41d9-805f-09d4152d47ad.cc970.jpg",
+      "desc": "Vũ Khí · Thái Sơ Lv.100",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 38,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "32",
+        "name": "Bách Lý"
+      },
+      "upgradeTo": {
+        "id": "416",
+        "name": "Thần Nguyệt Cung"
+      },
+      "sell": 200
+    },
+    {
+      "id": "wiki_eq_328",
+      "wikiId": "328",
+      "name": "Kiếm Hải Tặc",
+      "slot": "weapon",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 40,
+      "bonuses": {
+        "vuLuc": 24,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 430,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/1e8021b0-b1a4-4bff-89cf-fc3104e94f94.e3938.jpg",
+      "desc": "Vũ Khí · Sử Thi Lv.40",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "209",
+        "name": "Chấn Tiên"
+      },
+      "upgradeTo": {
+        "id": "335",
+        "name": "Kiếm Hải Tặc"
+      },
+      "sell": 40
+    },
+    {
+      "id": "wiki_eq_7",
+      "wikiId": "7",
+      "name": "Kim Phủ",
+      "slot": "weapon",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 16,
+      "bonuses": {
+        "vuLuc": 6,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 102,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/f5e17f38-5fec-4e54-851f-4b16d591e43c.e9193.jpg",
+      "desc": "Vũ Khí · Thường Lv.16",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 7
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "18",
+        "name": "Diệp Đao"
+      },
+      "sell": 6600
+    },
+    {
+      "id": "wiki_eq_212",
+      "wikiId": "212",
+      "name": "Kim Tước Kiếm",
+      "slot": "weapon",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 60,
+      "bonuses": {
+        "vuLuc": 28,
+        "hp": 225
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 510,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 9,
+          "growth": 9,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/86ae13ae-11b8-414a-b60c-e88f6a82c316.8651e.jpg",
+      "desc": "Vũ Khí · Sử Thi Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "209",
+        "name": "Chấn Tiên"
+      },
+      "upgradeTo": {
+        "id": "335",
+        "name": "Kiếm Hải Tặc"
+      },
+      "sell": 16000
+    },
+    {
+      "id": "wiki_eq_10",
+      "wikiId": "10",
+      "name": "Kinh Kiếm",
+      "slot": "weapon",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 28,
+      "bonuses": {
+        "vuLuc": 9,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 170,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/41b31819-7f98-4d0b-9622-c6ade9909354.fe119.jpg",
+      "desc": "Vũ Khí · Thường Lv.28",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 7
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "18",
+        "name": "Diệp Đao"
+      },
+      "sell": 10800
+    },
+    {
+      "id": "wiki_eq_207",
+      "wikiId": "207",
+      "name": "Liệt Địa Phủ",
+      "slot": "weapon",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 24,
+      "bonuses": {
+        "vuLuc": 14,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 246,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/9ca0a06b-792f-440d-9126-8fa8c541615c.ae49e.jpg",
+      "desc": "Vũ Khí · Chiến Lv.24",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "6",
+        "name": "Bách Thương"
+      },
+      "upgradeTo": {
+        "id": "209",
+        "name": "Chấn Tiên"
+      },
+      "sell": 13000
+    },
+    {
+      "id": "wiki_eq_542",
+      "wikiId": "542",
+      "name": "Liệt Thiên Phủ",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Bàn Cổ",
+      "levelReq": 170,
+      "bonuses": {
+        "vuLuc": 444,
+        "hp": 12500
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 8000,
+          "growth": 100,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 500,
+          "growth": 150,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/6dc01160-d500-4584-adf0-fe19e8d933b9.8171f.jpg",
+      "desc": "Vũ Khí · Bàn Cổ Lv.170",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 100,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "445",
+        "name": "Diệt Thế Kiếm"
+      },
+      "upgradeTo": {
+        "id": "565",
+        "name": "Hỗn Độn-Bàn Long Kiếm"
+      },
+      "sell": 10000
+    },
+    {
+      "id": "wiki_eq_213",
+      "wikiId": "213",
+      "name": "Liêu Nha Nhẫn",
+      "slot": "weapon",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 64,
+      "bonuses": {
+        "vuLuc": 34,
+        "hp": 250
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 614,
+          "growth": 28,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 10,
+          "growth": 10,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/90acfba6-b030-4683-a0dc-482e3c68d86e.d7712.jpg",
+      "desc": "Vũ Khí · Truyền thuyết Lv.64",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 28,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "28",
+        "name": "Cửu Thiên"
+      },
+      "upgradeTo": {
+        "id": "32",
+        "name": "Bách Lý"
+      },
+      "sell": 23000
+    },
+    {
+      "id": "wiki_eq_19",
+      "wikiId": "19",
+      "name": "Lôi Kích",
+      "slot": "weapon",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 20,
+      "bonuses": {
+        "vuLuc": 9,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 155,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/ec28c3f8-d0ad-477a-b72b-b6985a559c65.ffba7.jpg",
+      "desc": "Vũ Khí · Thần Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "18",
+        "name": "Diệp Đao"
+      },
+      "upgradeTo": {
+        "id": "28",
+        "name": "Cửu Thiên"
+      },
+      "sell": 7500
+    },
+    {
+      "id": "wiki_eq_286",
+      "wikiId": "286",
+      "name": "Lục Thương",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 100,
+      "bonuses": {
+        "vuLuc": 66,
+        "hp": 550
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 1185,
+          "growth": 38,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 22,
+          "growth": 22,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/79e4efa8-0e91-491a-965f-c2cbbddc2af5.4cfb4.jpg",
+      "desc": "Vũ Khí · Thái Sơ Lv.100",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 38,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "32",
+        "name": "Bách Lý"
+      },
+      "upgradeTo": {
+        "id": "416",
+        "name": "Thần Nguyệt Cung"
+      },
+      "sell": 280
+    },
+    {
+      "id": "wiki_eq_380",
+      "wikiId": "380",
+      "name": "Mặc Dương",
+      "slot": "weapon",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 1,
+      "bonuses": {
+        "vuLuc": 31,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 550,
+          "growth": 28,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/af1f535d-37b9-47c2-a9c5-593f5ab1ebc5.aac08.jpg",
+      "desc": "Vũ Khí · Truyền thuyết Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 28,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "28",
+        "name": "Cửu Thiên"
+      },
+      "upgradeTo": {
+        "id": "32",
+        "name": "Bách Lý"
+      },
+      "sell": 20000
+    },
+    {
+      "id": "wiki_eq_211",
+      "wikiId": "211",
+      "name": "Mặc Ngọc Nhẫn",
+      "slot": "weapon",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 55,
+      "bonuses": {
+        "vuLuc": 27,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 487,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/a6f94a74-567b-4ff4-999c-ea0e287c6aea.b15c5.jpg",
+      "desc": "Vũ Khí · Sử Thi Lv.55",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "209",
+        "name": "Chấn Tiên"
+      },
+      "upgradeTo": {
+        "id": "335",
+        "name": "Kiếm Hải Tặc"
+      },
+      "sell": 15500
+    },
+    {
+      "id": "wiki_eq_2",
+      "wikiId": "2",
+      "name": "Ngân Kiếm",
+      "slot": "weapon",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 3,
+      "bonuses": {
+        "vuLuc": 2,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 29,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/e9ae701a-c8e7-4ae9-803f-dfb35afca4d6.451f6.jpg",
+      "desc": "Vũ Khí · Thường Lv.3",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 7
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "18",
+        "name": "Diệp Đao"
+      },
+      "sell": 600
+    },
+    {
+      "id": "wiki_eq_20",
+      "wikiId": "20",
+      "name": "Nguyệt Cung",
+      "slot": "weapon",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 24,
+      "bonuses": {
+        "vuLuc": 10,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 183,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/8c88f514-8752-48d3-aff5-16b12b94f523.d2a5a.jpg",
+      "desc": "Vũ Khí · Thần Lv.24",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "18",
+        "name": "Diệp Đao"
+      },
+      "upgradeTo": {
+        "id": "28",
+        "name": "Cửu Thiên"
+      },
+      "sell": 9400
+    },
+    {
+      "id": "wiki_eq_11",
+      "wikiId": "11",
+      "name": "Nguyệt Đao",
+      "slot": "weapon",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 8,
+      "bonuses": {
+        "vuLuc": 4,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 63,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/b3bd1f47-59db-4785-9769-826ae7acffbf.52e1a.jpg",
+      "desc": "Vũ Khí · Chiến Lv.8",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "6",
+        "name": "Bách Thương"
+      },
+      "upgradeTo": {
+        "id": "209",
+        "name": "Chấn Tiên"
+      },
+      "sell": 5000
+    },
+    {
+      "id": "wiki_eq_27",
+      "wikiId": "27",
+      "name": "Nguyệt Phủ",
+      "slot": "weapon",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 55,
+      "bonuses": {
+        "vuLuc": 25,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 455,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/07a41734-990d-4313-880b-74cdfdabfd21.f49cd.jpg",
+      "desc": "Vũ Khí · Sử Thi Lv.55",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "209",
+        "name": "Chấn Tiên"
+      },
+      "upgradeTo": {
+        "id": "335",
+        "name": "Kiếm Hải Tặc"
+      },
+      "sell": 14400
+    },
+    {
+      "id": "wiki_eq_4",
+      "wikiId": "4",
+      "name": "Nhật Cung",
+      "slot": "weapon",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 7,
+      "bonuses": {
+        "vuLuc": 3,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 56,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/31ce16d5-42ea-4d5e-a2a8-9b97f695f438.4612d.jpg",
+      "desc": "Vũ Khí · Thường Lv.7",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 7
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "18",
+        "name": "Diệp Đao"
+      },
+      "sell": 2700
+    },
+    {
+      "id": "wiki_eq_718",
+      "wikiId": "718",
+      "name": "Nữ Oa Thương",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Nữ Oa",
+      "levelReq": 250,
+      "bonuses": {
+        "vuLuc": 1444,
+        "hp": 40000
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 26000,
+          "growth": 242,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 1600,
+          "growth": 325,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/dfb1ff72-0b6c-42b3-9149-33d30b04964b.96880.png",
+      "desc": "Vũ Khí · Nữ Oa Lv.250",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 242,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "654",
+        "name": "Phục Hi Thương"
+      },
+      "upgradeTo": {
+        "id": "797",
+        "name": "Viêm Đế Thương"
+      },
+      "sell": 32000
+    },
+    {
+      "id": "wiki_eq_210",
+      "wikiId": "210",
+      "name": "Phá Thương",
+      "slot": "weapon",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 45,
+      "bonuses": {
+        "vuLuc": 25,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 450,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/8a5a8869-00f5-4985-b4c2-6b7930cbb0bb.a1873.jpg",
+      "desc": "Vũ Khí · Sử Thi Lv.45",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "209",
+        "name": "Chấn Tiên"
+      },
+      "upgradeTo": {
+        "id": "335",
+        "name": "Kiếm Hải Tặc"
+      },
+      "sell": 14200
+    },
+    {
+      "id": "wiki_eq_884",
+      "wikiId": "884",
+      "name": "Phệ Đao",
+      "slot": "weapon",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 20,
+      "bonuses": {
+        "vuLuc": 13,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 239,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/09b351cb-b83e-441e-9eff-536f34b4770a.7db05.jpg",
+      "desc": "Vũ Khí · Sử Thi Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "209",
+        "name": "Chấn Tiên"
+      },
+      "upgradeTo": {
+        "id": "335",
+        "name": "Kiếm Hải Tặc"
+      },
+      "sell": 11000
+    },
+    {
+      "id": "wiki_eq_285",
+      "wikiId": "285",
+      "name": "Phong Đô Kiếm",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 90,
+      "bonuses": {
+        "vuLuc": 60,
+        "hp": 500
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 1080,
+          "growth": 38,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 20,
+          "growth": 20,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/bbb2dc3d-c3e9-4459-a31b-9c4bfe68cf60.5514e.jpg",
+      "desc": "Vũ Khí · Thái Sơ Lv.90",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 38,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "32",
+        "name": "Bách Lý"
+      },
+      "upgradeTo": {
+        "id": "416",
+        "name": "Thần Nguyệt Cung"
+      },
+      "sell": 240
+    },
+    {
+      "id": "wiki_eq_29",
+      "wikiId": "29",
+      "name": "Phong Hỏa",
+      "slot": "weapon",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 55,
+      "bonuses": {
+        "vuLuc": 28,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 510,
+          "growth": 28,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/a1ac4074-ef90-42e6-9fff-33e688c9a119.4fb99.jpg",
+      "desc": "Vũ Khí · Truyền thuyết Lv.55",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 28,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "28",
+        "name": "Cửu Thiên"
+      },
+      "upgradeTo": {
+        "id": "32",
+        "name": "Bách Lý"
+      },
+      "sell": 21000
+    },
+    {
+      "id": "wiki_eq_287",
+      "wikiId": "287",
+      "name": "Phong Tà Kiếm",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 110,
+      "bonuses": {
+        "vuLuc": 71,
+        "hp": 600
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 1270,
+          "growth": 38,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 24,
+          "growth": 24,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/c5823224-1587-4db4-9576-3ea0b7774d6d.661c6.jpg",
+      "desc": "Vũ Khí · Thái Sơ Lv.110",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 38,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "32",
+        "name": "Bách Lý"
+      },
+      "upgradeTo": {
+        "id": "416",
+        "name": "Thần Nguyệt Cung"
+      },
+      "sell": 320
+    },
+    {
+      "id": "wiki_eq_654",
+      "wikiId": "654",
+      "name": "Phục Hi Thương",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Phục Hi",
+      "levelReq": 230,
+      "bonuses": {
+        "vuLuc": 1111,
+        "hp": 30000
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 20000,
+          "growth": 190,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 1200,
+          "growth": 250,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/95abcf40-937b-40f0-a123-4766d9c873d7.bb52d.png",
+      "desc": "Vũ Khí · Phục Hi Lv.230",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 190,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "593",
+        "name": "Bàn Long Thương"
+      },
+      "upgradeTo": {
+        "id": "718",
+        "name": "Nữ Oa Thương"
+      },
+      "sell": 30000
+    },
+    {
+      "id": "wiki_eq_15",
+      "wikiId": "15",
+      "name": "Thái Cung",
+      "slot": "weapon",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 16,
+      "bonuses": {
+        "vuLuc": 9,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 159,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/eb106a04-af7a-4e10-8a8d-b480e2b2887b.48bdd.jpg",
+      "desc": "Vũ Khí · Chiến Lv.16",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "6",
+        "name": "Bách Thương"
+      },
+      "upgradeTo": {
+        "id": "209",
+        "name": "Chấn Tiên"
+      },
+      "sell": 9500
+    },
+    {
+      "id": "wiki_eq_30",
+      "wikiId": "30",
+      "name": "Thái Kiếm",
+      "slot": "weapon",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 64,
+      "bonuses": {
+        "vuLuc": 33,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 591,
+          "growth": 28,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/88373b81-54f9-4112-902d-e4e5cda7055b.01741.jpg",
+      "desc": "Vũ Khí · Truyền thuyết Lv.64",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 28,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "28",
+        "name": "Cửu Thiên"
+      },
+      "upgradeTo": {
+        "id": "32",
+        "name": "Bách Lý"
+      },
+      "sell": 24800
+    },
+    {
+      "id": "wiki_eq_416",
+      "wikiId": "416",
+      "name": "Thần Nguyệt Cung",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Thần Hoàng",
+      "levelReq": 130,
+      "bonuses": {
+        "vuLuc": 111,
+        "hp": 1000
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 2000,
+          "growth": 44,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 40,
+          "growth": 40,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/586adf42-62f8-4270-aab4-7c2c7a771b05.6452a.jpg",
+      "desc": "Vũ Khí · Thần Hoàng Lv.130",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 44,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "367",
+        "name": "Chúc Âm Thương"
+      },
+      "upgradeTo": {
+        "id": "445",
+        "name": "Diệt Thế Kiếm"
+      },
+      "sell": 1000
+    },
+    {
+      "id": "wiki_eq_1121",
+      "wikiId": "1121",
+      "name": "Thao Thiết Thương",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Thao Thiết",
+      "levelReq": 330,
+      "bonuses": {
+        "vuLuc": 2750,
+        "hp": 80000
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 49500,
+          "growth": 440,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 3200,
+          "growth": 625,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/4456c8d8-2756-4251-974c-015cacbfc19b.15612.png",
+      "desc": "Vũ Khí · Thao Thiết Lv.330",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 440,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "1030",
+        "name": "Trảm Long Phủ"
+      },
+      "upgradeTo": {
+        "id": "1209",
+        "name": "Cùng Kỳ Trảm Khung Thương"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_1115",
+      "wikiId": "1115",
+      "name": "Thất Tinh Đao",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 1,
+      "bonuses": {
+        "vuLuc": 50,
+        "hp": 500
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 900,
+          "growth": 38,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 20,
+          "growth": 20,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/25094e45-8e76-4d1a-bfad-19826e949b38.f5259.png",
+      "desc": "Vũ Khí · Thái Sơ Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 38,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "32",
+        "name": "Bách Lý"
+      },
+      "upgradeTo": {
+        "id": "416",
+        "name": "Thần Nguyệt Cung"
+      },
+      "sell": 200
+    },
+    {
+      "id": "wiki_eq_26",
+      "wikiId": "26",
+      "name": "Thí Đao",
+      "slot": "weapon",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 50,
+      "bonuses": {
+        "vuLuc": 23,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 415,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/09b351cb-b83e-441e-9eff-536f34b4770a.7db05.jpg",
+      "desc": "Vũ Khí · Sử Thi Lv.50",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "209",
+        "name": "Chấn Tiên"
+      },
+      "upgradeTo": {
+        "id": "335",
+        "name": "Kiếm Hải Tặc"
+      },
+      "sell": 12600
+    },
+    {
+      "id": "wiki_eq_214",
+      "wikiId": "214",
+      "name": "Thiên Kích",
+      "slot": "weapon",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 72,
+      "bonuses": {
+        "vuLuc": 38,
+        "hp": 275
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 685,
+          "growth": 28,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 11,
+          "growth": 11,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/504da3f0-e42d-4eac-a5ff-a0788c6acd1f.b3c20.jpg",
+      "desc": "Vũ Khí · Truyền thuyết Lv.72",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 28,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "28",
+        "name": "Cửu Thiên"
+      },
+      "upgradeTo": {
+        "id": "32",
+        "name": "Bách Lý"
+      },
+      "sell": 25000
+    },
+    {
+      "id": "wiki_eq_21",
+      "wikiId": "21",
+      "name": "Thiên Lôi Kích",
+      "slot": "weapon",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 28,
+      "bonuses": {
+        "vuLuc": 12,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 211,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/1184ecac-5ccd-4e7d-a36c-2a542741d2d4.ed451.jpg",
+      "desc": "Vũ Khí · Thần Lv.28",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "18",
+        "name": "Diệp Đao"
+      },
+      "upgradeTo": {
+        "id": "28",
+        "name": "Cửu Thiên"
+      },
+      "sell": 10500
+    },
+    {
+      "id": "wiki_eq_208",
+      "wikiId": "208",
+      "name": "Thiên Tử Kiếm",
+      "slot": "weapon",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 32,
+      "bonuses": {
+        "vuLuc": 15,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 273,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/0f39f90d-2dc4-40a4-993b-49aa16eb581c.d5e97.jpg",
+      "desc": "Vũ Khí · Thần Lv.32",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "18",
+        "name": "Diệp Đao"
+      },
+      "upgradeTo": {
+        "id": "28",
+        "name": "Cửu Thiên"
+      },
+      "sell": 12000
+    },
+    {
+      "id": "wiki_eq_1",
+      "wikiId": "1",
+      "name": "Thiết Kiếm",
+      "slot": "weapon",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 1,
+      "bonuses": {
+        "vuLuc": 1,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 17,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/77f2115c-55b5-455a-a011-5bb49770559d.e10dd.jpg",
+      "desc": "Vũ Khí · Thường Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 7
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "18",
+        "name": "Diệp Đao"
+      },
+      "sell": 13
+    },
+    {
+      "id": "wiki_eq_16",
+      "wikiId": "16",
+      "name": "Thiết Thương",
+      "slot": "weapon",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 18,
+      "bonuses": {
+        "vuLuc": 10,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 183,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/eb9c9e07-e49b-4260-8e88-1178f8a47276.6d98d.jpg",
+      "desc": "Vũ Khí · Chiến Lv.18",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "6",
+        "name": "Bách Thương"
+      },
+      "upgradeTo": {
+        "id": "209",
+        "name": "Chấn Tiên"
+      },
+      "sell": 10000
+    },
+    {
+      "id": "wiki_eq_442",
+      "wikiId": "442",
+      "name": "Thiết Tích",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 1,
+      "bonuses": {
+        "vuLuc": 39,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 700,
+          "growth": 32,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/61e98b6e-ea64-4508-9146-7e80401db642.8090e.jpg",
+      "desc": "Vũ Khí · Thượng Cổ Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 32,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "335",
+        "name": "Kiếm Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "367",
+        "name": "Chúc Âm Thương"
+      },
+      "sell": 50
+    },
+    {
+      "id": "wiki_eq_5",
+      "wikiId": "5",
+      "name": "Thủy Kiếm",
+      "slot": "weapon",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 10,
+      "bonuses": {
+        "vuLuc": 4,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 70,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/2e2397da-28a5-4279-8e37-87630e3167b4.b5d6b.jpg",
+      "desc": "Vũ Khí · Thường Lv.10",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 7
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "18",
+        "name": "Diệp Đao"
+      },
+      "sell": 3720
+    },
+    {
+      "id": "wiki_eq_3",
+      "wikiId": "3",
+      "name": "Tinh Đao",
+      "slot": "weapon",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 5,
+      "bonuses": {
+        "vuLuc": 2,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 42,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/d054c436-e08b-4039-9183-56da03e3d012.de875.jpg",
+      "desc": "Vũ Khí · Thường Lv.5",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 7
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "18",
+        "name": "Diệp Đao"
+      },
+      "sell": 1620
+    },
+    {
+      "id": "wiki_eq_22",
+      "wikiId": "22",
+      "name": "Tinh Kiếm",
+      "slot": "weapon",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 32,
+      "bonuses": {
+        "vuLuc": 13,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 239,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/ad8dd2c8-4fd3-433d-a860-8e981b80da17.fa852.jpg",
+      "desc": "Vũ Khí · Thần Lv.32",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "18",
+        "name": "Diệp Đao"
+      },
+      "upgradeTo": {
+        "id": "28",
+        "name": "Cửu Thiên"
+      },
+      "sell": 11000
+    },
+    {
+      "id": "wiki_eq_1030",
+      "wikiId": "1030",
+      "name": "Trảm Long Phủ",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Xi Vưu",
+      "levelReq": 310,
+      "bonuses": {
+        "vuLuc": 2378,
+        "hp": 70000
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 42800,
+          "growth": 386,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 2800,
+          "growth": 540,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/79f5446e-f055-4df9-9f58-b9bf50322f74.e8369.png",
+      "desc": "Vũ Khí · Xi Vưu Lv.310",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 386,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "864",
+        "name": "Hình Thiên Thương"
+      },
+      "upgradeTo": {
+        "id": "1121",
+        "name": "Thao Thiết Thương"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_14",
+      "wikiId": "14",
+      "name": "Trám Phủ",
+      "slot": "weapon",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 14,
+      "bonuses": {
+        "vuLuc": 8,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 135,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/a36fac47-08fb-4e60-bb2d-5b942191bc4d.9267c.jpg",
+      "desc": "Vũ Khí · Chiến Lv.14",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "6",
+        "name": "Bách Thương"
+      },
+      "upgradeTo": {
+        "id": "209",
+        "name": "Chấn Tiên"
+      },
+      "sell": 9000
+    },
+    {
+      "id": "wiki_eq_31",
+      "wikiId": "31",
+      "name": "Tuế Nguyệt",
+      "slot": "weapon",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 72,
+      "bonuses": {
+        "vuLuc": 36,
+        "hp": 225
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 645,
+          "growth": 28,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 9,
+          "growth": 9,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/db87b0bc-8f87-4364-862b-d0b5b7c8b7b5.5d6df.jpg",
+      "desc": "Vũ Khí · Truyền thuyết Lv.72",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 28,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "28",
+        "name": "Cửu Thiên"
+      },
+      "upgradeTo": {
+        "id": "32",
+        "name": "Bách Lý"
+      },
+      "sell": 28000
+    },
+    {
+      "id": "wiki_eq_13",
+      "wikiId": "13",
+      "name": "Tuyết Kiếm",
+      "slot": "weapon",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 12,
+      "bonuses": {
+        "vuLuc": 6,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 111,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/f7fe805e-3e9d-4df1-836d-78f2f2932728.f6a6b.jpg",
+      "desc": "Vũ Khí · Chiến Lv.12",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "6",
+        "name": "Bách Thương"
+      },
+      "upgradeTo": {
+        "id": "209",
+        "name": "Chấn Tiên"
+      },
+      "sell": 7600
+    },
+    {
+      "id": "wiki_eq_366",
+      "wikiId": "366",
+      "name": "Ứng Long Đao",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 100,
+      "bonuses": {
+        "vuLuc": 69,
+        "hp": 400
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 1250,
+          "growth": 32,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 16,
+          "growth": 16,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/f311fb3e-586a-4632-86c8-5920ebeecc60.c5b16.jpg",
+      "desc": "Vũ Khí · Thượng Cổ Lv.100",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 32,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "335",
+        "name": "Kiếm Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "367",
+        "name": "Chúc Âm Thương"
+      },
+      "sell": 120
+    },
+    {
+      "id": "wiki_eq_797",
+      "wikiId": "797",
+      "name": "Viêm Đế Thương",
+      "slot": "weapon",
+      "rarity": "red",
+      "qualityWiki": "Viêm Đế",
+      "levelReq": 270,
+      "bonuses": {
+        "vuLuc": 1733,
+        "hp": 50000
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 31200,
+          "growth": 290,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 2000,
+          "growth": 390,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/651fd7dc-b4ba-4a2d-9de8-4d7c9a0f5116.cd006.png",
+      "desc": "Vũ Khí · Viêm Đế Lv.270",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 290,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "718",
+        "name": "Nữ Oa Thương"
+      },
+      "upgradeTo": {
+        "id": "864",
+        "name": "Hình Thiên Thương"
+      },
+      "sell": 38000
+    },
+    {
+      "id": "wiki_eq_17",
+      "wikiId": "17",
+      "name": "Vương Kiếm",
+      "slot": "weapon",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 20,
+      "bonuses": {
+        "vuLuc": 12,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Công",
+          "base": 207,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/237fa56b-be3b-4a6e-89ce-e446cea6e67a.d762c.jpg",
+      "desc": "Vũ Khí · Chiến Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 7
+      },
+      "upgradeFrom": {
+        "id": "6",
+        "name": "Bách Thương"
+      },
+      "upgradeTo": {
+        "id": "209",
+        "name": "Chấn Tiên"
+      },
+      "sell": 11000
+    },
+    {
+      "id": "wiki_eq_53",
+      "wikiId": "53",
+      "name": "Âm Dương Khải",
+      "slot": "armor",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 24,
+      "bonuses": {
+        "tongLinh": 9,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 170,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/47b2fae4-464d-475a-b3ef-70506977ccab.23789.jpg",
+      "desc": "Giáp · Thần Lv.24",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "216",
+        "name": "Cấm Vệ Y"
+      },
+      "upgradeTo": {
+        "id": "221",
+        "name": "Kim Tước Khải"
+      },
+      "sell": 7520
+    },
+    {
+      "id": "wiki_eq_324",
+      "wikiId": "324",
+      "name": "Áo Hải Tặc",
+      "slot": "armor",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 20,
+      "bonuses": {
+        "tongLinh": 8,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 150,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/ce87e104-b02e-4565-8d6a-77df7effa571.3776a.jpg",
+      "desc": "Giáp · Thần Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "216",
+        "name": "Cấm Vệ Y"
+      },
+      "upgradeTo": {
+        "id": "221",
+        "name": "Kim Tước Khải"
+      },
+      "sell": 20
+    },
+    {
+      "id": "wiki_eq_352",
+      "wikiId": "352",
+      "name": "Áo Hải Tặc",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 100,
+      "bonuses": {
+        "tongLinh": 44,
+        "hp": 500
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 800,
+          "growth": 22,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 20,
+          "growth": 20,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/7a9f87a1-9617-46f2-872d-e0f8428deef0.ef82a.jpg",
+      "desc": "Giáp · Thái Sơ Lv.100",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 22,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "65",
+        "name": "Bát Nhã Khải"
+      },
+      "upgradeTo": {
+        "id": "417",
+        "name": "Thất Hải Giáp"
+      },
+      "sell": 200
+    },
+    {
+      "id": "wiki_eq_345",
+      "wikiId": "345",
+      "name": "Áo Hải Tặc",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 80,
+      "bonuses": {
+        "tongLinh": 33,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 590,
+          "growth": 18,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/0a50cbd4-97e3-4419-87b9-8a357aef8d2a.5d7c1.jpg",
+      "desc": "Giáp · Thượng Cổ Lv.80",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 18,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "222",
+        "name": "Chiêu Võ Giáp"
+      },
+      "upgradeTo": {
+        "id": "289",
+        "name": "Bế Phương Y"
+      },
+      "sell": 160
+    },
+    {
+      "id": "wiki_eq_338",
+      "wikiId": "338",
+      "name": "Áo Hải Tặc",
+      "slot": "armor",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 60,
+      "bonuses": {
+        "tongLinh": 22,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 400,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/acab9183-6796-41f8-be35-29ef1d37b619.e29c4.jpg",
+      "desc": "Giáp · Truyền thuyết Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "221",
+        "name": "Kim Tước Khải"
+      },
+      "upgradeTo": {
+        "id": "65",
+        "name": "Bát Nhã Khải"
+      },
+      "sell": 80
+    },
+    {
+      "id": "wiki_eq_331",
+      "wikiId": "331",
+      "name": "Áo Hải Tặc",
+      "slot": "armor",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 40,
+      "bonuses": {
+        "tongLinh": 17,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 300,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/2cdd84dd-9413-48af-ab8a-ae2ddd1a2e1e.7bdec.jpg",
+      "desc": "Giáp · Sử Thi Lv.40",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "217",
+        "name": "Cẩm Mãng Bào"
+      },
+      "upgradeTo": {
+        "id": "222",
+        "name": "Chiêu Võ Giáp"
+      },
+      "sell": 40
+    },
+    {
+      "id": "wiki_eq_35",
+      "wikiId": "35",
+      "name": "Bách Thú Y",
+      "slot": "armor",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 3,
+      "bonuses": {
+        "tongLinh": 1,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 20,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/d9d33234-9ae6-4d7a-9de5-5c4924039a97.1e78c.jpg",
+      "desc": "Giáp · Thường Lv.3",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 6
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "216",
+        "name": "Cấm Vệ Y"
+      },
+      "sell": 600
+    },
+    {
+      "id": "wiki_eq_65",
+      "wikiId": "65",
+      "name": "Bát Nhã Khải",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 80,
+      "bonuses": {
+        "tongLinh": 30,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 535,
+          "growth": 18,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/dfea50c2-77db-44c0-88b5-583d93489486.16228.jpg",
+      "desc": "Giáp · Thượng Cổ Lv.80",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 18,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "222",
+        "name": "Chiêu Võ Giáp"
+      },
+      "upgradeTo": {
+        "id": "289",
+        "name": "Bế Phương Y"
+      },
+      "sell": 48
+    },
+    {
+      "id": "wiki_eq_289",
+      "wikiId": "289",
+      "name": "Bế Phương Y",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 100,
+      "bonuses": {
+        "tongLinh": 48,
+        "hp": 550
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 870,
+          "growth": 22,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 22,
+          "growth": 22,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/332160e8-bea5-4046-9089-29f555dab692.f691c.jpg",
+      "desc": "Giáp · Thái Sơ Lv.100",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 22,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "65",
+        "name": "Bát Nhã Khải"
+      },
+      "upgradeTo": {
+        "id": "417",
+        "name": "Thất Hải Giáp"
+      },
+      "sell": 220
+    },
+    {
+      "id": "wiki_eq_34",
+      "wikiId": "34",
+      "name": "Bố Giáp",
+      "slot": "armor",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 1,
+      "bonuses": {
+        "tongLinh": 1,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 12,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/ee65d54d-9038-4817-9435-691724d94e23.ffe8c.jpg",
+      "desc": "Giáp · Thường Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 6
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "216",
+        "name": "Cấm Vệ Y"
+      },
+      "sell": 10
+    },
+    {
+      "id": "wiki_eq_217",
+      "wikiId": "217",
+      "name": "Cẩm Mãng Bào",
+      "slot": "armor",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 24,
+      "bonuses": {
+        "tongLinh": 14,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 260,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/f0778109-de8c-471f-8eeb-cf689dcd1126.07393.jpg",
+      "desc": "Giáp · Thần Lv.24",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "216",
+        "name": "Cấm Vệ Y"
+      },
+      "upgradeTo": {
+        "id": "221",
+        "name": "Kim Tước Khải"
+      },
+      "sell": 14000
+    },
+    {
+      "id": "wiki_eq_54",
+      "wikiId": "54",
+      "name": "Cẩm Ngọc Giáp",
+      "slot": "armor",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 28,
+      "bonuses": {
+        "tongLinh": 12,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 210,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/103362f2-855e-49ca-92ed-b59d1e5ed077.7cca4.jpg",
+      "desc": "Giáp · Thần Lv.28",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "216",
+        "name": "Cấm Vệ Y"
+      },
+      "upgradeTo": {
+        "id": "221",
+        "name": "Kim Tước Khải"
+      },
+      "sell": 8400
+    },
+    {
+      "id": "wiki_eq_216",
+      "wikiId": "216",
+      "name": "Cấm Vệ Y",
+      "slot": "armor",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 30,
+      "bonuses": {
+        "tongLinh": 9,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 170,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/a1e77014-cfba-4c5f-9b4a-63919327fd34.bcd34.jpg",
+      "desc": "Giáp · Chiến Lv.30",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "35",
+        "name": "Bách Thú Y"
+      },
+      "upgradeTo": {
+        "id": "217",
+        "name": "Cẩm Mãng Bào"
+      },
+      "sell": 10000
+    },
+    {
+      "id": "wiki_eq_222",
+      "wikiId": "222",
+      "name": "Chiêu Võ Giáp",
+      "slot": "armor",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 64,
+      "bonuses": {
+        "tongLinh": 23,
+        "hp": 250
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 415,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 10,
+          "growth": 10,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/c698b5ba-1310-4790-9ba2-c3887eb2daca.7389b.jpg",
+      "desc": "Giáp · Truyền thuyết Lv.64",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "221",
+        "name": "Kim Tước Khải"
+      },
+      "upgradeTo": {
+        "id": "65",
+        "name": "Bát Nhã Khải"
+      },
+      "sell": 22500
+    },
+    {
+      "id": "wiki_eq_369",
+      "wikiId": "369",
+      "name": "Chúc Âm Chiến Y",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 120,
+      "bonuses": {
+        "tongLinh": 71,
+        "hp": 700
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 1275,
+          "growth": 22,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 28,
+          "growth": 28,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/2b824c88-c297-4a07-ab5e-479596418e1f.bf31c.jpg",
+      "desc": "Giáp · Thái Sơ Lv.120",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 22,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "65",
+        "name": "Bát Nhã Khải"
+      },
+      "upgradeTo": {
+        "id": "417",
+        "name": "Thất Hải Giáp"
+      },
+      "sell": 400
+    },
+    {
+      "id": "wiki_eq_1210",
+      "wikiId": "1210",
+      "name": "Cùng Kỳ Trấn Ngục Giáp",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Cùng Kỳ",
+      "levelReq": 350,
+      "bonuses": {
+        "tongLinh": 3122,
+        "hp": 90000
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 56200,
+          "growth": 432,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 3600,
+          "growth": 710,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/6f3a20e6-e6de-4817-8966-14a3fb7a2150.920fb.png",
+      "desc": "Giáp · Cùng Kỳ Lv.350",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 432,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "1122",
+        "name": "Thao Thiết Giáp"
+      },
+      "upgradeTo": null,
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_543",
+      "wikiId": "543",
+      "name": "Đại Địa Giáp",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Bàn Cổ",
+      "levelReq": 170,
+      "bonuses": {
+        "tongLinh": 356,
+        "hp": 12500
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 6400,
+          "growth": 68,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 500,
+          "growth": 150,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/90284f8a-eb27-4e46-a910-1fc4e0896a8f.1672c.jpg",
+      "desc": "Giáp · Bàn Cổ Lv.170",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 68,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "446",
+        "name": "Diệt Thế Giáp"
+      },
+      "upgradeTo": {
+        "id": "566",
+        "name": "Hỗn Độn-Phẫn Ảnh Y"
+      },
+      "sell": 4800
+    },
+    {
+      "id": "wiki_eq_63",
+      "wikiId": "63",
+      "name": "Đế Giáp",
+      "slot": "armor",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 64,
+      "bonuses": {
+        "tongLinh": 25,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 442,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/4c644654-afd7-4f37-9763-402e71435f11.d87a2.jpg",
+      "desc": "Giáp · Truyền thuyết Lv.64",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "221",
+        "name": "Kim Tước Khải"
+      },
+      "upgradeTo": {
+        "id": "65",
+        "name": "Bát Nhã Khải"
+      },
+      "sell": 19840
+    },
+    {
+      "id": "wiki_eq_41",
+      "wikiId": "41",
+      "name": "Diệp Giáp",
+      "slot": "armor",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 20,
+      "bonuses": {
+        "tongLinh": 4,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 80,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/b687839c-7356-4e4a-abf2-2fd8ebd8381d.438f8.jpg",
+      "desc": "Giáp · Thường Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 6
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "216",
+        "name": "Cấm Vệ Y"
+      },
+      "sell": 8100
+    },
+    {
+      "id": "wiki_eq_446",
+      "wikiId": "446",
+      "name": "Diệt Thế Giáp",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Ám Kim",
+      "levelReq": 150,
+      "bonuses": {
+        "tongLinh": 208,
+        "hp": 2500
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 3750,
+          "growth": 45,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 100,
+          "growth": 100,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/f6f417b5-65f7-4434-8598-4a186d95f53b.5a5b7.jpg",
+      "desc": "Giáp · Ám Kim Lv.150",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 45,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "417",
+        "name": "Thất Hải Giáp"
+      },
+      "upgradeTo": {
+        "id": "543",
+        "name": "Đại Địa Giáp"
+      },
+      "sell": 2400
+    },
+    {
+      "id": "wiki_eq_46",
+      "wikiId": "46",
+      "name": "Định Giáp",
+      "slot": "armor",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 12,
+      "bonuses": {
+        "tongLinh": 4,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 70,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/8fd96a4a-e666-4c7d-93a3-2d0d054b6c36.f951a.jpg",
+      "desc": "Giáp · Chiến Lv.12",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "35",
+        "name": "Bách Thú Y"
+      },
+      "upgradeTo": {
+        "id": "217",
+        "name": "Cẩm Mãng Bào"
+      },
+      "sell": 6080
+    },
+    {
+      "id": "wiki_eq_36",
+      "wikiId": "36",
+      "name": "Đồng Giáp",
+      "slot": "armor",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 5,
+      "bonuses": {
+        "tongLinh": 2,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 28,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/0158aea8-03c5-4b75-9be6-d80c8bbec6e9.cce12.jpg",
+      "desc": "Giáp · Thường Lv.5",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 6
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "216",
+        "name": "Cấm Vệ Y"
+      },
+      "sell": 1620
+    },
+    {
+      "id": "wiki_eq_224",
+      "wikiId": "224",
+      "name": "Dương Khải",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 95,
+      "bonuses": {
+        "tongLinh": 39,
+        "hp": 300
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 700,
+          "growth": 18,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 12,
+          "growth": 12,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/760bdc79-d57a-467d-95f9-fc2fbb5a2593.cd1d4.jpg",
+      "desc": "Giáp · Thượng Cổ Lv.95",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 18,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "222",
+        "name": "Chiêu Võ Giáp"
+      },
+      "upgradeTo": {
+        "id": "289",
+        "name": "Bế Phương Y"
+      },
+      "sell": 60
+    },
+    {
+      "id": "wiki_eq_762",
+      "wikiId": "762",
+      "name": "Hắc Quang Khải",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 10,
+      "bonuses": {
+        "tongLinh": 33,
+        "hp": 500
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 600,
+          "growth": 22,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 20,
+          "growth": 20,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/b3aa7cc0-e988-4d6b-b5c5-0e2eb6bfe21a.f8269.jpg",
+      "desc": "Giáp · Thái Sơ Lv.10",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 22,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "65",
+        "name": "Bát Nhã Khải"
+      },
+      "upgradeTo": {
+        "id": "417",
+        "name": "Thất Hải Giáp"
+      },
+      "sell": 200
+    },
+    {
+      "id": "wiki_eq_865",
+      "wikiId": "865",
+      "name": "Hình Thiên Khải",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Hình Thiên",
+      "levelReq": 290,
+      "bonuses": {
+        "tongLinh": 2056,
+        "hp": 60000
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 37000,
+          "growth": 296,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 2400,
+          "growth": 465,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/5fb542e0-af50-4f13-a87f-3132361555f0.295e6.png",
+      "desc": "Giáp · Hình Thiên Lv.290",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 296,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "798",
+        "name": "Viêm Đế Y"
+      },
+      "upgradeTo": {
+        "id": "1031",
+        "name": "Liệt Diệm Khải"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_47",
+      "wikiId": "47",
+      "name": "Hỏa Khải",
+      "slot": "armor",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 14,
+      "bonuses": {
+        "tongLinh": 5,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 88,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/a472cb1b-1df1-409d-890f-06a83d9e76bf.38ed4.jpg",
+      "desc": "Giáp · Chiến Lv.14",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "35",
+        "name": "Bách Thú Y"
+      },
+      "upgradeTo": {
+        "id": "217",
+        "name": "Cẩm Mãng Bào"
+      },
+      "sell": 7200
+    },
+    {
+      "id": "wiki_eq_49",
+      "wikiId": "49",
+      "name": "Hoang Giáp",
+      "slot": "armor",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 18,
+      "bonuses": {
+        "tongLinh": 7,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 124,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/0faca040-e278-4dc2-8277-bbcda2643589.0d694.jpg",
+      "desc": "Giáp · Chiến Lv.18",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "35",
+        "name": "Bách Thú Y"
+      },
+      "upgradeTo": {
+        "id": "217",
+        "name": "Cẩm Mãng Bào"
+      },
+      "sell": 8000
+    },
+    {
+      "id": "wiki_eq_288",
+      "wikiId": "288",
+      "name": "Hoàng Giáp",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 90,
+      "bonuses": {
+        "tongLinh": 44,
+        "hp": 500
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 790,
+          "growth": 22,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 20,
+          "growth": 20,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/470f4262-d93f-4e09-99a1-ee33d0a21f7b.6bdb6.jpg",
+      "desc": "Giáp · Thái Sơ Lv.90",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 22,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "65",
+        "name": "Bát Nhã Khải"
+      },
+      "upgradeTo": {
+        "id": "417",
+        "name": "Thất Hải Giáp"
+      },
+      "sell": 200
+    },
+    {
+      "id": "wiki_eq_566",
+      "wikiId": "566",
+      "name": "Hỗn Độn-Phẫn Ảnh Y",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Hỗn Độn",
+      "levelReq": 190,
+      "bonuses": {
+        "tongLinh": 556,
+        "hp": 17500
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 10000,
+          "growth": 100,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 700,
+          "growth": 175,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/65fed7e0-c480-400c-bb63-962c65f51939.4c490.jpg",
+      "desc": "Giáp · Hỗn Độn Lv.190",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 100,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "543",
+        "name": "Đại Địa Giáp"
+      },
+      "upgradeTo": {
+        "id": "594",
+        "name": "Ngạo Long Y"
+      },
+      "sell": 12800
+    },
+    {
+      "id": "wiki_eq_50",
+      "wikiId": "50",
+      "name": "Hổ Nha Y",
+      "slot": "armor",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 20,
+      "bonuses": {
+        "tongLinh": 8,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 142,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/bdbb682c-dc80-4aa7-bc82-29977d4a8d78.35835.jpg",
+      "desc": "Giáp · Chiến Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "35",
+        "name": "Bách Thú Y"
+      },
+      "upgradeTo": {
+        "id": "217",
+        "name": "Cẩm Mãng Bào"
+      },
+      "sell": 8800
+    },
+    {
+      "id": "wiki_eq_40",
+      "wikiId": "40",
+      "name": "Kim Giáp",
+      "slot": "armor",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 16,
+      "bonuses": {
+        "tongLinh": 4,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 70,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/0570a0e9-8164-4f93-95bc-fbe91d2667a0.fbc6d.jpg",
+      "desc": "Giáp · Thường Lv.16",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 6
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "216",
+        "name": "Cấm Vệ Y"
+      },
+      "sell": 6600
+    },
+    {
+      "id": "wiki_eq_518",
+      "wikiId": "518",
+      "name": "Kim Ti Giáp",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 1,
+      "bonuses": {
+        "tongLinh": 27,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 490,
+          "growth": 18,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/027d8e95-02fc-44b2-a311-bad59ed5dedb.3920c.jpg",
+      "desc": "Giáp · Thượng Cổ Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 18,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "222",
+        "name": "Chiêu Võ Giáp"
+      },
+      "upgradeTo": {
+        "id": "289",
+        "name": "Bế Phương Y"
+      },
+      "sell": 25000
+    },
+    {
+      "id": "wiki_eq_221",
+      "wikiId": "221",
+      "name": "Kim Tước Khải",
+      "slot": "armor",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 60,
+      "bonuses": {
+        "tongLinh": 22,
+        "hp": 250
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 397,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 10,
+          "growth": 10,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/a1efef6b-bb5e-499b-a996-35cdec27acac.7f565.jpg",
+      "desc": "Giáp · Sử Thi Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "217",
+        "name": "Cẩm Mãng Bào"
+      },
+      "upgradeTo": {
+        "id": "222",
+        "name": "Chiêu Võ Giáp"
+      },
+      "sell": 19800
+    },
+    {
+      "id": "wiki_eq_223",
+      "wikiId": "223",
+      "name": "Kỳ Lân Khải",
+      "slot": "armor",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 72,
+      "bonuses": {
+        "tongLinh": 26,
+        "hp": 275
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 468,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 11,
+          "growth": 11,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/e935414c-2c8a-4a06-82d4-fb1323f44101.83356.jpg",
+      "desc": "Giáp · Truyền thuyết Lv.72",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "221",
+        "name": "Kim Tước Khải"
+      },
+      "upgradeTo": {
+        "id": "65",
+        "name": "Bát Nhã Khải"
+      },
+      "sell": 24000
+    },
+    {
+      "id": "wiki_eq_43",
+      "wikiId": "43",
+      "name": "La Lĩnh Giáp",
+      "slot": "armor",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 28,
+      "bonuses": {
+        "tongLinh": 6,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 100,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/527b1f8f-0ce3-40be-855d-9767da5a94b5.5ccc6.jpg",
+      "desc": "Giáp · Thường Lv.28",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 6
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "216",
+        "name": "Cấm Vệ Y"
+      },
+      "sell": 10800
+    },
+    {
+      "id": "wiki_eq_517",
+      "wikiId": "517",
+      "name": "Liên Hoàn Khải",
+      "slot": "armor",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 1,
+      "bonuses": {
+        "tongLinh": 20,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 360,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/20cbbf43-2922-4e77-90fa-d28fc7985912.83930.jpg",
+      "desc": "Giáp · Truyền thuyết Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "221",
+        "name": "Kim Tước Khải"
+      },
+      "upgradeTo": {
+        "id": "65",
+        "name": "Bát Nhã Khải"
+      },
+      "sell": 25000
+    },
+    {
+      "id": "wiki_eq_1031",
+      "wikiId": "1031",
+      "name": "Liệt Diệm Khải",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Xi Vưu",
+      "levelReq": 310,
+      "bonuses": {
+        "tongLinh": 2378,
+        "hp": 70000
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 42800,
+          "growth": 338,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 2800,
+          "growth": 540,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/554b1698-e126-44a2-b668-9e635383cb29.edf99.png",
+      "desc": "Giáp · Xi Vưu Lv.310",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 338,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "865",
+        "name": "Hình Thiên Khải"
+      },
+      "upgradeTo": {
+        "id": "1122",
+        "name": "Thao Thiết Giáp"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_66",
+      "wikiId": "66",
+      "name": "Long Lân Khải",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 95,
+      "bonuses": {
+        "tongLinh": 38,
+        "hp": 250
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 675,
+          "growth": 18,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 10,
+          "growth": 10,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/01f632b7-a946-4cba-82d3-b1b6606f9d83.0a6f0.jpg",
+      "desc": "Giáp · Thượng Cổ Lv.95",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 18,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "222",
+        "name": "Chiêu Võ Giáp"
+      },
+      "upgradeTo": {
+        "id": "289",
+        "name": "Bế Phương Y"
+      },
+      "sell": 64
+    },
+    {
+      "id": "wiki_eq_62",
+      "wikiId": "62",
+      "name": "Lưỡng Giáp",
+      "slot": "armor",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 55,
+      "bonuses": {
+        "tongLinh": 19,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 340,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/2d9d84f5-5584-408c-a397-aa56a32706d6.2cee7.jpg",
+      "desc": "Giáp · Truyền thuyết Lv.55",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "221",
+        "name": "Kim Tước Khải"
+      },
+      "upgradeTo": {
+        "id": "65",
+        "name": "Bát Nhã Khải"
+      },
+      "sell": 16800
+    },
+    {
+      "id": "wiki_eq_57",
+      "wikiId": "57",
+      "name": "Luyện Giáp",
+      "slot": "armor",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 40,
+      "bonuses": {
+        "tongLinh": 12,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 210,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/db52c084-a1fa-4231-a7af-c4400601848a.6656c.jpg",
+      "desc": "Giáp · Sử Thi Lv.40",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "217",
+        "name": "Cẩm Mãng Bào"
+      },
+      "upgradeTo": {
+        "id": "222",
+        "name": "Chiêu Võ Giáp"
+      },
+      "sell": 7680
+    },
+    {
+      "id": "wiki_eq_220",
+      "wikiId": "220",
+      "name": "Mặc Ngọc Giáp",
+      "slot": "armor",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 55,
+      "bonuses": {
+        "tongLinh": 21,
+        "hp": 225
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 375,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 9,
+          "growth": 9,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/d7a5a954-744e-41af-a2d8-d6b4fc3f01e8.e79d5.jpg",
+      "desc": "Giáp · Sử Thi Lv.55",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "217",
+        "name": "Cẩm Mãng Bào"
+      },
+      "upgradeTo": {
+        "id": "222",
+        "name": "Chiêu Võ Giáp"
+      },
+      "sell": 18000
+    },
+    {
+      "id": "wiki_eq_594",
+      "wikiId": "594",
+      "name": "Ngạo Long Y",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Hiên Viên",
+      "levelReq": 210,
+      "bonuses": {
+        "tongLinh": 778,
+        "hp": 22500
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 14000,
+          "growth": 130,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 900,
+          "growth": 200,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/a2161866-14fa-4c77-b214-0ece13a05792.d79da.jpg",
+      "desc": "Giáp · Hiên Viên Lv.210",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 130,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "566",
+        "name": "Hỗn Độn-Phẫn Ảnh Y"
+      },
+      "upgradeTo": {
+        "id": "655",
+        "name": "Phục Hi Y"
+      },
+      "sell": 20000
+    },
+    {
+      "id": "wiki_eq_61",
+      "wikiId": "61",
+      "name": "Nguyệt Giáp",
+      "slot": "armor",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 60,
+      "bonuses": {
+        "tongLinh": 25,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 450,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/18646216-2e3f-4973-a44c-7dafdde8392b.58c6f.jpg",
+      "desc": "Giáp · Sử Thi Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "217",
+        "name": "Cẩm Mãng Bào"
+      },
+      "upgradeTo": {
+        "id": "222",
+        "name": "Chiêu Võ Giáp"
+      },
+      "sell": 14560
+    },
+    {
+      "id": "wiki_eq_52",
+      "wikiId": "52",
+      "name": "Nhuyễn Giáp",
+      "slot": "armor",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 20,
+      "bonuses": {
+        "tongLinh": 7,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 130,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/7d7f9936-8f6e-47db-8346-ac6c6e005271.8edf7.jpg",
+      "desc": "Giáp · Thần Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "216",
+        "name": "Cấm Vệ Y"
+      },
+      "upgradeTo": {
+        "id": "221",
+        "name": "Kim Tước Khải"
+      },
+      "sell": 6000
+    },
+    {
+      "id": "wiki_eq_51",
+      "wikiId": "51",
+      "name": "Nộ Yến Khải",
+      "slot": "armor",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 20,
+      "bonuses": {
+        "tongLinh": 17,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 310,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/1431f973-0018-4abf-ba1b-9a03708c600f.cb583.jpg",
+      "desc": "Giáp · Chiến Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "35",
+        "name": "Bách Thú Y"
+      },
+      "upgradeTo": {
+        "id": "217",
+        "name": "Cẩm Mãng Bào"
+      },
+      "sell": 30
+    },
+    {
+      "id": "wiki_eq_719",
+      "wikiId": "719",
+      "name": "Nữ Oa Y",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Nữ Oa",
+      "levelReq": 250,
+      "bonuses": {
+        "tongLinh": 1433,
+        "hp": 40000
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 25800,
+          "growth": 212,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 1600,
+          "growth": 325,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/d4aeb8f7-cd5d-43d9-b496-f9d55ea1e42a.25178.png",
+      "desc": "Giáp · Nữ Oa Lv.250",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 212,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "655",
+        "name": "Phục Hi Y"
+      },
+      "upgradeTo": {
+        "id": "798",
+        "name": "Viêm Đế Y"
+      },
+      "sell": 32000
+    },
+    {
+      "id": "wiki_eq_39",
+      "wikiId": "39",
+      "name": "Ô Kim Giáp",
+      "slot": "armor",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 13,
+      "bonuses": {
+        "tongLinh": 3,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 60,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/128ca00e-a805-4be6-b9be-c76cff4163bf.60895.jpg",
+      "desc": "Giáp · Thường Lv.13",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 6
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "216",
+        "name": "Cấm Vệ Y"
+      },
+      "sell": 5400
+    },
+    {
+      "id": "wiki_eq_44",
+      "wikiId": "44",
+      "name": "Phá Giáp",
+      "slot": "armor",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 8,
+      "bonuses": {
+        "tongLinh": 2,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 34,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/67383434-c845-4599-a788-0cf5b0557956.e4606.jpg",
+      "desc": "Giáp · Chiến Lv.8",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "35",
+        "name": "Bách Thú Y"
+      },
+      "upgradeTo": {
+        "id": "217",
+        "name": "Cẩm Mãng Bào"
+      },
+      "sell": 4000
+    },
+    {
+      "id": "wiki_eq_219",
+      "wikiId": "219",
+      "name": "Phong Giáp",
+      "slot": "armor",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 50,
+      "bonuses": {
+        "tongLinh": 19,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 340,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/b4fb7f73-c265-4ec4-a88f-cd1f91709924.120ca.jpg",
+      "desc": "Giáp · Sử Thi Lv.50",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "217",
+        "name": "Cẩm Mãng Bào"
+      },
+      "upgradeTo": {
+        "id": "222",
+        "name": "Chiêu Võ Giáp"
+      },
+      "sell": 17000
+    },
+    {
+      "id": "wiki_eq_218",
+      "wikiId": "218",
+      "name": "Phong Khải",
+      "slot": "armor",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 36,
+      "bonuses": {
+        "tongLinh": 17,
+        "hp": 225
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 300,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 9,
+          "growth": 9,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/bfde2f6f-2e39-482e-993a-e54de0e9e2ce.6bc1d.jpg",
+      "desc": "Giáp · Thần Lv.36",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "216",
+        "name": "Cấm Vệ Y"
+      },
+      "upgradeTo": {
+        "id": "221",
+        "name": "Kim Tước Khải"
+      },
+      "sell": 16000
+    },
+    {
+      "id": "wiki_eq_655",
+      "wikiId": "655",
+      "name": "Phục Hi Y",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Phục Hi",
+      "levelReq": 230,
+      "bonuses": {
+        "tongLinh": 1111,
+        "hp": 30000
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 20000,
+          "growth": 160,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 1200,
+          "growth": 250,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/a07342a6-3103-4c62-a3a2-a2d92e117cfc.b68d8.png",
+      "desc": "Giáp · Phục Hi Lv.230",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 160,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "594",
+        "name": "Ngạo Long Y"
+      },
+      "upgradeTo": {
+        "id": "719",
+        "name": "Nữ Oa Y"
+      },
+      "sell": 30000
+    },
+    {
+      "id": "wiki_eq_59",
+      "wikiId": "59",
+      "name": "Thạch Khải",
+      "slot": "armor",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 50,
+      "bonuses": {
+        "tongLinh": 18,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 330,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/be1a2d7d-6809-4f1c-9dda-b23595774b0a.12300.jpg",
+      "desc": "Giáp · Sử Thi Lv.50",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "217",
+        "name": "Cẩm Mãng Bào"
+      },
+      "upgradeTo": {
+        "id": "222",
+        "name": "Chiêu Võ Giáp"
+      },
+      "sell": 10080
+    },
+    {
+      "id": "wiki_eq_1122",
+      "wikiId": "1122",
+      "name": "Thao Thiết Giáp",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Thao Thiết",
+      "levelReq": 330,
+      "bonuses": {
+        "tongLinh": 2750,
+        "hp": 80000
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 49500,
+          "growth": 385,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 3200,
+          "growth": 625,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/8fa4050b-3287-4c93-8c4a-f9f274b80ba8.847c4.png",
+      "desc": "Giáp · Thao Thiết Lv.330",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 385,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "1031",
+        "name": "Liệt Diệm Khải"
+      },
+      "upgradeTo": {
+        "id": "1210",
+        "name": "Cùng Kỳ Trấn Ngục Giáp"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_417",
+      "wikiId": "417",
+      "name": "Thất Hải Giáp",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Thần Hoàng",
+      "levelReq": 130,
+      "bonuses": {
+        "tongLinh": 83,
+        "hp": 1000
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 1500,
+          "growth": 26,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 40,
+          "growth": 40,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/81715035-f3d3-4bc9-9b35-f97c8975f662.1b50c.jpg",
+      "desc": "Giáp · Thần Hoàng Lv.130",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 26,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "289",
+        "name": "Bế Phương Y"
+      },
+      "upgradeTo": {
+        "id": "446",
+        "name": "Diệt Thế Giáp"
+      },
+      "sell": 500
+    },
+    {
+      "id": "wiki_eq_55",
+      "wikiId": "55",
+      "name": "Thất Khải",
+      "slot": "armor",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 32,
+      "bonuses": {
+        "tongLinh": 14,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 250,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/ccee8fb1-38ad-4fe9-8c8d-f67552441381.7e588.jpg",
+      "desc": "Giáp · Thần Lv.32",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "216",
+        "name": "Cấm Vệ Y"
+      },
+      "upgradeTo": {
+        "id": "221",
+        "name": "Kim Tước Khải"
+      },
+      "sell": 8800
+    },
+    {
+      "id": "wiki_eq_56",
+      "wikiId": "56",
+      "name": "Thiên Giáp",
+      "slot": "armor",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 36,
       "bonuses": {
         "tongLinh": 16,
         "hp": 200
       },
-      "desc": "Đích Lư."
-    },
-    {
-      "id": "book_primer",
-      "name": "Tam Tự Kinh",
-      "slot": "book",
-      "rarity": "white",
-      "bonuses": {
-        "triLuc": 6
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 290,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/d63426fe-a081-4b2d-a800-7f38b07fb4d7.28cc4.jpg",
+      "desc": "Giáp · Thần Lv.36",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 6
       },
-      "desc": "Sách nhập môn."
-    },
-    {
-      "id": "book_bingfa",
-      "name": "Tôn Tử Binh Pháp",
-      "slot": "book",
-      "rarity": "blue",
-      "bonuses": {
-        "triLuc": 18
+      "upgradeFrom": {
+        "id": "216",
+        "name": "Cấm Vệ Y"
       },
-      "desc": "Binh pháp."
-    },
-    {
-      "id": "book_24",
-      "name": "Nhị Thập Tứ Thiên",
-      "slot": "book",
-      "rarity": "purple",
-      "bonuses": {
-        "triLuc": 28,
-        "tongLinh": 6
+      "upgradeTo": {
+        "id": "221",
+        "name": "Kim Tước Khải"
       },
-      "desc": "Binh thư cao."
+      "sell": 10000
     },
     {
-      "id": "book_mengde",
-      "name": "Mạnh Đức Tân Thư",
-      "slot": "book",
-      "rarity": "orange",
-      "bonuses": {
-        "triLuc": 32,
-        "vuLuc": 8
-      },
-      "desc": "Thư Tào."
-    },
-    {
-      "id": "book_kongming",
-      "name": "Long Trung Đối",
-      "slot": "book",
-      "rarity": "red",
-      "bonuses": {
-        "triLuc": 42,
-        "tongLinh": 10
-      },
-      "desc": "Sách Khổng Minh."
-    },
-    {
-      "id": "acc_jade",
-      "name": "Ngọc Bội",
-      "slot": "accessory",
+      "id": "wiki_eq_45",
+      "wikiId": "45",
+      "name": "Thiên Khải",
+      "slot": "armor",
       "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 10,
       "bonuses": {
-        "hp": 200,
-        "triLuc": 5
+        "tongLinh": 3,
+        "hp": 100
       },
-      "desc": "Ngọc."
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 52,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/157d32b3-0c24-4e74-997a-5c9680ae0dc2.b1e8a.jpg",
+      "desc": "Giáp · Chiến Lv.10",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "35",
+        "name": "Bách Thú Y"
+      },
+      "upgradeTo": {
+        "id": "217",
+        "name": "Cẩm Mãng Bào"
+      },
+      "sell": 4960
     },
     {
-      "id": "acc_ring",
-      "name": "Ngân Giới",
-      "slot": "accessory",
-      "rarity": "blue",
+      "id": "wiki_eq_42",
+      "wikiId": "42",
+      "name": "Thiên Tàm Y",
+      "slot": "armor",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 24,
       "bonuses": {
-        "vuLuc": 8,
+        "tongLinh": 5,
         "hp": 150
       },
-      "desc": "Nhẫn bạc."
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 90,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/31c91b21-6ea8-4ca2-801e-21f4cbc995ef.5d028.jpg",
+      "desc": "Giáp · Thường Lv.24",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 6
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "216",
+        "name": "Cấm Vệ Y"
+      },
+      "sell": 9300
     },
     {
-      "id": "acc_amulet",
-      "name": "Hộ Thân Phù",
-      "slot": "accessory",
+      "id": "wiki_eq_60",
+      "wikiId": "60",
+      "name": "Tỏa Hoàn Giáp",
+      "slot": "armor",
       "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 55,
       "bonuses": {
-        "tongLinh": 12,
-        "hp": 300
+        "tongLinh": 22,
+        "hp": 175
       },
-      "desc": "Bùa hộ."
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 390,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/2d2cfb09-e15a-4642-962b-31afb825ab4a.bc52f.jpg",
+      "desc": "Giáp · Sử Thi Lv.55",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "217",
+        "name": "Cẩm Mãng Bào"
+      },
+      "upgradeTo": {
+        "id": "222",
+        "name": "Chiêu Võ Giáp"
+      },
+      "sell": 11520
     },
     {
-      "id": "acc_seal",
-      "name": "Ngọc Tỷ",
-      "slot": "accessory",
-      "rarity": "orange",
+      "id": "wiki_eq_38",
+      "wikiId": "38",
+      "name": "Tố Ngân Khải",
+      "slot": "armor",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 10,
       "bonuses": {
-        "tongLinh": 15,
-        "triLuc": 15,
-        "vuLuc": 10
+        "tongLinh": 3,
+        "hp": 125
       },
-      "desc": "Ấn tín."
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 50,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/a14af5ef-36bf-4ba9-8c14-8fb911b21436.46b08.jpg",
+      "desc": "Giáp · Thường Lv.10",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 6
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "216",
+        "name": "Cấm Vệ Y"
+      },
+      "sell": 3720
     },
     {
-      "id": "acc_imperial_seal",
-      "name": "Truyền Quốc Ngọc Tỷ",
-      "slot": "accessory",
+      "id": "wiki_eq_368",
+      "wikiId": "368",
+      "name": "Ứng Long Khải",
+      "slot": "armor",
       "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 100,
       "bonuses": {
-        "tongLinh": 25,
-        "triLuc": 25,
-        "vuLuc": 15,
+        "tongLinh": 53,
         "hp": 400
       },
-      "desc": "Ngọc tỷ truyền quốc."
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 950,
+          "growth": 18,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 16,
+          "growth": 16,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/08a9ff88-268f-4428-a48b-92efc2b6f4e7.8f60b.jpg",
+      "desc": "Giáp · Thượng Cổ Lv.100",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 18,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "222",
+        "name": "Chiêu Võ Giáp"
+      },
+      "upgradeTo": {
+        "id": "289",
+        "name": "Bế Phương Y"
+      },
+      "sell": 120
+    },
+    {
+      "id": "wiki_eq_48",
+      "wikiId": "48",
+      "name": "Vân Giáp",
+      "slot": "armor",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 16,
+      "bonuses": {
+        "tongLinh": 6,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 106,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/837b4860-274f-40b1-9619-a110851b00b2.fde72.jpg",
+      "desc": "Giáp · Chiến Lv.16",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "35",
+        "name": "Bách Thú Y"
+      },
+      "upgradeTo": {
+        "id": "217",
+        "name": "Cẩm Mãng Bào"
+      },
+      "sell": 7600
+    },
+    {
+      "id": "wiki_eq_290",
+      "wikiId": "290",
+      "name": "Vạn Kiếp Khải",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 110,
+      "bonuses": {
+        "tongLinh": 53,
+        "hp": 600
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 950,
+          "growth": 22,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 24,
+          "growth": 24,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/26d421c5-c5e6-4e9a-9e8c-753336ad4679.791b0.jpg",
+      "desc": "Giáp · Thái Sơ Lv.110",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 22,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "65",
+        "name": "Bát Nhã Khải"
+      },
+      "upgradeTo": {
+        "id": "417",
+        "name": "Thất Hải Giáp"
+      },
+      "sell": 240
+    },
+    {
+      "id": "wiki_eq_798",
+      "wikiId": "798",
+      "name": "Viêm Đế Y",
+      "slot": "armor",
+      "rarity": "red",
+      "qualityWiki": "Viêm Đế",
+      "levelReq": 270,
+      "bonuses": {
+        "tongLinh": 1722,
+        "hp": 50000
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 31000,
+          "growth": 254,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 2000,
+          "growth": 390,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/b304afb6-da1a-4088-8019-15ca39c873c1.0babf.png",
+      "desc": "Giáp · Viêm Đế Lv.270",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 254,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "719",
+        "name": "Nữ Oa Y"
+      },
+      "upgradeTo": {
+        "id": "865",
+        "name": "Hình Thiên Khải"
+      },
+      "sell": 38000
+    },
+    {
+      "id": "wiki_eq_58",
+      "wikiId": "58",
+      "name": "Vũ Khúc Giáp",
+      "slot": "armor",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 45,
+      "bonuses": {
+        "tongLinh": 15,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 270,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/e030ea17-841b-493e-97af-f5a72cf008ab.3a720.jpg",
+      "desc": "Giáp · Sử Thi Lv.45",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "217",
+        "name": "Cẩm Mãng Bào"
+      },
+      "upgradeTo": {
+        "id": "222",
+        "name": "Chiêu Võ Giáp"
+      },
+      "sell": 8640
+    },
+    {
+      "id": "wiki_eq_64",
+      "wikiId": "64",
+      "name": "Xích Dực Vũ",
+      "slot": "armor",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 72,
+      "bonuses": {
+        "tongLinh": 31,
+        "hp": 225
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 550,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 9,
+          "growth": 9,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/f0d9c519-7fc2-45cb-961d-7650827016be.b6ba5.jpg",
+      "desc": "Giáp · Truyền thuyết Lv.72",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 6
+      },
+      "upgradeFrom": {
+        "id": "221",
+        "name": "Kim Tước Khải"
+      },
+      "upgradeTo": {
+        "id": "65",
+        "name": "Bát Nhã Khải"
+      },
+      "sell": 22400
+    },
+    {
+      "id": "wiki_eq_37",
+      "wikiId": "37",
+      "name": "Xích Giáp",
+      "slot": "armor",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 7,
+      "bonuses": {
+        "tongLinh": 2,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Vật Phòng",
+          "base": 40,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/35652804-a428-481e-8957-66e18ea82100.5c501.jpg",
+      "desc": "Giáp · Thường Lv.7",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 6
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "216",
+        "name": "Cấm Vệ Y"
+      },
+      "sell": 2700
+    },
+    {
+      "id": "wiki_eq_291",
+      "wikiId": "291",
+      "name": "Ảnh Tầm Câu",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 90,
+      "bonuses": {
+        "vuLuc": 60,
+        "hp": 500
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 1080,
+          "growth": 36,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 20,
+          "growth": 20,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/752e0ddb-46e9-44a0-85d3-6d15871b8617.db470.jpg",
+      "desc": "Ngựa · Thái Sơ Lv.90",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 36,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "443",
+        "name": "Chiếu Dạ Sư"
+      },
+      "upgradeTo": {
+        "id": "418",
+        "name": "Thần Hoàng Hổ"
+      },
+      "sell": 240
+    },
+    {
+      "id": "wiki_eq_90",
+      "wikiId": "90",
+      "name": "Bạch Long",
+      "slot": "horse",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 60,
+      "bonuses": {
+        "vuLuc": 19,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 345,
+          "growth": 28,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/9186aa3c-3737-4b8a-ac06-eae90263c738.16c7a.jpg",
+      "desc": "Ngựa · Truyền thuyết Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 28,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "89",
+        "name": "Kim Giáp Truy"
+      },
+      "upgradeTo": {
+        "id": "443",
+        "name": "Chiếu Dạ Sư"
+      },
+      "sell": 25000
+    },
+    {
+      "id": "wiki_eq_78",
+      "wikiId": "78",
+      "name": "Bão Nguyệt",
+      "slot": "horse",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 20,
+      "bonuses": {
+        "vuLuc": 18,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 315,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/f3d0da25-1be1-4fde-a7a9-c85196b6a47f.e06c3.jpg",
+      "desc": "Ngựa · Chiến Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "67",
+        "name": "Hoàng Phiêu"
+      },
+      "upgradeTo": {
+        "id": "81",
+        "name": "Chiếu Dạ Sư"
+      },
+      "sell": 40
+    },
+    {
+      "id": "wiki_eq_75",
+      "wikiId": "75",
+      "name": "Bôn Tiêu",
+      "slot": "horse",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 12,
+      "bonuses": {
+        "vuLuc": 6,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 108,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/b0121e2e-3059-4d67-8277-abece0c895cb.8786d.jpg",
+      "desc": "Ngựa · Chiến Lv.12",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "67",
+        "name": "Hoàng Phiêu"
+      },
+      "upgradeTo": {
+        "id": "81",
+        "name": "Chiếu Dạ Sư"
+      },
+      "sell": 6000
+    },
+    {
+      "id": "wiki_eq_443",
+      "wikiId": "443",
+      "name": "Chiếu Dạ Sư",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 1,
+      "bonuses": {
+        "vuLuc": 25,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 450,
+          "growth": 32,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/3b6cdc76-04e9-48ce-910a-bbe8453382cd.5cf93.jpg",
+      "desc": "Ngựa · Thượng Cổ Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 32,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "90",
+        "name": "Bạch Long"
+      },
+      "upgradeTo": {
+        "id": "371",
+        "name": "Chúc Âm Câu"
+      },
+      "sell": 50
+    },
+    {
+      "id": "wiki_eq_81",
+      "wikiId": "81",
+      "name": "Chiếu Dạ Sư",
+      "slot": "horse",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 28,
+      "bonuses": {
+        "vuLuc": 12,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 215,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/17ff5328-14b3-453b-a7d5-4289380049e6.53c23.jpg",
+      "desc": "Ngựa · Thần Lv.28",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "78",
+        "name": "Bão Nguyệt"
+      },
+      "upgradeTo": {
+        "id": "89",
+        "name": "Kim Giáp Truy"
+      },
+      "sell": 12000
+    },
+    {
+      "id": "wiki_eq_371",
+      "wikiId": "371",
+      "name": "Chúc Âm Câu",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 120,
+      "bonuses": {
+        "vuLuc": 89,
+        "hp": 700
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 1600,
+          "growth": 36,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 28,
+          "growth": 28,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/3b7c3c30-927f-4624-84d1-fb0ccfe5fa39.c3439.jpg",
+      "desc": "Ngựa · Thái Sơ Lv.120",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 36,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "443",
+        "name": "Chiếu Dạ Sư"
+      },
+      "upgradeTo": {
+        "id": "418",
+        "name": "Thần Hoàng Hổ"
+      },
+      "sell": 560
+    },
+    {
+      "id": "wiki_eq_1214",
+      "wikiId": "1214",
+      "name": "Cùng Kỳ Đạp Uyên Thú",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Cùng Kỳ",
+      "levelReq": 350,
+      "bonuses": {
+        "vuLuc": 3122,
+        "hp": 90000
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 56200,
+          "growth": 490,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 3600,
+          "growth": 710,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/ddab8ace-6bf4-46a2-a220-ae11535d4ed2.95095.png",
+      "desc": "Ngựa · Cùng Kỳ Lv.350",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 490,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "1126",
+        "name": "Thao Thiết Thú"
+      },
+      "upgradeTo": null,
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_69",
+      "wikiId": "69",
+      "name": "Đại Uyển",
+      "slot": "horse",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 12,
+      "bonuses": {
+        "vuLuc": 3,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 55,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/d5e4ea7f-7706-4012-8e6c-5e0206c8030a.59c86.jpg",
+      "desc": "Ngựa · Thường Lv.12",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 6.5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "78",
+        "name": "Bão Nguyệt"
+      },
+      "sell": 2280
+    },
+    {
+      "id": "wiki_eq_87",
+      "wikiId": "87",
+      "name": "Đằng Vụ",
+      "slot": "horse",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 50,
+      "bonuses": {
+        "vuLuc": 19,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 345,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/ce667e72-5a5b-4200-9f04-12ce699cf122.a5868.jpg",
+      "desc": "Ngựa · Sử Thi Lv.50",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "81",
+        "name": "Chiếu Dạ Sư"
+      },
+      "upgradeTo": {
+        "id": "90",
+        "name": "Bạch Long"
+      },
+      "sell": 17500
+    },
+    {
+      "id": "wiki_eq_77",
+      "wikiId": "77",
+      "name": "Đạp Lãng Truy",
+      "slot": "horse",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 16,
+      "bonuses": {
+        "vuLuc": 9,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 156,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/0e65cf6c-fbd4-474e-b36a-47bd257f07fb.9f9b7.jpg",
+      "desc": "Ngựa · Chiến Lv.16",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "67",
+        "name": "Hoàng Phiêu"
+      },
+      "upgradeTo": {
+        "id": "81",
+        "name": "Chiếu Dạ Sư"
+      },
+      "sell": 8000
+    },
+    {
+      "id": "wiki_eq_86",
+      "wikiId": "86",
+      "name": "Đạp Tuyết",
+      "slot": "horse",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 45,
+      "bonuses": {
+        "vuLuc": 16,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 285,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/2ca2f235-f5f3-4b56-a094-912274a332e4.dead0.jpg",
+      "desc": "Ngựa · Sử Thi Lv.45",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "81",
+        "name": "Chiếu Dạ Sư"
+      },
+      "upgradeTo": {
+        "id": "90",
+        "name": "Bạch Long"
+      },
+      "sell": 15000
+    },
+    {
+      "id": "wiki_eq_80",
+      "wikiId": "80",
+      "name": "Đích Lô",
+      "slot": "horse",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 24,
+      "bonuses": {
+        "vuLuc": 10,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 175,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/d8021158-bb50-4993-ade4-c600b814ccdf.edac1.jpg",
+      "desc": "Ngựa · Thần Lv.24",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "78",
+        "name": "Bão Nguyệt"
+      },
+      "upgradeTo": {
+        "id": "89",
+        "name": "Kim Giáp Truy"
+      },
+      "sell": 11000
+    },
+    {
+      "id": "wiki_eq_447",
+      "wikiId": "447",
+      "name": "Diệt Thế Lân",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Ám Kim",
+      "levelReq": 150,
+      "bonuses": {
+        "vuLuc": 278,
+        "hp": 2500
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 5000,
+          "growth": 66,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 100,
+          "growth": 100,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/2781db7f-ada9-4c45-8c0f-a08390b3bbe6.d0442.jpg",
+      "desc": "Ngựa · Ám Kim Lv.150",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 66,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "418",
+        "name": "Thần Hoàng Hổ"
+      },
+      "upgradeTo": {
+        "id": "544",
+        "name": "Hỗn Độn Thú"
+      },
+      "sell": 4000
+    },
+    {
+      "id": "wiki_eq_93",
+      "wikiId": "93",
+      "name": "Giác Kỳ Lân",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 80,
+      "bonuses": {
+        "vuLuc": 29,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 519,
+          "growth": 32,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/65eda990-1ca9-44b2-ac9c-532392dae206.cfd02.jpg",
+      "desc": "Ngựa · Thượng Cổ Lv.80",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 32,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "90",
+        "name": "Bạch Long"
+      },
+      "upgradeTo": {
+        "id": "371",
+        "name": "Chúc Âm Câu"
+      },
+      "sell": 60
+    },
+    {
+      "id": "wiki_eq_94",
+      "wikiId": "94",
+      "name": "Hắc Long",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 95,
+      "bonuses": {
+        "vuLuc": 38,
+        "hp": 250
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 680,
+          "growth": 32,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 10,
+          "growth": 10,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/544b7fdd-0a54-4d27-85dd-f3f80ca7a845.0c8db.jpg",
+      "desc": "Ngựa · Thượng Cổ Lv.95",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 32,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "90",
+        "name": "Bạch Long"
+      },
+      "upgradeTo": {
+        "id": "371",
+        "name": "Chúc Âm Câu"
+      },
+      "sell": 70
+    },
+    {
+      "id": "wiki_eq_71",
+      "wikiId": "71",
+      "name": "Hãn Huyết",
+      "slot": "horse",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 20,
+      "bonuses": {
+        "vuLuc": 5,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 87,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/d39c23d9-3c73-4d68-bdf5-98d3f9f4ebc0.2929f.jpg",
+      "desc": "Ngựa · Thường Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 6.5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "78",
+        "name": "Bão Nguyệt"
+      },
+      "sell": 5040
+    },
+    {
+      "id": "wiki_eq_869",
+      "wikiId": "869",
+      "name": "Hình Thiên Hổ",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Hình Thiên",
+      "levelReq": 290,
+      "bonuses": {
+        "vuLuc": 2056,
+        "hp": 60000
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 37000,
+          "growth": 334,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 2400,
+          "growth": 465,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/0c20d35e-5e5c-464e-a810-2558c2b4cc4e.9e7b9.png",
+      "desc": "Ngựa · Hình Thiên Lv.290",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 334,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "802",
+        "name": "Viêm Đế Thú"
+      },
+      "upgradeTo": {
+        "id": "1035",
+        "name": "Phệ Hồn Thú"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_91",
+      "wikiId": "91",
+      "name": "Hỏa Long",
+      "slot": "horse",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 70,
+      "bonuses": {
+        "vuLuc": 24,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 435,
+          "growth": 28,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/972459f5-78f3-4a91-b060-5463ef136b24.a4936.jpg",
+      "desc": "Ngựa · Truyền thuyết Lv.70",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 28,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "89",
+        "name": "Kim Giáp Truy"
+      },
+      "upgradeTo": {
+        "id": "443",
+        "name": "Chiếu Dạ Sư"
+      },
+      "sell": 26000
+    },
+    {
+      "id": "wiki_eq_67",
+      "wikiId": "67",
+      "name": "Hoàng Phiêu",
+      "slot": "horse",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 1,
+      "bonuses": {
+        "vuLuc": 1,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 23,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/59fff61b-4d03-4d84-8653-a05ef2e0c4f8.b13a1.jpg",
+      "desc": "Ngựa · Thường Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 6.5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "78",
+        "name": "Bão Nguyệt"
+      },
+      "sell": 10
+    },
+    {
+      "id": "wiki_eq_92",
+      "wikiId": "92",
+      "name": "Hỏa Phượng",
+      "slot": "horse",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 80,
+      "bonuses": {
+        "vuLuc": 29,
+        "hp": 225
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 525,
+          "growth": 28,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 9,
+          "growth": 9,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/0990f814-4c9c-4b2d-a046-0b46bfd57d5f.c5de7.jpg",
+      "desc": "Ngựa · Truyền thuyết Lv.80",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 28,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "89",
+        "name": "Kim Giáp Truy"
+      },
+      "upgradeTo": {
+        "id": "443",
+        "name": "Chiếu Dạ Sư"
+      },
+      "sell": 28000
+    },
+    {
+      "id": "wiki_eq_79",
+      "wikiId": "79",
+      "name": "Hổ Lôi Báo",
+      "slot": "horse",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 20,
+      "bonuses": {
+        "vuLuc": 8,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 135,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/3869ca43-d9ef-4b44-b9f3-56eaf71290fd.071c9.jpg",
+      "desc": "Ngựa · Thần Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "78",
+        "name": "Bão Nguyệt"
+      },
+      "upgradeTo": {
+        "id": "89",
+        "name": "Kim Giáp Truy"
+      },
+      "sell": 10000
+    },
+    {
+      "id": "wiki_eq_544",
+      "wikiId": "544",
+      "name": "Hỗn Độn Thú",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Bàn Cổ",
+      "levelReq": 170,
+      "bonuses": {
+        "vuLuc": 444,
+        "hp": 12500
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 8000,
+          "growth": 93,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 500,
+          "growth": 150,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/903b8bb3-2c9c-4d2c-8605-123d1c863f56.ede01.jpg",
+      "desc": "Ngựa · Bàn Cổ Lv.170",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 93,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "447",
+        "name": "Diệt Thế Lân"
+      },
+      "upgradeTo": {
+        "id": "567",
+        "name": "Hỗn Độn-Tinh Viên Thú"
+      },
+      "sell": 10000
+    },
+    {
+      "id": "wiki_eq_567",
+      "wikiId": "567",
+      "name": "Hỗn Độn-Tinh Viên Thú",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Hỗn Độn",
+      "levelReq": 190,
+      "bonuses": {
+        "vuLuc": 611,
+        "hp": 17500
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 11000,
+          "growth": 120,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 700,
+          "growth": 175,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/f668fdd7-e359-4353-9649-53b0fd1f4dfe.b1591.jpg",
+      "desc": "Ngựa · Hỗn Độn Lv.190",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 120,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "544",
+        "name": "Hỗn Độn Thú"
+      },
+      "upgradeTo": {
+        "id": "598",
+        "name": "Phiên Vũ Kỵ"
+      },
+      "sell": 16000
+    },
+    {
+      "id": "wiki_eq_89",
+      "wikiId": "89",
+      "name": "Kim Giáp Truy",
+      "slot": "horse",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 60,
+      "bonuses": {
+        "vuLuc": 26,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 465,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/45b5b5c8-4f59-4820-9b55-68ac7088587a.44480.jpg",
+      "desc": "Ngựa · Sử Thi Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "81",
+        "name": "Chiếu Dạ Sư"
+      },
+      "upgradeTo": {
+        "id": "90",
+        "name": "Bạch Long"
+      },
+      "sell": 20000
+    },
+    {
+      "id": "wiki_eq_83",
+      "wikiId": "83",
+      "name": "Ngân Hà",
+      "slot": "horse",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 36,
+      "bonuses": {
+        "vuLuc": 16,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 295,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/0459dc5c-d8d1-4f14-a4c4-2275948d5160.28c27.jpg",
+      "desc": "Ngựa · Thần Lv.36",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "78",
+        "name": "Bão Nguyệt"
+      },
+      "upgradeTo": {
+        "id": "89",
+        "name": "Kim Giáp Truy"
+      },
+      "sell": 14000
+    },
+    {
+      "id": "wiki_eq_723",
+      "wikiId": "723",
+      "name": "Nữ Oa Kỵ",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Nữ Oa",
+      "levelReq": 250,
+      "bonuses": {
+        "vuLuc": 1444,
+        "hp": 40000
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 26000,
+          "growth": 238,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 1600,
+          "growth": 325,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/bed4aaf6-05a4-478d-9dfc-8578817adabe.3ef9d.png",
+      "desc": "Ngựa · Nữ Oa Lv.250",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 238,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "659",
+        "name": "Phục Hi Kỵ"
+      },
+      "upgradeTo": {
+        "id": "802",
+        "name": "Viêm Đế Thú"
+      },
+      "sell": 32000
+    },
+    {
+      "id": "wiki_eq_68",
+      "wikiId": "68",
+      "name": "Ô Truy",
+      "slot": "horse",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 7,
+      "bonuses": {
+        "vuLuc": 2,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 39,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/9ad86d86-88cd-494a-873f-c2d5e7dd30c9.0e129.jpg",
+      "desc": "Ngựa · Thường Lv.7",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 6.5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "78",
+        "name": "Bão Nguyệt"
+      },
+      "sell": 1200
+    },
+    {
+      "id": "wiki_eq_292",
+      "wikiId": "292",
+      "name": "Phần Hổ",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 100,
+      "bonuses": {
+        "vuLuc": 66,
+        "hp": 550
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 1185,
+          "growth": 36,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 22,
+          "growth": 22,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/4c9b4454-0aeb-44a4-9c9d-1469bbc8fc50.d0d03.jpg",
+      "desc": "Ngựa · Thái Sơ Lv.100",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 36,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "443",
+        "name": "Chiếu Dạ Sư"
+      },
+      "upgradeTo": {
+        "id": "418",
+        "name": "Thần Hoàng Hổ"
+      },
+      "sell": 280
+    },
+    {
+      "id": "wiki_eq_1035",
+      "wikiId": "1035",
+      "name": "Phệ Hồn Thú",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Xi Vưu",
+      "levelReq": 310,
+      "bonuses": {
+        "vuLuc": 2378,
+        "hp": 70000
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 42800,
+          "growth": 382,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 2800,
+          "growth": 540,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/6e95b376-1e9c-4827-9175-70c869292f45.1148c.png",
+      "desc": "Ngựa · Xi Vưu Lv.310",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 382,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "869",
+        "name": "Hình Thiên Hổ"
+      },
+      "upgradeTo": {
+        "id": "1126",
+        "name": "Thao Thiết Thú"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_598",
+      "wikiId": "598",
+      "name": "Phiên Vũ Kỵ",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Hiên Viên",
+      "levelReq": 210,
+      "bonuses": {
+        "vuLuc": 778,
+        "hp": 22500
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 14000,
+          "growth": 156,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 900,
+          "growth": 200,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/b43f1847-37d6-462f-8634-e65906588d74.7be07.jpg",
+      "desc": "Ngựa · Hiên Viên Lv.210",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 156,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "567",
+        "name": "Hỗn Độn-Tinh Viên Thú"
+      },
+      "upgradeTo": {
+        "id": "659",
+        "name": "Phục Hi Kỵ"
+      },
+      "sell": 20000
+    },
+    {
+      "id": "wiki_eq_659",
+      "wikiId": "659",
+      "name": "Phục Hi Kỵ",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Phục Hi",
+      "levelReq": 230,
+      "bonuses": {
+        "vuLuc": 1111,
+        "hp": 30000
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 20000,
+          "growth": 186,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 1200,
+          "growth": 250,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/b2eeee63-9952-41a1-b1d9-4721f7e48889.b4fc2.png",
+      "desc": "Ngựa · Phục Hi Lv.230",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 186,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "598",
+        "name": "Phiên Vũ Kỵ"
+      },
+      "upgradeTo": {
+        "id": "723",
+        "name": "Nữ Oa Kỵ"
+      },
+      "sell": 30000
+    },
+    {
+      "id": "wiki_eq_70",
+      "wikiId": "70",
+      "name": "Quyển Địa",
+      "slot": "horse",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 16,
+      "bonuses": {
+        "vuLuc": 4,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 71,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/3cf33a06-f04a-4a23-896e-1bf4757b276c.46327.jpg",
+      "desc": "Ngựa · Thường Lv.16",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 6.5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "78",
+        "name": "Bão Nguyệt"
+      },
+      "sell": 3360
+    },
+    {
+      "id": "wiki_eq_322",
+      "wikiId": "322",
+      "name": "Sói Hải Tặc",
+      "slot": "horse",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 20,
+      "bonuses": {
+        "vuLuc": 11,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 200,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/a9deb2d3-67b3-438c-a266-7c8ea3e84730.d9a59.jpg",
+      "desc": "Ngựa · Thần Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "78",
+        "name": "Bão Nguyệt"
+      },
+      "upgradeTo": {
+        "id": "89",
+        "name": "Kim Giáp Truy"
+      },
+      "sell": 20
+    },
+    {
+      "id": "wiki_eq_329",
+      "wikiId": "329",
+      "name": "Sói Hải Tặc",
+      "slot": "horse",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 40,
+      "bonuses": {
+        "vuLuc": 17,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 300,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/dd157475-44db-4fb0-ab24-a7d3b3c7d15e.23da8.jpg",
+      "desc": "Ngựa · Sử Thi Lv.40",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "81",
+        "name": "Chiếu Dạ Sư"
+      },
+      "upgradeTo": {
+        "id": "90",
+        "name": "Bạch Long"
+      },
+      "sell": 40
+    },
+    {
+      "id": "wiki_eq_336",
+      "wikiId": "336",
+      "name": "Sói Hải Tặc",
+      "slot": "horse",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 60,
+      "bonuses": {
+        "vuLuc": 25,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 450,
+          "growth": 28,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/127c5d5c-f188-442d-990b-801b2033f35a.ae9ff.jpg",
+      "desc": "Ngựa · Truyền thuyết Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 28,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "89",
+        "name": "Kim Giáp Truy"
+      },
+      "upgradeTo": {
+        "id": "443",
+        "name": "Chiếu Dạ Sư"
+      },
+      "sell": 80
+    },
+    {
+      "id": "wiki_eq_343",
+      "wikiId": "343",
+      "name": "Sói Hải Tặc",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 80,
+      "bonuses": {
+        "vuLuc": 33,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 600,
+          "growth": 32,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/3ec0eab6-7831-46ea-9c6f-3bfbcb37fcdf.d1b44.jpg",
+      "desc": "Ngựa · Thượng Cổ Lv.80",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 32,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "90",
+        "name": "Bạch Long"
+      },
+      "upgradeTo": {
+        "id": "371",
+        "name": "Chúc Âm Câu"
+      },
+      "sell": 160
+    },
+    {
+      "id": "wiki_eq_350",
+      "wikiId": "350",
+      "name": "Sói Hải Tặc",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 100,
+      "bonuses": {
+        "vuLuc": 61,
+        "hp": 500
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 1100,
+          "growth": 36,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 20,
+          "growth": 20,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/54ac2bce-bd52-4a65-8b32-9675db808df2.ef376.jpg",
+      "desc": "Ngựa · Thái Sơ Lv.100",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 36,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "443",
+        "name": "Chiếu Dạ Sư"
+      },
+      "upgradeTo": {
+        "id": "418",
+        "name": "Thần Hoàng Hổ"
+      },
+      "sell": 200
+    },
+    {
+      "id": "wiki_eq_418",
+      "wikiId": "418",
+      "name": "Thần Hoàng Hổ",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Thần Hoàng",
+      "levelReq": 130,
+      "bonuses": {
+        "vuLuc": 111,
+        "hp": 1000
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 2000,
+          "growth": 42,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 40,
+          "growth": 40,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/251de971-1412-415b-a0ac-98f4bd3eb535.77213.jpg",
+      "desc": "Ngựa · Thần Hoàng Lv.130",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 42,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "371",
+        "name": "Chúc Âm Câu"
+      },
+      "upgradeTo": {
+        "id": "447",
+        "name": "Diệt Thế Lân"
+      },
+      "sell": 1000
+    },
+    {
+      "id": "wiki_eq_1126",
+      "wikiId": "1126",
+      "name": "Thao Thiết Thú",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Thao Thiết",
+      "levelReq": 330,
+      "bonuses": {
+        "vuLuc": 2750,
+        "hp": 80000
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 49500,
+          "growth": 436,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 3200,
+          "growth": 625,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/239802e0-3d5e-432c-8c2f-9f9c2fbf3a6a.d8927.png",
+      "desc": "Ngựa · Thao Thiết Lv.330",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 436,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "1035",
+        "name": "Phệ Hồn Thú"
+      },
+      "upgradeTo": {
+        "id": "1214",
+        "name": "Cùng Kỳ Đạp Uyên Thú"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_76",
+      "wikiId": "76",
+      "name": "Thiên Lý",
+      "slot": "horse",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 14,
+      "bonuses": {
+        "vuLuc": 7,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 132,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/41439b58-b423-43d2-8fef-98987752ac52.215e7.jpg",
+      "desc": "Ngựa · Chiến Lv.14",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "67",
+        "name": "Hoàng Phiêu"
+      },
+      "upgradeTo": {
+        "id": "81",
+        "name": "Chiếu Dạ Sư"
+      },
+      "sell": 7000
+    },
+    {
+      "id": "wiki_eq_84",
+      "wikiId": "84",
+      "name": "Trảo Hoàng",
+      "slot": "horse",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 40,
+      "bonuses": {
+        "vuLuc": 19,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 335,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/7c0938db-ac62-40cb-861f-ddce06115195.997c7.jpg",
+      "desc": "Ngựa · Thần Lv.40",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "78",
+        "name": "Bão Nguyệt"
+      },
+      "upgradeTo": {
+        "id": "89",
+        "name": "Kim Giáp Truy"
+      },
+      "sell": 15000
+    },
+    {
+      "id": "wiki_eq_88",
+      "wikiId": "88",
+      "name": "Truy Phong",
+      "slot": "horse",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 55,
+      "bonuses": {
+        "vuLuc": 22,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 405,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/4cf4c472-b558-4190-af63-6a426ea0e2cd.22361.jpg",
+      "desc": "Ngựa · Sử Thi Lv.55",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "81",
+        "name": "Chiếu Dạ Sư"
+      },
+      "upgradeTo": {
+        "id": "90",
+        "name": "Bạch Long"
+      },
+      "sell": 18500
+    },
+    {
+      "id": "wiki_eq_293",
+      "wikiId": "293",
+      "name": "Tử Kỳ Lân",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 110,
+      "bonuses": {
+        "vuLuc": 71,
+        "hp": 600
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 1270,
+          "growth": 36,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 24,
+          "growth": 24,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/31da48ca-315a-4650-8364-a9a82ddbb3f5.662cb.jpg",
+      "desc": "Ngựa · Thái Sơ Lv.110",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 36,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "443",
+        "name": "Chiếu Dạ Sư"
+      },
+      "upgradeTo": {
+        "id": "418",
+        "name": "Thần Hoàng Hổ"
+      },
+      "sell": 320
+    },
+    {
+      "id": "wiki_eq_381",
+      "wikiId": "381",
+      "name": "Tử Tinh",
+      "slot": "horse",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 1,
+      "bonuses": {
+        "vuLuc": 19,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 350,
+          "growth": 28,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/0fa2d206-5849-486a-ab23-af8c43ecf195.42e33.jpg",
+      "desc": "Ngựa · Truyền thuyết Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 28,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "89",
+        "name": "Kim Giáp Truy"
+      },
+      "upgradeTo": {
+        "id": "443",
+        "name": "Chiếu Dạ Sư"
+      },
+      "sell": 20000
+    },
+    {
+      "id": "wiki_eq_72",
+      "wikiId": "72",
+      "name": "Tuyệt Ảnh",
+      "slot": "horse",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 24,
+      "bonuses": {
+        "vuLuc": 6,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 103,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/f59e9d4c-794f-4f66-8091-3f36b5eda1f0.1a912.jpg",
+      "desc": "Ngựa · Thường Lv.24",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 6.5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "78",
+        "name": "Bão Nguyệt"
+      },
+      "sell": 7200
+    },
+    {
+      "id": "wiki_eq_74",
+      "wikiId": "74",
+      "name": "Tuyết Bạch",
+      "slot": "horse",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 10,
+      "bonuses": {
+        "vuLuc": 5,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 84,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/fde14987-a509-4c30-9cfe-8bb24e956d7d.687e8.jpg",
+      "desc": "Ngựa · Chiến Lv.10",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "67",
+        "name": "Hoàng Phiêu"
+      },
+      "upgradeTo": {
+        "id": "81",
+        "name": "Chiếu Dạ Sư"
+      },
+      "sell": 5000
+    },
+    {
+      "id": "wiki_eq_73",
+      "wikiId": "73",
+      "name": "Tuyệt Trần",
+      "slot": "horse",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 8,
+      "bonuses": {
+        "vuLuc": 3,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 60,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/edde187e-6b17-4f69-a7e3-c80cb11de56f.0a5ce.jpg",
+      "desc": "Ngựa · Chiến Lv.8",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "67",
+        "name": "Hoàng Phiêu"
+      },
+      "upgradeTo": {
+        "id": "81",
+        "name": "Chiếu Dạ Sư"
+      },
+      "sell": 4000
+    },
+    {
+      "id": "wiki_eq_370",
+      "wikiId": "370",
+      "name": "Ứng Long Câu",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 100,
+      "bonuses": {
+        "vuLuc": 52,
+        "hp": 400
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 940,
+          "growth": 32,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 16,
+          "growth": 16,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/71b1e21d-8fb0-4828-94c9-b708a5b88d9f.c294e.jpg",
+      "desc": "Ngựa · Thượng Cổ Lv.100",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 32,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "90",
+        "name": "Bạch Long"
+      },
+      "upgradeTo": {
+        "id": "371",
+        "name": "Chúc Âm Câu"
+      },
+      "sell": 120
+    },
+    {
+      "id": "wiki_eq_802",
+      "wikiId": "802",
+      "name": "Viêm Đế Thú",
+      "slot": "horse",
+      "rarity": "red",
+      "qualityWiki": "Viêm Đế",
+      "levelReq": 270,
+      "bonuses": {
+        "vuLuc": 1733,
+        "hp": 50000
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 31200,
+          "growth": 286,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 2000,
+          "growth": 390,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/295191d3-9bc1-4490-9268-023de39c2b1b.8983f.png",
+      "desc": "Ngựa · Viêm Đế Lv.270",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 286,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "723",
+        "name": "Nữ Oa Kỵ"
+      },
+      "upgradeTo": {
+        "id": "869",
+        "name": "Hình Thiên Hổ"
+      },
+      "sell": 38000
+    },
+    {
+      "id": "wiki_eq_85",
+      "wikiId": "85",
+      "name": "Xích Thố Thú",
+      "slot": "horse",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 40,
+      "bonuses": {
+        "vuLuc": 12,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 225,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/72f99e75-295b-4eba-87ab-cfdd606a7913.914e1.jpg",
+      "desc": "Ngựa · Sử Thi Lv.40",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "81",
+        "name": "Chiếu Dạ Sư"
+      },
+      "upgradeTo": {
+        "id": "90",
+        "name": "Bạch Long"
+      },
+      "sell": 14000
+    },
+    {
+      "id": "wiki_eq_82",
+      "wikiId": "82",
+      "name": "Yên Vân Thú",
+      "slot": "horse",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 32,
+      "bonuses": {
+        "vuLuc": 14,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Công",
+          "base": 255,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/86897f1b-d18a-4e0f-9eef-a431db26e2c0.d8185.jpg",
+      "desc": "Ngựa · Thần Lv.32",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "78",
+        "name": "Bão Nguyệt"
+      },
+      "upgradeTo": {
+        "id": "89",
+        "name": "Kim Giáp Truy"
+      },
+      "sell": 12500
+    },
+    {
+      "id": "wiki_eq_148",
+      "wikiId": "148",
+      "name": "24 Binh Pháp",
+      "slot": "book",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 80,
+      "bonuses": {
+        "triLuc": 29,
+        "hp": 225
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 525,
+          "growth": 28,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 9,
+          "growth": 9,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/37c3e5b5-fca3-468c-bb5d-1f39f4506db1.eb3be.jpg",
+      "desc": "Binh Thư · Truyền thuyết Lv.80",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 28,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "144",
+        "name": "Càn Tượng Chú"
+      },
+      "upgradeTo": {
+        "id": "444",
+        "name": "Anh Tử"
+      },
+      "sell": 28000
+    },
+    {
+      "id": "wiki_eq_444",
+      "wikiId": "444",
+      "name": "Anh Tử",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 1,
+      "bonuses": {
+        "triLuc": 25,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 450,
+          "growth": 32,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/efad2adc-1169-4352-ac20-f7bd4443727c.4ee2b.jpg",
+      "desc": "Binh Thư · Thượng Cổ Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 32,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "148",
+        "name": "24 Binh Pháp"
+      },
+      "upgradeTo": {
+        "id": "375",
+        "name": "Chúc Âm Yếu Quyết"
+      },
+      "sell": 50
+    },
+    {
+      "id": "wiki_eq_147",
+      "wikiId": "147",
+      "name": "Bình Thuật",
+      "slot": "book",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 70,
+      "bonuses": {
+        "triLuc": 24,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 435,
+          "growth": 28,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/e2918dcd-d334-4a60-81d2-96a5f443e157.e9308.jpg",
+      "desc": "Binh Thư · Truyền thuyết Lv.70",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 28,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "144",
+        "name": "Càn Tượng Chú"
+      },
+      "upgradeTo": {
+        "id": "444",
+        "name": "Anh Tử"
+      },
+      "sell": 26000
+    },
+    {
+      "id": "wiki_eq_150",
+      "wikiId": "150",
+      "name": "Binh Võ Kinh",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 95,
+      "bonuses": {
+        "triLuc": 38,
+        "hp": 250
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 680,
+          "growth": 32,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 10,
+          "growth": 10,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/166dde8d-6d23-486a-a3e0-0b5996d5b6e9.f0395.jpg",
+      "desc": "Binh Thư · Thượng Cổ Lv.95",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 32,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "148",
+        "name": "24 Binh Pháp"
+      },
+      "upgradeTo": {
+        "id": "375",
+        "name": "Chúc Âm Yếu Quyết"
+      },
+      "sell": 70
+    },
+    {
+      "id": "wiki_eq_144",
+      "wikiId": "144",
+      "name": "Càn Tượng Chú",
+      "slot": "book",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 55,
+      "bonuses": {
+        "triLuc": 22,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 405,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/b4bfcc94-fde0-4680-ad9f-73a0b40c2839.9614e.jpg",
+      "desc": "Binh Thư · Sử Thi Lv.55",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "135",
+        "name": "Hán Thư"
+      },
+      "upgradeTo": {
+        "id": "148",
+        "name": "24 Binh Pháp"
+      },
+      "sell": 18500
+    },
+    {
+      "id": "wiki_eq_133",
+      "wikiId": "133",
+      "name": "Chiến Sách",
+      "slot": "book",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 16,
+      "bonuses": {
+        "triLuc": 9,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 156,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/be3ed18d-428f-444c-9fb9-b0feaeeeb8f2.0fc21.jpg",
+      "desc": "Binh Thư · Chiến Lv.16",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "128",
+        "name": "Hiếu Kinh"
+      },
+      "upgradeTo": {
+        "id": "135",
+        "name": "Hán Thư"
+      },
+      "sell": 8000
+    },
+    {
+      "id": "wiki_eq_375",
+      "wikiId": "375",
+      "name": "Chúc Âm Yếu Quyết",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 120,
+      "bonuses": {
+        "triLuc": 89,
+        "hp": 700
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 1600,
+          "growth": 36,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 28,
+          "growth": 28,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/fbacf307-dfe3-438e-b99f-6c20a6433b49.c9aa4.jpg",
+      "desc": "Binh Thư · Thái Sơ Lv.120",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 36,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "444",
+        "name": "Anh Tử"
+      },
+      "upgradeTo": {
+        "id": "419",
+        "name": "Thần Nhật Quyển"
+      },
+      "sell": 560
+    },
+    {
+      "id": "wiki_eq_132",
+      "wikiId": "132",
+      "name": "Chu ThưPhù",
+      "slot": "book",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 14,
+      "bonuses": {
+        "triLuc": 7,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 132,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/f8c8cf16-501c-46ac-bbd8-59d2ec6784fe.bf783.jpg",
+      "desc": "Binh Thư · Chiến Lv.14",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "128",
+        "name": "Hiếu Kinh"
+      },
+      "upgradeTo": {
+        "id": "135",
+        "name": "Hán Thư"
+      },
+      "sell": 7000
+    },
+    {
+      "id": "wiki_eq_1212",
+      "wikiId": "1212",
+      "name": "Cùng Kỳ Phệ Tà Giản",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Cùng Kỳ",
+      "levelReq": 350,
+      "bonuses": {
+        "triLuc": 3122,
+        "hp": 90000
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 56200,
+          "growth": 490,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 3600,
+          "growth": 710,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/d8b32a43-e6a0-4270-ba18-831506b59c52.a0594.png",
+      "desc": "Binh Thư · Cùng Kỳ Lv.350",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 490,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "1124",
+        "name": "Thao Thiết Đồ"
+      },
+      "upgradeTo": null,
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_1033",
+      "wikiId": "1033",
+      "name": "Cửu Lê Thư",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Xi Vưu",
+      "levelReq": 310,
+      "bonuses": {
+        "triLuc": 2378,
+        "hp": 70000
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 42800,
+          "growth": 382,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 2800,
+          "growth": 540,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/aa5226c9-8f89-4573-b822-1809f1e65449.95473.png",
+      "desc": "Binh Thư · Xi Vưu Lv.310",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 382,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "867",
+        "name": "Hình Thiên Thư"
+      },
+      "upgradeTo": {
+        "id": "1124",
+        "name": "Thao Thiết Đồ"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_125",
+      "wikiId": "125",
+      "name": "Điển Luận",
+      "slot": "book",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 12,
+      "bonuses": {
+        "triLuc": 3,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 55,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/258cb2f4-de7d-419a-acc5-f6f880a804cd.98c4d.jpg",
+      "desc": "Binh Thư · Thường Lv.12",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 6.5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "133",
+        "name": "Chiến Sách"
+      },
+      "sell": 2280
+    },
+    {
+      "id": "wiki_eq_449",
+      "wikiId": "449",
+      "name": "Diệt Thế Quyết",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Ám Kim",
+      "levelReq": 150,
+      "bonuses": {
+        "triLuc": 278,
+        "hp": 2500
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 5000,
+          "growth": 66,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 100,
+          "growth": 100,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/9f560dc3-4ee2-49e0-8e34-23a56f0bf777.b0adb.jpg",
+      "desc": "Binh Thư · Ám Kim Lv.150",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 66,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "419",
+        "name": "Thần Nhật Quyển"
+      },
+      "upgradeTo": {
+        "id": "546",
+        "name": "Niết Bàn Điển"
+      },
+      "sell": 4000
+    },
+    {
+      "id": "wiki_eq_149",
+      "wikiId": "149",
+      "name": "Độn Giáp Thư",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 80,
+      "bonuses": {
+        "triLuc": 29,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 519,
+          "growth": 32,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/ca699cff-3787-4877-879b-0d93762570bb.ea2f3.jpg",
+      "desc": "Binh Thư · Thượng Cổ Lv.80",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 32,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "148",
+        "name": "24 Binh Pháp"
+      },
+      "upgradeTo": {
+        "id": "375",
+        "name": "Chúc Âm Yếu Quyết"
+      },
+      "sell": 60
+    },
+    {
+      "id": "wiki_eq_382",
+      "wikiId": "382",
+      "name": "Hàn Phi Tử",
+      "slot": "book",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 1,
+      "bonuses": {
+        "triLuc": 19,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 350,
+          "growth": 28,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/f4ab0abd-6c18-47b7-bd97-b87a633ef6ae.eed70.jpg",
+      "desc": "Binh Thư · Truyền thuyết Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 28,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "144",
+        "name": "Càn Tượng Chú"
+      },
+      "upgradeTo": {
+        "id": "444",
+        "name": "Anh Tử"
+      },
+      "sell": 20000
+    },
+    {
+      "id": "wiki_eq_135",
+      "wikiId": "135",
+      "name": "Hán Thư",
+      "slot": "book",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 20,
+      "bonuses": {
+        "triLuc": 8,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 135,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/2db726ba-2d87-418a-b116-8aa1d88607c2.1fb99.jpg",
+      "desc": "Binh Thư · Thần Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "133",
+        "name": "Chiến Sách"
+      },
+      "upgradeTo": {
+        "id": "144",
+        "name": "Càn Tượng Chú"
+      },
+      "sell": 11500
+    },
+    {
+      "id": "wiki_eq_128",
+      "wikiId": "128",
+      "name": "Hiếu Kinh",
+      "slot": "book",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 24,
+      "bonuses": {
+        "triLuc": 6,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 103,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/c0d9305b-a4d6-4440-bd62-5024a4aa0c1f.4da79.jpg",
+      "desc": "Binh Thư · Thường Lv.24",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 6.5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "133",
+        "name": "Chiến Sách"
+      },
+      "sell": 7200
+    },
+    {
+      "id": "wiki_eq_867",
+      "wikiId": "867",
+      "name": "Hình Thiên Thư",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Hình Thiên",
+      "levelReq": 290,
+      "bonuses": {
+        "triLuc": 2056,
+        "hp": 60000
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 37000,
+          "growth": 334,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 2400,
+          "growth": 465,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/fe82cd6e-74f6-4a77-a7d6-1e509da02f0a.1f137.png",
+      "desc": "Binh Thư · Hình Thiên Lv.290",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 334,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "800",
+        "name": "Viêm Đế Giản"
+      },
+      "upgradeTo": {
+        "id": "1033",
+        "name": "Cửu Lê Thư"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_141",
+      "wikiId": "141",
+      "name": "Hoài Nam Tử",
+      "slot": "book",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 40,
+      "bonuses": {
+        "triLuc": 12,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 225,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/72d8488b-1b69-4d49-93ec-81681304eb87.09ad7.jpg",
+      "desc": "Binh Thư · Sử Thi Lv.40",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "135",
+        "name": "Hán Thư"
+      },
+      "upgradeTo": {
+        "id": "148",
+        "name": "24 Binh Pháp"
+      },
+      "sell": 14000
+    },
+    {
+      "id": "wiki_eq_569",
+      "wikiId": "569",
+      "name": "Hỗn Độn-Thiên Khởi Lục",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Hỗn Độn",
+      "levelReq": 190,
+      "bonuses": {
+        "triLuc": 611,
+        "hp": 17500
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 11000,
+          "growth": 120,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 700,
+          "growth": 175,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/ea9aa67a-e031-4de1-a117-9b22415fa289.93631.jpg",
+      "desc": "Binh Thư · Hỗn Độn Lv.190",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 120,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "546",
+        "name": "Niết Bàn Điển"
+      },
+      "upgradeTo": {
+        "id": "596",
+        "name": "Linh Tê Quyết"
+      },
+      "sell": 16000
+    },
+    {
+      "id": "wiki_eq_123",
+      "wikiId": "123",
+      "name": "Kinh Thi",
+      "slot": "book",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 1,
+      "bonuses": {
+        "triLuc": 1,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 23,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/706403ca-70d9-4eeb-819b-b861f2ad41c0.8b333.jpg",
+      "desc": "Binh Thư · Thường Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 6.5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "133",
+        "name": "Chiến Sách"
+      },
+      "sell": 10
+    },
+    {
+      "id": "wiki_eq_129",
+      "wikiId": "129",
+      "name": "Kinh Thư",
+      "slot": "book",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 8,
+      "bonuses": {
+        "triLuc": 3,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 60,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/8aab7304-0c50-45cc-b874-495583be90f4.be1fb.jpg",
+      "desc": "Binh Thư · Chiến Lv.8",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "128",
+        "name": "Hiếu Kinh"
+      },
+      "upgradeTo": {
+        "id": "135",
+        "name": "Hán Thư"
+      },
+      "sell": 4000
+    },
+    {
+      "id": "wiki_eq_337",
+      "wikiId": "337",
+      "name": "La Bàn Hải Tặc",
+      "slot": "book",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 60,
+      "bonuses": {
+        "triLuc": 25,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 450,
+          "growth": 28,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/594a8313-5d4a-4fdf-9b0d-5404a1f0d557.22f73.jpg",
+      "desc": "Binh Thư · Truyền thuyết Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 28,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "144",
+        "name": "Càn Tượng Chú"
+      },
+      "upgradeTo": {
+        "id": "444",
+        "name": "Anh Tử"
+      },
+      "sell": 80
+    },
+    {
+      "id": "wiki_eq_344",
+      "wikiId": "344",
+      "name": "La Bàn Hải Tặc",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 80,
+      "bonuses": {
+        "triLuc": 33,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 600,
+          "growth": 32,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/a68ca8be-156c-4749-858f-a50ee5d1bce2.f0779.jpg",
+      "desc": "Binh Thư · Thượng Cổ Lv.80",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 32,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "148",
+        "name": "24 Binh Pháp"
+      },
+      "upgradeTo": {
+        "id": "375",
+        "name": "Chúc Âm Yếu Quyết"
+      },
+      "sell": 160
+    },
+    {
+      "id": "wiki_eq_351",
+      "wikiId": "351",
+      "name": "La Bàn Hải Tặc",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 100,
+      "bonuses": {
+        "triLuc": 61,
+        "hp": 500
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 1100,
+          "growth": 36,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 20,
+          "growth": 20,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/b5b13dc8-5526-4ce4-ba62-73f68e2961cb.1d405.jpg",
+      "desc": "Binh Thư · Thái Sơ Lv.100",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 36,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "444",
+        "name": "Anh Tử"
+      },
+      "upgradeTo": {
+        "id": "419",
+        "name": "Thần Nhật Quyển"
+      },
+      "sell": 200
+    },
+    {
+      "id": "wiki_eq_323",
+      "wikiId": "323",
+      "name": "La Bàn Hải Tặc",
+      "slot": "book",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 20,
+      "bonuses": {
+        "triLuc": 11,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 200,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/70449721-0c80-471f-a4dd-2927ed68912a.ef709.jpg",
+      "desc": "Binh Thư · Thần Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "133",
+        "name": "Chiến Sách"
+      },
+      "upgradeTo": {
+        "id": "144",
+        "name": "Càn Tượng Chú"
+      },
+      "sell": 20
+    },
+    {
+      "id": "wiki_eq_330",
+      "wikiId": "330",
+      "name": "La Bàn Hải Tặc",
+      "slot": "book",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 40,
+      "bonuses": {
+        "triLuc": 17,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 300,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/23bcb6cb-3288-491f-a313-8e9b5054a8bc.d7e30.jpg",
+      "desc": "Binh Thư · Sử Thi Lv.40",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "135",
+        "name": "Hán Thư"
+      },
+      "upgradeTo": {
+        "id": "148",
+        "name": "24 Binh Pháp"
+      },
+      "sell": 40
+    },
+    {
+      "id": "wiki_eq_131",
+      "wikiId": "131",
+      "name": "Lễ Ký",
+      "slot": "book",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 12,
+      "bonuses": {
+        "triLuc": 6,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 108,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/b2c94cb7-38a3-4953-9e3f-a39b7e8671b6.80e61.jpg",
+      "desc": "Binh Thư · Chiến Lv.12",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "128",
+        "name": "Hiếu Kinh"
+      },
+      "upgradeTo": {
+        "id": "135",
+        "name": "Hán Thư"
+      },
+      "sell": 6000
+    },
+    {
+      "id": "wiki_eq_140",
+      "wikiId": "140",
+      "name": "Liệt Nữ",
+      "slot": "book",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 40,
+      "bonuses": {
+        "triLuc": 19,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 335,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/a874c95b-cee3-4aad-8e69-bd852774f592.12571.jpg",
+      "desc": "Binh Thư · Thần Lv.40",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "133",
+        "name": "Chiến Sách"
+      },
+      "upgradeTo": {
+        "id": "144",
+        "name": "Càn Tượng Chú"
+      },
+      "sell": 15000
+    },
+    {
+      "id": "wiki_eq_596",
+      "wikiId": "596",
+      "name": "Linh Tê Quyết",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Hiên Viên",
+      "levelReq": 210,
+      "bonuses": {
+        "triLuc": 778,
+        "hp": 22500
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 14000,
+          "growth": 156,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 900,
+          "growth": 200,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/4602b64f-2de3-44e7-a620-422aaf3bf9b4.6f1f0.jpg",
+      "desc": "Binh Thư · Hiên Viên Lv.210",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 156,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "569",
+        "name": "Hỗn Độn-Thiên Khởi Lục"
+      },
+      "upgradeTo": {
+        "id": "657",
+        "name": "Phục Hi Quyết"
+      },
+      "sell": 20000
+    },
+    {
+      "id": "wiki_eq_298",
+      "wikiId": "298",
+      "name": "Long Điển",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 100,
+      "bonuses": {
+        "triLuc": 66,
+        "hp": 550
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 1185,
+          "growth": 36,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 22,
+          "growth": 22,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/2d26a9e5-f7be-49e4-b8d7-883317799b55.22409.jpg",
+      "desc": "Binh Thư · Thái Sơ Lv.100",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 36,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "444",
+        "name": "Anh Tử"
+      },
+      "upgradeTo": {
+        "id": "419",
+        "name": "Thần Nhật Quyển"
+      },
+      "sell": 280
+    },
+    {
+      "id": "wiki_eq_299",
+      "wikiId": "299",
+      "name": "Lục Đạo Quyết",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 110,
+      "bonuses": {
+        "triLuc": 71,
+        "hp": 600
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 1270,
+          "growth": 36,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 24,
+          "growth": 24,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/063433ec-4107-490b-9941-c24b32385908.fb090.jpg",
+      "desc": "Binh Thư · Thái Sơ Lv.110",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 36,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "444",
+        "name": "Anh Tử"
+      },
+      "upgradeTo": {
+        "id": "419",
+        "name": "Thần Nhật Quyển"
+      },
+      "sell": 320
+    },
+    {
+      "id": "wiki_eq_137",
+      "wikiId": "137",
+      "name": "Lục Thao",
+      "slot": "book",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 28,
+      "bonuses": {
+        "triLuc": 12,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 215,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/1c50b7ba-e46b-48f5-88b0-746698214de7.93537.jpg",
+      "desc": "Binh Thư · Thần Lv.28",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "133",
+        "name": "Chiến Sách"
+      },
+      "upgradeTo": {
+        "id": "144",
+        "name": "Càn Tượng Chú"
+      },
+      "sell": 10000
+    },
+    {
+      "id": "wiki_eq_126",
+      "wikiId": "126",
+      "name": "Mặc Tử",
+      "slot": "book",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 16,
+      "bonuses": {
+        "triLuc": 4,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 71,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/d99685a2-8f34-4c64-a95a-eb6238c87a04.aaccb.jpg",
+      "desc": "Binh Thư · Thường Lv.16",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 6.5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "133",
+        "name": "Chiến Sách"
+      },
+      "sell": 3360
+    },
+    {
+      "id": "wiki_eq_146",
+      "wikiId": "146",
+      "name": "Mãnh Đức Thư",
+      "slot": "book",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 60,
+      "bonuses": {
+        "triLuc": 19,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 345,
+          "growth": 28,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/a5c8526c-3a64-4c3b-95ed-85ab0736f3b0.0da6b.jpg",
+      "desc": "Binh Thư · Truyền thuyết Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 28,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "144",
+        "name": "Càn Tượng Chú"
+      },
+      "upgradeTo": {
+        "id": "444",
+        "name": "Anh Tử"
+      },
+      "sell": 25000
+    },
+    {
+      "id": "wiki_eq_145",
+      "wikiId": "145",
+      "name": "Ngô Việt",
+      "slot": "book",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 60,
+      "bonuses": {
+        "triLuc": 26,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 465,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/8eaa7a98-57e0-40fb-9fb3-a8bd439212b4.d5972.jpg",
+      "desc": "Binh Thư · Sử Thi Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "135",
+        "name": "Hán Thư"
+      },
+      "upgradeTo": {
+        "id": "148",
+        "name": "24 Binh Pháp"
+      },
+      "sell": 20000
+    },
+    {
+      "id": "wiki_eq_297",
+      "wikiId": "297",
+      "name": "Ngự Binh Nghệ",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 90,
+      "bonuses": {
+        "triLuc": 60,
+        "hp": 500
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 1080,
+          "growth": 36,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 20,
+          "growth": 20,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/126e6742-0bd8-4852-8126-cbab316a370d.d6b89.jpg",
+      "desc": "Binh Thư · Thái Sơ Lv.90",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 36,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "444",
+        "name": "Anh Tử"
+      },
+      "upgradeTo": {
+        "id": "419",
+        "name": "Thần Nhật Quyển"
+      },
+      "sell": 240
+    },
+    {
+      "id": "wiki_eq_546",
+      "wikiId": "546",
+      "name": "Niết Bàn Điển",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Bàn Cổ",
+      "levelReq": 170,
+      "bonuses": {
+        "triLuc": 444,
+        "hp": 12500
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 8000,
+          "growth": 93,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 500,
+          "growth": 150,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/08d3bef7-173b-427a-b0f5-20c242421261.20d43.jpg",
+      "desc": "Binh Thư · Bàn Cổ Lv.170",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 93,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "449",
+        "name": "Diệt Thế Quyết"
+      },
+      "upgradeTo": {
+        "id": "569",
+        "name": "Hỗn Độn-Thiên Khởi Lục"
+      },
+      "sell": 10000
+    },
+    {
+      "id": "wiki_eq_721",
+      "wikiId": "721",
+      "name": "Nữ Oa Quyết",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Nữ Oa",
+      "levelReq": 250,
+      "bonuses": {
+        "triLuc": 1444,
+        "hp": 40000
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 26000,
+          "growth": 238,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 1600,
+          "growth": 325,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/9b4078d3-9302-4c82-9697-b8a43a40a50a.51217.png",
+      "desc": "Binh Thư · Nữ Oa Lv.250",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 238,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "657",
+        "name": "Phục Hi Quyết"
+      },
+      "upgradeTo": {
+        "id": "800",
+        "name": "Viêm Đế Giản"
+      },
+      "sell": 32000
+    },
+    {
+      "id": "wiki_eq_657",
+      "wikiId": "657",
+      "name": "Phục Hi Quyết",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Phục Hi",
+      "levelReq": 230,
+      "bonuses": {
+        "triLuc": 1111,
+        "hp": 30000
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 20000,
+          "growth": 186,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 1200,
+          "growth": 250,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/a940aabc-47f8-4e4a-99ea-23d6cb1cd50d.e11e4.png",
+      "desc": "Binh Thư · Phục Hi Lv.230",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 186,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "596",
+        "name": "Linh Tê Quyết"
+      },
+      "upgradeTo": {
+        "id": "721",
+        "name": "Nữ Oa Quyết"
+      },
+      "sell": 30000
+    },
+    {
+      "id": "wiki_eq_127",
+      "wikiId": "127",
+      "name": "Quốc Luận",
+      "slot": "book",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 20,
+      "bonuses": {
+        "triLuc": 5,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 87,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/3d24bc26-50bf-4d4f-a58c-156e64fd6bd8.5d700.jpg",
+      "desc": "Binh Thư · Thường Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 6.5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "133",
+        "name": "Chiến Sách"
+      },
+      "sell": 5040
+    },
+    {
+      "id": "wiki_eq_130",
+      "wikiId": "130",
+      "name": "Tam Lược",
+      "slot": "book",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 10,
+      "bonuses": {
+        "triLuc": 5,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 84,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/2d1c61f2-d267-4012-96ab-2c869c5c8833.ac6ea.jpg",
+      "desc": "Binh Thư · Chiến Lv.10",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "128",
+        "name": "Hiếu Kinh"
+      },
+      "upgradeTo": {
+        "id": "135",
+        "name": "Hán Thư"
+      },
+      "sell": 5000
+    },
+    {
+      "id": "wiki_eq_143",
+      "wikiId": "143",
+      "name": "Thanh Lĩnh",
+      "slot": "book",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 50,
+      "bonuses": {
+        "triLuc": 19,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 345,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/c28f64f6-c951-4cad-9bb8-a53c982cdd47.e2a86.jpg",
+      "desc": "Binh Thư · Sử Thi Lv.50",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "135",
+        "name": "Hán Thư"
+      },
+      "upgradeTo": {
+        "id": "148",
+        "name": "24 Binh Pháp"
+      },
+      "sell": 17500
+    },
+    {
+      "id": "wiki_eq_142",
+      "wikiId": "142",
+      "name": "Thanh Nang",
+      "slot": "book",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 45,
+      "bonuses": {
+        "triLuc": 16,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 285,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/1e6f7eef-4ce4-4e77-98dd-438f5f794085.2337a.jpg",
+      "desc": "Binh Thư · Sử Thi Lv.45",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "135",
+        "name": "Hán Thư"
+      },
+      "upgradeTo": {
+        "id": "148",
+        "name": "24 Binh Pháp"
+      },
+      "sell": 15000
+    },
+    {
+      "id": "wiki_eq_419",
+      "wikiId": "419",
+      "name": "Thần Nhật Quyển",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Thần Hoàng",
+      "levelReq": 130,
+      "bonuses": {
+        "triLuc": 111,
+        "hp": 1000
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 2000,
+          "growth": 42,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 40,
+          "growth": 40,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/0635e8d6-5aa5-4e18-88fa-6a14b045c50e.1e112.jpg",
+      "desc": "Binh Thư · Thần Hoàng Lv.130",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 42,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "375",
+        "name": "Chúc Âm Yếu Quyết"
+      },
+      "upgradeTo": {
+        "id": "449",
+        "name": "Diệt Thế Quyết"
+      },
+      "sell": 1000
+    },
+    {
+      "id": "wiki_eq_1124",
+      "wikiId": "1124",
+      "name": "Thao Thiết Đồ",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Thao Thiết",
+      "levelReq": 330,
+      "bonuses": {
+        "triLuc": 2750,
+        "hp": 80000
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 49500,
+          "growth": 436,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 3200,
+          "growth": 625,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/17335ec8-4b3c-483d-a733-85c7c58f7fca.f1655.png",
+      "desc": "Binh Thư · Thao Thiết Lv.330",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 436,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "1033",
+        "name": "Cửu Lê Thư"
+      },
+      "upgradeTo": {
+        "id": "1212",
+        "name": "Cùng Kỳ Phệ Tà Giản"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_138",
+      "wikiId": "138",
+      "name": "Thương Quân",
+      "slot": "book",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 32,
+      "bonuses": {
+        "triLuc": 14,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 255,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/4d52f448-4a80-419a-98a8-0ec5588d87a1.26ec7.jpg",
+      "desc": "Binh Thư · Thần Lv.32",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "133",
+        "name": "Chiến Sách"
+      },
+      "upgradeTo": {
+        "id": "144",
+        "name": "Càn Tượng Chú"
+      },
+      "sell": 12500
+    },
+    {
+      "id": "wiki_eq_134",
+      "wikiId": "134",
+      "name": "Tứ Dân Lệnh",
+      "slot": "book",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 20,
+      "bonuses": {
+        "triLuc": 18,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 315,
+          "growth": 24,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/5b53d08c-42c9-43be-aaa8-bf3a74233666.5c9a4.jpg",
+      "desc": "Binh Thư · Chiến Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 24,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "128",
+        "name": "Hiếu Kinh"
+      },
+      "upgradeTo": {
+        "id": "135",
+        "name": "Hán Thư"
+      },
+      "sell": 40
+    },
+    {
+      "id": "wiki_eq_124",
+      "wikiId": "124",
+      "name": "Tư Mã Pháp",
+      "slot": "book",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 7,
+      "bonuses": {
+        "triLuc": 2,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 39,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/a4d5889d-247f-4cf4-be18-850e12564295.a25f4.jpg",
+      "desc": "Binh Thư · Thường Lv.7",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 6.5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "133",
+        "name": "Chiến Sách"
+      },
+      "sell": 1200
+    },
+    {
+      "id": "wiki_eq_139",
+      "wikiId": "139",
+      "name": "Tứ Tượng",
+      "slot": "book",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 36,
+      "bonuses": {
+        "triLuc": 16,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 295,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/96168dc0-dab1-4bc5-8720-d9038dfae87b.de012.jpg",
+      "desc": "Binh Thư · Thần Lv.36",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "133",
+        "name": "Chiến Sách"
+      },
+      "upgradeTo": {
+        "id": "144",
+        "name": "Càn Tượng Chú"
+      },
+      "sell": 14000
+    },
+    {
+      "id": "wiki_eq_374",
+      "wikiId": "374",
+      "name": "Ứng Long Bí Điển",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 100,
+      "bonuses": {
+        "triLuc": 52,
+        "hp": 400
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 940,
+          "growth": 32,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 16,
+          "growth": 16,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/1ae90c1b-3a05-427a-bdb1-56d84eb1136d.dbfa4.jpg",
+      "desc": "Binh Thư · Thượng Cổ Lv.100",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 32,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "148",
+        "name": "24 Binh Pháp"
+      },
+      "upgradeTo": {
+        "id": "375",
+        "name": "Chúc Âm Yếu Quyết"
+      },
+      "sell": 120
+    },
+    {
+      "id": "wiki_eq_136",
+      "wikiId": "136",
+      "name": "Úy Liêu Tử",
+      "slot": "book",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 24,
+      "bonuses": {
+        "triLuc": 10,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 175,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/e976eb85-a565-45cb-8d9f-854c35e904a7.c59b8.jpg",
+      "desc": "Binh Thư · Thần Lv.24",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "133",
+        "name": "Chiến Sách"
+      },
+      "upgradeTo": {
+        "id": "144",
+        "name": "Càn Tượng Chú"
+      },
+      "sell": 13000
+    },
+    {
+      "id": "wiki_eq_800",
+      "wikiId": "800",
+      "name": "Viêm Đế Giản",
+      "slot": "book",
+      "rarity": "red",
+      "qualityWiki": "Viêm Đế",
+      "levelReq": 270,
+      "bonuses": {
+        "triLuc": 1733,
+        "hp": 50000
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Công",
+          "base": 31200,
+          "growth": 286,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 2000,
+          "growth": 390,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/700c4bfd-2685-49bc-b8f2-787c2963bdfe.00c89.png",
+      "desc": "Binh Thư · Viêm Đế Lv.270",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 286,
+        "coef": 6.5
+      },
+      "upgradeFrom": {
+        "id": "721",
+        "name": "Nữ Oa Quyết"
+      },
+      "upgradeTo": {
+        "id": "867",
+        "name": "Hình Thiên Thư"
+      },
+      "sell": 38000
+    },
+    {
+      "id": "wiki_eq_294",
+      "wikiId": "294",
+      "name": "Bách Thế Sa",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 90,
+      "bonuses": {
+        "tongLinh": 44,
+        "hp": 500
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 790,
+          "growth": 22,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 20,
+          "growth": 20,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/f43f4c24-1033-424b-b8d4-1015aa8f44c1.55092.jpg",
+      "desc": "Áo Choàng · Thái Sơ Lv.90",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 22,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "346",
+        "name": "Choàng Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "420",
+        "name": "Phần Hoàng Văn"
+      },
+      "sell": 200
+    },
+    {
+      "id": "wiki_eq_100",
+      "wikiId": "100",
+      "name": "Báo Văn",
+      "slot": "cloak",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 24,
+      "bonuses": {
+        "tongLinh": 6,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 100,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/167365a1-7df6-4ff3-9981-270b9b8e7eec.2541b.jpg",
+      "desc": "Áo Choàng · Thường Lv.24",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "106",
+        "name": "Kim Tước"
+      },
+      "sell": 7200
+    },
+    {
+      "id": "wiki_eq_597",
+      "wikiId": "597",
+      "name": "Bích Uyên Bào",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Hiên Viên",
+      "levelReq": 210,
+      "bonuses": {
+        "tongLinh": 778,
+        "hp": 22500
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 14000,
+          "growth": 140,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 900,
+          "growth": 200,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/5b10bec0-a9b6-4eee-ab47-2968115b37f9.df685.jpg",
+      "desc": "Áo Choàng · Hiên Viên Lv.210",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 140,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "568",
+        "name": "Hỗn Độn-Thông Thiên Lạp"
+      },
+      "upgradeTo": {
+        "id": "658",
+        "name": "Phục Hi Bào"
+      },
+      "sell": 20000
+    },
+    {
+      "id": "wiki_eq_95",
+      "wikiId": "95",
+      "name": "Choàng Gấm",
+      "slot": "cloak",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 1,
+      "bonuses": {
+        "tongLinh": 1,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 20,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/26b8b177-6789-401f-b254-1bb436fe7194.dcdae.jpg",
+      "desc": "Áo Choàng · Thường Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "106",
+        "name": "Kim Tước"
+      },
+      "sell": 10
+    },
+    {
+      "id": "wiki_eq_353",
+      "wikiId": "353",
+      "name": "Choàng Hải Tặc",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 100,
+      "bonuses": {
+        "tongLinh": 44,
+        "hp": 500
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 800,
+          "growth": 22,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 20,
+          "growth": 20,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/d0791eea-a1eb-4488-bff6-895349e4b190.3e1ba.jpg",
+      "desc": "Áo Choàng · Thái Sơ Lv.100",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 22,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "346",
+        "name": "Choàng Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "420",
+        "name": "Phần Hoàng Văn"
+      },
+      "sell": 200
+    },
+    {
+      "id": "wiki_eq_346",
+      "wikiId": "346",
+      "name": "Choàng Hải Tặc",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 80,
+      "bonuses": {
+        "tongLinh": 33,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 590,
+          "growth": 18,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/c07b59f5-ff98-43ef-a2c9-ded6a345a036.781c2.jpg",
+      "desc": "Áo Choàng · Thượng Cổ Lv.80",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 18,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "339",
+        "name": "Choàng Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "294",
+        "name": "Bách Thế Sa"
+      },
+      "sell": 160
+    },
+    {
+      "id": "wiki_eq_325",
+      "wikiId": "325",
+      "name": "Choàng Hải Tặc",
+      "slot": "cloak",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 20,
+      "bonuses": {
+        "tongLinh": 11,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 200,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/e07cf479-4218-4b70-a8ed-da3afc481185.a4395.jpg",
+      "desc": "Áo Choàng · Thần Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "106",
+        "name": "Kim Tước"
+      },
+      "upgradeTo": {
+        "id": "332",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 20
+    },
+    {
+      "id": "wiki_eq_332",
+      "wikiId": "332",
+      "name": "Choàng Hải Tặc",
+      "slot": "cloak",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 40,
+      "bonuses": {
+        "tongLinh": 17,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 300,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/ee3c4d9a-02e2-4abb-b001-a9babcfd20ff.82652.jpg",
+      "desc": "Áo Choàng · Sử Thi Lv.40",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "325",
+        "name": "Choàng Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "339",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 40
+    },
+    {
+      "id": "wiki_eq_339",
+      "wikiId": "339",
+      "name": "Choàng Hải Tặc",
+      "slot": "cloak",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 60,
+      "bonuses": {
+        "tongLinh": 25,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 450,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/6c4eb87e-f35f-4ba4-9054-8cdc6f74adb8.a81aa.jpg",
+      "desc": "Áo Choàng · Truyền thuyết Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "332",
+        "name": "Choàng Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "346",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 80
+    },
+    {
+      "id": "wiki_eq_96",
+      "wikiId": "96",
+      "name": "Choàng Lụa",
+      "slot": "cloak",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 7,
+      "bonuses": {
+        "tongLinh": 2,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 36,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/fd7e7cf6-c8da-4fb1-9106-ca5afabd297f.757b5.jpg",
+      "desc": "Áo Choàng · Thường Lv.7",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "106",
+        "name": "Kim Tước"
+      },
+      "sell": 1200
+    },
+    {
+      "id": "wiki_eq_372",
+      "wikiId": "372",
+      "name": "Choàng Ứng Long",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 100,
+      "bonuses": {
+        "tongLinh": 53,
+        "hp": 400
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 950,
+          "growth": 18,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 16,
+          "growth": 16,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/fba95ed5-781a-43df-a197-de3ba0514853.40adb.jpg",
+      "desc": "Áo Choàng · Thượng Cổ Lv.100",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 18,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "339",
+        "name": "Choàng Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "294",
+        "name": "Bách Thế Sa"
+      },
+      "sell": 120
+    },
+    {
+      "id": "wiki_eq_373",
+      "wikiId": "373",
+      "name": "Chúc Âm Long Văn",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 120,
+      "bonuses": {
+        "tongLinh": 71,
+        "hp": 700
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 1275,
+          "growth": 22,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 28,
+          "growth": 28,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/13db3d64-9dd1-4a08-ab14-9a633218f4e1.f969a.jpg",
+      "desc": "Áo Choàng · Thái Sơ Lv.120",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 22,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "346",
+        "name": "Choàng Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "420",
+        "name": "Phần Hoàng Văn"
+      },
+      "sell": 500
+    },
+    {
+      "id": "wiki_eq_1213",
+      "wikiId": "1213",
+      "name": "Cùng Kỳ Phần Thiên Bào",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Cùng Kỳ",
+      "levelReq": 350,
+      "bonuses": {
+        "tongLinh": 3122,
+        "hp": 90000
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 56200,
+          "growth": 467,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 3600,
+          "growth": 710,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/47ac86f8-50a2-4942-bb10-8a91d9a54ac7.3ac45.png",
+      "desc": "Áo Choàng · Cùng Kỳ Lv.350",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 467,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "1125",
+        "name": "Thao Thiết Bào"
+      },
+      "upgradeTo": null,
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_105",
+      "wikiId": "105",
+      "name": "Đằng Vân",
+      "slot": "cloak",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 16,
+      "bonuses": {
+        "tongLinh": 8,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 151,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/cb740918-dbee-448b-8b7d-f70df32cbe9a.fd717.jpg",
+      "desc": "Áo Choàng · Chiến Lv.16",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "100",
+        "name": "Báo Văn"
+      },
+      "upgradeTo": {
+        "id": "325",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 8000
+    },
+    {
+      "id": "wiki_eq_295",
+      "wikiId": "295",
+      "name": "Đế Phần Văn",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 100,
+      "bonuses": {
+        "tongLinh": 48,
+        "hp": 550
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 870,
+          "growth": 22,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 22,
+          "growth": 22,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/03561e43-552c-46de-b35b-7d0ca9a9425c.15084.jpg",
+      "desc": "Áo Choàng · Thái Sơ Lv.100",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 22,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "346",
+        "name": "Choàng Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "420",
+        "name": "Phần Hoàng Văn"
+      },
+      "sell": 220
+    },
+    {
+      "id": "wiki_eq_448",
+      "wikiId": "448",
+      "name": "Diệt Thế Thiên",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Ám Kim",
+      "levelReq": 150,
+      "bonuses": {
+        "tongLinh": 208,
+        "hp": 2500
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 3750,
+          "growth": 45,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 100,
+          "growth": 100,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/f617e0a3-7514-4313-adb9-e8087b10c807.24199.jpg",
+      "desc": "Áo Choàng · Ám Kim Lv.150",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 45,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "420",
+        "name": "Phần Hoàng Văn"
+      },
+      "upgradeTo": {
+        "id": "545",
+        "name": "Phi Tinh Văn"
+      },
+      "sell": 2400
+    },
+    {
+      "id": "wiki_eq_115",
+      "wikiId": "115",
+      "name": "Đoạn Giang",
+      "slot": "cloak",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 50,
+      "bonuses": {
+        "tongLinh": 19,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 340,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/70b2623c-3fae-4f6b-8b77-60dbe6c28809.eda45.jpg",
+      "desc": "Áo Choàng · Sử Thi Lv.50",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "325",
+        "name": "Choàng Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "339",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 17500
+    },
+    {
+      "id": "wiki_eq_97",
+      "wikiId": "97",
+      "name": "Giảo Thố",
+      "slot": "cloak",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 12,
+      "bonuses": {
+        "tongLinh": 3,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 52,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/35e9c645-85a2-4232-bb27-311d20215943.cb601.jpg",
+      "desc": "Áo Choàng · Thường Lv.12",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "106",
+        "name": "Kim Tước"
+      },
+      "sell": 2280
+    },
+    {
+      "id": "wiki_eq_868",
+      "wikiId": "868",
+      "name": "Hình Thiên Bào",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Hình Thiên",
+      "levelReq": 290,
+      "bonuses": {
+        "tongLinh": 2056,
+        "hp": 60000
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 37000,
+          "growth": 320,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 2400,
+          "growth": 465,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/dd656a04-73df-454f-978a-03d167f345b7.02e9b.png",
+      "desc": "Áo Choàng · Hình Thiên Lv.290",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 320,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "801",
+        "name": "Viêm Đế Bào"
+      },
+      "upgradeTo": {
+        "id": "1034",
+        "name": "U Minh Bào"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_119",
+      "wikiId": "119",
+      "name": "Hoàng Đỉnh",
+      "slot": "cloak",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 70,
+      "bonuses": {
+        "tongLinh": 24,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 430,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/9fa2614d-db48-41c3-ad13-8d467d3e4615.aba7b.jpg",
+      "desc": "Áo Choàng · Truyền thuyết Lv.70",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "332",
+        "name": "Choàng Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "346",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 26000
+    },
+    {
+      "id": "wiki_eq_98",
+      "wikiId": "98",
+      "name": "Hổ Ban",
+      "slot": "cloak",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 16,
+      "bonuses": {
+        "tongLinh": 4,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 68,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/f296cd0f-f3b4-4995-ae34-659cc9c6e56f.ed9d0.jpg",
+      "desc": "Áo Choàng · Thường Lv.16",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "106",
+        "name": "Kim Tước"
+      },
+      "sell": 3360
+    },
+    {
+      "id": "wiki_eq_520",
+      "wikiId": "520",
+      "name": "Hổ Bì Xưởng",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 1,
+      "bonuses": {
+        "tongLinh": 26,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 470,
+          "growth": 18,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/94dd6323-bd34-4b62-9b85-31e756e20ca1.bb644.jpg",
+      "desc": "Áo Choàng · Thượng Cổ Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 18,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "339",
+        "name": "Choàng Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "294",
+        "name": "Bách Thế Sa"
+      },
+      "sell": 25000
+    },
+    {
+      "id": "wiki_eq_568",
+      "wikiId": "568",
+      "name": "Hỗn Độn-Thông Thiên Lạp",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Hỗn Độn",
+      "levelReq": 190,
+      "bonuses": {
+        "tongLinh": 556,
+        "hp": 17500
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 10000,
+          "growth": 100,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 700,
+          "growth": 175,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/8b71009e-fc85-4d87-a3a8-16a9ee36098c.71652.jpg",
+      "desc": "Áo Choàng · Hỗn Độn Lv.190",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 100,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "545",
+        "name": "Phi Tinh Văn"
+      },
+      "upgradeTo": {
+        "id": "597",
+        "name": "Bích Uyên Bào"
+      },
+      "sell": 12800
+    },
+    {
+      "id": "wiki_eq_106",
+      "wikiId": "106",
+      "name": "Kim Tước",
+      "slot": "cloak",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 60,
+      "bonuses": {
+        "tongLinh": 17,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 310,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/f699001e-508f-4374-83dd-7aaeab9557d9.2e7cb.jpg",
+      "desc": "Áo Choàng · Chiến Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "100",
+        "name": "Báo Văn"
+      },
+      "upgradeTo": {
+        "id": "325",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 40
+    },
+    {
+      "id": "wiki_eq_109",
+      "wikiId": "109",
+      "name": "Lạc Phượng",
+      "slot": "cloak",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 28,
+      "bonuses": {
+        "tongLinh": 12,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 210,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/3c021918-f0b2-415a-8625-66ac23d29447.43216.jpg",
+      "desc": "Áo Choàng · Thần Lv.28",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "106",
+        "name": "Kim Tước"
+      },
+      "upgradeTo": {
+        "id": "332",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 10000
+    },
+    {
+      "id": "wiki_eq_111",
+      "wikiId": "111",
+      "name": "Lạc Tinh",
+      "slot": "cloak",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 36,
+      "bonuses": {
+        "tongLinh": 16,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 290,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/a5c52aab-3839-43c7-b930-bcbf459e59af.35c13.jpg",
+      "desc": "Áo Choàng · Thần Lv.36",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "106",
+        "name": "Kim Tước"
+      },
+      "upgradeTo": {
+        "id": "332",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 14000
+    },
+    {
+      "id": "wiki_eq_112",
+      "wikiId": "112",
+      "name": "Long Tường",
+      "slot": "cloak",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 40,
+      "bonuses": {
+        "tongLinh": 18,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 330,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/441e43b7-c64c-4579-8e56-4aaf218ba9e6.c7dba.jpg",
+      "desc": "Áo Choàng · Thần Lv.40",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "106",
+        "name": "Kim Tước"
+      },
+      "upgradeTo": {
+        "id": "332",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 15000
+    },
+    {
+      "id": "wiki_eq_118",
+      "wikiId": "118",
+      "name": "Mộng Cảnh Sa",
+      "slot": "cloak",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 60,
+      "bonuses": {
+        "tongLinh": 19,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 340,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/2f872937-618a-43c0-9491-a0c25db7a303.262e7.jpg",
+      "desc": "Áo Choàng · Truyền thuyết Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "332",
+        "name": "Choàng Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "346",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 25000
+    },
+    {
+      "id": "wiki_eq_296",
+      "wikiId": "296",
+      "name": "Mũ Đại Vũ",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 110,
+      "bonuses": {
+        "tongLinh": 53,
+        "hp": 600
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 950,
+          "growth": 22,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 24,
+          "growth": 24,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/58e25204-3d5a-4e4d-9556-171947bbaf17.13346.jpg",
+      "desc": "Áo Choàng · Thái Sơ Lv.110",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 22,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "346",
+        "name": "Choàng Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "420",
+        "name": "Phần Hoàng Văn"
+      },
+      "sell": 240
+    },
+    {
+      "id": "wiki_eq_102",
+      "wikiId": "102",
+      "name": "Ngự Phong",
+      "slot": "cloak",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 10,
+      "bonuses": {
+        "tongLinh": 4,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 79,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/8b5897f3-ebbf-4d2e-9e28-a8019c9bd2bc.6d41a.jpg",
+      "desc": "Áo Choàng · Chiến Lv.10",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "100",
+        "name": "Báo Văn"
+      },
+      "upgradeTo": {
+        "id": "325",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 5000
+    },
+    {
+      "id": "wiki_eq_722",
+      "wikiId": "722",
+      "name": "Nữ Oa Bào",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Nữ Oa",
+      "levelReq": 250,
+      "bonuses": {
+        "tongLinh": 1433,
+        "hp": 40000
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 25800,
+          "growth": 232,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 1600,
+          "growth": 325,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/77a1cdba-31ef-4f48-8e75-8b4c7e295d5f.a1db9.png",
+      "desc": "Áo Choàng · Nữ Oa Lv.250",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 232,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "658",
+        "name": "Phục Hi Bào"
+      },
+      "upgradeTo": {
+        "id": "801",
+        "name": "Viêm Đế Bào"
+      },
+      "sell": 32000
+    },
+    {
+      "id": "wiki_eq_107",
+      "wikiId": "107",
+      "name": "Oanh Minh",
+      "slot": "cloak",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 20,
+      "bonuses": {
+        "tongLinh": 7,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 130,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/3aa170d2-09dd-47fe-b21c-c7b896078cf1.0933b.jpg",
+      "desc": "Áo Choàng · Thần Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "106",
+        "name": "Kim Tước"
+      },
+      "upgradeTo": {
+        "id": "332",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 11500
+    },
+    {
+      "id": "wiki_eq_420",
+      "wikiId": "420",
+      "name": "Phần Hoàng Văn",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Thần Hoàng",
+      "levelReq": 130,
+      "bonuses": {
+        "tongLinh": 83,
+        "hp": 1000
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 1500,
+          "growth": 26,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 40,
+          "growth": 40,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/56321645-cd84-4085-87c4-2fc26312051c.45998.jpg",
+      "desc": "Áo Choàng · Thần Hoàng Lv.130",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 26,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "294",
+        "name": "Bách Thế Sa"
+      },
+      "upgradeTo": {
+        "id": "448",
+        "name": "Diệt Thế Thiên"
+      },
+      "sell": 500
+    },
+    {
+      "id": "wiki_eq_99",
+      "wikiId": "99",
+      "name": "Phi Hồ",
+      "slot": "cloak",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 20,
+      "bonuses": {
+        "tongLinh": 5,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 84,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/5e44cb09-f56d-474d-a7bc-1d1772941ef1.5e8d2.jpg",
+      "desc": "Áo Choàng · Thường Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "106",
+        "name": "Kim Tước"
+      },
+      "sell": 5040
+    },
+    {
+      "id": "wiki_eq_545",
+      "wikiId": "545",
+      "name": "Phi Tinh Văn",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Bàn Cổ",
+      "levelReq": 170,
+      "bonuses": {
+        "tongLinh": 356,
+        "hp": 12500
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 6400,
+          "growth": 68,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 500,
+          "growth": 150,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/222ca206-e027-4037-b7f3-dc0dc1cd45ad.9dbca.jpg",
+      "desc": "Áo Choàng · Bàn Cổ Lv.170",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 68,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "448",
+        "name": "Diệt Thế Thiên"
+      },
+      "upgradeTo": {
+        "id": "568",
+        "name": "Hỗn Độn-Thông Thiên Lạp"
+      },
+      "sell": 4800
+    },
+    {
+      "id": "wiki_eq_658",
+      "wikiId": "658",
+      "name": "Phục Hi Bào",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Phục Hi",
+      "levelReq": 230,
+      "bonuses": {
+        "tongLinh": 1111,
+        "hp": 30000
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 20000,
+          "growth": 180,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 1200,
+          "growth": 250,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/d061b97b-6f3d-4b05-b9ef-f3df1d884f3f.40207.png",
+      "desc": "Áo Choàng · Phục Hi Lv.230",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 180,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "597",
+        "name": "Bích Uyên Bào"
+      },
+      "upgradeTo": {
+        "id": "722",
+        "name": "Nữ Oa Bào"
+      },
+      "sell": 30000
+    },
+    {
+      "id": "wiki_eq_116",
+      "wikiId": "116",
+      "name": "Tam Tài",
+      "slot": "cloak",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 55,
+      "bonuses": {
+        "tongLinh": 22,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 400,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/1ebf569e-c028-42f9-84fc-c75f1e0f9dd9.b0a46.jpg",
+      "desc": "Áo Choàng · Sử Thi Lv.55",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "325",
+        "name": "Choàng Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "339",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 18500
+    },
+    {
+      "id": "wiki_eq_1125",
+      "wikiId": "1125",
+      "name": "Thao Thiết Bào",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Thao Thiết",
+      "levelReq": 330,
+      "bonuses": {
+        "tongLinh": 2750,
+        "hp": 80000
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 49500,
+          "growth": 416,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 3200,
+          "growth": 625,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/b3156e25-c252-4f07-a517-da0b3462e075.a3ca0.png",
+      "desc": "Áo Choàng · Thao Thiết Lv.330",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 416,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "1034",
+        "name": "U Minh Bào"
+      },
+      "upgradeTo": {
+        "id": "1213",
+        "name": "Cùng Kỳ Phần Thiên Bào"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_110",
+      "wikiId": "110",
+      "name": "Thất Tuyệt",
+      "slot": "cloak",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 32,
+      "bonuses": {
+        "tongLinh": 14,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 250,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/340af151-9fdd-4cb5-8b3c-ca77e70487f6.d67d1.jpg",
+      "desc": "Áo Choàng · Thần Lv.32",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "106",
+        "name": "Kim Tước"
+      },
+      "upgradeTo": {
+        "id": "332",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 12500
+    },
+    {
+      "id": "wiki_eq_122",
+      "wikiId": "122",
+      "name": "Thiên Diểu",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 95,
+      "bonuses": {
+        "tongLinh": 38,
+        "hp": 250
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 675,
+          "growth": 18,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 10,
+          "growth": 10,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/f07faff1-eb20-4373-8864-2d831ef40f18.7311f.jpg",
+      "desc": "Áo Choàng · Thượng Cổ Lv.95",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 18,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "339",
+        "name": "Choàng Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "294",
+        "name": "Bách Thế Sa"
+      },
+      "sell": 70
+    },
+    {
+      "id": "wiki_eq_120",
+      "wikiId": "120",
+      "name": "Thương Huyền",
+      "slot": "cloak",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 80,
+      "bonuses": {
+        "tongLinh": 29,
+        "hp": 225
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 520,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 9,
+          "growth": 9,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/fb39de02-f5a6-4581-96f8-3fb720bb531d.90791.jpg",
+      "desc": "Áo Choàng · Truyền thuyết Lv.80",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "332",
+        "name": "Choàng Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "346",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 28000
+    },
+    {
+      "id": "wiki_eq_101",
+      "wikiId": "101",
+      "name": "Trích Tinh",
+      "slot": "cloak",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 8,
+      "bonuses": {
+        "tongLinh": 3,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 55,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/f86493c2-7da1-41b4-98eb-9bf81b6179f2.8ce40.jpg",
+      "desc": "Áo Choàng · Chiến Lv.8",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "100",
+        "name": "Báo Văn"
+      },
+      "upgradeTo": {
+        "id": "325",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 4000
+    },
+    {
+      "id": "wiki_eq_103",
+      "wikiId": "103",
+      "name": "Trường Hà",
+      "slot": "cloak",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 12,
+      "bonuses": {
+        "tongLinh": 6,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 103,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/9b2016cb-6802-41b4-8d17-5f5414ae69ef.562d0.jpg",
+      "desc": "Áo Choàng · Chiến Lv.12",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "100",
+        "name": "Báo Văn"
+      },
+      "upgradeTo": {
+        "id": "325",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 6000
+    },
+    {
+      "id": "wiki_eq_104",
+      "wikiId": "104",
+      "name": "Truy Nguyệt",
+      "slot": "cloak",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 14,
+      "bonuses": {
+        "tongLinh": 7,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 127,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/f090175c-7ef1-4d49-a805-cf39f2a803fe.26718.jpg",
+      "desc": "Áo Choàng · Chiến Lv.14",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "100",
+        "name": "Báo Văn"
+      },
+      "upgradeTo": {
+        "id": "325",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 7000
+    },
+    {
+      "id": "wiki_eq_114",
+      "wikiId": "114",
+      "name": "Tử Hà",
+      "slot": "cloak",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 45,
+      "bonuses": {
+        "tongLinh": 16,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 280,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/81f34ac8-f9d9-45a2-9215-0463a6714ab4.be3f2.jpg",
+      "desc": "Áo Choàng · Sử Thi Lv.45",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "325",
+        "name": "Choàng Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "339",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 15000
+    },
+    {
+      "id": "wiki_eq_1034",
+      "wikiId": "1034",
+      "name": "U Minh Bào",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Xi Vưu",
+      "levelReq": 310,
+      "bonuses": {
+        "tongLinh": 2378,
+        "hp": 70000
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 42800,
+          "growth": 365,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 2800,
+          "growth": 540,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/8f8c083f-d66c-4580-921e-ae8fc2f42304.910f5.png",
+      "desc": "Áo Choàng · Xi Vưu Lv.310",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 365,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "868",
+        "name": "Hình Thiên Bào"
+      },
+      "upgradeTo": {
+        "id": "1125",
+        "name": "Thao Thiết Bào"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_113",
+      "wikiId": "113",
+      "name": "Vãn Khê",
+      "slot": "cloak",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 40,
+      "bonuses": {
+        "tongLinh": 12,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 220,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/af6e8f07-37b9-4ac4-a823-be18e7752205.19060.jpg",
+      "desc": "Áo Choàng · Sử Thi Lv.40",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "325",
+        "name": "Choàng Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "339",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 14000
+    },
+    {
+      "id": "wiki_eq_801",
+      "wikiId": "801",
+      "name": "Viêm Đế Bào",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Viêm Đế",
+      "levelReq": 270,
+      "bonuses": {
+        "tongLinh": 1722,
+        "hp": 50000
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 31000,
+          "growth": 278,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 2000,
+          "growth": 390,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/0b452af6-30c2-4898-8bb9-edcdf960277a.80282.png",
+      "desc": "Áo Choàng · Viêm Đế Lv.270",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 278,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "722",
+        "name": "Nữ Oa Bào"
+      },
+      "upgradeTo": {
+        "id": "868",
+        "name": "Hình Thiên Bào"
+      },
+      "sell": 38000
+    },
+    {
+      "id": "wiki_eq_108",
+      "wikiId": "108",
+      "name": "Vọng Nguyệt",
+      "slot": "cloak",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 24,
+      "bonuses": {
+        "tongLinh": 9,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 170,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/02c1a2a9-1fda-488f-8ba7-12486d8c5778.61858.jpg",
+      "desc": "Áo Choàng · Thần Lv.24",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "106",
+        "name": "Kim Tước"
+      },
+      "upgradeTo": {
+        "id": "332",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 13000
+    },
+    {
+      "id": "wiki_eq_121",
+      "wikiId": "121",
+      "name": "Võ Thánh",
+      "slot": "cloak",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 80,
+      "bonuses": {
+        "tongLinh": 29,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 514,
+          "growth": 18,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/63b2448a-2251-4a5b-a69b-9dad94735b64.eda86.jpg",
+      "desc": "Áo Choàng · Thượng Cổ Lv.80",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 18,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "339",
+        "name": "Choàng Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "294",
+        "name": "Bách Thế Sa"
+      },
+      "sell": 60
+    },
+    {
+      "id": "wiki_eq_117",
+      "wikiId": "117",
+      "name": "Xích Ngấn",
+      "slot": "cloak",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 60,
+      "bonuses": {
+        "tongLinh": 26,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Pháp Phòng",
+          "base": 460,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/8dd30f35-48b9-4752-911b-56765d3f1a0f.ac06c.jpg",
+      "desc": "Áo Choàng · Sử Thi Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "325",
+        "name": "Choàng Hải Tặc"
+      },
+      "upgradeTo": {
+        "id": "339",
+        "name": "Choàng Hải Tặc"
+      },
+      "sell": 20000
+    },
+    {
+      "id": "wiki_eq_171",
+      "wikiId": "171",
+      "name": "Bắc Đẩu Thuẫn",
+      "slot": "shield",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 50,
+      "bonuses": {
+        "tongLinh": 19,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 340,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/51f63054-5df8-4c71-8990-ef58b9abc171.752e4.jpg",
+      "desc": "Thuẫn · Sử Thi Lv.50",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "167",
+        "name": "Chùy Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "176",
+        "name": "Lang Tà Thuẫn"
+      },
+      "sell": 17500
+    },
+    {
+      "id": "wiki_eq_155",
+      "wikiId": "155",
+      "name": "Bạch Thuẫn",
+      "slot": "shield",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 20,
+      "bonuses": {
+        "tongLinh": 5,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 84,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/753d1886-cedb-4c91-9207-3176a9b48b9b.56d54.jpg",
+      "desc": "Thuẫn · Thường Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "159",
+        "name": "Lân Thuẫn"
+      },
+      "sell": 5040
+    },
+    {
+      "id": "wiki_eq_377",
+      "wikiId": "377",
+      "name": "Chúc Âm Bảo Hộ",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 120,
+      "bonuses": {
+        "tongLinh": 71,
+        "hp": 700
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 1275,
+          "growth": 22,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 28,
+          "growth": 28,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/87704fe9-de6e-454d-8684-5d1067cb0545.e2725.jpg",
+      "desc": "Thuẫn · Thái Sơ Lv.120",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 22,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "521",
+        "name": "Hổ Sĩ Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "421",
+        "name": "Nguyệt Thuẫn"
+      },
+      "sell": 500
+    },
+    {
+      "id": "wiki_eq_167",
+      "wikiId": "167",
+      "name": "Chùy Thuẫn",
+      "slot": "shield",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 36,
+      "bonuses": {
+        "tongLinh": 16,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 290,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/49b64832-ffbd-4bbd-a81d-0b1723d76881.52a41.jpg",
+      "desc": "Thuẫn · Thần Lv.36",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "159",
+        "name": "Lân Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "171",
+        "name": "Bắc Đẩu Thuẫn"
+      },
+      "sell": 14000
+    },
+    {
+      "id": "wiki_eq_1211",
+      "wikiId": "1211",
+      "name": "Cùng Kỳ Băng Sơn Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Cùng Kỳ",
+      "levelReq": 350,
+      "bonuses": {
+        "tongLinh": 3122,
+        "hp": 90000
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 56200,
+          "growth": 467,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 3600,
+          "growth": 710,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/55264252-edc5-41fb-b0be-f96046848ea4.d8d97.png",
+      "desc": "Thuẫn · Cùng Kỳ Lv.350",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 467,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "1123",
+        "name": "Thao Thiết Thuẫn"
+      },
+      "upgradeTo": null,
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_172",
+      "wikiId": "172",
+      "name": "Cự Thuẫn",
+      "slot": "shield",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 55,
+      "bonuses": {
+        "tongLinh": 22,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 400,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/7db2d298-fe64-425d-813b-e7262c17eb52.06e5c.jpg",
+      "desc": "Thuẫn · Sử Thi Lv.55",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "167",
+        "name": "Chùy Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "176",
+        "name": "Lang Tà Thuẫn"
+      },
+      "sell": 18500
+    },
+    {
+      "id": "wiki_eq_301",
+      "wikiId": "301",
+      "name": "Cứu Viêm Kính",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 100,
+      "bonuses": {
+        "tongLinh": 48,
+        "hp": 550
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 870,
+          "growth": 22,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 22,
+          "growth": 22,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/d5c1d054-1d80-4826-911f-99c1d9ba52fa.59d4a.jpg",
+      "desc": "Thuẫn · Thái Sơ Lv.100",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 22,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "521",
+        "name": "Hổ Sĩ Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "421",
+        "name": "Nguyệt Thuẫn"
+      },
+      "sell": 220
+    },
+    {
+      "id": "wiki_eq_450",
+      "wikiId": "450",
+      "name": "Diệt Thế Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Ám Kim",
+      "levelReq": 150,
+      "bonuses": {
+        "tongLinh": 208,
+        "hp": 2500
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 3750,
+          "growth": 45,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 100,
+          "growth": 100,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/ea744ac2-a31c-4c36-b2e3-8c99ab55af32.49b29.jpg",
+      "desc": "Thuẫn · Ám Kim Lv.150",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 45,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "421",
+        "name": "Nguyệt Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "547",
+        "name": "Nguyên Thuẫn"
+      },
+      "sell": 2400
+    },
+    {
+      "id": "wiki_eq_164",
+      "wikiId": "164",
+      "name": "Định Thuẫn",
+      "slot": "shield",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 24,
+      "bonuses": {
+        "tongLinh": 9,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 170,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/3fa8356a-3b0e-4649-baab-dddd5eeba58f.3e983.jpg",
+      "desc": "Thuẫn · Thần Lv.24",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "159",
+        "name": "Lân Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "171",
+        "name": "Bắc Đẩu Thuẫn"
+      },
+      "sell": 13000
+    },
+    {
+      "id": "wiki_eq_302",
+      "wikiId": "302",
+      "name": "Độ Luân Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 110,
+      "bonuses": {
+        "tongLinh": 53,
+        "hp": 600
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 950,
+          "growth": 22,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 24,
+          "growth": 24,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/bf9715e4-0547-4997-936a-52b04f7753d9.0d637.jpg",
+      "desc": "Thuẫn · Thái Sơ Lv.110",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 22,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "521",
+        "name": "Hổ Sĩ Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "421",
+        "name": "Nguyệt Thuẫn"
+      },
+      "sell": 240
+    },
+    {
+      "id": "wiki_eq_152",
+      "wikiId": "152",
+      "name": "Đồng Thuẫn",
+      "slot": "shield",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 7,
+      "bonuses": {
+        "tongLinh": 2,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 36,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/51a58c48-f085-4421-bae1-327e9d5b1c6e.ab789.jpg",
+      "desc": "Thuẫn · Thường Lv.7",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "159",
+        "name": "Lân Thuẫn"
+      },
+      "sell": 1000
+    },
+    {
+      "id": "wiki_eq_866",
+      "wikiId": "866",
+      "name": "Hình Thiên Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Hình Thiên",
+      "levelReq": 290,
+      "bonuses": {
+        "tongLinh": 2056,
+        "hp": 60000
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 37000,
+          "growth": 320,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 2400,
+          "growth": 465,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/75fb45d4-0fc6-47ae-a087-a73cd5a5586b.a3cb9.png",
+      "desc": "Thuẫn · Hình Thiên Lv.290",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 320,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "799",
+        "name": "Viêm Đế Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "1032",
+        "name": "Liệt Địa Thuẫn"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_570",
+      "wikiId": "570",
+      "name": "Hỗn Độn-Tu Di Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Hỗn Độn",
+      "levelReq": 190,
+      "bonuses": {
+        "tongLinh": 556,
+        "hp": 17500
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 10000,
+          "growth": 100,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 700,
+          "growth": 175,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/30314457-8a16-4089-817f-409fde12d3c4.f722c.jpg",
+      "desc": "Thuẫn · Hỗn Độn Lv.190",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 100,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "547",
+        "name": "Nguyên Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "595",
+        "name": "Hỗn Nguyên Thuẫn"
+      },
+      "sell": 12800
+    },
+    {
+      "id": "wiki_eq_595",
+      "wikiId": "595",
+      "name": "Hỗn Nguyên Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Hiên Viên",
+      "levelReq": 210,
+      "bonuses": {
+        "tongLinh": 778,
+        "hp": 22500
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 14000,
+          "growth": 140,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 900,
+          "growth": 200,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/8a5c7792-bd36-4b73-baff-e311e7d21f7c.0a344.jpg",
+      "desc": "Thuẫn · Hiên Viên Lv.210",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 140,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "570",
+        "name": "Hỗn Độn-Tu Di Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "656",
+        "name": "Phục Hi Thuẫn"
+      },
+      "sell": 20000
+    },
+    {
+      "id": "wiki_eq_521",
+      "wikiId": "521",
+      "name": "Hổ Sĩ Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 1,
+      "bonuses": {
+        "tongLinh": 26,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 470,
+          "growth": 18,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/017ec904-135c-4d6b-9673-f8d967232386.c1b88.jpg",
+      "desc": "Thuẫn · Thượng Cổ Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 18,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "176",
+        "name": "Lang Tà Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "377",
+        "name": "Chúc Âm Bảo Hộ"
+      },
+      "sell": 25000
+    },
+    {
+      "id": "wiki_eq_168",
+      "wikiId": "168",
+      "name": "Hùng SưThuẫn",
+      "slot": "shield",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 40,
+      "bonuses": {
+        "tongLinh": 18,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 330,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/e8338418-e287-4d3b-82aa-3b04b3023467.da188.jpg",
+      "desc": "Thuẫn · Thần Lv.40",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "159",
+        "name": "Lân Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "171",
+        "name": "Bắc Đẩu Thuẫn"
+      },
+      "sell": 15000
+    },
+    {
+      "id": "wiki_eq_156",
+      "wikiId": "156",
+      "name": "Kim Thuẫn",
+      "slot": "shield",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 24,
+      "bonuses": {
+        "tongLinh": 6,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 100,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/f7e98a0f-a3c8-4d96-acfd-67fe7d6f89fb.32400.jpg",
+      "desc": "Thuẫn · Thường Lv.24",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "159",
+        "name": "Lân Thuẫn"
+      },
+      "sell": 7200
+    },
+    {
+      "id": "wiki_eq_176",
+      "wikiId": "176",
+      "name": "Lang Tà Thuẫn",
+      "slot": "shield",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 80,
+      "bonuses": {
+        "tongLinh": 29,
+        "hp": 225
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 520,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 9,
+          "growth": 9,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/be611e0c-cf21-480a-831b-13009a8348a3.e3c08.jpg",
+      "desc": "Thuẫn · Truyền thuyết Lv.80",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "171",
+        "name": "Bắc Đẩu Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "521",
+        "name": "Hổ Sĩ Thuẫn"
+      },
+      "sell": 28000
+    },
+    {
+      "id": "wiki_eq_159",
+      "wikiId": "159",
+      "name": "Lân Thuẫn",
+      "slot": "shield",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 12,
+      "bonuses": {
+        "tongLinh": 6,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 103,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/96773f96-0b78-4ccf-bab2-c44e16258fa2.76561.jpg",
+      "desc": "Thuẫn · Chiến Lv.12",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "155",
+        "name": "Bạch Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "167",
+        "name": "Chùy Thuẫn"
+      },
+      "sell": 6000
+    },
+    {
+      "id": "wiki_eq_1032",
+      "wikiId": "1032",
+      "name": "Liệt Địa Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Xi Vưu",
+      "levelReq": 310,
+      "bonuses": {
+        "tongLinh": 2378,
+        "hp": 70000
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 42800,
+          "growth": 365,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 2800,
+          "growth": 540,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/05448979-e852-4f6f-8daf-e6f0a634559a.9089c.png",
+      "desc": "Thuẫn · Xi Vưu Lv.310",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 365,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "866",
+        "name": "Hình Thiên Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "1123",
+        "name": "Thao Thiết Thuẫn"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_177",
+      "wikiId": "177",
+      "name": "Long Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 80,
+      "bonuses": {
+        "tongLinh": 29,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 514,
+          "growth": 18,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/e3478bb3-2649-4c96-b13e-400991a5d32e.84226.jpg",
+      "desc": "Thuẫn · Thượng Cổ Lv.80",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 18,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "176",
+        "name": "Lang Tà Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "377",
+        "name": "Chúc Âm Bảo Hộ"
+      },
+      "sell": 60
+    },
+    {
+      "id": "wiki_eq_166",
+      "wikiId": "166",
+      "name": "Mai Thuẫn",
+      "slot": "shield",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 32,
+      "bonuses": {
+        "tongLinh": 14,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 250,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/cb57c276-cab8-4d07-8957-d81f68381b61.3f5ca.jpg",
+      "desc": "Thuẫn · Thần Lv.32",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "159",
+        "name": "Lân Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "171",
+        "name": "Bắc Đẩu Thuẫn"
+      },
+      "sell": 12500
+    },
+    {
+      "id": "wiki_eq_151",
+      "wikiId": "151",
+      "name": "Mộc Thuẫn",
+      "slot": "shield",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 1,
+      "bonuses": {
+        "tongLinh": 1,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 20,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/6769cd20-b5b9-4d73-a21f-9133f80ccce9.24037.jpg",
+      "desc": "Thuẫn · Thường Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "159",
+        "name": "Lân Thuẫn"
+      },
+      "sell": 10
+    },
+    {
+      "id": "wiki_eq_154",
+      "wikiId": "154",
+      "name": "Ngân Thuẫn",
+      "slot": "shield",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 16,
+      "bonuses": {
+        "tongLinh": 4,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 68,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/38abdecb-f97d-4970-aa72-47fb888f2d85.43016.jpg",
+      "desc": "Thuẫn · Thường Lv.16",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "159",
+        "name": "Lân Thuẫn"
+      },
+      "sell": 3360
+    },
+    {
+      "id": "wiki_eq_547",
+      "wikiId": "547",
+      "name": "Nguyên Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Bàn Cổ",
+      "levelReq": 170,
+      "bonuses": {
+        "tongLinh": 356,
+        "hp": 12500
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 6400,
+          "growth": 68,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 500,
+          "growth": 150,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/caebddc5-9636-407b-9de4-8e0448bfad43.cbbe6.jpg",
+      "desc": "Thuẫn · Bàn Cổ Lv.170",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 68,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "450",
+        "name": "Diệt Thế Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "570",
+        "name": "Hỗn Độn-Tu Di Thuẫn"
+      },
+      "sell": 4800
+    },
+    {
+      "id": "wiki_eq_421",
+      "wikiId": "421",
+      "name": "Nguyệt Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Thần Hoàng",
+      "levelReq": 130,
+      "bonuses": {
+        "tongLinh": 83,
+        "hp": 1000
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 1500,
+          "growth": 26,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 40,
+          "growth": 40,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/00a31ec4-6226-425e-b6d7-2d7215fc8828.722c8.jpg",
+      "desc": "Thuẫn · Thần Hoàng Lv.130",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 26,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "377",
+        "name": "Chúc Âm Bảo Hộ"
+      },
+      "upgradeTo": {
+        "id": "450",
+        "name": "Diệt Thế Thuẫn"
+      },
+      "sell": 500
+    },
+    {
+      "id": "wiki_eq_720",
+      "wikiId": "720",
+      "name": "Nữ Oa Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Nữ Oa",
+      "levelReq": 250,
+      "bonuses": {
+        "tongLinh": 1433,
+        "hp": 40000
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 25800,
+          "growth": 232,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 1600,
+          "growth": 325,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/017f6d5f-e480-4b6d-8058-c01d02f5fc56.b11ae.png",
+      "desc": "Thuẫn · Nữ Oa Lv.250",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 232,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "656",
+        "name": "Phục Hi Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "799",
+        "name": "Viêm Đế Thuẫn"
+      },
+      "sell": 32000
+    },
+    {
+      "id": "wiki_eq_157",
+      "wikiId": "157",
+      "name": "Ô Thuẫn",
+      "slot": "shield",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 8,
+      "bonuses": {
+        "tongLinh": 3,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 55,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/8a603779-50fb-4f30-8e58-ec19d33542e7.51a0c.jpg",
+      "desc": "Thuẫn · Chiến Lv.8",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "155",
+        "name": "Bạch Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "167",
+        "name": "Chùy Thuẫn"
+      },
+      "sell": 4000
+    },
+    {
+      "id": "wiki_eq_163",
+      "wikiId": "163",
+      "name": "Phong Thuẫn",
+      "slot": "shield",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 20,
+      "bonuses": {
+        "tongLinh": 7,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 130,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/2c9a8f52-4f0d-44b3-8ea7-f7d86b3aee31.807b7.jpg",
+      "desc": "Thuẫn · Thần Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "159",
+        "name": "Lân Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "171",
+        "name": "Bắc Đẩu Thuẫn"
+      },
+      "sell": 11500
+    },
+    {
+      "id": "wiki_eq_656",
+      "wikiId": "656",
+      "name": "Phục Hi Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Phục Hi",
+      "levelReq": 230,
+      "bonuses": {
+        "tongLinh": 1111,
+        "hp": 30000
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 20000,
+          "growth": 180,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 1200,
+          "growth": 250,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/177ec6ae-8eca-4496-bd7a-cc000c8655dd.acf39.png",
+      "desc": "Thuẫn · Phục Hi Lv.230",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 180,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "595",
+        "name": "Hỗn Nguyên Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "720",
+        "name": "Nữ Oa Thuẫn"
+      },
+      "sell": 30000
+    },
+    {
+      "id": "wiki_eq_161",
+      "wikiId": "161",
+      "name": "Phương Thuẫn",
+      "slot": "shield",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 16,
+      "bonuses": {
+        "tongLinh": 8,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 151,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/ef5887db-3dc3-4571-a86c-61d4f641793c.631e8.jpg",
+      "desc": "Thuẫn · Chiến Lv.16",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "155",
+        "name": "Bạch Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "167",
+        "name": "Chùy Thuẫn"
+      },
+      "sell": 8000
+    },
+    {
+      "id": "wiki_eq_334",
+      "wikiId": "334",
+      "name": "Quần Hải Tặc",
+      "slot": "shield",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 60,
+      "bonuses": {
+        "tongLinh": 23,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 420,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/aad1567d-16a2-41f5-b2c6-8ebd4e2cbb76.b9591.jpg",
+      "desc": "Thuẫn · Truyền thuyết Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "171",
+        "name": "Bắc Đẩu Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "521",
+        "name": "Hổ Sĩ Thuẫn"
+      },
+      "sell": 80
+    },
+    {
+      "id": "wiki_eq_348",
+      "wikiId": "348",
+      "name": "Quần Hải Tặc",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 100,
+      "bonuses": {
+        "tongLinh": 44,
+        "hp": 500
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 800,
+          "growth": 22,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 20,
+          "growth": 20,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/816dfba1-69bc-4ae1-9eca-16ebcac98590.28e4e.jpg",
+      "desc": "Thuẫn · Thái Sơ Lv.100",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 22,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "521",
+        "name": "Hổ Sĩ Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "421",
+        "name": "Nguyệt Thuẫn"
+      },
+      "sell": 200
+    },
+    {
+      "id": "wiki_eq_341",
+      "wikiId": "341",
+      "name": "Quần Hải Tặc",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 80,
+      "bonuses": {
+        "tongLinh": 33,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 590,
+          "growth": 18,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/a52970be-19c7-4e9a-8f8e-e9d26c519edc.c8e04.jpg",
+      "desc": "Thuẫn · Thượng Cổ Lv.80",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 18,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "176",
+        "name": "Lang Tà Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "377",
+        "name": "Chúc Âm Bảo Hộ"
+      },
+      "sell": 160
+    },
+    {
+      "id": "wiki_eq_320",
+      "wikiId": "320",
+      "name": "Quần Hải Tặc",
+      "slot": "shield",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 20,
+      "bonuses": {
+        "tongLinh": 11,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 190,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/e9597a6f-22a8-4c6e-b659-736f44addc15.56429.jpg",
+      "desc": "Thuẫn · Thần Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "159",
+        "name": "Lân Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "171",
+        "name": "Bắc Đẩu Thuẫn"
+      },
+      "sell": 20
+    },
+    {
+      "id": "wiki_eq_327",
+      "wikiId": "327",
+      "name": "Quần Hải Tặc",
+      "slot": "shield",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 40,
+      "bonuses": {
+        "tongLinh": 16,
+        "hp": 150
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 280,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 6,
+          "growth": 6,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/1675fbdb-d8c1-41eb-8e47-48782d8b6f66.82ebe.jpg",
+      "desc": "Thuẫn · Sử Thi Lv.40",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "167",
+        "name": "Chùy Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "176",
+        "name": "Lang Tà Thuẫn"
+      },
+      "sell": 40
+    },
+    {
+      "id": "wiki_eq_165",
+      "wikiId": "165",
+      "name": "Quy Thuẫn",
+      "slot": "shield",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 28,
+      "bonuses": {
+        "tongLinh": 12,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 210,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/fae45bc3-e14a-432c-bed1-c65fec19586f.e69db.jpg",
+      "desc": "Thuẫn · Thần Lv.28",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "159",
+        "name": "Lân Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "171",
+        "name": "Bắc Đẩu Thuẫn"
+      },
+      "sell": 10000
+    },
+    {
+      "id": "wiki_eq_170",
+      "wikiId": "170",
+      "name": "Quỷ Thuẫn",
+      "slot": "shield",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 45,
+      "bonuses": {
+        "tongLinh": 16,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 280,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/c9b69b8d-bf82-4c77-9d48-fb1781af7698.ea175.jpg",
+      "desc": "Thuẫn · Sử Thi Lv.45",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "167",
+        "name": "Chùy Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "176",
+        "name": "Lang Tà Thuẫn"
+      },
+      "sell": 15000
+    },
+    {
+      "id": "wiki_eq_162",
+      "wikiId": "162",
+      "name": "Thánh Thuẫn",
+      "slot": "shield",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 60,
+      "bonuses": {
+        "tongLinh": 17,
+        "hp": 200
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 310,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 8,
+          "growth": 8,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/3e8b87f1-f976-41b5-b4c4-23aa25d8ebb4.388ba.jpg",
+      "desc": "Thuẫn · Chiến Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "155",
+        "name": "Bạch Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "167",
+        "name": "Chùy Thuẫn"
+      },
+      "sell": 40
+    },
+    {
+      "id": "wiki_eq_1123",
+      "wikiId": "1123",
+      "name": "Thao Thiết Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Thao Thiết",
+      "levelReq": 330,
+      "bonuses": {
+        "tongLinh": 2750,
+        "hp": 80000
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 49500,
+          "growth": 416,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 3200,
+          "growth": 625,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/aa95149d-6a50-4248-9c68-ec641d5a8d9a.ca0a1.png",
+      "desc": "Thuẫn · Thao Thiết Lv.330",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 416,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "1032",
+        "name": "Liệt Địa Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "1211",
+        "name": "Cùng Kỳ Băng Sơn Thuẫn"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_160",
+      "wikiId": "160",
+      "name": "Thích Thuẫn",
+      "slot": "shield",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 14,
+      "bonuses": {
+        "tongLinh": 7,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 127,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/6b7d666a-a96a-4613-b3e1-a6e28e414602.924f3.jpg",
+      "desc": "Thuẫn · Chiến Lv.14",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "155",
+        "name": "Bạch Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "167",
+        "name": "Chùy Thuẫn"
+      },
+      "sell": 7000
+    },
+    {
+      "id": "wiki_eq_178",
+      "wikiId": "178",
+      "name": "Thiên Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 95,
+      "bonuses": {
+        "tongLinh": 38,
+        "hp": 250
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 675,
+          "growth": 18,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 10,
+          "growth": 10,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/666f7737-4393-4f1b-b33d-e1b1b02d9bae.7a9d9.jpg",
+      "desc": "Thuẫn · Thượng Cổ Lv.95",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 18,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "176",
+        "name": "Lang Tà Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "377",
+        "name": "Chúc Âm Bảo Hộ"
+      },
+      "sell": 70
+    },
+    {
+      "id": "wiki_eq_158",
+      "wikiId": "158",
+      "name": "Thiết Thuẫn",
+      "slot": "shield",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 10,
+      "bonuses": {
+        "tongLinh": 4,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 79,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/1733213d-9ed8-415c-90e8-dfe1a3737b36.3e531.jpg",
+      "desc": "Thuẫn · Chiến Lv.10",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "155",
+        "name": "Bạch Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "167",
+        "name": "Chùy Thuẫn"
+      },
+      "sell": 5000
+    },
+    {
+      "id": "wiki_eq_173",
+      "wikiId": "173",
+      "name": "Thí Thuẫn",
+      "slot": "shield",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 60,
+      "bonuses": {
+        "tongLinh": 26,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 460,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/2e47e9ad-a2f4-4aec-8932-454e44e3f4ee.bfa1c.jpg",
+      "desc": "Thuẫn · Sử Thi Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "167",
+        "name": "Chùy Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "176",
+        "name": "Lang Tà Thuẫn"
+      },
+      "sell": 20000
+    },
+    {
+      "id": "wiki_eq_169",
+      "wikiId": "169",
+      "name": "Thú Xỉ Thuẫn",
+      "slot": "shield",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 40,
+      "bonuses": {
+        "tongLinh": 12,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 220,
+          "growth": 14,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/30708230-2867-4a1e-bdd0-9edd77503eb5.1e67a.jpg",
+      "desc": "Thuẫn · Sử Thi Lv.40",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 14,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "167",
+        "name": "Chùy Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "176",
+        "name": "Lang Tà Thuẫn"
+      },
+      "sell": 14000
+    },
+    {
+      "id": "wiki_eq_174",
+      "wikiId": "174",
+      "name": "Tinh Thuẫn",
+      "slot": "shield",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 60,
+      "bonuses": {
+        "tongLinh": 19,
+        "hp": 125
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 340,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 5,
+          "growth": 5,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/07f15920-45b7-4bb7-adac-5dfe97750470.14efe.jpg",
+      "desc": "Thuẫn · Truyền thuyết Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "171",
+        "name": "Bắc Đẩu Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "521",
+        "name": "Hổ Sĩ Thuẫn"
+      },
+      "sell": 25000
+    },
+    {
+      "id": "wiki_eq_300",
+      "wikiId": "300",
+      "name": "Tử Hiên Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 90,
+      "bonuses": {
+        "tongLinh": 44,
+        "hp": 500
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 790,
+          "growth": 22,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 20,
+          "growth": 20,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/c3e4a371-7292-4734-ba1c-1f573fa22053.79637.jpg",
+      "desc": "Thuẫn · Thái Sơ Lv.90",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 22,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "521",
+        "name": "Hổ Sĩ Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "421",
+        "name": "Nguyệt Thuẫn"
+      },
+      "sell": 200
+    },
+    {
+      "id": "wiki_eq_376",
+      "wikiId": "376",
+      "name": "Ứng Long Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 100,
+      "bonuses": {
+        "tongLinh": 53,
+        "hp": 400
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 950,
+          "growth": 18,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 16,
+          "growth": 16,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/1e60486e-7b45-454e-802b-5985881500a8.f1936.jpg",
+      "desc": "Thuẫn · Thượng Cổ Lv.100",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 18,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "176",
+        "name": "Lang Tà Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "377",
+        "name": "Chúc Âm Bảo Hộ"
+      },
+      "sell": 120
+    },
+    {
+      "id": "wiki_eq_153",
+      "wikiId": "153",
+      "name": "Văn Thuẫn",
+      "slot": "shield",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 12,
+      "bonuses": {
+        "tongLinh": 3,
+        "hp": 100
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 52,
+          "growth": 10,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 4,
+          "growth": 4,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/16341753-6ea7-48ac-a7f7-b9a29167d9d5.37c5a.jpg",
+      "desc": "Thuẫn · Thường Lv.12",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 10,
+        "coef": 5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "159",
+        "name": "Lân Thuẫn"
+      },
+      "sell": 2280
+    },
+    {
+      "id": "wiki_eq_799",
+      "wikiId": "799",
+      "name": "Viêm Đế Thuẫn",
+      "slot": "shield",
+      "rarity": "red",
+      "qualityWiki": "Viêm Đế",
+      "levelReq": 270,
+      "bonuses": {
+        "tongLinh": 1722,
+        "hp": 50000
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 31000,
+          "growth": 278,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 2000,
+          "growth": 390,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/e1996899-a1e0-4592-8269-8f8496e0a43b.6214e.png",
+      "desc": "Thuẫn · Viêm Đế Lv.270",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 278,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "720",
+        "name": "Nữ Oa Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "866",
+        "name": "Hình Thiên Thuẫn"
+      },
+      "sell": 38000
+    },
+    {
+      "id": "wiki_eq_175",
+      "wikiId": "175",
+      "name": "Vương Thuẫn",
+      "slot": "shield",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 70,
+      "bonuses": {
+        "tongLinh": 24,
+        "hp": 175
+      },
+      "statsWiki": [
+        {
+          "label": "Mưu Phòng",
+          "base": 430,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Lính",
+          "base": 7,
+          "growth": 7,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/cdc52f30-de02-4c71-b1c9-6f012952b916.ee1d8.jpg",
+      "desc": "Thuẫn · Truyền thuyết Lv.70",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "171",
+        "name": "Bắc Đẩu Thuẫn"
+      },
+      "upgradeTo": {
+        "id": "521",
+        "name": "Hổ Sĩ Thuẫn"
+      },
+      "sell": 26000
+    },
+    {
+      "id": "wiki_eq_548",
+      "wikiId": "548",
+      "name": "Âm Dương Phù",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Bàn Cổ",
+      "levelReq": 170,
+      "bonuses": {
+        "hp": 150000
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 6000,
+          "growth": 350,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/f7d74b5e-7dc4-4d83-9c99-c9bbafc694e6.a4025.jpg",
+      "desc": "Bảo Vật · Bàn Cổ Lv.170",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 350,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "451",
+        "name": "Diệt Thế Khí"
+      },
+      "upgradeTo": {
+        "id": "571",
+        "name": "Hỗn Độn-Phạm Âm Chung"
+      },
+      "sell": 10000
+    },
+    {
+      "id": "wiki_eq_189",
+      "wikiId": "189",
+      "name": "Bác Sơn Lư",
+      "slot": "troop",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 16,
+      "bonuses": {
+        "hp": 2750
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 110,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/074c393e-9a1e-4f30-a407-3bc880454c40.fdaa0.jpg",
+      "desc": "Bảo Vật · Chiến Lv.16",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "179",
+        "name": "Hương Nang"
+      },
+      "upgradeTo": {
+        "id": "195",
+        "name": "Long Hồ"
+      },
+      "sell": 10000
+    },
+    {
+      "id": "wiki_eq_519",
+      "wikiId": "519",
+      "name": "Bàn Long Ấn",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 1,
+      "bonuses": {
+        "hp": 8000
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 320,
+          "growth": 25,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/e597e1d5-6e61-4055-9d6f-84de1d4ffff1.3fcdd.jpg",
+      "desc": "Bảo Vật · Thượng Cổ Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 25,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "202",
+        "name": "Cửu Tích"
+      },
+      "upgradeTo": {
+        "id": "379",
+        "name": "Chúc Âm Ngọc"
+      },
+      "sell": 50
+    },
+    {
+      "id": "wiki_eq_205",
+      "wikiId": "205",
+      "name": "Bát Quái Kính",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 72,
+      "bonuses": {
+        "hp": 9250
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 370,
+          "growth": 25,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/6d434245-9b35-4ae2-a7c6-02abd5e92417.9b598.jpg",
+      "desc": "Bảo Vật · Thượng Cổ Lv.72",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 25,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "202",
+        "name": "Cửu Tích"
+      },
+      "upgradeTo": {
+        "id": "379",
+        "name": "Chúc Âm Ngọc"
+      },
+      "sell": 116
+    },
+    {
+      "id": "wiki_eq_200",
+      "wikiId": "200",
+      "name": "Binh Phù",
+      "slot": "troop",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 55,
+      "bonuses": {
+        "hp": 6100
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 244,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/05c11b89-d159-4f84-8839-4ead720b88b1.2fa14.jpg",
+      "desc": "Bảo Vật · Sử Thi Lv.55",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "195",
+        "name": "Long Hồ"
+      },
+      "upgradeTo": {
+        "id": "202",
+        "name": "Cửu Tích"
+      },
+      "sell": 33000
+    },
+    {
+      "id": "wiki_eq_379",
+      "wikiId": "379",
+      "name": "Chúc Âm Ngọc",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 120,
+      "bonuses": {
+        "hp": 37500
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 1500,
+          "growth": 38,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/53e52f47-0abc-48d1-9ca5-4965c4fa5be3.153be.jpg",
+      "desc": "Bảo Vật · Thái Sơ Lv.120",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 38,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "519",
+        "name": "Bàn Long Ấn"
+      },
+      "upgradeTo": {
+        "id": "422",
+        "name": "Thần Đỉnh"
+      },
+      "sell": 500
+    },
+    {
+      "id": "wiki_eq_1215",
+      "wikiId": "1215",
+      "name": "Cùng Kỳ Thôn Thiên Ấn",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Cùng Kỳ",
+      "levelReq": 350,
+      "bonuses": {
+        "hp": 1457500
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 58300,
+          "growth": 2579,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/56cba629-66ef-4bc9-8422-e96d155663fb.459cf.png",
+      "desc": "Bảo Vật · Cùng Kỳ Lv.350",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 2579,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "1127",
+        "name": "Thao Thiết Ấn"
+      },
+      "upgradeTo": null,
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_202",
+      "wikiId": "202",
+      "name": "Cửu Tích",
+      "slot": "troop",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 55,
+      "bonuses": {
+        "hp": 5750
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 230,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/c1e9794f-a959-443e-8888-a0a2a31d09d2.5e835.jpg",
+      "desc": "Bảo Vật · Truyền thuyết Lv.55",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "200",
+        "name": "Binh Phù"
+      },
+      "upgradeTo": {
+        "id": "519",
+        "name": "Bàn Long Ấn"
+      },
+      "sell": 38000
+    },
+    {
+      "id": "wiki_eq_201",
+      "wikiId": "201",
+      "name": "Dạ Minh Châu",
+      "slot": "troop",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 60,
+      "bonuses": {
+        "hp": 7000
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 280,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/8c435868-7405-45f4-8ce1-13ee0ae65f8a.01ff7.jpg",
+      "desc": "Bảo Vật · Sử Thi Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "195",
+        "name": "Long Hồ"
+      },
+      "upgradeTo": {
+        "id": "202",
+        "name": "Cửu Tích"
+      },
+      "sell": 36000
+    },
+    {
+      "id": "wiki_eq_451",
+      "wikiId": "451",
+      "name": "Diệt Thế Khí",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Ám Kim",
+      "levelReq": 150,
+      "bonuses": {
+        "hp": 125000
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 5000,
+          "growth": 200,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/9f4bf0d1-e2ed-4388-8cf8-5d3013a70cfd.11a32.jpg",
+      "desc": "Bảo Vật · Ám Kim Lv.150",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 200,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "422",
+        "name": "Thần Đỉnh"
+      },
+      "upgradeTo": {
+        "id": "548",
+        "name": "Âm Dương Phù"
+      },
+      "sell": 4000
+    },
+    {
+      "id": "wiki_eq_182",
+      "wikiId": "182",
+      "name": "Đồng Tước",
+      "slot": "troop",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 36,
+      "bonuses": {
+        "hp": 1050
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 42,
+          "growth": 8,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/3eb44773-7ec7-4428-8c9b-094592207bc5.4c974.jpg",
+      "desc": "Bảo Vật · Thường Lv.36",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 8,
+        "coef": 5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "189",
+        "name": "Bác Sơn Lư"
+      },
+      "sell": 4800
+    },
+    {
+      "id": "wiki_eq_190",
+      "wikiId": "190",
+      "name": "Đồ Tất Đỉnh",
+      "slot": "troop",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 60,
+      "bonuses": {
+        "hp": 5200
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 208,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/de8902b5-dfba-486b-9575-65fc08084b39.fa7fa.jpg",
+      "desc": "Bảo Vật · Chiến Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "179",
+        "name": "Hương Nang"
+      },
+      "upgradeTo": {
+        "id": "195",
+        "name": "Long Hồ"
+      },
+      "sell": 56
+    },
+    {
+      "id": "wiki_eq_599",
+      "wikiId": "599",
+      "name": "Hiên Viên Phù",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Hiên Viên",
+      "levelReq": 210,
+      "bonuses": {
+        "hp": 390000
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 15600,
+          "growth": 715,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/0d90d894-58ed-4c28-96d5-50c8f8927247.80a42.jpg",
+      "desc": "Bảo Vật · Hiên Viên Lv.210",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 715,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "571",
+        "name": "Hỗn Độn-Phạm Âm Chung"
+      },
+      "upgradeTo": {
+        "id": "660",
+        "name": "Phục Hi Ấn"
+      },
+      "sell": 20000
+    },
+    {
+      "id": "wiki_eq_870",
+      "wikiId": "870",
+      "name": "Hình Thiên Ấn",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Hình Thiên",
+      "levelReq": 290,
+      "bonuses": {
+        "hp": 960000
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 38400,
+          "growth": 1680,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/1b823e73-23c6-4eb0-a33e-4cf4b0cb20f4.8e9bd.png",
+      "desc": "Bảo Vật · Hình Thiên Lv.290",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 1680,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "803",
+        "name": "Viêm Đế Ấn"
+      },
+      "upgradeTo": {
+        "id": "1036",
+        "name": "Phần Thiên Ấn"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_571",
+      "wikiId": "571",
+      "name": "Hỗn Độn-Phạm Âm Chung",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Hỗn Độn",
+      "levelReq": 190,
+      "bonuses": {
+        "hp": 300000
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 12000,
+          "growth": 550,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/e81e77ea-9918-4346-8c4a-5acbd807906d.2ec1b.jpg",
+      "desc": "Bảo Vật · Hỗn Độn Lv.190",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 550,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "548",
+        "name": "Âm Dương Phù"
+      },
+      "upgradeTo": {
+        "id": "599",
+        "name": "Hiên Viên Phù"
+      },
+      "sell": 16000
+    },
+    {
+      "id": "wiki_eq_187",
+      "wikiId": "187",
+      "name": "Hổ Phách Hoàn",
+      "slot": "troop",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 12,
+      "bonuses": {
+        "hp": 1950
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 78,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/8467bd3b-3afb-4205-937c-4893d88c7dd7.efe52.jpg",
+      "desc": "Bảo Vật · Chiến Lv.12",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "179",
+        "name": "Hương Nang"
+      },
+      "upgradeTo": {
+        "id": "195",
+        "name": "Long Hồ"
+      },
+      "sell": 7400
+    },
+    {
+      "id": "wiki_eq_391",
+      "wikiId": "391",
+      "name": "Hổ Phách Liên",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 1,
+      "bonuses": {
+        "hp": 10500,
+        "speed": 3
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 420,
+          "growth": 25,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Bạo Kích",
+          "base": 8,
+          "growth": 0,
+          "primary": false,
+          "pct": false
+        },
+        {
+          "label": "Phản Kích",
+          "base": 8,
+          "growth": 0,
+          "primary": false,
+          "pct": false
+        },
+        {
+          "label": "Né Tránh",
+          "base": 8,
+          "growth": 0,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/61c69fd9-d94b-4542-933f-82b7adfd98e7.f036f.jpg",
+      "desc": "Bảo Vật · Thượng Cổ Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 25,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "202",
+        "name": "Cửu Tích"
+      },
+      "upgradeTo": {
+        "id": "379",
+        "name": "Chúc Âm Ngọc"
+      },
+      "sell": 65000
+    },
+    {
+      "id": "wiki_eq_390",
+      "wikiId": "390",
+      "name": "Hổ Phách Trụy",
+      "slot": "troop",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 1,
+      "bonuses": {
+        "hp": 7500,
+        "speed": 3
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 300,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Bạo Kích",
+          "base": 8,
+          "growth": 0,
+          "primary": false,
+          "pct": false
+        },
+        {
+          "label": "Phản Kích",
+          "base": 8,
+          "growth": 0,
+          "primary": false,
+          "pct": false
+        },
+        {
+          "label": "Né Tránh",
+          "base": 8,
+          "growth": 0,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/7472357f-71fa-4bb6-85ac-756f6400218b.9ffae.jpg",
+      "desc": "Bảo Vật · Truyền thuyết Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "200",
+        "name": "Binh Phù"
+      },
+      "upgradeTo": {
+        "id": "519",
+        "name": "Bàn Long Ấn"
+      },
+      "sell": 45000
+    },
+    {
+      "id": "wiki_eq_393",
+      "wikiId": "393",
+      "name": "HuânChương Lv1",
+      "slot": "troop",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 1,
+      "bonuses": {
+        "hp": 7500,
+        "speed": 3
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 300,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Bạo Kích",
+          "base": 8,
+          "growth": 0,
+          "primary": false,
+          "pct": false
+        },
+        {
+          "label": "Phản Kích",
+          "base": 8,
+          "growth": 0,
+          "primary": false,
+          "pct": false
+        },
+        {
+          "label": "Né Tránh",
+          "base": 8,
+          "growth": 0,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/80f8911e-0b3d-4a85-afe8-715885ff9151.9c5aa.jpg",
+      "desc": "Bảo Vật · Truyền thuyết Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "200",
+        "name": "Binh Phù"
+      },
+      "upgradeTo": {
+        "id": "519",
+        "name": "Bàn Long Ấn"
+      },
+      "sell": 45000
+    },
+    {
+      "id": "wiki_eq_394",
+      "wikiId": "394",
+      "name": "HuânChương Lv2",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 1,
+      "bonuses": {
+        "hp": 10500,
+        "speed": 6
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 420,
+          "growth": 25,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Bạo Kích",
+          "base": 12,
+          "growth": 0,
+          "primary": false,
+          "pct": false
+        },
+        {
+          "label": "Phản Kích",
+          "base": 12,
+          "growth": 0,
+          "primary": false,
+          "pct": false
+        },
+        {
+          "label": "Né Tránh",
+          "base": 12,
+          "growth": 0,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/1c3ca8e3-00c9-4bd3-a897-a0178acd635c.496b4.jpg",
+      "desc": "Bảo Vật · Thượng Cổ Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 25,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "202",
+        "name": "Cửu Tích"
+      },
+      "upgradeTo": {
+        "id": "379",
+        "name": "Chúc Âm Ngọc"
+      },
+      "sell": 65000
+    },
+    {
+      "id": "wiki_eq_395",
+      "wikiId": "395",
+      "name": "HuânChương Lv3",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 1,
+      "bonuses": {
+        "hp": 15000,
+        "speed": 6
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 600,
+          "growth": 38,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Bạo Kích",
+          "base": 16,
+          "growth": 0,
+          "primary": false,
+          "pct": false
+        },
+        {
+          "label": "Phản Kích",
+          "base": 16,
+          "growth": 0,
+          "primary": false,
+          "pct": false
+        },
+        {
+          "label": "Né Tránh",
+          "base": 16,
+          "growth": 0,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/38d26daf-c4ab-4d1d-a3c9-a004f1886e20.818a0.jpg",
+      "desc": "Bảo Vật · Thái Sơ Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 38,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "519",
+        "name": "Bàn Long Ấn"
+      },
+      "upgradeTo": {
+        "id": "422",
+        "name": "Thần Đỉnh"
+      },
+      "sell": 110000
+    },
+    {
+      "id": "wiki_eq_179",
+      "wikiId": "179",
+      "name": "Hương Nang",
+      "slot": "troop",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 1,
+      "bonuses": {
+        "hp": 450
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 18,
+          "growth": 8,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/5d29755b-2277-453c-a9e7-9ac83e077abe.e5a96.jpg",
+      "desc": "Bảo Vật · Thường Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 8,
+        "coef": 5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "189",
+        "name": "Bác Sơn Lư"
+      },
+      "sell": 10
+    },
+    {
+      "id": "wiki_eq_392",
+      "wikiId": "392",
+      "name": "Kim Phách Trụy",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 1,
+      "bonuses": {
+        "hp": 15000,
+        "speed": 3
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 600,
+          "growth": 38,
+          "primary": true,
+          "pct": false
+        },
+        {
+          "label": "Bạo Kích",
+          "base": 8,
+          "growth": 0,
+          "primary": false,
+          "pct": false
+        },
+        {
+          "label": "Phản Kích",
+          "base": 8,
+          "growth": 0,
+          "primary": false,
+          "pct": false
+        },
+        {
+          "label": "Né Tránh",
+          "base": 8,
+          "growth": 0,
+          "primary": false,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/e188a267-2312-4c69-b03b-2da9da96ea8f.46525.jpg",
+      "desc": "Bảo Vật · Thái Sơ Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 38,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "519",
+        "name": "Bàn Long Ấn"
+      },
+      "upgradeTo": {
+        "id": "422",
+        "name": "Thần Đỉnh"
+      },
+      "sell": 110000
+    },
+    {
+      "id": "wiki_eq_198",
+      "wikiId": "198",
+      "name": "Kim Tượng Hồ",
+      "slot": "troop",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 45,
+      "bonuses": {
+        "hp": 4300
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 172,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/b8e283e4-ad3a-4ac1-8235-a11abcc615ae.a1c36.jpg",
+      "desc": "Bảo Vật · Sử Thi Lv.45",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "195",
+        "name": "Long Hồ"
+      },
+      "upgradeTo": {
+        "id": "202",
+        "name": "Cửu Tích"
+      },
+      "sell": 27000
+    },
+    {
+      "id": "wiki_eq_195",
+      "wikiId": "195",
+      "name": "Long Hồ",
+      "slot": "troop",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 36,
+      "bonuses": {
+        "hp": 3750
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 150,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/41c593dd-7000-4246-827a-3eae2eb947e1.8aa3e.jpg",
+      "desc": "Bảo Vật · Thần Lv.36",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "189",
+        "name": "Bác Sơn Lư"
+      },
+      "upgradeTo": {
+        "id": "200",
+        "name": "Binh Phù"
+      },
+      "sell": 18000
+    },
+    {
+      "id": "wiki_eq_305",
+      "wikiId": "305",
+      "name": "Long Lệnh",
+      "slot": "troop",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 1,
+      "bonuses": {
+        "hp": 5000
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 200,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/0af5ebb4-fccc-42ab-b471-ce57cbba6655.61fa5.jpg",
+      "desc": "Bảo Vật · Truyền thuyết Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "200",
+        "name": "Binh Phù"
+      },
+      "upgradeTo": {
+        "id": "519",
+        "name": "Bàn Long Ấn"
+      },
+      "sell": 20
+    },
+    {
+      "id": "wiki_eq_194",
+      "wikiId": "194",
+      "name": "Lữ Thị Bích",
+      "slot": "troop",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 32,
+      "bonuses": {
+        "hp": 3250
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 130,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/c6bc8591-823f-4534-b5fe-8673e2fab819.ca5af.jpg",
+      "desc": "Bảo Vật · Thần Lv.32",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "189",
+        "name": "Bác Sơn Lư"
+      },
+      "upgradeTo": {
+        "id": "200",
+        "name": "Binh Phù"
+      },
+      "sell": 16000
+    },
+    {
+      "id": "wiki_eq_197",
+      "wikiId": "197",
+      "name": "Ngọc Bích",
+      "slot": "troop",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 40,
+      "bonuses": {
+        "hp": 3400
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 136,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/6fbbdea2-65ec-4988-bdaa-6894a728ac63.88dbb.jpg",
+      "desc": "Bảo Vật · Sử Thi Lv.40",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "195",
+        "name": "Long Hồ"
+      },
+      "upgradeTo": {
+        "id": "202",
+        "name": "Cửu Tích"
+      },
+      "sell": 24000
+    },
+    {
+      "id": "wiki_eq_180",
+      "wikiId": "180",
+      "name": "Ngọc Cầm",
+      "slot": "troop",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 20,
+      "bonuses": {
+        "hp": 650
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 26,
+          "growth": 8,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/410298be-08ba-4866-b533-702c3ba9e4e0.3aa89.jpg",
+      "desc": "Bảo Vật · Thường Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 8,
+        "coef": 5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "189",
+        "name": "Bác Sơn Lư"
+      },
+      "sell": 3600
+    },
+    {
+      "id": "wiki_eq_204",
+      "wikiId": "204",
+      "name": "Ngọc Tỉ",
+      "slot": "troop",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 85,
+      "bonuses": {
+        "hp": 8750
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 350,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": null,
+      "desc": "Bảo Vật · Truyền thuyết Lv.85",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "200",
+        "name": "Binh Phù"
+      },
+      "upgradeTo": {
+        "id": "519",
+        "name": "Bàn Long Ấn"
+      },
+      "sell": 48000
+    },
+    {
+      "id": "wiki_eq_185",
+      "wikiId": "185",
+      "name": "Ngọc Trạc",
+      "slot": "troop",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 8,
+      "bonuses": {
+        "hp": 1150
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 46,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/a82a8b4f-06f7-4436-a1de-50dbaba14366.9b44b.jpg",
+      "desc": "Bảo Vật · Chiến Lv.8",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "179",
+        "name": "Hương Nang"
+      },
+      "upgradeTo": {
+        "id": "195",
+        "name": "Long Hồ"
+      },
+      "sell": 5400
+    },
+    {
+      "id": "wiki_eq_183",
+      "wikiId": "183",
+      "name": "Ngưu Đăng",
+      "slot": "troop",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 44,
+      "bonuses": {
+        "hp": 1250
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 50,
+          "growth": 8,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/82bcd6a8-29f8-4260-b196-7144b909c012.b18d1.jpg",
+      "desc": "Bảo Vật · Thường Lv.44",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 8,
+        "coef": 5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "189",
+        "name": "Bác Sơn Lư"
+      },
+      "sell": 5400
+    },
+    {
+      "id": "wiki_eq_181",
+      "wikiId": "181",
+      "name": "Nhĩ Hoàn",
+      "slot": "troop",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 28,
+      "bonuses": {
+        "hp": 850
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 34,
+          "growth": 8,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/0b468d02-23a3-4b8f-ac6d-5e386954ebe9.58370.jpg",
+      "desc": "Bảo Vật · Thường Lv.28",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 8,
+        "coef": 5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "189",
+        "name": "Bác Sơn Lư"
+      },
+      "sell": 4200
+    },
+    {
+      "id": "wiki_eq_724",
+      "wikiId": "724",
+      "name": "Nữ Oa Ấn",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Nữ Oa",
+      "levelReq": 250,
+      "bonuses": {
+        "hp": 676875
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 27075,
+          "growth": 1083,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/bf9f9691-ac19-48a4-b2fe-7363347f33ba.eaa65.png",
+      "desc": "Bảo Vật · Nữ Oa Lv.250",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 1083,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "660",
+        "name": "Phục Hi Ấn"
+      },
+      "upgradeTo": {
+        "id": "803",
+        "name": "Viêm Đế Ấn"
+      },
+      "sell": 32000
+    },
+    {
+      "id": "wiki_eq_1036",
+      "wikiId": "1036",
+      "name": "Phần Thiên Ấn",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Xi Vưu",
+      "levelReq": 310,
+      "bonuses": {
+        "hp": 1110000
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 44400,
+          "growth": 1951,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/8e5b4335-1dfc-43c9-aa89-1351d52abedb.6067f.png",
+      "desc": "Bảo Vật · Xi Vưu Lv.310",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 1951,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "870",
+        "name": "Hình Thiên Ấn"
+      },
+      "upgradeTo": {
+        "id": "1127",
+        "name": "Thao Thiết Ấn"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_184",
+      "wikiId": "184",
+      "name": "Phỉ Thúy",
+      "slot": "troop",
+      "rarity": "white",
+      "qualityWiki": "Thường",
+      "levelReq": 52,
+      "bonuses": {
+        "hp": 1450
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 58,
+          "growth": 8,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": null,
+      "desc": "Bảo Vật · Thường Lv.52",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 8,
+        "coef": 5
+      },
+      "upgradeFrom": null,
+      "upgradeTo": {
+        "id": "189",
+        "name": "Bác Sơn Lư"
+      },
+      "sell": 6000
+    },
+    {
+      "id": "wiki_eq_660",
+      "wikiId": "660",
+      "name": "Phục Hi Ấn",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Phục Hi",
+      "levelReq": 230,
+      "bonuses": {
+        "hp": 550000
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 22000,
+          "growth": 880,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/694161b3-ba4e-439e-8a90-6d438fe88afb.93482.png",
+      "desc": "Bảo Vật · Phục Hi Lv.230",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 880,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "599",
+        "name": "Hiên Viên Phù"
+      },
+      "upgradeTo": {
+        "id": "724",
+        "name": "Nữ Oa Ấn"
+      },
+      "sell": 30000
+    },
+    {
+      "id": "wiki_eq_304",
+      "wikiId": "304",
+      "name": "Tài Quyết Ấn",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 95,
+      "bonuses": {
+        "hp": 24625
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 985,
+          "growth": 38,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/b36eb2fb-96c9-483b-9233-3cf13402eafe.8ba80.jpg",
+      "desc": "Bảo Vật · Thái Sơ Lv.95",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 38,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "519",
+        "name": "Bàn Long Ấn"
+      },
+      "upgradeTo": {
+        "id": "422",
+        "name": "Thần Đỉnh"
+      },
+      "sell": 240
+    },
+    {
+      "id": "wiki_eq_422",
+      "wikiId": "422",
+      "name": "Thần Đỉnh",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Thần Hoàng",
+      "levelReq": 130,
+      "bonuses": {
+        "hp": 50000
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 2000,
+          "growth": 70,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/18aa7617-508b-45cc-8631-4967d041d9db.af12e.jpg",
+      "desc": "Bảo Vật · Thần Hoàng Lv.130",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 70,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "379",
+        "name": "Chúc Âm Ngọc"
+      },
+      "upgradeTo": {
+        "id": "451",
+        "name": "Diệt Thế Khí"
+      },
+      "sell": 1000
+    },
+    {
+      "id": "wiki_eq_1127",
+      "wikiId": "1127",
+      "name": "Thao Thiết Ấn",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Thao Thiết",
+      "levelReq": 330,
+      "bonuses": {
+        "hp": 1283750
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 51350,
+          "growth": 2265,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/2eced62d-fa00-4480-aa3c-520a18226be4.71772.png",
+      "desc": "Bảo Vật · Thao Thiết Lv.330",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 2265,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "1036",
+        "name": "Phần Thiên Ấn"
+      },
+      "upgradeTo": {
+        "id": "1215",
+        "name": "Cùng Kỳ Thôn Thiên Ấn"
+      },
+      "sell": 60000
+    },
+    {
+      "id": "wiki_eq_199",
+      "wikiId": "199",
+      "name": "Thú Nghiên",
+      "slot": "troop",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 50,
+      "bonuses": {
+        "hp": 5200
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 208,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/ffb8b101-5a05-44fb-8e54-1f600be4db8d.a3a0c.jpg",
+      "desc": "Bảo Vật · Sử Thi Lv.50",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "195",
+        "name": "Long Hồ"
+      },
+      "upgradeTo": {
+        "id": "202",
+        "name": "Cửu Tích"
+      },
+      "sell": 30000
+    },
+    {
+      "id": "wiki_eq_191",
+      "wikiId": "191",
+      "name": "Thương Từ Bôi",
+      "slot": "troop",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 20,
+      "bonuses": {
+        "hp": 1750
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 70,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/01fa7cda-0f2b-4a96-b96d-28e7f666fc3d.6e113.jpg",
+      "desc": "Bảo Vật · Thần Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "189",
+        "name": "Bác Sơn Lư"
+      },
+      "upgradeTo": {
+        "id": "200",
+        "name": "Binh Phù"
+      },
+      "sell": 12000
+    },
+    {
+      "id": "wiki_eq_192",
+      "wikiId": "192",
+      "name": "Tiêu Vĩ Cầm",
+      "slot": "troop",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 24,
+      "bonuses": {
+        "hp": 2250
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 90,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/8d5cd359-652f-42cf-b081-377a55bacb6c.ad1bd.jpg",
+      "desc": "Bảo Vật · Thần Lv.24",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "189",
+        "name": "Bác Sơn Lư"
+      },
+      "upgradeTo": {
+        "id": "200",
+        "name": "Binh Phù"
+      },
+      "sell": 14000
+    },
+    {
+      "id": "wiki_eq_196",
+      "wikiId": "196",
+      "name": "Tín Đăng",
+      "slot": "troop",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 40,
+      "bonuses": {
+        "hp": 4250
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 170,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/8ed8a76b-16ec-4a8f-accc-717361a55f3e.bf095.jpg",
+      "desc": "Bảo Vật · Thần Lv.40",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "189",
+        "name": "Bác Sơn Lư"
+      },
+      "upgradeTo": {
+        "id": "200",
+        "name": "Binh Phù"
+      },
+      "sell": 20000
+    },
+    {
+      "id": "wiki_eq_193",
+      "wikiId": "193",
+      "name": "Túi La Khởi",
+      "slot": "troop",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 28,
+      "bonuses": {
+        "hp": 2750
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 110,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/1d965f35-90ff-4bcb-99d0-29b3654901ef.fbd03.jpg",
+      "desc": "Bảo Vật · Thần Lv.28",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "189",
+        "name": "Bác Sơn Lư"
+      },
+      "upgradeTo": {
+        "id": "200",
+        "name": "Binh Phù"
+      },
+      "sell": 15000
+    },
+    {
+      "id": "wiki_eq_188",
+      "wikiId": "188",
+      "name": "Túi Phượng Tú",
+      "slot": "troop",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 14,
+      "bonuses": {
+        "hp": 2350
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 94,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/e53d4161-ff16-46d0-a3e3-01a085567444.66ace.jpg",
+      "desc": "Bảo Vật · Chiến Lv.14",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "179",
+        "name": "Hương Nang"
+      },
+      "upgradeTo": {
+        "id": "195",
+        "name": "Long Hồ"
+      },
+      "sell": 9000
+    },
+    {
+      "id": "wiki_eq_206",
+      "wikiId": "206",
+      "name": "Túy Thái Bình",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 95,
+      "bonuses": {
+        "hp": 12125
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 485,
+          "growth": 25,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/64a050fb-120a-496f-9f1b-5aa1b803e2ed.af4a5.jpg",
+      "desc": "Bảo Vật · Thượng Cổ Lv.95",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 25,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "202",
+        "name": "Cửu Tích"
+      },
+      "upgradeTo": {
+        "id": "379",
+        "name": "Chúc Âm Ngọc"
+      },
+      "sell": 140
+    },
+    {
+      "id": "wiki_eq_312",
+      "wikiId": "312",
+      "name": "U Hồn Lệnh",
+      "slot": "troop",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 1,
+      "bonuses": {
+        "hp": 10000
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 400,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/0af5ebb4-fccc-42ab-b471-ce57cbba6655.61fa5.jpg",
+      "desc": "Bảo Vật · Truyền thuyết Lv.1",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "200",
+        "name": "Binh Phù"
+      },
+      "upgradeTo": {
+        "id": "519",
+        "name": "Bàn Long Ấn"
+      },
+      "sell": 10000
+    },
+    {
+      "id": "wiki_eq_378",
+      "wikiId": "378",
+      "name": "Ứng Long Cốt Điêu",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 100,
+      "bonuses": {
+        "hp": 23750
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 950,
+          "growth": 25,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/93e616dd-8b2d-4ce1-8025-4cadb9aa1265.e1a27.jpg",
+      "desc": "Bảo Vật · Thượng Cổ Lv.100",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 25,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "202",
+        "name": "Cửu Tích"
+      },
+      "upgradeTo": {
+        "id": "379",
+        "name": "Chúc Âm Ngọc"
+      },
+      "sell": 240
+    },
+    {
+      "id": "wiki_eq_186",
+      "wikiId": "186",
+      "name": "Văn Kim Giới",
+      "slot": "troop",
+      "rarity": "green",
+      "qualityWiki": "Chiến",
+      "levelReq": 10,
+      "bonuses": {
+        "hp": 1550
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 62,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/a90c4271-248d-4ac8-ab59-b8a6941a61c2.35360.jpg",
+      "desc": "Bảo Vật · Chiến Lv.10",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "179",
+        "name": "Hương Nang"
+      },
+      "upgradeTo": {
+        "id": "195",
+        "name": "Long Hồ"
+      },
+      "sell": 6400
+    },
+    {
+      "id": "wiki_eq_803",
+      "wikiId": "803",
+      "name": "Viêm Đế Ấn",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Viêm Đế",
+      "levelReq": 270,
+      "bonuses": {
+        "hp": 810000
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 32400,
+          "growth": 1300,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/9ced938d-1782-404e-b686-1f3c4a0eaee8.4d3d1.png",
+      "desc": "Bảo Vật · Viêm Đế Lv.270",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 1300,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "724",
+        "name": "Nữ Oa Ấn"
+      },
+      "upgradeTo": {
+        "id": "870",
+        "name": "Hình Thiên Ấn"
+      },
+      "sell": 38000
+    },
+    {
+      "id": "wiki_eq_340",
+      "wikiId": "340",
+      "name": "Vớ Hải Tặc",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Thượng Cổ",
+      "levelReq": 80,
+      "bonuses": {
+        "hp": 10000
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 400,
+          "growth": 25,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/1c0df788-7028-4919-92d7-12e6d4de5065.7370a.jpg",
+      "desc": "Bảo Vật · Thượng Cổ Lv.80",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 25,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "202",
+        "name": "Cửu Tích"
+      },
+      "upgradeTo": {
+        "id": "379",
+        "name": "Chúc Âm Ngọc"
+      },
+      "sell": 160
+    },
+    {
+      "id": "wiki_eq_347",
+      "wikiId": "347",
+      "name": "Vớ Hải Tặc",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 100,
+      "bonuses": {
+        "hp": 10500
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 420,
+          "growth": 38,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/e24d34e9-a940-46f3-8135-f4bdfe1e1986.2b56e.jpg",
+      "desc": "Bảo Vật · Thái Sơ Lv.100",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 38,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "519",
+        "name": "Bàn Long Ấn"
+      },
+      "upgradeTo": {
+        "id": "422",
+        "name": "Thần Đỉnh"
+      },
+      "sell": 200
+    },
+    {
+      "id": "wiki_eq_319",
+      "wikiId": "319",
+      "name": "Vớ Hải Tặc",
+      "slot": "troop",
+      "rarity": "blue",
+      "qualityWiki": "Thần",
+      "levelReq": 20,
+      "bonuses": {
+        "hp": 3750
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 150,
+          "growth": 12,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/60fd4422-3a3e-4fc5-816f-7b30edf56442.f8bdb.jpg",
+      "desc": "Bảo Vật · Thần Lv.20",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 12,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "189",
+        "name": "Bác Sơn Lư"
+      },
+      "upgradeTo": {
+        "id": "200",
+        "name": "Binh Phù"
+      },
+      "sell": 20
+    },
+    {
+      "id": "wiki_eq_326",
+      "wikiId": "326",
+      "name": "Vớ Hải Tặc",
+      "slot": "troop",
+      "rarity": "purple",
+      "qualityWiki": "Sử Thi",
+      "levelReq": 40,
+      "bonuses": {
+        "hp": 6250
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 250,
+          "growth": 16,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/0d918b11-4b39-42f4-a946-3d571d560de0.357ad.jpg",
+      "desc": "Bảo Vật · Sử Thi Lv.40",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 16,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "195",
+        "name": "Long Hồ"
+      },
+      "upgradeTo": {
+        "id": "202",
+        "name": "Cửu Tích"
+      },
+      "sell": 40
+    },
+    {
+      "id": "wiki_eq_333",
+      "wikiId": "333",
+      "name": "Vớ Hải Tặc",
+      "slot": "troop",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 60,
+      "bonuses": {
+        "hp": 7500
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 300,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/4b45317c-b8dc-4090-8363-8378051415d9.6adaa.jpg",
+      "desc": "Bảo Vật · Truyền thuyết Lv.60",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "200",
+        "name": "Binh Phù"
+      },
+      "upgradeTo": {
+        "id": "519",
+        "name": "Bàn Long Ấn"
+      },
+      "sell": 80
+    },
+    {
+      "id": "wiki_eq_203",
+      "wikiId": "203",
+      "name": "Vũ Vương Đỉnh",
+      "slot": "troop",
+      "rarity": "orange",
+      "qualityWiki": "Truyền thuyết",
+      "levelReq": 70,
+      "bonuses": {
+        "hp": 7250
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 290,
+          "growth": 20,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/1caa56b7-5064-4c39-868e-3697b498d8a6.62399.jpg",
+      "desc": "Bảo Vật · Truyền thuyết Lv.70",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 20,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "200",
+        "name": "Binh Phù"
+      },
+      "upgradeTo": {
+        "id": "519",
+        "name": "Bàn Long Ấn"
+      },
+      "sell": 42000
+    },
+    {
+      "id": "wiki_eq_303",
+      "wikiId": "303",
+      "name": "Xích Nhãn",
+      "slot": "troop",
+      "rarity": "red",
+      "qualityWiki": "Thái Sơ",
+      "levelReq": 72,
+      "bonuses": {
+        "hp": 9250
+      },
+      "statsWiki": [
+        {
+          "label": "Lính",
+          "base": 370,
+          "growth": 38,
+          "primary": true,
+          "pct": false
+        }
+      ],
+      "icon": "assets/items/wiki/fa9528b3-5444-428b-b5d9-0a45963bc54e.d6f28.jpg",
+      "desc": "Bảo Vật · Thái Sơ Lv.72",
+      "source": "wiki-equip",
+      "cuongHoa": {
+        "inc": 38,
+        "coef": 5
+      },
+      "upgradeFrom": {
+        "id": "519",
+        "name": "Bàn Long Ấn"
+      },
+      "upgradeTo": {
+        "id": "422",
+        "name": "Thần Đỉnh"
+      },
+      "sell": 200
+    },
+    {
+      "id": "mat_ban_dao",
+      "name": "Bàn Đào",
+      "slot": "material",
+      "rarity": "orange",
+      "bonuses": {},
+      "desc": "Nguyên liệu giác ngộ võ tướng (wiki): Bàn Đào.",
+      "source": "wiki-awaken"
+    },
+    {
+      "id": "mat_banh_bao",
+      "name": "Bánh Bao",
+      "slot": "material",
+      "rarity": "white",
+      "bonuses": {},
+      "desc": "Nguyên liệu giác ngộ võ tướng (wiki): Bánh Bao.",
+      "source": "wiki-awaken"
+    },
+    {
+      "id": "mat_chu_qua",
+      "name": "Chu Quả",
+      "slot": "material",
+      "rarity": "red",
+      "bonuses": {},
+      "desc": "Nguyên liệu giác ngộ võ tướng (wiki): Chu Quả.",
+      "source": "wiki-awaken"
+    },
+    {
+      "id": "mat_ha_thu_o",
+      "name": "Hà Thủ Ô",
+      "slot": "material",
+      "rarity": "purple",
+      "bonuses": {},
+      "desc": "Nguyên liệu giác ngộ võ tướng (wiki): Hà Thủ Ô.",
+      "source": "wiki-awaken"
+    },
+    {
+      "id": "mat_ho_phach",
+      "name": "Hổ Phách",
+      "slot": "material",
+      "rarity": "blue",
+      "bonuses": {},
+      "desc": "Nguyên liệu giác ngộ võ tướng (wiki): Hổ Phách.",
+      "source": "wiki-awaken"
+    },
+    {
+      "id": "mat_kim_lo",
+      "name": "Kim Lô",
+      "slot": "material",
+      "rarity": "green",
+      "bonuses": {},
+      "desc": "Nguyên liệu giác ngộ võ tướng (wiki): Kim Lô.",
+      "source": "wiki-awaken"
+    },
+    {
+      "id": "mat_lam_bao_thach",
+      "name": "Lam Bảo Thạch",
+      "slot": "material",
+      "rarity": "blue",
+      "bonuses": {},
+      "desc": "Nguyên liệu giác ngộ võ tướng (wiki): Lam Bảo Thạch.",
+      "source": "wiki-awaken"
+    },
+    {
+      "id": "mat_lang_nha_ngoc",
+      "name": "Lang Nha Ngọc",
+      "slot": "material",
+      "rarity": "blue",
+      "bonuses": {},
+      "desc": "Nguyên liệu giác ngộ võ tướng (wiki): Lang Nha Ngọc.",
+      "source": "wiki-awaken"
+    },
+    {
+      "id": "mat_linh_chi",
+      "name": "Linh Chi",
+      "slot": "material",
+      "rarity": "purple",
+      "bonuses": {},
+      "desc": "Nguyên liệu giác ngộ võ tướng (wiki): Linh Chi.",
+      "source": "wiki-awaken"
+    },
+    {
+      "id": "mat_ngoc",
+      "name": "Ngọc",
+      "slot": "material",
+      "rarity": "green",
+      "bonuses": {},
+      "desc": "Nguyên liệu giác ngộ võ tướng (wiki): Ngọc.",
+      "source": "wiki-awaken"
+    },
+    {
+      "id": "mat_nhan_sam_qua",
+      "name": "Nhân Sâm Quả",
+      "slot": "material",
+      "rarity": "orange",
+      "bonuses": {},
+      "desc": "Nguyên liệu giác ngộ võ tướng (wiki): Nhân Sâm Quả.",
+      "source": "wiki-awaken"
+    },
+    {
+      "id": "mat_quynh_tuong",
+      "name": "Quỳnh Tương",
+      "slot": "material",
+      "rarity": "red",
+      "bonuses": {},
+      "desc": "Nguyên liệu giác ngộ võ tướng (wiki): Quỳnh Tương.",
+      "source": "wiki-awaken"
+    },
+    {
+      "id": "mat_ruou",
+      "name": "Rượu",
+      "slot": "material",
+      "rarity": "white",
+      "bonuses": {},
+      "desc": "Nguyên liệu giác ngộ võ tướng (wiki): Rượu.",
+      "source": "wiki-awaken"
+    },
+    {
+      "id": "mat_thanh_lien",
+      "name": "Thanh Liên",
+      "slot": "material",
+      "rarity": "orange",
+      "bonuses": {},
+      "desc": "Nguyên liệu giác ngộ võ tướng (wiki): Thanh Liên.",
+      "source": "wiki-awaken"
+    },
+    {
+      "id": "mat_thien_mai",
+      "name": "Thiên Mai",
+      "slot": "material",
+      "rarity": "red",
+      "bonuses": {},
+      "desc": "Nguyên liệu giác ngộ võ tướng (wiki): Thiên Mai.",
+      "source": "wiki-awaken"
+    },
+    {
+      "id": "mat_thit",
+      "name": "Thịt",
+      "slot": "material",
+      "rarity": "white",
+      "bonuses": {},
+      "desc": "Nguyên liệu giác ngộ võ tướng (wiki): Thịt.",
+      "source": "wiki-awaken"
+    },
+    {
+      "id": "mat_tran_chau",
+      "name": "Trân Châu",
+      "slot": "material",
+      "rarity": "green",
+      "bonuses": {},
+      "desc": "Nguyên liệu giác ngộ võ tướng (wiki): Trân Châu.",
+      "source": "wiki-awaken"
+    },
+    {
+      "id": "mat_tuyet_lien",
+      "name": "Tuyết Liên",
+      "slot": "material",
+      "rarity": "purple",
+      "bonuses": {},
+      "desc": "Nguyên liệu giác ngộ võ tướng (wiki): Tuyết Liên.",
+      "source": "wiki-awaken"
     }
-  ],
-  "dropTables": {
-    "common": [
-      {
-        "itemId": "sword_common",
-        "weight": 18
-      },
-      {
-        "itemId": "armor_cloth",
-        "weight": 18
-      },
-      {
-        "itemId": "horse_grey",
-        "weight": 12
-      },
-      {
-        "itemId": "book_primer",
-        "weight": 12
-      },
-      {
-        "itemId": "sword_iron",
-        "weight": 12
-      },
-      {
-        "itemId": "armor_leather",
-        "weight": 12
-      },
-      {
-        "itemId": "acc_jade",
-        "weight": 10
-      },
-      {
-        "itemId": null,
-        "weight": 6
-      }
-    ],
-    "elite": [
-      {
-        "itemId": "blade_steel",
-        "weight": 14
-      },
-      {
-        "itemId": "spear_long",
-        "weight": 12
-      },
-      {
-        "itemId": "bow_composite",
-        "weight": 12
-      },
-      {
-        "itemId": "armor_scale",
-        "weight": 14
-      },
-      {
-        "itemId": "horse_white",
-        "weight": 10
-      },
-      {
-        "itemId": "book_bingfa",
-        "weight": 12
-      },
-      {
-        "itemId": "acc_ring",
-        "weight": 10
-      },
-      {
-        "itemId": "armor_tiger",
-        "weight": 8
-      },
-      {
-        "itemId": "halberd_snake",
-        "weight": 5
-      },
-      {
-        "itemId": null,
-        "weight": 3
-      }
-    ],
-    "boss": [
-      {
-        "itemId": "blade_qinglong",
-        "weight": 10
-      },
-      {
-        "itemId": "sword_yitian",
-        "weight": 8
-      },
-      {
-        "itemId": "armor_tiger",
-        "weight": 14
-      },
-      {
-        "itemId": "armor_dragon",
-        "weight": 8
-      },
-      {
-        "itemId": "horse_red",
-        "weight": 12
-      },
-      {
-        "itemId": "horse_dilu",
-        "weight": 8
-      },
-      {
-        "itemId": "book_24",
-        "weight": 12
-      },
-      {
-        "itemId": "book_mengde",
-        "weight": 6
-      },
-      {
-        "itemId": "acc_seal",
-        "weight": 8
-      },
-      {
-        "itemId": "acc_amulet",
-        "weight": 8
-      },
-      {
-        "itemId": "spear_fangtian",
-        "weight": 3
-      },
-      {
-        "itemId": "horse_jueying",
-        "weight": 2
-      },
-      {
-        "itemId": "acc_imperial_seal",
-        "weight": 1
-      },
-      {
-        "itemId": null,
-        "weight": 0
-      }
-    ]
-  }
+  ]
 },
 "buildings": {
   "schemaVersion": 3,
@@ -30189,7 +51004,7 @@
     },
     {
       "bot_id": "bot_npc_19",
-      "name": "Hạ Hầu Đ惇 (NPC)",
+      "name": "Hạ Hầu Đôn (NPC)",
       "rank": 19,
       "tier": "MEDIUM",
       "level": 18,
@@ -30789,7 +51604,7 @@
     },
     {
       "bot_id": "bot_npc_32",
-      "name": "ừ Cừ帥 Khăn Vàng (NPC)",
+      "name": "Nguyên Soái Khăn Vàng (NPC)",
       "rank": 32,
       "tier": "WEAK",
       "level": 4,
@@ -30962,14 +51777,14 @@
   "schemaVersion": 1,
   "id": "main_progression_v1",
   "name": "Tiến trình Tam Quốc",
-  "inspiredBy": "Ngọa Long / 卧龙吟 — uy danh mở slot tướng; phó bản thu phục; tửu quán hội đàm theo điều kiện",
+  "inspiredBy": "Ngọa Long — uy danh mở slot tướng; phó bản thu phục; tửu quán hội đàm theo điều kiện",
   "notes": [
     "Danh vọng (prestige) ≈ Uy danh: mở thêm chỗ chứa tướng + mở chiêu mộ mốc.",
     "Qua ải lần đầu có thể nhận tướng (dã tướng) hoặc mở khóa Tửu Quán (required_stage).",
     "Tướng mở đầu theo phe — không trùng thưởng first-clear."
   ],
   "starters": {
-    "note": "Giống 卧龙吟: mở đầu tướng phụ (xanh/lam), minh chủ & ngũ hổ mở muộn bằng uy danh / phó bản — không tặng Quan Vũ/Tào Tháo lúc tạo nhân vật.",
+    "note": "Giống Ngọa Long gốc: mở đầu tướng phụ (xanh/lam), minh chủ & ngũ hổ mở muộn bằng uy danh / phó bản — không tặng Quan Vũ/Tào Tháo lúc tạo nhân vật.",
     "shu": {
       "generalIds": [
         "liaohua",
@@ -31071,8 +51886,10 @@
       "mission": "Dẹp toán nghĩa quân đầu tiên — làm quen bày trận 5 ô.",
       "firstClear": {
         "prestige": 25,
-        "hint": "Tửu Quán: mở chiêu mộ lính trắng / xanh cơ bản (danh vọng thấp)."
-      }
+        "hint": "Tửu Quán: mở chiêu mộ tướng tinh anh xanh / lam sớm (không chiêu mộ lính thường)."
+      },
+      "briefing": "Loạn Khăn Vàng bùng ở Trác Châu. Quan quân tập kết. Dẹp toán nghĩa quân đầu tiên — làm quen bày trận 5 ô.",
+      "epilogue": "Trác Châu tạm yên. Quân sĩ biết cách bày trận — còn nhiều toán Khăn Vàng phía trước."
     },
     "ch1_s2": {
       "story": "Khăn Vàng tập kết. Có thể thu phục nghĩa sĩ quy thuận.",
@@ -31081,19 +51898,24 @@
         "prestige": 40,
         "grantByFaction": {
           "shu": "liufeng",
-          "wei": "veteran_guard",
+          "wei": "xuhuang",
           "wu": "lingtong"
         },
-        "hint": "Thu phục thêm 1 tướng phụ. Tửu Quán mở thêm xanh/lam."
-      }
+        "hint": "Thu phục 1 tướng tinh anh theo phe (không phải lính thường)."
+      },
+      "briefing": "Khăn Vàng tập kết. Có thể thu phục nghĩa sĩ quy thuận. Phá vòng vây — thu phục tướng phụ đầu tiên theo phe.",
+      "epilogue": "Nghĩa sĩ quy thuận theo phe. Tửu Quán bắt đầu có tiếng vọng."
     },
     "ch1_s3": {
       "story": "Trương Bảo dùng yêu thuật. Elite đầu tiên.",
       "mission": "Hạ Trương Bảo — học ưu tiên mục tiêu.",
       "firstClear": {
         "prestige": 55,
-        "hint": "Mở thêm chiêu mộ tướng lam sớm tại Tửu Quán."
-      }
+        "grantGeneralId": "zhangbao",
+        "hint": "Thu phục Trương Bảo (tinh anh). Tửu Quán mở thêm tướng lam."
+      },
+      "briefing": "Trương Bảo dùng yêu thuật. Elite đầu tiên. Hạ Trương Bảo — học ưu tiên mục tiêu.",
+      "epilogue": "Trương Bảo thất thế. Yêu thuật không cứu nổi loạn đảng."
     },
     "ch1_s4": {
       "story": "Trương Lương phục binh. Mưu sĩ bắt đầu lộ diện.",
@@ -31106,14 +51928,18 @@
           "wu": "huanggai"
         },
         "hint": "Tửu Quán: mưu sĩ tím cần vượt ải này + ~500 danh vọng."
-      }
+      },
+      "briefing": "Trương Lương phục binh. Mưu sĩ bắt đầu lộ diện. Phá phục binh — mở chiêu mộ mưu sĩ (tím, cần danh vọng).",
+      "epilogue": "Phục binh tan. Mưu sĩ trong Tửu Quán dần lộ diện."
     },
     "ch1_s5": {
       "story": "Áp sát Quảng Tông — trước cửa đại doanh Trương Giác.",
       "mission": "Giữ đội hình, chuẩn bị boss chương.",
       "firstClear": {
         "prestige": 80
-      }
+      },
+      "briefing": "Áp sát Quảng Tông — trước cửa đại doanh Trương Giác. Giữ đội hình, chuẩn bị boss chương.",
+      "epilogue": "Quảng Tông đã gần — đại doanh Trương Giác trong tầm mắt."
     },
     "ch1_s6": {
       "story": "Trương Giác — Hoàng Thiên đã chết. Loạn Khăn Vàng tạm dẹp.",
@@ -31126,14 +51952,18 @@
           "wu": "daqiao"
         },
         "hint": "Mở Lôi đài. Minh chủ / ngũ hổ vẫn khóa danh vọng cao."
-      }
+      },
+      "briefing": "Trương Giác — Hoàng Thiên đã chết. Loạn Khăn Vàng tạm dẹp. Boss chương 1 — mở Lôi đài + chiêu mộ nâng cao.",
+      "epilogue": "Hoàng Thiên đã chết. Loạn Khăn Vàng tạm dẹp. Lôi đài mở cửa."
     },
     "ch2_s1": {
       "story": "Đổng Trác loạn chính. Liên quân tiến Dương Nhân.",
       "mission": "Bước vào chương Đổng Trác.",
       "firstClear": {
         "prestige": 60
-      }
+      },
+      "briefing": "Đổng Trác loạn chính. Liên quân tiến Dương Nhân. Bước vào chương Đổng Trác.",
+      "epilogue": "Liên quân tiến Dương Nhân. Loạn Đổng Trác bắt đầu."
     },
     "ch2_s2": {
       "story": "Phàn Trù chặn đường.",
@@ -31144,7 +51974,9 @@
           "wei": "xuchu",
           "wu": "lusu"
         }
-      }
+      },
+      "briefing": "Phàn Trù chặn đường.",
+      "epilogue": "Phàn Trù gục. Đường Hổ Lao còn dài."
     },
     "ch2_s3": {
       "story": "Hoa Hùng tại Hổ Lao — ải danh tướng.",
@@ -31152,13 +51984,17 @@
       "firstClear": {
         "prestige": 120,
         "hint": "Tửu Quán: mở thêm cam/tím (Khương Duy, Trương Liêu, Cam Ninh…) nếu đủ danh vọng."
-      }
+      },
+      "briefing": "Hoa Hùng tại Hổ Lao — ải danh tướng. Hạ Hoa Hùng — mở khóa danh tướng trung kỳ.",
+      "epilogue": "Hoa Hùng kinh thiên. Danh tướng ải này khiến thiên hạ biết tên."
     },
     "ch2_s4": {
       "story": "Lý Thôi · Quách Dĩ quấy phá.",
       "firstClear": {
         "prestige": 90
-      }
+      },
+      "briefing": "Lý Thôi · Quách Dĩ quấy phá.",
+      "epilogue": "Lý Thôi · Quách Dĩ lui. Áp sát Hổ Lao."
     },
     "ch2_s5": {
       "story": "Tam Anh chiến Lã Bố — đỉnh chương 2.",
@@ -31171,7 +52007,9 @@
           "wu": "ganning"
         },
         "hint": "Mở thêm tướng cam. Lưu Bị / Tào Tháo / Tôn Quyền cần danh vọng rất cao."
-      }
+      },
+      "briefing": "Tam Anh chiến Lã Bố — đỉnh chương 2. Sống sót trước Lã Bố — mở chiêu mộ cao cấp.",
+      "epilogue": "Tam Anh chiến Lã Bố — thiên hạ xôn xao."
     },
     "ch2_s6": {
       "story": "Đổng Trác bỏ Lạc Dương. Liên quân tan.",
@@ -31179,7 +52017,9 @@
       "firstClear": {
         "prestige": 200,
         "hint": "Chuẩn bị chương Quần Hùng — Thế giới & chiêu mộ rộng."
-      }
+      },
+      "briefing": "Đổng Trác bỏ Lạc Dương. Liên quân tan. Boss chương 2 — mở tính năng cao hơn.",
+      "epilogue": "Đổng Trác bỏ Lạc Dương. Liên quân tan — thời thế đổi."
     },
     "ch3_s1": {
       "story": "Tào Tháo khởi binh Trần Lưu — quần hùng phân tranh.",
@@ -31190,13 +52030,17 @@
           "wei": "guojia",
           "wu": "xiaoqiao"
         }
-      }
+      },
+      "briefing": "Tào Tháo khởi binh Trần Lưu — quần hùng phân tranh.",
+      "epilogue": "Tào Tháo khởi binh Trần Lưu. Quần hùng bắt đầu tranh thiên hạ."
     },
     "ch3_s2": {
       "story": "Đào Khiêm Từ Châu — nhân nghĩa hay quyền mưu.",
       "firstClear": {
         "prestige": 110
-      }
+      },
+      "briefing": "Đào Khiêm Từ Châu — nhân nghĩa hay quyền mưu.",
+      "epilogue": "Từ Châu rối ren — nhân nghĩa và quyền mưu đối đầu."
     },
     "ch3_s3": {
       "story": "Công Tôn Toản — Bạch Mã nghĩa tòng.",
@@ -31208,13 +52052,17 @@
           "wu": "taishici"
         },
         "hint": "Thục nhận Triệu Vân (đỏ). Ngụy/Ngô nhận danh tướng tương ứng."
-      }
+      },
+      "briefing": "Công Tôn Toản — Bạch Mã nghĩa tòng.",
+      "epilogue": "Bạch Mã nghĩa tòng. Công Tôn Toản còn sức."
     },
     "ch3_s4": {
       "story": "Nhan Lương · Văn Xú — hổ tướng Hà Bắc.",
       "firstClear": {
         "prestige": 130
-      }
+      },
+      "briefing": "Nhan Lương · Văn Xú — hổ tướng Hà Bắc.",
+      "epilogue": "Nhan Lương · Văn Xú — hổ tướng Hà Bắc đã lộ."
     },
     "ch3_s5": {
       "story": "Lưu Biểu Kinh Châu — đất dụng nhân.",
@@ -31225,7 +52073,9 @@
           "wei": "jiaxu",
           "wu": "zhugejin"
         }
-      }
+      },
+      "briefing": "Lưu Biểu Kinh Châu — đất dụng nhân.",
+      "epilogue": "Kinh Châu đất dụng nhân. Lưu Biểu giữ thế."
     },
     "ch3_s6": {
       "story": "Viên Thiệu — bá chủ Hà Bắc. Kết thúc chính tuyến v1.",
@@ -31238,7 +52088,9 @@
           "wu": "luxun"
         },
         "hint": "Mở thêm tính năng cao. Danh tướng đỏ còn lại: Tửu Quán + danh vọng rất cao."
-      }
+      },
+      "briefing": "Viên Thiệu — bá chủ Hà Bắc. Kết thúc chính tuyến v1. Boss chương 3 — mở endgame nhẹ (tháp / chiêu mộ huyền thoại).",
+      "epilogue": "Viên Thiệu bá chủ Hà Bắc. Chính tuyến v1 khép lại — còn nhiều chương phía trước."
     }
   },
   "tavernRules": {
@@ -31263,7 +52115,9 @@
       "short": "Loạn",
       "kind": "control",
       "desc": "Một lượt không thể hành động.",
-      "wikiId": "hon_loan"
+      "wikiId": "hon_loan",
+      "iconLocal": "assets/ui/status/2292a825-c85d-40e7-a099-202ee97c3151.841c4.png",
+      "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2292a825-c85d-40e7-a099-202ee97c3151.841c4.png"
     },
     "silence": {
       "id": "silence",
@@ -31272,7 +52126,9 @@
       "short": "Ám",
       "kind": "debuff",
       "desc": "Tướng ở trạng thái BUFF, không thể tăng sĩ khí",
-      "wikiId": "am_te"
+      "wikiId": "am_te",
+      "iconLocal": "assets/ui/status/67b9b697-fafc-4e84-9d0b-8d075cc565d5.8d8ed.png",
+      "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/67b9b697-fafc-4e84-9d0b-8d075cc565d5.8d8ed.png"
     },
     "poison": {
       "id": "poison",
@@ -31281,7 +52137,9 @@
       "short": "Độc",
       "kind": "debuff",
       "desc": "Mỗi lượt, tướng đang Trúng Độc sẽ mất một lượng sinh lực nhất định.",
-      "wikiId": "trung_doc"
+      "wikiId": "trung_doc",
+      "iconLocal": "assets/ui/status/ff66d095-f66f-4b72-92e5-f8a1affd5750.81b51.png",
+      "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ff66d095-f66f-4b72-92e5-f8a1affd5750.81b51.png"
     },
     "burn": {
       "id": "burn",
@@ -31290,7 +52148,9 @@
       "short": "Thiêu",
       "kind": "debuff",
       "desc": "Gây sát thương kế sách kéo dài theo lượt.",
-      "wikiId": "thieu_dot"
+      "wikiId": "thieu_dot",
+      "iconLocal": "assets/ui/status/66a94d42-a050-46ab-ac1d-dbb2e54d8c8c.4cd5a.png",
+      "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/66a94d42-a050-46ab-ac1d-dbb2e54d8c8c.4cd5a.png"
     },
     "atk_up": {
       "id": "atk_up",
@@ -31299,7 +52159,9 @@
       "short": "Dũng",
       "kind": "buff",
       "desc": "Tất cả các tấn công tăng x% có thể được cộng dồn.",
-      "wikiId": "anh_dung"
+      "wikiId": "anh_dung",
+      "iconLocal": "assets/ui/status/6e49dbe9-0706-4c57-a198-6461dc1dc9ec.51415.png",
+      "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6e49dbe9-0706-4c57-a198-6461dc1dc9ec.51415.png"
     },
     "atk_down": {
       "id": "atk_down",
@@ -31308,7 +52170,9 @@
       "short": "Yếu",
       "kind": "debuff",
       "desc": "Giảm tất cả lực tấn công của tướng",
-      "wikiId": "giam_tan_cong"
+      "wikiId": "giam_tan_cong",
+      "iconLocal": "assets/ui/status/aa1867a4-2c5d-42c9-95cf-f88f59e7bfd4.249a6.png",
+      "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/aa1867a4-2c5d-42c9-95cf-f88f59e7bfd4.249a6.png"
     },
     "def_up": {
       "id": "def_up",
@@ -31317,7 +52181,9 @@
       "short": "Thủ",
       "kind": "buff",
       "desc": "Tất cả các phòng thủ tăng x% và có thể được cộng dồn.",
-      "wikiId": "kien_thu"
+      "wikiId": "kien_thu",
+      "iconLocal": "assets/ui/status/5f863408-a83c-4982-878d-ef05d48106d0.62488.png",
+      "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5f863408-a83c-4982-878d-ef05d48106d0.62488.png"
     },
     "def_down": {
       "id": "def_down",
@@ -31335,7 +52201,9 @@
       "short": "Hồi",
       "kind": "buff",
       "desc": "Khi bắt đầu lượt thi triển trị liệu bằng x% mưu công",
-      "wikiId": "hoi_phuc"
+      "wikiId": "hoi_phuc",
+      "iconLocal": "assets/ui/status/bb39f256-52c1-44b1-a2a4-09ff2025003e.ae99f.png",
+      "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bb39f256-52c1-44b1-a2a4-09ff2025003e.ae99f.png"
     },
     "morale_boost": {
       "id": "morale_boost",
@@ -31344,7 +52212,9 @@
       "short": "Khí",
       "kind": "buff",
       "desc": "Sĩ khí nhận được mỗi lượt tăng điểm X.",
-      "wikiId": "phan_chan"
+      "wikiId": "phan_chan",
+      "iconLocal": "assets/ui/status/7ef92aca-d0e5-4937-abdf-efcc04c71802.e82c4.png",
+      "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7ef92aca-d0e5-4937-abdf-efcc04c71802.e82c4.png"
     }
   },
   "wikiCatalog": [
@@ -31357,7 +52227,8 @@
       "kind": "buff",
       "desc": "Tất cả các tấn công tăng x% có thể được cộng dồn.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6e49dbe9-0706-4c57-a198-6461dc1dc9ec.51415.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/6e49dbe9-0706-4c57-a198-6461dc1dc9ec.51415.png"
     },
     {
       "id": "anh_dung_2",
@@ -31368,7 +52239,8 @@
       "kind": "unremovable",
       "desc": "Tất cả công tăng, có thể tích lũy, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6e49dbe9-0706-4c57-a198-6461dc1dc9ec.51415.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/6e49dbe9-0706-4c57-a198-6461dc1dc9ec.51415.png"
     },
     {
       "id": "bai_uu",
@@ -31390,7 +52262,8 @@
       "kind": "buff",
       "desc": "Tăng C.Huy, Võ, Trí, có thể cộng dồn",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f37715fe-47ed-4694-a881-2e684127e7a8.c4bec.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/f37715fe-47ed-4694-a881-2e684127e7a8.c4bec.png"
     },
     {
       "id": "ba_chu_2",
@@ -31401,7 +52274,8 @@
       "kind": "unremovable",
       "desc": "Tăng C.Huy, Võ, Trí, có thể cộng dồn, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f37715fe-47ed-4694-a881-2e684127e7a8.c4bec.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/f37715fe-47ed-4694-a881-2e684127e7a8.c4bec.png"
     },
     {
       "id": "bat_quai",
@@ -31412,7 +52286,8 @@
       "kind": "buff",
       "desc": "Chống đỡ 1 lần sát thương và chuyển sát thương lên một mục tiêu địch ngẫu nhiên",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1f6bb23b-30c2-4839-a676-6d0a82a4cb63.96435.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/1f6bb23b-30c2-4839-a676-6d0a82a4cb63.96435.png"
     },
     {
       "id": "bac_nhuoc",
@@ -31423,7 +52298,8 @@
       "kind": "debuff",
       "desc": "Sát thương cuối phải chịu từ mục tiêu mang Trúng Độc, Thiêu Đốt, Thi Độc, Thiên Hỏa, Huyết Cúc, Kịch Độc tăng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d76ea859-d971-408f-9be4-a52cc0257d28.293b6.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/d76ea859-d971-408f-9be4-a52cc0257d28.293b6.png"
     },
     {
       "id": "bach_nhan",
@@ -31434,7 +52310,8 @@
       "kind": "buff",
       "desc": "Mỗi lần tấn công và phản kích cộng dồn một tầng, mỗi tầng tăng sát thương kỹ năng [giá trị hiệu quả], tầng tối đa cộng thêm tầng [giá trị hiệu quả].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2160836f-a810-4f69-aa68-e180472e4d31.af770.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/2160836f-a810-4f69-aa68-e180472e4d31.af770.png"
     },
     {
       "id": "bao",
@@ -31445,7 +52322,8 @@
       "kind": "buff",
       "desc": "",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5ded801b-a5f9-435a-ace0-4f16a8dc02a9.348ef.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/5ded801b-a5f9-435a-ace0-4f16a8dc02a9.348ef.png"
     },
     {
       "id": "bao_no",
@@ -31456,7 +52334,8 @@
       "kind": "buff",
       "desc": "Giá trị hiệu quả tăng sát thương cuối của bản thân tăng lên, bản thân chịu sát thương cuối tăng giá trị hiệu quả của hiệu ứng này.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/cde8cadc-4fc4-446f-9a45-2976d430effe.f1e62.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/cde8cadc-4fc4-446f-9a45-2976d430effe.f1e62.png"
     },
     {
       "id": "bao_phat",
@@ -31467,7 +52346,8 @@
       "kind": "buff",
       "desc": "Vào cuối mỗi lượt, nếu sĩ khí của bạn thấp hơn X, nó sẽ nhận được 1 tầng Bạo phát, sau khi có lớp Y Bạo phát, sát thương kỹ năng tiếp theo gây ra thiệt hại thêm Z.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fc8ef3ec-a038-4283-a85c-50b38fc8ad1b.2b5e6.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/fc8ef3ec-a038-4283-a85c-50b38fc8ad1b.2b5e6.png"
     },
     {
       "id": "bao_thuong",
@@ -31478,7 +52358,8 @@
       "kind": "buff",
       "desc": "Sát thương bạo kích tăng [giá trị hiệu quả] (cơ sở sát thương bạo kích là 150%, cộng tăng).",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ea29a01e-f80c-46a4-9d66-379c68d9ec0f.85934.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/ea29a01e-f80c-46a4-9d66-379c68d9ec0f.85934.png"
     },
     {
       "id": "bao_ve",
@@ -31489,7 +52370,8 @@
       "kind": "unremovable",
       "desc": "BUFF đánh dấu, không có tác dụng trực tiếp.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6e94251e-cd25-4f4d-a4d2-8466ed2ce880.7dd0c.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/6e94251e-cd25-4f4d-a4d2-8466ed2ce880.7dd0c.png"
     },
     {
       "id": "bat_khuat",
@@ -31500,7 +52382,8 @@
       "kind": "buff",
       "desc": "Không thể tử vong, sinh lực giảm còn 1 sẽ hồi phục lượng lính nhất định, chỉ có hiệu lực 1 lần",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f88eccb6-f728-44b4-88f1-0316f6add786.6a081.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/f88eccb6-f728-44b4-88f1-0316f6add786.6a081.png"
     },
     {
       "id": "bat_khuat_chuyen_dung_bac_7",
@@ -31522,7 +52405,8 @@
       "kind": "buff",
       "desc": "Sau khi sinh lực giảm còn 1 sẽ hồi phục số lính nhất định và nhận Vô Địch 1 lượt, chỉ hiệu lực 1 lần",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f88eccb6-f728-44b4-88f1-0316f6add786.6a081.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/f88eccb6-f728-44b4-88f1-0316f6add786.6a081.png"
     },
     {
       "id": "ben_bi",
@@ -31533,7 +52417,8 @@
       "kind": "buff",
       "desc": "Gia tăng khả năng chống lại các hiệu ứng như kiểm soát, sợ hãi, v.v. và giảm xác suất bị trúng BUFF tiêu cực.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d13703b5-094f-4b7f-9ecb-d789d215856e.84065.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/d13703b5-094f-4b7f-9ecb-d789d215856e.84065.png"
     },
     {
       "id": "bong_lanh",
@@ -31544,7 +52429,8 @@
       "kind": "debuff",
       "desc": "Khi bị Đóng Băng sẽ cộng dồn 1 tầng. Đạt từ 3 tầng trở lên, gây sát thương theo tỉ lệ lính dựa trên số tầng hiện tại rồi xóa toàn bộ tầng.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/47bd581f-56bd-4f3b-83ec-2ee3e842c705.63db2.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/47bd581f-56bd-4f3b-83ec-2ee3e842c705.63db2.png"
     },
     {
       "id": "boi_thuy",
@@ -31555,7 +52441,8 @@
       "kind": "debuff",
       "desc": "Bản thân khi hành động, nếu binh lực thấp hơn binh lực tối đa 60%, thì tăng nhất định phần trăm tấn công, có thể cộng dồn",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/314b832c-46f5-489c-8fc2-bd4074a17346.06dba.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/314b832c-46f5-489c-8fc2-bd4074a17346.06dba.png"
     },
     {
       "id": "bo_phong_2",
@@ -31577,7 +52464,8 @@
       "kind": "buff",
       "desc": "Bản thân tăng C.Huy",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3fb4879b-0e43-45d7-a9f8-7287d32e1dce.0e41b.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/3fb4879b-0e43-45d7-a9f8-7287d32e1dce.0e41b.png"
     },
     {
       "id": "chien_than",
@@ -31588,7 +52476,8 @@
       "kind": "buff",
       "desc": "Tướng phe ta càng nhiều, sát thương càng cao",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2a42c078-213e-4136-bfce-1bd33084a42c.9b4e3.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/2a42c078-213e-4136-bfce-1bd33084a42c.9b4e3.png"
     },
     {
       "id": "chuyen_doi",
@@ -31599,7 +52488,8 @@
       "kind": "buff",
       "desc": "Một phần sát thương gây ra sẽ trị liệu đều cho toàn bộ phe ta",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/975d385b-0a9c-4d0e-9704-4b8a910560c1.41bac.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/975d385b-0a9c-4d0e-9704-4b8a910560c1.41bac.png"
     },
     {
       "id": "cham_ngoi",
@@ -31610,7 +52500,8 @@
       "kind": "debuff",
       "desc": "Mỗi lượt chịu một lượng Mưu Công nhất định. Khi cộng dồn từ 3 tầng trở lên, đến lượt hành động của bản thân sẽ khiến mình và toàn bộ đồng đội chịu Mưu Công theo số tầng hiện tại.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b5fb7deb-6ecd-4b66-a1b5-7489e4a0d500.514a5.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/b5fb7deb-6ecd-4b66-a1b5-7489e4a0d500.514a5.png"
     },
     {
       "id": "chem_giet",
@@ -31640,7 +52531,8 @@
       "kind": "unremovable",
       "desc": "Bản thân tăng C.Huy, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3fb4879b-0e43-45d7-a9f8-7287d32e1dce.0e41b.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/3fb4879b-0e43-45d7-a9f8-7287d32e1dce.0e41b.png"
     },
     {
       "id": "chong_do",
@@ -31651,7 +52543,8 @@
       "kind": "buff",
       "desc": "Nhận 1 Hộ Thuẫn chống đỡ sát thương",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e08b0593-37d3-46f3-a372-f736b5e94952.354a8.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/e08b0593-37d3-46f3-a372-f736b5e94952.354a8.png"
     },
     {
       "id": "cung_cong_2",
@@ -31673,7 +52566,8 @@
       "kind": "buff",
       "desc": "Sát thương cuối bản thân gây ra và phải chịu đều tăng theo tỉ lệ nhất định",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ce8a3c6a-1660-4efd-93fa-515b2e391cbf.056a2.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/ce8a3c6a-1660-4efd-93fa-515b2e391cbf.056a2.png"
     },
     {
       "id": "cuong_chien",
@@ -31684,7 +52578,8 @@
       "kind": "debuff",
       "desc": "Cách vài lượt sẽ tăng công phòng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6c09ee33-38c0-43fb-891e-98d8a3c06163.395b7.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/6c09ee33-38c0-43fb-891e-98d8a3c06163.395b7.png"
     },
     {
       "id": "co_doc",
@@ -31695,7 +52590,8 @@
       "kind": "buff",
       "desc": "Mỗi tầng [Cô Độc] tăng tấn công [giá trị hiệu quả] và lực phòng thủ [giá trị hiệu quả], mỗi lần chết một đội tướng đồng minh cộng thêm 1 tầng, mỗi lần chết một đội tướng địch cộng thêm 2 tầng, phòng thủ tối đa tăng 80%.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fe7dd52a-9452-45d9-89d1-be532ad80c78.41f32.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/fe7dd52a-9452-45d9-89d1-be532ad80c78.41f32.png"
     },
     {
       "id": "cong_tam",
@@ -31728,7 +52624,8 @@
       "kind": "unremovable",
       "desc": "Bản thân tăng Võ, không thể giải trừ, có thể cộng dồn.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c03e7c81-e3bd-44c9-987d-0effe863f8bd.1c2a5.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/c03e7c81-e3bd-44c9-987d-0effe863f8bd.1c2a5.png"
     },
     {
       "id": "cam_quan",
@@ -31739,7 +52636,8 @@
       "kind": "buff",
       "desc": "Mỗi khi có một đơn vị hữu phương, lực tấn công tăng lên X%, lực phòng thủ tăng lên Y%.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/97b3cd6a-c6b8-44ff-bb53-cc4ebb26c86d.8f9f7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/97b3cd6a-c6b8-44ff-bb53-cc4ebb26c86d.8f9f7.png"
     },
     {
       "id": "cap_cuu",
@@ -31750,7 +52648,8 @@
       "kind": "buff",
       "desc": "Tăng X% hiệu quả trị liệu trực tiếp bản thân gây ra",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1094d0c9-b998-4496-a8aa-d59a6af5a8c1.f1efc.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/1094d0c9-b998-4496-a8aa-d59a6af5a8c1.f1efc.png"
     },
     {
       "id": "cap_cuu_2",
@@ -31761,7 +52660,8 @@
       "kind": "unremovable",
       "desc": "Tăng hiệu quả trị liệu trực tiếp bản thân gây ra, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1094d0c9-b998-4496-a8aa-d59a6af5a8c1.f1efc.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/1094d0c9-b998-4496-a8aa-d59a6af5a8c1.f1efc.png"
     },
     {
       "id": "di_ke",
@@ -31772,7 +52672,8 @@
       "kind": "buff",
       "desc": "Mỗi lần thi triển kỹ năng kỹ năng cộng dồn 1 tầng, khi tử vong tạo thành sát thương kế sách nhân với tầng cộng dồn được lên toàn bộ địch, không thể bị phản kích.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/29776874-15eb-4cf9-bf4f-524455c7320e.62e9d.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/29776874-15eb-4cf9-bf4f-524455c7320e.62e9d.png"
     },
     {
       "id": "dieu_ke",
@@ -31783,7 +52684,8 @@
       "kind": "buff",
       "desc": "Với hiệu ứng này, khi hành động kết thúc sẽ làm tăng sĩ khí điểm X của chính nó.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bece3313-ab55-4333-be29-aefc1bf7fdaa.64855.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/bece3313-ab55-4333-be29-aefc1bf7fdaa.64855.png"
     },
     {
       "id": "do_du",
@@ -31794,7 +52696,8 @@
       "kind": "debuff",
       "desc": "Làm giảm hiệu quả sát thương gây ra",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3e9b81e3-46ee-4472-bf34-26cae6335eee.0161e.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/3e9b81e3-46ee-4472-bf34-26cae6335eee.0161e.png"
     },
     {
       "id": "do_du_2",
@@ -31805,7 +52708,8 @@
       "kind": "unremovable",
       "desc": "Giảm sát thương kỹ năng của địch, không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3e9b81e3-46ee-4472-bf34-26cae6335eee.0161e.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/3e9b81e3-46ee-4472-bf34-26cae6335eee.0161e.png"
     },
     {
       "id": "du_hop_2",
@@ -31816,7 +52720,8 @@
       "kind": "unremovable",
       "desc": "Mỗi lần nhận sát thương, khi lính ít hơn 50%, sẽ hồi máu và giảm 1 tầng dũ hợp",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9884e789-618e-451b-97d2-4064ecd1afcc.887e1.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/9884e789-618e-451b-97d2-4064ecd1afcc.887e1.png"
     },
     {
       "id": "dung_tuyet",
@@ -31827,7 +52732,8 @@
       "kind": "buff",
       "desc": "Lượt đầu tăng tất cả lực tấn công, sau đó mỗi lượt lực tấn công giảm [giá trị hiệu quả] sau 5 lượt, trở về tấn công bình thường sau khi kết thúc.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/4ac12faa-43bb-4b51-bf42-d6931e75f500.93441.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/4ac12faa-43bb-4b51-bf42-d6931e75f500.93441.png"
     },
     {
       "id": "dung_tuyet_2",
@@ -31846,7 +52752,8 @@
       "kind": "buff",
       "desc": "Giảm xác suất trúng buff bất lợi.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2cc5b867-bcd2-49c4-a911-0dbd085ed871.9d540.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/2cc5b867-bcd2-49c4-a911-0dbd085ed871.9d540.png"
     },
     {
       "id": "duc_huyet",
@@ -31857,7 +52764,8 @@
       "kind": "buff",
       "desc": "Chuyển hóa sát thương phải chịu thành tấn công theo tỉ lệ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/65867070-d65a-4511-aaf0-2f5e4785ae9a.ed1ef.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/65867070-d65a-4511-aaf0-2f5e4785ae9a.ed1ef.png"
     },
     {
       "id": "e_so",
@@ -31868,7 +52776,8 @@
       "kind": "debuff",
       "desc": "Khi tỉ lệ phần trăm lính của mục tiêu thấp, sẽ giảm 1% tấn công của mục tiêu, không vượt quá 40%",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c40042aa-e263-4141-b6d3-540db2db6968.4394b.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/c40042aa-e263-4141-b6d3-540db2db6968.4394b.png"
     },
     {
       "id": "e_so_2",
@@ -31879,7 +52788,8 @@
       "kind": "debuff",
       "desc": "Khi tỉ lệ phần trăm lính của bản thân thấp, sẽ giảm tấn công của mục tiêu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c40042aa-e263-4141-b6d3-540db2db6968.4394b.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/c40042aa-e263-4141-b6d3-540db2db6968.4394b.png"
     },
     {
       "id": "giem_pha",
@@ -31890,7 +52800,8 @@
       "kind": "debuff",
       "desc": "Trước mỗi lần hành động, sẽ giải trừ số hiệu quả có lợi nhất định",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1910fb91-c521-4968-ad62-56f15d8f1c7c.caf0d.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/1910fb91-c521-4968-ad62-56f15d8f1c7c.caf0d.png"
     },
     {
       "id": "giai_tru",
@@ -31975,7 +52886,8 @@
       "kind": "debuff",
       "desc": "Giảm năng lực pháp phòng thường cho đối phương",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/527b161a-c6e9-46a5-bc80-3316101a864c.63ea7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/527b161a-c6e9-46a5-bc80-3316101a864c.63ea7.png"
     },
     {
       "id": "giam_cong_2",
@@ -31986,7 +52898,8 @@
       "kind": "debuff",
       "desc": "Giảm tất cả tấn công của mục tiêu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/aa1867a4-2c5d-42c9-95cf-f88f59e7bfd4.249a6.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/aa1867a4-2c5d-42c9-95cf-f88f59e7bfd4.249a6.png"
     },
     {
       "id": "giam_muu_cong",
@@ -31997,7 +52910,8 @@
       "kind": "debuff",
       "desc": "Giảm lực tấn công mưu công của tướng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/4399866a-feeb-4b47-ba16-63428a5fe0fb.d715f.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/4399866a-feeb-4b47-ba16-63428a5fe0fb.d715f.png"
     },
     {
       "id": "giam_muu_cong_2",
@@ -32008,7 +52922,8 @@
       "kind": "unremovable",
       "desc": "Giảm Mưu Công của tướng, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/4399866a-feeb-4b47-ba16-63428a5fe0fb.d715f.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/4399866a-feeb-4b47-ba16-63428a5fe0fb.d715f.png"
     },
     {
       "id": "giam_muu_phong",
@@ -32019,7 +52934,8 @@
       "kind": "debuff",
       "desc": "Giảm khả năng phòng thủ mưu công tướng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/987b2a74-7eb8-4721-b320-8e4f5726cab6.b49e7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/987b2a74-7eb8-4721-b320-8e4f5726cab6.b49e7.png"
     },
     {
       "id": "giam_muu_phong_2",
@@ -32030,7 +52946,8 @@
       "kind": "debuff",
       "desc": "Giảm khả năng phòng thủ mưu công tướng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/987b2a74-7eb8-4721-b320-8e4f5726cab6.b49e7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/987b2a74-7eb8-4721-b320-8e4f5726cab6.b49e7.png"
     },
     {
       "id": "giam_phap_cong",
@@ -32041,7 +52958,8 @@
       "kind": "debuff",
       "desc": "Giảm pháp công của tướng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7e56bdbd-6bb2-4413-9cae-1d5b6ea7c88b.14291.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/7e56bdbd-6bb2-4413-9cae-1d5b6ea7c88b.14291.png"
     },
     {
       "id": "giam_phap_cong_2",
@@ -32052,7 +52970,8 @@
       "kind": "unremovable",
       "desc": "Giảm Pháp Công của tướng, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7e56bdbd-6bb2-4413-9cae-1d5b6ea7c88b.14291.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/7e56bdbd-6bb2-4413-9cae-1d5b6ea7c88b.14291.png"
     },
     {
       "id": "giam_phap_phong_2",
@@ -32063,7 +52982,8 @@
       "kind": "unremovable",
       "desc": "Giảm Pháp Phòng thường của mục tiêu. Hiệu quả không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/527b161a-c6e9-46a5-bc80-3316101a864c.63ea7.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/527b161a-c6e9-46a5-bc80-3316101a864c.63ea7.png"
     },
     {
       "id": "giam_phong_2",
@@ -32074,7 +52994,8 @@
       "kind": "unremovable",
       "desc": "Giảm tất cả thủ của mục tiêu, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ab504160-f8dd-40a0-a26c-aed1aaea94bb.ad107.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/ab504160-f8dd-40a0-a26c-aed1aaea94bb.ad107.png"
     },
     {
       "id": "giam_phong_thu",
@@ -32085,7 +53006,8 @@
       "kind": "debuff",
       "desc": "Giảm tất cả năng lực phòng thủ cho mục tiêu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ab504160-f8dd-40a0-a26c-aed1aaea94bb.ad107.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/ab504160-f8dd-40a0-a26c-aed1aaea94bb.ad107.png"
     },
     {
       "id": "giam_phong_thu_2",
@@ -32104,7 +53026,8 @@
       "kind": "buff",
       "desc": "Giảm sát thương bản thân gây ra",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d9259f46-c7da-4da5-816a-64c8fec27f97.3a96d.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/d9259f46-c7da-4da5-816a-64c8fec27f97.3a96d.png"
     },
     {
       "id": "giam_thuong",
@@ -32123,7 +53046,8 @@
       "kind": "debuff",
       "desc": "Giảm hiệu quả Trị Liệu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/47b84fed-906f-4f6d-8af4-504226245937.8df0d.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/47b84fed-906f-4f6d-8af4-504226245937.8df0d.png"
     },
     {
       "id": "giam_tan_cong",
@@ -32134,7 +53058,8 @@
       "kind": "debuff",
       "desc": "Giảm tất cả lực tấn công của tướng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/aa1867a4-2c5d-42c9-95cf-f88f59e7bfd4.249a6.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/aa1867a4-2c5d-42c9-95cf-f88f59e7bfd4.249a6.png"
     },
     {
       "id": "giam_vo_2",
@@ -32145,7 +53070,8 @@
       "kind": "unremovable",
       "desc": "Giảm điểm Võ của địch, có thể cộng dồn, không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fe9d9ead-55e0-4331-be62-08ab01ddeb8d.84b4e.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/fe9d9ead-55e0-4331-be62-08ab01ddeb8d.84b4e.png"
     },
     {
       "id": "giam_vat_cong",
@@ -32156,7 +53082,8 @@
       "kind": "debuff",
       "desc": "Giảm lực tấn công vật lý của tướng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/675cab9e-06d8-4c33-882e-e357222c2a59.d5223.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/675cab9e-06d8-4c33-882e-e357222c2a59.d5223.png"
     },
     {
       "id": "giam_vat_cong_2",
@@ -32167,7 +53094,8 @@
       "kind": "unremovable",
       "desc": "Giảm Vật Công của tướng, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/675cab9e-06d8-4c33-882e-e357222c2a59.d5223.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/675cab9e-06d8-4c33-882e-e357222c2a59.d5223.png"
     },
     {
       "id": "giam_vat_phong",
@@ -32178,7 +53106,8 @@
       "kind": "debuff",
       "desc": "Giảm năng lực phòng thủ thường cho đối phương",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5d194b87-f43a-4012-b9cd-21be5017bca4.550ab.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/5d194b87-f43a-4012-b9cd-21be5017bca4.550ab.png"
     },
     {
       "id": "giam_vat_phong_2",
@@ -32189,7 +53118,8 @@
       "kind": "unremovable",
       "desc": "Giảm năng lực Vật Phòng, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5d194b87-f43a-4012-b9cd-21be5017bca4.550ab.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/5d194b87-f43a-4012-b9cd-21be5017bca4.550ab.png"
     },
     {
       "id": "giam_dap",
@@ -32200,7 +53130,8 @@
       "kind": "debuff",
       "desc": "Sau khi cộng dồn 3 lần tiến vào [Hỗn loạn], (đối chiến với người chơi cần phải cộng dồn 4 lần).",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/95c9c2e1-98a2-4d9e-813f-080320e0092d.15508.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/95c9c2e1-98a2-4d9e-813f-080320e0092d.15508.png"
     },
     {
       "id": "hoat_luc",
@@ -32211,7 +53142,8 @@
       "kind": "buff",
       "desc": "Hiệu quả trị liệu nhận được tăng x%",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/35feca92-5f4c-4c27-b174-9ae7d582182d.8d2fe.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/35feca92-5f4c-4c27-b174-9ae7d582182d.8d2fe.png"
     },
     {
       "id": "hoat_luc_2",
@@ -32222,7 +53154,8 @@
       "kind": "buff",
       "desc": "Hiệu quả trị liệu nhận được tăng x%",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/35feca92-5f4c-4c27-b174-9ae7d582182d.8d2fe.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/35feca92-5f4c-4c27-b174-9ae7d582182d.8d2fe.png"
     },
     {
       "id": "huyet_cuc",
@@ -32233,7 +53166,8 @@
       "kind": "debuff",
       "desc": "Khi được trị liệu, chịu 1 lần sát thương theo mức Mưu Công của người trị liệu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6c45858b-1ce5-479d-a5b6-17388e381bac.216f6.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/6c45858b-1ce5-479d-a5b6-17388e381bac.216f6.png"
     },
     {
       "id": "huyet_nhan_2",
@@ -32244,7 +53178,8 @@
       "kind": "buff",
       "desc": "Khi đánh thường, hồi phục một phần binh lực đã tổn thất; giới hạn là X.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a1b84685-79c7-4b09-89f7-245031bec6b7.4421d.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/a1b84685-79c7-4b09-89f7-245031bec6b7.4421d.png"
     },
     {
       "id": "huyet_thuan_2",
@@ -32255,7 +53190,8 @@
       "kind": "unremovable",
       "desc": "Mỗi lần nhận được sát thương, tăng tất cả lực phòng thủ của bản thân, có thể cộng dồn và hiệu quả này không thể bị giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5c55692d-7e5f-4174-8488-904ba9a19f3b.82fac.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/5c55692d-7e5f-4174-8488-904ba9a19f3b.82fac.png"
     },
     {
       "id": "huyen_giap",
@@ -32266,7 +53202,8 @@
       "kind": "buff",
       "desc": "Khi có hiệu ứng này, lượng dame nhận vào không vượt quá [giá trị hiệu ứng].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/79e86339-4fee-44d3-b5bb-3c5bd645ab62.3f77d.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/79e86339-4fee-44d3-b5bb-3c5bd645ab62.3f77d.png"
     },
     {
       "id": "ham_tran_chuyen_dung_bac_7",
@@ -32288,7 +53225,8 @@
       "kind": "control",
       "desc": "1 lượt không thể hành động, không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2292a825-c85d-40e7-a099-202ee97c3151.841c4.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/2292a825-c85d-40e7-a099-202ee97c3151.841c4.png"
     },
     {
       "id": "hu_nhuoc",
@@ -32299,7 +53237,8 @@
       "kind": "debuff",
       "desc": "Đơn vị này không thể nhận thêm hiệu quả có lợi, các hiệu quả đã nhận không bị ảnh hưởng.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d9c1e599-6d5e-44c6-8eed-79779b4751ee.494b4.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/d9c1e599-6d5e-44c6-8eed-79779b4751ee.494b4.png"
     },
     {
       "id": "hu_nhuoc_2",
@@ -32310,7 +53249,8 @@
       "kind": "debuff",
       "desc": "Đơn vị này không thể nhận thêm hiệu quả có lợi, các hiệu quả đã nhận không bị ảnh hưởng.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d9c1e599-6d5e-44c6-8eed-79779b4751ee.494b4.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/d9c1e599-6d5e-44c6-8eed-79779b4751ee.494b4.png"
     },
     {
       "id": "ha_thap_phong_thu",
@@ -32340,7 +53280,8 @@
       "kind": "buff",
       "desc": "Bản thân nhận trị liệu bằng 25% sát thương gây ra, tối đa hồi 30% lính",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/975d385b-0a9c-4d0e-9704-4b8a910560c1.41bac.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/975d385b-0a9c-4d0e-9704-4b8a910560c1.41bac.png"
     },
     {
       "id": "hap_huyet_2",
@@ -32351,7 +53292,8 @@
       "kind": "buff",
       "desc": "Bản thân nhận trị liệu bằng 25% sát thương gây ra, tối đa hồi 30% lính",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/975d385b-0a9c-4d0e-9704-4b8a910560c1.41bac.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/975d385b-0a9c-4d0e-9704-4b8a910560c1.41bac.png"
     },
     {
       "id": "hoa_than",
@@ -32362,7 +53304,8 @@
       "kind": "buff",
       "desc": "Đánh trúng một kẻ địch có [Thiên Hỏa] hoặc [Thiêu Đốt] liền khôi phục sĩ khí [Giá trị hiệu quả], đối với địch nhân có hiệu quả này tạo thành thương tổn [giá trị hiệu quả].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/88f0ff6e-5fe5-4062-a7a2-1230f0e45b2e.9ce5d.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/88f0ff6e-5fe5-4062-a7a2-1230f0e45b2e.9ce5d.png"
     },
     {
       "id": "hoi_phuc",
@@ -32373,7 +53316,8 @@
       "kind": "buff",
       "desc": "Khi bắt đầu lượt thi triển trị liệu bằng x% mưu công",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bb39f256-52c1-44b1-a2a4-09ff2025003e.ae99f.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/bb39f256-52c1-44b1-a2a4-09ff2025003e.ae99f.png"
     },
     {
       "id": "hoi_xuan",
@@ -32384,7 +53328,8 @@
       "kind": "buff",
       "desc": "Nhận số tầng Hồi Xuân nhất định, khi chịu sát thương mất 1 tầng, và hồi phục lính",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bb39f256-52c1-44b1-a2a4-09ff2025003e.ae99f.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/bb39f256-52c1-44b1-a2a4-09ff2025003e.ae99f.png"
     },
     {
       "id": "hon_loan",
@@ -32395,7 +53340,8 @@
       "kind": "debuff",
       "desc": "Một lượt không thể hành động.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2292a825-c85d-40e7-a099-202ee97c3151.841c4.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/2292a825-c85d-40e7-a099-202ee97c3151.841c4.png"
     },
     {
       "id": "ho_chu",
@@ -32406,7 +53352,8 @@
       "kind": "buff",
       "desc": "Bản thân chịu sát thương từ mục tiêu được [Bảo Hộ]",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/acd426fe-ae8a-4bdf-a8c9-04d3a03b00e7.12121.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/acd426fe-ae8a-4bdf-a8c9-04d3a03b00e7.12121.png"
     },
     {
       "id": "ho_thuan",
@@ -32417,7 +53364,8 @@
       "kind": "buff",
       "desc": "Lá chắn chặn một lần sát thương ngẫu nhiên.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e08b0593-37d3-46f3-a372-f736b5e94952.354a8.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/e08b0593-37d3-46f3-a372-f736b5e94952.354a8.png"
     },
     {
       "id": "ho_the",
@@ -32439,7 +53387,8 @@
       "kind": "buff",
       "desc": "Tăng xác suất bạo kích của mục tiêu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d1cc03ab-4cfc-4f35-aef9-dbe96cb4149e.131e3.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/d1cc03ab-4cfc-4f35-aef9-dbe96cb4149e.131e3.png"
     },
     {
       "id": "hoi_tam_2",
@@ -32450,7 +53399,8 @@
       "kind": "unremovable",
       "desc": "Xác suất bạo kích của bản thân +X%, hiệu quả không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d1cc03ab-4cfc-4f35-aef9-dbe96cb4149e.131e3.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/d1cc03ab-4cfc-4f35-aef9-dbe96cb4149e.131e3.png"
     },
     {
       "id": "hu_thuc",
@@ -32461,7 +53411,8 @@
       "kind": "debuff",
       "desc": "Giảm phòng thủ [giá trị hiệu quả] khi đơn vị có X buff bất lợi.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a2698aa7-c1a9-4288-a132-02fb6cd49e74.78af1.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/a2698aa7-c1a9-4288-a132-02fb6cd49e74.78af1.png"
     },
     {
       "id": "hu_thuc_2",
@@ -32472,7 +53423,8 @@
       "kind": "unremovable",
       "desc": "Giảm tỉ lệ phòng thủ theo số hiệu quả bất lợi của bản thân, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a2698aa7-c1a9-4288-a132-02fb6cd49e74.78af1.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/a2698aa7-c1a9-4288-a132-02fb6cd49e74.78af1.png"
     },
     {
       "id": "khieu_khich",
@@ -32483,7 +53435,8 @@
       "kind": "debuff",
       "desc": "Hiệu quả bất lợi, sát thương cuối mà mục tiêu có Khiêu khích gây cho mục tiêu ngoài người thi triển Khiêu khích giảm x%",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/97848e42-cf2f-47fd-b77a-20ec12f867c5.005ae.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/97848e42-cf2f-47fd-b77a-20ec12f867c5.005ae.png"
     },
     {
       "id": "khat_mau",
@@ -32502,7 +53455,8 @@
       "kind": "debuff",
       "desc": "Khi mục tiêu thi triển hành động tốn sĩ khí trên một mức nhất định, lượt sau sẽ Hỗn Loạn 1 lượt.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9cc3da50-32d5-4f4e-94c3-2421612bbd2a.4eba0.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/9cc3da50-32d5-4f4e-94c3-2421612bbd2a.4eba0.png"
     },
     {
       "id": "khac_bo",
@@ -32513,7 +53467,8 @@
       "kind": "buff",
       "desc": "Bản thân giảm sát thương cuối phải chịu từ Bộ Binh, số lượng là X",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png"
     },
     {
       "id": "khac_cung",
@@ -32524,7 +53479,8 @@
       "kind": "buff",
       "desc": "Bản thân giảm sát thương cuối phải chịu từ Cung Binh, số lượng là X",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png"
     },
     {
       "id": "khac_ky",
@@ -32535,7 +53491,8 @@
       "kind": "buff",
       "desc": "Bản thân giảm sát thương cuối phải chịu từ Kỵ Binh, số lượng là X",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png"
     },
     {
       "id": "khac_thuong",
@@ -32546,7 +53503,8 @@
       "kind": "buff",
       "desc": "Bản thân giảm sát thương cuối phải chịu từ Thương Binh, số lượng là X",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png"
     },
     {
       "id": "khong_che",
@@ -32557,7 +53515,8 @@
       "kind": "debuff",
       "desc": "Tấn công ngẫu nhiên vào chính đồng đội của mình.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1aa32375-a106-408a-8532-7dbc69a22994.f998c.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/1aa32375-a106-408a-8532-7dbc69a22994.f998c.png"
     },
     {
       "id": "khong_hoa",
@@ -32568,7 +53527,8 @@
       "kind": "buff",
       "desc": "Các đơn vị có đốt hoặc lửa làm giảm thiệt hại gây ra cho các đơn vị có ngọn lửa kiểm soát [giá trị hiệu quả].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8efb5706-d303-4c8d-8bd3-e4aac5d1d929.d6358.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/8efb5706-d303-4c8d-8bd3-e4aac5d1d929.d6358.png"
     },
     {
       "id": "kinh_cuc",
@@ -32579,7 +53539,8 @@
       "kind": "buff",
       "desc": "Phản đòn sát thương theo tỉ lệ phần trăm",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png"
     },
     {
       "id": "kinh_cuc_2",
@@ -32590,7 +53551,8 @@
       "kind": "unremovable",
       "desc": "Hiệu quả Kinh Cúc không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png"
     },
     {
       "id": "kinh_hon",
@@ -32601,7 +53563,8 @@
       "kind": "buff",
       "desc": "Khi có được buff này, mỗi lần kỹ năng tạo thành sát thương đều chồng lên một tầng âm hồn, hiệu quả cộng dồn là giá trị hiệu quả 1, lượt chồng lên là giá trị hiệu quả 2.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/79ce70d7-8472-4dae-8395-0a845ac1576d.cbcc1.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/79ce70d7-8472-4dae-8395-0a845ac1576d.cbcc1.png"
     },
     {
       "id": "kinh_hon_2",
@@ -32612,7 +53575,8 @@
       "kind": "unremovable",
       "desc": "Mỗi lần bản thân gây sát thương, sẽ tăng sát thương cuối, không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/958083df-03fb-40a7-ac45-59b75487b29d.23f08.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/958083df-03fb-40a7-ac45-59b75487b29d.23f08.png"
     },
     {
       "id": "kien_nghi_2",
@@ -32623,7 +53587,8 @@
       "kind": "buff",
       "desc": "Giải trừ hiệu quả bất lợi, đồng thời tăng phòng thủ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6a48f217-4497-4805-ab0e-267305d7bd3e.3036a.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/6a48f217-4497-4805-ab0e-267305d7bd3e.3036a.png"
     },
     {
       "id": "kien_thu",
@@ -32634,7 +53599,8 @@
       "kind": "buff",
       "desc": "Tất cả các phòng thủ tăng x% và có thể được cộng dồn.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5f863408-a83c-4982-878d-ef05d48106d0.62488.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/5f863408-a83c-4982-878d-ef05d48106d0.62488.png"
     },
     {
       "id": "kien_thu_2",
@@ -32645,7 +53611,8 @@
       "kind": "unremovable",
       "desc": "Tăng tất cả phòng, có thể tích lũy, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5f863408-a83c-4982-878d-ef05d48106d0.62488.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/5f863408-a83c-4982-878d-ef05d48106d0.62488.png"
     },
     {
       "id": "kien_tri_2",
@@ -32664,7 +53631,8 @@
       "kind": "buff",
       "desc": "Giảm xác suất trúng Mê Hoặc",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bdbd1c72-e8e8-441e-8bf9-cb56cd6cced7.a0681.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/bdbd1c72-e8e8-441e-8bf9-cb56cd6cced7.a0681.png"
     },
     {
       "id": "kieu_binh",
@@ -32675,7 +53643,8 @@
       "kind": "buff",
       "desc": "Khi bản thân đầy lính, tăng tấn công và sát thương phải chịu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/988d9852-a244-48df-be03-b2de7b88095f.85295.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/988d9852-a244-48df-be03-b2de7b88095f.85295.png"
     },
     {
       "id": "kieu_binh_2",
@@ -32686,7 +53655,8 @@
       "kind": "unremovable",
       "desc": "Khi binh lực của bản thân đầy đủ, lực tấn công tăng lên X, nhưng bị thương tổn tăng lên Y%.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3242a534-478e-409f-aebd-396db2d17549.82b94.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/3242a534-478e-409f-aebd-396db2d17549.82b94.png"
     },
     {
       "id": "kich_duong",
@@ -32697,7 +53667,8 @@
       "kind": "buff",
       "desc": "Hiệu quả hồi sĩ khí tăng x%",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0d90b45f-a50e-40ed-a6e8-9707c2cef7c5.ef5b8.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/0d90b45f-a50e-40ed-a6e8-9707c2cef7c5.ef5b8.png"
     },
     {
       "id": "kich_hoat_kich_doc",
@@ -32741,7 +53712,8 @@
       "kind": "buff",
       "desc": "Khi chịu bất kỳ sát thương nào, tăng X sĩ khí.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9c619805-8b48-4024-a89d-d287d2b76212.adcf6.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/9c619805-8b48-4024-a89d-d287d2b76212.adcf6.png"
     },
     {
       "id": "kich_no_2",
@@ -32752,7 +53724,8 @@
       "kind": "buff",
       "desc": "Khi chịu sát thương sẽ tăng sĩ khí.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9c619805-8b48-4024-a89d-d287d2b76212.adcf6.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/9c619805-8b48-4024-a89d-d287d2b76212.adcf6.png"
     },
     {
       "id": "kich_doc",
@@ -32763,7 +53736,8 @@
       "kind": "debuff",
       "desc": "Trước khi mục tiêu bắt đầu hành động sẽ nhận sát thương Mưu Công theo tỉ lệ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/cce223c6-e111-47e4-a80f-9978059d1a66.b9fcd.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/cce223c6-e111-47e4-a80f-9978059d1a66.b9fcd.png"
     },
     {
       "id": "ky_tran",
@@ -32774,7 +53748,8 @@
       "kind": "buff",
       "desc": "Khi có BUFF này, trong lượt lẻ tấn công tăng X%, trong lượt chẵn phòng thủ tăng X%",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/127258b9-34ae-444a-9460-6a44d6b930f7.79ff8.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/127258b9-34ae-444a-9460-6a44d6b930f7.79ff8.png"
     },
     {
       "id": "ky_tran_2",
@@ -32785,7 +53760,8 @@
       "kind": "unremovable",
       "desc": "Khi có BUFF này, khi ở lượt số lẻ, sức tấn công của bản thân tăng X%, khi ở lượt chẵn, khả năng phòng thủ của bản thân tăng X%.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/127258b9-34ae-444a-9460-6a44d6b930f7.79ff8.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/127258b9-34ae-444a-9460-6a44d6b930f7.79ff8.png"
     },
     {
       "id": "ky_tap_2",
@@ -32796,7 +53772,8 @@
       "kind": "unremovable",
       "desc": "Mỗi lần bản thân thi triển hiệu quả Khống Chế lên địch, tăng sát thương cuối bản thân gây ra, không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/89e27ae6-c8c1-45b7-b3de-0e051bafd0b2.d9ba4.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/89e27ae6-c8c1-45b7-b3de-0e051bafd0b2.d9ba4.png"
     },
     {
       "id": "lay_dong",
@@ -32807,7 +53784,8 @@
       "kind": "debuff",
       "desc": "Tăng thêm hiệu quả giảm sĩ khí",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/22319cd1-c787-478f-aebe-254dc354325c.1a874.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/22319cd1-c787-478f-aebe-254dc354325c.1a874.png"
     },
     {
       "id": "lay_dong_2",
@@ -32818,7 +53796,8 @@
       "kind": "unremovable",
       "desc": "Giảm hiệu quả Tăng Sĩ Khí, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/22319cd1-c787-478f-aebe-254dc354325c.1a874.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/22319cd1-c787-478f-aebe-254dc354325c.1a874.png"
     },
     {
       "id": "li_thuong",
@@ -32829,7 +53808,8 @@
       "kind": "buff",
       "desc": "Khi bản thân đang mang một hiệu quả nhất định, sát thương phải chịu giảm 10%; nếu không thì tăng 10%.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/569dfb81-a87a-409d-b550-890b5eb12b42.bd6f7.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/569dfb81-a87a-409d-b550-890b5eb12b42.bd6f7.png"
     },
     {
       "id": "lien_hoan",
@@ -32840,7 +53820,8 @@
       "kind": "buff",
       "desc": "Chuyển x% sát thương tướng đó phải chịu lên toàn phe.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0278e5a3-a42b-4d81-9b0d-2cf37e5b1bbd.3eca4.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/0278e5a3-a42b-4d81-9b0d-2cf37e5b1bbd.3eca4.png"
     },
     {
       "id": "lien_kich",
@@ -32851,7 +53832,8 @@
       "kind": "buff",
       "desc": "Kích hoạt khi trong đội có tướng chỉ định, tung một đòn tấn công liên kết.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b93de812-c239-430b-9a06-0dbe713eeeaa.dcc00.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/b93de812-c239-430b-9a06-0dbe713eeeaa.dcc00.png"
     },
     {
       "id": "lien_tuc",
@@ -32862,7 +53844,8 @@
       "kind": "buff",
       "desc": "Khi thi triển kỹ năng , làm cho lực tấn công của bản thân tăng X%, có thể cộng dồn, nếu như không thi triển kỹ năng thì mất số tầng cộng dồn.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/4ab6aaa1-b2cd-46a7-8549-6fe17ffa7030.6afdc.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/4ab6aaa1-b2cd-46a7-8549-6fe17ffa7030.6afdc.png"
     },
     {
       "id": "long_hon",
@@ -32873,7 +53856,8 @@
       "kind": "buff",
       "desc": "Nếu bản thân bị khống chế, thì khôi phục binh lực [giá trị hiệu quả] (hệ số là -0,2 kế sách cộng máu) và ngẫu nhiên giải trừ [giá trị hiệu quả] một hiệu ứng bất lợi.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/06218e2b-0e51-4300-8dce-bbc83618e5db.0b4df.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/06218e2b-0e51-4300-8dce-bbc83618e5db.0b4df.png"
     },
     {
       "id": "loai_bo",
@@ -32884,7 +53868,8 @@
       "kind": "buff",
       "desc": "Miễn dịch hiệu quả bất lợi",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a710f98b-a72a-47c8-b153-58da870b5f8b.29e49.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/a710f98b-a72a-47c8-b153-58da870b5f8b.29e49.png"
     },
     {
       "id": "loai_bo_may_tinh",
@@ -32914,7 +53899,8 @@
       "kind": "buff",
       "desc": "Mỗi lần bản thân Đánh Thường hoặc Phản Kích, đều sẽ tăng sĩ khí cho bản thân và đồng đội",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/753b09fb-6a79-4c26-a55b-638cd914d1d2.8b594.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/753b09fb-6a79-4c26-a55b-638cd914d1d2.8b594.png"
     },
     {
       "id": "loi_co_2",
@@ -32925,7 +53911,8 @@
       "kind": "unremovable",
       "desc": "Mỗi lần bản thân Đánh Thường hoặc Phản Kích, sẽ tăng sĩ khí cho bản thân và đồng đội, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/753b09fb-6a79-4c26-a55b-638cd914d1d2.8b594.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/753b09fb-6a79-4c26-a55b-638cd914d1d2.8b594.png"
     },
     {
       "id": "lac_nguyet",
@@ -32958,7 +53945,8 @@
       "kind": "buff",
       "desc": "Không thể hồi phục sĩ khí, mỗi lượt gây sát thương toàn phe địch",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/390c79a5-4a8b-489b-974b-8e74e958a953.c16d4.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/390c79a5-4a8b-489b-974b-8e74e958a953.c16d4.png"
     },
     {
       "id": "ma_am",
@@ -32969,7 +53957,8 @@
       "kind": "debuff",
       "desc": "Mỗi tầng Ma Ám giảm tỉ lệ binh lực tối đa, có thể cộng dồn",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e48836e6-29f8-4dca-8fe5-f40c4947787e.d50be.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/e48836e6-29f8-4dca-8fe5-f40c4947787e.d50be.png"
     },
     {
       "id": "minh_triet",
@@ -32980,7 +53969,8 @@
       "kind": "buff",
       "desc": "Nếu bản thân không có buff bất lợi, tấn công tăng X%, phòng thủ tăng Y%.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/55ad2cb7-6479-4470-8d2e-aebaacc6f5b5.f48c4.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/55ad2cb7-6479-4470-8d2e-aebaacc6f5b5.f48c4.png"
     },
     {
       "id": "minh_tam",
@@ -32991,7 +53981,8 @@
       "kind": "buff",
       "desc": "Giảm xác suất bị Băng Phong",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e0d91b19-4d44-4b44-9432-5852f841ec88.db293.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/e0d91b19-4d44-4b44-9432-5852f841ec88.db293.png"
     },
     {
       "id": "mien_dich",
@@ -33002,7 +53993,8 @@
       "kind": "buff",
       "desc": "Miễn dịch tất cả các tác dụng tăng và giảm.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png"
     },
     {
       "id": "mien_dich_ma_am",
@@ -33024,7 +54016,8 @@
       "kind": "unremovable",
       "desc": "Các tướng có hiệu ứng này không thể giải trừ trên cơ thể làm giảm sát thương [giá trị hiệu quả] nhận vào.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/66e43afc-922b-4122-9d66-52e358f39807.c8db1.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/66e43afc-922b-4122-9d66-52e358f39807.c8db1.png"
     },
     {
       "id": "may_den",
@@ -33043,7 +54036,8 @@
       "kind": "debuff",
       "desc": "Trong trạng thái BUFF này ko thể hành động và tấn công đồng đội ngẫu nhiên",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a72fafe5-a1f7-4a71-936e-7bdea2b20411.708df.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/a72fafe5-a1f7-4a71-936e-7bdea2b20411.708df.png"
     },
     {
       "id": "muu_cong",
@@ -33054,7 +54048,8 @@
       "kind": "buff",
       "desc": "Trong thời gian duy trì, đòn đánh thường được tăng thêm một lần đánh bằng mưu công, đồng thời không thể hồi lại sĩ khí.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/480a3cee-12df-44be-bf22-e6e026c245fd.67158.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/480a3cee-12df-44be-bf22-e6e026c245fd.67158.png"
     },
     {
       "id": "muu_dinh",
@@ -33065,7 +54060,8 @@
       "kind": "unremovable",
       "desc": "Không thể hồi phục sĩ khí, mỗi lượt đối với toàn bộ địch nhân tạo thành sát thương kế sách X lần Y%.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/62928d64-f505-4326-a578-d40470a25742.2f924.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/62928d64-f505-4326-a578-d40470a25742.2f924.png"
     },
     {
       "id": "met_moi",
@@ -33076,7 +54072,8 @@
       "kind": "buff",
       "desc": "Có hiệu lực sau khi Bất khuất có hiệu lực.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fbd6b052-1410-43e5-90fe-820382f4fba6.5d834.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/fbd6b052-1410-43e5-90fe-820382f4fba6.5d834.png"
     },
     {
       "id": "nghia_dung",
@@ -33131,7 +54128,8 @@
       "kind": "buff",
       "desc": "Vật Công tăng 7000%, nhận sát thương bất kỳ đều Phản Kích, mỗi lần Phản Kích khiến Vật Công tăng 400%",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ea2816de-3127-44e1-abeb-72fac141a5ca.05e05.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/ea2816de-3127-44e1-abeb-72fac141a5ca.05e05.png"
     },
     {
       "id": "nghich_chien_2",
@@ -33142,7 +54140,8 @@
       "kind": "buff",
       "desc": "Binh lực bản thân càng ít tấn công càng cao.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d49073a9-ba26-4203-abea-7121c8adbdc4.ea0c9.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/d49073a9-ba26-4203-abea-7121c8adbdc4.ea0c9.png"
     },
     {
       "id": "nghich_chuyen",
@@ -33153,7 +54152,8 @@
       "kind": "buff",
       "desc": "Sau khi bị tấn công sẽ phản lại một buff; Y là số lượt duy trì buff đó.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png"
     },
     {
       "id": "nghich_chuyen_2",
@@ -33164,7 +54164,8 @@
       "kind": "buff",
       "desc": "Khi bản thân bị tấn công, khiến kẻ địch chịu 1 tầng giẫm đạp, cộng dồn 5 tầng sẽ khiến địch hỗn loạn không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png"
     },
     {
       "id": "nguyet_huy",
@@ -33175,7 +54176,8 @@
       "kind": "buff",
       "desc": "Hiệu quả giảm sĩ khí giảm X%.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/eaf4e170-5da1-43ca-8cca-0a69f5ce9328.bc4c3.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/eaf4e170-5da1-43ca-8cca-0a69f5ce9328.bc4c3.png"
     },
     {
       "id": "nguyet_huy_2",
@@ -33186,7 +54188,8 @@
       "kind": "unremovable",
       "desc": "Hiệu quả giảm sĩ khí giảm, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/eaf4e170-5da1-43ca-8cca-0a69f5ce9328.bc4c3.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/eaf4e170-5da1-43ca-8cca-0a69f5ce9328.bc4c3.png"
     },
     {
       "id": "nguyet_hon",
@@ -33197,7 +54200,8 @@
       "kind": "buff",
       "desc": "Không chịu ảnh hưởng từ hiệu quả giảm sĩ khí",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fde66ab0-3042-44e7-91ca-63fa9697eb15.257a7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/fde66ab0-3042-44e7-91ca-63fa9697eb15.257a7.png"
     },
     {
       "id": "nguyet_hon_2",
@@ -33208,7 +54212,8 @@
       "kind": "unremovable",
       "desc": "Nguyệt Hồn không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fde66ab0-3042-44e7-91ca-63fa9697eb15.257a7.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/fde66ab0-3042-44e7-91ca-63fa9697eb15.257a7.png"
     },
     {
       "id": "ngu_say",
@@ -33219,7 +54224,8 @@
       "kind": "debuff",
       "desc": "Trong trạng thái BUFF này, mục tiêu sẽ rơi vào trạng thái không thể tấn công, BUFF sẽ biến mất khi bị sát thương.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7643ebbd-1a68-4cf3-b3ec-200ccca8670a.52d22.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/7643ebbd-1a68-4cf3-b3ec-200ccca8670a.52d22.png"
     },
     {
       "id": "ngu_hoanh",
@@ -33252,7 +54258,8 @@
       "kind": "buff",
       "desc": "Trị liệu cuối cùng bản thân tạo ra (không gồm BUFF) tăng X%. Nếu đạt giới hạn tối đa, trị liệu cuối = Giới hạn × (100% + X%).",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0d90b45f-a50e-40ed-a6e8-9707c2cef7c5.ef5b8.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/0d90b45f-a50e-40ed-a6e8-9707c2cef7c5.ef5b8.png"
     },
     {
       "id": "pha_thanh",
@@ -33263,7 +54270,8 @@
       "kind": "buff",
       "desc": "Khi phát động một cuộc tấn công, nếu mục tiêu có [miễn dịch] hoặc [loại bỏ], thiệt hại gây ra cho mục tiêu cộng thêm[giá trị hiệu quả].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5589d389-b9dd-4218-ac4a-9bf9fee1b66b.94c91.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/5589d389-b9dd-4218-ac4a-9bf9fee1b66b.94c91.png"
     },
     {
       "id": "pha_dich",
@@ -33274,7 +54282,8 @@
       "kind": "debuff",
       "desc": "Giảm hiệu quả Đào Binh phải chịu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/67b9b697-fafc-4e84-9d0b-8d075cc565d5.8d8ed.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/67b9b697-fafc-4e84-9d0b-8d075cc565d5.8d8ed.png"
     },
     {
       "id": "phan",
@@ -33285,7 +54294,8 @@
       "kind": "buff",
       "desc": "Tăng xác suất phản kích của mục tiêu.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7fd8912d-c869-42f0-bc25-23f98b9f6841.1d3d1.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/7fd8912d-c869-42f0-bc25-23f98b9f6841.1d3d1.png"
     },
     {
       "id": "phan_cong",
@@ -33304,7 +54314,8 @@
       "kind": "buff",
       "desc": "Sĩ khí nhận được mỗi lượt tăng điểm X.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7ef92aca-d0e5-4937-abdf-efcc04c71802.e82c4.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/7ef92aca-d0e5-4937-abdf-efcc04c71802.e82c4.png"
     },
     {
       "id": "phuc_thu",
@@ -33315,7 +54326,8 @@
       "kind": "buff",
       "desc": "Khi chịu sát thương sẽ Phản Kích",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ea2816de-3127-44e1-abeb-72fac141a5ca.05e05.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/ea2816de-3127-44e1-abeb-72fac141a5ca.05e05.png"
     },
     {
       "id": "phuc_thu_3",
@@ -33326,7 +54338,8 @@
       "kind": "buff",
       "desc": "Mỗi lần phản kích tấn công địch trên đường thẳng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ea2816de-3127-44e1-abeb-72fac141a5ca.05e05.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/ea2816de-3127-44e1-abeb-72fac141a5ca.05e05.png"
     },
     {
       "id": "quy_phong",
@@ -33337,7 +54350,8 @@
       "kind": "buff",
       "desc": "Tăng khả năng kháng hiệu quả Khống Chế, giảm xác suất trúng Khống Chế",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1aa32375-a106-408a-8532-7dbc69a22994.f998c.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/1aa32375-a106-408a-8532-7dbc69a22994.f998c.png"
     },
     {
       "id": "song_hung",
@@ -33348,7 +54362,8 @@
       "kind": "buff",
       "desc": "Tính toán quân đội bạn có hiệu ứng song hùng khác hay không, mỗi lượt tăng tấn công X% của mình (tương tự như anh dũng), hiệu quả có thể cộng dồn.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d428b7bf-7f62-4acc-bf24-cff33ea18e34.d79e5.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/d428b7bf-7f62-4acc-bf24-cff33ea18e34.d79e5.png"
     },
     {
       "id": "suy_yeu",
@@ -33359,7 +54374,8 @@
       "kind": "debuff",
       "desc": "Giảm phe địch X Chỉ Huy, Võ và Trí.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/614cb152-a462-4221-838a-20f5e4e23fae.05fd0.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/614cb152-a462-4221-838a-20f5e4e23fae.05fd0.png"
     },
     {
       "id": "sach_thuan",
@@ -33370,7 +54386,8 @@
       "kind": "buff",
       "desc": "Tăng phòng thủ, điểm Trí đối phương càng thấp so với bản thân, sát thương phải chịu càng ít",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c427d071-6ebe-4eaf-a325-38a8d582bf34.887e7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/c427d071-6ebe-4eaf-a325-38a8d582bf34.887e7.png"
     },
     {
       "id": "soi_suc",
@@ -33381,7 +54398,8 @@
       "kind": "buff",
       "desc": "Mỗi khi mục tiêu nhận trị liệu, người thi triển cũng sẽ nhận trị liệu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6c45858b-1ce5-479d-a5b6-17388e381bac.216f6.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/6c45858b-1ce5-479d-a5b6-17388e381bac.216f6.png"
     },
     {
       "id": "sung_kiem",
@@ -33392,7 +54410,8 @@
       "kind": "buff",
       "desc": "Khi bắt đầu lượt, giải trừ x hiệu quả bất lợi, mỗi hiệu quả được giải trù hồi phục 50000 lính lợi của bản thân x2.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/452d1a51-461b-46b9-8b4a-d14ecfa9cd1d.b524f.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/452d1a51-461b-46b9-8b4a-d14ecfa9cd1d.b524f.png"
     },
     {
       "id": "so_hai",
@@ -33403,7 +54422,8 @@
       "kind": "debuff",
       "desc": "Không thể hành động, tấn công ngẫu nhiên 1 đồng minh, xóa bỏ khi bị nhận sát thương .",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6c09ee33-38c0-43fb-891e-98d8a3c06163.395b7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/6c09ee33-38c0-43fb-891e-98d8a3c06163.395b7.png"
     },
     {
       "id": "tan_vo",
@@ -33414,7 +54434,8 @@
       "kind": "debuff",
       "desc": "( giá trị hiệu quả ) xác suất tiến vào [Hỗn Loạn], liên tục [giá trị hiệu quả] một lượt, binh lực càng ít [Hỗn Loạn] xác suất càng cao.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2292a825-c85d-40e7-a099-202ee97c3151.841c4.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/2292a825-c85d-40e7-a099-202ee97c3151.841c4.png"
     },
     {
       "id": "thanh_long_2",
@@ -33425,7 +54446,8 @@
       "kind": "unremovable",
       "desc": "Tăng x% công phòng của bản thân, hiệu ứng này không thể bị giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/400bfefe-b5fa-4ca5-8dff-dd6d94608029.37869.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/400bfefe-b5fa-4ca5-8dff-dd6d94608029.37869.png"
     },
     {
       "id": "thi_ky",
@@ -33436,7 +54458,8 @@
       "kind": "buff",
       "desc": "Khi tấn công, áp thêm 1 buff lên mục tiêu.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png"
     },
     {
       "id": "thi_ky_2",
@@ -33447,7 +54470,8 @@
       "kind": "buff",
       "desc": "Khi tấn công, gây thêm sát thương và tự nhận 1 buff.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png"
     },
     {
       "id": "thi_doc",
@@ -33458,7 +54482,8 @@
       "kind": "debuff",
       "desc": "Khi bắt đầu lượt, chịu x% mưu công của người thi triển, sát thương phải chịu sẽ lan cho tướng cùng phe.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9a8cf6c0-f8ac-41cd-a460-4adddf596ae7.c8193.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/9a8cf6c0-f8ac-41cd-a460-4adddf596ae7.c8193.png"
     },
     {
       "id": "thien_cam",
@@ -33469,7 +54494,8 @@
       "kind": "buff",
       "desc": "Tăng khả năng kháng hiệu quả Tan Vỡ, giảm xác suất trúng Tan Vỡ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2292a825-c85d-40e7-a099-202ee97c3151.841c4.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/2292a825-c85d-40e7-a099-202ee97c3151.841c4.png"
     },
     {
       "id": "thien_hoa",
@@ -33480,7 +54506,8 @@
       "kind": "unremovable",
       "desc": "Khi kết thúc lượt, chịu 15000% sát thương mưu công của người thi triển, sát thương phải chịu lan cho tướng cùng phe",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/05df3c9f-bdff-4edf-9b48-5b38e5a75207.4055a.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/05df3c9f-bdff-4edf-9b48-5b38e5a75207.4055a.png"
     },
     {
       "id": "thien_tuong",
@@ -33491,7 +54518,8 @@
       "kind": "buff",
       "desc": "Khi thi triển kỹ năng, bộ phận sĩ khí cao hơn 100 sẽ tăng sát thương thêm",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fd1d764b-0e16-4f7e-b1e3-dd2097c4e2fd.4852b.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/fd1d764b-0e16-4f7e-b1e3-dd2097c4e2fd.4852b.png"
     },
     {
       "id": "thien_van",
@@ -33502,7 +54530,8 @@
       "kind": "buff",
       "desc": "Mỗi lượt tăng sát thương cho bản thân theo bội số ngẫu nhiên (từ 1 đến X lần).",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ac54579b-1973-48d2-8212-1c7e6168ce67.3dd56.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/ac54579b-1973-48d2-8212-1c7e6168ce67.3dd56.png"
     },
     {
       "id": "thieu_thuong",
@@ -33524,7 +54553,8 @@
       "kind": "debuff",
       "desc": "Gây sát thương kế sách kéo dài theo lượt.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/66a94d42-a050-46ab-ac1d-dbb2e54d8c8c.4cd5a.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/66a94d42-a050-46ab-ac1d-dbb2e54d8c8c.4cd5a.png"
     },
     {
       "id": "thiet_bich",
@@ -33535,7 +54565,8 @@
       "kind": "buff",
       "desc": "Tất cả các chấn thương phải chịu giảm xuống còn 1 điểm.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png"
     },
     {
       "id": "thiet_y",
@@ -33546,7 +54577,8 @@
       "kind": "buff",
       "desc": "Với hiệu ứng này, trong vòng liên tục có thể chống lại hiệu ứng kiểm soát thứ cấp [giá trị hiệu ứng] (hỗn loạn, hôn mê, sợ hãi, đóng băng, sợ hãi).",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1a0a7370-7171-43b7-ba99-e948c816eb5c.1e25a.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/1a0a7370-7171-43b7-ba99-e948c816eb5c.1e25a.png"
     },
     {
       "id": "thiet_y_chuyen_dung_bac_7",
@@ -33568,7 +54600,8 @@
       "kind": "unremovable",
       "desc": "Tăng tất cả tấn công, có thể cộng dồn, có giới hạn tối đa.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fdeddfa9-2c03-494e-8119-6a30f3ce59eb.0c8e4.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/fdeddfa9-2c03-494e-8119-6a30f3ce59eb.0c8e4.png"
     },
     {
       "id": "them_binh_linh",
@@ -33587,7 +54620,8 @@
       "kind": "buff",
       "desc": "Thêm lính theo tỉ lệ phần trăm",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/4406d9b8-728e-4956-a86e-91a7eb7abada.53245.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/4406d9b8-728e-4956-a86e-91a7eb7abada.53245.png"
     },
     {
       "id": "thi_quan",
@@ -33598,7 +54632,8 @@
       "kind": "buff",
       "desc": "Phá hoại Thiết Bích của mục tiêu và gây thêm sát thương theo tỉ lệ phần trăm của sát thương hiện tại",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/57a20b99-3736-4b2c-802e-7cc999fbeab5.d8937.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/57a20b99-3736-4b2c-802e-7cc999fbeab5.d8937.png"
     },
     {
       "id": "thi_quan_2",
@@ -33609,7 +54644,8 @@
       "kind": "unremovable",
       "desc": "Phá hoại Thiết Bích của mục tiêu và gây thêm sát thương theo tỉ lệ phần trăm của sát thương hiện tại, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/57a20b99-3736-4b2c-802e-7cc999fbeab5.d8937.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/57a20b99-3736-4b2c-802e-7cc999fbeab5.d8937.png"
     },
     {
       "id": "thoi_mien",
@@ -33620,7 +54656,8 @@
       "kind": "debuff",
       "desc": "Máu của đối phương càng nhiều thì xác suất bị ngủ càng cao.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7643ebbd-1a68-4cf3-b3ec-200ccca8670a.52d22.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/7643ebbd-1a68-4cf3-b3ec-200ccca8670a.52d22.png"
     },
     {
       "id": "thuong_tich",
@@ -33631,7 +54668,8 @@
       "kind": "debuff",
       "desc": "Mỗi lần bị thương, tổn thất X binh lực hiện tại, tối đa có hiệu lực Y.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/687724dc-5d5b-4e6b-a38f-bacb8915b34a.1ea4e.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/687724dc-5d5b-4e6b-a38f-bacb8915b34a.1ea4e.png"
     },
     {
       "id": "thau_suot",
@@ -33642,7 +54680,8 @@
       "kind": "buff",
       "desc": "Sát thương gây cho mục tiêu có BUFF Treo Thưởng tăng hoặc giảm",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3fafe65f-44e1-435d-9dc9-7d1dae25a367.0fa28.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/3fafe65f-44e1-435d-9dc9-7d1dae25a367.0fa28.png"
     },
     {
       "id": "than_binh",
@@ -33653,7 +54692,8 @@
       "kind": "buff",
       "desc": "Dựa theo binh lực bản thân gia tăng lực tấn công, tối đa không vượt quá 160%.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5a6251c9-443d-4ce7-8f94-d150b0bcc5c4.e3a46.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/5a6251c9-443d-4ce7-8f94-d150b0bcc5c4.e3a46.png"
     },
     {
       "id": "than_loi",
@@ -33675,7 +54715,8 @@
       "kind": "buff",
       "desc": "Gây sát thương [giá trị hiệu quả] cho kẻ thù bị Tê liệt.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0ce6f563-0377-44ad-9489-d5f6727755c7.d56a3.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/0ce6f563-0377-44ad-9489-d5f6727755c7.d56a3.png"
     },
     {
       "id": "than_toc_2",
@@ -33686,7 +54727,8 @@
       "kind": "buff",
       "desc": "Gây sát thương gấp bội cho địch bị khống chế, không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0ce6f563-0377-44ad-9489-d5f6727755c7.d56a3.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/0ce6f563-0377-44ad-9489-d5f6727755c7.d56a3.png"
     },
     {
       "id": "thi_huyet",
@@ -33697,7 +54739,8 @@
       "kind": "unremovable",
       "desc": "Xếu mục tiêu có tỉ lệ Lính dưới 75%/50%, bản thân nhận Cuồng Bạo/Liên Chiến, duy trì 30 lượt.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9c619805-8b48-4024-a89d-d287d2b76212.adcf6.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/9c619805-8b48-4024-a89d-d287d2b76212.adcf6.png"
     },
     {
       "id": "thinh_no",
@@ -33716,7 +54759,8 @@
       "kind": "buff",
       "desc": "Vật công gây ra tăng X%, có thể cộng dồn.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3b2303f3-dee5-4249-8ef3-57bab6de3abd.689ae.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/3b2303f3-dee5-4249-8ef3-57bab6de3abd.689ae.png"
     },
     {
       "id": "thu_ho",
@@ -33727,7 +54771,8 @@
       "kind": "buff",
       "desc": "Giảm sát thương cho mục tiêu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2bfb6cf6-ebb2-4803-9a1d-1bd442e60775.6fd5a.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/2bfb6cf6-ebb2-4803-9a1d-1bd442e60775.6fd5a.png"
     },
     {
       "id": "thu_ho_2",
@@ -33738,7 +54783,8 @@
       "kind": "unremovable",
       "desc": "Tăng phòng thủ, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2bfb6cf6-ebb2-4803-9a1d-1bd442e60775.6fd5a.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/2bfb6cf6-ebb2-4803-9a1d-1bd442e60775.6fd5a.png"
     },
     {
       "id": "thu_nghia",
@@ -33749,7 +54795,8 @@
       "kind": "buff",
       "desc": "Giảm sát thương phải chịu khi không trong lượt bản thân",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f50d8789-9a74-41b3-9eef-47a40f5f74c6.5f71e.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/f50d8789-9a74-41b3-9eef-47a40f5f74c6.5f71e.png"
     },
     {
       "id": "thu_ngu",
@@ -33771,7 +54818,8 @@
       "kind": "buff",
       "desc": "Tăng tất cả phòng thủ, sau đó giảm theo số lượt. về 0 sau 5 lượt hành động",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c577aba9-9ed9-4bc6-bf84-08f5e62d245e.74449.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/c577aba9-9ed9-4bc6-bf84-08f5e62d245e.74449.png"
     },
     {
       "id": "tin_gia",
@@ -33782,7 +54830,8 @@
       "kind": "buff",
       "desc": "Giảm sát thương Thi Độc phải chịu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ff66d095-f66f-4b72-92e5-f8a1affd5750.81b51.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/ff66d095-f66f-4b72-92e5-f8a1affd5750.81b51.png"
     },
     {
       "id": "tien_cong",
@@ -33793,7 +54842,8 @@
       "kind": "buff",
       "desc": "Đánh thường tăng Pháp Công, trong thời gian đó không thể hồi sĩ khí",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9d6a251e-0f54-40da-9391-184cf8e8b60d.a54c6.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/9d6a251e-0f54-40da-9391-184cf8e8b60d.a54c6.png"
     },
     {
       "id": "toan_nang",
@@ -33804,7 +54854,8 @@
       "kind": "buff",
       "desc": "Tăng C.Huy, Võ, Trí, không thể cộng dồn.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f37715fe-47ed-4694-a881-2e684127e7a8.c4bec.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/f37715fe-47ed-4694-a881-2e684127e7a8.c4bec.png"
     },
     {
       "id": "toan_nang_chuyen_dung_bac_7",
@@ -33826,7 +54877,8 @@
       "kind": "buff",
       "desc": "Tăng C.Huy, Võ, Trí, không thể cộng dồn.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f37715fe-47ed-4694-a881-2e684127e7a8.c4bec.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/f37715fe-47ed-4694-a881-2e684127e7a8.c4bec.png"
     },
     {
       "id": "treo_thuong",
@@ -33837,7 +54889,8 @@
       "kind": "buff",
       "desc": "Tăng sát thương từ tướng có Thấu Suốt, khi tướng mang hiệu quả này tử trận, toàn phe ta tăng x sĩ khí.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5228c82f-fb6d-481c-88af-36df47a4c4a2.3dc68.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/5228c82f-fb6d-481c-88af-36df47a4c4a2.3dc68.png"
     },
     {
       "id": "tru_than",
@@ -33848,7 +54901,8 @@
       "kind": "unremovable",
       "desc": "Khi tấn công địch nhân có [hộ nhậnẫn] và [chống đỡ], lập tức phá bỏ tất cả lá chắn và hiệu quả chống đỡ, đồng thời gây thêm sát thương [giá trị hiệu quả].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/29c87b45-70c7-4dcd-8dcd-71d76456d8c2.b1faa.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/29c87b45-70c7-4dcd-8dcd-71d76456d8c2.b1faa.png"
     },
     {
       "id": "truy_kich_2",
@@ -33859,7 +54913,8 @@
       "kind": "buff",
       "desc": "Gây sát thương X lần cho các đơn vị có buff cụ thể.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a3707020-dc59-4f8b-b86a-da8ebc6a4b05.d3554.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/a3707020-dc59-4f8b-b86a-da8ebc6a4b05.d3554.png"
     },
     {
       "id": "tri",
@@ -33870,7 +54925,8 @@
       "kind": "buff",
       "desc": "Bản thân tăng Trí",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/dff1e976-13c2-44ac-a80b-f7ae221e84a2.f023b.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/dff1e976-13c2-44ac-a80b-f7ae221e84a2.f023b.png"
     },
     {
       "id": "tri_luc_2",
@@ -33881,7 +54937,8 @@
       "kind": "unremovable",
       "desc": "Bản thân tăng Trí, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/dff1e976-13c2-44ac-a80b-f7ae221e84a2.f023b.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/dff1e976-13c2-44ac-a80b-f7ae221e84a2.f023b.png"
     },
     {
       "id": "tri_tue",
@@ -33892,7 +54949,8 @@
       "kind": "buff",
       "desc": "Tăng sát thương kế sách, hiệu quả có thể cộng dồn.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ccd3a94f-edb2-486d-8968-feafb766a429.02678.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/ccd3a94f-edb2-486d-8968-feafb766a429.02678.png"
     },
     {
       "id": "tri_tue_2",
@@ -33903,7 +54961,8 @@
       "kind": "buff",
       "desc": "Tăng Mưu Công, có thể cộng dồn",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ccd3a94f-edb2-486d-8968-feafb766a429.02678.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/ccd3a94f-edb2-486d-8968-feafb766a429.02678.png"
     },
     {
       "id": "tru_sach_chuyen_dung_bac_7",
@@ -33925,7 +54984,8 @@
       "kind": "debuff",
       "desc": "Mỗi lượt, tướng đang Trúng Độc sẽ mất một lượng sinh lực nhất định.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ff66d095-f66f-4b72-92e5-f8a1affd5750.81b51.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/ff66d095-f66f-4b72-92e5-f8a1affd5750.81b51.png"
     },
     {
       "id": "tram_sat",
@@ -33936,7 +54996,8 @@
       "kind": "debuff",
       "desc": "Khi tỉ lệ sinh lực của mục tiêu thấp hơn X%, lập tức tử vong.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/72459c82-139f-42a5-a053-3a6da7301281.186e6.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/72459c82-139f-42a5-a053-3a6da7301281.186e6.png"
     },
     {
       "id": "tram_tien",
@@ -33947,7 +55008,8 @@
       "kind": "buff",
       "desc": "Lập tức xóa bỏ hiệu quả Nguyệt Hồn và Nguyệt Hồn 2, tăng sát thương gây ra",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/705e1df3-ba4a-4564-96a2-2b42cd2a2ae7.13004.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/705e1df3-ba4a-4564-96a2-2b42cd2a2ae7.13004.png"
     },
     {
       "id": "tran_quoc",
@@ -33977,7 +55039,8 @@
       "kind": "debuff",
       "desc": "Giảm C.Huy, Võ và Trí",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1b211fea-7678-4a07-aa17-33f7787dceff.d218a.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/1b211fea-7678-4a07-aa17-33f7787dceff.d218a.png"
     },
     {
       "id": "tan_ta_2",
@@ -33988,7 +55051,8 @@
       "kind": "debuff",
       "desc": "Giảm C.Huy, Võ và Trí",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1b211fea-7678-4a07-aa17-33f7787dceff.d218a.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/1b211fea-7678-4a07-aa17-33f7787dceff.d218a.png"
     },
     {
       "id": "tai_sinh",
@@ -33999,7 +55063,8 @@
       "kind": "buff",
       "desc": "Mỗi lần bị tấn công hồi lượng Lính nhất định",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bb39f256-52c1-44b1-a2a4-09ff2025003e.ae99f.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/bb39f256-52c1-44b1-a2a4-09ff2025003e.ae99f.png"
     },
     {
       "id": "te_liet",
@@ -34010,7 +55075,8 @@
       "kind": "debuff",
       "desc": "Khi bắt đầu lượt có xác suất 50% tiến vào [Hỗn loạn",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9c1dba9c-ea7b-4c83-848d-f37f90280a85.13be7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/9c1dba9c-ea7b-4c83-848d-f37f90280a85.13be7.png"
     },
     {
       "id": "tong_long",
@@ -34021,7 +55087,8 @@
       "kind": "buff",
       "desc": "Hiệu quả có lợi, tăng tất cả công của bản thân, hiệu quả có lợi càng nhiều, tấn công tăng càng nhiều",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/26599b19-db65-4627-8e32-74bb6af4bf15.e21f1.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/26599b19-db65-4627-8e32-74bb6af4bf15.e21f1.png"
     },
     {
       "id": "tong_long_2",
@@ -34032,7 +55099,8 @@
       "kind": "unremovable",
       "desc": "Hiệu quả có lợi, tăng tất cả công của bản thân, hiệu quả có lợi càng nhiều, tấn công tăng càng nhiều. Hiệu quả không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/26599b19-db65-4627-8e32-74bb6af4bf15.e21f1.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/26599b19-db65-4627-8e32-74bb6af4bf15.e21f1.png"
     },
     {
       "id": "tang_chien_cong",
@@ -34051,7 +55119,8 @@
       "kind": "unremovable",
       "desc": "Tăng tất cả công, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b248c1a1-26ee-4fcf-acc4-573a0cb823d3.f6214.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/b248c1a1-26ee-4fcf-acc4-573a0cb823d3.f6214.png"
     },
     {
       "id": "tang_cuong",
@@ -34073,7 +55142,8 @@
       "kind": "buff",
       "desc": "Tăng mưu công của tướng.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5ee8a2fd-9406-4cc2-821a-6918b21e8a3d.09a51.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/5ee8a2fd-9406-4cc2-821a-6918b21e8a3d.09a51.png"
     },
     {
       "id": "tang_muu_cong_2",
@@ -34084,7 +55154,8 @@
       "kind": "buff",
       "desc": "Khiến mục tiêu tăng Mưu Công",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5ee8a2fd-9406-4cc2-821a-6918b21e8a3d.09a51.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/5ee8a2fd-9406-4cc2-821a-6918b21e8a3d.09a51.png"
     },
     {
       "id": "tang_muu_phong_2",
@@ -34095,7 +55166,8 @@
       "kind": "buff",
       "desc": "Tăng Mưu Phòng.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/89ab7c3a-d7db-4e1d-949a-609b86907dfe.728e6.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/89ab7c3a-d7db-4e1d-949a-609b86907dfe.728e6.png"
     },
     {
       "id": "tang_phap_cong",
@@ -34106,7 +55178,8 @@
       "kind": "buff",
       "desc": "Tăng pháp công của tướng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bea274f3-1f54-4466-b6cc-0c6b85a52013.9941a.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/bea274f3-1f54-4466-b6cc-0c6b85a52013.9941a.png"
     },
     {
       "id": "tang_phap_cong_2",
@@ -34117,7 +55190,8 @@
       "kind": "buff",
       "desc": "Khiến mục tiêu tăng Pháp Công",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bea274f3-1f54-4466-b6cc-0c6b85a52013.9941a.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/bea274f3-1f54-4466-b6cc-0c6b85a52013.9941a.png"
     },
     {
       "id": "tang_phap_phong_2",
@@ -34128,7 +55202,8 @@
       "kind": "buff",
       "desc": "Tăng Pháp Phòng.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6ecc5c49-f318-492c-a20e-82864f496d2e.4e91f.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/6ecc5c49-f318-492c-a20e-82864f496d2e.4e91f.png"
     },
     {
       "id": "tang_st_chien_phap_2",
@@ -34172,7 +55247,8 @@
       "kind": "buff",
       "desc": "Tăng tất cả công của tướng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b248c1a1-26ee-4fcf-acc4-573a0cb823d3.f6214.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/b248c1a1-26ee-4fcf-acc4-573a0cb823d3.f6214.png"
     },
     {
       "id": "tang_tat_ca_cong",
@@ -34191,7 +55267,8 @@
       "kind": "buff",
       "desc": "Sau lượt thứ 4 sẽ Thức Tỉnh, mỗi lượt tăng tỉ lệ tấn công nhất định",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fdeddfa9-2c03-494e-8119-6a30f3ce59eb.0c8e4.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/fdeddfa9-2c03-494e-8119-6a30f3ce59eb.0c8e4.png"
     },
     {
       "id": "tang_vat_cong",
@@ -34202,7 +55279,8 @@
       "kind": "buff",
       "desc": "Tăng tấn công vật lý của tướng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2e13a71e-bb4b-47ba-98c2-53e47f3cce81.6c78d.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/2e13a71e-bb4b-47ba-98c2-53e47f3cce81.6c78d.png"
     },
     {
       "id": "tang_vat_cong_2",
@@ -34213,7 +55291,8 @@
       "kind": "buff",
       "desc": "Khiến mục tiêu tăng Vật Công.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2e13a71e-bb4b-47ba-98c2-53e47f3cce81.6c78d.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/2e13a71e-bb4b-47ba-98c2-53e47f3cce81.6c78d.png"
     },
     {
       "id": "tang_vat_phong_2",
@@ -34224,7 +55303,8 @@
       "kind": "buff",
       "desc": "Tăng phòng thủ vật lý, hiệu ứng này không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a96c6404-5d21-487e-b5e2-09993a5fe2ff.4ec91.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/a96c6404-5d21-487e-b5e2-09993a5fe2ff.4ec91.png"
     },
     {
       "id": "tuoc_doat",
@@ -34235,7 +55315,8 @@
       "kind": "buff",
       "desc": "Khi gây sát thương cho mục tiêu mang [Treo Thưởng], giảm sĩ khí mục tiêu, tăng sĩ khí bản thân",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9ad62db6-53d8-4e15-9ac6-2d8fa1052a06.8bab4.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/9ad62db6-53d8-4e15-9ac6-2d8fa1052a06.8bab4.png"
     },
     {
       "id": "tan_cong_manh_me",
@@ -34265,7 +55346,8 @@
       "kind": "buff",
       "desc": "Sát thương gây ra = sát thương kỹ năng + (số BUFF có lợi kẻ địch đang chịu × X).",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2622a9b1-4c91-4484-a9b8-99b6795f3c31.2f745.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/2622a9b1-4c91-4484-a9b8-99b6795f3c31.2f745.png"
     },
     {
       "id": "to_chi",
@@ -34276,7 +55358,8 @@
       "kind": "buff",
       "desc": "Trước mỗi lượt hành động, giải trừ hiệu quả bất lợi.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2a42c078-213e-4136-bfce-1bd33084a42c.9b4e3.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/2a42c078-213e-4136-bfce-1bd33084a42c.9b4e3.png"
     },
     {
       "id": "toa_binh",
@@ -34287,7 +55370,8 @@
       "kind": "debuff",
       "desc": "Không thể tăng binh lực",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b952b445-412d-40b7-8c63-6cb1d2a0a04d.65f59.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/b952b445-412d-40b7-8c63-6cb1d2a0a04d.65f59.png"
     },
     {
       "id": "toa_binh_2",
@@ -34298,7 +55382,8 @@
       "kind": "debuff",
       "desc": "Không thể tăng binh lực",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b952b445-412d-40b7-8c63-6cb1d2a0a04d.65f59.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/b952b445-412d-40b7-8c63-6cb1d2a0a04d.65f59.png"
     },
     {
       "id": "tu_chien",
@@ -34309,7 +55394,8 @@
       "kind": "buff",
       "desc": "Trong thời gian duy trì, tăng sức mạnh đòn đánh thường, đồng thời không thể hồi lại sĩ khí.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3a5e5943-eca0-4a3c-b3e1-a0730c26a853.ba75d.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/3a5e5943-eca0-4a3c-b3e1-a0730c26a853.ba75d.png"
     },
     {
       "id": "tu_than",
@@ -34342,7 +55428,8 @@
       "kind": "buff",
       "desc": "Tất cả lực phòng thủ gia tăng [giá trị hiệu quả], binh lực càng ít, lực phòng thủ tăng lên càng cao, tối đa là 80%.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/aa74195f-30b1-49b4-a050-611eb7eceb70.70d8e.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/aa74195f-30b1-49b4-a050-611eb7eceb70.70d8e.png"
     },
     {
       "id": "tu_thu_2",
@@ -34353,7 +55440,8 @@
       "kind": "buff",
       "desc": "Tỉ lệ lính càng ít, phòng thủ tăng càng nhiều",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/aa74195f-30b1-49b4-a050-611eb7eceb70.70d8e.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/aa74195f-30b1-49b4-a050-611eb7eceb70.70d8e.png"
     },
     {
       "id": "vien_muu",
@@ -34364,7 +55452,8 @@
       "kind": "buff",
       "desc": "Sau khi có được BUFF, 2 lượt đầu tăng [Giá trị], tăng hiệu quả 1 tấn công (có thể cộng dồn).",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/89afcd0b-b8d5-4aaf-b35e-d283068ea961.9c47b.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/89afcd0b-b8d5-4aaf-b35e-d283068ea961.9c47b.png"
     },
     {
       "id": "vong_doan",
@@ -34375,7 +55464,8 @@
       "kind": "unremovable",
       "desc": "Hiệu quả bất lợi, khi có BUFF, sát thương phải chịu sẽ không xóa hiệu quả [Ngủ Say] và [Sợ Hãi].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b504c956-72b0-4d33-a87b-af2522ef50f8.553d5.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/b504c956-72b0-4d33-a87b-af2522ef50f8.553d5.png"
     },
     {
       "id": "vay_khon_2",
@@ -34386,7 +55476,8 @@
       "kind": "buff",
       "desc": "Ngoài lượt của bản thân không thể được trị liệu, lượt của bản thân có thể được trị liệu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/4fba714f-1439-4df2-a5ce-7584fbeaf33a.f621c.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/4fba714f-1439-4df2-a5ce-7584fbeaf33a.f621c.png"
     },
     {
       "id": "vo_ngon",
@@ -34397,7 +55488,8 @@
       "kind": "debuff",
       "desc": "Đơn vị bị dín buff này khi sĩ khí từ 100 trở lên ko thể thi triển kỹ năng .",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1750cb64-0121-46ae-829d-800a17706601.5f981.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/1750cb64-0121-46ae-829d-800a17706601.5f981.png"
     },
     {
       "id": "vo_ngon_2",
@@ -34408,7 +55500,8 @@
       "kind": "unremovable",
       "desc": "Không thể thi triển kỹ năng, chỉ có thể đánh thường, hiệu quả không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1750cb64-0121-46ae-829d-800a17706601.5f981.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/1750cb64-0121-46ae-829d-800a17706601.5f981.png"
     },
     {
       "id": "vo_tinh",
@@ -34419,7 +55512,8 @@
       "kind": "buff",
       "desc": "Khi gây sát thương, đi kèm với X% binh lực hiện tại của mình bỏ qua sát thương phòng thủ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/942b1434-54b9-4b5d-80f7-eb113df78975.c3b47.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/942b1434-54b9-4b5d-80f7-eb113df78975.c3b47.png"
     },
     {
       "id": "vo_dung",
@@ -34430,7 +55524,8 @@
       "kind": "buff",
       "desc": "Pháp công gây ra tăng 13% có thể cộng dồn",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3242a534-478e-409f-aebd-396db2d17549.82b94.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/3242a534-478e-409f-aebd-396db2d17549.82b94.png"
     },
     {
       "id": "vo_luc",
@@ -34441,7 +55536,8 @@
       "kind": "buff",
       "desc": "Mỗi tầng bất lực làm cho sát thương mà đơn vị này gây ra giảm [giá trị hiệu quả].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8ac3bcb9-e43f-4997-91c0-0d075c632ae0.f2af7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/8ac3bcb9-e43f-4997-91c0-0d075c632ae0.f2af7.png"
     },
     {
       "id": "vo_luc_2",
@@ -34452,7 +55548,8 @@
       "kind": "unremovable",
       "desc": "Bản thân tăng Võ, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8ac3bcb9-e43f-4997-91c0-0d075c632ae0.f2af7.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/8ac3bcb9-e43f-4997-91c0-0d075c632ae0.f2af7.png"
     },
     {
       "id": "vo_tran",
@@ -34463,7 +55560,8 @@
       "kind": "debuff",
       "desc": "Hiệu quả trị liệu nhận được và sát thương gây ra đều biến thành 1.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/528294ef-71e0-48ae-a530-9b7c4ab9952e.116e7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/528294ef-71e0-48ae-a530-9b7c4ab9952e.116e7.png"
     },
     {
       "id": "vo_tran_2",
@@ -34474,7 +55572,8 @@
       "kind": "unremovable",
       "desc": "Sát thương gây ra và mức trị liệu đều là 1 điểm, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/528294ef-71e0-48ae-a530-9b7c4ab9952e.116e7.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/528294ef-71e0-48ae-a530-9b7c4ab9952e.116e7.png"
     },
     {
       "id": "xua_duoi",
@@ -34496,7 +55595,8 @@
       "kind": "buff",
       "desc": "Sát thương của người sở hữu sẽ bỏ qua một phần phòng thủ của mục tiêu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/82f643b8-54f6-4e1f-ad27-034ad02a0e51.0fb7c.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/82f643b8-54f6-4e1f-ad27-034ad02a0e51.0fb7c.png"
     },
     {
       "id": "xuyen_thau_2",
@@ -34507,7 +55607,8 @@
       "kind": "unremovable",
       "desc": "Sát thương của người sở hữu sẽ bỏ qua một phần phòng thủ của mục tiêu, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/82f643b8-54f6-4e1f-ad27-034ad02a0e51.0fb7c.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/82f643b8-54f6-4e1f-ad27-034ad02a0e51.0fb7c.png"
     },
     {
       "id": "xuyen_thau_2_chuyen_dung_bac_7",
@@ -34529,7 +55630,8 @@
       "kind": "buff",
       "desc": "Khi binh lực của mình cao hơn bằng 50%, tăng giá trị hiệu quả 1 tấn công, dưới 50% thì tăng hiệu quả giá trị phòng thủ 2.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3f4de683-2d0f-4583-9915-eeec4cec5abe.8d0a7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/3f4de683-2d0f-4583-9915-eeec4cec5abe.8d0a7.png"
     },
     {
       "id": "am_te",
@@ -34540,7 +55642,8 @@
       "kind": "debuff",
       "desc": "Tướng ở trạng thái BUFF, không thể tăng sĩ khí",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/67b9b697-fafc-4e84-9d0b-8d075cc565d5.8d8ed.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/67b9b697-fafc-4e84-9d0b-8d075cc565d5.8d8ed.png"
     },
     {
       "id": "am_van",
@@ -34551,7 +55654,8 @@
       "kind": "debuff",
       "desc": "Trong trạng thái BUFF này sẽ giảm sĩ khí mỗi lượt.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/162bed67-0f11-4b50-bca5-38025c3ea26a.0f881.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/162bed67-0f11-4b50-bca5-38025c3ea26a.0f881.png"
     },
     {
       "id": "ap_che",
@@ -34562,7 +55666,8 @@
       "kind": "buff",
       "desc": "Gây thêm sát thương lên mục tiêu có phần trăm máu thấp hơn bản thân.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/958083df-03fb-40a7-ac45-59b75487b29d.23f08.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/958083df-03fb-40a7-ac45-59b75487b29d.23f08.png"
     },
     {
       "id": "ap_che_2",
@@ -34573,7 +55678,8 @@
       "kind": "unremovable",
       "desc": "Gây sát thương cao hơn cho đơn vị có sinh lực thấp hơn bản thân, không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/958083df-03fb-40a7-ac45-59b75487b29d.23f08.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/958083df-03fb-40a7-ac45-59b75487b29d.23f08.png"
     },
     {
       "id": "ap_uc",
@@ -34584,7 +55690,8 @@
       "kind": "debuff",
       "desc": "Kỹ năng tăng sĩ khí chỉ tăng một nửa",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ed071c03-5e86-4b4a-9a6b-5762089013c8.526fb.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/ed071c03-5e86-4b4a-9a6b-5762089013c8.526fb.png"
     },
     {
       "id": "am_hon",
@@ -34595,7 +55702,8 @@
       "kind": "debuff",
       "desc": "Trong trạng thái BUFF này, sát thương đối với mục tiêu sẽ tăng dần.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d9fc589d-4463-4788-a8f7-0a01e3dccd25.dd42c.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/d9fc589d-4463-4788-a8f7-0a01e3dccd25.dd42c.png"
     },
     {
       "id": "am_hon_2",
@@ -34606,7 +55714,8 @@
       "kind": "unremovable",
       "desc": "Sát thương gây cho mục tiêu sẽ tăng theo số tầng, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d9fc589d-4463-4788-a8f7-0a01e3dccd25.dd42c.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/d9fc589d-4463-4788-a8f7-0a01e3dccd25.dd42c.png"
     },
     {
       "id": "y_chi",
@@ -34617,7 +55726,8 @@
       "kind": "buff",
       "desc": "Giảm xác suất bị Sợ Hãi",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8d192cc6-6421-4570-9f8b-4145fc10b50d.e05ff.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/8d192cc6-6421-4570-9f8b-4145fc10b50d.e05ff.png"
     },
     {
       "id": "dien_cuong",
@@ -34628,7 +55738,8 @@
       "kind": "buff",
       "desc": "Sát thương gây ra = sát thương kỹ năng + (số BUFF bất lợi kẻ địch đang chịu × X).",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/764865bc-e44a-4cd9-8481-34ca611cc1f8.e8e27.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/764865bc-e44a-4cd9-8481-34ca611cc1f8.e8e27.png"
     },
     {
       "id": "dien_cuong_2",
@@ -34639,7 +55750,8 @@
       "kind": "unremovable",
       "desc": "Khi phát động tấn công, cứ mỗi hiệu ứng giảm lợi trên mục tiêu thì sát thương gây ra lên mục tiêu tăng thêm một tỷ lệ phần trăm nhất định; hiệu ứng này không thể bị giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/764865bc-e44a-4cd9-8481-34ca611cc1f8.e8e27.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/764865bc-e44a-4cd9-8481-34ca611cc1f8.e8e27.png"
     },
     {
       "id": "dieu_thong",
@@ -34650,7 +55762,8 @@
       "kind": "unremovable",
       "desc": "Điều chỉnh chỉ số C.Huy; có thể cộng dồn, không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/83a3699d-4e62-48e4-b2f8-8b752a919cfd.024eb.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/83a3699d-4e62-48e4-b2f8-8b752a919cfd.024eb.png"
     },
     {
       "id": "dieu_tri",
@@ -34661,7 +55774,8 @@
       "kind": "unremovable",
       "desc": "Hiệu quả điều chỉnh trí, hiệu quả có thể cộng dồn. Không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/83a3699d-4e62-48e4-b2f8-8b752a919cfd.024eb.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/83a3699d-4e62-48e4-b2f8-8b752a919cfd.024eb.png"
     },
     {
       "id": "dieu_vo",
@@ -34672,7 +55786,8 @@
       "kind": "unremovable",
       "desc": "Điều chỉnh chỉ số Võ; có thể cộng dồn, không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/83a3699d-4e62-48e4-b2f8-8b752a919cfd.024eb.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/83a3699d-4e62-48e4-b2f8-8b752a919cfd.024eb.png"
     },
     {
       "id": "diep_nhan",
@@ -34683,7 +55798,8 @@
       "kind": "buff",
       "desc": "Khi bạn có BUFF này, mỗi khi bạn nhấn một đơn vị, thiệt hại phòng thủ bỏ qua của riêng bạn làm tăng giá trị cố định. Lớp phủ được giới hạn ở giá trị [giá trị hiệu ứng].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6f4dd358-22ea-4623-b397-3ed19e659689.66722.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/6f4dd358-22ea-4623-b397-3ed19e659689.66722.png"
     },
     {
       "id": "doat",
@@ -34694,7 +55810,8 @@
       "kind": "buff",
       "desc": "Đoạt hiệu quả có lợi của địch, hiệu quả bỏ qua Hư Nhược",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7a2f0425-0124-4b0a-a9c8-95b24084b088.f6d4e.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/7a2f0425-0124-4b0a-a9c8-95b24084b088.f6d4e.png"
     },
     {
       "id": "doat_2",
@@ -34705,7 +55822,8 @@
       "kind": "buff",
       "desc": "Trước mỗi lượt hành động, ăn cắp hiệu ứng có lợi của kẻ thù và chuyển sang chính mình.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7a2f0425-0124-4b0a-a9c8-95b24084b088.f6d4e.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/7a2f0425-0124-4b0a-a9c8-95b24084b088.f6d4e.png"
     },
     {
       "id": "doat_khi",
@@ -34738,7 +55856,8 @@
       "kind": "debuff",
       "desc": "Tướng mỗi lượt giảm phần trăm lính nhất định",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bfa8ccc2-b2bc-4673-b644-b410dcafa32b.4ce57.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/bfa8ccc2-b2bc-4673-b644-b410dcafa32b.4ce57.png"
     },
     {
       "id": "dong_bang",
@@ -34749,7 +55868,8 @@
       "kind": "debuff",
       "desc": "Mỗi lần phóng thích lớp phủ 1 tầng, kẻ thù rơi vào [đóng băng] thêm 1 tầng. Khi cộng dồn trên 3 tầng, tỷ lệ thương tổn tỷ lệ phần trăm binh lực hiện tại được tạo ra tùy thuộc vào số lượng lớp và loại bỏ số lượng lớp.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2b785986-c0f9-4d38-b055-90c68e9ae779.7a48f.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/2b785986-c0f9-4d38-b055-90c68e9ae779.7a48f.png"
     },
     {
       "id": "dong_do",
@@ -34760,7 +55880,8 @@
       "kind": "buff",
       "desc": "Với mỗi buff có lợi, tất cả các lực lượng phòng thủ được gia tăng [giá trị hiệu ứng].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/dcc978cb-0974-475f-bf60-87e8e0cad359.9df39.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/dcc978cb-0974-475f-bf60-87e8e0cad359.9df39.png"
     },
     {
       "id": "dong_do_2",
@@ -34771,7 +55892,8 @@
       "kind": "unremovable",
       "desc": "Với mỗi buff có lợi, tất cả các lực lượng phòng thủ được gia tăng [giá trị hiệu ứng].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/dcc978cb-0974-475f-bf60-87e8e0cad359.9df39.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/dcc978cb-0974-475f-bf60-87e8e0cad359.9df39.png"
     },
     {
       "id": "dau_tran_tang_si_khi",
@@ -34782,7 +55904,8 @@
       "kind": "buff",
       "desc": "Đầu trận tăng cho mục tiêu 50 sĩ khí",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7ef92aca-d0e5-4937-abdf-efcc04c71802.e82c4.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/7ef92aca-d0e5-4937-abdf-efcc04c71802.e82c4.png"
     },
     {
       "id": "day_si_khi",
@@ -34793,7 +55916,8 @@
       "kind": "buff",
       "desc": "",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7ef92aca-d0e5-4937-abdf-efcc04c71802.e82c4.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/7ef92aca-d0e5-4937-abdf-efcc04c71802.e82c4.png"
     },
     {
       "id": "de_hon",
@@ -34804,7 +55928,8 @@
       "kind": "buff",
       "desc": "Tăng tỷ lệ phần trăm tấn công và phòng thủ khi các đơn vị trong nước được chỉ định có BUFF này.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/66ae7913-54cd-44ff-92cd-807a1d75b677.f39f6.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/66ae7913-54cd-44ff-92cd-807a1d75b677.f39f6.png"
     },
     {
       "id": "de_khang",
@@ -34815,7 +55940,8 @@
       "kind": "buff",
       "desc": "Chống đỡ sát thương dựa trên [giá trị hiệu quả] binh lực tối đa, có thể cộng dồn, tối đa [giá trị hiệu quả] lớn nhất.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e08b0593-37d3-46f3-a372-f736b5e94952.354a8.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/e08b0593-37d3-46f3-a372-f736b5e94952.354a8.png"
     },
     {
       "id": "de_khang_2",
@@ -34848,7 +55974,8 @@
       "kind": "buff",
       "desc": "BUFF có lợi, không có tác dụng trực tiếp — chờ một buff khác kích hoạt.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bba947b6-2b81-4ee8-9a05-9260f3366032.b73a4.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/bba947b6-2b81-4ee8-9a05-9260f3366032.b73a4.png"
     },
     {
       "id": "do_hiem",
@@ -34859,7 +55986,8 @@
       "kind": "buff",
       "desc": "Trước khi lượt bắt đầu, nếu bản thân không bị thương, tăng tất cả sức mạnh tấn công của X.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0e0c73c6-b0f1-46f6-8529-ce7580cd9c9d.c634a.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/0e0c73c6-b0f1-46f6-8529-ce7580cd9c9d.c634a.png"
     },
     {
       "id": "do_hiem_2",
@@ -34870,7 +55998,8 @@
       "kind": "unremovable",
       "desc": "Trước khi lượt tiếp theo bắt đầu, nếu bản thân không bị thương tổn, tăng lên tất cả lực tấn công của X, hiệu quả này không thể bị giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0e0c73c6-b0f1-46f6-8529-ce7580cd9c9d.c634a.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/0e0c73c6-b0f1-46f6-8529-ce7580cd9c9d.c634a.png"
     },
     {
       "id": "doc_ke",
@@ -34881,7 +56010,8 @@
       "kind": "debuff",
       "desc": "Khi có BUFF này, sát thương của kẻ thù giảm đi [Giá trị] với mỗi X buff bất lợi trên kể thù",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c0bc1eb6-a1b5-475f-847c-456742a1c696.99608.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/c0bc1eb6-a1b5-475f-847c-456742a1c696.99608.png"
     },
     {
       "id": "an_nap_chuyen_dung_bac_7",
@@ -34901,5 +56031,7 @@
     "fromNews": 176,
     "fromWikiHtml": 320,
     "fromWikiMd": 0
-  }
+  },
+  "iconDir": "assets/ui/status",
+  "iconNote": "Icon wiki hieu-ung — tải bằng scripts/download-status-icons.py"
 }};})(window);

@@ -16,7 +16,15 @@ GENS_PATH = ROOT / "data" / "generals.json"
 SKILLS_PATH = ROOT / "data" / "skills.json"
 
 # Reuse mapping / helpers from import by duplicating minimal bits
-WIKI_Q_TO_GAME = {1: "white", 2: "green", 3: "blue", 5: "purple", 6: "orange", 7: "orange", 8: "red"}
+WIKI_Q_TO_GAME = {
+    1: "white",
+    2: "green",
+    3: "blue",
+    5: "purple",
+    6: "orange",
+    7: "red",
+    8: "gold",
+}
 
 UNIT_MAP = {
     "枪兵": "spear",
@@ -57,20 +65,11 @@ def slugify(name: str) -> str:
 
 
 def q_name_to_tier(qn: str, q: int) -> str:
-    # game quality id
-    return {
-        1: "white",
-        2: "green",
-        3: "blue",
-        5: "purple",
-        6: "orange",
-        7: "orange",
-        8: "red",
-    }.get(q, "white")
+    return WIKI_Q_TO_GAME.get(q, "white")
 
 
 def fill_sbq(m: dict[str, str]) -> dict[str, str]:
-    order = ["white", "green", "blue", "purple", "orange", "red"]
+    order = ["white", "green", "blue", "purple", "orange", "red", "gold"]
     out, last = {}, None
     for q in order:
         if q in m:

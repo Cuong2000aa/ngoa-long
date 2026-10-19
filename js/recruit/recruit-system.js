@@ -135,8 +135,19 @@
    * - AVAILABLE: đủ danh vọng + cấp + Ty Vũ + ải yêu cầu
    * - LOCKED: chưa đủ điều kiện
    */
+  function isRecruitBlockedGeneral(tpl) {
+    if (!tpl) return true;
+    if (tpl.npcOnly) return true;
+    var tags = tpl.tags || [];
+    return tags.indexOf("generic") >= 0;
+  }
+
   function evaluateEntry(player, entry) {
     if (!entry) return null;
+    var tpl = NLDatabase.getGeneral(entry.hero_id);
+    // Lính thường / NPC: không vào Tửu Quán, không chiêu mộ
+    if (isRecruitBlockedGeneral(tpl)) return null;
+
     var owned = ownsGeneral(player, entry.hero_id);
     var pLv = playerLevel(player);
     var tvLv = tyVuLevel(player);
@@ -161,7 +172,6 @@
     }
 
     var status = owned ? "OWNED" : reasons.length === 0 ? "AVAILABLE" : "LOCKED";
-    var tpl = NLDatabase.getGeneral(entry.hero_id);
 
     return {
       recruit_id: entry.recruit_id,
@@ -181,7 +191,10 @@
       lock_reasons: reasons,
       can_afford: getSilver(player) >= entry.cost_silver,
       base: tpl ? tpl.base : null,
-      skillId: tpl ? tpl.skillId : "basic_strike",
+      skillId: tpl ? NLDatabase.resolveSkillId(tpl, entry.quality || tpl.quality) : "basic_strike",
+      portraitUrl:
+        tpl && NLDatabase.generalPortraitUrl ? NLDatabase.generalPortraitUrl(tpl) : null,
+      troop2: tpl ? tpl.troop2 || null : null,
     };
   }
 
@@ -236,6 +249,15 @@
     meta = meta || {};
     ensureHeroes(player);
     if (!generalId) return { ok: false, reason: "Thiếu generalId." };
+    var tpl = NLDatabase.getGeneral(generalId);
+    if (!tpl) return { ok: false, reason: "Không tìm thấy tướng " + generalId };
+    if (isRecruitBlockedGeneral(tpl)) {
+      return {
+        ok: false,
+        reason: "Chỉ thu phục được tướng tinh anh — lính thường không chiêu mộ được.",
+        npcOnly: true,
+      };
+    }
     if (ownsGeneral(player, generalId)) {
       return { ok: false, reason: "already_owned", skipped: true };
     }
@@ -287,6 +309,13 @@
     if (!entry) return { ok: false, reason: "Không tìm thấy tướng trong danh sách chiêu mộ." };
 
     var ev = evaluateEntry(player, entry);
+    if (!ev) {
+      return {
+        ok: false,
+        reason: "Chỉ chiêu mộ được tướng tinh anh — lính thường không vào Tửu Quán.",
+        npcOnly: true,
+      };
+    }
     if (ev.status === "OWNED") {
       return { ok: false, reason: "Bạn đã sở hữu " + entry.name + ".", status: "OWNED" };
     }

@@ -8,30 +8,177 @@
   var city = null;
 
   function summarizeCampaignRewards(settled, win) {
-    if (!settled) return "";
-    if (!win) return "Tiêu hao: −" + (settled.foodSpent || 0) + " Lương thực";
-    var parts = [];
+    if (!settled) return { text: "", lines: [], sections: {} };
+    if (!win) {
+      var loseText = "Tiêu hao: −" + (settled.foodSpent || 0) + " Lương thực";
+      return { text: loseText, lines: [loseText], sections: { lose: loseText } };
+    }
     var silver = 0;
+    var food = 0;
     var exp = 0;
     var prestige = 0;
+    var gem = 0;
     var generals = [];
+    var items = [];
+    var hints = [];
+    var pending = [];
     (settled.rewards || []).forEach(function (r) {
       if (r.type === "silver") silver += r.amount || 0;
+      else if (r.type === "food") food += r.amount || 0;
       else if (r.type === "exp") exp += r.amount || 0;
       else if (r.type === "prestige") prestige += r.amount || 0;
+      else if (r.type === "gem") gem += r.amount || 0;
       else if (r.type === "general" && r.name) generals.push(r.name);
-      else if (r.type === "hint" && r.text) parts.push(r.text);
+      else if (r.type === "item" && r.name) items.push(r.name);
+      else if (r.type === "hint" && r.text) hints.push(r.text);
+      else if (r.type === "general_pending") {
+        pending.push(r.reason || "Kho tướng đầy — chưa nhận tướng");
+      }
     });
     if (settled.rewardsGained) {
       silver += settled.rewardsGained.silver || 0;
       exp += settled.rewardsGained.exp || 0;
       prestige += settled.rewardsGained.prestige || 0;
     }
-    if (silver) parts.unshift("+" + silver + " Bạc");
-    if (exp) parts.push("+" + exp + " EXP");
-    if (prestige) parts.push("+" + prestige + " Danh vọng");
-    if (generals.length) parts.push("Thu phục " + generals.join(", "));
-    return parts.length ? "Thưởng: " + parts.join(" · ") : "";
+    if (settled.drop && settled.drop.name && items.indexOf(settled.drop.name) < 0) {
+      items.push(settled.drop.name);
+    }
+    var rewardBits = [];
+    if (silver) rewardBits.push("+" + silver + " Bạc");
+    if (food) rewardBits.push("+" + food + " Lương");
+    if (exp) rewardBits.push("+" + exp + " EXP");
+    if (prestige) rewardBits.push("+" + prestige + " Danh vọng");
+    if (gem) rewardBits.push("+" + gem + " Vàng");
+    var lines = [];
+    if (rewardBits.length) lines.push("Thưởng: " + rewardBits.join(" · "));
+    if (generals.length) lines.push("Thu phục: " + generals.join(", "));
+    if (items.length) lines.push("Nhặt: " + items.join(", ") + " — mở Trang bị để đeo");
+    if (settled.unlockedStage) lines.push("Mở ải: " + settled.unlockedStage.name);
+    (settled.unlockedFeatures || []).forEach(function (f) {
+      lines.push("Mở tính năng: " + (f.name || f.id));
+    });
+    hints.forEach(function (h) {
+      lines.push(h);
+    });
+    pending.forEach(function (p) {
+      lines.push(p);
+    });
+    var text = lines.join(" · ");
+    return {
+      text: text,
+      lines: lines,
+      sections: {
+        rewards: rewardBits,
+        generals: generals,
+        items: items,
+        unlockedStage: settled.unlockedStage || null,
+        unlockedFeatures: settled.unlockedFeatures || [],
+        hints: hints,
+      },
+    };
+  }
+
+  function narrativeForStage(stageId) {
+    if (typeof NLCampaign !== "undefined" && NLCampaign.stageNarrative) {
+      return NLCampaign.stageNarrative(stageId);
+    }
+    return { story: null, mission: null, briefing: null, epilogue: null };
+  }
+
+  function buildCampaignReport(prep, settled, win, battleResult) {
+    var sum = summarizeCampaignRewards(settled, win);
+    var nar = narrativeForStage(prep.stage && prep.stage.id);
+    return {
+      stageName: prep.stage.name,
+      stageId: prep.stage.id,
+      chapterId: prep.chapter && prep.chapter.id,
+      win: win,
+      firstClear: !!(settled && settled.firstClear),
+      rounds: (battleResult && battleResult.rounds) || 1,
+      logs: (battleResult && (battleResult.battleLog || battleResult.logs)) || [],
+      rewardSummary: sum.text,
+      rewardLines: sum.lines,
+      rewardSections: sum.sections,
+      epilogue: win && settled && settled.firstClear ? nar.epilogue : null,
+      briefing: nar.briefing,
+      hasItems: !!(sum.sections && sum.sections.items && sum.sections.items.length),
+      hasRecruit: !!(sum.sections && sum.sections.generals && sum.sections.generals.length),
+      hasUnlock: !!(
+        settled &&
+        (settled.unlockedStage ||
+          (settled.unlockedFeatures && settled.unlockedFeatures.length))
+      ),
+    };
+  }
+
+  function shouldShowStageBriefing(stageId) {
+    if (typeof NLCampaign === "undefined" || !NLCampaign.isCleared) return true;
+    return !NLCampaign.isCleared(state, stageId);
+  }
+
+  function withStageBriefing(prep, run) {
+    var nar = narrativeForStage(prep.stage && prep.stage.id);
+    var text = nar.briefing || nar.mission;
+    if (
+      text &&
+      shouldShowStageBriefing(prep.stage.id) &&
+      UI.showCampaignBriefing
+    ) {
+      UI.showCampaignBriefing(prep, nar, run);
+      return;
+    }
+    run();
+  }
+
+  function runStageQuickFight(prep) {
+    var teamSlots = [];
+    (state.generals || []).forEach(function (g) {
+      if (g.deployed_slot >= 1 && g.deployed_slot <= 5) {
+        teamSlots.push({ id: g.id, slot: g.deployed_slot - 1, general: g });
+      }
+    });
+    if (!teamSlots.length) {
+      (state.generals || []).slice(0, 3).forEach(function (g, i) {
+        teamSlots.push({ id: g.id, slot: i, general: g });
+      });
+    }
+    var fought = G.fightWithTeam(state, teamSlots, prep.enemies, {
+      title: prep.title || prep.stage.name,
+      enemyFormation: prep.enemyFormationId,
+    });
+    if (!fought.ok) {
+      UI.toast(fought.msg, "bad");
+      return;
+    }
+    function finalize() {
+      var settled = G.applyStageRewards(state, prep.stage, fought.win, prep.chapter);
+      if (UI.setLastCampaignReport && fought.result) {
+        UI.setLastCampaignReport(
+          buildCampaignReport(prep, settled, fought.win, fought.result)
+        );
+      }
+      if (fought.win) {
+        var msg = "Thắng ải: " + prep.stage.name;
+        if (settled && settled.unlockedStage) msg += " · Mở: " + settled.unlockedStage.name;
+        UI.toast(msg, "good");
+      } else {
+        UI.toast("Thất bại tại " + prep.stage.name, "bad");
+      }
+      G.saveGame(state);
+      refresh();
+      UI.renderCampaign(state, makeHandlers());
+    }
+    UI.closePanel();
+    var combatMeta = {
+      context: "campaign",
+      stageName: prep.stage.name,
+      loseTip: "Thử Bày trận, huấn luyện tướng hoặc mở Trang bị.",
+    };
+    if (fought.result && typeof NLCombatUI !== "undefined") {
+      NLCombatUI.playBattle(fought.result, finalize, combatMeta);
+    } else {
+      finalize();
+    }
   }
 
   function makeHandlers() {
@@ -61,6 +208,13 @@
         refresh();
         UI.renderGenerals(state, makeHandlers());
       },
+      awaken: function (id) {
+        var r = G.awakenGeneral(state, id);
+        UI.toast(r.ok ? "Giác ngộ thành công" : r.msg, r.ok ? "good" : "bad");
+        G.saveGame(state);
+        refresh();
+        UI.renderGenerals(state, makeHandlers());
+      },
       recruitSoul: function () {
         var r = G.recruitSoulGeneral(state);
         UI.toast(r.ok ? "Chiêu mộ: " + r.general.name : r.msg, r.ok ? "good" : "bad");
@@ -70,10 +224,37 @@
       },
       recruitTavern: function (id) {
         var r = G.recruitTavernHero(state, id);
-        UI.toast(r.msg, r.ok ? "good" : "bad");
+        UI.toast(
+          r.ok ? r.msg + " · Đeo đồ ở Trang bị, rồi ra Phó Bản." : r.msg,
+          r.ok ? "good" : "bad"
+        );
         G.saveGame(state);
         refresh();
+        if (r.ok) UI.renderGenerals._tab = "owned";
         UI.renderGenerals(state, makeHandlers());
+      },
+      openEquip: function () {
+        UI.renderEquip._focusGid = null;
+        openNav("equip");
+      },
+      openEquipGeneral: function (gid) {
+        UI.renderEquip._focusGid = gid || null;
+        openNav("equip");
+      },
+      openCampaign: function () {
+        openNav("tower");
+      },
+      _openPanel: function (panel, opts) {
+        if (panel === "generals" || (opts && opts.tavern)) openNav._tavernNext = true;
+        openNav(panel === "tower" ? "tower" : panel);
+      },
+      openGeneralsTavern: function () {
+        UI.renderGenerals._tab = "tavern";
+        openNav("generals");
+      },
+      openGeneralsOwned: function () {
+        UI.renderGenerals._tab = "owned";
+        openNav("generals");
       },
       deploySlot: function (heroId, slot) {
         var r = G.deployHeroSlot(state, heroId, slot);
@@ -146,56 +327,9 @@
           UI.toast((prep && prep.reason) || "Không thể khiêu chiến", "bad");
           return;
         }
-        // Lấy đội hình đã ra trận (hoặc 3 tướng đầu tiên)
-        var teamSlots = [];
-        (state.generals || []).forEach(function (g) {
-          if (g.deployed_slot >= 1 && g.deployed_slot <= 5) {
-            teamSlots.push({ id: g.id, slot: g.deployed_slot - 1, general: g });
-          }
+        withStageBriefing(prep, function () {
+          runStageQuickFight(prep);
         });
-        if (!teamSlots.length) {
-          (state.generals || []).slice(0, 3).forEach(function (g, i) {
-            teamSlots.push({ id: g.id, slot: i, general: g });
-          });
-        }
-        var fought = G.fightWithTeam(state, teamSlots, prep.enemies, {
-          title: prep.title || prep.stage.name,
-          enemyFormation: prep.enemyFormationId,
-        });
-        if (!fought.ok) {
-          UI.toast(fought.msg, "bad");
-          return;
-        }
-        function finalize() {
-          var settled = G.applyStageRewards(state, prep.stage, fought.win, prep.chapter);
-          var rewardSummary = summarizeCampaignRewards(settled, fought.win);
-          if (UI.setLastCampaignReport && fought.result) {
-            UI.setLastCampaignReport({
-              stageName: prep.stage.name,
-              win: fought.win,
-              rounds: fought.result.rounds || 1,
-              logs: fought.result.battleLog || fought.result.logs || fought.battleLog || [],
-              rewardSummary: rewardSummary,
-            });
-          }
-          if (fought.win) {
-            var msg = "Thắng ải: " + prep.stage.name;
-            if (settled && settled.unlockedStage) msg += " · Mở: " + settled.unlockedStage.name;
-            UI.toast(msg, "good");
-          } else {
-            UI.toast("Thất bại tại " + prep.stage.name, "bad");
-          }
-          G.saveGame(state);
-          refresh();
-          UI.renderCampaign(state, makeHandlers());
-        }
-        // Đóng panel trước combat để Escape không đóng nhầm panel dưới lớp trận
-        UI.closePanel();
-        if (fought.result && typeof NLCombatUI !== "undefined") {
-          NLCombatUI.playBattle(fought.result, finalize);
-        } else {
-          finalize();
-        }
       },
       fightStage: function (chapterId, stageId) {
         if (typeof NLDatabase === "undefined" || typeof NLCombat === "undefined") {
@@ -209,8 +343,9 @@
           UI.toast((prep && prep.reason) || "Không thể khiêu chiến", "bad");
           return;
         }
-        UI.closePanel();
-        startAttack(
+        withStageBriefing(prep, function () {
+          UI.closePanel();
+          startAttack(
           function () {
             return {
               team: prep.enemies,
@@ -228,15 +363,10 @@
               win,
               info.chapter || prep.chapter
             );
-            var rewardSummary = summarizeCampaignRewards(settled, win);
             if (UI.setLastCampaignReport && battleResult) {
-              UI.setLastCampaignReport({
-                stageName: prep.stage.name,
-                win: win,
-                rounds: battleResult.rounds || 1,
-                logs: battleResult.battleLog || battleResult.logs || [],
-                rewardSummary: rewardSummary,
-              });
+              UI.setLastCampaignReport(
+                buildCampaignReport(prep, settled, win, battleResult)
+              );
             }
             if (win) {
               var msg = "Thắng ải: " + prep.stage.name;
@@ -254,8 +384,14 @@
             G.saveGame(state);
             refresh();
             UI.renderCampaign(state, makeHandlers());
+          },
+          {
+            context: "campaign",
+            stageName: prep.stage.name,
+            loseTip: "Thử đổi trận pháp, huấn luyện tướng hoặc đeo trang bị.",
           }
         );
+        });
       },
     };
   }
@@ -277,7 +413,13 @@
       return;
     }
     if (panel === "city") UI.renderCityPanel(state, h);
-    else if (panel === "generals") UI.renderGenerals(state, h);
+    else if (panel === "generals") {
+      if (openNav._tavernNext) {
+        UI.renderGenerals._tab = "tavern";
+        openNav._tavernNext = false;
+      }
+      UI.renderGenerals(state, h);
+    }
     else if (panel === "world") UI.renderWorld(state, h);
     else if (panel === "tower" || panel === "campaign") UI.renderCampaign(state, h);
     else if (panel === "thap") UI.renderTower(state, h);
@@ -300,34 +442,58 @@
     });
   }
 
-  function startAttack(getEnemy, onResult) {
+  function startAttack(getEnemy, onResult, combatMeta) {
     var info = getEnemy();
     if (!info) {
       UI.toast("Không thể xuất quân", "bad");
       return;
     }
-    UI.showFormation(state.generals, function (teamSlots) {
-      var fought = G.fightWithTeam(state, teamSlots, info.team, {
-        title: info.title,
-        enemyFormation: info.enemyFormation,
-        playerFormation: info.playerFormation,
-      });
-      if (!fought.ok) {
-        UI.toast(fought.msg, "bad");
-        return;
+    var curFormId =
+      (state.deployed_formation && state.deployed_formation.formation_id) ||
+      state.formationId ||
+      "crane_wing";
+    UI.showFormation(
+      state.generals,
+      function (teamSlots, formMeta) {
+        var pickId =
+          (formMeta && formMeta.formationId) ||
+          curFormId;
+        if (state.deployed_formation) {
+          state.deployed_formation.formation_id = pickId;
+        }
+        state.formationId = pickId;
+        if (typeof NLCityEconomy !== "undefined" && NLCityEconomy.setFormationId) {
+          NLCityEconomy.setFormationId(state, pickId);
+        }
+        var fought = G.fightWithTeam(state, teamSlots, info.team, {
+          title: info.title,
+          enemyFormation: info.enemyFormation || info.enemyFormationId,
+          playerFormation: pickId,
+        });
+        if (!fought.ok) {
+          UI.toast(fought.msg, "bad");
+          if (NLCity.city && NLCity.city.resume) NLCity.city.resume();
+          return;
+        }
+        function done() {
+          onResult(fought.win, info, fought.result);
+          G.saveGame(state);
+          refresh();
+        }
+        if (fought.result && typeof NLCombatUI !== "undefined") {
+          NLCombatUI.playBattle(fought.result, done, combatMeta || null);
+        } else {
+          UI.toast(fought.win ? "Thắng!" : "Thua!", fought.win ? "good" : "bad");
+          done();
+        }
+      },
+      {
+        formationId: curFormId,
+        title: info.title || null,
+        enemyTeam: info.team || null,
+        enemyFormation: info.enemyFormation || info.enemyFormationId || null,
       }
-      function done() {
-        onResult(fought.win, info, fought.result);
-        G.saveGame(state);
-        refresh();
-      }
-      if (fought.result && typeof NLCombatUI !== "undefined") {
-        NLCombatUI.playBattle(fought.result, done);
-      } else {
-        UI.toast(fought.win ? "Thắng!" : "Thua!", fought.win ? "good" : "bad");
-        done();
-      }
-    });
+    );
   }
 
   function enterGame(s) {
@@ -340,6 +506,8 @@
       if (city) return;
       if (window.NLBoot) NLBoot.beginCity("Đang dựng Thành Chính…");
       city = new NLCity.CityRenderer(null, labels);
+      // Expose để combat/form pause Thành Chính khi mở overlay
+      NLCity.city = city;
       city.onBuildingClick = function (id) {
         UI.renderBuildingDetail(state, id, makeHandlers());
       };
@@ -447,7 +615,9 @@
   document.getElementById("bottom-nav").addEventListener("click", function (e) {
     var item = e.target.closest(".nav-item");
     if (!item || !state) return;
-    openNav(item.getAttribute("data-panel"));
+    var panel = item.getAttribute("data-panel");
+    if (panel === "generals") openNav._tavernNext = true;
+    openNav(panel);
   });
 
   document.querySelectorAll(".qbtn[data-panel], .side-btn[data-panel]").forEach(function (btn) {

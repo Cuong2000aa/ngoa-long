@@ -22,8 +22,8 @@
   }
 
   function troopChar(t) {
-    var map = { cavalry: "騎", infantry: "步", spear: "槍", archer: "弓", strategist: "謀" };
-    return map[t] || "將";
+    var map = { cavalry: "Kỵ", infantry: "Bộ", spear: "Thương", archer: "Cung", strategist: "Mưu" };
+    return map[t] || "Tướng";
   }
 
   function troopSprite(t, tier) {
@@ -34,8 +34,54 @@
   }
 
   function shortFlag(name) {
-    if (!name) return "兵";
+    if (!name) return "Binh";
     return String(name).replace(/\s+/g, "").slice(0, 2);
+  }
+
+  function formationDb() {
+    try {
+      var raw =
+        (global.NLDatabase && global.NLDatabase.raw && global.NLDatabase.raw()) ||
+        global.NL_DB ||
+        null;
+      return (raw && raw.formations && raw.formations.list) || null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function formationDisplayName(fid) {
+    if (!fid) return "";
+    var list = formationDb();
+    var form = list && list[fid];
+    return (form && form.name) || "";
+  }
+
+  /** Tip khắc chế trận pháp (wiki Khoa kỹ) lúc mở trận */
+  function formationCounterTip(playerFid, enemyFid) {
+    var list = formationDb();
+    if (!list) return "";
+    var mine = list[playerFid];
+    var foe = list[enemyFid];
+    if (!mine || !foe) return "";
+    var mineName = mine.name || playerFid;
+    var foeName = foe.name || enemyFid;
+    if (mine.counters && mine.counters.indexOf(enemyFid) >= 0) {
+      return "⚔ Trận <b>" + mineName + "</b> khắc <b>" + foeName + "</b> — lợi thế!";
+    }
+    if (foe.counters && foe.counters.indexOf(playerFid) >= 0) {
+      return "⚠ Địch <b>" + foeName + "</b> khắc trận <b>" + mineName + "</b> của ta.";
+    }
+    return (
+      "Trận ta: <b>" +
+      mineName +
+      "</b>" +
+      (mine.focusLabel ? " (" + mine.focusLabel + ")" : "") +
+      " · Địch: <b>" +
+      foeName +
+      "</b>" +
+      (foe.focusLabel ? " (" + foe.focusLabel + ")" : "")
+    );
   }
 
   function CombatView() {
@@ -64,9 +110,14 @@
     }
   }
 
-  CombatView.prototype.open = function () {
+  CombatView.prototype.open = function (meta) {
+    this._meta = meta || null;
     if (!this.root) return;
     this.root.hidden = false;
+    // Pause Thành Chính — tránh 2 WebGL cùng render (nguyên nhân FPS thấp)
+    if (global.NLCity && global.NLCity.city && global.NLCity.city.pause) {
+      global.NLCity.city.pause();
+    }
     if (this.resultEl) this.resultEl.hidden = true;
     if (this.btnClose) this.btnClose.hidden = true;
     if (this.logEl) {
@@ -86,6 +137,9 @@
       this._battle3d.dispose();
       this._battle3d = null;
       this._battleReady = null;
+    }
+    if (global.NLCity && global.NLCity.city && global.NLCity.city.resume) {
+      global.NLCity.city.resume();
     }
   };
 
@@ -128,9 +182,39 @@
       '<div class="c-morale" title="Sĩ khí"><i style="width:' +
       mPct +
       '%"></i></div>' +
+      '<div class="c-status-icons" aria-hidden="true"></div>' +
       "</div></div>";
     if (mPct >= 100) card.classList.add("ready");
     return card;
+  };
+
+  /** Icon hiệu ứng wiki cạnh thanh máu (góc panel) */
+  CombatView.prototype.paintStatusIcons = function (uid, statuses) {
+    var card = this.cards[uid];
+    if (!card) return;
+    var row = card.querySelector(".c-status-icons");
+    if (!row) return;
+    var list = (statuses || []).slice(0, 5);
+    row.innerHTML = list
+      .map(function (s) {
+        var tip = s.label || s.id || "";
+        var cls = "c-st c-st-" + (s.kind || "buff");
+        if (s.icon) {
+          return (
+            '<img class="' +
+            cls +
+            '" src="' +
+            s.icon +
+            '" alt="' +
+            tip +
+            '" title="' +
+            tip +
+            '" />'
+          );
+        }
+        return '<span class="' + cls + ' c-st-text" title="' + tip + '">' + tip.slice(0, 2) + "</span>";
+      })
+      .join("");
   };
 
   CombatView.prototype.ensureBattle3d = function () {
@@ -185,6 +269,7 @@
         container.appendChild(col);
         return;
       }
+      // Lưới 3 cột: hàng sau ô trống | Sau-Giữa(3) | Sau-Dưới(4) — thẳng cột với trước
       var front = el("div", "c-row front");
       var back = el("div", "c-row back");
       [0, 1, 2].forEach(function (i) {
@@ -196,12 +281,14 @@
         } else cell.classList.add("empty");
         front.appendChild(cell);
       });
-      [3, 4].forEach(function (i) {
+      [null, 3, 4].forEach(function (i) {
         var cell = el("div", "c-slot");
-        if (slots[i]) {
-          var card = self.buildCard(slots[i]);
-          self.cards[slots[i].uid] = card;
-          cell.appendChild(card);
+        if (i == null) {
+          cell.classList.add("empty", "spacer");
+        } else if (slots[i]) {
+          var cardB = self.buildCard(slots[i]);
+          self.cards[slots[i].uid] = cardB;
+          cell.appendChild(cardB);
         } else cell.classList.add("empty");
         back.appendChild(cell);
       });
@@ -286,12 +373,13 @@
     this.logEl.scrollTop = this.logEl.scrollHeight;
   };
 
-  CombatView.prototype.play = function (result, onDone) {
+  CombatView.prototype.play = function (result, onDone, meta) {
     var self = this;
     this._playing = true;
     this._skip = false;
     this._onDone = onDone;
     this._result = result;
+    if (meta) this._meta = meta;
 
     // Bật mode-3d sớm để HUD dock layout đúng trước khi render thẻ
     if (global.NLCity && global.NLCity.BattleRenderer && this.root) {
@@ -310,15 +398,37 @@
       }
       var allySub = document.getElementById("combat-ally-sub");
       if (allySub) {
+        var aFormName = formationDisplayName(start.playerFormation);
         var a0b = start.allies && start.allies[0];
-        allySub.textContent = a0b && a0b.level ? "Lv." + a0b.level + " · Đạo quân" : "Đạo quân";
+        allySub.textContent = aFormName
+          ? "Trận " + aFormName
+          : a0b && a0b.level
+          ? "Lv." + a0b.level + " · Đạo quân"
+          : "Đạo quân";
       }
       if (foeName) {
         foeName.textContent =
           (start.foes && start.foes[0] && start.foes[0].name) || "Địch";
       }
       var foeSub = document.getElementById("combat-enemy-sub");
-      if (foeSub) foeSub.textContent = start.title || "Phó bản";
+      if (foeSub) {
+        var eFormName = formationDisplayName(start.enemyFormation);
+        foeSub.textContent = eFormName
+          ? "Trận " + eFormName + (start.title ? " · " + start.title : "")
+          : start.title || "Phó bản";
+      }
+      // Tip khắc chế trận pháp (wiki Khoa kỹ)
+      var tip = formationCounterTip(start.playerFormation, start.enemyFormation);
+      if (tip) {
+        this.log(tip);
+        if (this.fxLayer) {
+          var banner = el("div", "c-form-tip", tip.replace(/<[^>]+>/g, ""));
+          this.fxLayer.appendChild(banner);
+          setTimeout(function () {
+            if (banner.parentNode) banner.parentNode.removeChild(banner);
+          }, 2200);
+        }
+      }
     }
 
     var idx = 0;
@@ -326,8 +436,36 @@
 
     function finish() {
       self._playing = false;
+      var rounds = result.rounds || 1;
+      var i;
+      for (i = events.length - 1; i >= 0; i--) {
+        if (events[i].type === "battle_end" && events[i].rounds) {
+          rounds = events[i].rounds;
+          break;
+        }
+      }
+      var meta = self._meta || {};
+      var tipWin =
+        meta.context === "campaign"
+          ? "Bấm <b>Quà</b> — xem chiến báo & thưởng Phó Bản."
+          : "Bấm <b>Quà</b> để nhận kết quả trận.";
+      var tipLose = meta.loseTip || "Thử đổi trận pháp, huấn luyện tướng hoặc đeo trang bị.";
+      var stageLine =
+        meta.stageName && meta.context === "campaign"
+          ? '<div class="c-result-stage">' + meta.stageName + "</div>"
+          : "";
       self.resultEl.hidden = false;
-      self.resultEl.textContent = result.win ? "CHIẾN THẮNG" : "THẤT BẠI";
+      self.resultEl.innerHTML =
+        '<div class="c-result-title">' +
+        (result.win ? "CHIẾN THẮNG" : "THẤT BẠI") +
+        "</div>" +
+        stageLine +
+        '<div class="c-result-sub">' +
+        rounds +
+        " hiệp</div>" +
+        '<div class="c-result-tip">' +
+        (result.win ? tipWin : tipLose) +
+        "</div>";
       self.resultEl.className = "combat-result " + (result.win ? "win" : "lose");
       self.btnClose.hidden = false;
       self.btnClose.onclick = function () {
@@ -371,8 +509,13 @@
       if (ev.type === "skill") {
         delay = 780;
         if (global.NLSkillDesign) {
-          delay = Math.max(720, global.NLSkillDesign.totalMs(global.NLSkillDesign.resolve(ev.flash || "gold")) + 80);
-        } else if (ev.flash === "bagua" || ev.flash === "fire_rain") delay = 980;
+          var fxKey =
+            (global.NLSkillDesign.resolveFxKey &&
+              global.NLSkillDesign.resolveFxKey(ev.flash, ev.motif)) ||
+            ev.flash ||
+            "gold";
+          delay = Math.max(720, global.NLSkillDesign.totalMs(global.NLSkillDesign.resolve(fxKey)) + 80);
+        } else if (ev.flash === "bagua" || ev.flash === "fire_rain" || ev.flash === "tiger") delay = 980;
         else if (ev.flash === "thunder") delay = 720;
       }
       if (ev.type === "float") delay = 80;
@@ -407,7 +550,10 @@
             troopTier: u.troopTier != null ? u.troopTier : 1,
           });
         });
-        self._battle3d.spawn(allies3d, foes3d, faction);
+        self._battle3d.spawn(allies3d, foes3d, faction, {
+          allyFormation: start.playerFormation || "crane_wing",
+          enemyFormation: start.enemyFormation || "square",
+        });
       }
       step();
     }
@@ -416,7 +562,10 @@
   };
 
   CombatView.prototype.playSkillFx = function (ev) {
-    var flash = ev.flash || "gold";
+    var flash =
+      (global.NLSkillDesign && global.NLSkillDesign.resolveFxKey
+        ? global.NLSkillDesign.resolveFxKey(ev.flash, ev.motif)
+        : ev.flash) || "gold";
     var layer = this.fxLayer || this.root;
     if (!layer) return;
 
@@ -426,7 +575,27 @@
       }.bind(this))
       .filter(Boolean);
 
-    // Timeline-driven skill VFX (NLSkillDesign + NLCombatVfx)
+    // Trận 3D: aura đã chạy trên BattleRenderer — chỉ banner chữ, không sigil/veil giữa sân
+    // (tránh vòng trắng “✚/☯” + lớp mờ đè máu/unit).
+    if (this._battle3d) {
+      if (this._skillPlay && this._skillPlay.cancel) this._skillPlay.cancel();
+      var profile =
+        global.NLSkillDesign && global.NLSkillDesign.resolve
+          ? global.NLSkillDesign.resolve(flash)
+          : { essence: "radiance", delivery: "buff", scale: "M", durations: { castMs: 200, emissionMs: 400 } };
+      if (global.NLCombatVfx && global.NLCombatVfx.showBanner) {
+        global.NLCombatVfx.showBanner(layer, ev.text || ev.name || "CHIẾN PHÁP", profile);
+      } else {
+        var b = el("div", "c-skill-banner skd-" + (profile.essence || "radiance"), ev.text || ev.name || "CHIẾN PHÁP");
+        layer.appendChild(b);
+        setTimeout(function () {
+          if (b.parentNode) b.parentNode.removeChild(b);
+        }, 900);
+      }
+      return;
+    }
+
+    // Timeline-driven skill VFX 2D (preview / fallback không 3D)
     if (global.NLCombatVfx && global.NLCombatVfx.playSkill) {
       if (this._skillPlay && this._skillPlay.cancel) this._skillPlay.cancel();
       this._skillPlay = global.NLCombatVfx.playSkill({
@@ -436,6 +605,7 @@
         targetCards: targets,
         text: ev.text || ev.name || "CHIẾN PHÁP",
         flash: flash,
+        motif: ev.motif || null,
       });
       return;
     }
@@ -458,11 +628,16 @@
         this.flashCard(ev.uid, "act");
         break;
       case "skill":
+        this.flashCard(ev.uid, "skill-cast");
         if (this._battle3d) {
           var skillTargets = (ev.targets || []).map(function (t) {
             return typeof t === "string" ? t : t && (t.uid || t.target_id || t);
           }).filter(Boolean);
-          this._battle3d.skillFlash(ev.uid, ev.flash || "gold", skillTargets);
+          var skillFxKey =
+            (global.NLSkillDesign && global.NLSkillDesign.resolveFxKey
+              ? global.NLSkillDesign.resolveFxKey(ev.flash, ev.motif)
+              : ev.flash) || "gold";
+          this._battle3d.skillFlash(ev.uid, skillFxKey, skillTargets);
         }
         this.playSkillFx(ev);
         this.log(
@@ -478,7 +653,12 @@
           var waveTargets = (ev.targets || []).map(function (t) {
             return typeof t === "string" ? t : t && (t.uid || t.target_id || t);
           }).filter(Boolean);
-          this._battle3d.skillFlash(ev.uid, ev.flash || "gold", waveTargets);
+          var waveFxKey =
+            (global.NLSkillDesign && global.NLSkillDesign.resolveFxKey
+              ? global.NLSkillDesign.resolveFxKey(ev.flash, ev.motif)
+              : ev.flash) || "gold";
+          // Wave 2+: chỉ impact — không cast aura lại (tránh beam×2 + aura chồng)
+          this._battle3d.skillFlash(ev.uid, waveFxKey, waveTargets, { wave: true });
         }
         break;
       case "attack":
@@ -526,6 +706,7 @@
         if (this._battle3d && this._battle3d.setStatuses) {
           this._battle3d.setStatuses(ev.uid, ev.statuses || []);
         }
+        this.paintStatusIcons(ev.uid, ev.statuses || []);
         if (ev.statuses && ev.statuses.length) {
           var names = ev.statuses
             .map(function (s) {
@@ -539,7 +720,11 @@
         this.log("Bị hỗn loạn — bỏ lượt.");
         break;
       case "battle_end":
-        this.log(ev.win ? "Thắng!" : "Thua…");
+        this.log(
+          ev.win
+            ? "Chiến thắng sau " + (ev.rounds || 1) + " hiệp!"
+            : "Thất bại sau " + (ev.rounds || 1) + " hiệp."
+        );
         break;
       default:
         break;
@@ -548,10 +733,10 @@
 
   var view = null;
 
-  function playBattle(result, onDone) {
+  function playBattle(result, onDone, meta) {
     if (!view) view = new CombatView();
-    view.open();
-    view.play(result, onDone);
+    view.open(meta);
+    view.play(result, onDone, meta);
   }
 
   function closeBattle() {

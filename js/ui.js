@@ -22,9 +22,19 @@
     return "assets/units/battle/wiki-" + key + "-t" + n + ".png";
   }
 
+  /** Portrait wiki CDN → fallback sprite binh chủng */
+  function generalArt(g) {
+    if (g && g.portraitUrl) return g.portraitUrl;
+    if (g && typeof NLDatabase !== "undefined" && NLDatabase.generalPortraitUrl) {
+      var u = NLDatabase.generalPortraitUrl(g.key || g.generalId || g.id);
+      if (u) return u;
+    }
+    return troopSprite(g && g.troop, troopTierOf(g));
+  }
+
   function troopChar(troop) {
-    var map = { cavalry: "騎", infantry: "步", spear: "槍", archer: "弓", strategist: "謀" };
-    return map[troop] || "將";
+    var map = { cavalry: "Kỵ", infantry: "Bộ", spear: "Thương", archer: "Cung", strategist: "Mưu" };
+    return map[troop] || "Tướng";
   }
 
   function troopShort(troop) {
@@ -33,7 +43,7 @@
   }
 
   function shortFlag(name) {
-    if (!name) return "兵";
+    if (!name) return "Binh";
     return String(name).replace(/\s+/g, "").slice(0, 2);
   }
 
@@ -54,16 +64,43 @@
     return "Bậc " + tier;
   }
 
-  function formSlotCard(g, slotIndex, activeTroopMap) {
+  function formatSlotMod(mod) {
+    if (!mod) return "";
+    var bits = [];
+    if (mod.atk != null && mod.atk !== 1) {
+      bits.push("ATK " + (mod.atk >= 1 ? "+" : "") + Math.round((mod.atk - 1) * 100) + "%");
+    }
+    if (mod.def != null && mod.def !== 1) {
+      bits.push("DEF " + (mod.def >= 1 ? "+" : "") + Math.round((mod.def - 1) * 100) + "%");
+    }
+    return bits.join(" · ");
+  }
+
+  function formSlotCard(g, slotIndex, activeTroopMap, opts) {
+    opts = opts || {};
+    var pickCls = opts.swapPick ? " swap-pick" : "";
+    var modTxt = formatSlotMod(opts.slotMod);
+    var modCls =
+      opts.slotMod &&
+      ((opts.slotMod.atk != null && opts.slotMod.atk < 1) ||
+        (opts.slotMod.def != null && opts.slotMod.def < 1))
+        ? " down"
+        : "";
+    var modHtml = modTxt
+      ? '<span class="form-slot-mod' + modCls + '">' + modTxt + "</span>"
+      : "";
     if (!g) {
       return (
-        '<div class="slot empty" data-slot="' +
+        '<div class="slot empty' +
+        pickCls +
+        '" data-slot="' +
         slotIndex +
-        '">' +
+        '" title="Chạm để xếp / đổi chỗ">' +
         '<div class="f-empty-ico" aria-hidden="true">＋</div>' +
         '<span class="f-empty-num">Ô ' +
         (slotIndex + 1) +
         "</span>" +
+        modHtml +
         "</div>"
       );
     }
@@ -88,9 +125,10 @@
     return (
       '<div class="slot filled troop-' +
       troop +
+      pickCls +
       '" data-slot="' +
       slotIndex +
-      '" title="Chạm để gỡ">' +
+      '" title="Chạm chọn để đổi chỗ · chạm lại để gỡ">' +
       '<div class="f-flag">' +
       shortFlag(g.name) +
       "</div>" +
@@ -112,6 +150,7 @@
       " · Lv." +
       (g.level || 1) +
       "</span>" +
+      modHtml +
       "</div>" +
       "</div>"
     );
@@ -163,7 +202,7 @@
   };
 
   function panelHead(ico, title, sub) {
-    var seal = ico || "卷";
+    var seal = ico || "Sách";
     if (seal.length > 2) seal = seal.charAt(0);
     return (
       '<div class="nl-panel-head">' +
@@ -227,8 +266,7 @@
       if (rateFoodEl) rateFoodEl.textContent = "+" + rates.food + "/phút";
       var tip = document.getElementById("nl-tip");
       if (tip && !tip._locked) {
-        tip.textContent =
-          "+" + rates.silver + " bạc/phút · +" + rates.food + " lương/phút · Nâng cấp trực tiếp tại bảng Thành Chính";
+        updateCityNextTip(state, handlers, rates);
       }
     }
 
@@ -334,6 +372,131 @@
         if (h && h.upgrade) h.upgrade(btn.getAttribute("data-dock-up"));
       });
     });
+    renderCityDockCta(state, handlers || renderCityDock._handlers);
+  }
+
+  function findNextCampaignStage(state) {
+    if (typeof NLCampaign === "undefined") return null;
+    var snap = NLCampaign.mapSnapshot(state);
+    if (!snap || !snap.chapters) return null;
+    for (var ci = 0; ci < snap.chapters.length; ci++) {
+      var ch = snap.chapters[ci];
+      if (!ch.unlocked) continue;
+      for (var si = 0; si < ch.stages.length; si++) {
+        var st = ch.stages[si];
+        if (st.unlocked && !st.cleared) return { chapterId: ch.chapter_id, stage: st };
+      }
+    }
+    return null;
+  }
+
+  function computeCityNextStep(state) {
+    var next = findNextCampaignStage(state);
+    if (next && next.stage.can_fight) {
+      return {
+        text: "Tiếp theo: ải " + next.stage.index + " · " + next.stage.name,
+        panel: "tower",
+        label: "Mở Phó Bản",
+      };
+    }
+    if (next && !next.stage.can_fight) {
+      return {
+        text: "Thiếu lương cho ải " + next.stage.name + " — nâng Nông Trại hoặc chờ sản xuất",
+        panel: null,
+        label: null,
+      };
+    }
+    var deployed = (state.generals || []).filter(function (g) {
+      return g.deployed_slot >= 1 && g.deployed_slot <= 5;
+    }).length;
+    if ((state.generals || []).length && deployed < 1) {
+      return {
+        text: "Chưa xếp tướng ra trận — mở Tửu Quán → Võ Tướng, chọn Ô 1–5",
+        panel: "generals",
+        label: "Tửu Quán",
+        tavern: true,
+      };
+    }
+    if (typeof NLRecruit !== "undefined" && NLRecruit.tavernSnapshot) {
+      var snap = NLRecruit.tavernSnapshot(state);
+      var afford = (snap.available || []).find(function (e) {
+        return e.can_afford;
+      });
+      if (afford) {
+        return {
+          text: "Có thể chiêu mộ " + afford.name + " tại Tửu Quán",
+          panel: "generals",
+          label: "Chiêu mộ",
+          tavern: true,
+        };
+      }
+    }
+    var needsEquip = (state.generals || []).some(function (g) {
+      var eq = g.equip || {};
+      return !eq.weapon && !eq.armor && !g.horseId;
+    });
+    if (needsEquip && (state.inventory || []).length) {
+      return {
+        text: "Có đồ trong kho — đeo trang bị trước khi đánh ải",
+        panel: "equip",
+        label: "Trang bị",
+      };
+    }
+    return {
+      text: "Nâng cấp Mỏ Bạc / Nông Trại để tăng sản xuất · Click công trình trên bản đồ",
+      panel: null,
+      label: null,
+    };
+  }
+
+  function updateCityNextTip(state, handlers, rates) {
+    var tip = document.getElementById("nl-tip");
+    if (!tip) return;
+    var step = computeCityNextStep(state);
+    var rateBit =
+      rates && rates.silver != null
+        ? "+" + rates.silver + " bạc/ph · +" + rates.food + " lương/ph · "
+        : "";
+    tip.textContent = rateBit + step.text;
+    tip._cityStep = step;
+    tip._cityHandlers = handlers;
+  }
+
+  function renderCityDockCta(state, handlers) {
+    var box = document.getElementById("city-dock-cta");
+    if (!box) return;
+    var step = computeCityNextStep(state);
+    if (!step.label || !step.panel) {
+      box.hidden = true;
+      box.innerHTML = "";
+      return;
+    }
+    box.hidden = false;
+    box.innerHTML =
+      '<p class="meta" style="margin:0 0 0.35rem">' +
+      step.text +
+      '</p><button type="button" class="btn-game primary" data-city-cta="' +
+      step.panel +
+      '"' +
+      (step.tavern ? ' data-city-tavern="1"' : "") +
+      ">" +
+      step.label +
+      "</button>";
+    box.querySelectorAll("[data-city-cta]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var panel = btn.getAttribute("data-city-cta");
+        var tavern = btn.getAttribute("data-city-tavern") === "1";
+        if (handlers && handlers._openPanel) {
+          handlers._openPanel(panel, { tavern: tavern });
+        } else if (tavern && handlers && handlers.openGeneralsTavern) {
+          handlers.openGeneralsTavern();
+        } else if (handlers && panel === "equip" && handlers.openEquip) {
+          handlers.openEquip();
+        } else if (handlers && panel === "tower" && handlers.openCampaign) {
+          handlers.openCampaign();
+        }
+      });
+    });
   }
 
   function openPanel(html) {
@@ -362,6 +525,9 @@
       } catch (e) {}
       host._br = null;
     }
+    // Giữ badge tên trận — mount 3D chỉ clear .battle-gl-host
+    var badge = document.getElementById("form-preview-badge");
+    if (badge) badge.hidden = true;
   }
 
   /** Chuỗi đọc được từ entry battleLog (object) hoặc string sẵn. */
@@ -404,7 +570,7 @@
         " binh · Ty Vũ Lv." + snap.ty_vu_level + "</p>"
       : "";
     var html =
-      panelHead("政", "Quốc Chính", "Nâng cấp có thời gian chờ · Kho giới hạn dung tích · Ty Vũ khóa trần cấp.") +
+      panelHead("Quốc", "Quốc Chính", "Nâng cấp có thời gian chờ · Kho giới hạn dung tích · Ty Vũ khóa trần cấp.") +
       troopLine +
       '<div class="card-grid">' +
       list.map(function (b) {
@@ -462,7 +628,7 @@
         "</p>" +
         '<button type="button" class="btn-game primary" id="btn-up-one">Nâng cấp</button>';
     var html =
-      panelHead("建", b.name, "Cấp hiện tại: Lv." + b.level) +
+      panelHead("Xây", b.name, "Cấp hiện tại: Lv." + b.level) +
       '<p class="meta">' + b.desc + "</p>" +
       "<p>" + b.effectText + "</p>" +
       statusHtml;
@@ -482,7 +648,7 @@
     var tab = renderGenerals._tab || "owned";
     var header =
       panelHead(
-        "酒",
+        "Rượu",
         "Võ Tướng & Tửu Quán",
         "Chiêu mộ · Huấn luyện · Cường hóa · Ra trận 5 ô"
       ) +
@@ -547,8 +713,10 @@
               '<article class="gcard">' +
               '<div class="gcard-portrait">' +
               '<img class="gcard-art" src="' +
+              generalArt(e) +
+              '" alt="" draggable="false" onerror="this.onerror=null;this.src=\'' +
               troopSprite(e.troop, 1) +
-              '" alt="" draggable="false" />' +
+              '\'" />' +
               "<div>" +
               '<span class="troop ' +
               e.troop +
@@ -613,17 +781,34 @@
                 g.id +
                 '|0">Nghỉ</button>';
             }
+            var qLabel = g.qualityName || g.quality || "";
+            var awakenBtn = g.canAwaken
+              ? '<button type="button" class="btn-game primary" data-awaken="' +
+                g.id +
+                '" title="' +
+                (g.awakenCost || [])
+                  .map(function (c) {
+                    return (c.name || c.itemId) + "×" + (c.qty || 0);
+                  })
+                  .join(", ") +
+                '">Giác ngộ</button>'
+              : "";
             return (
               '<article class="gcard">' +
               '<div class="gcard-portrait">' +
               '<img class="gcard-art" src="' +
+              generalArt(g) +
+              '" alt="" draggable="false" onerror="this.onerror=null;this.src=\'' +
               troopSprite(g.troop, troopTierOf(g)) +
-              '" alt="" draggable="false" />' +
+              '\'" />' +
               "<div>" +
               '<span class="troop ' +
               g.troop +
               '">' +
               (troop ? troop.name : g.troop) +
+              (g.troop2 ? " / " + troopShort(g.troop2) : "") +
+              " · " +
+              qLabel +
               "</span>" +
               "<h3>" +
               g.name +
@@ -634,6 +819,9 @@
               "</span> " +
               stBadge +
               "</h3>" +
+              (g.skill
+                ? '<p class="meta" style="margin:0.15rem 0 0">Chiêu: <b>' + g.skill + "</b></p>"
+                : "") +
               "</div></div>" +
               '<div class="stats"><div><span>VL/ATK</span> <b>' +
               g.atk +
@@ -651,12 +839,16 @@
               slotBtns +
               "</div>" +
               '<div class="row-btns">' +
+              '<button type="button" class="btn-game" data-equip-g="' +
+              g.id +
+              '">Trang bị</button>' +
               '<button type="button" class="btn-game" data-train="' +
               g.id +
               '">Huấn luyện</button>' +
               '<button type="button" class="btn-game" data-enh="' +
               g.id +
               '">Cường hóa</button>' +
+              awakenBtn +
               (state.generals.length > 1
                 ? '<button type="button" class="btn-game" data-dis="' + g.id + '">Sa thải</button>'
                 : "") +
@@ -703,14 +895,25 @@
     document.querySelectorAll("#panel-body [data-train]").forEach(function (btn) {
       btn.addEventListener("click", function () { handlers.train(btn.getAttribute("data-train")); });
     });
+    document.querySelectorAll("#panel-body [data-awaken]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (handlers.awaken) handlers.awaken(btn.getAttribute("data-awaken"));
+      });
+    });
     document.querySelectorAll("#panel-body [data-enh]").forEach(function (btn) {
       btn.addEventListener("click", function () { handlers.enhance(btn.getAttribute("data-enh")); });
+    });
+    document.querySelectorAll("#panel-body [data-equip-g]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (handlers.openEquipGeneral) handlers.openEquipGeneral(btn.getAttribute("data-equip-g"));
+        else if (handlers.openEquip) handlers.openEquip();
+      });
     });
   }
 
   function renderWorld(state, handlers) {
     var html =
-      panelHead("圖", "Thế giới", "Công thành AI để thôn tính lãnh địa.") +
+      panelHead("Đồ", "Thế giới", "Công thành AI để thôn tính lãnh địa.") +
       '<div class="row-btns" style="margin:0 0 0.6rem">' +
       '<button type="button" class="btn-game" id="btn-open-tower">Tháp thí luyện (Tầng ' +
       (state.towerFloor || 1) +
@@ -746,7 +949,7 @@
   function renderTower(state, handlers) {
     var pct = ((state.towerFloor - 1) / G.MAX_TOWER) * 100;
     var html =
-      panelHead("塔", "Tháp thí luyện", "40 tầng · thắng nhận hồn tướng") +
+      panelHead("Tháp", "Tháp thí luyện", "40 tầng · thắng nhận hồn tướng") +
       statPills([
         { label: "Tầng", value: state.towerFloor + "/" + G.MAX_TOWER },
         { label: "Hồn tướng", value: fmt(state.souls || 0) },
@@ -768,7 +971,7 @@
     var honor = ar.honor || 0;
 
     var html =
-      panelHead("擂", "Lôi Đài Tam Quốc", "Đánh thắng đối thủ xếp trên để đổi hạng.") +
+      panelHead("Đài", "Lôi Đài Tam Quốc", "Đánh thắng đối thủ xếp trên để đổi hạng.") +
       statPills([
         { label: "Hạng", value: "#" + pRank },
         { label: "Vinh quang", value: fmt(honor) },
@@ -826,49 +1029,183 @@
     });
   }
 
-  function renderEquip(state) {
-    var inv = state.inventory || [];
-    var horses = inv.filter(function (it) {
-      var meta =
-        typeof NLDatabase !== "undefined" ? NLDatabase.getItem(it.itemId || it.id) : null;
-      return meta && meta.slot === "horse";
+  function equipSlotLabels() {
+    return (
+      (typeof NLDatabase !== "undefined" && NLDatabase.SLOT_LABELS) || {
+        weapon: "Vũ khí",
+        armor: "Giáp",
+        horse: "Ngựa",
+        book: "Sách",
+        cloak: "Choàng",
+        shield: "Thuẫn",
+        troop: "Dẫn binh",
+      }
+    );
+  }
+
+  function equipSlots() {
+    return (
+      (typeof NLDatabase !== "undefined" && NLDatabase.EQUIP_SLOTS) || [
+        "weapon",
+        "armor",
+        "horse",
+        "book",
+        "cloak",
+        "shield",
+        "troop",
+      ]
+    );
+  }
+
+  function rarityColor(rarity) {
+    var map =
+      (typeof NLDatabase !== "undefined" && NLDatabase.RARITY_COLORS) || {};
+    return map[rarity] || "#c4a574";
+  }
+
+  function formatItemBonuses(item) {
+    if (!item) return "";
+    if (item.statsWiki && item.statsWiki.length) {
+      return item.statsWiki
+        .map(function (s) {
+          return s.label + " " + s.base + (s.growth ? "(+" + s.growth + ")" : "");
+        })
+        .join(" · ");
+    }
+    if (!item.bonuses) return "";
+    var labels = { vuLuc: "Vũ", tongLinh: "Thống", triLuc: "Trí", hp: "HP", speed: "Tốc" };
+    return Object.keys(item.bonuses)
+      .map(function (k) {
+        return (labels[k] || k) + " +" + item.bonuses[k];
+      })
+      .join(" · ");
+  }
+
+  function itemIconHtml(item, cls) {
+    if (!item) {
+      return '<span class="eq-icon eq-icon--empty' + (cls ? " " + cls : "") + '"></span>';
+    }
+    var url =
+      typeof NLDatabase !== "undefined" && NLDatabase.itemIconUrl
+        ? NLDatabase.itemIconUrl(item)
+        : item.icon;
+    var color = rarityColor(item.rarity);
+    if (url) {
+      return (
+        '<img class="eq-icon' +
+        (cls ? " " + cls : "") +
+        '" src="' +
+        url +
+        '" alt="" style="border-color:' +
+        color +
+        '" loading="lazy"/>'
+      );
+    }
+    return (
+      '<span class="eq-icon eq-icon--empty' +
+      (cls ? " " + cls : "") +
+      '" style="border-color:' +
+      color +
+      '"></span>'
+    );
+  }
+
+  /** Đếm món trong kho / đang đeo (trừ tướng hiện tại). */
+  function equipInventoryPool(state, slot, exceptGid) {
+    var counts = {};
+    (state.inventory || []).forEach(function (it) {
+      var id = it.itemId || it.id;
+      if (!id) return;
+      var meta = typeof NLDatabase !== "undefined" ? NLDatabase.getItem(id) : null;
+      if (!meta || meta.slot !== slot) return;
+      var q = it.qty != null ? it.qty : it.count != null ? it.count : 1;
+      counts[id] = (counts[id] || 0) + q;
     });
+    (state.generals || []).forEach(function (g) {
+      if (g.id === exceptGid) return;
+      var eq = g.equip || {};
+      var worn = eq[slot] || (slot === "horse" ? g.horseId : null);
+      if (worn && counts[worn] != null) counts[worn] = Math.max(0, counts[worn] - 1);
+    });
+    return counts;
+  }
+
+  function renderEquip(state) {
+    var slots = equipSlots();
+    var labels = equipSlotLabels();
     var gens = state.generals || [];
+    var invCount = (state.inventory || []).length;
     var html =
-      panelHead("裝", "Trang bị · Ngựa", "Đeo ngựa cho kỵ binh — tăng Vu lực / Thống lĩnh.") +
+      panelHead(
+        "Đồ",
+        "Trang bị",
+        "7 ô wiki — vũ khí · giáp · ngựa · sách · choàng · thuẫn · dẫn binh. Chỉ số cộng vào trận."
+      ) +
       statPills([
         { label: "Uy danh", value: fmt(state.prestige) },
-        { label: "Ngựa kho", value: String(horses.length) },
+        { label: "Kho đồ", value: String(invCount) },
+        { label: "Tướng", value: String(gens.length) },
       ]);
-    html += '<div class="equip-horse-list">';
+
+    html += '<div class="equip-list">';
     gens.forEach(function (g) {
       var troop = g.troop || "infantry";
-      var horseMeta =
-        g.horseId && typeof NLDatabase !== "undefined"
-          ? NLDatabase.getItem(g.horseId)
-          : null;
+      var eq = g.equip || {};
+      var bonusPreview = { vuLuc: 0, tongLinh: 0, triLuc: 0, hp: 0, speed: 0 };
+      slots.forEach(function (slot) {
+        var iid = eq[slot] || (slot === "horse" ? g.horseId : null);
+        var it = iid && typeof NLDatabase !== "undefined" ? NLDatabase.getItem(iid) : null;
+        if (it && it.bonuses) {
+          Object.keys(it.bonuses).forEach(function (k) {
+            if (bonusPreview[k] != null) bonusPreview[k] += it.bonuses[k] || 0;
+          });
+        }
+      });
+      var bonusBits = [];
+      if (bonusPreview.vuLuc) bonusBits.push("Vũ +" + bonusPreview.vuLuc);
+      if (bonusPreview.tongLinh) bonusBits.push("Thống +" + bonusPreview.tongLinh);
+      if (bonusPreview.triLuc) bonusBits.push("Trí +" + bonusPreview.triLuc);
+      if (bonusPreview.hp) bonusBits.push("HP +" + bonusPreview.hp);
+      if (bonusPreview.speed) bonusBits.push("Tốc +" + bonusPreview.speed);
+
       html +=
-        '<div class="equip-row" data-gid="' +
+        '<div class="equip-card" data-gid="' +
         g.id +
         '">' +
+        '<div class="equip-card-head">' +
+        '<img class="equip-portrait" src="' +
+        generalArt(g) +
+        '" alt=""/>' +
+        "<div>" +
         "<strong>" +
         g.name +
         "</strong> <small>" +
         troopChar(troop) +
         (g.troop2 ? " / " + troopChar(g.troop2) : "") +
+        " · Lv." +
+        (g.level || 1) +
         "</small>" +
-        '<div class="equip-horse-now">' +
-        (horseMeta ? horseMeta.name : "— chưa đeo ngựa —") +
+        '<div class="equip-bonus-sum">' +
+        (bonusBits.length ? bonusBits.join(" · ") : "Chưa đeo đồ") +
         "</div>" +
-        '<select class="equip-horse-sel" data-gid="' +
-        g.id +
-        '">' +
-        '<option value="">(Tháo ngựa)</option>' +
-        horses
-          .map(function (it) {
-            var m = NLDatabase.getItem(it.itemId || it.id);
+        "</div></div>" +
+        '<div class="equip-slots">';
+
+      slots.forEach(function (slot) {
+        var curId = eq[slot] || (slot === "horse" ? g.horseId : null) || "";
+        var cur =
+          curId && typeof NLDatabase !== "undefined" ? NLDatabase.getItem(curId) : null;
+        var pool = equipInventoryPool(state, slot, g.id);
+        var opts = Object.keys(pool)
+          .filter(function (id) {
+            return pool[id] > 0 || id === curId;
+          })
+          .map(function (id) {
+            var m = NLDatabase.getItem(id);
             if (!m) return "";
-            var sel = g.horseId === m.id ? " selected" : "";
+            var left = pool[id] || 0;
+            var sel = id === curId ? " selected" : "";
+            var bonus = formatItemBonuses(m);
             return (
               '<option value="' +
               m.id +
@@ -876,41 +1213,140 @@
               sel +
               ">" +
               m.name +
+              (m.qualityWiki ? " · " + m.qualityWiki : "") +
+              (bonus ? " — " + bonus : "") +
+              (id !== curId && left > 1 ? " ×" + left : "") +
               "</option>"
             );
           })
-          .join("") +
-        "</select></div>";
+          .join("");
+
+        html +=
+          '<div class="equip-slot" data-slot="' +
+          slot +
+          '">' +
+          itemIconHtml(cur) +
+          '<div class="equip-slot-meta">' +
+          '<span class="equip-slot-label">' +
+          (labels[slot] || slot) +
+          "</span>" +
+          '<span class="equip-slot-name" style="color:' +
+          (cur ? rarityColor(cur.rarity) : "#8a7a60") +
+          '">' +
+          (cur ? cur.name : "— trống —") +
+          "</span>" +
+          (cur
+            ? '<span class="equip-slot-stats">' + formatItemBonuses(cur) + "</span>"
+            : "") +
+          '<select class="equip-slot-sel" data-gid="' +
+          g.id +
+          '" data-slot="' +
+          slot +
+          '">' +
+          '<option value="">(Tháo)</option>' +
+          opts +
+          "</select></div></div>";
+      });
+
+      html += "</div></div>";
     });
     html += "</div>";
     html +=
-      '<p class="meta">Cường hóa tướng (+1…+10) trong mục Võ Tướng. +6 trở lên cần unlock Boss Ch.2.</p>';
+      '<p class="meta">Đồ khởi đầu trong kho. Cường hóa tướng (+1…+10) trong mục Võ Tướng.</p>';
     openPanel(html);
+
     var host = document.getElementById("panel-body") || document.querySelector(".panel-body");
-    if (host) {
-      host.querySelectorAll(".equip-horse-sel").forEach(function (sel) {
-        sel.addEventListener("change", function () {
-          var gid = sel.getAttribute("data-gid");
-          var g = gens.find(function (x) { return x.id === gid; });
-          if (!g) return;
-          g.horseId = sel.value || null;
-          if (typeof NLPlayer !== "undefined") NLPlayer.syncLegacyView(state);
-          if (G && G.saveGame) G.saveGame(state);
-          toast(g.horseId ? "Đã đeo ngựa cho " + g.name : "Đã tháo ngựa " + g.name, "good");
-          renderEquip(state);
-        });
-      });
+    if (!host) return;
+    var focusGid = renderEquip._focusGid;
+    if (focusGid) {
+      var card = host.querySelector('.equip-card[data-gid="' + focusGid + '"]');
+      if (card) {
+        card.classList.add("equip-card-focus");
+        card.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      }
+      renderEquip._focusGid = null;
     }
+    host.querySelectorAll(".equip-slot-sel").forEach(function (sel) {
+      sel.addEventListener("change", function () {
+        var gid = sel.getAttribute("data-gid");
+        var slot = sel.getAttribute("data-slot");
+        var itemId = sel.value || null;
+        var g = gens.find(function (x) {
+          return x.id === gid;
+        });
+        if (!g) return;
+        if (typeof NLPlayer !== "undefined" && NLPlayer.setHeroEquip) {
+          NLPlayer.setHeroEquip(state, gid, slot, itemId);
+        } else {
+          if (!g.equip) g.equip = {};
+          if (itemId) g.equip[slot] = itemId;
+          else delete g.equip[slot];
+          if (slot === "horse") g.horseId = itemId;
+        }
+        if (G && G.saveGame) G.saveGame(state);
+        var meta =
+          itemId && typeof NLDatabase !== "undefined" ? NLDatabase.getItem(itemId) : null;
+        toast(
+          meta
+            ? g.name + " đeo " + meta.name
+            : "Đã tháo " + (labels[slot] || slot) + " của " + g.name,
+          "good"
+        );
+        renderEquip(state);
+      });
+    });
   }
 
+  function listFormations() {
+    var raw =
+      typeof NLDatabase !== "undefined" && NLDatabase.raw
+        ? NLDatabase.raw()
+        : typeof NL_DB !== "undefined"
+        ? NL_DB
+        : null;
+    var forms = raw && raw.formations;
+    if (!forms || !forms.list) return [];
+    return Object.keys(forms.list).map(function (k) {
+      return forms.list[k];
+    });
+  }
+
+  function formationFocusPct(form) {
+    if (!form || !form.teamBonus || !form.focus) return "";
+    var v = form.teamBonus[form.focus];
+    if (v == null || v === 1) return "";
+    var pct = Math.round((v - 1) * 100);
+    return (pct >= 0 ? "+" : "") + pct + "%";
+  }
+
+  var BONUS_LABELS = {
+    vuLuc: "Vũ lực",
+    tongLinh: "Thống lĩnh",
+    triLuc: "Trí lực",
+    hp: "HP",
+    speed: "Tốc",
+  };
+
   /**
-   * Bày trận 3+2. onConfirm([{ id, slot, activeTroop }, ...])
+   * Bày trận 3+2 + chọn trận pháp.
+   * onConfirm(teamSlots, { formationId })
+   * opts: { formationId, enemyTeam, enemyFormation, title }
    */
-  function showFormation(generals, onConfirm) {
+  function showFormation(generals, onConfirm, opts) {
+    opts = opts || {};
     var overlay = document.getElementById("form-overlay");
+    var modal = overlay && overlay.querySelector(".form-modal");
     var list = generals || [];
     var slots = [null, null, null, null, null];
     var activeTroopMap = {};
+    var swapFrom = -1;
+    var formations = listFormations();
+    var selectedFormId =
+      opts.formationId ||
+      (formations[0] && formations[0].id) ||
+      "crane_wing";
+    var enemyTeam = opts.enemyTeam || opts.enemies || null;
+    var enemyFormId = opts.enemyFormation || opts.enemyFormationId || null;
     // Enrich troop2 từ DB nếu thiếu
     list.forEach(function (g) {
       if (!g.troop2 && typeof NLDatabase !== "undefined") {
@@ -931,13 +1367,253 @@
       });
     }
     var poolEl = document.getElementById("form-pool");
-    var frontEl = document.getElementById("form-front");
-    var backEl = document.getElementById("form-back");
+    var gridEl = document.getElementById("form-grid");
+    var formPickEl = document.getElementById("form-pick");
+    var formHintEl = document.getElementById("form-pick-hint");
+    var bonusEl = document.getElementById("form-bonus-bar");
+    var swapHintEl = document.getElementById("form-swap-hint");
+    var missionSub = document.getElementById("form-mission-sub");
+    var scoutEl = document.getElementById("form-scout");
+    var scoutGrid = document.getElementById("form-scout-grid");
+    var scoutFormEl = document.getElementById("form-scout-form");
+    var scoutHintEl = document.getElementById("form-scout-hint");
+    var previewBadge = document.getElementById("form-preview-badge");
     var previewTimer = null;
+    var hasScout = !!(enemyTeam && enemyTeam.length);
+    if (modal) modal.classList.toggle("has-scout", hasScout);
+    if (missionSub) {
+      missionSub.textContent = opts.title
+        ? "Ải: " + opts.title + " · Chọn trận pháp & xếp 5 tướng"
+        : "Chọn trận pháp · Lưới 3×3 · 5 tướng theo hình trận";
+    }
+
+    function selectedForm() {
+      for (var i = 0; i < formations.length; i++) {
+        if (formations[i].id === selectedFormId) return formations[i];
+      }
+      return formations[0] || null;
+    }
+
+    function findFormById(fid) {
+      for (var i = 0; i < formations.length; i++) {
+        if (formations[i].id === fid) return formations[i];
+      }
+      return null;
+    }
+
+    /** Map slotIndex → {col,row} theo trận đang chọn */
+    function formLayoutCells(form) {
+      var cur = form || selectedForm();
+      if (cur && cur.layout && cur.layout.length >= 5) {
+        return cur.layout.slice(0, 5).map(function (c) {
+          return { col: c.col | 0, row: c.row | 0, label: c.label || ("Ô " + ((c.slot | 0) + 1)) };
+        });
+      }
+      return [
+        { col: 0, row: 0, label: "Ô 1" },
+        { col: 2, row: 0, label: "Ô 2" },
+        { col: 0, row: 2, label: "Ô 3" },
+        { col: 1, row: 2, label: "Ô 4" },
+        { col: 2, row: 2, label: "Ô 5" },
+      ];
+    }
+
+    function paintBonusBar() {
+      if (!bonusEl) return;
+      var cur = selectedForm();
+      var tb = (cur && cur.teamBonus) || {};
+      var keys = ["vuLuc", "tongLinh", "triLuc", "hp", "speed"];
+      bonusEl.innerHTML = keys
+        .map(function (k) {
+          var v = tb[k];
+          if (v == null) return "";
+          var pct = Math.round((v - 1) * 100);
+          var cls = "form-bonus-chip";
+          if (cur && cur.focus === k) cls += " focus";
+          if (pct < 0) cls += " down";
+          return (
+            '<span class="' +
+            cls +
+            '">' +
+            (BONUS_LABELS[k] || k) +
+            " <b>" +
+            (pct >= 0 ? "+" : "") +
+            pct +
+            "%</b></span>"
+          );
+        })
+        .join("");
+    }
+
+    function paintScout() {
+      if (!scoutEl) return;
+      if (!hasScout) {
+        scoutEl.hidden = true;
+        return;
+      }
+      scoutEl.hidden = false;
+      var eForm = findFormById(enemyFormId) || findFormById("square");
+      if (scoutFormEl) {
+        scoutFormEl.textContent = eForm
+          ? "Trận: " + eForm.name + (eForm.focusLabel ? " · " + eForm.focusLabel : "")
+          : enemyFormId || "Đội hình địch";
+      }
+      if (scoutHintEl) {
+        var cur = selectedForm();
+        var tip = eForm && eForm.desc ? eForm.desc : "Xem trước vị trí địch trước khi xuất trận.";
+        if (cur && eForm) tip = counterTip(cur, eForm);
+        scoutHintEl.textContent = tip;
+      }
+      var layout = formLayoutCells(eForm);
+      var bySlot = {};
+      (enemyTeam || []).forEach(function (u, i) {
+        var si = u.slot != null ? u.slot | 0 : i;
+        bySlot[si] = u;
+      });
+      var cellSlot = {};
+      layout.forEach(function (c, si) {
+        cellSlot[c.row + "," + c.col] = si;
+      });
+      var html = "";
+      for (var r = 0; r < 3; r++) {
+        html += '<div class="form-scout-row">';
+        for (var c = 0; c < 3; c++) {
+          var key = r + "," + c;
+          if (cellSlot[key] == null) {
+            html += '<div class="form-scout-cell" aria-hidden="true"></div>';
+          } else {
+            var si = cellSlot[key];
+            var u = bySlot[si];
+            if (!u) {
+              html += '<div class="form-scout-cell"></div>';
+            } else {
+              var tr = u.troop || (u.general && u.general.troop) || "infantry";
+              var nm = u.name || (u.general && u.general.name) || "Địch";
+              var tier = u.troopTier != null ? u.troopTier : troopTierOf(u.general || u);
+              html +=
+                '<div class="form-scout-cell on" title="' +
+                nm +
+                '"><img src="' +
+                troopSprite(tr, tier) +
+                '" alt="" /><b>' +
+                shortFlag(nm) +
+                "</b></div>";
+            }
+          }
+        }
+        html += "</div>";
+      }
+      if (scoutGrid) scoutGrid.innerHTML = html;
+    }
+
+    function kindLabel(f) {
+      if (!f || !f.kind) return "";
+      if (f.kind === "atk") return "Công";
+      if (f.kind === "def") return "Thủ";
+      if (f.kind === "special") return "Đặc";
+      return "";
+    }
+
+    function counterTip(myForm, enemyForm) {
+      if (!myForm || !enemyForm) return "";
+      var mine = myForm.counters || [];
+      var theirs = enemyForm.counters || [];
+      if (mine.indexOf(enemyForm.id) >= 0) {
+        return "✓ Trận ta khắc " + enemyForm.name + " — lợi thế.";
+      }
+      if (theirs.indexOf(myForm.id) >= 0) {
+        return "⚠ Địch (" + enemyForm.name + ") khắc trận ta — nên đổi trận.";
+      }
+      var sug = (enemyForm.counteredBy || [])
+        .map(function (id) {
+          return findFormById(id);
+        })
+        .filter(Boolean)
+        .slice(0, 2)
+        .map(function (f) {
+          return f.name;
+        });
+      if (sug.length) {
+        return "Địch " + enemyForm.name + " · gợi ý: " + sug.join(" / ");
+      }
+      return "Địch: " + enemyForm.name + (enemyForm.focusLabel ? " (" + enemyForm.focusLabel + ")" : "");
+    }
+
+    function paintFormPick() {
+      if (!formPickEl) return;
+      formPickEl.innerHTML = formations
+        .map(function (f) {
+          var on = f.id === selectedFormId ? " on" : "";
+          var pct = formationFocusPct(f);
+          var shape = f.shapeLabel || f.shape || "";
+          var kl = kindLabel(f);
+          var kindCls = f.kind ? " kind-" + f.kind : "";
+          var advantage = "";
+          if (enemyFormId && f.counters && f.counters.indexOf(enemyFormId) >= 0) {
+            advantage = " tip-win";
+          } else if (enemyFormId) {
+            var ef = findFormById(enemyFormId);
+            if (ef && ef.counters && ef.counters.indexOf(f.id) >= 0) advantage = " tip-lose";
+          }
+          return (
+            '<button type="button" class="form-pick-btn' +
+            on +
+            kindCls +
+            advantage +
+            '" data-fid="' +
+            f.id +
+            '" title="' +
+            (f.desc || "") +
+            '">' +
+            (kl ? '<span class="form-kind-tag">' + kl + "</span>" : "") +
+            "<b>" +
+            f.name +
+            (f.shape ? " · " + f.shape : "") +
+            "</b>" +
+            "<small>" +
+            (shape ? shape + " · " : "") +
+            (f.focusLabel || "") +
+            (pct ? " " + pct : "") +
+            "</small>" +
+            "</button>"
+          );
+        })
+        .join("");
+      var cur = selectedForm();
+      if (formHintEl) {
+        var tip = cur
+          ? cur.name +
+            (cur.shapeLabel ? " («" + cur.shapeLabel + "») — " : " — ") +
+            (cur.desc || "")
+          : "";
+        var eForm = findFormById(enemyFormId);
+        if (cur && eForm) tip += " · " + counterTip(cur, eForm);
+        formHintEl.textContent = tip;
+      }
+      paintBonusBar();
+      formPickEl.querySelectorAll("[data-fid]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          selectedFormId = btn.getAttribute("data-fid");
+          swapFrom = -1;
+          paintFormPick();
+          paint();
+        });
+      });
+    }
 
     function paintPreview3d() {
       var host = document.getElementById("form-preview-3d");
       if (!host || !window.NLCity || !window.NLCity.BattleRenderer) return;
+      var cur = selectedForm();
+      if (previewBadge) {
+        if (cur) {
+          previewBadge.hidden = false;
+          previewBadge.textContent =
+            cur.name + (cur.focusLabel ? " · " + cur.focusLabel : "");
+        } else {
+          previewBadge.hidden = true;
+        }
+      }
       var allies = [];
       for (var i = 0; i < 5; i++) {
         if (!slots[i]) continue;
@@ -955,27 +1631,107 @@
         });
       }
       if (!allies.length) {
-        host.innerHTML = "";
+        if (host._br) {
+          try { host._br.dispose(); } catch (e2) {}
+          host._br = null;
+        }
+        var glEmpty = host.querySelector(".battle-gl-host");
+        if (glEmpty) glEmpty.innerHTML = "";
         return;
       }
       if (host._br) {
         try { host._br.dispose(); } catch (e) {}
         host._br = null;
       }
+      var foes = [];
+      if (hasScout) {
+        (enemyTeam || []).slice(0, 5).forEach(function (u, i) {
+          var si = u.slot != null ? u.slot | 0 : i;
+          foes.push({
+            uid: "e" + si,
+            name: u.name || (u.general && u.general.name) || "Địch",
+            slot: si,
+            side: "enemy",
+            troop: u.troop || (u.general && u.general.troop) || "infantry",
+            troopTier: u.troopTier != null ? u.troopTier : 1,
+            level: u.level || (u.general && u.general.level) || 1,
+            faction: u.faction || "wei",
+          });
+        });
+      }
       var br = new window.NLCity.BattleRenderer();
       host._br = br;
       br.mount(host, { preview: true }).then(function () {
-        br.spawn(allies, [], (list[0] && list[0].faction) || "shu");
+        var badge = document.getElementById("form-preview-badge");
+        if (badge && !host.contains(badge)) host.appendChild(badge);
+        br.spawn(allies, foes, (list[0] && list[0].faction) || "shu", {
+          allyFormation: selectedFormId || "crane_wing",
+          enemyFormation: enemyFormId || "square",
+        });
       });
     }
 
+    function onSlotClick(si) {
+      if (swapFrom < 0) {
+        if (!slots[si]) return;
+        swapFrom = si;
+        paint();
+        return;
+      }
+      if (swapFrom === si) {
+        // Chạm lại ô đang chọn → gỡ tướng
+        slots[si] = null;
+        swapFrom = -1;
+        paint();
+        return;
+      }
+      var tmp = slots[si];
+      slots[si] = slots[swapFrom];
+      slots[swapFrom] = tmp;
+      swapFrom = -1;
+      paint();
+    }
+
     function paint() {
-      frontEl.innerHTML = [0, 1, 2]
-        .map(function (i) { return formSlotCard(slots[i], i, activeTroopMap); })
-        .join("");
-      backEl.innerHTML = [3, 4]
-        .map(function (i) { return formSlotCard(slots[i], i, activeTroopMap); })
-        .join("");
+      var cur = selectedForm();
+      var layout = formLayoutCells(cur);
+      var mods = (cur && cur.slotMods) || {};
+      var cellSlot = {}; // "row,col" → slotIndex
+      layout.forEach(function (c, si) {
+        cellSlot[c.row + "," + c.col] = si;
+      });
+      if (swapHintEl) {
+        swapHintEl.classList.toggle("on", swapFrom >= 0);
+        swapHintEl.textContent =
+          swapFrom >= 0
+            ? "Đang chọn ô " + (swapFrom + 1) + " — chạm ô khác để đổi, chạm lại để gỡ"
+            : "Chạm ô đầy → chạm ô khác để đổi chỗ";
+      }
+      var rowNames = ["Trước", "Giữa", "Sau"];
+      var html = "";
+      for (var r = 0; r < 3; r++) {
+        html +=
+          '<div class="form-grid-row" data-row="' +
+          r +
+          '"><span class="form-grid-row-lab">' +
+          rowNames[r] +
+          "</span>";
+        for (var c = 0; c < 3; c++) {
+          var key = r + "," + c;
+          if (cellSlot[key] == null) {
+            html += '<div class="slot ghost" aria-hidden="true"></div>';
+          } else {
+            var si = cellSlot[key];
+            html += formSlotCard(slots[si], si, activeTroopMap, {
+              swapPick: swapFrom === si,
+              slotMod: mods[String(si)] || mods[si] || null,
+            });
+          }
+        }
+        html += "</div>";
+      }
+      if (gridEl) gridEl.innerHTML = html;
+
       poolEl.innerHTML = list
         .map(function (g) {
           var on = slots.some(function (s) { return s && s.id === g.id; });
@@ -983,11 +1739,10 @@
         })
         .join("");
 
-      overlay.querySelectorAll("[data-slot]").forEach(function (node) {
+      overlay.querySelectorAll("#form-grid [data-slot]").forEach(function (node) {
         node.addEventListener("click", function (ev) {
           if (ev.target && ev.target.closest && ev.target.closest("[data-dual]")) return;
-          slots[+node.getAttribute("data-slot")] = null;
-          paint();
+          onSlotClick(+node.getAttribute("data-slot"));
         });
       });
       overlay.querySelectorAll("[data-dual]").forEach(function (btn) {
@@ -996,8 +1751,8 @@
           var id = btn.getAttribute("data-dual");
           var g = list.find(function (x) { return x.id === id; });
           if (!g || !g.troop2) return;
-          var cur = activeTroopMap[id] || g.troop;
-          activeTroopMap[id] = cur === g.troop ? g.troop2 : g.troop;
+          var curT = activeTroopMap[id] || g.troop;
+          activeTroopMap[id] = curT === g.troop ? g.troop2 : g.troop;
           paint();
         });
       });
@@ -1006,6 +1761,7 @@
           var id = btn.getAttribute("data-gid");
           var g = list.find(function (x) { return x.id === id; });
           if (!g) return;
+          swapFrom = -1;
           var idx = -1;
           for (var i = 0; i < 5; i++) {
             if (slots[i] && slots[i].id === id) {
@@ -1028,15 +1784,25 @@
           paint();
         });
       });
+      paintScout();
       clearTimeout(previewTimer);
-      previewTimer = setTimeout(paintPreview3d, 80);
+      // Debounce dài hơn — tránh remount WebGL liên tục khi xếp/đổi chỗ
+      previewTimer = setTimeout(paintPreview3d, 220);
     }
 
+    paintFormPick();
     paint();
     overlay.hidden = false;
+    if (window.NLCity && window.NLCity.city && window.NLCity.city.pause) {
+      window.NLCity.city.pause();
+    }
     document.getElementById("btn-form-cancel").onclick = function () {
       overlay.hidden = true;
+      if (modal) modal.classList.remove("has-scout");
       disposeFormPreview();
+      if (window.NLCity && window.NLCity.city && window.NLCity.city.resume) {
+        window.NLCity.city.resume();
+      }
     };
     document.getElementById("btn-form-fight").onclick = function () {
       var team = [];
@@ -1052,14 +1818,143 @@
       }
       if (!team.length) return;
       overlay.hidden = true;
+      if (modal) modal.classList.remove("has-scout");
       disposeFormPreview();
-      onConfirm(team);
+      // Giữ city pause — combat.open sẽ pause tiếp / close mới resume
+      onConfirm(team, { formationId: selectedFormId });
+    };
+  }
+
+  function campaignReportRewardHtml(rep) {
+    if (!rep) return "";
+    var html = "";
+    var sec = rep.rewardSections || {};
+    if (sec.rewards && sec.rewards.length) {
+      html +=
+        '<p class="meta" style="color:#fde68a;margin:0 0 0.2rem"><b>Thưởng:</b> ' +
+        sec.rewards.join(" · ") +
+        "</p>";
+    }
+    if (sec.generals && sec.generals.length) {
+      html +=
+        '<p class="meta" style="color:#86efac;margin:0 0 0.2rem"><b>Thu phục:</b> ' +
+        sec.generals.join(", ") +
+        "</p>";
+    }
+    if (sec.items && sec.items.length) {
+      html +=
+        '<p class="meta" style="color:#fcd34d;margin:0 0 0.2rem"><b>Nhặt:</b> ' +
+        sec.items.join(", ") +
+        "</p>";
+    }
+    if (sec.unlockedStage && sec.unlockedStage.name) {
+      html +=
+        '<p class="meta" style="color:#a5f3fc;margin:0 0 0.2rem"><b>Mở ải:</b> ' +
+        sec.unlockedStage.name +
+        "</p>";
+    }
+    if (sec.unlockedFeatures && sec.unlockedFeatures.length) {
+      html +=
+        '<p class="meta" style="color:#c4b5fd;margin:0 0 0.2rem"><b>Mở tính năng:</b> ' +
+        sec.unlockedFeatures
+          .map(function (f) {
+            return f.name || f.id;
+          })
+          .join(", ") +
+        "</p>";
+    }
+    var lines = rep.rewardLines;
+    if (!html && lines && lines.length) {
+      html = lines
+        .map(function (line) {
+          return '<p class="meta" style="color:#fde68a;margin:0 0 0.25rem">' + line + "</p>";
+        })
+        .join("");
+    }
+    if (!html) {
+      var summary = rep.rewardSummary;
+      if (summary && typeof summary === "object" && summary.text) summary = summary.text;
+      if (summary) {
+        html = '<p class="meta" style="color:#fde68a;margin:0 0 0.4rem">' + summary + "</p>";
+      }
+    }
+    return html;
+  }
+
+  function showCampaignBriefing(prep, narrative, onProceed) {
+    var layer = document.getElementById("brief-overlay");
+    if (!layer) {
+      layer = document.createElement("div");
+      layer.id = "brief-overlay";
+      layer.className = "brief-overlay";
+      layer.innerHTML =
+        '<div class="brief-backdrop"></div><div class="brief-sheet ornate">' +
+        '<button type="button" class="brief-close" aria-label="Đóng">×</button>' +
+        '<div id="brief-body"></div></div>';
+      document.body.appendChild(layer);
+      layer.querySelector(".brief-backdrop").addEventListener("click", function () {
+        layer.hidden = true;
+      });
+      layer.querySelector(".brief-close").addEventListener("click", function () {
+        layer.hidden = true;
+      });
+    }
+    var body = layer.querySelector("#brief-body");
+    var st = prep.stage;
+    var ch = prep.chapter;
+    var enemyHtml = "";
+    var enemies = [];
+    try {
+      if (typeof NLCampaign === "undefined") throw new Error("no campaign");
+      enemies = NLCampaign.buildEnemies(st).map(function (u) {
+        return (u.name || "Địch") + " Lv" + (u.level || 1);
+      });
+    } catch (e0) {
+      enemies = [];
+    }
+    if (enemies.length) {
+      enemyHtml =
+        '<p class="meta" style="margin:0.35rem 0"><b>Địch:</b> ' + enemies.join(" · ") + "</p>";
+    }
+    var rw = st.rewards || {};
+    var rewardPreview =
+      "−" +
+      (prep.staminaCost || st.stamina_cost || 0) +
+      " lương · +" +
+      (rw.silver || 0) +
+      " bạc" +
+      (rw.exp ? " · +" + rw.exp + " EXP" : "");
+    body.innerHTML =
+      '<div class="nl-panel-head" style="border:none;padding:0;margin:0 0 0.5rem">' +
+      '<div class="nl-panel-ico" aria-hidden="true">Ải</div><div><h2 style="margin:0">' +
+      (st.name || "Phó bản") +
+      '</h2><p class="nl-panel-sub">' +
+      (ch && ch.name ? ch.name : "") +
+      "</p></div></div>" +
+      '<p class="lead brief-text">' +
+      (narrative.briefing || narrative.mission || narrative.story || "Chuẩn bị xuất quân.") +
+      "</p>" +
+      enemyHtml +
+      '<p class="meta"><b>Chi phí / thưởng:</b> ' +
+      rewardPreview +
+      "</p>" +
+      '<div class="row-btns" style="margin-top:0.75rem">' +
+      '<button type="button" class="btn-game" id="brief-cancel">Quay lại</button>' +
+      '<button type="button" class="btn-game primary" id="brief-go">Xuất quân</button>' +
+      "</div>";
+    layer.hidden = false;
+    body.querySelector("#brief-cancel").onclick = function () {
+      layer.hidden = true;
+    };
+    body.querySelector("#brief-go").onclick = function () {
+      layer.hidden = true;
+      if (onProceed) onProceed();
     };
   }
 
   function renderCampaign(state, handlers) {
     if (typeof NLDatabase === "undefined") {
-      openPanel(panelHead("本", "Phó Bản", "Database chưa load."));
+      openPanel(panelHead("Bản", "Phó Bản", "Database chưa load."));
       return;
     }
     var snap =
@@ -1068,7 +1963,7 @@
         : null;
     var camp = NLDatabase.campaign();
     var html =
-      panelHead("本", "Phó Bản — Chính tuyến", camp.name || "Chiến dịch") +
+      panelHead("Bản", "Phó Bản — Chính tuyến", camp.name || "Chiến dịch") +
       (snap
         ? statPills([
             { label: "Lương", value: fmt(snap.food) },
@@ -1122,8 +2017,21 @@
         "<span class='lvl'>" +
         rep.rounds +
         " hiệp</span></div>" +
-        (rep.rewardSummary
-          ? '<p class="meta" style="color:#fde68a;margin:0 0 0.4rem">' + rep.rewardSummary + "</p>"
+        campaignReportRewardHtml(rep) +
+        (rep.epilogue
+          ? '<p class="meta" style="color:#a5f3fc;margin:0 0 0.35rem;font-style:italic">' +
+            rep.epilogue +
+            "</p>"
+          : "") +
+        (rep.hasItems && handlers && handlers.openEquip
+          ? '<div class="row-btns" style="margin:0 0 0.35rem">' +
+            '<button type="button" class="btn-game primary" data-campaign-open-equip>Mở Trang bị</button>' +
+            "</div>"
+          : "") +
+        (rep.hasRecruit && handlers && handlers.openGeneralsOwned
+          ? '<div class="row-btns" style="margin:0 0 0.35rem">' +
+            '<button type="button" class="btn-game" data-campaign-open-generals>Xem tướng mới</button>' +
+            "</div>"
           : "") +
         '<div class="combat-log" style="max-height:180px">' +
         logLines +
@@ -1155,10 +2063,26 @@
               : "") +
             "</span>";
           var storyLine = "";
-          if (st.mission || st.story) {
+          if (st.mission) {
             storyLine =
-              '<div class="meta" style="opacity:0.9;margin-top:0.15rem">' +
-              (st.mission || st.story) +
+              '<div class="meta" style="opacity:0.9;margin-top:0.15rem">' + st.mission + "</div>";
+          } else if (st.briefing) {
+            storyLine =
+              '<div class="meta" style="opacity:0.75;margin-top:0.15rem">Mệnh lệnh trước trận — bấm Đánh / Bày trận</div>';
+          } else if (st.story) {
+            storyLine =
+              '<div class="meta" style="opacity:0.9;margin-top:0.15rem">' + st.story + "</div>";
+          }
+          var enemyLine = "";
+          if (st.unlocked && st.enemy_preview && st.enemy_preview.length) {
+            enemyLine =
+              '<div class="meta" style="margin-top:0.1rem;opacity:0.85">Địch: ' +
+              st.enemy_preview
+                .map(function (u) {
+                  return (u.name || "Địch") + " Lv" + (u.level || 1);
+                })
+                .join(" · ") +
+              (st.enemy_formation_name ? " · " + st.enemy_formation_name : "") +
               "</div>";
           }
           var grantLine = "";
@@ -1207,6 +2131,7 @@
             "<br/>" +
             costLine +
             storyLine +
+            enemyLine +
             grantLine +
             '</div><div class="nl-stage-actions">' +
             btn +
@@ -1232,6 +2157,16 @@
         handlers.fightStage(parts[0], parts[1]);
       });
     });
+    document.querySelectorAll("#panel-body [data-campaign-open-equip]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (handlers.openEquip) handlers.openEquip();
+      });
+    });
+    document.querySelectorAll("#panel-body [data-campaign-open-generals]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (handlers.openGeneralsOwned) handlers.openGeneralsOwned();
+      });
+    });
   }
 
   function setLastCampaignReport(report) {
@@ -1255,6 +2190,7 @@
     renderEquip: renderEquip,
     renderCampaign: renderCampaign,
     setLastCampaignReport: setLastCampaignReport,
+    showCampaignBriefing: showCampaignBriefing,
     showFormation: showFormation,
   };
 })(window);

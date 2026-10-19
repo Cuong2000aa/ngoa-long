@@ -125,8 +125,15 @@ Output: `js/db/nl-db.bundle.js` (offline `NL_DB`).
 | `thunder` | Starsteel Thundersphere | Sét |
 | `gold*` `yellow*` | `fx/pure` | Kim / buff |
 | `dragon` | `fx/dragon` + fire-wrath | Chiêu rồng (Nineball CC0) |
+| `tiger` | `fx/tiger/` roar+claw+slam | Hổ Khiếu — SpritePilot CC0 (không fireball) |
+| `wolf` | `fx/wolf/` | Sói (Segel2D) |
+| `whirlwind` `wind` | `fx/whirlwind/` | Lốc |
 | `snake` | Kenney + water tint lục | Rắn |
 | `poison` `green_poison` `fire_green` | Kenney + arcane tint lục | Độc |
+
+**Motif runtime (ALL chiêu):** mọi skill có `fx.motif` + `fx.flash`.  
+`resolveFxKey`: motif *dedicated* (tiger/wolf/dragon/fire/thunder/water/poison/snake/whirlwind/bagua/shield) thắng flash generic; slash/arcane/heal/buff/shadow giữ flash chi tiết.  
+`spawnSkillAura` dùng `auraRecipe(flash)` — mỗi flash có main+overlay(+ground) sprite CC0. Engine emit `motif` trên event `skill`.
 
 Chi tiết path: `assets/fx/FLASH_MAP.md` · code: `sheetForFlash()` trong `battleVfx.ts`.
 

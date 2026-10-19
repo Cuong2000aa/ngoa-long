@@ -1,0 +1,96 @@
+{
+  "source": "wiki viTiers[].cost",
+  "count": 18,
+  "materials": [
+    {
+      "id": "mat_ban_dao",
+      "name": "Bàn Đào",
+      "rarity": "orange"
+    },
+    {
+      "id": "mat_banh_bao",
+      "name": "Bánh Bao",
+      "rarity": "white"
+    },
+    {
+      "id": "mat_chu_qua",
+      "name": "Chu Quả",
+      "rarity": "red"
+    },
+    {
+      "id": "mat_ha_thu_o",
+      "name": "Hà Thủ Ô",
+      "rarity": "purple"
+    },
+    {
+      "id": "mat_ho_phach",
+      "name": "Hổ Phách",
+      "rarity": "blue"
+    },
+    {
+      "id": "mat_kim_lo",
+      "name": "Kim Lô",
+      "rarity": "green"
+    },
+    {
+      "id": "mat_lam_bao_thach",
+      "name": "Lam Bảo Thạch",
+      "rarity": "blue"
+    },
+    {
+      "id": "mat_lang_nha_ngoc",
+      "name": "Lang Nha Ngọc",
+      "rarity": "blue"
+    },
+    {
+      "id": "mat_linh_chi",
+      "name": "Linh Chi",
+      "rarity": "purple"
+    },
+    {
+      "id": "mat_ngoc",
+      "name": "Ngọc",
+      "rarity": "green"
+    },
+    {
+      "id": "mat_nhan_sam_qua",
+      "name": "Nhân Sâm Quả",
+      "rarity": "orange"
+    },
+    {
+      "id": "mat_quynh_tuong",
+      "name": "Quỳnh Tương",
+      "rarity": "red"
+    },
+    {
+      "id": "mat_ruou",
+      "name": "Rượu",
+      "rarity": "white"
+    },
+    {
+      "id": "mat_thanh_lien",
+      "name": "Thanh Liên",
+      "rarity": "orange"
+    },
+    {
+      "id": "mat_thien_mai",
+      "name": "Thiên Mai",
+      "rarity": "red"
+    },
+    {
+      "id": "mat_thit",
+      "name": "Thịt",
+      "rarity": "white"
+    },
+    {
+      "id": "mat_tran_chau",
+      "name": "Trân Châu",
+      "rarity": "green"
+    },
+    {
+      "id": "mat_tuyet_lien",
+      "name": "Tuyết Liên",
+      "rarity": "purple"
+    }
+  ]
+}

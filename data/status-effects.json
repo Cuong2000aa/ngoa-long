@@ -12,7 +12,9 @@
       "short": "Loạn",
       "kind": "control",
       "desc": "Một lượt không thể hành động.",
-      "wikiId": "hon_loan"
+      "wikiId": "hon_loan",
+      "iconLocal": "assets/ui/status/2292a825-c85d-40e7-a099-202ee97c3151.841c4.png",
+      "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2292a825-c85d-40e7-a099-202ee97c3151.841c4.png"
     },
     "silence": {
       "id": "silence",
@@ -21,7 +23,9 @@
       "short": "Ám",
       "kind": "debuff",
       "desc": "Tướng ở trạng thái BUFF, không thể tăng sĩ khí",
-      "wikiId": "am_te"
+      "wikiId": "am_te",
+      "iconLocal": "assets/ui/status/67b9b697-fafc-4e84-9d0b-8d075cc565d5.8d8ed.png",
+      "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/67b9b697-fafc-4e84-9d0b-8d075cc565d5.8d8ed.png"
     },
     "poison": {
       "id": "poison",
@@ -30,7 +34,9 @@
       "short": "Độc",
       "kind": "debuff",
       "desc": "Mỗi lượt, tướng đang Trúng Độc sẽ mất một lượng sinh lực nhất định.",
-      "wikiId": "trung_doc"
+      "wikiId": "trung_doc",
+      "iconLocal": "assets/ui/status/ff66d095-f66f-4b72-92e5-f8a1affd5750.81b51.png",
+      "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ff66d095-f66f-4b72-92e5-f8a1affd5750.81b51.png"
     },
     "burn": {
       "id": "burn",
@@ -39,7 +45,9 @@
       "short": "Thiêu",
       "kind": "debuff",
       "desc": "Gây sát thương kế sách kéo dài theo lượt.",
-      "wikiId": "thieu_dot"
+      "wikiId": "thieu_dot",
+      "iconLocal": "assets/ui/status/66a94d42-a050-46ab-ac1d-dbb2e54d8c8c.4cd5a.png",
+      "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/66a94d42-a050-46ab-ac1d-dbb2e54d8c8c.4cd5a.png"
     },
     "atk_up": {
       "id": "atk_up",
@@ -48,7 +56,9 @@
       "short": "Dũng",
       "kind": "buff",
       "desc": "Tất cả các tấn công tăng x% có thể được cộng dồn.",
-      "wikiId": "anh_dung"
+      "wikiId": "anh_dung",
+      "iconLocal": "assets/ui/status/6e49dbe9-0706-4c57-a198-6461dc1dc9ec.51415.png",
+      "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6e49dbe9-0706-4c57-a198-6461dc1dc9ec.51415.png"
     },
     "atk_down": {
       "id": "atk_down",
@@ -57,7 +67,9 @@
       "short": "Yếu",
       "kind": "debuff",
       "desc": "Giảm tất cả lực tấn công của tướng",
-      "wikiId": "giam_tan_cong"
+      "wikiId": "giam_tan_cong",
+      "iconLocal": "assets/ui/status/aa1867a4-2c5d-42c9-95cf-f88f59e7bfd4.249a6.png",
+      "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/aa1867a4-2c5d-42c9-95cf-f88f59e7bfd4.249a6.png"
     },
     "def_up": {
       "id": "def_up",
@@ -66,7 +78,9 @@
       "short": "Thủ",
       "kind": "buff",
       "desc": "Tất cả các phòng thủ tăng x% và có thể được cộng dồn.",
-      "wikiId": "kien_thu"
+      "wikiId": "kien_thu",
+      "iconLocal": "assets/ui/status/5f863408-a83c-4982-878d-ef05d48106d0.62488.png",
+      "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5f863408-a83c-4982-878d-ef05d48106d0.62488.png"
     },
     "def_down": {
       "id": "def_down",
@@ -84,7 +98,9 @@
       "short": "Hồi",
       "kind": "buff",
       "desc": "Khi bắt đầu lượt thi triển trị liệu bằng x% mưu công",
-      "wikiId": "hoi_phuc"
+      "wikiId": "hoi_phuc",
+      "iconLocal": "assets/ui/status/bb39f256-52c1-44b1-a2a4-09ff2025003e.ae99f.png",
+      "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bb39f256-52c1-44b1-a2a4-09ff2025003e.ae99f.png"
     },
     "morale_boost": {
       "id": "morale_boost",
@@ -93,7 +109,9 @@
       "short": "Khí",
       "kind": "buff",
       "desc": "Sĩ khí nhận được mỗi lượt tăng điểm X.",
-      "wikiId": "phan_chan"
+      "wikiId": "phan_chan",
+      "iconLocal": "assets/ui/status/7ef92aca-d0e5-4937-abdf-efcc04c71802.e82c4.png",
+      "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7ef92aca-d0e5-4937-abdf-efcc04c71802.e82c4.png"
     }
   },
   "wikiCatalog": [
@@ -106,7 +124,8 @@
       "kind": "buff",
       "desc": "Tất cả các tấn công tăng x% có thể được cộng dồn.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6e49dbe9-0706-4c57-a198-6461dc1dc9ec.51415.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/6e49dbe9-0706-4c57-a198-6461dc1dc9ec.51415.png"
     },
     {
       "id": "anh_dung_2",
@@ -117,7 +136,8 @@
       "kind": "unremovable",
       "desc": "Tất cả công tăng, có thể tích lũy, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6e49dbe9-0706-4c57-a198-6461dc1dc9ec.51415.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/6e49dbe9-0706-4c57-a198-6461dc1dc9ec.51415.png"
     },
     {
       "id": "bai_uu",
@@ -139,7 +159,8 @@
       "kind": "buff",
       "desc": "Tăng C.Huy, Võ, Trí, có thể cộng dồn",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f37715fe-47ed-4694-a881-2e684127e7a8.c4bec.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/f37715fe-47ed-4694-a881-2e684127e7a8.c4bec.png"
     },
     {
       "id": "ba_chu_2",
@@ -150,7 +171,8 @@
       "kind": "unremovable",
       "desc": "Tăng C.Huy, Võ, Trí, có thể cộng dồn, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f37715fe-47ed-4694-a881-2e684127e7a8.c4bec.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/f37715fe-47ed-4694-a881-2e684127e7a8.c4bec.png"
     },
     {
       "id": "bat_quai",
@@ -161,7 +183,8 @@
       "kind": "buff",
       "desc": "Chống đỡ 1 lần sát thương và chuyển sát thương lên một mục tiêu địch ngẫu nhiên",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1f6bb23b-30c2-4839-a676-6d0a82a4cb63.96435.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/1f6bb23b-30c2-4839-a676-6d0a82a4cb63.96435.png"
     },
     {
       "id": "bac_nhuoc",
@@ -172,7 +195,8 @@
       "kind": "debuff",
       "desc": "Sát thương cuối phải chịu từ mục tiêu mang Trúng Độc, Thiêu Đốt, Thi Độc, Thiên Hỏa, Huyết Cúc, Kịch Độc tăng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d76ea859-d971-408f-9be4-a52cc0257d28.293b6.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/d76ea859-d971-408f-9be4-a52cc0257d28.293b6.png"
     },
     {
       "id": "bach_nhan",
@@ -183,7 +207,8 @@
       "kind": "buff",
       "desc": "Mỗi lần tấn công và phản kích cộng dồn một tầng, mỗi tầng tăng sát thương kỹ năng [giá trị hiệu quả], tầng tối đa cộng thêm tầng [giá trị hiệu quả].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2160836f-a810-4f69-aa68-e180472e4d31.af770.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/2160836f-a810-4f69-aa68-e180472e4d31.af770.png"
     },
     {
       "id": "bao",
@@ -194,7 +219,8 @@
       "kind": "buff",
       "desc": "",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5ded801b-a5f9-435a-ace0-4f16a8dc02a9.348ef.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/5ded801b-a5f9-435a-ace0-4f16a8dc02a9.348ef.png"
     },
     {
       "id": "bao_no",
@@ -205,7 +231,8 @@
       "kind": "buff",
       "desc": "Giá trị hiệu quả tăng sát thương cuối của bản thân tăng lên, bản thân chịu sát thương cuối tăng giá trị hiệu quả của hiệu ứng này.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/cde8cadc-4fc4-446f-9a45-2976d430effe.f1e62.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/cde8cadc-4fc4-446f-9a45-2976d430effe.f1e62.png"
     },
     {
       "id": "bao_phat",
@@ -216,7 +243,8 @@
       "kind": "buff",
       "desc": "Vào cuối mỗi lượt, nếu sĩ khí của bạn thấp hơn X, nó sẽ nhận được 1 tầng Bạo phát, sau khi có lớp Y Bạo phát, sát thương kỹ năng tiếp theo gây ra thiệt hại thêm Z.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fc8ef3ec-a038-4283-a85c-50b38fc8ad1b.2b5e6.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/fc8ef3ec-a038-4283-a85c-50b38fc8ad1b.2b5e6.png"
     },
     {
       "id": "bao_thuong",
@@ -227,7 +255,8 @@
       "kind": "buff",
       "desc": "Sát thương bạo kích tăng [giá trị hiệu quả] (cơ sở sát thương bạo kích là 150%, cộng tăng).",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ea29a01e-f80c-46a4-9d66-379c68d9ec0f.85934.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/ea29a01e-f80c-46a4-9d66-379c68d9ec0f.85934.png"
     },
     {
       "id": "bao_ve",
@@ -238,7 +267,8 @@
       "kind": "unremovable",
       "desc": "BUFF đánh dấu, không có tác dụng trực tiếp.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6e94251e-cd25-4f4d-a4d2-8466ed2ce880.7dd0c.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/6e94251e-cd25-4f4d-a4d2-8466ed2ce880.7dd0c.png"
     },
     {
       "id": "bat_khuat",
@@ -249,7 +279,8 @@
       "kind": "buff",
       "desc": "Không thể tử vong, sinh lực giảm còn 1 sẽ hồi phục lượng lính nhất định, chỉ có hiệu lực 1 lần",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f88eccb6-f728-44b4-88f1-0316f6add786.6a081.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/f88eccb6-f728-44b4-88f1-0316f6add786.6a081.png"
     },
     {
       "id": "bat_khuat_chuyen_dung_bac_7",
@@ -271,7 +302,8 @@
       "kind": "buff",
       "desc": "Sau khi sinh lực giảm còn 1 sẽ hồi phục số lính nhất định và nhận Vô Địch 1 lượt, chỉ hiệu lực 1 lần",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f88eccb6-f728-44b4-88f1-0316f6add786.6a081.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/f88eccb6-f728-44b4-88f1-0316f6add786.6a081.png"
     },
     {
       "id": "ben_bi",
@@ -282,7 +314,8 @@
       "kind": "buff",
       "desc": "Gia tăng khả năng chống lại các hiệu ứng như kiểm soát, sợ hãi, v.v. và giảm xác suất bị trúng BUFF tiêu cực.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d13703b5-094f-4b7f-9ecb-d789d215856e.84065.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/d13703b5-094f-4b7f-9ecb-d789d215856e.84065.png"
     },
     {
       "id": "bong_lanh",
@@ -293,7 +326,8 @@
       "kind": "debuff",
       "desc": "Khi bị Đóng Băng sẽ cộng dồn 1 tầng. Đạt từ 3 tầng trở lên, gây sát thương theo tỉ lệ lính dựa trên số tầng hiện tại rồi xóa toàn bộ tầng.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/47bd581f-56bd-4f3b-83ec-2ee3e842c705.63db2.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/47bd581f-56bd-4f3b-83ec-2ee3e842c705.63db2.png"
     },
     {
       "id": "boi_thuy",
@@ -304,7 +338,8 @@
       "kind": "debuff",
       "desc": "Bản thân khi hành động, nếu binh lực thấp hơn binh lực tối đa 60%, thì tăng nhất định phần trăm tấn công, có thể cộng dồn",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/314b832c-46f5-489c-8fc2-bd4074a17346.06dba.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/314b832c-46f5-489c-8fc2-bd4074a17346.06dba.png"
     },
     {
       "id": "bo_phong_2",
@@ -326,7 +361,8 @@
       "kind": "buff",
       "desc": "Bản thân tăng C.Huy",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3fb4879b-0e43-45d7-a9f8-7287d32e1dce.0e41b.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/3fb4879b-0e43-45d7-a9f8-7287d32e1dce.0e41b.png"
     },
     {
       "id": "chien_than",
@@ -337,7 +373,8 @@
       "kind": "buff",
       "desc": "Tướng phe ta càng nhiều, sát thương càng cao",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2a42c078-213e-4136-bfce-1bd33084a42c.9b4e3.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/2a42c078-213e-4136-bfce-1bd33084a42c.9b4e3.png"
     },
     {
       "id": "chuyen_doi",
@@ -348,7 +385,8 @@
       "kind": "buff",
       "desc": "Một phần sát thương gây ra sẽ trị liệu đều cho toàn bộ phe ta",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/975d385b-0a9c-4d0e-9704-4b8a910560c1.41bac.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/975d385b-0a9c-4d0e-9704-4b8a910560c1.41bac.png"
     },
     {
       "id": "cham_ngoi",
@@ -359,7 +397,8 @@
       "kind": "debuff",
       "desc": "Mỗi lượt chịu một lượng Mưu Công nhất định. Khi cộng dồn từ 3 tầng trở lên, đến lượt hành động của bản thân sẽ khiến mình và toàn bộ đồng đội chịu Mưu Công theo số tầng hiện tại.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b5fb7deb-6ecd-4b66-a1b5-7489e4a0d500.514a5.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/b5fb7deb-6ecd-4b66-a1b5-7489e4a0d500.514a5.png"
     },
     {
       "id": "chem_giet",
@@ -389,7 +428,8 @@
       "kind": "unremovable",
       "desc": "Bản thân tăng C.Huy, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3fb4879b-0e43-45d7-a9f8-7287d32e1dce.0e41b.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/3fb4879b-0e43-45d7-a9f8-7287d32e1dce.0e41b.png"
     },
     {
       "id": "chong_do",
@@ -400,7 +440,8 @@
       "kind": "buff",
       "desc": "Nhận 1 Hộ Thuẫn chống đỡ sát thương",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e08b0593-37d3-46f3-a372-f736b5e94952.354a8.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/e08b0593-37d3-46f3-a372-f736b5e94952.354a8.png"
     },
     {
       "id": "cung_cong_2",
@@ -422,7 +463,8 @@
       "kind": "buff",
       "desc": "Sát thương cuối bản thân gây ra và phải chịu đều tăng theo tỉ lệ nhất định",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ce8a3c6a-1660-4efd-93fa-515b2e391cbf.056a2.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/ce8a3c6a-1660-4efd-93fa-515b2e391cbf.056a2.png"
     },
     {
       "id": "cuong_chien",
@@ -433,7 +475,8 @@
       "kind": "debuff",
       "desc": "Cách vài lượt sẽ tăng công phòng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6c09ee33-38c0-43fb-891e-98d8a3c06163.395b7.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/6c09ee33-38c0-43fb-891e-98d8a3c06163.395b7.png"
     },
     {
       "id": "co_doc",
@@ -444,7 +487,8 @@
       "kind": "buff",
       "desc": "Mỗi tầng [Cô Độc] tăng tấn công [giá trị hiệu quả] và lực phòng thủ [giá trị hiệu quả], mỗi lần chết một đội tướng đồng minh cộng thêm 1 tầng, mỗi lần chết một đội tướng địch cộng thêm 2 tầng, phòng thủ tối đa tăng 80%.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fe7dd52a-9452-45d9-89d1-be532ad80c78.41f32.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/fe7dd52a-9452-45d9-89d1-be532ad80c78.41f32.png"
     },
     {
       "id": "cong_tam",
@@ -477,7 +521,8 @@
       "kind": "unremovable",
       "desc": "Bản thân tăng Võ, không thể giải trừ, có thể cộng dồn.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c03e7c81-e3bd-44c9-987d-0effe863f8bd.1c2a5.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/c03e7c81-e3bd-44c9-987d-0effe863f8bd.1c2a5.png"
     },
     {
       "id": "cam_quan",
@@ -488,7 +533,8 @@
       "kind": "buff",
       "desc": "Mỗi khi có một đơn vị hữu phương, lực tấn công tăng lên X%, lực phòng thủ tăng lên Y%.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/97b3cd6a-c6b8-44ff-bb53-cc4ebb26c86d.8f9f7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/97b3cd6a-c6b8-44ff-bb53-cc4ebb26c86d.8f9f7.png"
     },
     {
       "id": "cap_cuu",
@@ -499,7 +545,8 @@
       "kind": "buff",
       "desc": "Tăng X% hiệu quả trị liệu trực tiếp bản thân gây ra",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1094d0c9-b998-4496-a8aa-d59a6af5a8c1.f1efc.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/1094d0c9-b998-4496-a8aa-d59a6af5a8c1.f1efc.png"
     },
     {
       "id": "cap_cuu_2",
@@ -510,7 +557,8 @@
       "kind": "unremovable",
       "desc": "Tăng hiệu quả trị liệu trực tiếp bản thân gây ra, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1094d0c9-b998-4496-a8aa-d59a6af5a8c1.f1efc.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/1094d0c9-b998-4496-a8aa-d59a6af5a8c1.f1efc.png"
     },
     {
       "id": "di_ke",
@@ -521,7 +569,8 @@
       "kind": "buff",
       "desc": "Mỗi lần thi triển kỹ năng kỹ năng cộng dồn 1 tầng, khi tử vong tạo thành sát thương kế sách nhân với tầng cộng dồn được lên toàn bộ địch, không thể bị phản kích.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/29776874-15eb-4cf9-bf4f-524455c7320e.62e9d.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/29776874-15eb-4cf9-bf4f-524455c7320e.62e9d.png"
     },
     {
       "id": "dieu_ke",
@@ -532,7 +581,8 @@
       "kind": "buff",
       "desc": "Với hiệu ứng này, khi hành động kết thúc sẽ làm tăng sĩ khí điểm X của chính nó.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bece3313-ab55-4333-be29-aefc1bf7fdaa.64855.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/bece3313-ab55-4333-be29-aefc1bf7fdaa.64855.png"
     },
     {
       "id": "do_du",
@@ -543,7 +593,8 @@
       "kind": "debuff",
       "desc": "Làm giảm hiệu quả sát thương gây ra",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3e9b81e3-46ee-4472-bf34-26cae6335eee.0161e.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/3e9b81e3-46ee-4472-bf34-26cae6335eee.0161e.png"
     },
     {
       "id": "do_du_2",
@@ -554,7 +605,8 @@
       "kind": "unremovable",
       "desc": "Giảm sát thương kỹ năng của địch, không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3e9b81e3-46ee-4472-bf34-26cae6335eee.0161e.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/3e9b81e3-46ee-4472-bf34-26cae6335eee.0161e.png"
     },
     {
       "id": "du_hop_2",
@@ -565,7 +617,8 @@
       "kind": "unremovable",
       "desc": "Mỗi lần nhận sát thương, khi lính ít hơn 50%, sẽ hồi máu và giảm 1 tầng dũ hợp",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9884e789-618e-451b-97d2-4064ecd1afcc.887e1.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/9884e789-618e-451b-97d2-4064ecd1afcc.887e1.png"
     },
     {
       "id": "dung_tuyet",
@@ -576,7 +629,8 @@
       "kind": "buff",
       "desc": "Lượt đầu tăng tất cả lực tấn công, sau đó mỗi lượt lực tấn công giảm [giá trị hiệu quả] sau 5 lượt, trở về tấn công bình thường sau khi kết thúc.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/4ac12faa-43bb-4b51-bf42-d6931e75f500.93441.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/4ac12faa-43bb-4b51-bf42-d6931e75f500.93441.png"
     },
     {
       "id": "dung_tuyet_2",
@@ -595,7 +649,8 @@
       "kind": "buff",
       "desc": "Giảm xác suất trúng buff bất lợi.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2cc5b867-bcd2-49c4-a911-0dbd085ed871.9d540.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/2cc5b867-bcd2-49c4-a911-0dbd085ed871.9d540.png"
     },
     {
       "id": "duc_huyet",
@@ -606,7 +661,8 @@
       "kind": "buff",
       "desc": "Chuyển hóa sát thương phải chịu thành tấn công theo tỉ lệ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/65867070-d65a-4511-aaf0-2f5e4785ae9a.ed1ef.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/65867070-d65a-4511-aaf0-2f5e4785ae9a.ed1ef.png"
     },
     {
       "id": "e_so",
@@ -617,7 +673,8 @@
       "kind": "debuff",
       "desc": "Khi tỉ lệ phần trăm lính của mục tiêu thấp, sẽ giảm 1% tấn công của mục tiêu, không vượt quá 40%",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c40042aa-e263-4141-b6d3-540db2db6968.4394b.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/c40042aa-e263-4141-b6d3-540db2db6968.4394b.png"
     },
     {
       "id": "e_so_2",
@@ -628,7 +685,8 @@
       "kind": "debuff",
       "desc": "Khi tỉ lệ phần trăm lính của bản thân thấp, sẽ giảm tấn công của mục tiêu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c40042aa-e263-4141-b6d3-540db2db6968.4394b.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/c40042aa-e263-4141-b6d3-540db2db6968.4394b.png"
     },
     {
       "id": "giem_pha",
@@ -639,7 +697,8 @@
       "kind": "debuff",
       "desc": "Trước mỗi lần hành động, sẽ giải trừ số hiệu quả có lợi nhất định",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1910fb91-c521-4968-ad62-56f15d8f1c7c.caf0d.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/1910fb91-c521-4968-ad62-56f15d8f1c7c.caf0d.png"
     },
     {
       "id": "giai_tru",
@@ -724,7 +783,8 @@
       "kind": "debuff",
       "desc": "Giảm năng lực pháp phòng thường cho đối phương",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/527b161a-c6e9-46a5-bc80-3316101a864c.63ea7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/527b161a-c6e9-46a5-bc80-3316101a864c.63ea7.png"
     },
     {
       "id": "giam_cong_2",
@@ -735,7 +795,8 @@
       "kind": "debuff",
       "desc": "Giảm tất cả tấn công của mục tiêu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/aa1867a4-2c5d-42c9-95cf-f88f59e7bfd4.249a6.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/aa1867a4-2c5d-42c9-95cf-f88f59e7bfd4.249a6.png"
     },
     {
       "id": "giam_muu_cong",
@@ -746,7 +807,8 @@
       "kind": "debuff",
       "desc": "Giảm lực tấn công mưu công của tướng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/4399866a-feeb-4b47-ba16-63428a5fe0fb.d715f.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/4399866a-feeb-4b47-ba16-63428a5fe0fb.d715f.png"
     },
     {
       "id": "giam_muu_cong_2",
@@ -757,7 +819,8 @@
       "kind": "unremovable",
       "desc": "Giảm Mưu Công của tướng, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/4399866a-feeb-4b47-ba16-63428a5fe0fb.d715f.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/4399866a-feeb-4b47-ba16-63428a5fe0fb.d715f.png"
     },
     {
       "id": "giam_muu_phong",
@@ -768,7 +831,8 @@
       "kind": "debuff",
       "desc": "Giảm khả năng phòng thủ mưu công tướng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/987b2a74-7eb8-4721-b320-8e4f5726cab6.b49e7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/987b2a74-7eb8-4721-b320-8e4f5726cab6.b49e7.png"
     },
     {
       "id": "giam_muu_phong_2",
@@ -779,7 +843,8 @@
       "kind": "debuff",
       "desc": "Giảm khả năng phòng thủ mưu công tướng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/987b2a74-7eb8-4721-b320-8e4f5726cab6.b49e7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/987b2a74-7eb8-4721-b320-8e4f5726cab6.b49e7.png"
     },
     {
       "id": "giam_phap_cong",
@@ -790,7 +855,8 @@
       "kind": "debuff",
       "desc": "Giảm pháp công của tướng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7e56bdbd-6bb2-4413-9cae-1d5b6ea7c88b.14291.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/7e56bdbd-6bb2-4413-9cae-1d5b6ea7c88b.14291.png"
     },
     {
       "id": "giam_phap_cong_2",
@@ -801,7 +867,8 @@
       "kind": "unremovable",
       "desc": "Giảm Pháp Công của tướng, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7e56bdbd-6bb2-4413-9cae-1d5b6ea7c88b.14291.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/7e56bdbd-6bb2-4413-9cae-1d5b6ea7c88b.14291.png"
     },
     {
       "id": "giam_phap_phong_2",
@@ -812,7 +879,8 @@
       "kind": "unremovable",
       "desc": "Giảm Pháp Phòng thường của mục tiêu. Hiệu quả không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/527b161a-c6e9-46a5-bc80-3316101a864c.63ea7.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/527b161a-c6e9-46a5-bc80-3316101a864c.63ea7.png"
     },
     {
       "id": "giam_phong_2",
@@ -823,7 +891,8 @@
       "kind": "unremovable",
       "desc": "Giảm tất cả thủ của mục tiêu, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ab504160-f8dd-40a0-a26c-aed1aaea94bb.ad107.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/ab504160-f8dd-40a0-a26c-aed1aaea94bb.ad107.png"
     },
     {
       "id": "giam_phong_thu",
@@ -834,7 +903,8 @@
       "kind": "debuff",
       "desc": "Giảm tất cả năng lực phòng thủ cho mục tiêu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ab504160-f8dd-40a0-a26c-aed1aaea94bb.ad107.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/ab504160-f8dd-40a0-a26c-aed1aaea94bb.ad107.png"
     },
     {
       "id": "giam_phong_thu_2",
@@ -853,7 +923,8 @@
       "kind": "buff",
       "desc": "Giảm sát thương bản thân gây ra",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d9259f46-c7da-4da5-816a-64c8fec27f97.3a96d.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/d9259f46-c7da-4da5-816a-64c8fec27f97.3a96d.png"
     },
     {
       "id": "giam_thuong",
@@ -872,7 +943,8 @@
       "kind": "debuff",
       "desc": "Giảm hiệu quả Trị Liệu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/47b84fed-906f-4f6d-8af4-504226245937.8df0d.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/47b84fed-906f-4f6d-8af4-504226245937.8df0d.png"
     },
     {
       "id": "giam_tan_cong",
@@ -883,7 +955,8 @@
       "kind": "debuff",
       "desc": "Giảm tất cả lực tấn công của tướng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/aa1867a4-2c5d-42c9-95cf-f88f59e7bfd4.249a6.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/aa1867a4-2c5d-42c9-95cf-f88f59e7bfd4.249a6.png"
     },
     {
       "id": "giam_vo_2",
@@ -894,7 +967,8 @@
       "kind": "unremovable",
       "desc": "Giảm điểm Võ của địch, có thể cộng dồn, không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fe9d9ead-55e0-4331-be62-08ab01ddeb8d.84b4e.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/fe9d9ead-55e0-4331-be62-08ab01ddeb8d.84b4e.png"
     },
     {
       "id": "giam_vat_cong",
@@ -905,7 +979,8 @@
       "kind": "debuff",
       "desc": "Giảm lực tấn công vật lý của tướng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/675cab9e-06d8-4c33-882e-e357222c2a59.d5223.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/675cab9e-06d8-4c33-882e-e357222c2a59.d5223.png"
     },
     {
       "id": "giam_vat_cong_2",
@@ -916,7 +991,8 @@
       "kind": "unremovable",
       "desc": "Giảm Vật Công của tướng, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/675cab9e-06d8-4c33-882e-e357222c2a59.d5223.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/675cab9e-06d8-4c33-882e-e357222c2a59.d5223.png"
     },
     {
       "id": "giam_vat_phong",
@@ -927,7 +1003,8 @@
       "kind": "debuff",
       "desc": "Giảm năng lực phòng thủ thường cho đối phương",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5d194b87-f43a-4012-b9cd-21be5017bca4.550ab.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/5d194b87-f43a-4012-b9cd-21be5017bca4.550ab.png"
     },
     {
       "id": "giam_vat_phong_2",
@@ -938,7 +1015,8 @@
       "kind": "unremovable",
       "desc": "Giảm năng lực Vật Phòng, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5d194b87-f43a-4012-b9cd-21be5017bca4.550ab.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/5d194b87-f43a-4012-b9cd-21be5017bca4.550ab.png"
     },
     {
       "id": "giam_dap",
@@ -949,7 +1027,8 @@
       "kind": "debuff",
       "desc": "Sau khi cộng dồn 3 lần tiến vào [Hỗn loạn], (đối chiến với người chơi cần phải cộng dồn 4 lần).",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/95c9c2e1-98a2-4d9e-813f-080320e0092d.15508.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/95c9c2e1-98a2-4d9e-813f-080320e0092d.15508.png"
     },
     {
       "id": "hoat_luc",
@@ -960,7 +1039,8 @@
       "kind": "buff",
       "desc": "Hiệu quả trị liệu nhận được tăng x%",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/35feca92-5f4c-4c27-b174-9ae7d582182d.8d2fe.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/35feca92-5f4c-4c27-b174-9ae7d582182d.8d2fe.png"
     },
     {
       "id": "hoat_luc_2",
@@ -971,7 +1051,8 @@
       "kind": "buff",
       "desc": "Hiệu quả trị liệu nhận được tăng x%",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/35feca92-5f4c-4c27-b174-9ae7d582182d.8d2fe.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/35feca92-5f4c-4c27-b174-9ae7d582182d.8d2fe.png"
     },
     {
       "id": "huyet_cuc",
@@ -982,7 +1063,8 @@
       "kind": "debuff",
       "desc": "Khi được trị liệu, chịu 1 lần sát thương theo mức Mưu Công của người trị liệu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6c45858b-1ce5-479d-a5b6-17388e381bac.216f6.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/6c45858b-1ce5-479d-a5b6-17388e381bac.216f6.png"
     },
     {
       "id": "huyet_nhan_2",
@@ -993,7 +1075,8 @@
       "kind": "buff",
       "desc": "Khi đánh thường, hồi phục một phần binh lực đã tổn thất; giới hạn là X.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a1b84685-79c7-4b09-89f7-245031bec6b7.4421d.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/a1b84685-79c7-4b09-89f7-245031bec6b7.4421d.png"
     },
     {
       "id": "huyet_thuan_2",
@@ -1004,7 +1087,8 @@
       "kind": "unremovable",
       "desc": "Mỗi lần nhận được sát thương, tăng tất cả lực phòng thủ của bản thân, có thể cộng dồn và hiệu quả này không thể bị giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5c55692d-7e5f-4174-8488-904ba9a19f3b.82fac.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/5c55692d-7e5f-4174-8488-904ba9a19f3b.82fac.png"
     },
     {
       "id": "huyen_giap",
@@ -1015,7 +1099,8 @@
       "kind": "buff",
       "desc": "Khi có hiệu ứng này, lượng dame nhận vào không vượt quá [giá trị hiệu ứng].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/79e86339-4fee-44d3-b5bb-3c5bd645ab62.3f77d.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/79e86339-4fee-44d3-b5bb-3c5bd645ab62.3f77d.png"
     },
     {
       "id": "ham_tran_chuyen_dung_bac_7",
@@ -1037,7 +1122,8 @@
       "kind": "control",
       "desc": "1 lượt không thể hành động, không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2292a825-c85d-40e7-a099-202ee97c3151.841c4.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/2292a825-c85d-40e7-a099-202ee97c3151.841c4.png"
     },
     {
       "id": "hu_nhuoc",
@@ -1048,7 +1134,8 @@
       "kind": "debuff",
       "desc": "Đơn vị này không thể nhận thêm hiệu quả có lợi, các hiệu quả đã nhận không bị ảnh hưởng.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d9c1e599-6d5e-44c6-8eed-79779b4751ee.494b4.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/d9c1e599-6d5e-44c6-8eed-79779b4751ee.494b4.png"
     },
     {
       "id": "hu_nhuoc_2",
@@ -1059,7 +1146,8 @@
       "kind": "debuff",
       "desc": "Đơn vị này không thể nhận thêm hiệu quả có lợi, các hiệu quả đã nhận không bị ảnh hưởng.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d9c1e599-6d5e-44c6-8eed-79779b4751ee.494b4.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/d9c1e599-6d5e-44c6-8eed-79779b4751ee.494b4.png"
     },
     {
       "id": "ha_thap_phong_thu",
@@ -1089,7 +1177,8 @@
       "kind": "buff",
       "desc": "Bản thân nhận trị liệu bằng 25% sát thương gây ra, tối đa hồi 30% lính",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/975d385b-0a9c-4d0e-9704-4b8a910560c1.41bac.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/975d385b-0a9c-4d0e-9704-4b8a910560c1.41bac.png"
     },
     {
       "id": "hap_huyet_2",
@@ -1100,7 +1189,8 @@
       "kind": "buff",
       "desc": "Bản thân nhận trị liệu bằng 25% sát thương gây ra, tối đa hồi 30% lính",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/975d385b-0a9c-4d0e-9704-4b8a910560c1.41bac.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/975d385b-0a9c-4d0e-9704-4b8a910560c1.41bac.png"
     },
     {
       "id": "hoa_than",
@@ -1111,7 +1201,8 @@
       "kind": "buff",
       "desc": "Đánh trúng một kẻ địch có [Thiên Hỏa] hoặc [Thiêu Đốt] liền khôi phục sĩ khí [Giá trị hiệu quả], đối với địch nhân có hiệu quả này tạo thành thương tổn [giá trị hiệu quả].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/88f0ff6e-5fe5-4062-a7a2-1230f0e45b2e.9ce5d.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/88f0ff6e-5fe5-4062-a7a2-1230f0e45b2e.9ce5d.png"
     },
     {
       "id": "hoi_phuc",
@@ -1122,7 +1213,8 @@
       "kind": "buff",
       "desc": "Khi bắt đầu lượt thi triển trị liệu bằng x% mưu công",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bb39f256-52c1-44b1-a2a4-09ff2025003e.ae99f.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/bb39f256-52c1-44b1-a2a4-09ff2025003e.ae99f.png"
     },
     {
       "id": "hoi_xuan",
@@ -1133,7 +1225,8 @@
       "kind": "buff",
       "desc": "Nhận số tầng Hồi Xuân nhất định, khi chịu sát thương mất 1 tầng, và hồi phục lính",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bb39f256-52c1-44b1-a2a4-09ff2025003e.ae99f.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/bb39f256-52c1-44b1-a2a4-09ff2025003e.ae99f.png"
     },
     {
       "id": "hon_loan",
@@ -1144,7 +1237,8 @@
       "kind": "debuff",
       "desc": "Một lượt không thể hành động.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2292a825-c85d-40e7-a099-202ee97c3151.841c4.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/2292a825-c85d-40e7-a099-202ee97c3151.841c4.png"
     },
     {
       "id": "ho_chu",
@@ -1155,7 +1249,8 @@
       "kind": "buff",
       "desc": "Bản thân chịu sát thương từ mục tiêu được [Bảo Hộ]",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/acd426fe-ae8a-4bdf-a8c9-04d3a03b00e7.12121.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/acd426fe-ae8a-4bdf-a8c9-04d3a03b00e7.12121.png"
     },
     {
       "id": "ho_thuan",
@@ -1166,7 +1261,8 @@
       "kind": "buff",
       "desc": "Lá chắn chặn một lần sát thương ngẫu nhiên.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e08b0593-37d3-46f3-a372-f736b5e94952.354a8.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/e08b0593-37d3-46f3-a372-f736b5e94952.354a8.png"
     },
     {
       "id": "ho_the",
@@ -1188,7 +1284,8 @@
       "kind": "buff",
       "desc": "Tăng xác suất bạo kích của mục tiêu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d1cc03ab-4cfc-4f35-aef9-dbe96cb4149e.131e3.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/d1cc03ab-4cfc-4f35-aef9-dbe96cb4149e.131e3.png"
     },
     {
       "id": "hoi_tam_2",
@@ -1199,7 +1296,8 @@
       "kind": "unremovable",
       "desc": "Xác suất bạo kích của bản thân +X%, hiệu quả không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d1cc03ab-4cfc-4f35-aef9-dbe96cb4149e.131e3.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/d1cc03ab-4cfc-4f35-aef9-dbe96cb4149e.131e3.png"
     },
     {
       "id": "hu_thuc",
@@ -1210,7 +1308,8 @@
       "kind": "debuff",
       "desc": "Giảm phòng thủ [giá trị hiệu quả] khi đơn vị có X buff bất lợi.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a2698aa7-c1a9-4288-a132-02fb6cd49e74.78af1.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/a2698aa7-c1a9-4288-a132-02fb6cd49e74.78af1.png"
     },
     {
       "id": "hu_thuc_2",
@@ -1221,7 +1320,8 @@
       "kind": "unremovable",
       "desc": "Giảm tỉ lệ phòng thủ theo số hiệu quả bất lợi của bản thân, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a2698aa7-c1a9-4288-a132-02fb6cd49e74.78af1.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/a2698aa7-c1a9-4288-a132-02fb6cd49e74.78af1.png"
     },
     {
       "id": "khieu_khich",
@@ -1232,7 +1332,8 @@
       "kind": "debuff",
       "desc": "Hiệu quả bất lợi, sát thương cuối mà mục tiêu có Khiêu khích gây cho mục tiêu ngoài người thi triển Khiêu khích giảm x%",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/97848e42-cf2f-47fd-b77a-20ec12f867c5.005ae.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/97848e42-cf2f-47fd-b77a-20ec12f867c5.005ae.png"
     },
     {
       "id": "khat_mau",
@@ -1251,7 +1352,8 @@
       "kind": "debuff",
       "desc": "Khi mục tiêu thi triển hành động tốn sĩ khí trên một mức nhất định, lượt sau sẽ Hỗn Loạn 1 lượt.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9cc3da50-32d5-4f4e-94c3-2421612bbd2a.4eba0.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/9cc3da50-32d5-4f4e-94c3-2421612bbd2a.4eba0.png"
     },
     {
       "id": "khac_bo",
@@ -1262,7 +1364,8 @@
       "kind": "buff",
       "desc": "Bản thân giảm sát thương cuối phải chịu từ Bộ Binh, số lượng là X",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png"
     },
     {
       "id": "khac_cung",
@@ -1273,7 +1376,8 @@
       "kind": "buff",
       "desc": "Bản thân giảm sát thương cuối phải chịu từ Cung Binh, số lượng là X",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png"
     },
     {
       "id": "khac_ky",
@@ -1284,7 +1388,8 @@
       "kind": "buff",
       "desc": "Bản thân giảm sát thương cuối phải chịu từ Kỵ Binh, số lượng là X",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png"
     },
     {
       "id": "khac_thuong",
@@ -1295,7 +1400,8 @@
       "kind": "buff",
       "desc": "Bản thân giảm sát thương cuối phải chịu từ Thương Binh, số lượng là X",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png"
     },
     {
       "id": "khong_che",
@@ -1306,7 +1412,8 @@
       "kind": "debuff",
       "desc": "Tấn công ngẫu nhiên vào chính đồng đội của mình.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1aa32375-a106-408a-8532-7dbc69a22994.f998c.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/1aa32375-a106-408a-8532-7dbc69a22994.f998c.png"
     },
     {
       "id": "khong_hoa",
@@ -1317,7 +1424,8 @@
       "kind": "buff",
       "desc": "Các đơn vị có đốt hoặc lửa làm giảm thiệt hại gây ra cho các đơn vị có ngọn lửa kiểm soát [giá trị hiệu quả].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8efb5706-d303-4c8d-8bd3-e4aac5d1d929.d6358.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/8efb5706-d303-4c8d-8bd3-e4aac5d1d929.d6358.png"
     },
     {
       "id": "kinh_cuc",
@@ -1328,7 +1436,8 @@
       "kind": "buff",
       "desc": "Phản đòn sát thương theo tỉ lệ phần trăm",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png"
     },
     {
       "id": "kinh_cuc_2",
@@ -1339,7 +1448,8 @@
       "kind": "unremovable",
       "desc": "Hiệu quả Kinh Cúc không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png"
     },
     {
       "id": "kinh_hon",
@@ -1350,7 +1460,8 @@
       "kind": "buff",
       "desc": "Khi có được buff này, mỗi lần kỹ năng tạo thành sát thương đều chồng lên một tầng âm hồn, hiệu quả cộng dồn là giá trị hiệu quả 1, lượt chồng lên là giá trị hiệu quả 2.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/79ce70d7-8472-4dae-8395-0a845ac1576d.cbcc1.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/79ce70d7-8472-4dae-8395-0a845ac1576d.cbcc1.png"
     },
     {
       "id": "kinh_hon_2",
@@ -1361,7 +1472,8 @@
       "kind": "unremovable",
       "desc": "Mỗi lần bản thân gây sát thương, sẽ tăng sát thương cuối, không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/958083df-03fb-40a7-ac45-59b75487b29d.23f08.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/958083df-03fb-40a7-ac45-59b75487b29d.23f08.png"
     },
     {
       "id": "kien_nghi_2",
@@ -1372,7 +1484,8 @@
       "kind": "buff",
       "desc": "Giải trừ hiệu quả bất lợi, đồng thời tăng phòng thủ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6a48f217-4497-4805-ab0e-267305d7bd3e.3036a.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/6a48f217-4497-4805-ab0e-267305d7bd3e.3036a.png"
     },
     {
       "id": "kien_thu",
@@ -1383,7 +1496,8 @@
       "kind": "buff",
       "desc": "Tất cả các phòng thủ tăng x% và có thể được cộng dồn.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5f863408-a83c-4982-878d-ef05d48106d0.62488.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/5f863408-a83c-4982-878d-ef05d48106d0.62488.png"
     },
     {
       "id": "kien_thu_2",
@@ -1394,7 +1508,8 @@
       "kind": "unremovable",
       "desc": "Tăng tất cả phòng, có thể tích lũy, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5f863408-a83c-4982-878d-ef05d48106d0.62488.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/5f863408-a83c-4982-878d-ef05d48106d0.62488.png"
     },
     {
       "id": "kien_tri_2",
@@ -1413,7 +1528,8 @@
       "kind": "buff",
       "desc": "Giảm xác suất trúng Mê Hoặc",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bdbd1c72-e8e8-441e-8bf9-cb56cd6cced7.a0681.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/bdbd1c72-e8e8-441e-8bf9-cb56cd6cced7.a0681.png"
     },
     {
       "id": "kieu_binh",
@@ -1424,7 +1540,8 @@
       "kind": "buff",
       "desc": "Khi bản thân đầy lính, tăng tấn công và sát thương phải chịu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/988d9852-a244-48df-be03-b2de7b88095f.85295.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/988d9852-a244-48df-be03-b2de7b88095f.85295.png"
     },
     {
       "id": "kieu_binh_2",
@@ -1435,7 +1552,8 @@
       "kind": "unremovable",
       "desc": "Khi binh lực của bản thân đầy đủ, lực tấn công tăng lên X, nhưng bị thương tổn tăng lên Y%.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3242a534-478e-409f-aebd-396db2d17549.82b94.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/3242a534-478e-409f-aebd-396db2d17549.82b94.png"
     },
     {
       "id": "kich_duong",
@@ -1446,7 +1564,8 @@
       "kind": "buff",
       "desc": "Hiệu quả hồi sĩ khí tăng x%",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0d90b45f-a50e-40ed-a6e8-9707c2cef7c5.ef5b8.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/0d90b45f-a50e-40ed-a6e8-9707c2cef7c5.ef5b8.png"
     },
     {
       "id": "kich_hoat_kich_doc",
@@ -1490,7 +1609,8 @@
       "kind": "buff",
       "desc": "Khi chịu bất kỳ sát thương nào, tăng X sĩ khí.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9c619805-8b48-4024-a89d-d287d2b76212.adcf6.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/9c619805-8b48-4024-a89d-d287d2b76212.adcf6.png"
     },
     {
       "id": "kich_no_2",
@@ -1501,7 +1621,8 @@
       "kind": "buff",
       "desc": "Khi chịu sát thương sẽ tăng sĩ khí.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9c619805-8b48-4024-a89d-d287d2b76212.adcf6.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/9c619805-8b48-4024-a89d-d287d2b76212.adcf6.png"
     },
     {
       "id": "kich_doc",
@@ -1512,7 +1633,8 @@
       "kind": "debuff",
       "desc": "Trước khi mục tiêu bắt đầu hành động sẽ nhận sát thương Mưu Công theo tỉ lệ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/cce223c6-e111-47e4-a80f-9978059d1a66.b9fcd.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/cce223c6-e111-47e4-a80f-9978059d1a66.b9fcd.png"
     },
     {
       "id": "ky_tran",
@@ -1523,7 +1645,8 @@
       "kind": "buff",
       "desc": "Khi có BUFF này, trong lượt lẻ tấn công tăng X%, trong lượt chẵn phòng thủ tăng X%",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/127258b9-34ae-444a-9460-6a44d6b930f7.79ff8.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/127258b9-34ae-444a-9460-6a44d6b930f7.79ff8.png"
     },
     {
       "id": "ky_tran_2",
@@ -1534,7 +1657,8 @@
       "kind": "unremovable",
       "desc": "Khi có BUFF này, khi ở lượt số lẻ, sức tấn công của bản thân tăng X%, khi ở lượt chẵn, khả năng phòng thủ của bản thân tăng X%.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/127258b9-34ae-444a-9460-6a44d6b930f7.79ff8.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/127258b9-34ae-444a-9460-6a44d6b930f7.79ff8.png"
     },
     {
       "id": "ky_tap_2",
@@ -1545,7 +1669,8 @@
       "kind": "unremovable",
       "desc": "Mỗi lần bản thân thi triển hiệu quả Khống Chế lên địch, tăng sát thương cuối bản thân gây ra, không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/89e27ae6-c8c1-45b7-b3de-0e051bafd0b2.d9ba4.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/89e27ae6-c8c1-45b7-b3de-0e051bafd0b2.d9ba4.png"
     },
     {
       "id": "lay_dong",
@@ -1556,7 +1681,8 @@
       "kind": "debuff",
       "desc": "Tăng thêm hiệu quả giảm sĩ khí",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/22319cd1-c787-478f-aebe-254dc354325c.1a874.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/22319cd1-c787-478f-aebe-254dc354325c.1a874.png"
     },
     {
       "id": "lay_dong_2",
@@ -1567,7 +1693,8 @@
       "kind": "unremovable",
       "desc": "Giảm hiệu quả Tăng Sĩ Khí, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/22319cd1-c787-478f-aebe-254dc354325c.1a874.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/22319cd1-c787-478f-aebe-254dc354325c.1a874.png"
     },
     {
       "id": "li_thuong",
@@ -1578,7 +1705,8 @@
       "kind": "buff",
       "desc": "Khi bản thân đang mang một hiệu quả nhất định, sát thương phải chịu giảm 10%; nếu không thì tăng 10%.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/569dfb81-a87a-409d-b550-890b5eb12b42.bd6f7.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/569dfb81-a87a-409d-b550-890b5eb12b42.bd6f7.png"
     },
     {
       "id": "lien_hoan",
@@ -1589,7 +1717,8 @@
       "kind": "buff",
       "desc": "Chuyển x% sát thương tướng đó phải chịu lên toàn phe.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0278e5a3-a42b-4d81-9b0d-2cf37e5b1bbd.3eca4.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/0278e5a3-a42b-4d81-9b0d-2cf37e5b1bbd.3eca4.png"
     },
     {
       "id": "lien_kich",
@@ -1600,7 +1729,8 @@
       "kind": "buff",
       "desc": "Kích hoạt khi trong đội có tướng chỉ định, tung một đòn tấn công liên kết.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b93de812-c239-430b-9a06-0dbe713eeeaa.dcc00.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/b93de812-c239-430b-9a06-0dbe713eeeaa.dcc00.png"
     },
     {
       "id": "lien_tuc",
@@ -1611,7 +1741,8 @@
       "kind": "buff",
       "desc": "Khi thi triển kỹ năng , làm cho lực tấn công của bản thân tăng X%, có thể cộng dồn, nếu như không thi triển kỹ năng thì mất số tầng cộng dồn.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/4ab6aaa1-b2cd-46a7-8549-6fe17ffa7030.6afdc.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/4ab6aaa1-b2cd-46a7-8549-6fe17ffa7030.6afdc.png"
     },
     {
       "id": "long_hon",
@@ -1622,7 +1753,8 @@
       "kind": "buff",
       "desc": "Nếu bản thân bị khống chế, thì khôi phục binh lực [giá trị hiệu quả] (hệ số là -0,2 kế sách cộng máu) và ngẫu nhiên giải trừ [giá trị hiệu quả] một hiệu ứng bất lợi.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/06218e2b-0e51-4300-8dce-bbc83618e5db.0b4df.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/06218e2b-0e51-4300-8dce-bbc83618e5db.0b4df.png"
     },
     {
       "id": "loai_bo",
@@ -1633,7 +1765,8 @@
       "kind": "buff",
       "desc": "Miễn dịch hiệu quả bất lợi",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a710f98b-a72a-47c8-b153-58da870b5f8b.29e49.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/a710f98b-a72a-47c8-b153-58da870b5f8b.29e49.png"
     },
     {
       "id": "loai_bo_may_tinh",
@@ -1663,7 +1796,8 @@
       "kind": "buff",
       "desc": "Mỗi lần bản thân Đánh Thường hoặc Phản Kích, đều sẽ tăng sĩ khí cho bản thân và đồng đội",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/753b09fb-6a79-4c26-a55b-638cd914d1d2.8b594.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/753b09fb-6a79-4c26-a55b-638cd914d1d2.8b594.png"
     },
     {
       "id": "loi_co_2",
@@ -1674,7 +1808,8 @@
       "kind": "unremovable",
       "desc": "Mỗi lần bản thân Đánh Thường hoặc Phản Kích, sẽ tăng sĩ khí cho bản thân và đồng đội, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/753b09fb-6a79-4c26-a55b-638cd914d1d2.8b594.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/753b09fb-6a79-4c26-a55b-638cd914d1d2.8b594.png"
     },
     {
       "id": "lac_nguyet",
@@ -1707,7 +1842,8 @@
       "kind": "buff",
       "desc": "Không thể hồi phục sĩ khí, mỗi lượt gây sát thương toàn phe địch",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/390c79a5-4a8b-489b-974b-8e74e958a953.c16d4.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/390c79a5-4a8b-489b-974b-8e74e958a953.c16d4.png"
     },
     {
       "id": "ma_am",
@@ -1718,7 +1854,8 @@
       "kind": "debuff",
       "desc": "Mỗi tầng Ma Ám giảm tỉ lệ binh lực tối đa, có thể cộng dồn",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e48836e6-29f8-4dca-8fe5-f40c4947787e.d50be.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/e48836e6-29f8-4dca-8fe5-f40c4947787e.d50be.png"
     },
     {
       "id": "minh_triet",
@@ -1729,7 +1866,8 @@
       "kind": "buff",
       "desc": "Nếu bản thân không có buff bất lợi, tấn công tăng X%, phòng thủ tăng Y%.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/55ad2cb7-6479-4470-8d2e-aebaacc6f5b5.f48c4.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/55ad2cb7-6479-4470-8d2e-aebaacc6f5b5.f48c4.png"
     },
     {
       "id": "minh_tam",
@@ -1740,7 +1878,8 @@
       "kind": "buff",
       "desc": "Giảm xác suất bị Băng Phong",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e0d91b19-4d44-4b44-9432-5852f841ec88.db293.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/e0d91b19-4d44-4b44-9432-5852f841ec88.db293.png"
     },
     {
       "id": "mien_dich",
@@ -1751,7 +1890,8 @@
       "kind": "buff",
       "desc": "Miễn dịch tất cả các tác dụng tăng và giảm.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png"
     },
     {
       "id": "mien_dich_ma_am",
@@ -1773,7 +1913,8 @@
       "kind": "unremovable",
       "desc": "Các tướng có hiệu ứng này không thể giải trừ trên cơ thể làm giảm sát thương [giá trị hiệu quả] nhận vào.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/66e43afc-922b-4122-9d66-52e358f39807.c8db1.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/66e43afc-922b-4122-9d66-52e358f39807.c8db1.png"
     },
     {
       "id": "may_den",
@@ -1792,7 +1933,8 @@
       "kind": "debuff",
       "desc": "Trong trạng thái BUFF này ko thể hành động và tấn công đồng đội ngẫu nhiên",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a72fafe5-a1f7-4a71-936e-7bdea2b20411.708df.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/a72fafe5-a1f7-4a71-936e-7bdea2b20411.708df.png"
     },
     {
       "id": "muu_cong",
@@ -1803,7 +1945,8 @@
       "kind": "buff",
       "desc": "Trong thời gian duy trì, đòn đánh thường được tăng thêm một lần đánh bằng mưu công, đồng thời không thể hồi lại sĩ khí.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/480a3cee-12df-44be-bf22-e6e026c245fd.67158.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/480a3cee-12df-44be-bf22-e6e026c245fd.67158.png"
     },
     {
       "id": "muu_dinh",
@@ -1814,7 +1957,8 @@
       "kind": "unremovable",
       "desc": "Không thể hồi phục sĩ khí, mỗi lượt đối với toàn bộ địch nhân tạo thành sát thương kế sách X lần Y%.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/62928d64-f505-4326-a578-d40470a25742.2f924.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/62928d64-f505-4326-a578-d40470a25742.2f924.png"
     },
     {
       "id": "met_moi",
@@ -1825,7 +1969,8 @@
       "kind": "buff",
       "desc": "Có hiệu lực sau khi Bất khuất có hiệu lực.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fbd6b052-1410-43e5-90fe-820382f4fba6.5d834.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/fbd6b052-1410-43e5-90fe-820382f4fba6.5d834.png"
     },
     {
       "id": "nghia_dung",
@@ -1880,7 +2025,8 @@
       "kind": "buff",
       "desc": "Vật Công tăng 7000%, nhận sát thương bất kỳ đều Phản Kích, mỗi lần Phản Kích khiến Vật Công tăng 400%",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ea2816de-3127-44e1-abeb-72fac141a5ca.05e05.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/ea2816de-3127-44e1-abeb-72fac141a5ca.05e05.png"
     },
     {
       "id": "nghich_chien_2",
@@ -1891,7 +2037,8 @@
       "kind": "buff",
       "desc": "Binh lực bản thân càng ít tấn công càng cao.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d49073a9-ba26-4203-abea-7121c8adbdc4.ea0c9.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/d49073a9-ba26-4203-abea-7121c8adbdc4.ea0c9.png"
     },
     {
       "id": "nghich_chuyen",
@@ -1902,7 +2049,8 @@
       "kind": "buff",
       "desc": "Sau khi bị tấn công sẽ phản lại một buff; Y là số lượt duy trì buff đó.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png"
     },
     {
       "id": "nghich_chuyen_2",
@@ -1913,7 +2061,8 @@
       "kind": "buff",
       "desc": "Khi bản thân bị tấn công, khiến kẻ địch chịu 1 tầng giẫm đạp, cộng dồn 5 tầng sẽ khiến địch hỗn loạn không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png"
     },
     {
       "id": "nguyet_huy",
@@ -1924,7 +2073,8 @@
       "kind": "buff",
       "desc": "Hiệu quả giảm sĩ khí giảm X%.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/eaf4e170-5da1-43ca-8cca-0a69f5ce9328.bc4c3.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/eaf4e170-5da1-43ca-8cca-0a69f5ce9328.bc4c3.png"
     },
     {
       "id": "nguyet_huy_2",
@@ -1935,7 +2085,8 @@
       "kind": "unremovable",
       "desc": "Hiệu quả giảm sĩ khí giảm, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/eaf4e170-5da1-43ca-8cca-0a69f5ce9328.bc4c3.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/eaf4e170-5da1-43ca-8cca-0a69f5ce9328.bc4c3.png"
     },
     {
       "id": "nguyet_hon",
@@ -1946,7 +2097,8 @@
       "kind": "buff",
       "desc": "Không chịu ảnh hưởng từ hiệu quả giảm sĩ khí",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fde66ab0-3042-44e7-91ca-63fa9697eb15.257a7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/fde66ab0-3042-44e7-91ca-63fa9697eb15.257a7.png"
     },
     {
       "id": "nguyet_hon_2",
@@ -1957,7 +2109,8 @@
       "kind": "unremovable",
       "desc": "Nguyệt Hồn không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fde66ab0-3042-44e7-91ca-63fa9697eb15.257a7.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/fde66ab0-3042-44e7-91ca-63fa9697eb15.257a7.png"
     },
     {
       "id": "ngu_say",
@@ -1968,7 +2121,8 @@
       "kind": "debuff",
       "desc": "Trong trạng thái BUFF này, mục tiêu sẽ rơi vào trạng thái không thể tấn công, BUFF sẽ biến mất khi bị sát thương.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7643ebbd-1a68-4cf3-b3ec-200ccca8670a.52d22.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/7643ebbd-1a68-4cf3-b3ec-200ccca8670a.52d22.png"
     },
     {
       "id": "ngu_hoanh",
@@ -2001,7 +2155,8 @@
       "kind": "buff",
       "desc": "Trị liệu cuối cùng bản thân tạo ra (không gồm BUFF) tăng X%. Nếu đạt giới hạn tối đa, trị liệu cuối = Giới hạn × (100% + X%).",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0d90b45f-a50e-40ed-a6e8-9707c2cef7c5.ef5b8.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/0d90b45f-a50e-40ed-a6e8-9707c2cef7c5.ef5b8.png"
     },
     {
       "id": "pha_thanh",
@@ -2012,7 +2167,8 @@
       "kind": "buff",
       "desc": "Khi phát động một cuộc tấn công, nếu mục tiêu có [miễn dịch] hoặc [loại bỏ], thiệt hại gây ra cho mục tiêu cộng thêm[giá trị hiệu quả].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5589d389-b9dd-4218-ac4a-9bf9fee1b66b.94c91.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/5589d389-b9dd-4218-ac4a-9bf9fee1b66b.94c91.png"
     },
     {
       "id": "pha_dich",
@@ -2023,7 +2179,8 @@
       "kind": "debuff",
       "desc": "Giảm hiệu quả Đào Binh phải chịu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/67b9b697-fafc-4e84-9d0b-8d075cc565d5.8d8ed.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/67b9b697-fafc-4e84-9d0b-8d075cc565d5.8d8ed.png"
     },
     {
       "id": "phan",
@@ -2034,7 +2191,8 @@
       "kind": "buff",
       "desc": "Tăng xác suất phản kích của mục tiêu.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7fd8912d-c869-42f0-bc25-23f98b9f6841.1d3d1.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/7fd8912d-c869-42f0-bc25-23f98b9f6841.1d3d1.png"
     },
     {
       "id": "phan_cong",
@@ -2053,7 +2211,8 @@
       "kind": "buff",
       "desc": "Sĩ khí nhận được mỗi lượt tăng điểm X.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7ef92aca-d0e5-4937-abdf-efcc04c71802.e82c4.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/7ef92aca-d0e5-4937-abdf-efcc04c71802.e82c4.png"
     },
     {
       "id": "phuc_thu",
@@ -2064,7 +2223,8 @@
       "kind": "buff",
       "desc": "Khi chịu sát thương sẽ Phản Kích",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ea2816de-3127-44e1-abeb-72fac141a5ca.05e05.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/ea2816de-3127-44e1-abeb-72fac141a5ca.05e05.png"
     },
     {
       "id": "phuc_thu_3",
@@ -2075,7 +2235,8 @@
       "kind": "buff",
       "desc": "Mỗi lần phản kích tấn công địch trên đường thẳng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ea2816de-3127-44e1-abeb-72fac141a5ca.05e05.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/ea2816de-3127-44e1-abeb-72fac141a5ca.05e05.png"
     },
     {
       "id": "quy_phong",
@@ -2086,7 +2247,8 @@
       "kind": "buff",
       "desc": "Tăng khả năng kháng hiệu quả Khống Chế, giảm xác suất trúng Khống Chế",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1aa32375-a106-408a-8532-7dbc69a22994.f998c.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/1aa32375-a106-408a-8532-7dbc69a22994.f998c.png"
     },
     {
       "id": "song_hung",
@@ -2097,7 +2259,8 @@
       "kind": "buff",
       "desc": "Tính toán quân đội bạn có hiệu ứng song hùng khác hay không, mỗi lượt tăng tấn công X% của mình (tương tự như anh dũng), hiệu quả có thể cộng dồn.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d428b7bf-7f62-4acc-bf24-cff33ea18e34.d79e5.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/d428b7bf-7f62-4acc-bf24-cff33ea18e34.d79e5.png"
     },
     {
       "id": "suy_yeu",
@@ -2108,7 +2271,8 @@
       "kind": "debuff",
       "desc": "Giảm phe địch X Chỉ Huy, Võ và Trí.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/614cb152-a462-4221-838a-20f5e4e23fae.05fd0.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/614cb152-a462-4221-838a-20f5e4e23fae.05fd0.png"
     },
     {
       "id": "sach_thuan",
@@ -2119,7 +2283,8 @@
       "kind": "buff",
       "desc": "Tăng phòng thủ, điểm Trí đối phương càng thấp so với bản thân, sát thương phải chịu càng ít",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c427d071-6ebe-4eaf-a325-38a8d582bf34.887e7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/c427d071-6ebe-4eaf-a325-38a8d582bf34.887e7.png"
     },
     {
       "id": "soi_suc",
@@ -2130,7 +2295,8 @@
       "kind": "buff",
       "desc": "Mỗi khi mục tiêu nhận trị liệu, người thi triển cũng sẽ nhận trị liệu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6c45858b-1ce5-479d-a5b6-17388e381bac.216f6.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/6c45858b-1ce5-479d-a5b6-17388e381bac.216f6.png"
     },
     {
       "id": "sung_kiem",
@@ -2141,7 +2307,8 @@
       "kind": "buff",
       "desc": "Khi bắt đầu lượt, giải trừ x hiệu quả bất lợi, mỗi hiệu quả được giải trù hồi phục 50000 lính lợi của bản thân x2.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/452d1a51-461b-46b9-8b4a-d14ecfa9cd1d.b524f.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/452d1a51-461b-46b9-8b4a-d14ecfa9cd1d.b524f.png"
     },
     {
       "id": "so_hai",
@@ -2152,7 +2319,8 @@
       "kind": "debuff",
       "desc": "Không thể hành động, tấn công ngẫu nhiên 1 đồng minh, xóa bỏ khi bị nhận sát thương .",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6c09ee33-38c0-43fb-891e-98d8a3c06163.395b7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/6c09ee33-38c0-43fb-891e-98d8a3c06163.395b7.png"
     },
     {
       "id": "tan_vo",
@@ -2163,7 +2331,8 @@
       "kind": "debuff",
       "desc": "( giá trị hiệu quả ) xác suất tiến vào [Hỗn Loạn], liên tục [giá trị hiệu quả] một lượt, binh lực càng ít [Hỗn Loạn] xác suất càng cao.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2292a825-c85d-40e7-a099-202ee97c3151.841c4.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/2292a825-c85d-40e7-a099-202ee97c3151.841c4.png"
     },
     {
       "id": "thanh_long_2",
@@ -2174,7 +2343,8 @@
       "kind": "unremovable",
       "desc": "Tăng x% công phòng của bản thân, hiệu ứng này không thể bị giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/400bfefe-b5fa-4ca5-8dff-dd6d94608029.37869.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/400bfefe-b5fa-4ca5-8dff-dd6d94608029.37869.png"
     },
     {
       "id": "thi_ky",
@@ -2185,7 +2355,8 @@
       "kind": "buff",
       "desc": "Khi tấn công, áp thêm 1 buff lên mục tiêu.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png"
     },
     {
       "id": "thi_ky_2",
@@ -2196,7 +2367,8 @@
       "kind": "buff",
       "desc": "Khi tấn công, gây thêm sát thương và tự nhận 1 buff.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/e9581b4b-8b71-4bfa-966c-189003663cb4.2705c.png"
     },
     {
       "id": "thi_doc",
@@ -2207,7 +2379,8 @@
       "kind": "debuff",
       "desc": "Khi bắt đầu lượt, chịu x% mưu công của người thi triển, sát thương phải chịu sẽ lan cho tướng cùng phe.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9a8cf6c0-f8ac-41cd-a460-4adddf596ae7.c8193.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/9a8cf6c0-f8ac-41cd-a460-4adddf596ae7.c8193.png"
     },
     {
       "id": "thien_cam",
@@ -2218,7 +2391,8 @@
       "kind": "buff",
       "desc": "Tăng khả năng kháng hiệu quả Tan Vỡ, giảm xác suất trúng Tan Vỡ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2292a825-c85d-40e7-a099-202ee97c3151.841c4.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/2292a825-c85d-40e7-a099-202ee97c3151.841c4.png"
     },
     {
       "id": "thien_hoa",
@@ -2229,7 +2403,8 @@
       "kind": "unremovable",
       "desc": "Khi kết thúc lượt, chịu 15000% sát thương mưu công của người thi triển, sát thương phải chịu lan cho tướng cùng phe",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/05df3c9f-bdff-4edf-9b48-5b38e5a75207.4055a.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/05df3c9f-bdff-4edf-9b48-5b38e5a75207.4055a.png"
     },
     {
       "id": "thien_tuong",
@@ -2240,7 +2415,8 @@
       "kind": "buff",
       "desc": "Khi thi triển kỹ năng, bộ phận sĩ khí cao hơn 100 sẽ tăng sát thương thêm",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fd1d764b-0e16-4f7e-b1e3-dd2097c4e2fd.4852b.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/fd1d764b-0e16-4f7e-b1e3-dd2097c4e2fd.4852b.png"
     },
     {
       "id": "thien_van",
@@ -2251,7 +2427,8 @@
       "kind": "buff",
       "desc": "Mỗi lượt tăng sát thương cho bản thân theo bội số ngẫu nhiên (từ 1 đến X lần).",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ac54579b-1973-48d2-8212-1c7e6168ce67.3dd56.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/ac54579b-1973-48d2-8212-1c7e6168ce67.3dd56.png"
     },
     {
       "id": "thieu_thuong",
@@ -2273,7 +2450,8 @@
       "kind": "debuff",
       "desc": "Gây sát thương kế sách kéo dài theo lượt.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/66a94d42-a050-46ab-ac1d-dbb2e54d8c8c.4cd5a.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/66a94d42-a050-46ab-ac1d-dbb2e54d8c8c.4cd5a.png"
     },
     {
       "id": "thiet_bich",
@@ -2284,7 +2462,8 @@
       "kind": "buff",
       "desc": "Tất cả các chấn thương phải chịu giảm xuống còn 1 điểm.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/d6ad5dbe-99df-44e8-9a19-1fd9d7cd6f5b.49981.png"
     },
     {
       "id": "thiet_y",
@@ -2295,7 +2474,8 @@
       "kind": "buff",
       "desc": "Với hiệu ứng này, trong vòng liên tục có thể chống lại hiệu ứng kiểm soát thứ cấp [giá trị hiệu ứng] (hỗn loạn, hôn mê, sợ hãi, đóng băng, sợ hãi).",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1a0a7370-7171-43b7-ba99-e948c816eb5c.1e25a.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/1a0a7370-7171-43b7-ba99-e948c816eb5c.1e25a.png"
     },
     {
       "id": "thiet_y_chuyen_dung_bac_7",
@@ -2317,7 +2497,8 @@
       "kind": "unremovable",
       "desc": "Tăng tất cả tấn công, có thể cộng dồn, có giới hạn tối đa.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fdeddfa9-2c03-494e-8119-6a30f3ce59eb.0c8e4.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/fdeddfa9-2c03-494e-8119-6a30f3ce59eb.0c8e4.png"
     },
     {
       "id": "them_binh_linh",
@@ -2336,7 +2517,8 @@
       "kind": "buff",
       "desc": "Thêm lính theo tỉ lệ phần trăm",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/4406d9b8-728e-4956-a86e-91a7eb7abada.53245.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/4406d9b8-728e-4956-a86e-91a7eb7abada.53245.png"
     },
     {
       "id": "thi_quan",
@@ -2347,7 +2529,8 @@
       "kind": "buff",
       "desc": "Phá hoại Thiết Bích của mục tiêu và gây thêm sát thương theo tỉ lệ phần trăm của sát thương hiện tại",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/57a20b99-3736-4b2c-802e-7cc999fbeab5.d8937.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/57a20b99-3736-4b2c-802e-7cc999fbeab5.d8937.png"
     },
     {
       "id": "thi_quan_2",
@@ -2358,7 +2541,8 @@
       "kind": "unremovable",
       "desc": "Phá hoại Thiết Bích của mục tiêu và gây thêm sát thương theo tỉ lệ phần trăm của sát thương hiện tại, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/57a20b99-3736-4b2c-802e-7cc999fbeab5.d8937.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/57a20b99-3736-4b2c-802e-7cc999fbeab5.d8937.png"
     },
     {
       "id": "thoi_mien",
@@ -2369,7 +2553,8 @@
       "kind": "debuff",
       "desc": "Máu của đối phương càng nhiều thì xác suất bị ngủ càng cao.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7643ebbd-1a68-4cf3-b3ec-200ccca8670a.52d22.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/7643ebbd-1a68-4cf3-b3ec-200ccca8670a.52d22.png"
     },
     {
       "id": "thuong_tich",
@@ -2380,7 +2565,8 @@
       "kind": "debuff",
       "desc": "Mỗi lần bị thương, tổn thất X binh lực hiện tại, tối đa có hiệu lực Y.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/687724dc-5d5b-4e6b-a38f-bacb8915b34a.1ea4e.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/687724dc-5d5b-4e6b-a38f-bacb8915b34a.1ea4e.png"
     },
     {
       "id": "thau_suot",
@@ -2391,7 +2577,8 @@
       "kind": "buff",
       "desc": "Sát thương gây cho mục tiêu có BUFF Treo Thưởng tăng hoặc giảm",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3fafe65f-44e1-435d-9dc9-7d1dae25a367.0fa28.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/3fafe65f-44e1-435d-9dc9-7d1dae25a367.0fa28.png"
     },
     {
       "id": "than_binh",
@@ -2402,7 +2589,8 @@
       "kind": "buff",
       "desc": "Dựa theo binh lực bản thân gia tăng lực tấn công, tối đa không vượt quá 160%.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5a6251c9-443d-4ce7-8f94-d150b0bcc5c4.e3a46.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/5a6251c9-443d-4ce7-8f94-d150b0bcc5c4.e3a46.png"
     },
     {
       "id": "than_loi",
@@ -2424,7 +2612,8 @@
       "kind": "buff",
       "desc": "Gây sát thương [giá trị hiệu quả] cho kẻ thù bị Tê liệt.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0ce6f563-0377-44ad-9489-d5f6727755c7.d56a3.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/0ce6f563-0377-44ad-9489-d5f6727755c7.d56a3.png"
     },
     {
       "id": "than_toc_2",
@@ -2435,7 +2624,8 @@
       "kind": "buff",
       "desc": "Gây sát thương gấp bội cho địch bị khống chế, không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0ce6f563-0377-44ad-9489-d5f6727755c7.d56a3.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/0ce6f563-0377-44ad-9489-d5f6727755c7.d56a3.png"
     },
     {
       "id": "thi_huyet",
@@ -2446,7 +2636,8 @@
       "kind": "unremovable",
       "desc": "Xếu mục tiêu có tỉ lệ Lính dưới 75%/50%, bản thân nhận Cuồng Bạo/Liên Chiến, duy trì 30 lượt.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9c619805-8b48-4024-a89d-d287d2b76212.adcf6.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/9c619805-8b48-4024-a89d-d287d2b76212.adcf6.png"
     },
     {
       "id": "thinh_no",
@@ -2465,7 +2656,8 @@
       "kind": "buff",
       "desc": "Vật công gây ra tăng X%, có thể cộng dồn.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3b2303f3-dee5-4249-8ef3-57bab6de3abd.689ae.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/3b2303f3-dee5-4249-8ef3-57bab6de3abd.689ae.png"
     },
     {
       "id": "thu_ho",
@@ -2476,7 +2668,8 @@
       "kind": "buff",
       "desc": "Giảm sát thương cho mục tiêu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2bfb6cf6-ebb2-4803-9a1d-1bd442e60775.6fd5a.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/2bfb6cf6-ebb2-4803-9a1d-1bd442e60775.6fd5a.png"
     },
     {
       "id": "thu_ho_2",
@@ -2487,7 +2680,8 @@
       "kind": "unremovable",
       "desc": "Tăng phòng thủ, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2bfb6cf6-ebb2-4803-9a1d-1bd442e60775.6fd5a.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/2bfb6cf6-ebb2-4803-9a1d-1bd442e60775.6fd5a.png"
     },
     {
       "id": "thu_nghia",
@@ -2498,7 +2692,8 @@
       "kind": "buff",
       "desc": "Giảm sát thương phải chịu khi không trong lượt bản thân",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f50d8789-9a74-41b3-9eef-47a40f5f74c6.5f71e.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/f50d8789-9a74-41b3-9eef-47a40f5f74c6.5f71e.png"
     },
     {
       "id": "thu_ngu",
@@ -2520,7 +2715,8 @@
       "kind": "buff",
       "desc": "Tăng tất cả phòng thủ, sau đó giảm theo số lượt. về 0 sau 5 lượt hành động",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c577aba9-9ed9-4bc6-bf84-08f5e62d245e.74449.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/c577aba9-9ed9-4bc6-bf84-08f5e62d245e.74449.png"
     },
     {
       "id": "tin_gia",
@@ -2531,7 +2727,8 @@
       "kind": "buff",
       "desc": "Giảm sát thương Thi Độc phải chịu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ff66d095-f66f-4b72-92e5-f8a1affd5750.81b51.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/ff66d095-f66f-4b72-92e5-f8a1affd5750.81b51.png"
     },
     {
       "id": "tien_cong",
@@ -2542,7 +2739,8 @@
       "kind": "buff",
       "desc": "Đánh thường tăng Pháp Công, trong thời gian đó không thể hồi sĩ khí",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9d6a251e-0f54-40da-9391-184cf8e8b60d.a54c6.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/9d6a251e-0f54-40da-9391-184cf8e8b60d.a54c6.png"
     },
     {
       "id": "toan_nang",
@@ -2553,7 +2751,8 @@
       "kind": "buff",
       "desc": "Tăng C.Huy, Võ, Trí, không thể cộng dồn.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f37715fe-47ed-4694-a881-2e684127e7a8.c4bec.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/f37715fe-47ed-4694-a881-2e684127e7a8.c4bec.png"
     },
     {
       "id": "toan_nang_chuyen_dung_bac_7",
@@ -2575,7 +2774,8 @@
       "kind": "buff",
       "desc": "Tăng C.Huy, Võ, Trí, không thể cộng dồn.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/f37715fe-47ed-4694-a881-2e684127e7a8.c4bec.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/f37715fe-47ed-4694-a881-2e684127e7a8.c4bec.png"
     },
     {
       "id": "treo_thuong",
@@ -2586,7 +2786,8 @@
       "kind": "buff",
       "desc": "Tăng sát thương từ tướng có Thấu Suốt, khi tướng mang hiệu quả này tử trận, toàn phe ta tăng x sĩ khí.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5228c82f-fb6d-481c-88af-36df47a4c4a2.3dc68.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/5228c82f-fb6d-481c-88af-36df47a4c4a2.3dc68.png"
     },
     {
       "id": "tru_than",
@@ -2597,7 +2798,8 @@
       "kind": "unremovable",
       "desc": "Khi tấn công địch nhân có [hộ nhậnẫn] và [chống đỡ], lập tức phá bỏ tất cả lá chắn và hiệu quả chống đỡ, đồng thời gây thêm sát thương [giá trị hiệu quả].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/29c87b45-70c7-4dcd-8dcd-71d76456d8c2.b1faa.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/29c87b45-70c7-4dcd-8dcd-71d76456d8c2.b1faa.png"
     },
     {
       "id": "truy_kich_2",
@@ -2608,7 +2810,8 @@
       "kind": "buff",
       "desc": "Gây sát thương X lần cho các đơn vị có buff cụ thể.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a3707020-dc59-4f8b-b86a-da8ebc6a4b05.d3554.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/a3707020-dc59-4f8b-b86a-da8ebc6a4b05.d3554.png"
     },
     {
       "id": "tri",
@@ -2619,7 +2822,8 @@
       "kind": "buff",
       "desc": "Bản thân tăng Trí",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/dff1e976-13c2-44ac-a80b-f7ae221e84a2.f023b.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/dff1e976-13c2-44ac-a80b-f7ae221e84a2.f023b.png"
     },
     {
       "id": "tri_luc_2",
@@ -2630,7 +2834,8 @@
       "kind": "unremovable",
       "desc": "Bản thân tăng Trí, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/dff1e976-13c2-44ac-a80b-f7ae221e84a2.f023b.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/dff1e976-13c2-44ac-a80b-f7ae221e84a2.f023b.png"
     },
     {
       "id": "tri_tue",
@@ -2641,7 +2846,8 @@
       "kind": "buff",
       "desc": "Tăng sát thương kế sách, hiệu quả có thể cộng dồn.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ccd3a94f-edb2-486d-8968-feafb766a429.02678.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/ccd3a94f-edb2-486d-8968-feafb766a429.02678.png"
     },
     {
       "id": "tri_tue_2",
@@ -2652,7 +2858,8 @@
       "kind": "buff",
       "desc": "Tăng Mưu Công, có thể cộng dồn",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ccd3a94f-edb2-486d-8968-feafb766a429.02678.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/ccd3a94f-edb2-486d-8968-feafb766a429.02678.png"
     },
     {
       "id": "tru_sach_chuyen_dung_bac_7",
@@ -2674,7 +2881,8 @@
       "kind": "debuff",
       "desc": "Mỗi lượt, tướng đang Trúng Độc sẽ mất một lượng sinh lực nhất định.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ff66d095-f66f-4b72-92e5-f8a1affd5750.81b51.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/ff66d095-f66f-4b72-92e5-f8a1affd5750.81b51.png"
     },
     {
       "id": "tram_sat",
@@ -2685,7 +2893,8 @@
       "kind": "debuff",
       "desc": "Khi tỉ lệ sinh lực của mục tiêu thấp hơn X%, lập tức tử vong.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/72459c82-139f-42a5-a053-3a6da7301281.186e6.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/72459c82-139f-42a5-a053-3a6da7301281.186e6.png"
     },
     {
       "id": "tram_tien",
@@ -2696,7 +2905,8 @@
       "kind": "buff",
       "desc": "Lập tức xóa bỏ hiệu quả Nguyệt Hồn và Nguyệt Hồn 2, tăng sát thương gây ra",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/705e1df3-ba4a-4564-96a2-2b42cd2a2ae7.13004.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/705e1df3-ba4a-4564-96a2-2b42cd2a2ae7.13004.png"
     },
     {
       "id": "tran_quoc",
@@ -2726,7 +2936,8 @@
       "kind": "debuff",
       "desc": "Giảm C.Huy, Võ và Trí",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1b211fea-7678-4a07-aa17-33f7787dceff.d218a.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/1b211fea-7678-4a07-aa17-33f7787dceff.d218a.png"
     },
     {
       "id": "tan_ta_2",
@@ -2737,7 +2948,8 @@
       "kind": "debuff",
       "desc": "Giảm C.Huy, Võ và Trí",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1b211fea-7678-4a07-aa17-33f7787dceff.d218a.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/1b211fea-7678-4a07-aa17-33f7787dceff.d218a.png"
     },
     {
       "id": "tai_sinh",
@@ -2748,7 +2960,8 @@
       "kind": "buff",
       "desc": "Mỗi lần bị tấn công hồi lượng Lính nhất định",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bb39f256-52c1-44b1-a2a4-09ff2025003e.ae99f.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/bb39f256-52c1-44b1-a2a4-09ff2025003e.ae99f.png"
     },
     {
       "id": "te_liet",
@@ -2759,7 +2972,8 @@
       "kind": "debuff",
       "desc": "Khi bắt đầu lượt có xác suất 50% tiến vào [Hỗn loạn",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9c1dba9c-ea7b-4c83-848d-f37f90280a85.13be7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/9c1dba9c-ea7b-4c83-848d-f37f90280a85.13be7.png"
     },
     {
       "id": "tong_long",
@@ -2770,7 +2984,8 @@
       "kind": "buff",
       "desc": "Hiệu quả có lợi, tăng tất cả công của bản thân, hiệu quả có lợi càng nhiều, tấn công tăng càng nhiều",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/26599b19-db65-4627-8e32-74bb6af4bf15.e21f1.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/26599b19-db65-4627-8e32-74bb6af4bf15.e21f1.png"
     },
     {
       "id": "tong_long_2",
@@ -2781,7 +2996,8 @@
       "kind": "unremovable",
       "desc": "Hiệu quả có lợi, tăng tất cả công của bản thân, hiệu quả có lợi càng nhiều, tấn công tăng càng nhiều. Hiệu quả không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/26599b19-db65-4627-8e32-74bb6af4bf15.e21f1.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/26599b19-db65-4627-8e32-74bb6af4bf15.e21f1.png"
     },
     {
       "id": "tang_chien_cong",
@@ -2800,7 +3016,8 @@
       "kind": "unremovable",
       "desc": "Tăng tất cả công, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b248c1a1-26ee-4fcf-acc4-573a0cb823d3.f6214.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/b248c1a1-26ee-4fcf-acc4-573a0cb823d3.f6214.png"
     },
     {
       "id": "tang_cuong",
@@ -2822,7 +3039,8 @@
       "kind": "buff",
       "desc": "Tăng mưu công của tướng.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5ee8a2fd-9406-4cc2-821a-6918b21e8a3d.09a51.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/5ee8a2fd-9406-4cc2-821a-6918b21e8a3d.09a51.png"
     },
     {
       "id": "tang_muu_cong_2",
@@ -2833,7 +3051,8 @@
       "kind": "buff",
       "desc": "Khiến mục tiêu tăng Mưu Công",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/5ee8a2fd-9406-4cc2-821a-6918b21e8a3d.09a51.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/5ee8a2fd-9406-4cc2-821a-6918b21e8a3d.09a51.png"
     },
     {
       "id": "tang_muu_phong_2",
@@ -2844,7 +3063,8 @@
       "kind": "buff",
       "desc": "Tăng Mưu Phòng.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/89ab7c3a-d7db-4e1d-949a-609b86907dfe.728e6.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/89ab7c3a-d7db-4e1d-949a-609b86907dfe.728e6.png"
     },
     {
       "id": "tang_phap_cong",
@@ -2855,7 +3075,8 @@
       "kind": "buff",
       "desc": "Tăng pháp công của tướng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bea274f3-1f54-4466-b6cc-0c6b85a52013.9941a.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/bea274f3-1f54-4466-b6cc-0c6b85a52013.9941a.png"
     },
     {
       "id": "tang_phap_cong_2",
@@ -2866,7 +3087,8 @@
       "kind": "buff",
       "desc": "Khiến mục tiêu tăng Pháp Công",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bea274f3-1f54-4466-b6cc-0c6b85a52013.9941a.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/bea274f3-1f54-4466-b6cc-0c6b85a52013.9941a.png"
     },
     {
       "id": "tang_phap_phong_2",
@@ -2877,7 +3099,8 @@
       "kind": "buff",
       "desc": "Tăng Pháp Phòng.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6ecc5c49-f318-492c-a20e-82864f496d2e.4e91f.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/6ecc5c49-f318-492c-a20e-82864f496d2e.4e91f.png"
     },
     {
       "id": "tang_st_chien_phap_2",
@@ -2921,7 +3144,8 @@
       "kind": "buff",
       "desc": "Tăng tất cả công của tướng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b248c1a1-26ee-4fcf-acc4-573a0cb823d3.f6214.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/b248c1a1-26ee-4fcf-acc4-573a0cb823d3.f6214.png"
     },
     {
       "id": "tang_tat_ca_cong",
@@ -2940,7 +3164,8 @@
       "kind": "buff",
       "desc": "Sau lượt thứ 4 sẽ Thức Tỉnh, mỗi lượt tăng tỉ lệ tấn công nhất định",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/fdeddfa9-2c03-494e-8119-6a30f3ce59eb.0c8e4.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/fdeddfa9-2c03-494e-8119-6a30f3ce59eb.0c8e4.png"
     },
     {
       "id": "tang_vat_cong",
@@ -2951,7 +3176,8 @@
       "kind": "buff",
       "desc": "Tăng tấn công vật lý của tướng",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2e13a71e-bb4b-47ba-98c2-53e47f3cce81.6c78d.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/2e13a71e-bb4b-47ba-98c2-53e47f3cce81.6c78d.png"
     },
     {
       "id": "tang_vat_cong_2",
@@ -2962,7 +3188,8 @@
       "kind": "buff",
       "desc": "Khiến mục tiêu tăng Vật Công.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2e13a71e-bb4b-47ba-98c2-53e47f3cce81.6c78d.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/2e13a71e-bb4b-47ba-98c2-53e47f3cce81.6c78d.png"
     },
     {
       "id": "tang_vat_phong_2",
@@ -2973,7 +3200,8 @@
       "kind": "buff",
       "desc": "Tăng phòng thủ vật lý, hiệu ứng này không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/a96c6404-5d21-487e-b5e2-09993a5fe2ff.4ec91.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/a96c6404-5d21-487e-b5e2-09993a5fe2ff.4ec91.png"
     },
     {
       "id": "tuoc_doat",
@@ -2984,7 +3212,8 @@
       "kind": "buff",
       "desc": "Khi gây sát thương cho mục tiêu mang [Treo Thưởng], giảm sĩ khí mục tiêu, tăng sĩ khí bản thân",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/9ad62db6-53d8-4e15-9ac6-2d8fa1052a06.8bab4.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/9ad62db6-53d8-4e15-9ac6-2d8fa1052a06.8bab4.png"
     },
     {
       "id": "tan_cong_manh_me",
@@ -3014,7 +3243,8 @@
       "kind": "buff",
       "desc": "Sát thương gây ra = sát thương kỹ năng + (số BUFF có lợi kẻ địch đang chịu × X).",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2622a9b1-4c91-4484-a9b8-99b6795f3c31.2f745.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/2622a9b1-4c91-4484-a9b8-99b6795f3c31.2f745.png"
     },
     {
       "id": "to_chi",
@@ -3025,7 +3255,8 @@
       "kind": "buff",
       "desc": "Trước mỗi lượt hành động, giải trừ hiệu quả bất lợi.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2a42c078-213e-4136-bfce-1bd33084a42c.9b4e3.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/2a42c078-213e-4136-bfce-1bd33084a42c.9b4e3.png"
     },
     {
       "id": "toa_binh",
@@ -3036,7 +3267,8 @@
       "kind": "debuff",
       "desc": "Không thể tăng binh lực",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b952b445-412d-40b7-8c63-6cb1d2a0a04d.65f59.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/b952b445-412d-40b7-8c63-6cb1d2a0a04d.65f59.png"
     },
     {
       "id": "toa_binh_2",
@@ -3047,7 +3279,8 @@
       "kind": "debuff",
       "desc": "Không thể tăng binh lực",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b952b445-412d-40b7-8c63-6cb1d2a0a04d.65f59.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/b952b445-412d-40b7-8c63-6cb1d2a0a04d.65f59.png"
     },
     {
       "id": "tu_chien",
@@ -3058,7 +3291,8 @@
       "kind": "buff",
       "desc": "Trong thời gian duy trì, tăng sức mạnh đòn đánh thường, đồng thời không thể hồi lại sĩ khí.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3a5e5943-eca0-4a3c-b3e1-a0730c26a853.ba75d.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/3a5e5943-eca0-4a3c-b3e1-a0730c26a853.ba75d.png"
     },
     {
       "id": "tu_than",
@@ -3091,7 +3325,8 @@
       "kind": "buff",
       "desc": "Tất cả lực phòng thủ gia tăng [giá trị hiệu quả], binh lực càng ít, lực phòng thủ tăng lên càng cao, tối đa là 80%.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/aa74195f-30b1-49b4-a050-611eb7eceb70.70d8e.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/aa74195f-30b1-49b4-a050-611eb7eceb70.70d8e.png"
     },
     {
       "id": "tu_thu_2",
@@ -3102,7 +3337,8 @@
       "kind": "buff",
       "desc": "Tỉ lệ lính càng ít, phòng thủ tăng càng nhiều",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/aa74195f-30b1-49b4-a050-611eb7eceb70.70d8e.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/aa74195f-30b1-49b4-a050-611eb7eceb70.70d8e.png"
     },
     {
       "id": "vien_muu",
@@ -3113,7 +3349,8 @@
       "kind": "buff",
       "desc": "Sau khi có được BUFF, 2 lượt đầu tăng [Giá trị], tăng hiệu quả 1 tấn công (có thể cộng dồn).",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/89afcd0b-b8d5-4aaf-b35e-d283068ea961.9c47b.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/89afcd0b-b8d5-4aaf-b35e-d283068ea961.9c47b.png"
     },
     {
       "id": "vong_doan",
@@ -3124,7 +3361,8 @@
       "kind": "unremovable",
       "desc": "Hiệu quả bất lợi, khi có BUFF, sát thương phải chịu sẽ không xóa hiệu quả [Ngủ Say] và [Sợ Hãi].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/b504c956-72b0-4d33-a87b-af2522ef50f8.553d5.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/b504c956-72b0-4d33-a87b-af2522ef50f8.553d5.png"
     },
     {
       "id": "vay_khon_2",
@@ -3135,7 +3373,8 @@
       "kind": "buff",
       "desc": "Ngoài lượt của bản thân không thể được trị liệu, lượt của bản thân có thể được trị liệu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/4fba714f-1439-4df2-a5ce-7584fbeaf33a.f621c.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/4fba714f-1439-4df2-a5ce-7584fbeaf33a.f621c.png"
     },
     {
       "id": "vo_ngon",
@@ -3146,7 +3385,8 @@
       "kind": "debuff",
       "desc": "Đơn vị bị dín buff này khi sĩ khí từ 100 trở lên ko thể thi triển kỹ năng .",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1750cb64-0121-46ae-829d-800a17706601.5f981.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/1750cb64-0121-46ae-829d-800a17706601.5f981.png"
     },
     {
       "id": "vo_ngon_2",
@@ -3157,7 +3397,8 @@
       "kind": "unremovable",
       "desc": "Không thể thi triển kỹ năng, chỉ có thể đánh thường, hiệu quả không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/1750cb64-0121-46ae-829d-800a17706601.5f981.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/1750cb64-0121-46ae-829d-800a17706601.5f981.png"
     },
     {
       "id": "vo_tinh",
@@ -3168,7 +3409,8 @@
       "kind": "buff",
       "desc": "Khi gây sát thương, đi kèm với X% binh lực hiện tại của mình bỏ qua sát thương phòng thủ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/942b1434-54b9-4b5d-80f7-eb113df78975.c3b47.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/942b1434-54b9-4b5d-80f7-eb113df78975.c3b47.png"
     },
     {
       "id": "vo_dung",
@@ -3179,7 +3421,8 @@
       "kind": "buff",
       "desc": "Pháp công gây ra tăng 13% có thể cộng dồn",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3242a534-478e-409f-aebd-396db2d17549.82b94.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/3242a534-478e-409f-aebd-396db2d17549.82b94.png"
     },
     {
       "id": "vo_luc",
@@ -3190,7 +3433,8 @@
       "kind": "buff",
       "desc": "Mỗi tầng bất lực làm cho sát thương mà đơn vị này gây ra giảm [giá trị hiệu quả].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8ac3bcb9-e43f-4997-91c0-0d075c632ae0.f2af7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/8ac3bcb9-e43f-4997-91c0-0d075c632ae0.f2af7.png"
     },
     {
       "id": "vo_luc_2",
@@ -3201,7 +3445,8 @@
       "kind": "unremovable",
       "desc": "Bản thân tăng Võ, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8ac3bcb9-e43f-4997-91c0-0d075c632ae0.f2af7.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/8ac3bcb9-e43f-4997-91c0-0d075c632ae0.f2af7.png"
     },
     {
       "id": "vo_tran",
@@ -3212,7 +3457,8 @@
       "kind": "debuff",
       "desc": "Hiệu quả trị liệu nhận được và sát thương gây ra đều biến thành 1.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/528294ef-71e0-48ae-a530-9b7c4ab9952e.116e7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/528294ef-71e0-48ae-a530-9b7c4ab9952e.116e7.png"
     },
     {
       "id": "vo_tran_2",
@@ -3223,7 +3469,8 @@
       "kind": "unremovable",
       "desc": "Sát thương gây ra và mức trị liệu đều là 1 điểm, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/528294ef-71e0-48ae-a530-9b7c4ab9952e.116e7.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/528294ef-71e0-48ae-a530-9b7c4ab9952e.116e7.png"
     },
     {
       "id": "xua_duoi",
@@ -3245,7 +3492,8 @@
       "kind": "buff",
       "desc": "Sát thương của người sở hữu sẽ bỏ qua một phần phòng thủ của mục tiêu",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/82f643b8-54f6-4e1f-ad27-034ad02a0e51.0fb7c.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/82f643b8-54f6-4e1f-ad27-034ad02a0e51.0fb7c.png"
     },
     {
       "id": "xuyen_thau_2",
@@ -3256,7 +3504,8 @@
       "kind": "unremovable",
       "desc": "Sát thương của người sở hữu sẽ bỏ qua một phần phòng thủ của mục tiêu, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/82f643b8-54f6-4e1f-ad27-034ad02a0e51.0fb7c.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/82f643b8-54f6-4e1f-ad27-034ad02a0e51.0fb7c.png"
     },
     {
       "id": "xuyen_thau_2_chuyen_dung_bac_7",
@@ -3278,7 +3527,8 @@
       "kind": "buff",
       "desc": "Khi binh lực của mình cao hơn bằng 50%, tăng giá trị hiệu quả 1 tấn công, dưới 50% thì tăng hiệu quả giá trị phòng thủ 2.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/3f4de683-2d0f-4583-9915-eeec4cec5abe.8d0a7.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/3f4de683-2d0f-4583-9915-eeec4cec5abe.8d0a7.png"
     },
     {
       "id": "am_te",
@@ -3289,7 +3539,8 @@
       "kind": "debuff",
       "desc": "Tướng ở trạng thái BUFF, không thể tăng sĩ khí",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/67b9b697-fafc-4e84-9d0b-8d075cc565d5.8d8ed.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/67b9b697-fafc-4e84-9d0b-8d075cc565d5.8d8ed.png"
     },
     {
       "id": "am_van",
@@ -3300,7 +3551,8 @@
       "kind": "debuff",
       "desc": "Trong trạng thái BUFF này sẽ giảm sĩ khí mỗi lượt.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/162bed67-0f11-4b50-bca5-38025c3ea26a.0f881.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/162bed67-0f11-4b50-bca5-38025c3ea26a.0f881.png"
     },
     {
       "id": "ap_che",
@@ -3311,7 +3563,8 @@
       "kind": "buff",
       "desc": "Gây thêm sát thương lên mục tiêu có phần trăm máu thấp hơn bản thân.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/958083df-03fb-40a7-ac45-59b75487b29d.23f08.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/958083df-03fb-40a7-ac45-59b75487b29d.23f08.png"
     },
     {
       "id": "ap_che_2",
@@ -3322,7 +3575,8 @@
       "kind": "unremovable",
       "desc": "Gây sát thương cao hơn cho đơn vị có sinh lực thấp hơn bản thân, không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/958083df-03fb-40a7-ac45-59b75487b29d.23f08.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/958083df-03fb-40a7-ac45-59b75487b29d.23f08.png"
     },
     {
       "id": "ap_uc",
@@ -3333,7 +3587,8 @@
       "kind": "debuff",
       "desc": "Kỹ năng tăng sĩ khí chỉ tăng một nửa",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/ed071c03-5e86-4b4a-9a6b-5762089013c8.526fb.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/ed071c03-5e86-4b4a-9a6b-5762089013c8.526fb.png"
     },
     {
       "id": "am_hon",
@@ -3344,7 +3599,8 @@
       "kind": "debuff",
       "desc": "Trong trạng thái BUFF này, sát thương đối với mục tiêu sẽ tăng dần.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d9fc589d-4463-4788-a8f7-0a01e3dccd25.dd42c.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/d9fc589d-4463-4788-a8f7-0a01e3dccd25.dd42c.png"
     },
     {
       "id": "am_hon_2",
@@ -3355,7 +3611,8 @@
       "kind": "unremovable",
       "desc": "Sát thương gây cho mục tiêu sẽ tăng theo số tầng, không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/d9fc589d-4463-4788-a8f7-0a01e3dccd25.dd42c.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/d9fc589d-4463-4788-a8f7-0a01e3dccd25.dd42c.png"
     },
     {
       "id": "y_chi",
@@ -3366,7 +3623,8 @@
       "kind": "buff",
       "desc": "Giảm xác suất bị Sợ Hãi",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/8d192cc6-6421-4570-9f8b-4145fc10b50d.e05ff.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/8d192cc6-6421-4570-9f8b-4145fc10b50d.e05ff.png"
     },
     {
       "id": "dien_cuong",
@@ -3377,7 +3635,8 @@
       "kind": "buff",
       "desc": "Sát thương gây ra = sát thương kỹ năng + (số BUFF bất lợi kẻ địch đang chịu × X).",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/764865bc-e44a-4cd9-8481-34ca611cc1f8.e8e27.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/764865bc-e44a-4cd9-8481-34ca611cc1f8.e8e27.png"
     },
     {
       "id": "dien_cuong_2",
@@ -3388,7 +3647,8 @@
       "kind": "unremovable",
       "desc": "Khi phát động tấn công, cứ mỗi hiệu ứng giảm lợi trên mục tiêu thì sát thương gây ra lên mục tiêu tăng thêm một tỷ lệ phần trăm nhất định; hiệu ứng này không thể bị giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/764865bc-e44a-4cd9-8481-34ca611cc1f8.e8e27.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/764865bc-e44a-4cd9-8481-34ca611cc1f8.e8e27.png"
     },
     {
       "id": "dieu_thong",
@@ -3399,7 +3659,8 @@
       "kind": "unremovable",
       "desc": "Điều chỉnh chỉ số C.Huy; có thể cộng dồn, không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/83a3699d-4e62-48e4-b2f8-8b752a919cfd.024eb.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/83a3699d-4e62-48e4-b2f8-8b752a919cfd.024eb.png"
     },
     {
       "id": "dieu_tri",
@@ -3410,7 +3671,8 @@
       "kind": "unremovable",
       "desc": "Hiệu quả điều chỉnh trí, hiệu quả có thể cộng dồn. Không thể giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/83a3699d-4e62-48e4-b2f8-8b752a919cfd.024eb.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/83a3699d-4e62-48e4-b2f8-8b752a919cfd.024eb.png"
     },
     {
       "id": "dieu_vo",
@@ -3421,7 +3683,8 @@
       "kind": "unremovable",
       "desc": "Điều chỉnh chỉ số Võ; có thể cộng dồn, không thể giải trừ.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/83a3699d-4e62-48e4-b2f8-8b752a919cfd.024eb.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/83a3699d-4e62-48e4-b2f8-8b752a919cfd.024eb.png"
     },
     {
       "id": "diep_nhan",
@@ -3432,7 +3695,8 @@
       "kind": "buff",
       "desc": "Khi bạn có BUFF này, mỗi khi bạn nhấn một đơn vị, thiệt hại phòng thủ bỏ qua của riêng bạn làm tăng giá trị cố định. Lớp phủ được giới hạn ở giá trị [giá trị hiệu ứng].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/6f4dd358-22ea-4623-b397-3ed19e659689.66722.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/6f4dd358-22ea-4623-b397-3ed19e659689.66722.png"
     },
     {
       "id": "doat",
@@ -3443,7 +3707,8 @@
       "kind": "buff",
       "desc": "Đoạt hiệu quả có lợi của địch, hiệu quả bỏ qua Hư Nhược",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7a2f0425-0124-4b0a-a9c8-95b24084b088.f6d4e.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/7a2f0425-0124-4b0a-a9c8-95b24084b088.f6d4e.png"
     },
     {
       "id": "doat_2",
@@ -3454,7 +3719,8 @@
       "kind": "buff",
       "desc": "Trước mỗi lượt hành động, ăn cắp hiệu ứng có lợi của kẻ thù và chuyển sang chính mình.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7a2f0425-0124-4b0a-a9c8-95b24084b088.f6d4e.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/7a2f0425-0124-4b0a-a9c8-95b24084b088.f6d4e.png"
     },
     {
       "id": "doat_khi",
@@ -3487,7 +3753,8 @@
       "kind": "debuff",
       "desc": "Tướng mỗi lượt giảm phần trăm lính nhất định",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bfa8ccc2-b2bc-4673-b644-b410dcafa32b.4ce57.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/bfa8ccc2-b2bc-4673-b644-b410dcafa32b.4ce57.png"
     },
     {
       "id": "dong_bang",
@@ -3498,7 +3765,8 @@
       "kind": "debuff",
       "desc": "Mỗi lần phóng thích lớp phủ 1 tầng, kẻ thù rơi vào [đóng băng] thêm 1 tầng. Khi cộng dồn trên 3 tầng, tỷ lệ thương tổn tỷ lệ phần trăm binh lực hiện tại được tạo ra tùy thuộc vào số lượng lớp và loại bỏ số lượng lớp.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/2b785986-c0f9-4d38-b055-90c68e9ae779.7a48f.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/2b785986-c0f9-4d38-b055-90c68e9ae779.7a48f.png"
     },
     {
       "id": "dong_do",
@@ -3509,7 +3777,8 @@
       "kind": "buff",
       "desc": "Với mỗi buff có lợi, tất cả các lực lượng phòng thủ được gia tăng [giá trị hiệu ứng].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/dcc978cb-0974-475f-bf60-87e8e0cad359.9df39.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/dcc978cb-0974-475f-bf60-87e8e0cad359.9df39.png"
     },
     {
       "id": "dong_do_2",
@@ -3520,7 +3789,8 @@
       "kind": "unremovable",
       "desc": "Với mỗi buff có lợi, tất cả các lực lượng phòng thủ được gia tăng [giá trị hiệu ứng].",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/dcc978cb-0974-475f-bf60-87e8e0cad359.9df39.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/dcc978cb-0974-475f-bf60-87e8e0cad359.9df39.png"
     },
     {
       "id": "dau_tran_tang_si_khi",
@@ -3531,7 +3801,8 @@
       "kind": "buff",
       "desc": "Đầu trận tăng cho mục tiêu 50 sĩ khí",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7ef92aca-d0e5-4937-abdf-efcc04c71802.e82c4.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/7ef92aca-d0e5-4937-abdf-efcc04c71802.e82c4.png"
     },
     {
       "id": "day_si_khi",
@@ -3542,7 +3813,8 @@
       "kind": "buff",
       "desc": "",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/7ef92aca-d0e5-4937-abdf-efcc04c71802.e82c4.png",
-      "source": "wiki-html"
+      "source": "wiki-html",
+      "iconLocal": "assets/ui/status/7ef92aca-d0e5-4937-abdf-efcc04c71802.e82c4.png"
     },
     {
       "id": "de_hon",
@@ -3553,7 +3825,8 @@
       "kind": "buff",
       "desc": "Tăng tỷ lệ phần trăm tấn công và phòng thủ khi các đơn vị trong nước được chỉ định có BUFF này.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/66ae7913-54cd-44ff-92cd-807a1d75b677.f39f6.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/66ae7913-54cd-44ff-92cd-807a1d75b677.f39f6.png"
     },
     {
       "id": "de_khang",
@@ -3564,7 +3837,8 @@
       "kind": "buff",
       "desc": "Chống đỡ sát thương dựa trên [giá trị hiệu quả] binh lực tối đa, có thể cộng dồn, tối đa [giá trị hiệu quả] lớn nhất.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/e08b0593-37d3-46f3-a372-f736b5e94952.354a8.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/e08b0593-37d3-46f3-a372-f736b5e94952.354a8.png"
     },
     {
       "id": "de_khang_2",
@@ -3597,7 +3871,8 @@
       "kind": "buff",
       "desc": "BUFF có lợi, không có tác dụng trực tiếp — chờ một buff khác kích hoạt.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/bba947b6-2b81-4ee8-9a05-9260f3366032.b73a4.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/bba947b6-2b81-4ee8-9a05-9260f3366032.b73a4.png"
     },
     {
       "id": "do_hiem",
@@ -3608,7 +3883,8 @@
       "kind": "buff",
       "desc": "Trước khi lượt bắt đầu, nếu bản thân không bị thương, tăng tất cả sức mạnh tấn công của X.",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0e0c73c6-b0f1-46f6-8529-ce7580cd9c9d.c634a.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/0e0c73c6-b0f1-46f6-8529-ce7580cd9c9d.c634a.png"
     },
     {
       "id": "do_hiem_2",
@@ -3619,7 +3895,8 @@
       "kind": "unremovable",
       "desc": "Trước khi lượt tiếp theo bắt đầu, nếu bản thân không bị thương tổn, tăng lên tất cả lực tấn công của X, hiệu quả này không thể bị giải trừ",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/0e0c73c6-b0f1-46f6-8529-ce7580cd9c9d.c634a.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/0e0c73c6-b0f1-46f6-8529-ce7580cd9c9d.c634a.png"
     },
     {
       "id": "doc_ke",
@@ -3630,7 +3907,8 @@
       "kind": "debuff",
       "desc": "Khi có BUFF này, sát thương của kẻ thù giảm đi [Giá trị] với mỗi X buff bất lợi trên kể thù",
       "icon": "https://cdn-mainsite-aka.vnggames.com/products/mwly/landing/2026-ngoa-long-wiki-clone/icons/c0bc1eb6-a1b5-475f-847c-456742a1c696.99608.png",
-      "source": "news+wiki-html"
+      "source": "news+wiki-html",
+      "iconLocal": "assets/ui/status/c0bc1eb6-a1b5-475f-847c-456742a1c696.99608.png"
     },
     {
       "id": "an_nap_chuyen_dung_bac_7",
@@ -3650,5 +3928,7 @@
     "fromNews": 176,
     "fromWikiHtml": 320,
     "fromWikiMd": 0
-  }
+  },
+  "iconDir": "assets/ui/status",
+  "iconNote": "Icon wiki hieu-ung — tải bằng scripts/download-status-icons.py"
 }

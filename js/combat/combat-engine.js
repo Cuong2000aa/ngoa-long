@@ -54,19 +54,80 @@
     return 1;
   }
 
-  function formationMods(formationId, slot) {
+  function getFormation(formationId) {
     var raw = NLDatabase && NLDatabase.raw && NLDatabase.raw();
     var formations = raw && raw.formations;
-    if (!formations) return { atk: 1, def: 1 };
+    if (!formations || !formations.list) return null;
     var fid = formationId || formations.defaultId || "crane_wing";
-    var form = formations.list[fid];
-    if (!form || !form.slotMods) return { atk: 1, def: 1 };
-    var m = form.slotMods[String(slot)] || form.slotMods[slot];
-    return { atk: (m && m.atk) || 1, def: (m && m.def) || 1 };
+    return formations.list[fid] || formations.list[formations.defaultId] || null;
   }
 
-  function isFront(slot) {
-    return slot >= 0 && slot <= 2;
+  /**
+   * Trận pháp: teamBonus (chỉ số chính khác nhau mỗi trận) × slotMods (tinh chỉnh ô).
+   * Trả về hệ số áp vào vuLuc / tongLinh / triLuc / hp / speed + formAtk/formDef (tương thích cũ).
+   */
+  function formationMods(formationId, slot) {
+    var form = getFormation(formationId);
+    var out = {
+      atk: 1,
+      def: 1,
+      vuLuc: 1,
+      tongLinh: 1,
+      triLuc: 1,
+      hp: 1,
+      speed: 1,
+      focus: null,
+      formationId: formationId || null,
+    };
+    if (!form) return out;
+    var tb = form.teamBonus || {};
+    out.vuLuc = tb.vuLuc != null ? tb.vuLuc : 1;
+    out.tongLinh = tb.tongLinh != null ? tb.tongLinh : 1;
+    out.triLuc = tb.triLuc != null ? tb.triLuc : 1;
+    out.hp = tb.hp != null ? tb.hp : 1;
+    out.speed = tb.speed != null ? tb.speed : 1;
+    out.focus = form.focus || null;
+    var m = form.slotMods
+      ? form.slotMods[String(slot)] || form.slotMods[slot]
+      : null;
+    var slotAtk = (m && m.atk) || 1;
+    var slotDef = (m && m.def) || 1;
+    // formAtk/formDef = team vuLuc/tongLinh × slot (damage path cũ)
+    out.atk = out.vuLuc * slotAtk;
+    out.def = out.tongLinh * slotDef;
+    out.vuLuc *= slotAtk;
+    out.tongLinh *= slotDef;
+    return out;
+  }
+
+  /** Ô trên lưới 3×3 của trận pháp (col 0..2, row 0=trước). */
+  function layoutCell(formationId, slot) {
+    var form = getFormation(formationId);
+    if (form && form.layout && form.layout.length) {
+      for (var i = 0; i < form.layout.length; i++) {
+        if (form.layout[i].slot === slot || i === slot) {
+          return {
+            col: form.layout[i].col != null ? form.layout[i].col : 1,
+            row: form.layout[i].row != null ? form.layout[i].row : (slot <= 2 ? 0 : 2),
+          };
+        }
+      }
+    }
+    // fallback lưới cũ 3+2
+    var fallback = [
+      { col: 0, row: 0 },
+      { col: 1, row: 0 },
+      { col: 2, row: 0 },
+      { col: 1, row: 2 },
+      { col: 2, row: 2 },
+    ];
+    return fallback[slot] || fallback[0];
+  }
+
+  /** Hàng trước = layout.row === 0 theo trận pháp (Ngọa Long 3×3). */
+  function isFront(slot, formationId) {
+    var cell = layoutCell(formationId, slot);
+    return cell.row === 0;
   }
 
   function normalizeUnit(raw, side, slot, formationId) {
@@ -90,6 +151,15 @@
     s = clamp(s, 0, 4);
     var moraleCfg = cfg().morale;
     var mods = formationMods(formationId, s);
+
+    // Áp teamBonus + slot vào chỉ số gốc (mỗi trận pháp tăng 1 chỉ số chính)
+    vuLuc = Math.round(vuLuc * (mods.vuLuc || 1));
+    tongLinh = Math.round(tongLinh * (mods.tongLinh || 1));
+    triLuc = Math.round(triLuc * (mods.triLuc || 1));
+    hp = Math.round(hp * (mods.hp || 1));
+    var maxHpBase = g.maxHp || hp;
+    var maxHp = Math.round(maxHpBase * (mods.hp || 1));
+    if (hp > maxHp) hp = maxHp;
 
     var troopTier =
       g.troopTier != null
@@ -125,7 +195,7 @@
       vuLuc: vuLuc,
       triLuc: triLuc,
       hp: hp,
-      maxHp: g.maxHp || hp,
+      maxHp: maxHp,
       morale: moraleCfg.start != null ? moraleCfg.start : 50,
       maxMorale: moraleCfg.max != null ? moraleCfg.max : 100,
       skillId: (function () {
@@ -139,8 +209,12 @@
         }
         return g.skillId || "basic_strike";
       })(),
-      formAtk: mods.atk,
-      formDef: mods.def,
+      // Chỉ số đã nhân teamBonus ở trên → formAtk/formDef = 1 để không nhân đôi trong calcHit
+      formAtk: 1,
+      formDef: 1,
+      formSpeed: mods.speed || 1,
+      formFocus: mods.focus || null,
+      formationId: mods.formationId || formationId || null,
       buffs: [],
       stunned: 0,
       silenced: 0,
@@ -156,13 +230,13 @@
 
   function frontAlive(units, side) {
     return living(units, side).filter(function (u) {
-      return isFront(u.slot);
+      return isFront(u.slot, u.formationId);
     });
   }
 
   function backAlive(units, side) {
     return living(units, side).filter(function (u) {
-      return !isFront(u.slot);
+      return !isFront(u.slot, u.formationId);
     });
   }
 
@@ -206,17 +280,19 @@
     if (pattern === "row") {
       var one = pickNormalTarget(actor, enemies);
       if (!one) return [];
-      return isFront(one.slot)
-        ? frontAlive(enemies, one.side)
-        : backAlive(enemies, one.side);
+      var oneRow = layoutCell(one.formationId, one.slot);
+      return foes.filter(function (u) {
+        var c = layoutCell(u.formationId, u.slot);
+        return c && oneRow && c.row === oneRow.row;
+      });
     }
     if (pattern === "column") {
       var focus = pickNormalTarget(actor, enemies);
       if (!focus) return [];
-      var colMap = { 0: [0, 3], 1: [1, 4], 2: [2], 3: [0, 3], 4: [1, 4] };
-      var cols = colMap[focus.slot] || [focus.slot];
+      var focusCell = layoutCell(focus.formationId, focus.slot);
       return foes.filter(function (u) {
-        return cols.indexOf(u.slot) >= 0;
+        var c = layoutCell(u.formationId, u.slot);
+        return c && focusCell && c.col === focusCell.col;
       });
     }
     return [];
@@ -224,7 +300,11 @@
 
   function speedOf(u, weights) {
     var w = weights || { vuLuc: 0.55, tongLinh: 0.25, triLuc: 0.2 };
-    return u.vuLuc * (w.vuLuc || 0.55) + u.tongLinh * (w.tongLinh || 0.25) + u.triLuc * (w.triLuc || 0.2);
+    var base =
+      u.vuLuc * (w.vuLuc || 0.55) +
+      u.tongLinh * (w.tongLinh || 0.25) +
+      u.triLuc * (w.triLuc || 0.2);
+    return base * (u.formSpeed != null ? u.formSpeed : 1);
   }
 
   /** Thứ tự ra đòn: tốc độ ↓, rồi slot ↑ (trước → sau) */
@@ -333,23 +413,95 @@
           label: e.label || e.wiki || k,
           short: e.short || (e.label || k).slice(0, 4),
           kind: e.kind || "debuff",
+          icon: e.iconLocal || e.icon || null,
         };
+      });
+      // Catalog wiki — map id / tên → icon local
+      (se.wikiCatalog || []).forEach(function (c) {
+        if (!c || !c.id) return;
+        if (!out[c.id]) {
+          out[c.id] = {
+            id: c.id,
+            label: c.name || c.id,
+            short: (c.name || c.id).slice(0, 4),
+            kind: c.kind || "buff",
+            icon: c.iconLocal || c.icon || null,
+          };
+        } else if (!out[c.id].icon && (c.iconLocal || c.icon)) {
+          out[c.id].icon = c.iconLocal || c.icon;
+        }
       });
       return out;
     }
     return STATUS_META_FALLBACK;
   }
 
+  function resolveStatusIcon(metaOrId, label) {
+    var STATUS_META = statusMetaMap();
+    var se =
+      (typeof NLDatabase !== "undefined" && NLDatabase.statusEffects && NLDatabase.statusEffects()) ||
+      (global.NL_DB && global.NL_DB.statusEffects) ||
+      null;
+    if (metaOrId && typeof metaOrId === "object" && metaOrId.icon) return metaOrId.icon;
+    var id = typeof metaOrId === "string" ? metaOrId : metaOrId && metaOrId.id;
+    if (id && STATUS_META[id] && STATUS_META[id].icon) return STATUS_META[id].icon;
+    if (!se || !se.wikiCatalog) return null;
+    var key = String(label || id || "").toLowerCase();
+    for (var i = 0; i < se.wikiCatalog.length; i++) {
+      var c = se.wikiCatalog[i];
+      if (
+        (c.id && c.id === id) ||
+        (c.name && String(c.name).toLowerCase() === key) ||
+        (c.name && key && String(c.name).toLowerCase().indexOf(key) === 0)
+      ) {
+        return c.iconLocal || c.icon || null;
+      }
+    }
+    return null;
+  }
+
   function collectStatuses(unit) {
     var STATUS_META = statusMetaMap();
     var out = [];
     if (!unit) return out;
-    if (unit.stunned > 0) out.push(STATUS_META.stun);
-    if (unit.silenced > 0) out.push(STATUS_META.silence);
+    if (unit.stunned > 0) {
+      var st = STATUS_META.stun;
+      if (st) out.push(Object.assign({}, st, { icon: st.icon || resolveStatusIcon(st) }));
+    }
+    if (unit.silenced > 0) {
+      var si = STATUS_META.silence;
+      if (si) out.push(Object.assign({}, si, { icon: si.icon || resolveStatusIcon(si) }));
+    }
     (unit.buffs || []).forEach(function (b) {
       var key = b.type === "dot" ? b.dotType || "poison" : b.type;
+      // wiki_buff / wiki_debuff — giữ đúng tên từ mô tả chiêu
+      if (key === "wiki_buff" || key === "wiki_debuff") {
+        var wid = b.id || key;
+        if (!out.some(function (x) { return x.id === wid; })) {
+          out.push({
+            id: wid,
+            label: b.label || wid,
+            short: (b.label || wid).slice(0, 4),
+            kind: b.kind || (key === "wiki_debuff" ? "debuff" : "buff"),
+            icon: resolveStatusIcon(wid, b.label),
+          });
+        }
+        return;
+      }
       var meta = STATUS_META[key];
-      if (meta && !out.some(function (x) { return x.id === meta.id; })) out.push(meta);
+      if (meta) {
+        // Ưu tiên label wiki từ skill desc (vd Thiết Bích thay vì Kiên thủ)
+        var entry = {
+          id: meta.id,
+          label: b.label || meta.label,
+          short: b.label ? String(b.label).slice(0, 4) : meta.short || meta.label,
+          kind: meta.kind,
+          icon: meta.icon || resolveStatusIcon(meta, b.label || meta.label),
+        };
+        if (!out.some(function (x) { return x.id === entry.id && x.label === entry.label; })) {
+          out.push(entry);
+        }
+      }
     });
     return out;
   }
@@ -360,9 +512,26 @@
       type: "status",
       uid: unit.uid,
       statuses: collectStatuses(unit).map(function (s) {
-        return { id: s.id, label: s.short || s.label, kind: s.kind };
+        return {
+          id: s.id,
+          label: s.short || s.label,
+          kind: s.kind,
+          icon: s.icon || null,
+        };
       }),
     });
+  }
+
+  function pushBuff(who, type, value, duration, extra) {
+    if (!who) return;
+    var b = { type: type, value: value, duration: duration };
+    if (extra) {
+      if (extra.label) b.label = extra.label;
+      if (extra.id) b.id = extra.id;
+      if (extra.kind) b.kind = extra.kind;
+      if (extra.dotType) b.dotType = extra.dotType;
+    }
+    who.buffs.push(b);
   }
 
   function applyEffects(actor, targets, effects, uiEvents) {
@@ -379,21 +548,37 @@
         if (!t) return;
         if (!t.alive && eff.type !== "heal_pct" && eff.type !== "morale_boost") return;
         if (eff.chance != null && Math.random() > eff.chance) return;
+        var extra =
+          eff.label || eff.id || eff.kind
+            ? { label: eff.label, id: eff.id, kind: eff.kind }
+            : null;
         if (eff.type === "stun") t.stunned = Math.max(t.stunned, eff.duration || 1);
         else if (eff.type === "silence") t.silenced = Math.max(t.silenced, eff.duration || 1);
         else if (eff.type === "burn" || eff.type === "poison") {
-          t.buffs.push({ type: "dot", value: eff.value || 0.08, duration: eff.duration || 2, dotType: eff.type });
+          pushBuff(t, "dot", eff.value || 0.08, eff.duration || 2, {
+            label: eff.label,
+            kind: "debuff",
+            dotType: eff.type,
+          });
         } else if (eff.type === "def_down" || eff.type === "atk_down" || eff.type === "atk_up" || eff.type === "def_up") {
           var who = eff.self ? actor : t;
-          who.buffs.push({ type: eff.type, value: eff.value || 0.1, duration: eff.duration || 2 });
+          pushBuff(who, eff.type, eff.value || 0.1, eff.duration || 2, extra);
           touched[who.uid] = who;
         } else if (eff.type === "self_def_up") {
-          actor.buffs.push({ type: "def_up", value: eff.value || 0.2, duration: eff.duration || 2 });
+          pushBuff(actor, "def_up", eff.value || 0.2, eff.duration || 2, extra || { label: "Kiên Thủ" });
           touched[actor.uid] = actor;
         } else if (eff.type === "tonglinh_up") {
           var tgt = eff.self ? actor : t;
-          tgt.buffs.push({ type: "def_up", value: eff.value || 0.1, duration: eff.duration || 2 });
+          pushBuff(tgt, "def_up", eff.value || 0.1, eff.duration || 2, extra);
           touched[tgt.uid] = tgt;
+        } else if (eff.type === "wiki_buff" || eff.type === "wiki_debuff") {
+          var wTarget = eff.target === "self" ? actor : eff.target === "ally" ? t : t;
+          pushBuff(wTarget, eff.type, 0, eff.duration || 2, {
+            label: eff.label,
+            id: eff.id || eff.type,
+            kind: eff.kind || (eff.type === "wiki_debuff" ? "debuff" : "buff"),
+          });
+          touched[wTarget.uid] = wTarget;
         } else if (eff.type === "heal_pct") {
           var heal = Math.round(t.maxHp * (eff.value || 0.1));
           t.hp = Math.min(t.maxHp, t.hp + heal);
@@ -514,13 +699,19 @@
           }
 
           var skillHits = Math.max(1, skill.hits | 0 || 1);
+          var skillFx = skill.fx || {};
+          var skillFlash =
+            (global.NLSkillDesign && global.NLSkillDesign.resolveFxKey
+              ? global.NLSkillDesign.resolveFxKey(skillFx)
+              : skillFx.flash) || "gold";
           uiEvents.push({
             type: "skill",
             uid: actor.uid,
             skillId: skill.id,
             name: skill.name,
-            text: (skill.fx && skill.fx.text) || skill.name,
-            flash: (skill.fx && skill.fx.flash) || "gold",
+            text: skillFx.text || skill.name,
+            flash: skillFlash,
+            motif: skillFx.motif || null,
             pattern: skill.pattern || "single",
             damageType: skill.damageType || "physical",
             hits: skillHits,
@@ -542,7 +733,8 @@
                   type: "skill_wave",
                   uid: actor.uid,
                   wave: hi + 1,
-                  flash: (skill.fx && skill.fx.flash) || "gold",
+                  flash: skillFlash,
+                  motif: skillFx.motif || null,
                   targets: targets.map(function (t) { return t.uid; }),
                 });
               }

@@ -311,7 +311,7 @@ textarea {
   color: var(--nl-ochre);
   font-weight: 800;
 }
-.start-crest::before { content: "龍"; }
+.start-crest::before { content: "3Q"; }
 .ornate-title {
   font-size: 1.2rem;
   font-weight: 800;
@@ -857,7 +857,7 @@ textarea {
   color: var(--nl-ochre);
   font-size: 0.72rem;
 }
-.avatar-face::before { content: "主"; }
+.avatar-face::before { content: "Chủ"; }
 .avatar-lv {
   position: absolute;
   right: -3px;
@@ -1299,6 +1299,12 @@ button:focus-visible,
   overflow: auto;
   padding: 0.8rem 0.9rem 0.9rem;
 }
+.form-modal.form-modal-v2 {
+  width: min(720px, 96vw);
+}
+.form-modal.form-modal-v2.has-scout {
+  width: min(860px, 97vw);
+}
 .form-arena,
 .form-grid-wrap {
   padding: 0.55rem 0.45rem 0.65rem;
@@ -1318,13 +1324,56 @@ button:focus-visible,
   text-align: center;
 }
 .form-slots {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.5rem;
-  justify-content: center;
   margin-bottom: 0.4rem;
 }
 .form-slots.back {
   margin-bottom: 0;
+}
+.form-grid-labels {
+  display: grid;
+  grid-template-columns: 2.4rem repeat(3, minmax(0, 1fr));
+  gap: 0.35rem;
+  margin: 0 0 0.2rem;
+  font-size: 0.62rem;
+  color: #a89070;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+.form-grid-3x3 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.45rem;
+}
+.form-grid-row {
+  display: grid;
+  grid-template-columns: 2.4rem repeat(3, minmax(0, 1fr));
+  gap: 0.35rem;
+  align-items: stretch;
+}
+.form-grid-row-lab {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 0.62rem;
+  color: #a89070;
+  padding-right: 0.15rem;
+}
+.form-grid-3x3 .slot.ghost {
+  border: 1px dashed rgba(197, 155, 39, 0.12);
+  background: rgba(0, 0, 0, 0.12);
+  min-height: 72px;
+  pointer-events: none;
+  opacity: 0.35;
+}
+.form-slots .slot.spacer {
+  visibility: hidden;
+  pointer-events: none;
+  border: none;
+  background: transparent;
 }
 .form-pool {
   display: flex;

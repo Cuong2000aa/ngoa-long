@@ -1,13 +1,23 @@
 {
-  "order": ["white", "green", "blue", "purple", "orange", "red"],
+  "order": ["white", "green", "blue", "purple", "orange", "red", "gold"],
   "wikiMap": {
-    "comment": "Map bậc remake ↔ tab phẩm wiki VNG (vo-tuong quality=)",
+    "comment": "Map bậc remake ↔ tab phẩm wiki VNG (vo-tuong quality=). 7 phẩm wiki → 7 key.",
     "white": "Thường",
-    "green": "Chiến*",
-    "blue": "Chiến",
-    "purple": "Thần",
-    "orange": "Truyền thuyết",
-    "red": "Thần Hoàng"
+    "green": "Chiến",
+    "blue": "Thần",
+    "purple": "Truyền thuyết",
+    "orange": "Thượng Cổ",
+    "red": "Thái Sơ",
+    "gold": "Thần Hoàng"
+  },
+  "wikiQToGame": {
+    "1": "white",
+    "2": "green",
+    "3": "blue",
+    "5": "purple",
+    "6": "orange",
+    "7": "red",
+    "8": "gold"
   },
   "tiers": {
     "white": {
@@ -42,7 +52,7 @@
       "id": "blue",
       "name": "Xanh dương",
       "nameFull": "Dũng tướng",
-      "wikiName": "Chiến",
+      "wikiName": "Thần",
       "color": "#93c5fd",
       "border": "#2563eb",
       "maxLevel": 60,
@@ -56,7 +66,7 @@
       "id": "purple",
       "name": "Tím",
       "nameFull": "Danh tướng",
-      "wikiName": "Thần",
+      "wikiName": "Truyền thuyết",
       "color": "#c4b5fd",
       "border": "#7c3aed",
       "maxLevel": 80,
@@ -70,7 +80,7 @@
       "id": "orange",
       "name": "Cam",
       "nameFull": "Thần tướng",
-      "wikiName": "Truyền thuyết",
+      "wikiName": "Thượng Cổ",
       "color": "#fdba74",
       "border": "#ea580c",
       "maxLevel": 100,
@@ -84,15 +94,29 @@
       "id": "red",
       "name": "Đỏ",
       "nameFull": "Vương tướng",
-      "wikiName": "Thần Hoàng",
+      "wikiName": "Thái Sơ",
       "color": "#fca5a5",
       "border": "#dc2626",
       "maxLevel": 120,
       "growth": { "tongLinh": 2.0, "vuLuc": 2.0, "triLuc": 2.0 },
       "starCap": 5,
-      "recruitWeight": 1,
+      "recruitWeight": 2,
       "statBand": { "min": 85, "max": 100 },
-      "hpBand": { "min": 3000, "max": 5500 }
+      "hpBand": { "min": 3000, "max": 5000 }
+    },
+    "gold": {
+      "id": "gold",
+      "name": "Kim",
+      "nameFull": "Hoàng tướng",
+      "wikiName": "Thần Hoàng",
+      "color": "#fde68a",
+      "border": "#e8c547",
+      "maxLevel": 140,
+      "growth": { "tongLinh": 2.25, "vuLuc": 2.25, "triLuc": 2.25 },
+      "starCap": 6,
+      "recruitWeight": 1,
+      "statBand": { "min": 90, "max": 110 },
+      "hpBand": { "min": 3400, "max": 6000 }
     }
   }
 }
