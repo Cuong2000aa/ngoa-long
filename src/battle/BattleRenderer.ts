@@ -7,13 +7,56 @@ import {
 } from "./battleActors";
 import {
   prefetchBattleVfx,
+  spawnCavalryCharge,
   spawnHitBurst,
+  spawnPremiumImpact,
+  spawnRushAssault,
+  spawnShieldBarrier,
   spawnSkillAura,
   spawnSkillBeam,
+  spawnSkillWindup,
   spawnSlashArc,
   spawnStatusOrb,
   tickBattleVfx,
 } from "./battleVfx";
+
+
+type SkillFlashOpts = {
+  /** skill_wave — chỉ impact mục tiêu, không aura / cast lại */
+  wave?: boolean;
+};
+
+type SkillProfileLite = {
+  delivery?: string;
+  movement?: string;
+  emission?: string;
+  visual?: string;
+  scale?: string;
+  durations?: {
+    windupMs?: number;
+    castMs?: number;
+    emissionMs?: number;
+    impactMs?: number;
+    recoveryMs?: number;
+  };
+};
+
+type SkillDesignApi = {
+  resolve?: (f: string) => SkillProfileLite;
+  playTimeline?: (
+    flash: string,
+    onPhase: (phase: string, profile: SkillProfileLite) => void,
+    onDone?: (profile: SkillProfileLite) => void
+  ) => { cancel: () => void };
+};
+
+function skillDesign(): SkillDesignApi | undefined {
+  return (globalThis as unknown as { NLSkillDesign?: SkillDesignApi }).NLSkillDesign;
+}
+
+function resolveSkillProfile(flash: string): SkillProfileLite {
+  return skillDesign()?.resolve?.(flash) || {};
+}
 
 export type BattleUnitSpec = {
   uid: string;
@@ -212,7 +255,14 @@ export class BattleRenderer {
   private t0 = 0;
   private last = 0;
   private preview = false;
+  private refDist = 14.4;
   private readonly tmp = new THREE.Vector3();
+  private readonly camHome = new THREE.Vector3();
+  private readonly camLook = new THREE.Vector3(0, 0.35, -0.2);
+  private camPunchUntil = 0;
+  private camPunchAmp = 0;
+  private hitStopUntil = 0;
+  private skillPlayCancel: (() => void) | null = null;
   private onResizeBound = () => this.resize();
 
   async mount(host: HTMLElement, opts?: BattleMountOpts): Promise<void> {
@@ -272,6 +322,10 @@ export class BattleRenderer {
       camera.lookAt(0, 0.35, -0.2);
     }
     this.camera = camera;
+    this.camHome.copy(camera.position);
+    if (this.preview) this.camLook.set(-2.4, 0.45, 0);
+    else this.camLook.set(0, 0.35, -0.2);
+    this.refDist = camera.position.distanceTo(new THREE.Vector3(0, 0.4, 0));
 
     this.buildArena(scene);
     prefetchBattleVfx();
@@ -394,7 +448,9 @@ export class BattleRenderer {
           lunge: null,
           statuses: [],
         });
-        this.paintHud(this.fighters.get(u.uid)!);
+        const ff = this.fighters.get(u.uid)!;
+        this.applyScreenEqualScale(ff);
+        this.paintHud(ff);
       } catch (err) {
         console.warn("[battle] load unit fail", u.name, err);
       }
@@ -511,86 +567,276 @@ export class BattleRenderer {
     dir.y = 0;
     if (dir.lengthSq() > 0.01) dir.normalize();
     const ranged = from.troop === "archer" || from.troop === "strategist";
-    const peak = from.home.clone().addScaledVector(dir, missed ? 0.25 : ranged ? 0.35 : 0.85);
+    const cavalry = from.troop === "cavalry";
+    // Ká»µ: xĂ´ng gáº§n Ä‘á»‹ch (ngá»±a tĂ´ng); bá»™/thÆ°Æ¡ng: lunge ngáº¯n; cung/mÆ°u: chá»‰ nghiĂªng ngÆ°á»i
+    let reach = 0.85;
+    if (missed) reach = 0.25;
+    else if (ranged) reach = 0.35;
+    else if (cavalry && to && !to.dead) {
+      const dist = from.home.distanceTo(to.home);
+      reach = Math.min(Math.max(dist * 0.72, 1.35), 2.6);
+    }
+    const peak = from.home.clone().addScaledVector(dir, reach);
     from.lunge = {
       from: from.home.clone(),
       peak,
       t0: performance.now(),
-      durOut: ranged ? 110 : 130,
-      durBack: ranged ? 200 : 240,
+      durOut: ranged ? 110 : cavalry ? 190 : 130,
+      durBack: ranged ? 200 : cavalry ? 300 : 240,
     };
     if (to && !to.dead && !missed) {
       const atkTroop = from.troop;
+      const now = performance.now();
       if (atkTroop === "archer" || atkTroop === "strategist") {
         spawnSkillBeam(
           this.scene,
           from.actor.root.position.clone(),
           to.home,
-          atkTroop === "strategist" ? "bagua" : "gold",
-          performance.now()
+          atkTroop === "strategist" ? "bagua" : "thunder",
+          now
         );
+      } else if (atkTroop === "cavalry") {
+        // ÄĂ¡nh thÆ°á»ng ká»µ â€” tĂ´ng nháº¹ (S). Skill charge dĂ¹ng scale M/L + windup riĂªng.
+        spawnCavalryCharge(this.scene, from.home.clone(), to.home.clone(), now, "S");
+      } else if (atkTroop === "spear") {
+        // ThÆ°Æ¡ng Ä‘Ă¢m â€” slash háº¹p + beam nháº¹ (pierce)
+        spawnSlashArc(this.scene, this.casterFxAt(from), to.home, now, "steel");
+        spawnSkillBeam(this.scene, this.casterFxAt(from), to.home, "steel", now);
       } else {
-        spawnSlashArc(this.scene, from.actor.root.position.clone(), to.home, performance.now());
+        // Bá»™ binh â€” chĂ©m
+        spawnSlashArc(this.scene, this.casterFxAt(from), to.home, now, "white");
       }
+      const hitDelay = cavalry ? 170 : 130;
       setTimeout(() => {
         if (!to.dead && this.scene) {
-          to.hitFlashUntil = performance.now() + 300;
+          to.hitFlashUntil = performance.now() + (cavalry ? 380 : 300);
           playActor(to.actor, "hit", 0.05);
-          spawnHitBurst(this.scene, to.actor.root.position.clone());
+          spawnHitBurst(this.scene, this.casterFxAt(to));
+          // Ká»µ tĂ´ng trĂºng â†’ Ä‘á»‹ch bá»‹ Ä‘áº©y lĂ¹i nháº¹
+          if (cavalry) {
+            to.lunge = {
+              from: to.home.clone(),
+              peak: to.home.clone().addScaledVector(dir, 0.32),
+              t0: performance.now(),
+              durOut: 90,
+              durBack: 220,
+            };
+          }
         }
-      }, 130);
+      }, hitDelay);
     }
   }
 
-  skillFlash(uid: string, flash = "gold", targetUids: string[] = []): void {
+  /** Äiá»ƒm neo FX = thá»§ lÄ©nh (khĂ´ng pháº£i gá»‘c cá»¥m â€” trĂ¡nh lá»‡ch trĂ¡i/pháº£i tÆ°á»›ng) */
+  private casterFxAt(f: Fighter): THREE.Vector3 {
+    const at = new THREE.Vector3();
+    if (f.actor.sprite) {
+      f.actor.sprite.getWorldPosition(at);
+      // Sprite center chĂ¢n (0.5,0) â†’ nĂ¢ng nháº¹ lĂªn ngá»±c
+      at.y += 0.42;
+    } else {
+      at.copy(f.actor.root.position);
+      at.y = 0.55;
+    }
+    return at;
+  }
+
+  skillFlash(uid: string, flash = "gold", targetUids: string[] = [], opts?: SkillFlashOpts): void {
     const f = this.fighters.get(uid);
     if (!f || f.dead || !this.scene) return;
-    playActor(f.actor, "skill", 0.1);
-    const now = performance.now();
-    const at = f.actor.root.position.clone();
-    // Ưu tiên flash từ skills.json (theo phẩm/chiêu); troop chỉ fallback
+    const wave = !!(opts && opts.wave);
     const kind =
-      flash && flash !== "gold"
-        ? flash
-        : f.troop === "strategist"
-          ? "bagua"
-          : f.troop === "archer"
-            ? "thunder"
-            : "fire";
-    // Wiki NL: 1 aura (không chồng LightEffect → hết viền vuông) → đạn → impact
-    spawnSkillAura(this.scene, at, kind, now);
-    const isBuffFlash =
-      kind === "gold_soft" || kind === "wind" || kind === "teal" || kind === "gold";
-    spawnStatusOrb(this.scene, at, isBuffFlash ? "buff" : "debuff");
-    f.lunge = {
-      from: f.home.clone(),
-      peak: f.home.clone().add(new THREE.Vector3(f.side === "ally" ? -0.28 : 0.28, 0, 0)),
-      t0: now,
-      durOut: 200,
-      durBack: 360,
-    };
+      flash ||
+      (f.troop === "strategist" ? "bagua" : f.troop === "archer" ? "thunder" : f.troop === "cavalry" ? "brown" : "steel");
+    const profile = resolveSkillProfile(kind);
+    const scale = profile.scale || "M";
+    const movement = profile.movement || "plant";
+    const emission = profile.emission || "burst";
+    const visual = profile.visual || "default";
+    const delivery = profile.delivery || "arcane";
+    const support = delivery === "buff" || visual === "heal" || kind === "shield";
+    const melee =
+      delivery === "cut" || delivery === "crush" || delivery === "pierce" || visual === "slash" || visual === "pierce";
+    const isCharge = kind === "charge" || (f.troop === "cavalry" && melee && !support && kind !== "rush");
+    const isRush = kind === "rush";
+    const isShield = kind === "shield";
+    const rangedEmit =
+      emission === "projectile" ||
+      emission === "rain" ||
+      visual === "arrow" ||
+      visual === "meteor" ||
+      visual === "thunder" ||
+      visual === "fireball" ||
+      visual === "bagua";
     const targets = targetUids.length ? targetUids : [];
-    targets.forEach((tid, i) => {
-      const to = this.fighters.get(tid);
-      if (!to || to.dead || !this.scene) return;
-      const delay = 120 + i * 110;
-      setTimeout(() => {
-        if (!this.scene || to.dead) return;
-        const dest = to.actor.root.position.clone();
-        spawnSkillBeam(this.scene, at, dest, kind, performance.now());
-        playActor(to.actor, "hit", 0.05);
-        to.hitFlashUntil = performance.now() + 520;
-        spawnStatusOrb(this.scene, dest, "debuff");
-      }, delay);
-      // Nhịp 2 — sát thương lần hai (pattern Hổ Sát / Lướt Nhanh)
-      setTimeout(() => {
-        if (!this.scene || to.dead) return;
-        const dest = to.actor.root.position.clone();
-        spawnSkillBeam(this.scene, at, dest, kind, performance.now());
-        spawnHitBurst(this.scene, dest);
-        to.hitFlashUntil = performance.now() + 480;
-      }, delay + 320);
-    });
+    const firstTarget = targets.map((tid) => this.fighters.get(tid)).find((t) => t && !t.dead);
+    const attach = { root: f.actor.root, leader: f.actor.sprite };
+    const punchAmp = scale === "L" ? 0.22 : scale === "S" ? 0.1 : 0.15;
+
+    const deliverToTargets = (mode: "emission" | "impact") => {
+      if (!this.scene) return;
+      targets.forEach((tid, i) => {
+        const to = this.fighters.get(tid);
+        if (!to || to.dead || !this.scene) return;
+        const stagger = i * (scale === "L" ? 70 : 55);
+        setTimeout(() => {
+          if (!this.scene || to.dead) return;
+          const dest = this.casterFxAt(to);
+          const fromPos = this.casterFxAt(f);
+          const tnow = performance.now();
+          if (mode === "emission") {
+            if (isCharge) {
+              spawnCavalryCharge(this.scene, f.home.clone(), to.home.clone(), tnow, scale);
+            } else if (isRush) {
+              spawnRushAssault(this.scene, f.home.clone(), to.home.clone(), tnow, scale);
+            } else if (isShield) {
+              spawnShieldBarrier(this.scene, this.casterFxAt(f), tnow, scale);
+            } else if (rangedEmit || (!melee && !support) || support) {
+              spawnSkillBeam(this.scene, fromPos, dest, kind, tnow);
+            } else if (visual === "pierce" || movement === "thrust") {
+              spawnSlashArc(this.scene, fromPos, to.home, tnow, "steel");
+              spawnSkillBeam(this.scene, fromPos, dest, "steel", tnow);
+            } else {
+              spawnSlashArc(this.scene, fromPos, to.home, tnow, kind);
+            }
+            return;
+          }
+          // impact
+          if (isCharge || isRush) {
+            spawnPremiumImpact(this.scene, dest, kind, scale);
+            const push = f.side === "ally" ? (isCharge ? -0.4 : -0.3) : isCharge ? 0.4 : 0.3;
+            to.lunge = {
+              from: to.home.clone(),
+              peak: to.home.clone().add(new THREE.Vector3(push, 0, 0)),
+              t0: tnow,
+              durOut: isCharge ? 100 : 80,
+              durBack: isCharge ? 240 : 200,
+            };
+          } else if (isShield) {
+            spawnHitBurst(this.scene, dest);
+            spawnShieldBarrier(this.scene, this.casterFxAt(f), tnow, scale);
+          } else {
+            spawnPremiumImpact(this.scene, dest, kind, scale);
+          }
+          if (!support || isShield) {
+            playActor(to.actor, "hit", 0.05);
+            to.hitFlashUntil = tnow + (isShield ? 360 : 560);
+          } else {
+            to.hitFlashUntil = tnow + 320;
+          }
+        }, stagger);
+      });
+      if (mode === "impact") {
+        this.triggerCamPunch(punchAmp, scale === "L" ? 220 : 160);
+        this.hitStopUntil = performance.now() + (scale === "L" ? 70 : 45);
+      }
+    };
+
+    const beginLunge = () => {
+      const now = performance.now();
+      let peak = f.home.clone();
+      if ((isCharge || isRush) && firstTarget) {
+        const dir = firstTarget.home.clone().sub(f.home);
+        dir.y = 0;
+        const dist = dir.length();
+        if (dist > 0.01) dir.normalize();
+        const reach = Math.min(Math.max(dist * (isRush ? 0.82 : 0.75), isRush ? 1.7 : 1.5), 2.9);
+        peak = f.home.clone().addScaledVector(dir, reach);
+      } else if (!isShield) {
+        let reach = 0.14;
+        if (movement === "lunge") reach = f.troop === "cavalry" ? 1.4 : 0.6;
+        else if (movement === "thrust") reach = 0.9;
+        if (scale === "L" && movement !== "plant") reach *= 1.25;
+        const toward = f.side === "ally" ? -1 : 1;
+        peak = f.home.clone().add(new THREE.Vector3(toward * reach, 0, 0));
+      }
+      f.lunge = {
+        from: f.home.clone(),
+        peak,
+        t0: now,
+        durOut: isCharge || isRush ? 240 : movement === "plant" || isShield ? 150 : 170,
+        durBack: isCharge || isRush ? 360 : 300,
+      };
+    };
+
+    // Wave 2+: chá»‰ emission+impact gá»n
+    if (wave) {
+      deliverToTargets("emission");
+      setTimeout(() => deliverToTargets("impact"), 120);
+      return;
+    }
+
+    if (this.skillPlayCancel) this.skillPlayCancel();
+    playActor(f.actor, "skill", 0.1);
+    const at0 = this.casterFxAt(f);
+    const design = skillDesign();
+
+    if (design?.playTimeline) {
+      const play = design.playTimeline(
+        kind,
+        (phase) => {
+          if (!this.scene || f.dead) return;
+          const at = this.casterFxAt(f);
+          if (phase === "windup") {
+            spawnSkillWindup(this.scene, at, kind, scale);
+            // NhĂºn nháº¹ ra sau trÆ°á»›c khi xĂ´ng
+            if (!isShield) {
+              const back = f.side === "ally" ? 0.18 : -0.18;
+              f.lunge = {
+                from: f.home.clone(),
+                peak: f.home.clone().add(new THREE.Vector3(back, 0, 0)),
+                t0: performance.now(),
+                durOut: 90,
+                durBack: 1,
+              };
+            }
+          } else if (phase === "cast") {
+            spawnSkillAura(this.scene, at, kind, performance.now(), attach, { scale, phase: "cast" });
+            if (isShield) spawnShieldBarrier(this.scene, at, performance.now(), scale);
+            beginLunge();
+          } else if (phase === "emission") {
+            spawnSkillAura(this.scene, at, kind, performance.now(), attach, { scale, phase: "emission" });
+            deliverToTargets("emission");
+            if (isShield && !targets.length) spawnShieldBarrier(this.scene, at, performance.now(), scale);
+          } else if (phase === "impact") {
+            deliverToTargets("impact");
+          }
+        },
+        () => {
+          this.skillPlayCancel = null;
+        }
+      );
+      this.skillPlayCancel = () => play.cancel();
+    } else {
+      // Fallback náº¿u chÆ°a load skill-design
+      spawnSkillWindup(this.scene, at0, kind, scale);
+      spawnSkillAura(this.scene, at0, kind, performance.now(), attach, { scale, phase: "full" });
+      if (isShield) spawnShieldBarrier(this.scene, at0, performance.now(), scale);
+      beginLunge();
+      setTimeout(() => deliverToTargets("emission"), 140);
+      setTimeout(() => deliverToTargets("impact"), 280);
+    }
+  }
+
+  private triggerCamPunch(amp: number, ms: number): void {
+    if (this.preview) return;
+    this.camPunchAmp = amp;
+    this.camPunchUntil = performance.now() + ms;
+  }
+
+  private updateCamJuice(now: number): void {
+    if (!this.camera || this.preview) return;
+    if (now < this.camPunchUntil && this.camPunchAmp > 0) {
+      const damp = Math.min(1, (this.camPunchUntil - now) / 180);
+      const ox = (Math.random() - 0.5) * this.camPunchAmp * damp;
+      const oy = (Math.random() - 0.5) * this.camPunchAmp * 0.4 * damp;
+      this.camera.position.set(this.camHome.x + ox, this.camHome.y + oy, this.camHome.z);
+      this.camera.lookAt(this.camLook);
+    } else if (this.camPunchAmp > 0) {
+      this.camera.position.copy(this.camHome);
+      this.camera.lookAt(this.camLook);
+      this.camPunchAmp = 0;
+    }
   }
 
   screenPos(uid: string): { x: number; y: number } | null {
@@ -640,17 +886,25 @@ export class BattleRenderer {
     return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
   }
 
+  private applyScreenEqualScale(f: Fighter, squashX = 1, squashY = 1): void {
+    if (!this.camera) return;
+    const p = f.actor.root.position;
+    this.tmp.set(p.x, 0.4, p.z);
+    const dist = this.camera.position.distanceTo(this.tmp);
+    const k = dist / Math.max(this.refDist, 0.001);
+    const bx = f.actor.baseScale.x;
+    const by = f.actor.baseScale.y;
+    f.actor.sprite.scale.set(bx * k * squashX, by * k * squashY, 1);
+  }
+
   private updateLunge(f: Fighter, now: number): void {
     if (!f.lunge) return;
     const L = f.lunge;
     const elapsed = now - L.t0;
     const total = L.durOut + L.durBack;
-    const spr = f.actor.sprite;
-    const bx = f.actor.baseScale.x;
-    const by = f.actor.baseScale.y;
     if (elapsed >= total) {
       f.actor.root.position.copy(f.home);
-      spr.scale.set(bx, by, 1);
+      this.applyScreenEqualScale(f);
       f.lunge = null;
       return;
     }
@@ -659,7 +913,7 @@ export class BattleRenderer {
     if (elapsed <= L.durOut) {
       const u = this.easeInOut(elapsed / L.durOut);
       pos = L.from.clone().lerp(L.peak, u);
-      // Windup → strike: kéo dài theo hướng đánh
+      // Windup â†’ strike: kĂ©o dĂ i theo hÆ°á»›ng Ä‘Ă¡nh
       squash = 1 + u * 0.12;
     } else {
       const u = this.easeInOut((elapsed - L.durOut) / L.durBack);
@@ -667,7 +921,7 @@ export class BattleRenderer {
       squash = 1.12 - u * 0.12;
     }
     f.actor.root.position.copy(pos);
-    spr.scale.set(bx * squash, by * (2 - squash), 1);
+    this.applyScreenEqualScale(f, squash, 2 - squash);
   }
 
   private applyHitFlash(f: Fighter, now: number): void {
@@ -676,11 +930,11 @@ export class BattleRenderer {
     if (now < f.hitFlashUntil) {
       const pulse = 0.55 + 0.45 * Math.sin(now * 0.04);
       mat.color.setRGB(1, pulse * 0.55, pulse * 0.45);
-    } else if (f.side === "enemy") {
-      mat.color.setHex(0xffe4e0);
-    } else {
-      mat.color.setHex(0xffffff);
+      return;
     }
+    // Chá»‰ ghi mĂ u khi vá»«a háº¿t flash â€” trĂ¡nh setHex má»—i frame
+    const idle = f.side === "enemy" ? 0xffe4e0 : 0xffffff;
+    if (mat.color.getHex() !== idle) mat.color.setHex(idle);
   }
 
   private resize(): void {
@@ -696,8 +950,9 @@ export class BattleRenderer {
     if (!this.running || !this.renderer || !this.scene || !this.camera) return;
     this.raf = requestAnimationFrame(this.tick);
     const now = performance.now();
-    const dt = Math.min(0.05, (now - this.last) / 1000);
+    let dt = Math.min(0.05, (now - this.last) / 1000);
     this.last = now;
+    if (now < this.hitStopUntil) dt *= 0.15;
 
     this.fighters.forEach((f) => {
       f.actor.mixer.update(dt);
@@ -705,14 +960,16 @@ export class BattleRenderer {
         this.applyHitFlash(f, now);
         return;
       }
+      const wasLunge = !!f.lunge;
       this.updateLunge(f, now);
       this.applyHitFlash(f, now);
-      // Idle đứng yên — không bob/rung (chỉ lunge khi đánh)
       if (!f.lunge) {
         f.actor.root.position.y = 0;
+        if (wasLunge) this.applyScreenEqualScale(f);
       }
     });
 
+    this.updateCamJuice(now);
     tickBattleVfx(this.scene, now, dt);
     this.syncHudPositions();
     this.renderer.render(this.scene, this.camera);

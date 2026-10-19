@@ -477,7 +477,7 @@
           var waveTargets = (ev.targets || []).map(function (t) {
             return typeof t === "string" ? t : t && (t.uid || t.target_id || t);
           }).filter(Boolean);
-          this._battle3d.skillFlash(ev.uid, ev.flash || "gold", waveTargets);
+          this._battle3d.skillFlash(ev.uid, ev.flash || "gold", waveTargets, { wave: true });
         }
         break;
       case "attack":
