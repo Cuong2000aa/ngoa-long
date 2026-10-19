@@ -298,6 +298,44 @@
     return [];
   }
 
+  /**
+   * Mục tiêu phụ theo mô tả «hàng sau / hàng trước» khi pattern chính đã chọn.
+   * Trả về unit chưa nằm trong primary (giảm dame riêng ở caller).
+   */
+  function resolveSecondaryTargets(actor, skill, primary, enemies) {
+    var desc = ((skill && skill.desc) || "").toLowerCase();
+    var foes = living(enemies);
+    var primaryIds = {};
+    (primary || []).forEach(function (u) {
+      if (u && u.uid) primaryIds[u.uid] = true;
+    });
+    var extra = [];
+    function pickBack() {
+      var backs = backAlive(enemies, foes[0] && foes[0].side).filter(function (u) {
+        return !primaryIds[u.uid];
+      });
+      if (!backs.length) return null;
+      return backs[Math.floor(Math.random() * backs.length)];
+    }
+    function pickFront() {
+      var fronts = frontAlive(enemies, foes[0] && foes[0].side).filter(function (u) {
+        return !primaryIds[u.uid];
+      });
+      if (!fronts.length) return null;
+      return fronts[Math.floor(Math.random() * fronts.length)];
+    }
+    // «khiến 1 kẻ địch hàng sau» / «hàng trước» — phổ biến wiki C.Pháp
+    if (/hàng\s*sau/.test(desc)) {
+      var b = pickBack();
+      if (b) extra.push(b);
+    }
+    if (/hàng\s*trước/.test(desc) && (skill.pattern === "column" || skill.pattern === "single")) {
+      var fr = pickFront();
+      if (fr && !primaryIds[fr.uid]) extra.push(fr);
+    }
+    return extra;
+  }
+
   function speedOf(u, weights) {
     var w = weights || { vuLuc: 0.55, tongLinh: 0.25, triLuc: 0.2 };
     var base =
@@ -341,12 +379,13 @@
     var m = 1;
     (unit.buffs || []).forEach(function (b) {
       if (b.type === key) m += b.value || 0;
-      // wiki_buff cộng atk/def theo combatProfiles
+      // wiki_buff cộng atk/def theo combatProfiles × stacks
       if (b.type === "wiki_buff" || b.type === "wiki_debuff") {
         var p = wikiProfile(b);
         if (!p) return;
-        if (key === "atk_up" && p.atkMul) m += p.atkMul;
-        if (key === "def_up" && p.defMul) m += p.defMul;
+        var stacks = b.stacks || 1;
+        if (key === "atk_up" && p.atkMul) m += p.atkMul * stacks;
+        if (key === "def_up" && p.defMul) m += p.defMul * stacks;
       }
     });
     return m;
@@ -623,13 +662,27 @@
         } else if (eff.type === "wiki_buff" || eff.type === "wiki_debuff") {
           var wTarget = eff.target === "self" ? actor : t;
           var wKind = eff.kind || (eff.type === "wiki_debuff" ? "debuff" : "buff");
-          pushBuff(wTarget, eff.type, 0, eff.duration || 2, {
-            label: eff.label,
-            id: eff.id || eff.type,
-            kind: wKind,
+          var wid = eff.id || eff.type;
+          // Stack cùng id: refresh duration + cộng dồn nhẹ (tối đa 3)
+          var stacked = false;
+          (wTarget.buffs || []).forEach(function (b) {
+            if (b.id === wid && (b.type === "wiki_buff" || b.type === "wiki_debuff")) {
+              b.duration = Math.max(b.duration || 0, eff.duration || 2);
+              b.stacks = Math.min(3, (b.stacks || 1) + 1);
+              stacked = true;
+            }
           });
+          if (!stacked) {
+            pushBuff(wTarget, eff.type, 0, eff.duration || 2, {
+              label: eff.label,
+              id: wid,
+              kind: wKind,
+            });
+            var last = wTarget.buffs[wTarget.buffs.length - 1];
+            if (last) last.stacks = 1;
+          }
           // control profile → stun
-          var wp = wikiProfile({ id: eff.id, label: eff.label });
+          var wp = wikiProfile({ id: wid, label: eff.label });
           if ((wKind === "control" || (wp && wp.stun)) && wTarget) {
             wTarget.stunned = Math.max(wTarget.stunned || 0, eff.duration || 1);
           }
@@ -781,6 +834,35 @@
           });
 
           var power = skill.power != null ? skill.power : 1;
+          // Power theo phẩm — endgame wiki % vẫn clamp nhưng cam/đỏ/vàng mạnh hơn rõ
+          var qBoost =
+            actor.quality === "gold"
+              ? 1.18
+              : actor.quality === "red"
+                ? 1.14
+                : actor.quality === "orange"
+                  ? 1.1
+                  : actor.quality === "purple"
+                    ? 1.06
+                    : 1;
+          power *= qBoost;
+          var secondary =
+            power > 0 && skill.pattern !== "ally_all" && skill.pattern !== "self"
+              ? resolveSecondaryTargets(actor, skill, targets, myEnemies)
+              : [];
+          if (secondary.length) {
+            // Gộp uid phụ vào skill event để VFX cũng chiếu
+            var allFxTargets = targets.concat(secondary);
+            // patch last skill ui event targets
+            for (var ui = uiEvents.length - 1; ui >= 0; ui--) {
+              if (uiEvents[ui].type === "skill" && uiEvents[ui].uid === actor.uid) {
+                uiEvents[ui].targets = allFxTargets.map(function (t) {
+                  return t.uid;
+                });
+                break;
+              }
+            }
+          }
           if (power > 0 && skill.pattern !== "ally_all" && skill.pattern !== "self") {
             for (var hi = 0; hi < skillHits; hi++) {
               if (hi > 0) {
@@ -790,7 +872,9 @@
                   wave: hi + 1,
                   flash: skillFlash,
                   motif: skillFx.motif || null,
-                  targets: targets.map(function (t) { return t.uid; }),
+                  pattern: skill.pattern || "single",
+                  quality: actor.quality || null,
+                  targets: targets.concat(secondary).map(function (t) { return t.uid; }),
                 });
               }
               targets.forEach(function (t) {
@@ -800,6 +884,16 @@
                 });
                 pushTargetResult(entry, actor, t, hit, uiEvents, moraleCfg);
               });
+              // Đòn phụ (hàng sau/trước) — ~65% power, chỉ nhịp đầu
+              if (hi === 0) {
+                secondary.forEach(function (t) {
+                  if (!t.alive) return;
+                  var hitSec = calcHit(actor, t, skill.damageType || "physical", power * 0.65, {
+                    critBonus: (skill.critBonus || 0) * 0.5,
+                  });
+                  pushTargetResult(entry, actor, t, hitSec, uiEvents, moraleCfg);
+                });
+              }
             }
           }
 

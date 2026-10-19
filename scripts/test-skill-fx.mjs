@@ -114,6 +114,11 @@ ok(vfxSrc.includes("spawnRushAssault"), "spawnRushAssault có trong battleVfx");
 ok(vfxSrc.includes("spawnPremiumImpact"), "spawnPremiumImpact có trong battleVfx");
 ok(vfxSrc.includes("spawnSkillWindup"), "spawnSkillWindup có trong battleVfx");
 ok(vfxSrc.includes("fxScaleMul"), "fxScaleMul S/M/L có trong battleVfx");
+ok(vfxSrc.includes("spawnColumnStrike"), "spawnColumnStrike (hàng dọc)");
+ok(vfxSrc.includes("spawnRowSweep"), "spawnRowSweep (hàng ngang)");
+ok(vfxSrc.includes("spawnAoENova"), "spawnAoENova (toàn địch)");
+ok(vfxSrc.includes("spawnAllyBless"), "spawnAllyBless (phe ta)");
+ok(vfxSrc.includes("spawnPatternEmission"), "spawnPatternEmission router");
 
 // —— BattleRenderer không remap gold → fire ——
 const br = fs.readFileSync(path.join(ROOT, "src/battle/BattleRenderer.ts"), "utf8");
@@ -126,6 +131,9 @@ ok(br.includes("isRush") || br.includes('kind === "rush"'), "BattleRenderer xử
 ok(br.includes("playTimeline"), "BattleRenderer chạy skill timeline");
 ok(br.includes("triggerCamPunch") || br.includes("camPunch"), "BattleRenderer có camera punch");
 ok(br.includes("hitStopUntil"), "BattleRenderer có hit-stop");
+ok(br.includes("spawnPatternEmission"), "BattleRenderer gọi spawnPatternEmission");
+ok(br.includes("qualityToScale"), "BattleRenderer scale theo phẩm");
+ok(br.includes("pattern?:"), "SkillFlashOpts có pattern");
 
 // —— combat-ui wave flag ——
 const ui = fs.readFileSync(path.join(ROOT, "js/combat/combat-ui.js"), "utf8");
