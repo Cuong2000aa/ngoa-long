@@ -25,20 +25,23 @@
 - **StarsteelGaming Spell Effects** — CC0  
   → `assets/fx/skill/starsteel/`
 - **Fire Dragon Roller** by Nineball — CC0  
-  → `assets/fx/dragon/` (legacy pixel; Hỏa Long 3D dùng soft spirit)
-- **Hồn spirit packs** (`assets/fx/hon_*`) — assemble từ sprite CC0 thật  
+  → `assets/fx/dragon/` — legacy thin outline (không dùng làm emission chính Hỏa Long)
+- **Qi spirit packs** (style Hỏa Long) — **original / AI-assisted for fan remake**  
+  - `hon_rong/qi_fire` · `qi_azure` · `qi_ivory`  
+  - `hon_xa/qi_poison` · `hon_ho/qi_tiger` · `hon_soi/qi_wolf`  
+  - `hon_thuy/qi_water` · `hon_loi/qi_thunder` · `hon_phong/qi_wind`  
+  Mỗi pack: `charge_*` tụ lực · `flight_*` silhouette bay (đầu phải) · `impact_*` bùm.  
+  Pipeline: `scripts/gen-qi-spirit-packs.py` (+ seed AI hổ/sói). **Không** asset client VNG.
+- **Hồn spirit packs** (`assets/fx/hon_*`) — sheet luồng khí (không GLB thú full-body)  
   (`python3 scripts/assemble-hon-cc0.py` / `npm run assemble:hon`):  
-  - GreatDog_ARt — [3 Dragon Animation Pack](https://opengameart.org/content/3-dragon-animation-pack) (CC0) → `hon_rong`  
-  - Master484 — [Dragon 1](https://opengameart.org/content/dragon-1-m484) (CC0) → `hon_rong` head frames  
-  - Blooming Pixels — [Snake Sprite Sheet](https://opengameart.org/content/snake-sprite-sheet) (CC0) → `hon_xa`  
-  - Shepardskin — [Snake RPG Character](https://opengameart.org/content/snake-rpg-character) (CC0) → `hon_xa`  
-  - Segel2D Wolf + SpritePilot tiger claw/roar → `hon_soi` / `hon_ho`  
-  - Cethiel Water / Starsteel Thunder / n4 Whirlwind → `hon_thuy` / `hon_loi` / `hon_phong`  
-  Soft mist/orb: Kenney Particle Pack. **Không** dùng procedural blob làm silhouette thú.
-- **Hồn 3D GLB** (`assets/fx/hon_3d/`) — thân hồn bay trong `battleVfx3d` (bắt buộc mesh, không tự gen):  
-  - **Dragon (Á Đông / Loong)** — [Grab3D Chinese Dragon](https://grab3d.com/models/creatures/chinese-dragon/) (CC0) → `dragon.glb` (`hon_rong`, `hon_loi`); tối ưu meshopt ~1.4MB  
-  - **Snake / Wolf** — Quaternius via [Poly Pizza](https://poly.pizza) (CC0) → `snake.glb`, `wolf.glb`  
-  - **Tiger / Fish / Parrot** — [Kenney Cube Pets](https://kenney.nl/assets/cube-pets) (CC0) → `tiger.glb`, `fish.glb`, `wind.glb` (+ `Textures/colormap.png`)
+  - GreatDog_ARt — [3 Dragon Animation Pack](https://opengameart.org/content/3-dragon-animation-pack) (CC0) → `hon_rong` serpent / mist  
+  - Master484 — [Dragon 1](https://opengameart.org/content/dragon-1-m484) (CC0) → assemble trong `hon_rong`  
+  - Blooming Pixels / Shepardskin snake (CC0) → `hon_xa`  
+  - Segel2D Wolf + SpritePilot tiger → `wolf/` / `tiger/`  
+  - n4 Whirlwind / water / thunder packs → `whirlwind/` / `hon_thuy` / `hon_loi`  
+  Soft mist/orb: Kenney Particle Pack (**Transparent**).
+- **Hồn 3D GLB** (`assets/fx/hon_3d/`) — **không dùng làm emission chính** (tránh summon thú 3D giữa sân).  
+  Giữ file CC0 (Grab3D Loong / Quaternius / Kenney Cube Pets) phòng secondary rất nhỏ — xem `assets/fx/HON_PACKS.md`.
 - **Whirlwind for effects** by n4 — CC0  
   https://opengameart.org/content/whirlwind-for-effects  
   → `assets/fx/whirlwind/`

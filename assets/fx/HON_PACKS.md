@@ -1,29 +1,27 @@
-# Hồn spirit packs (CC0 creatures)
+# Hồn spirit packs — qi-stream (style Hỏa Long)
 
-## Thân hồn bay — **bắt buộc GLB 3D** (`hon_3d/`)
+## Emission chính = qi sheet (không GLB thú)
 
-| GLB | Pack | Source |
-|-----|------|--------|
-| `hon_3d/dragon.glb` | hon_rong, hon_loi | Grab3D Chinese Dragon / Loong (CC0) |
-| `hon_3d/snake.glb` | hon_xa | Quaternius / Poly Pizza (CC0) |
-| `hon_3d/wolf.glb` | hon_soi | Quaternius / Poly Pizza (CC0) |
-| `hon_3d/tiger.glb` | hon_ho | Kenney Cube Pets (CC0) |
-| `hon_3d/fish.glb` | hon_thuy | Kenney Cube Pets (CC0) |
-| `hon_3d/wind.glb` | hon_phong | Kenney Cube Pets parrot (CC0) |
+Runtime `emitHonSpiritSequence3d` khi có `qi_*`:
 
-Runtime: `battleVfx3d.ts` → `GLTFLoader`. **Không** tự gen mesh thú.
+1. **Charge** — vortex tụ lực (`charge_01..04`)
+2. **Flight** — **1** silhouette bay, `headOnRight` + `headLeadFrac` (đầu đâm địch)
+3. **Impact** — bùm đúng lúc đầu chạm (`impact_01..03`)
 
-## Charge / form / hit — **lớp dày** (không săn pack “spirit thú”)
+| Pack | Qi folder | Palette / motif |
+|------|-----------|-----------------|
+| `hon_rong` | `qi_fire` / `qi_azure` / `qi_ivory` | lửa · thanh · bạch |
+| `hon_xa` | `qi_poison` | lục độc |
+| `hon_ho` | `qi_tiger` | hổ phách |
+| `hon_soi` | `qi_wolf` | xám bạc |
+| `hon_thuy` | `qi_water` | lam nước |
+| `hon_loi` | `qi_thunder` | vàng sét |
+| `hon_phong` | `qi_wind` | cyan gió |
 
-Runtime `emitHonSpiritSequence3d` chồng:
+Gen / expand: `python3 scripts/gen-qi-spirit-packs.py`  
+Seed AI (hổ/sói): `…/qi_*/qi_seed/` · credits: `assets/CREDITS.md`.
 
-1. **CodeManu Free VFX** (`assets/fx/itch/codemanu/`) — OGA CC0, tải được  
-   charge / vortex / fire / explosion / tentacles / electric_shield / wheel…
-2. **Brackeys** (`itch/brackeys/`) — ember / storm / water / explosion…
-3. **SpritePilot** (`itch/spritepilot/`) — explosion / fire / water_splash / hit_spark…
-4. Ring/crescent/sparkle cũ trong `hon_*` (assemble CC0)
+## Legacy
 
-Import: `python3 scripts/import-codemanu-hon-fx.py`  
-Map: `honElementLayers()` trong `battleVfx3d.ts`.
-
-Do **not** use `npm run gen:hon-packs` for creature silhouettes.
+`serpent_*` / `fx/dragon` / `tiger` / `wolf` — underlay hoặc fallback cũ.  
+`hon_3d/*.glb` — **không** emission chính.

@@ -92,13 +92,13 @@ Output: `js/db/nl-db.bundle.js` (offline `NL_DB`).
 ### Runtime
 
 - 2D overlay: **`src/battle/battleVfx.ts`**  
-- 3D hồn bay: **`src/battle/battleVfx3d.ts`** — thân hồn = **GLB** `assets/fx/hon_3d/*.glb` (CC0), charge/hit sheet = `assets/fx/hon_*`  
+- 3D hồn bay: **`src/battle/battleVfx3d.ts`** — thân hồn = **luồng khí sheet** (`dragon`/`tiger`/`wolf`/`hon_*/serpent`), charge/hit = CodeManu + `hon_*`. **Không** GLB full-body làm emission.  
 - Gọi từ: `BattleRenderer.skillFlash` / attack / hit.  
 - Combat events: `js/combat/combat-engine.js` → `js/combat/combat-ui.js` → `_battle3d.skillFlash(...)`.
 
 ### Nguyên tắc render
 
-1. Overlay chiêu: **sprite sheet** — Additive / premultiplied, `depthWrite: false`, `depthTest: false` trên FX. Hồn thú = GLB, không blob procedural.  
+1. Overlay chiêu: **sprite sheet** — Additive / premultiplied, `depthWrite: false`, `depthTest: false` trên FX. Hồn thú = **qi stream silhouette** (flipbook CC0), không blob procedural, không summon GLB thú.  
 2. Mọi texture FX qua `prepareFxTexture()`: nền đen → alpha, premultiply RGB, cắt fringe tối.  
 3. Blending: `CustomBlending` + `OneFactor` / `OneFactor` + `premultipliedAlpha: true`.  
 4. Aura chiêu: **1 sheet chính + Kenney chân** — không chồng LightEffect + scorch opaque.  
