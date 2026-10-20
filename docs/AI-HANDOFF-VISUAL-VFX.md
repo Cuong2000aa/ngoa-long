@@ -23,6 +23,7 @@ Stack: **Vite + TypeScript + Three.js** · data JSON · combat JS (`js/combat/*`
 |------|--------|
 | Procedural mesh “người đậu”, geometry nhân vật tự vẽ | Không đúng thẩm mỹ TQ / rule cứng |
 | Tự paint portrait / terrain chính | Phải lấy asset |
+| Tự gen blob / silhouette thú cho Hồn (rồng/xà/hổ…) | Bắt buộc **GLB CC0** trong `assets/fx/hon_3d/` |
 | VFX ring / sphere / beam bằng `SphereGeometry` / tự dựng | Dùng sprite sheet CC0 |
 | Kenney Particle Pack bản **PNG (Black background)** | Gây **viền/bóng hộp đen** quanh chiêu |
 | Chồng nhiều layer FX nền đen (LightEffect + Fireball + scorch) | Hộp mờ additive |
@@ -90,13 +91,14 @@ Output: `js/db/nl-db.bundle.js` (offline `NL_DB`).
 
 ### Runtime
 
-- File: **`src/battle/battleVfx.ts`**  
+- 2D overlay: **`src/battle/battleVfx.ts`**  
+- 3D hồn bay: **`src/battle/battleVfx3d.ts`** — thân hồn = **GLB** `assets/fx/hon_3d/*.glb` (CC0), charge/hit sheet = `assets/fx/hon_*`  
 - Gọi từ: `BattleRenderer.skillFlash` / attack / hit.  
 - Combat events: `js/combat/combat-engine.js` → `js/combat/combat-ui.js` → `_battle3d.skillFlash(...)`.
 
 ### Nguyên tắc render
 
-1. **Chỉ sprite sheet** — Additive / premultiplied, `depthWrite: false`, `depthTest: false` trên FX.  
+1. Overlay chiêu: **sprite sheet** — Additive / premultiplied, `depthWrite: false`, `depthTest: false` trên FX. Hồn thú = GLB, không blob procedural.  
 2. Mọi texture FX qua `prepareFxTexture()`: nền đen → alpha, premultiply RGB, cắt fringe tối.  
 3. Blending: `CustomBlending` + `OneFactor` / `OneFactor` + `premultipliedAlpha: true`.  
 4. Aura chiêu: **1 sheet chính + Kenney chân** — không chồng LightEffect + scorch opaque.  

@@ -12,8 +12,12 @@
     "test:skills": "node scripts/test-skill-pipeline.mjs",
     "repair:skills": "python3 scripts/repair-skill-pipeline.py",
     "gallery:skills": "vite --open /preview-skill-3d.html",
+    "gen:hon-rong": "node scripts/gen-hon-rong-fx.mjs",
+    "gen:hon-packs": "node scripts/gen-hon-packs-fx.mjs",
+    "assemble:hon": "python3 scripts/assemble-hon-cc0.py",
     "shot": "node scripts/shot-city.mjs",
-    "test:click": "node scripts/click-city.mjs"
+    "test:click": "node scripts/click-city.mjs",
+    "import:itch-fx": "python3 scripts/import-itch-vfx.py"
   },
   "dependencies": {
     "three": "^0.186.1"

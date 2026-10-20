@@ -29,6 +29,8 @@ Juice: windup glow, aura theo scale S/M/L, `spawnPremiumImpact`, camera punch, h
 Motif đặc biệt: charge / rush / shield vẫn choreography riêng. `skill_wave` chỉ emission+impact.  
 **Polished library** (`src/battle/skillFxLibrary.ts`): `basic_strike` / `hoa_long` / `ho_khieu` / `dot_kich` — choreography riêng theo `skillId`. ≠ AA.  
 **Forge packs** (`assets/fx/forge/*`, Apache-2.0 Pixel Ability FX Forge): sheet theo element — frost/storm/ember/shadow/blood/earth/nature/tide/arcane/radiance/ward. Generate: `node scripts/forge-generate-fx.mjs`.  
+**3D non-spirit** (`battleVfx3d`): ưu tiên **Brackeys** `assets/fx/itch/brackeys/*` (sau `slice-brackeys-fx.py`), fallback forge. Map: heal/buff→`radiance_aura`, shield→`ward_barrier`, arcane→`arcane_burst`, shadow→`shadow_burst`, slash→`hit_burst`/`blood_burst`, nova→`explosion_burst`, rush/charge→`earth_burst`, thunder→`storm_burst`, fire cast→`ember_burst`. Hồn thú vẫn GLB `hon_3d/`.  
+**itch.io**: thả zip → `_dl/itch-fx/drop/` → `npm run import:itch-fx` → `python3 scripts/slice-brackeys-fx.py` (xem `scripts/import-itch-vfx.md`). Binbun Free = shader, không dùng.  
 **Hỗ trợ / sĩ khí** (`[Hỗ Trợ]`, Thiên Mệnh…): `buff` / `gold_soft` → `spawnAllyBless` đồng minh — **không** `slash`/`steel` AoE nova địch.
 
 ## Theo loại chiêu

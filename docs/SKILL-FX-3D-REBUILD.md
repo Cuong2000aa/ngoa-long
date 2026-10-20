@@ -14,7 +14,9 @@ Asset sheet cũ (Kenney / Cethiel) bị **hạ cấp** → chỉ còn fallback /
 | `playSkillFx3d` | Emission / impact theo style |
 | `playPatternFx3d` | column / row / all / ally_all / self |
 | `assets/fx/forge/*` | Sheet element mới (generate: `node scripts/forge-generate-fx.mjs`) |
-| `assets/fx/dragon_spirit/*` | Hồn long ethereal |
+| `assets/fx/hon_*/*` | Spirit packs từ **sprite CC0 thật** (`npm run assemble:hon`) — không procedural blob |
+| `assets/fx/HON_PACKS.md` | Nguồn OGA / Kenney / SpritePilot |
+| `assets/fx/dragon_spirit/*` | Legacy soft silhouettes |
 | `preview-skill-3d.html` | Gallery duyệt mọi motif |
 
 ## Style map (flash / motif → 3D)
@@ -24,13 +26,14 @@ Asset sheet cũ (Kenney / Cethiel) bị **hạ cấp** → chỉ còn fallback /
 | `slash` | steel / white / iron / slash motif | Trail lưỡi kiếm + dust |
 | `rush` | rush / pierce / thrust | Core bay thấp + streak |
 | `charge` | charge / brown / cavalry | Bụi đất dày + shockwave |
-| `breath` | dragon | Spirit ribbon + lửa |
-| `roar` | tiger / wolf | Shockwave gầm + burst |
-| `beam` | blue / arcane / purple / bagua / thunder | Trail đạn pháp |
+| `breath` | dragon | **hon_rong** — 4 pha hồn (cam lửa) |
+| `roar` | tiger / wolf | **hon_ho** / **hon_soi** — 4 pha hồn |
+| `beam` | blue / arcane / purple / bagua | Trail đạn pháp |
+| `beam`+thunder | thunder | **hon_loi** — 4 pha hồn |
 | `nova` | fire_rain / all-AoE fire | Burst + shockwave tại đích |
-| `tide` | blue_water / cyan / water | Trail thủy + splash burst |
-| `poison` | green_poison / snake | Mist burst + trail lục |
-| `whirl` | whirlwind | Xoáy dust + ring |
+| `tide` | blue_water / cyan / water | **hon_thuy** — 4 pha hồn |
+| `poison` | green_poison / snake | **hon_xa** — 4 pha hồn |
+| `whirl` | whirlwind | **hon_phong** — 4 pha hồn |
 | `shadow` | crimson / purple shadow | Burst máu/bóng |
 | `bless` | gold_soft / heal / buff / ally | Radiance aura đồng minh |
 | `barrier` | shield | Ward ring quanh caster |

@@ -247,8 +247,12 @@
         <button type="button" id="btn-replay">Phát lại</button>
         <button type="button" id="btn-clear">Xóa FX</button>
       </div>
+      <div class="actions" style="margin-top:0.35rem">
+        <button type="button" id="btn-side-ally" class="primary" title="Caster phe ta (phải → trái)">Caster: Phe ta</button>
+        <button type="button" id="btn-side-enemy" title="Caster địch (trái → phải)">Caster: Địch</button>
+      </div>
       <div id="meta">Đang nạp…</div>
-      <p class="sub">Phím: Enter = phát · Esc = xóa FX · ↑↓ chọn trong danh sách đã lọc.</p>
+      <p class="sub">Phím: Enter = phát · Esc = xóa FX · ↑↓ chọn · S = đổi phe caster.</p>
     </aside>
     <div id="stage-wrap">
       <div id="overlay-hint">Đang dựng sân 3D…</div>
@@ -281,7 +285,9 @@
     let selectedId = null;
     let motifFilter = "";
     let casterUid = "a0";
-    let foeUids = [];
+    /** "ally" = caster phe ta → mục tiêu địch; "enemy" = caster địch → mục tiêu phe ta */
+    let castSide = "ally";
+    let targetUids = [];
 
     const ALLIES = [
       { uid: "a0", name: "Caster", slot: 1, side: "ally", troop: "strategist", level: 12, quality: "purple" },
@@ -297,6 +303,25 @@
       { uid: "e3", name: "Địch 4", slot: 3, side: "enemy", troop: "cavalry", level: 10, quality: "white" },
       { uid: "e4", name: "Địch 5", slot: 4, side: "enemy", troop: "strategist", level: 11, quality: "blue" },
     ];
+
+    function setCastSide(side) {
+      castSide = side === "enemy" ? "enemy" : "ally";
+      if (castSide === "ally") {
+        casterUid = "a0";
+        targetUids = FOES.map((f) => f.uid);
+      } else {
+        casterUid = "e4"; // strategist địch
+        targetUids = ALLIES.map((a) => a.uid);
+      }
+      const btnA = document.getElementById("btn-side-ally");
+      const btnE = document.getElementById("btn-side-enemy");
+      if (btnA) btnA.classList.toggle("primary", castSide === "ally");
+      if (btnE) btnE.classList.toggle("primary", castSide === "enemy");
+      statusEl.textContent =
+        castSide === "ally"
+          ? "Caster: Phe ta (phải → trái)"
+          : "Caster: Địch (trái → phải)";
+    }
 
     function waitCity() {
       return new Promise((resolve) => {
@@ -466,12 +491,14 @@
 
     function resolveTargets(pattern) {
       const p = (pattern || "single").toLowerCase();
+      const foes = targetUids;
+      const friends = castSide === "ally" ? ALLIES.map((a) => a.uid) : FOES.map((f) => f.uid);
       if (p === "self") return [casterUid];
-      if (p === "ally_all") return ALLIES.map((a) => a.uid);
-      if (p === "single") return foeUids.slice(0, 1);
-      if (p === "column" || p === "front_row") return foeUids.slice(0, 3);
-      if (p === "row") return foeUids.slice(0, 3);
-      return foeUids.slice();
+      if (p === "ally_all") return friends;
+      if (p === "single") return foes.slice(0, 1);
+      if (p === "column" || p === "front_row") return foes.slice(0, 3);
+      if (p === "row") return foes.slice(0, 3);
+      return foes.slice();
     }
 
     function playSelected() {
@@ -502,7 +529,15 @@
           support: support,
         });
         statusEl.textContent =
-          "Đang phát: " + s.name + " → " + flash + " [" + s.pattern + "] ×" + targets.length;
+          "Đang phát: " +
+          s.name +
+          " → " +
+          flash +
+          " [" +
+          s.pattern +
+          "] ×" +
+          targets.length +
+          (castSide === "ally" ? " · phe ta→địch" : " · địch→phe ta");
       } catch (e) {
         statusEl.textContent = "Lỗi: " + (e && e.message ? e.message : e);
       }
@@ -530,11 +565,10 @@
         allyFormation: "crane_wing",
         enemyFormation: "square",
       });
-      casterUid = "a0";
-      foeUids = FOES.map((f) => f.uid);
+      setCastSide("ally");
       // Chờ actor load nhẹ
       await new Promise((r) => setTimeout(r, 600));
-      hintEl.textContent = "Sẵn sàng — chọn chiêu bên trái hoặc Enter để phát";
+      hintEl.textContent = "Sẵn sàng — chọn chiêu · đổi Caster phe ta/địch để xem 2 hướng";
       statusEl.textContent = skills.length + " chiêu · sân 3D OK";
     }
 
@@ -549,6 +583,8 @@
     btnPlay.addEventListener("click", playSelected);
     btnReplay.addEventListener("click", playSelected);
     btnClear.addEventListener("click", clearFx);
+    document.getElementById("btn-side-ally").addEventListener("click", () => setCastSide("ally"));
+    document.getElementById("btn-side-enemy").addEventListener("click", () => setCastSide("enemy"));
 
     window.addEventListener("keydown", (ev) => {
       if (ev.key === "Enter") {
@@ -556,6 +592,9 @@
         playSelected();
       } else if (ev.key === "Escape") {
         clearFx();
+      } else if (ev.key === "s" || ev.key === "S") {
+        if (ev.target && (ev.target.tagName === "INPUT" || ev.target.tagName === "TEXTAREA")) return;
+        setCastSide(castSide === "ally" ? "enemy" : "ally");
       } else if (ev.key === "ArrowDown" || ev.key === "ArrowUp") {
         if (!filtered.length) return;
         ev.preventDefault();

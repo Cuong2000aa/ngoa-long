@@ -1,4 +1,7 @@
 import * as THREE from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { MeshoptDecoder } from "three/examples/jsm/libs/meshopt_decoder.module.js";
+import { clone as cloneSkeleton } from "three/examples/jsm/utils/SkeletonUtils.js";
 
 /**
  * True 3D battle VFX — soft Points + mesh cores/rings in world space.
@@ -51,21 +54,44 @@ type MeshFx = {
   id: number;
   obj: THREE.Object3D;
   until: number;
-  kind: "ring" | "core" | "flash" | "spirit";
+  kind: "ring" | "core" | "flash" | "spirit" | "spin";
   born: number;
   lifeMs: number;
-  // ring
+  // ring / spin
   maxScale?: number;
+  spinSpeed?: number;
   // core / spirit flight
   from?: THREE.Vector3;
   to?: THREE.Vector3;
   arc?: number;
   side?: number;
-  // volumetric dragon spirit (ribbon along flight path)
+  // spirit: form rồi bay
+  formMs?: number;
+  flightDelayMs?: number;
+  /** +1 bay về +X (địch→ta), −1 bay về −X (ta→địch) — khóa lúc spawn */
+  facing?: number;
+  // volumetric dragon spirit
   segments?: THREE.Object3D[];
   segSpacing?: number;
   baseScale?: number;
   baseOpacity?: number;
+  // soft sheet animation (hon_rong pack)
+  frames?: THREE.Texture[];
+  /** UV-lật ngang — Sprite shader bỏ qua scale.x âm (dùng length()) */
+  framesFlip?: THREE.Texture[];
+  frameI?: number;
+  nextFrame?: number;
+  frameMs?: number;
+  spriteMat?: THREE.SpriteMaterial;
+  altMats?: THREE.SpriteMaterial[];
+  altFrames?: THREE.Texture[][];
+  altFramesFlip?: THREE.Texture[][];
+  /** True = bay GLB mesh (không flipbook sprite) */
+  mesh3d?: boolean;
+  /** Cộng thêm vào yaw khi mặt mũi model không khớp +Z */
+  yawOffset?: number;
+  /** SkinnedMesh — cập nhật mỗi khung */
+  mixer?: THREE.AnimationMixer;
 };
 
 const ACTIVE_EMIT: Emitter[] = [];
@@ -73,6 +99,214 @@ const ACTIVE_MESH: MeshFx[] = [];
 const ACTIVE_HANDLES: Fx3dHandle[] = [];
 const PENDING_TIMERS: number[] = [];
 let nextId = 1;
+
+const _texLoader = new THREE.TextureLoader();
+const _texCache = new Map<string, THREE.Texture>();
+
+/** Soft volumetric Hồn packs — gen: `npm run gen:hon-packs` */
+export type HonPackId = "hon_rong" | "hon_xa" | "hon_ho" | "hon_soi" | "hon_thuy" | "hon_loi" | "hon_phong";
+
+type HonPackPaths = {
+  serpent: string[];
+  mist: string[];
+  sparkle: string[];
+  ring: string[];
+  crescent: string[];
+  orb: string;
+  tint: number;
+  flash: string;
+  /** GLB hồn bay — bắt buộc 3D CC0, không procedural */
+  glb: string;
+  /** Emissive nhẹ khi bay (linh khí) */
+  emissive: number;
+  yawOffset: number;
+};
+
+function honPaths(
+  id: HonPackId,
+  tint: number,
+  flash: string,
+  glb: string,
+  emissive: number,
+  yawOffset = 0
+): HonPackPaths {
+  const pad = (n: number) => String(n).padStart(2, "0");
+  const base = `assets/fx/${id}`;
+  return {
+    serpent: [1, 2, 3, 4, 5, 6, 7, 8].map((i) => `${base}/serpent_${pad(i)}.png`),
+    mist: [1, 2, 3, 4].map((i) => `${base}/mist_${pad(i)}.png`),
+    sparkle: [1, 2, 3, 4].map((i) => `${base}/sparkle_${pad(i)}.png`),
+    ring: [1, 2, 3, 4].map((i) => `${base}/ring_${pad(i)}.png`),
+    crescent: [1, 2, 3].map((i) => `${base}/crescent_${pad(i)}.png`),
+    orb: `${base}/orb.png`,
+    tint,
+    flash,
+    glb,
+    emissive,
+    yawOffset,
+  };
+}
+
+/** Charge/hit sheets vẫn dùng sprite CC0; thân hồn bay = GLB trong hon_3d/ */
+const HON_PACKS: Record<HonPackId, HonPackPaths> = {
+  // dragon = Loong Á Đông (Grab3D CC0); yaw 0 = mũi theo +Z local
+  hon_rong: honPaths("hon_rong", 0xff8a3a, "fire", "assets/fx/hon_3d/dragon.glb", 0xff4a12, 0),
+  hon_xa: honPaths("hon_xa", 0x6ee7a8, "green_poison", "assets/fx/hon_3d/snake.glb", 0x22c55e, 0),
+  hon_ho: honPaths("hon_ho", 0xfbbf24, "tiger", "assets/fx/hon_3d/tiger.glb", 0xf59e0b, 0),
+  hon_soi: honPaths("hon_soi", 0xcbd5e1, "wolf", "assets/fx/hon_3d/wolf.glb", 0x94a3b8, 0),
+  hon_thuy: honPaths("hon_thuy", 0x38bdf8, "blue_water", "assets/fx/hon_3d/fish.glb", 0x0ea5e9, 0),
+  hon_loi: honPaths("hon_loi", 0xfde047, "thunder", "assets/fx/hon_3d/dragon.glb", 0xfacc15, 0),
+  hon_phong: honPaths("hon_phong", 0xa5f3fc, "whirlwind", "assets/fx/hon_3d/wind.glb", 0x67e8f9, 0),
+};
+
+const _gltfLoader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
+
+type HonGlbTemplate = {
+  root: THREE.Object3D;
+  clips: THREE.AnimationClip[];
+};
+
+const _honGlbCache = new Map<string, Promise<HonGlbTemplate>>();
+
+function loadHonGlbTemplate(url: string): Promise<HonGlbTemplate> {
+  let hit = _honGlbCache.get(url);
+  if (hit) return hit;
+  hit = _gltfLoader.loadAsync(url).then((gltf) => {
+    const root = gltf.scene || gltf.scenes[0];
+    root.updateMatrixWorld(true);
+    const drop: THREE.Object3D[] = [];
+    root.traverse((o) => {
+      if ((o as THREE.Light).isLight || (o as THREE.Camera).isCamera) drop.push(o);
+    });
+    for (const o of drop) o.removeFromParent();
+    return { root, clips: gltf.animations?.slice() || [] };
+  });
+  _honGlbCache.set(url, hit);
+  return hit;
+}
+
+function makeHonMaterial(src: THREE.Material | null, glow: THREE.Color): THREE.MeshBasicMaterial {
+  const std = src as THREE.MeshStandardMaterial | null;
+  const hasMap = !!std?.map;
+  const col = std?.color ? std.color.clone() : glow.clone();
+  // Có texture (Loong…) → giữ màu gốc; không map → pha glow mạnh hơn
+  col.lerp(glow, hasMap ? 0.18 : 0.5);
+  const basic = new THREE.MeshBasicMaterial({
+    color: col,
+    map: std?.map || null,
+    transparent: true,
+    opacity: hasMap ? 1 : 0.94,
+    depthWrite: false,
+    depthTest: false,
+    side: THREE.DoubleSide,
+    fog: false,
+    toneMapped: false,
+  });
+  if (basic.map) basic.map.colorSpace = THREE.SRGBColorSpace;
+  basic.userData.baseOp = hasMap ? 1 : 0.94;
+  return basic;
+}
+
+function normalizeHonRoot(root: THREE.Object3D, targetSize: number): THREE.Group {
+  root.updateMatrixWorld(true);
+  const box = new THREE.Box3().setFromObject(root);
+  const size = box.getSize(new THREE.Vector3());
+  const center = box.getCenter(new THREE.Vector3());
+  const longest = Math.max(size.x, size.y, size.z, 1e-4);
+  const inner = new THREE.Group();
+  inner.position.set(-center.x, -box.min.y, -center.z);
+  inner.add(root);
+  const wrap = new THREE.Group();
+  wrap.add(inner);
+  wrap.scale.setScalar(targetSize / longest);
+  const group = new THREE.Group();
+  group.name = "fx3d-hon-glb";
+  group.renderOrder = 120;
+  group.add(wrap);
+  return group;
+}
+
+/**
+ * Static mesh (Loong…): clone + material unlit.
+ * Skinned (rồng Tây cũ / xà / sói): flatten bind-pose khỏi hierarchy xương.
+ */
+function buildHon3dSpirit(
+  template: HonGlbTemplate,
+  targetSize: number,
+  glow: number
+): { group: THREE.Group; mixer: THREE.AnimationMixer | null } {
+  const clone = cloneSkeleton(template.root);
+  clone.updateMatrixWorld(true);
+  const glowCol = new THREE.Color(glow);
+
+  let hasSkinned = false;
+  clone.traverse((o) => {
+    if ((o as THREE.SkinnedMesh).isSkinnedMesh) hasSkinned = true;
+  });
+
+  if (!hasSkinned) {
+    clone.traverse((o) => {
+      const mesh = o as THREE.Mesh;
+      if (!mesh.isMesh) return;
+      const srcMat = Array.isArray(mesh.material) ? mesh.material[0] : mesh.material;
+      mesh.material = makeHonMaterial(srcMat, glowCol);
+      mesh.frustumCulled = false;
+      mesh.renderOrder = 120;
+      mesh.castShadow = false;
+      mesh.receiveShadow = false;
+    });
+    return { group: normalizeHonRoot(clone, targetSize), mixer: null };
+  }
+
+  // Skinned → flatten
+  const shell = new THREE.Group();
+  shell.name = "hon-parts";
+  clone.traverse((o) => {
+    const mesh = o as THREE.Mesh;
+    if (!mesh.isMesh || !mesh.geometry) return;
+    const src = mesh.geometry;
+    if (!src.getAttribute("position")) return;
+    const g = src.clone();
+    g.deleteAttribute("skinIndex");
+    g.deleteAttribute("skinWeight");
+    mesh.updateWorldMatrix(true, false);
+    g.applyMatrix4(mesh.matrixWorld);
+    const srcMat = Array.isArray(mesh.material) ? mesh.material[0] : mesh.material;
+    const part = new THREE.Mesh(g, makeHonMaterial(srcMat, glowCol));
+    part.name = mesh.name || "hon-part";
+    part.frustumCulled = false;
+    part.renderOrder = 120;
+    shell.add(part);
+  });
+  return { group: normalizeHonRoot(shell, targetSize), mixer: null };
+}
+
+
+function loadFxTex(url: string): Promise<THREE.Texture> {
+  const hit = _texCache.get(url);
+  if (hit) return Promise.resolve(hit);
+  return new Promise((resolve, reject) => {
+    _texLoader.load(
+      url,
+      (tex) => {
+        tex.colorSpace = THREE.SRGBColorSpace;
+        tex.magFilter = THREE.LinearFilter;
+        tex.minFilter = THREE.LinearMipmapLinearFilter;
+        tex.generateMipmaps = true;
+        tex.premultiplyAlpha = true;
+        tex.needsUpdate = true;
+        _texCache.set(url, tex);
+        resolve(tex);
+      },
+      undefined,
+      reject
+    );
+  });
+}
+
+async function loadFrameSet(urls: string[]): Promise<THREE.Texture[]> {
+  return Promise.all(urls.map((u) => loadFxTex(u)));
+}
 
 function trackTimer(ms: number, fn: () => void): number {
   const tid = window.setTimeout(() => {
@@ -160,6 +394,19 @@ export function resolveFx3dStyle(opts: {
   if (motif === "pierce" || flash === "gold_pierce") return "rush";
   return "slash";
 }
+
+/** Map style 3D → pack hồn (null = không dùng spirit sequence). */
+function honPackForStyle(style: Fx3dStyle, flash?: string): HonPackId | null {
+  const f = (flash || "").toLowerCase();
+  if (style === "breath") return "hon_rong";
+  if (style === "poison") return "hon_xa";
+  if (style === "tide") return "hon_thuy";
+  if (style === "whirl") return "hon_phong";
+  if (style === "roar") return f === "wolf" ? "hon_soi" : "hon_ho";
+  if (style === "beam" && (f === "thunder" || f === "storm")) return "hon_loi";
+  return null;
+}
+
 const _tmp = new THREE.Vector3();
 const _tmp2 = new THREE.Vector3();
 const _col = new THREE.Color();
@@ -213,8 +460,49 @@ function getStreakMap(): THREE.Texture {
   return streakMap;
 }
 
-function glowSphereMat(color: number, opacity: number): THREE.MeshBasicMaterial {
-  return new THREE.MeshBasicMaterial({
+/**
+ * Quỹ đạo hồn long — arc + uốn + xoắn linh khí (concept Hồn Long Ngâm).
+ * spiral: bán kính helix quanh đường bay.
+ */
+function sampleSpiritPath(
+  from: THREE.Vector3,
+  to: THREE.Vector3,
+  u: number,
+  arc: number,
+  side: number,
+  out: THREE.Vector3,
+  spiral = 0,
+  spiralPhase = 0
+): void {
+  const e = Math.max(0, Math.min(1, u));
+  out.copy(from).lerp(to, e);
+  out.y += Math.sin(e * Math.PI) * arc;
+  const dx = to.x - from.x;
+  const dz = to.z - from.z;
+  const len = Math.hypot(dx, dz) || 1;
+  const nx = -dz / len;
+  const nz = dx / len;
+  if (side) {
+    out.x += nx * Math.sin(e * Math.PI * 2.15) * side;
+    out.z += nz * Math.sin(e * Math.PI * 2.15) * side;
+  }
+  if (spiral > 0.001) {
+    const ang = e * Math.PI * 5.5 + spiralPhase;
+    out.x += nx * Math.cos(ang) * spiral;
+    out.y += Math.sin(ang) * spiral * 0.55;
+    out.z += nz * Math.cos(ang) * spiral;
+  }
+}
+
+function makeFxSprite(
+  map: THREE.Texture,
+  color: number,
+  opacity: number,
+  w: number,
+  h: number
+): THREE.Sprite {
+  const mat = new THREE.SpriteMaterial({
+    map,
     color,
     transparent: true,
     opacity,
@@ -222,114 +510,278 @@ function glowSphereMat(color: number, opacity: number): THREE.MeshBasicMaterial 
     blending: THREE.AdditiveBlending,
     fog: false,
   });
-}
-
-function softSprite(color: number, opacity: number, scale: number): THREE.Sprite {
-  const spr = new THREE.Sprite(
-    new THREE.SpriteMaterial({
-      map: getSoftMap(),
-      color,
-      transparent: true,
-      opacity,
-      depthWrite: false,
-      blending: THREE.AdditiveBlending,
-      fog: false,
-    })
-  );
-  spr.scale.setScalar(scale);
-  spr.renderOrder = 58;
+  const spr = new THREE.Sprite(mat);
+  spr.scale.set(w, h, 1);
+  spr.renderOrder = 60;
   return spr;
 }
 
-/** Sample quỹ đạo hồn long (arc + uốn ngang). */
-function sampleSpiritPath(
-  from: THREE.Vector3,
-  to: THREE.Vector3,
-  u: number,
-  arc: number,
-  side: number,
-  out: THREE.Vector3
-): void {
-  const e = Math.max(0, Math.min(1, u));
-  out.copy(from).lerp(to, e);
-  out.y += Math.sin(e * Math.PI) * arc;
-  if (side) {
-    const dx = to.x - from.x;
-    const dz = to.z - from.z;
-    const len = Math.hypot(dx, dz) || 1;
-    out.x += (-dz / len) * Math.sin(e * Math.PI * 2.15) * side;
-    out.z += (dx / len) * Math.sin(e * Math.PI * 2.15) * side;
-  }
+/** +1 = bay về +X (địch→ta), −1 = bay về −X (ta→địch). */
+function spiritFacing(from: THREE.Vector3, to: THREE.Vector3): number {
+  const dx = to.x - from.x;
+  if (Math.abs(dx) > 1e-4) return dx < 0 ? -1 : 1;
+  // Hiếm: cùng X — lấy theo Z, mặc định +X
+  const dz = to.z - from.z;
+  if (Math.abs(dz) > 1e-4) return dz < 0 ? -1 : 1;
+  return 1;
 }
 
 /**
- * Hồn rồng ethereal — chỉ soft glow (không silhouette vẽ tay).
- * segments[0]=đầu, [1..]=thân kéo dài theo path (tick đặt world pos).
+ * Flipbook packs cho chiêu KHÔNG phải hồn thú.
+ * Ưu tiên Brackeys (itch) đã slice → `assets/fx/itch/brackeys/{id}/`
+ * Fallback Pixel Ability FX Forge → `assets/fx/forge/{id}/`
  */
-function buildDragonSpiritGroup(
-  size: number,
-  opacity: number,
-  headOnly: boolean
-): { group: THREE.Group; segments: THREE.Object3D[]; segSpacing: number } {
-  const group = new THREE.Group();
-  group.name = "fx3d-dragon-spirit";
-  const segments: THREE.Object3D[] = [];
+type ForgePackId =
+  | "arcane_burst"
+  | "radiance_aura"
+  | "ward_barrier"
+  | "shadow_burst"
+  | "ember_burst"
+  | "blood_burst"
+  | "storm_burst"
+  | "earth_burst"
+  | "explosion_burst"
+  | "hit_burst";
 
-  // —— Đầu: lõi sáng + halo + sừng soft (ellipse glow, không nét vẽ) ——
-  const head = new THREE.Group();
-  head.userData.segI = 0;
-  head.userData.role = "head";
+/** Packs đã slice từ Brackeys VFX Bundle (có frame_XX.png). */
+const ITCH_BRACKETS: ReadonlySet<ForgePackId> = new Set([
+  "arcane_burst",
+  "radiance_aura",
+  "ward_barrier",
+  "shadow_burst",
+  "ember_burst",
+  "blood_burst",
+  "storm_burst",
+  "earth_burst",
+  "explosion_burst",
+  "hit_burst",
+]);
 
-  const headHalo = softSprite(0xffe08a, opacity * 0.7, size * 1.55);
-  head.add(headHalo);
-  const headMid = softSprite(0xfff6d0, opacity * 0.85, size * 0.95);
-  head.add(headMid);
-  const headCore = new THREE.Mesh(
-    new THREE.SphereGeometry(size * 0.14, 16, 12),
-    glowSphereMat(0xfffaf0, opacity * 0.9)
+function forgeFrameUrls(id: ForgePackId, n = 16): string[] {
+  const pad = (i: number) => String(i).padStart(2, "0");
+  const base = ITCH_BRACKETS.has(id)
+    ? `assets/fx/itch/brackeys/${id}`
+    : `assets/fx/forge/${id}`;
+  return Array.from({ length: n }, (_, i) => `${base}/frame_${pad(i + 1)}.png`);
+}
+
+/** Map style 3D → sheet pack (null = chỉ particle). */
+function forgePackForStyle(style: Fx3dStyle, flash?: string): ForgePackId | null {
+  const f = (flash || "").toLowerCase();
+  if (style === "bless") return "radiance_aura";
+  if (style === "barrier") return "ward_barrier";
+  if (style === "shadow") return "shadow_burst";
+  if (style === "nova") return "explosion_burst";
+  if (style === "beam") {
+    if (f === "thunder" || f === "storm") return "storm_burst";
+    if (f === "bagua" || f === "purple" || f === "violet" || f === "blue") return "arcane_burst";
+    return "arcane_burst";
+  }
+  if (style === "slash") {
+    if (f === "crimson" || f === "dark_red" || f === "red" || f === "gold_red") return "blood_burst";
+    if (f === "brown" || f === "iron") return "earth_burst";
+    return "hit_burst";
+  }
+  if (style === "rush" || style === "charge") return "earth_burst";
+  return null;
+}
+
+function emitForgeSheetAt(
+  scene: THREE.Scene,
+  at: THREE.Vector3,
+  pack: ForgePackId,
+  opts: {
+    durationMs?: number;
+    w?: number;
+    h?: number;
+    opacity?: number;
+    spin?: boolean;
+    y?: number;
+    delayMs?: number;
+    color?: number;
+    scale?: string | null;
+  } = {}
+): Fx3dHandle {
+  const mul = scaleMul(opts.scale);
+  const cancelled = { v: false };
+  const handles: Fx3dHandle[] = [];
+  const delayMs = opts.delayMs ?? 0;
+  const start = () => {
+    if (cancelled.v || !scene) return;
+    void loadFrameSet(forgeFrameUrls(pack))
+      .then((frames) => {
+        if (cancelled.v || !scene || !frames.length) return;
+        handles.push(
+          emitHonSheetAt(scene, at, frames, {
+            durationMs: opts.durationMs ?? 520,
+            w: (opts.w ?? 2.4) * mul,
+            h: (opts.h ?? 2.4) * mul,
+            opacity: opts.opacity ?? 0.92,
+            spin: opts.spin,
+            y: opts.y ?? 0.35,
+            color: opts.color ?? 0xffffff,
+          })
+        );
+      })
+      .catch(() => {});
+  };
+  if (delayMs > 0) {
+    const tid = trackTimer(delayMs, start);
+    return {
+      cancel() {
+        cancelled.v = true;
+        clearTimeout(tid);
+        handles.forEach((h) => h.cancel());
+      },
+    };
+  }
+  start();
+  return {
+    cancel() {
+      cancelled.v = true;
+      handles.forEach((h) => h.cancel());
+    },
+  };
+}
+
+/** Stylized Projectiles (itch) — pack đã curate dưới assets/fx/itch/stylized/ */
+function emitItchStylizedAt(
+  scene: THREE.Scene,
+  at: THREE.Vector3,
+  pack: string,
+  frameCount: number,
+  opts: {
+    durationMs?: number;
+    w?: number;
+    h?: number;
+    opacity?: number;
+    y?: number;
+    delayMs?: number;
+    color?: number;
+    scale?: string | null;
+  } = {}
+): Fx3dHandle {
+  const pad = (i: number) => String(i).padStart(2, "0");
+  const urls = Array.from(
+    { length: frameCount },
+    (_, i) => `assets/fx/itch/stylized/${pack}/frame_${pad(i + 1)}.png`
   );
-  head.add(headCore);
-
-  // Sừng = glow mềm kéo dài (không outline)
-  for (const ox of [-0.22, 0.22]) {
-    const horn = softSprite(0xffe8a8, opacity * 0.55, size * 0.42);
-    horn.scale.set(size * 0.22, size * 0.55, 1);
-    horn.position.set(ox * size, size * 0.38, 0);
-    head.add(horn);
+  const mul = scaleMul(opts.scale);
+  const cancelled = { v: false };
+  const handles: Fx3dHandle[] = [];
+  const delayMs = opts.delayMs ?? 0;
+  const start = () => {
+    if (cancelled.v || !scene) return;
+    void loadFrameSet(urls)
+      .then((frames) => {
+        if (cancelled.v || !scene || !frames.length) return;
+        handles.push(
+          emitHonSheetAt(scene, at, frames, {
+            durationMs: opts.durationMs ?? 480,
+            w: (opts.w ?? 2.2) * mul,
+            h: (opts.h ?? 2.2) * mul,
+            opacity: opts.opacity ?? 0.95,
+            y: opts.y ?? 0.4,
+            color: opts.color ?? 0xffffff,
+          })
+        );
+      })
+      .catch(() => {});
+  };
+  if (delayMs > 0) {
+    const tid = trackTimer(delayMs, start);
+    return {
+      cancel() {
+        cancelled.v = true;
+        clearTimeout(tid);
+        handles.forEach((h) => h.cancel());
+      },
+    };
   }
-  // Râu / mane wisps
-  for (const [ox, oy] of [
-    [-0.35, -0.05],
-    [0.35, -0.05],
-    [0, 0.35],
-  ] as const) {
-    const wisp = softSprite(0xff9a3a, opacity * 0.35, size * 0.5);
-    wisp.position.set(ox * size, oy * size, -size * 0.05);
-    head.add(wisp);
-  }
-  group.add(head);
-  segments.push(head);
+  start();
+  return {
+    cancel() {
+      cancelled.v = true;
+      handles.forEach((h) => h.cancel());
+    },
+  };
+}
 
-  // —— Thân: chuỗi orb mềm thon dần (đọc dáng rắn bay) ——
-  const bodyN = headOnly ? 3 : 16;
-  for (let i = 1; i <= bodyN; i++) {
-    const t = i / bodyN;
-    const seg = new THREE.Group();
-    seg.userData.segI = i;
-    seg.userData.role = "body";
-    const rad = size * (1.05 - t * 0.72);
-    const col = t < 0.25 ? 0xffd078 : t < 0.6 ? 0xff9a3a : 0xff6a20;
-    const halo = softSprite(col, opacity * (0.62 - t * 0.38), rad);
-    seg.add(halo);
-    if (t < 0.7) {
-      const core = softSprite(0xfff1c1, opacity * (0.4 - t * 0.25), rad * 0.45);
-      seg.add(core);
-    }
-    group.add(seg);
-    segments.push(seg);
-  }
+/** Sheet ground / spark — spin hoặc flash. */
+function emitHonSheetAt(
+  scene: THREE.Scene,
+  at: THREE.Vector3,
+  frames: THREE.Texture[],
+  opts: {
+    durationMs?: number;
+    w?: number;
+    h?: number;
+    opacity?: number;
+    spin?: boolean;
+    spinSpeed?: number;
+    y?: number;
+    delayMs?: number;
+    color?: number;
+  } = {}
+): Fx3dHandle {
+  if (!frames.length) return { cancel() {} };
+  const durationMs = opts.durationMs ?? 500;
+  const delayMs = opts.delayMs ?? 0;
+  const cancelled = { v: false };
+  const handles: Fx3dHandle[] = [];
 
-  return { group, segments, segSpacing: headOnly ? 0.03 : 0.038 };
+  const start = () => {
+    if (cancelled.v || !scene) return;
+    const spr = makeFxSprite(
+      frames[0],
+      opts.color ?? 0xff8a2a,
+      opts.opacity ?? 0.9,
+      opts.w ?? 2.2,
+      opts.h ?? 1.4
+    );
+    spr.position.copy(at);
+    spr.position.y += opts.y ?? 0.05;
+    const now = performance.now();
+    handles.push(
+      pushMesh(scene, {
+        id: nextId++,
+        obj: spr,
+        until: now + durationMs + 40,
+        kind: opts.spin ? "spin" : "flash",
+        born: now,
+        lifeMs: durationMs,
+        maxScale: 1.35,
+        spinSpeed: opts.spinSpeed ?? 2.2,
+        frames,
+        frameI: 0,
+        nextFrame: now + 70,
+        frameMs: 70,
+        spriteMat: spr.material as THREE.SpriteMaterial,
+        baseScale: 1,
+        baseOpacity: opts.opacity ?? 0.9,
+      })
+    );
+  };
+
+  if (delayMs > 0) {
+    const tid = trackTimer(delayMs, start);
+    return {
+      cancel() {
+        cancelled.v = true;
+        clearTimeout(tid);
+        const ti = PENDING_TIMERS.indexOf(tid);
+        if (ti >= 0) PENDING_TIMERS.splice(ti, 1);
+        handles.forEach((h) => h.cancel());
+      },
+    };
+  }
+  start();
+  return {
+    cancel() {
+      cancelled.v = true;
+      handles.forEach((h) => h.cancel());
+    },
+  };
 }
 
 function disposeFxObject(obj: THREE.Object3D): void {
@@ -351,7 +803,10 @@ function disposeFxObject(obj: THREE.Object3D): void {
 
 function flashPalette(flash?: string): { base: THREE.Color; hot: THREE.Color; cool: THREE.Color } {
   const f = (flash || "steel").toLowerCase();
-  if (f === "dragon" || f === "fire" || f === "fire_rain" || f === "orange")
+  // Hỏa Long — cam lửa (không trắng / không lam linh)
+  if (f === "dragon")
+    return { base: new THREE.Color(0xff7a2e), hot: new THREE.Color(0xffe08a), cool: new THREE.Color(0xdc2626) };
+  if (f === "fire" || f === "fire_rain" || f === "orange")
     return { base: new THREE.Color(0xff7a2e), hot: new THREE.Color(0xffe08a), cool: new THREE.Color(0xb91c1c) };
   if (f === "tiger" || f === "gold" || f === "gold_soft" || f === "yellow")
     return { base: new THREE.Color(0xfbbf24), hot: new THREE.Color(0xfff7ed), cool: new THREE.Color(0xb45309) };
@@ -563,7 +1018,8 @@ export function emitCoreFlight3d(
 }
 
 /**
- * Hồn rồng vàng ethereal — đầu dẫn + thân soft kéo dài theo quỹ đạo caster→địch.
+ * Hồn spirit bay — GLB CC0 form tại caster rồi lao arc vào địch.
+ * Không procedural creature; thiếu GLB thì bỏ (không fallback blob).
  */
 export function emitDragonSpirit3d(
   scene: THREE.Scene,
@@ -578,45 +1034,63 @@ export function emitDragonSpirit3d(
     delayMs?: number;
     headOnly?: boolean;
     opacity?: number;
+    formMs?: number;
+    pack?: HonPackId;
   } = {}
 ): Fx3dHandle {
+  const pack = HON_PACKS[opts.pack || "hon_rong"];
   const mul = scaleMul(opts.scale);
-  const durationMs = opts.durationMs ?? 980;
+  const formMs = opts.formMs ?? 0;
+  const flightMs = opts.durationMs ?? 980;
+  const lifeMs = formMs + flightMs;
   const delayMs = opts.delayMs ?? 0;
-  const size = (opts.size ?? 1.35) * mul;
+  const size = (opts.size ?? 1.55) * mul;
   const opacity = opts.opacity ?? 1;
   const cancelled = { v: false };
   const handles: Fx3dHandle[] = [];
 
   const start = () => {
     if (cancelled.v || !scene) return;
-    const { group, segments, segSpacing } = buildDragonSpiritGroup(
-      size,
-      opacity,
-      !!opts.headOnly
-    );
-    // Group chỉ là container — từng đốt đặt world pos trong tick
-    group.position.set(0, 0, 0);
-
-    const now = performance.now();
-    handles.push(
-      pushMesh(scene, {
-        id: nextId++,
-        obj: group,
-        until: now + durationMs + 80,
-        kind: "spirit",
-        born: now,
-        lifeMs: durationMs,
-        from: from.clone(),
-        to: to.clone(),
-        arc: opts.arc ?? 0.65,
-        side: opts.side ?? 0.22,
-        segments,
-        segSpacing,
-        baseScale: 1,
-        baseOpacity: opacity,
+    void loadHonGlbTemplate(pack.glb)
+      .then((tpl) => {
+        if (cancelled.v || !scene) return;
+        const { group, mixer } = buildHon3dSpirit(tpl, size, pack.emissive);
+        group.position.copy(from);
+        group.position.y += 0.7;
+        group.scale.setScalar(formMs > 0 ? 0.55 : 1);
+        const facing = spiritFacing(from, to);
+        const dx = to.x - from.x;
+        const dz = to.z - from.z;
+        group.rotation.y = Math.atan2(dx, dz) + pack.yawOffset;
+        const now = performance.now();
+        handles.push(
+          pushMesh(scene, {
+            id: nextId++,
+            obj: group,
+            until: now + lifeMs + 80,
+            kind: "spirit",
+            born: now,
+            lifeMs,
+            from: from.clone(),
+            to: to.clone(),
+            arc: opts.arc ?? 0.72,
+            side: opts.side ?? 0.08,
+            formMs,
+            flightDelayMs: formMs,
+            facing,
+            segments: [group],
+            segSpacing: 0,
+            baseScale: 1,
+            baseOpacity: opacity,
+            mesh3d: true,
+            yawOffset: pack.yawOffset,
+            mixer: mixer || undefined,
+          })
+        );
       })
-    );
+      .catch((err) => {
+        console.warn("[hon-3d] GLB load failed", pack.glb, err);
+      });
   };
 
   if (delayMs > 0) {
@@ -638,6 +1112,196 @@ export function emitDragonSpirit3d(
       handles.forEach((h) => h.cancel());
     },
   };
+}
+
+/**
+ * Chuỗi Hồn 4 giai đoạn — dùng cho rồng / xà / hổ / sói / thủy / lôi / phong.
+ */
+export function emitHonSpiritSequence3d(
+  scene: THREE.Scene,
+  from: THREE.Vector3,
+  to: THREE.Vector3,
+  opts: { scale?: string | null; pack?: HonPackId } = {}
+): Fx3dHandle {
+  const packId = opts.pack || "hon_rong";
+  const pack = HON_PACKS[packId];
+  const tint = pack.tint;
+  const tintHot = new THREE.Color(tint).lerp(new THREE.Color(0xfffbeb), 0.45).getHex();
+  const tintDeep = new THREE.Color(tint).multiplyScalar(0.7).getHex();
+  const mul = scaleMul(opts.scale);
+  const CHARGE_MS = 420;
+  const FORM_MS = 400;
+  const FLIGHT_MS = 1050;
+  const handles: Fx3dHandle[] = [];
+  const timers: number[] = [];
+  const cancelled = { v: false };
+  const ground = from.clone();
+  ground.y = Math.min(from.y, 0.12);
+
+  const start = () => {
+    if (cancelled.v || !scene) return;
+    void Promise.all([
+      loadFrameSet(pack.ring),
+      loadFrameSet(pack.crescent),
+      loadFrameSet(pack.sparkle),
+      loadFxTex(pack.orb),
+    ]).then(([rings, crescents, sparkles, orbG]) => {
+      if (cancelled.v || !scene) return;
+
+      if (rings.length) {
+        handles.push(
+          emitHonSheetAt(scene, ground, rings, {
+            durationMs: CHARGE_MS + FORM_MS,
+            w: 2.8 * mul,
+            h: 1.55 * mul,
+            opacity: 0.85,
+            spin: true,
+            spinSpeed: 2.8,
+            y: 0.04,
+            color: tint,
+          })
+        );
+      }
+      if (crescents.length) {
+        handles.push(
+          emitHonSheetAt(scene, ground, crescents, {
+            durationMs: CHARGE_MS + 120,
+            w: 2.2 * mul,
+            h: 1.2 * mul,
+            opacity: 0.7,
+            spin: true,
+            spinSpeed: -3.4,
+            y: 0.08,
+            delayMs: 60,
+            color: tintDeep,
+          })
+        );
+      }
+      if (sparkles.length) {
+        handles.push(
+          emitHonSheetAt(scene, from, sparkles, {
+            durationMs: CHARGE_MS,
+            w: 1.6 * mul,
+            h: 1.6 * mul,
+            opacity: 0.8,
+            y: 0.35,
+            color: tintHot,
+          })
+        );
+        handles.push(
+          emitHonSheetAt(scene, from, sparkles, {
+            durationMs: CHARGE_MS - 40,
+            w: 1.2 * mul,
+            h: 1.2 * mul,
+            opacity: 0.55,
+            y: 0.55,
+            delayMs: 90,
+            color: tint,
+          })
+        );
+      }
+
+      timers.push(
+        trackTimer(CHARGE_MS * 0.65, () => {
+          if (cancelled.v || !scene) return;
+          handles.push(
+            emitDragonSpirit3d(scene, from, to, {
+              durationMs: FLIGHT_MS,
+              formMs: FORM_MS,
+              scale: opts.scale,
+              arc: 0.85,
+              side: 0.1,
+              size: 4.2,
+              pack: packId,
+            })
+          );
+        })
+      );
+
+      const hitAt = CHARGE_MS * 0.65 + FORM_MS + FLIGHT_MS - 40;
+      timers.push(
+        trackTimer(hitAt, () => {
+          if (cancelled.v || !scene) return;
+          const hit = to.clone();
+          hit.y += 0.2;
+          const orbSpr = makeFxSprite(orbG, tintHot, 0.95, 0.6 * mul, 0.6 * mul);
+          orbSpr.position.copy(hit);
+          const now = performance.now();
+          handles.push(
+            pushMesh(scene, {
+              id: nextId++,
+              obj: orbSpr,
+              until: now + 420,
+              kind: "flash",
+              born: now,
+              lifeMs: 420,
+              spriteMat: orbSpr.material as THREE.SpriteMaterial,
+              baseOpacity: 0.95,
+            })
+          );
+          const orbOuter = makeFxSprite(orbG, tintDeep, 0.75, 1.0 * mul, 1.0 * mul);
+          orbOuter.position.copy(hit);
+          handles.push(
+            pushMesh(scene, {
+              id: nextId++,
+              obj: orbOuter,
+              until: now + 480,
+              kind: "flash",
+              born: now,
+              lifeMs: 480,
+              spriteMat: orbOuter.material as THREE.SpriteMaterial,
+              baseOpacity: 0.75,
+            })
+          );
+          if (sparkles.length) {
+            handles.push(
+              emitHonSheetAt(scene, hit, sparkles.slice(2), {
+                durationMs: 400,
+                w: 2.4 * mul,
+                h: 2.4 * mul,
+                opacity: 0.9,
+                y: 0.1,
+                color: tintHot,
+              })
+            );
+          }
+          handles.push(emitBurst3d(scene, to, pack.flash, opts.scale));
+          handles.push(
+            emitShockwave3d(scene, to, {
+              flash: pack.flash,
+              scale: opts.scale,
+              radius: 2.0,
+              durationMs: 560,
+            })
+          );
+          handles.push(emitDust3d(scene, to, opts.scale));
+        })
+      );
+    });
+  };
+
+  start();
+  return {
+    cancel() {
+      cancelled.v = true;
+      timers.forEach((tid) => {
+        clearTimeout(tid);
+        const ti = PENDING_TIMERS.indexOf(tid);
+        if (ti >= 0) PENDING_TIMERS.splice(ti, 1);
+      });
+      handles.forEach((h) => h.cancel());
+    },
+  };
+}
+
+/** @deprecated dùng emitHonSpiritSequence3d({ pack: 'hon_rong' }) */
+export function emitHonRongSequence3d(
+  scene: THREE.Scene,
+  from: THREE.Vector3,
+  to: THREE.Vector3,
+  opts: { scale?: string | null } = {}
+): Fx3dHandle {
+  return emitHonSpiritSequence3d(scene, from, to, { ...opts, pack: "hon_rong" });
 }
 
 /** Impact / muzzle flash — brief bright disc + points. */
@@ -820,6 +1484,7 @@ export function playSkillFx3d(params: {
   style?: Fx3dStyle;
 }): Fx3dHandle {
   const handles: Fx3dHandle[] = [];
+  const timers: number[] = [];
   const flash = params.flash || "steel";
   const style = params.style || "slash";
   const phase = params.phase || "full";
@@ -830,54 +1495,64 @@ export function playSkillFx3d(params: {
       handles.push(emitShockwave3d(params.scene, params.from, { flash: "shield", scale, radius: 1.6, durationMs: 900 }));
       handles.push(emitFlashDisc3d(params.scene, params.from, "shield", scale));
       handles.push(emitBurst3d(params.scene, params.from, "gold_soft", scale));
+      handles.push(
+        emitForgeSheetAt(params.scene, params.from, "ward_barrier", {
+          durationMs: 720,
+          w: 2.8,
+          h: 2.8,
+          y: 0.5,
+          spin: true,
+          scale,
+          color: 0xdbeafe,
+        })
+      );
       return;
     }
     if (style === "bless") {
       handles.push(emitShockwave3d(params.scene, params.to, { flash: flash || "gold_soft", scale, radius: 1.2, durationMs: 720 }));
       handles.push(emitFlashDisc3d(params.scene, params.to, flash || "gold_soft", scale));
       handles.push(emitBurst3d(params.scene, params.to, flash || "gold_soft", scale));
+      handles.push(
+        emitForgeSheetAt(params.scene, params.to, "radiance_aura", {
+          durationMs: 680,
+          w: 2.6,
+          h: 2.6,
+          y: 0.45,
+          spin: true,
+          scale,
+          color: 0xfde68a,
+        })
+      );
       return;
+    }
+    // Hồn packs (rồng/xà/hổ/sói/thủy/lôi/phong) — 4 pha, tự nổ lúc tới đích
+    {
+      const hon = honPackForStyle(style, flash);
+      if (hon) {
+        if (phase === "impact") return;
+        handles.push(emitHonSpiritSequence3d(params.scene, params.from, params.to, { scale, pack: hon }));
+        return;
+      }
     }
     if (style === "roar") {
       handles.push(emitShockwave3d(params.scene, params.from, { flash, scale, radius: 3.0, durationMs: 680 }));
       handles.push(emitBurst3d(params.scene, params.from, flash, scale));
       handles.push(emitDust3d(params.scene, params.from, scale));
-      handles.push(
-        emitTrail3d(params.scene, params.from, params.to, {
-          flash,
-          durationMs: 400,
-          density: 7,
-          arc: 0.22,
-          scale,
-        })
-      );
-      return;
-    }
-    if (style === "breath") {
-      const flightMs = 1050;
-      handles.push(
-        emitDragonSpirit3d(params.scene, params.from, params.to, {
-          durationMs: flightMs,
-          scale,
-          arc: 0.75,
-          side: 0.32,
-          size: 1.45,
-        })
-      );
-      handles.push(
-        emitTrail3d(params.scene, params.from, params.to, {
-          flash: "dragon",
-          durationMs: flightMs,
-          density: 7,
-          arc: 0.6,
-          scale,
-        })
-      );
       return;
     }
     if (style === "rush" || style === "charge") {
       handles.push(emitDust3d(params.scene, params.from, scale));
       handles.push(emitFlashDisc3d(params.scene, params.from, flash, scale));
+      handles.push(
+        emitForgeSheetAt(params.scene, params.from, "earth_burst", {
+          durationMs: 360,
+          w: 1.8,
+          h: 1.8,
+          y: 0.25,
+          scale,
+          color: 0xf5d0a9,
+        })
+      );
       const dur = style === "charge" ? 360 : 280;
       handles.push(
         emitCoreFlight3d(params.scene, params.from, params.to, {
@@ -905,6 +1580,19 @@ export function playSkillFx3d(params: {
     }
     if (style === "beam" || style === "tide" || style === "poison" || style === "shadow") {
       handles.push(emitFlashDisc3d(params.scene, params.from, flash, scale));
+      const forge = forgePackForStyle(style, flash);
+      if (forge) {
+        handles.push(
+          emitForgeSheetAt(params.scene, params.from, forge, {
+            durationMs: 420,
+            w: 2.0,
+            h: 2.0,
+            y: 0.4,
+            scale,
+            color: 0xffffff,
+          })
+        );
+      }
       const dur = style === "beam" ? 420 : 480;
       handles.push(
         emitCoreFlight3d(params.scene, params.from, params.to, {
@@ -929,6 +1617,16 @@ export function playSkillFx3d(params: {
     }
     if (style === "nova") {
       handles.push(emitFlashDisc3d(params.scene, params.from, flash, scale));
+      handles.push(
+        emitForgeSheetAt(params.scene, params.from, "explosion_burst", {
+          durationMs: 560,
+          w: 2.8,
+          h: 2.8,
+          y: 0.4,
+          scale,
+          color: 0xffedd5,
+        })
+      );
       handles.push(
         emitTrail3d(params.scene, params.from, params.to, {
           flash,
@@ -955,9 +1653,34 @@ export function playSkillFx3d(params: {
       return;
     }
 
-    // slash — wide crescent
+    // slash — wide crescent + forge impact sheet
     handles.push(emitDust3d(params.scene, params.from, scale));
     handles.push(emitFlashDisc3d(params.scene, params.from, flash, scale));
+    {
+      const forge = forgePackForStyle("slash", flash);
+      if (forge) {
+        handles.push(
+          emitForgeSheetAt(params.scene, params.from, forge, {
+            durationMs: 400,
+            w: 2.2,
+            h: 2.2,
+            y: 0.4,
+            scale,
+            color: 0xffffff,
+          })
+        );
+      }
+      handles.push(
+        emitItchStylizedAt(params.scene, params.from, "slash_a", 2, {
+          durationMs: 380,
+          w: 2.4,
+          h: 2.4,
+          y: 0.45,
+          scale,
+          color: 0xffffff,
+        })
+      );
+    }
     handles.push(
       emitTrail3d(params.scene, params.from, params.to, {
         flash,
@@ -983,29 +1706,48 @@ export function playSkillFx3d(params: {
   };
 
   const runImpact = () => {
+    // Hồn spirit tự nổ khi tới đích — tránh nổ sớm
+    if (honPackForStyle(style, flash)) return;
     handles.push(emitBurst3d(params.scene, params.to, flash, scale));
     handles.push(emitDust3d(params.scene, params.to, scale));
-    if (style === "breath") {
+    const forgeHit = forgePackForStyle(style, flash);
+    if (forgeHit && style !== "barrier" && style !== "bless") {
       handles.push(
-        emitDragonSpirit3d(params.scene, params.to, params.to, {
-          durationMs: 320,
-          scale,
-          arc: 0,
-          side: 0,
-          size: 1.6,
-          headOnly: true,
-          opacity: 0.95,
-        })
-      );
-      handles.push(
-        emitShockwave3d(params.scene, params.to, {
-          flash: "dragon",
-          scale,
-          radius: 1.7,
+        emitForgeSheetAt(params.scene, params.to, forgeHit, {
           durationMs: 480,
+          w: 2.5,
+          h: 2.5,
+          y: 0.35,
+          scale,
+          color: 0xffffff,
         })
       );
-    } else if (style === "roar" || style === "nova" || style === "whirl") {
+    }
+    const fHit = (flash || "").toLowerCase();
+    if (fHit === "thunder" || fHit === "storm") {
+      handles.push(
+        emitItchStylizedAt(params.scene, params.to, "lightning", 1, {
+          durationMs: 420,
+          w: 2.6,
+          h: 1.4,
+          y: 0.55,
+          scale,
+          color: 0xe9d5ff,
+        })
+      );
+    } else if (style === "beam" || style === "bless") {
+      handles.push(
+        emitItchStylizedAt(params.scene, params.to, "flash", 3, {
+          durationMs: 400,
+          w: 2.0,
+          h: 2.0,
+          y: 0.4,
+          scale,
+          color: 0xffffff,
+        })
+      );
+    }
+    if (style === "roar" || style === "nova" || style === "whirl") {
       handles.push(
         emitShockwave3d(params.scene, params.to, {
           flash,
@@ -1029,18 +1771,19 @@ export function playSkillFx3d(params: {
     }
   };
 
-  const timers: number[] = [];
   if (phase === "emission") runEmission();
   else if (phase === "impact") runImpact();
   else {
     runEmission();
-    const delay =
-      style === "breath" ? 980 : style === "rush" || style === "charge" ? 280 : style === "nova" ? 480 : 380;
-    timers.push(
-      trackTimer(delay, () => {
-        if (params.scene) runImpact();
-      })
-    );
+    // Hồn packs đã tự schedule impact trong emission
+    if (!honPackForStyle(style, flash)) {
+      const delay = style === "rush" || style === "charge" ? 280 : style === "nova" ? 480 : 380;
+      timers.push(
+        trackTimer(delay, () => {
+          if (params.scene) runImpact();
+        })
+      );
+    }
   }
 
   const handle: Fx3dHandle = {
@@ -1150,46 +1893,105 @@ export function tickBattleVfx3d(_scene: THREE.Scene, now: number, dt: number): v
         const base = m === fx.obj.children[1] ? 0.95 : 0.35;
         mat.opacity = t < 0.82 ? base : Math.max(0, base * (1 - (t - 0.82) / 0.18));
       });
+    } else if (fx.kind === "spin") {
+      const spr = fx.obj as THREE.Sprite;
+      const mat = spr.isSprite ? (spr.material as THREE.SpriteMaterial) : null;
+      if (mat && fx.frames && fx.frames.length > 1 && now >= (fx.nextFrame || 0)) {
+        fx.frameI = ((fx.frameI || 0) + 1) % fx.frames.length;
+        mat.map = fx.frames[fx.frameI];
+        mat.needsUpdate = true;
+        fx.nextFrame = now + (fx.frameMs || 70);
+      }
+      if (mat) {
+        mat.rotation += (fx.spinSpeed || 2.2) * dtSec;
+        const pulse = 0.85 + 0.2 * Math.sin(t * Math.PI * 4);
+        const grow = 0.7 + ease * ((fx.maxScale || 1.35) - 0.7);
+        if (!spr.userData.baseW) {
+          spr.userData.baseW = spr.scale.x;
+          spr.userData.baseH = spr.scale.y;
+        }
+        spr.scale.set(spr.userData.baseW * grow * pulse, spr.userData.baseH * grow * pulse, 1);
+        const baseOp = fx.baseOpacity ?? 0.9;
+        mat.opacity = Math.max(0, baseOp * (t < 0.75 ? 1 : 1 - (t - 0.75) / 0.25));
+      }
     } else if (fx.kind === "spirit" && fx.from && fx.to) {
-      const headU = ease;
-      const spacing = fx.segSpacing ?? 0.04;
-      const arc = fx.arc || 0.55;
+      const formMs = fx.formMs || 0;
+      const age = now - fx.born;
+      const inForm = formMs > 0 && age < formMs;
+      // form: đứng tại caster; bay: u 0→1 trên phần flight còn lại
+      const flightAge = Math.max(0, age - (fx.flightDelayMs || formMs));
+      const flightLife = Math.max(1, fx.lifeMs - (fx.flightDelayMs || formMs));
+      const headU = inForm
+        ? 0
+        : (() => {
+            const u = Math.min(1, flightAge / flightLife);
+            return u * u * (3 - 2 * u);
+          })();
+      const arc = fx.arc || 0.35;
       const side = fx.side || 0;
-      const pulse = 1 + 0.05 * Math.sin(t * Math.PI * 4);
+      const pulse = 1 + 0.035 * Math.sin(t * Math.PI * 3);
       const fade = t > 0.88 ? Math.max(0, 1 - (t - 0.88) / 0.12) : 1;
 
-      if (fx.segments) {
-        for (const seg of fx.segments) {
-          const i = (seg.userData.segI as number) || 0;
-          const u = Math.max(0, headU - i * spacing);
-          sampleSpiritPath(fx.from, fx.to, u, arc, side, _tmp);
-          // sóng thân nhẹ theo thời gian
-          _tmp.y += Math.sin(now * 0.009 + i * 0.55) * 0.06;
-          seg.position.copy(_tmp);
-          seg.visible = u > 0.001 || i === 0;
-          const roleScale = seg.userData.role === "head" ? 1.05 * pulse : 1;
-          seg.scale.setScalar(roleScale * (fx.baseScale || 1));
-        }
+      if (inForm) {
+        _tmp.copy(fx.from);
+        _tmp.y += 0.35 + Math.sin((age / formMs) * Math.PI) * 0.18;
+      } else {
+        sampleSpiritPath(fx.from, fx.to, headU, arc, side, _tmp, 0.04, now * 0.004);
       }
+      fx.obj.position.copy(_tmp);
 
+      const face = fx.facing ?? spiritFacing(fx.from, fx.to);
+      fx.facing = face;
+      const formScale = inForm ? 0.55 + 0.45 * Math.min(1, age / formMs) : 1;
+      const s = pulse * (fx.baseScale || 1) * formScale;
+      fx.obj.scale.setScalar(s);
+      if (fx.mixer) fx.mixer.update(dtSec);
+      // Hướng mũi theo vận tốc quỹ đạo (look-ahead)
+      const lookU = Math.min(1, headU + 0.04);
+      if (inForm) {
+        _tmp2.copy(fx.to).sub(fx.from);
+      } else {
+        sampleSpiritPath(fx.from, fx.to, lookU, arc, side, _tmp2, 0.04, now * 0.004);
+        _tmp2.sub(_tmp);
+      }
+      if (_tmp2.lengthSq() > 1e-8) {
+        fx.obj.rotation.y = Math.atan2(_tmp2.x, _tmp2.z) + (fx.yawOffset || 0);
+      }
+      fx.obj.rotation.z = Math.sin(headU * Math.PI) * 0.12 * face;
       fx.obj.traverse((o) => {
         const mesh = o as THREE.Mesh;
-        const spr = o as THREE.Sprite;
-        if (mesh.isMesh) {
-          const mat = mesh.material as THREE.MeshBasicMaterial;
-          if (mat && mat.userData.baseOp == null) mat.userData.baseOp = mat.opacity;
-          if (mat?.userData.baseOp != null) mat.opacity = mat.userData.baseOp * fade;
-        } else if (spr.isSprite) {
-          const mat = spr.material as THREE.SpriteMaterial;
-          if (mat && mat.userData.baseOp == null) mat.userData.baseOp = mat.opacity;
-          if (mat?.userData.baseOp != null) mat.opacity = mat.userData.baseOp * fade;
+        if (!mesh.isMesh) return;
+        const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+        for (const m of mats) {
+          if (!m || !("opacity" in m)) continue;
+          const mat = m as THREE.MeshBasicMaterial;
+          if (mat.userData.baseOp == null) mat.userData.baseOp = mat.opacity;
+          mat.transparent = true;
+          mat.opacity = (mat.userData.baseOp as number) * fade * (fx.baseOpacity ?? 1);
         }
       });
     } else if (fx.kind === "flash") {
       const s = 0.6 + ease * 1.4;
-      fx.obj.scale.setScalar(s);
-      const mat = (fx.obj as THREE.Mesh).material as THREE.MeshBasicMaterial;
-      mat.opacity = Math.max(0, 1 - t);
+      const spr = fx.obj as THREE.Sprite;
+      if (spr.isSprite) {
+        if (!spr.userData.baseW) {
+          spr.userData.baseW = spr.scale.x;
+          spr.userData.baseH = spr.scale.y;
+        }
+        spr.scale.set(spr.userData.baseW * s, spr.userData.baseH * s, 1);
+        const mat = spr.material as THREE.SpriteMaterial;
+        if (fx.frames && fx.frames.length > 1 && mat && now >= (fx.nextFrame || 0)) {
+          fx.frameI = Math.min((fx.frameI || 0) + 1, fx.frames.length - 1);
+          mat.map = fx.frames[fx.frameI];
+          mat.needsUpdate = true;
+          fx.nextFrame = now + (fx.frameMs || 70);
+        }
+        mat.opacity = Math.max(0, 1 - t);
+      } else {
+        fx.obj.scale.setScalar(s);
+        const mat = (fx.obj as THREE.Mesh).material as THREE.MeshBasicMaterial;
+        mat.opacity = Math.max(0, 1 - t);
+      }
     }
 
     if (now > fx.until || t >= 1) {

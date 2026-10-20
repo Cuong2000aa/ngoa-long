@@ -27,7 +27,20 @@
 - **Fire Dragon Roller** by Nineball — CC0  
   → `assets/fx/dragon/` (legacy pixel; Hỏa Long 3D dùng soft spirit)
 - **Dragon spirit soft glow** — generated (`scripts/gen-dragon-spirit-fx.mjs`)  
-  → `assets/fx/dragon_spirit/` (256px soft silhouettes for hồn rồng 3D)
+  → `assets/fx/dragon_spirit/` (legacy soft silhouettes)
+- **Hồn spirit packs** (`assets/fx/hon_*`) — assemble từ sprite CC0 thật  
+  (`python3 scripts/assemble-hon-cc0.py` / `npm run assemble:hon`):  
+  - GreatDog_ARt — [3 Dragon Animation Pack](https://opengameart.org/content/3-dragon-animation-pack) (CC0) → `hon_rong`  
+  - Master484 — [Dragon 1](https://opengameart.org/content/dragon-1-m484) (CC0) → `hon_rong` head frames  
+  - Blooming Pixels — [Snake Sprite Sheet](https://opengameart.org/content/snake-sprite-sheet) (CC0) → `hon_xa`  
+  - Shepardskin — [Snake RPG Character](https://opengameart.org/content/snake-rpg-character) (CC0) → `hon_xa`  
+  - Segel2D Wolf + SpritePilot tiger claw/roar → `hon_soi` / `hon_ho`  
+  - Cethiel Water / Starsteel Thunder / n4 Whirlwind → `hon_thuy` / `hon_loi` / `hon_phong`  
+  Soft mist/orb: Kenney Particle Pack. **Không** dùng procedural blob làm silhouette thú.
+- **Hồn 3D GLB** (`assets/fx/hon_3d/`) — thân hồn bay trong `battleVfx3d` (bắt buộc mesh, không tự gen):  
+  - **Dragon (Á Đông / Loong)** — [Grab3D Chinese Dragon](https://grab3d.com/models/creatures/chinese-dragon/) (CC0) → `dragon.glb` (`hon_rong`, `hon_loi`); tối ưu meshopt ~1.4MB  
+  - **Snake / Wolf** — Quaternius via [Poly Pizza](https://poly.pizza) (CC0) → `snake.glb`, `wolf.glb`  
+  - **Tiger / Fish / Parrot** — [Kenney Cube Pets](https://kenney.nl/assets/cube-pets) (CC0) → `tiger.glb`, `fish.glb`, `wind.glb` (+ `Textures/colormap.png`)
 - **Whirlwind for effects** by n4 — CC0  
   https://opengameart.org/content/whirlwind-for-effects  
   → `assets/fx/whirlwind/`
@@ -61,3 +74,13 @@ Buff/debuff: wiki [Hiệu ứng](https://ngoalong.vnggames.com/ngoa-long-wiki/hi
 ---
 
 *Dọn source 2026-10: xóa `_dl`, `assets-src`, `assets/packs`, wiki scrape thô, portraits/catalog thừa, Light/Elemental/Spell dự trữ không dùng.*
+
+## itch.io VFX drops
+- **Brackeys' VFX Bundle** — https://brackeys.itch.io/brackeys-vfx-bundle  
+  → atlases `assets/fx/itch/brackeys_vfx_bundle/` · slice `assets/fx/itch/brackeys/{pack}/`  
+  Runtime ưu tiên cho chiêu non-spirit.
+- **Stylized Projectiles** — https://laplahce.itch.io/stylized-projectiles-pack  
+  (Unity demo build → extract Texture2D) → `assets/fx/itch/stylized/{slash_a,lightning,flash,star_sheet_*}/`  
+  Overlay slash / thunder / beam.
+- **Binbun Free** (Electric / Dark Magic / Status / Battle / Elemental) — Godot **shader-only**, không PNG flipbook → không dùng.
+

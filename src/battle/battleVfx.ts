@@ -9,15 +9,31 @@ import * as THREE from "three";
  * - Starsteel / SpritePilot / Nineball dragon…
  * - **Pixel Ability FX Forge** (Apache-2.0) → assets/fx/forge/* — generate:
  *   `node scripts/forge-generate-fx.mjs`
+ * - **Brackeys VFX Bundle** (itch) → assets/fx/itch/brackeys/* (ưu tiên khi có)
  *
- * Flash → sheet: ưu tiên forge pack theo element, fallback Kenney/Cethiel.
+ * Flash → sheet: ưu tiên Brackeys/forge theo element, fallback Kenney/Cethiel.
  */
 
-/** 12-frame packs từ Pixel Ability FX Forge */
+/** Packs đã slice từ Brackeys — ưu tiên hơn forge. */
+const ITCH_BRACKETS = new Set([
+  "arcane_burst",
+  "radiance_aura",
+  "ward_barrier",
+  "shadow_burst",
+  "ember_burst",
+  "blood_burst",
+  "storm_burst",
+  "earth_burst",
+]);
+
+/** Frame packs: Brackeys (itch) nếu có, không thì Pixel Ability FX Forge */
 function forgePack(id: string): string[] {
-  return Array.from({ length: 12 }, (_, i) => {
+  const useItch = ITCH_BRACKETS.has(id);
+  const root = useItch ? `assets/fx/itch/brackeys/${id}` : `assets/fx/forge/${id}`;
+  const count = useItch ? 16 : 12;
+  return Array.from({ length: count }, (_, i) => {
     const n = String(i + 1).padStart(2, "0");
-    return `assets/fx/forge/${id}/frame_${n}.png`;
+    return `${root}/frame_${n}.png`;
   });
 }
 
@@ -266,6 +282,27 @@ const TEX = {
   forgeRadiance: forgePack("radiance_aura"),
   forgeFrostAura: forgePack("frost_aura"),
   forgeWard: forgePack("ward_barrier"),
+  /** Stylized Projectiles (itch) — texture extract từ Unity demo */
+  stylizedSlash: [
+    "assets/fx/itch/stylized/slash_a/frame_01.png",
+    "assets/fx/itch/stylized/slash_a/frame_02.png",
+  ],
+  stylizedLightning: ["assets/fx/itch/stylized/lightning/frame_01.png"],
+  stylizedFlash: [
+    "assets/fx/itch/stylized/flash/frame_01.png",
+    "assets/fx/itch/stylized/flash/frame_02.png",
+    "assets/fx/itch/stylized/flash/frame_03.png",
+  ],
+  stylizedStar: [
+    "assets/fx/itch/stylized/star_sheet_a/frame_01.png",
+    "assets/fx/itch/stylized/star_sheet_a/frame_02.png",
+    "assets/fx/itch/stylized/star_sheet_a/frame_03.png",
+    "assets/fx/itch/stylized/star_sheet_a/frame_04.png",
+    "assets/fx/itch/stylized/star_sheet_a/frame_05.png",
+    "assets/fx/itch/stylized/star_sheet_a/frame_06.png",
+    "assets/fx/itch/stylized/star_sheet_a/frame_07.png",
+    "assets/fx/itch/stylized/star_sheet_a/frame_08.png",
+  ],
 };
 
 const cache = new Map<string, THREE.Texture>();
@@ -619,17 +656,26 @@ function slashSheetForFlash(flash: string): string[] {
   if (flash === "green_poison" || flash === "poison" || flash === "snake" || flash === "fire_green")
     return TEX.poison.length ? TEX.poison : TEX.slashBlue;
   if (flash === "dragon") return TEX.dragon.length ? TEX.dragon : TEX.slashFire;
-  if (flash === "thunder") return TEX.thunderSpell.length ? TEX.thunderSpell : TEX.slashPurple;
+  if (flash === "thunder")
+    return TEX.stylizedLightning.length
+      ? TEX.stylizedLightning
+      : TEX.thunderSpell.length
+        ? TEX.thunderSpell
+        : TEX.slashPurple;
   if (flash === "wind" || flash === "whirlwind")
     return TEX.whirlwind.length ? TEX.whirlwind : TEX.slashBlue;
   if (flash === "tiger") return TEX.tigerRoar.length ? TEX.tigerRoar : TEX.slashFire;
   if (flash === "wolf") return TEX.wolf.length ? TEX.wolf : TEX.slashFire;
-  return TEX.slashClassic.length ? TEX.slashClassic : TEX.slash;
+  return TEX.stylizedSlash.length
+    ? TEX.stylizedSlash
+    : TEX.slashClassic.length
+      ? TEX.slashClassic
+      : TEX.slash;
 }
 
 function auraTint(flash: string): number {
   if (flash === "green_poison" || flash === "poison" || flash === "snake" || flash === "fire_green") return 0x4ade80;
-  if (flash === "dragon") return 0xffb347;
+  if (flash === "dragon") return 0xff7a2e;
   if (flash === "tiger") return 0xfbbf24;
   if (flash === "thunder") return 0xc4b5fd;
   if (flash === "blue" || flash === "cyan" || flash === "blue_water" || flash === "teal" || flash === "white_blue")
@@ -719,18 +765,19 @@ function auraRecipe(flash: string): AuraRecipe {
         footSize: 0.85,
       };
     case "dragon":
+      // Không dùng Nineball pixel dragon (nhìn chấm vàng) — soft forge/ember + light
       return {
-        main: TEX.dragon,
-        mainSize: 1.7,
-        mainLife: 640,
-        mainY: 0.1,
-        mainColor: 0xffb347,
-        overlay: TEX.fireWrath,
-        overlaySize: 1.35,
-        overlayLife: 500,
-        overlayY: 0.05,
-        overlayColor: 0xff8844,
-        footSize: 0.9,
+        main: TEX.forgeEmber.length ? TEX.forgeEmber : TEX.light.length ? TEX.light : TEX.kenneyAura,
+        mainSize: 1.15,
+        mainLife: 480,
+        mainY: 0.08,
+        mainColor: 0xffd078,
+        overlay: TEX.light.length ? TEX.light : TEX.kenneyAura,
+        overlaySize: 0.85,
+        overlayLife: 360,
+        overlayY: 0.12,
+        overlayColor: 0x7dd3fc,
+        footSize: 0.7,
       };
     case "snake":
       return {
@@ -803,15 +850,15 @@ function auraRecipe(flash: string): AuraRecipe {
       };
     case "thunder":
       return {
-        main: TEX.thunderSpell,
+        main: TEX.forgeStorm.length ? TEX.forgeStorm : TEX.thunderSpell,
         mainSize: 1.55,
         mainLife: 560,
         mainY: 0.15,
         mainColor: 0xc4b5fd,
-        overlay: TEX.hit,
-        overlaySize: 1.05,
+        overlay: TEX.stylizedLightning.length ? TEX.stylizedLightning : TEX.hit,
+        overlaySize: 1.25,
         overlayLife: 400,
-        overlayY: 0.05,
+        overlayY: 0.08,
         overlayColor: 0xe9d5ff,
         footSize: 0.8,
       };

@@ -172,7 +172,7 @@
       emission: "ring",
       visual: "roar",
       scale: "L",
-      durations: { windupMs: 160, castMs: 140, emissionMs: 520, impactMs: 280, recoveryMs: 200 },
+      durations: { windupMs: 160, castMs: 140, emissionMs: 1720, impactMs: 320, recoveryMs: 200 },
     }),
     red_fire: profile({ id: "hoa_cong", delivery: "arcane", essence: "ember", movement: "plant", emission: "rain", visual: "fireball", scale: "M" }),
     purple: profile({ id: "an_muu", delivery: "arcane", essence: "umbral", movement: "plant", emission: "burst", visual: "sigil" }),
@@ -180,16 +180,22 @@
     silver: profile({ id: "thiet_ky", delivery: "pierce", essence: "iron", movement: "lunge", emission: "trail", visual: "pierce" }),
     iron: profile({ id: "co_chien", delivery: "crush", essence: "iron", movement: "lunge", emission: "burst", visual: "shockwave" }),
     teal: profile({ id: "dong_ngo", delivery: "arcane", essence: "frost", movement: "plant", emission: "ring", visual: "sigil" }),
-    green_poison: profile({ id: "doc_muu", delivery: "arcane", essence: "poison", movement: "plant", emission: "burst", visual: "poison" }),
-    poison: profile({ id: "doc_muu", delivery: "arcane", essence: "poison", movement: "plant", emission: "burst", visual: "poison" }),
+    green_poison: profile({
+      id: "doc_muu", delivery: "arcane", essence: "poison", movement: "plant", emission: "burst", visual: "poison",
+      durations: { windupMs: 140, castMs: 100, emissionMs: 1720, impactMs: 300, recoveryMs: 180 },
+    }),
+    poison: profile({
+      id: "doc_muu", delivery: "arcane", essence: "poison", movement: "plant", emission: "burst", visual: "poison",
+      durations: { windupMs: 140, castMs: 100, emissionMs: 1720, impactMs: 300, recoveryMs: 180 },
+    }),
     snake: profile({
       id: "doc_xa", delivery: "arcane", essence: "poison", movement: "plant", emission: "trail", visual: "poison", scale: "M",
-      durations: { windupMs: 160, castMs: 140, emissionMs: 360, impactMs: 220, recoveryMs: 180 },
+      durations: { windupMs: 160, castMs: 140, emissionMs: 1720, impactMs: 300, recoveryMs: 180 },
     }),
     dragon: profile({
       id: "hoa_long", delivery: "ultimate", essence: "ember", movement: "plant", emission: "burst", visual: "meteor", scale: "L",
-      // Emission dài hơn — Hỏa Long bay chậm (~980ms) để đọc được
-      durations: { windupMs: 200, castMs: 180, emissionMs: 920, impactMs: 320, recoveryMs: 220 },
+      // Charge(~270) + Form(400) + Flight(1050) ≈ 1720 — impact/cam-punch khớp lúc hồn rồng chạm
+      durations: { windupMs: 200, castMs: 180, emissionMs: 1720, impactMs: 360, recoveryMs: 240 },
     }),
     violet: profile({ id: "phung_so", delivery: "arcane", essence: "umbral", movement: "plant", emission: "trail", visual: "sigil" }),
     fire_green: profile({ id: "lua_luc", delivery: "arcane", essence: "poison", movement: "plant", emission: "rain", visual: "fireball" }),
@@ -199,7 +205,10 @@
     red: profile({ id: "ho_lao", delivery: "crush", essence: "ember", movement: "lunge", emission: "burst", visual: "slash" }),
     crimson: profile({ id: "phong_hau", delivery: "cut", essence: "ember", movement: "lunge", emission: "burst", visual: "slash", scale: "M" }),
     steel: profile({ id: "tieu_dao", delivery: "pierce", essence: "iron", movement: "thrust", emission: "trail", visual: "pierce" }),
-    blue_water: profile({ id: "thuy_chien", delivery: "arcane", essence: "frost", movement: "plant", emission: "burst", visual: "wave" }),
+    blue_water: profile({
+      id: "thuy_chien", delivery: "arcane", essence: "frost", movement: "plant", emission: "burst", visual: "wave",
+      durations: { windupMs: 140, castMs: 120, emissionMs: 1720, impactMs: 300, recoveryMs: 180 },
+    }),
     chain: profile({ id: "lien_hoan", delivery: "pierce", essence: "iron", movement: "thrust", emission: "trail", visual: "chain" }),
     bagua: profile({
       id: "bagua_zhen", delivery: "ultimate", essence: "bagua", movement: "plant", emission: "ring", visual: "bagua", scale: "L",
@@ -215,19 +224,19 @@
     }),
     wind: profile({
       id: "phong_van", delivery: "arcane", essence: "wind", movement: "plant", emission: "burst", visual: "wind", scale: "M",
-      durations: { windupMs: 140, castMs: 120, emissionMs: 420, impactMs: 200, recoveryMs: 180 },
+      durations: { windupMs: 140, castMs: 120, emissionMs: 1720, impactMs: 280, recoveryMs: 180 },
     }),
     whirlwind: profile({
       id: "dong_xoay", delivery: "arcane", essence: "wind", movement: "plant", emission: "burst", visual: "wind", scale: "M",
-      durations: { windupMs: 120, castMs: 100, emissionMs: 480, impactMs: 220, recoveryMs: 160 },
+      durations: { windupMs: 120, castMs: 100, emissionMs: 1720, impactMs: 280, recoveryMs: 160 },
     }),
     wolf: profile({
       id: "lang_tuyen", delivery: "cut", essence: "umbral", movement: "lunge", emission: "trail", visual: "slash", scale: "L",
-      durations: { windupMs: 160, castMs: 120, emissionMs: 360, impactMs: 240, recoveryMs: 200 },
+      durations: { windupMs: 160, castMs: 120, emissionMs: 1720, impactMs: 300, recoveryMs: 200 },
     }),
     thunder: profile({
       id: "sam_set", delivery: "arcane", essence: "storm", movement: "plant", emission: "burst", visual: "thunder", scale: "L",
-      durations: { windupMs: 140, castMs: 100, emissionMs: 200, impactMs: 280, recoveryMs: 160 },
+      durations: { windupMs: 140, castMs: 100, emissionMs: 1720, impactMs: 300, recoveryMs: 160 },
     }),
     gold: profile({ id: "default_gold", delivery: "arcane", essence: "radiance", movement: "plant", emission: "burst", visual: "default" }),
   };
