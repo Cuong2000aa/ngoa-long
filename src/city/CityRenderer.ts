@@ -28,10 +28,17 @@ const PATROL_SEGMENTS: [number, number, number, number][] = (() => {
 
 const CAMERA_TARGET = new THREE.Vector3(-6, 0, 6);
 const CAMERA_HOME = CAMERA_TARGET.clone().add(new THREE.Vector3(38, 50, 54));
+/** Offset camera khi focus một nhà (cùng hướng nhìn xiên, gần hơn home). */
+const FOCUS_OFFSET = new THREE.Vector3(24, 32, 34);
 /** Giới hạn kéo bản đồ quanh thành. */
 const PAN_LIMIT = 26;
-/** Di chuột quá ngưỡng này (px) thì coi là kéo, không phải bấm. */
-const CLICK_SLOP = 6;
+/** Ngưỡng px: vượt = kéo map, không pick. Touch rộng hơn chuột. */
+const CLICK_SLOP_MOUSE = 8;
+const CLICK_SLOP_TOUCH = 16;
+const HOVER_EMISSIVE = 0x332208;
+const SELECT_EMISSIVE = 0x554410;
+const LEVEL_UP_MS = 700;
+const HINT_KEY = "nl-city-hint-v1";
 
 /**
  * Thành Chính: một scene Three.js, HUD vẫn là HTML phía trên canvas.
@@ -39,6 +46,11 @@ const CLICK_SLOP = 6;
  */
 export class CityRenderer {
   onBuildingClick: ((id: string) => void) | null = null;
+  /** Hotspot Hub — bridge từ app.js (openNav có sẵn) */
+  onDeployClick: (() => void) | null = null;
+  onGeneralsClick: (() => void) | null = null;
+  onCampaignClick: (() => void) | null = null;
+  onArenaClick: (() => void) | null = null;
 
   private state: GameState | null = null;
   private readonly labelsEl: HTMLElement | null;
@@ -63,6 +75,25 @@ export class CityRenderer {
   private flags: THREE.Object3D[] = [];
   private wallGroup: THREE.Group | null = null;
   private wallTier: Tier | -1 = -1;
+  /** Khói billboard nhẹ (farm / hall) — không particle system. */
+  private smokes: { mesh: THREE.Mesh; phase: number; baseY: number; site: string }[] = [];
+  private smokeMat: THREE.MeshBasicMaterial | null = null;
+  private hudActionsEl: HTMLElement | null = null;
+  private bootOverlay: HTMLElement | null = null;
+  private readonly coarsePointer =
+    typeof window.matchMedia === "function" && window.matchMedia("(pointer: coarse)").matches;
+
+  private hoverId: string | null = null;
+  private selectedId: string | null = null;
+  /** Tween camera: focusBuilding / focusHome. */
+  private camTween: {
+    t0: number;
+    dur: number;
+    fromPos: THREE.Vector3;
+    fromTarget: THREE.Vector3;
+    toPos: THREE.Vector3;
+    toTarget: THREE.Vector3;
+  } | null = null;
 
   private readonly timer = new THREE.Timer();
   private readonly ray = new THREE.Raycaster();
@@ -110,12 +141,14 @@ export class CityRenderer {
     }
     this.mapEl = map;
     map.className = "world-viewport";
+    map.setAttribute("data-city", "booting");
     map.innerHTML = "";
     if (this.labelsEl) {
       map.appendChild(this.labelsEl);
       this.labelsEl.className = "city-labels";
       this.labelsEl.innerHTML = "";
     }
+    this.showBootOverlay("Đang dựng thành…");
 
     // Thành: nét hơn (AA + DPR 1.5), shadow 1024 — không 4K (lag). Trận thì pause hẳn.
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
@@ -161,13 +194,26 @@ export class CityRenderer {
     this.bootPromise = this.bootCityAssets();
 
     this.setupControls(renderer.domElement);
+    renderer.domElement.style.touchAction = "none";
     renderer.domElement.addEventListener("pointerdown", (ev) => {
       this.pressAt = { x: ev.clientX, y: ev.clientY };
+    });
+    renderer.domElement.addEventListener("pointermove", (ev) => {
+      if (this.pressAt) return; // đang kéo — không đổi hover
+      if (this.coarsePointer) return; // mobile: không hover
+      this.setHover(this.hitBuilding(ev));
+    });
+    renderer.domElement.addEventListener("pointerleave", () => {
+      if (!this.pressAt) this.setHover(null);
     });
     renderer.domElement.addEventListener("pointerup", (ev) => {
       const p = this.pressAt;
       this.pressAt = null;
-      if (p && Math.hypot(ev.clientX - p.x, ev.clientY - p.y) <= CLICK_SLOP) this.pick(ev);
+      const slop = ev.pointerType === "touch" || this.coarsePointer ? CLICK_SLOP_TOUCH : CLICK_SLOP_MOUSE;
+      if (p && Math.hypot(ev.clientX - p.x, ev.clientY - p.y) <= slop) this.pick(ev);
+    });
+    renderer.domElement.addEventListener("pointercancel", () => {
+      this.pressAt = null;
     });
     new ResizeObserver(() => this.resize()).observe(map);
     this.resize();
@@ -198,6 +244,20 @@ export class CityRenderer {
     return this.paused;
   }
 
+  /** Lerp camera + target tới một nhà (~400–600ms). */
+  focusBuilding(id: string, ms = 500): void {
+    const site = SITES.find((s) => s.id === id);
+    if (!site || !this.camera || !this.controls) return;
+    const target = new THREE.Vector3(site.x, 0, site.z);
+    const pos = target.clone().add(FOCUS_OFFSET);
+    this.startCamTween(pos, target, ms);
+  }
+
+  /** Về trung tâm bản đồ (CAMERA_HOME / CAMERA_TARGET). */
+  focusHome(ms = 500): void {
+    this.startCamTween(CAMERA_HOME.clone(), CAMERA_TARGET.clone(), ms);
+  }
+
   /** Soft timeout: asset phụ fail/chậm không chặn UI. */
   private softWait(task: Promise<unknown>, ms: number): Promise<void> {
     return new Promise((resolve) => {
@@ -222,16 +282,82 @@ export class CityRenderer {
       .then((tpl) => this.crowd.useRaven(tpl))
       .catch((err) => console.error("[NLCity] không tải được model quạ, giữ chim khối", err));
 
-    // Tường + công trình: bắt buộc (đã có fallback nội bộ). Scape/folk/raven: soft.
-    await Promise.all([
-      this.installWalls(),
-      this.installModels(),
-      this.softWait(this.scape.install(this.M), 14000),
+    // Tường + công trình: bắt buộc → first paint / whenReady.
+    // Scape/folk/raven: soft nền, không chặn ready.
+    await Promise.all([this.installWalls(), this.installModels()]);
+    this.markCityReady();
+
+    void Promise.all([
+      this.softWait(this.scape.install(this.M!), 14000),
       this.softWait(folkTask, 14000),
       this.softWait(ravenTask, 10000),
-    ]);
+    ]).then(() => {
+      this.mapEl?.setAttribute("data-city-extra", "ready");
+    });
+  }
+
+  private markCityReady(): void {
     this.mapEl?.setAttribute("data-city", "ready");
+    this.hideBootOverlay();
+    this.ensureHudActions();
+    this.showFirstHint();
     window.dispatchEvent(new Event("nl-city-scene-ready"));
+  }
+
+  private showBootOverlay(label: string): void {
+    if (!this.mapEl) return;
+    let el = this.bootOverlay;
+    if (!el) {
+      el = document.createElement("div");
+      el.className = "city-boot-overlay";
+      el.innerHTML =
+        `<div class="city-boot-card">` +
+        `<div class="city-boot-spin" aria-hidden="true"></div>` +
+        `<p class="city-boot-label"></p></div>`;
+      this.mapEl.appendChild(el);
+      this.bootOverlay = el;
+    }
+    const text = el.querySelector(".city-boot-label");
+    if (text) text.textContent = label;
+    el.hidden = false;
+    el.classList.remove("is-done");
+  }
+
+  private hideBootOverlay(): void {
+    const el = this.bootOverlay;
+    if (!el) return;
+    el.classList.add("is-done");
+    window.setTimeout(() => {
+      el.hidden = true;
+    }, 320);
+  }
+
+  private showFirstHint(): void {
+    try {
+      if (localStorage.getItem(HINT_KEY)) return;
+    } catch {
+      /* private mode */
+    }
+    const tip = document.getElementById("nl-tip");
+    if (!tip) return;
+    tip.hidden = false;
+    tip.textContent = "Chạm nhà để nâng cấp · nút trái: Bày trận / Tướng";
+    tip.classList.add("is-show");
+    tip.setAttribute("role", "status");
+    const dismiss = () => {
+      tip.classList.remove("is-show");
+      tip.hidden = true;
+      try {
+        localStorage.setItem(HINT_KEY, "1");
+      } catch {
+        /* ignore */
+      }
+      tip.removeEventListener("click", dismiss);
+      this.renderer?.domElement.removeEventListener("pointerdown", dismiss);
+    };
+    tip.addEventListener("click", dismiss);
+    this.renderer?.domElement.addEventListener("pointerdown", dismiss, { once: true });
+    window.setTimeout(dismiss, 6000);
   }
 
   private async installWalls(): Promise<void> {
@@ -312,19 +438,26 @@ export class CityRenderer {
     this.renderer.setSize(w, h, false);
   }
 
-  /** Kéo trái = di chuyển, chuột phải = xoay, lăn = zoom. Góc nhìn khoá trong khoảng nhìn xiên. */
+  /** Kéo = pan, pinch/lăn = zoom, chuột phải = xoay. Touch-friendly. */
   private setupControls(dom: HTMLElement): void {
     if (!this.camera) return;
     const c = new MapControls(this.camera, dom);
     c.target.copy(CAMERA_TARGET);
     c.enableDamping = !this.reducedMotion;
-    c.dampingFactor = 0.08;
+    c.dampingFactor = this.coarsePointer ? 0.12 : 0.08;
     c.screenSpacePanning = false;
-    c.minDistance = 22;
-    c.maxDistance = 110;
+    c.minDistance = this.coarsePointer ? 18 : 22;
+    c.maxDistance = this.coarsePointer ? 130 : 110;
     c.minPolarAngle = 0.45;
     c.maxPolarAngle = 1.12;
-    c.zoomToCursor = true;
+    c.zoomToCursor = !this.coarsePointer;
+    c.enablePan = true;
+    c.enableZoom = true;
+    c.enableRotate = true;
+    // 1 ngón kéo = pan (MapControls); tránh xoay nhầm trên mobile
+    if (this.coarsePointer) {
+      c.touches = { ONE: THREE.TOUCH.PAN, TWO: THREE.TOUCH.DOLLY_ROTATE };
+    }
     c.update();
     this.controls = c;
   }
@@ -334,9 +467,11 @@ export class CityRenderer {
     this.timer.update();
     const t = this.timer.getElapsed();
     const dt = this.timer.getDelta();
-    this.crowd.update(dt, t);
-    this.scape.update(dt, t);
-    if (this.controls) {
+    const motion = this.reducedMotion ? 0.15 : 1;
+    this.crowd.update(dt, t, motion);
+    if (!this.reducedMotion) this.scape.update(dt, t);
+    this.stepCamTween();
+    if (this.controls && !this.camTween) {
       const tg = this.controls.target;
       const cx = THREE.MathUtils.clamp(tg.x, -PAN_LIMIT, PAN_LIMIT) - tg.x;
       const cz = THREE.MathUtils.clamp(tg.z, -PAN_LIMIT, PAN_LIMIT) - tg.z;
@@ -346,33 +481,146 @@ export class CityRenderer {
         this.camera.position.z += cz;
       }
       this.controls.update();
+    } else if (this.controls && this.camTween) {
+      this.controls.update();
     }
-    this.flags.forEach((f, i) => {
-      f.rotation.y = Math.sin(t * 1.8 + i) * 0.35;
-    });
+    if (!this.reducedMotion) {
+      this.flags.forEach((f, i) => {
+        f.rotation.y = Math.sin(t * 1.8 + i) * 0.35;
+      });
+    }
+    this.updateSmoke(t);
+    const now = performance.now();
     for (const actor of this.actors.values()) {
-      const pulse = actor.userData.upgrading && !this.reducedMotion ? 1 + Math.sin(t * 4) * 0.015 : 1;
-      actor.scale.setScalar(((actor.userData.baseScale as number) || 1) * pulse);
+      const base = (actor.userData.baseScale as number) || 1;
+      let mul = 1;
+      const until = actor.userData.levelUpUntil as number | undefined;
+      if (until && until > now && !this.reducedMotion) {
+        const u = 1 - (until - now) / LEVEL_UP_MS;
+        mul *= 1 + 0.12 * Math.sin(Math.PI * Math.min(1, Math.max(0, u)));
+      } else if (until && until <= now) {
+        delete actor.userData.levelUpUntil;
+      }
+      if (actor.userData.upgrading && !this.reducedMotion) {
+        mul *= 1 + Math.sin(t * 4) * 0.015;
+      }
+      actor.scale.setScalar(base * mul);
     }
     this.projectLabels();
     this.renderer.render(this.scene, this.camera);
   }
 
-  private pick(ev: PointerEvent): void {
-    if (!this.camera || !this.scene || !this.renderer || !this.onBuildingClick) return;
+  private hitBuilding(ev: PointerEvent): string | null {
+    if (!this.camera || !this.renderer || this.actors.size === 0) return null;
     const rect = this.renderer.domElement.getBoundingClientRect();
     this.ndc.set(((ev.clientX - rect.left) / rect.width) * 2 - 1, -((ev.clientY - rect.top) / rect.height) * 2 + 1);
     this.ray.setFromCamera(this.ndc, this.camera);
     for (const hit of this.ray.intersectObjects([...this.actors.values()], true)) {
       let o: THREE.Object3D | null = hit.object;
       while (o) {
-        if (o.userData.bid) {
-          this.onBuildingClick(o.userData.bid as string);
-          return;
-        }
+        if (o.userData.bid) return o.userData.bid as string;
         o = o.parent;
       }
     }
+    return null;
+  }
+
+  private pick(ev: PointerEvent): void {
+    const bid = this.hitBuilding(ev);
+    if (bid) {
+      this.setSelect(bid);
+      this.onBuildingClick?.(bid);
+      return;
+    }
+    this.setSelect(null);
+  }
+
+  private setHover(id: string | null): void {
+    if (id === this.hoverId) return;
+    const prev = this.hoverId;
+    this.hoverId = id;
+    if (prev && prev !== this.selectedId) this.applyHighlight(prev, null);
+    if (id && id !== this.selectedId) this.applyHighlight(id, "hover");
+    else if (id && id === this.selectedId) this.applyHighlight(id, "select");
+    this.syncPinClasses();
+    if (this.renderer?.domElement) {
+      this.renderer.domElement.style.cursor = id ? "pointer" : "";
+    }
+  }
+
+  private setSelect(id: string | null): void {
+    if (id === this.selectedId) {
+      this.syncPinClasses();
+      return;
+    }
+    const prev = this.selectedId;
+    this.selectedId = id;
+    if (prev && prev !== this.hoverId) this.applyHighlight(prev, null);
+    else if (prev && prev === this.hoverId) this.applyHighlight(prev, "hover");
+    if (id) this.applyHighlight(id, "select");
+    this.syncPinClasses();
+  }
+
+  private syncPinClasses(): void {
+    if (!this.labelsEl) return;
+    this.labelsEl.querySelectorAll<HTMLElement>(".city-pin").forEach((node) => {
+      const bid = node.dataset.bid || "";
+      node.classList.toggle("is-hot", bid === this.hoverId);
+      node.classList.toggle("is-selected", bid === this.selectedId);
+    });
+  }
+
+  private applyHighlight(id: string, mode: "hover" | "select" | null): void {
+    const actor = this.actors.get(id);
+    if (!actor) return;
+    const add = mode === "select" ? SELECT_EMISSIVE : mode === "hover" ? HOVER_EMISSIVE : 0;
+    actor.traverse((o) => {
+      const mesh = o as THREE.Mesh;
+      if (!mesh.isMesh) return;
+      const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+      for (const mat of mats) {
+        const m = mat as THREE.MeshStandardMaterial;
+        if (!m || !("emissive" in m) || !m.emissive) continue;
+        if (m.userData._em0 === undefined) {
+          m.userData._em0 = m.emissive.getHex();
+        }
+        const base = m.userData._em0 as number;
+        m.emissive.setHex(base);
+        if (add) m.emissive.add(new THREE.Color(add));
+      }
+    });
+  }
+
+  private startCamTween(toPos: THREE.Vector3, toTarget: THREE.Vector3, ms: number): void {
+    if (!this.camera || !this.controls) return;
+    toTarget.y = 0;
+    toTarget.x = THREE.MathUtils.clamp(toTarget.x, -PAN_LIMIT, PAN_LIMIT);
+    toTarget.z = THREE.MathUtils.clamp(toTarget.z, -PAN_LIMIT, PAN_LIMIT);
+    if (this.reducedMotion || ms <= 0) {
+      this.camera.position.copy(toPos);
+      this.controls.target.copy(toTarget);
+      this.controls.update();
+      this.camTween = null;
+      return;
+    }
+    this.camTween = {
+      t0: performance.now(),
+      dur: Math.max(200, Math.min(800, ms)),
+      fromPos: this.camera.position.clone(),
+      fromTarget: this.controls.target.clone(),
+      toPos: toPos.clone(),
+      toTarget: toTarget.clone(),
+    };
+  }
+
+  private stepCamTween(): void {
+    if (!this.camTween || !this.camera || !this.controls) return;
+    const { t0, dur, fromPos, fromTarget, toPos, toTarget } = this.camTween;
+    const u = Math.min(1, (performance.now() - t0) / dur);
+    const e = u * u * (3 - 2 * u);
+    this.camera.position.lerpVectors(fromPos, toPos, e);
+    this.controls.target.lerpVectors(fromTarget, toTarget, e);
+    if (u >= 1) this.camTween = null;
   }
 
   private fitWallTier(): void {
@@ -382,8 +630,97 @@ export class CityRenderer {
     const tier = tierOf(lv);
     if (tier === this.wallTier) return;
     this.wallGroup.scale.setScalar(wallScaleFor(tier));
+    // Merlon / đỉnh tường: hiện dần theo tier (nếu fallback có userData.merlons)
+    this.wallGroup.traverse((o) => {
+      if (o.userData.wallTierMin != null) {
+        o.visible = tier >= (o.userData.wallTierMin as number);
+      }
+    });
     this.wallTier = tier;
     this.computePatrols();
+    this.syncCrowd();
+  }
+
+  /** Khói billboard tại farm / hall — 2 plane, opacity thấp. */
+  private ensureSmoke(): void {
+    if (!this.scene || this.smokes.length) return;
+    if (!this.smokeMat) {
+      this.smokeMat = new THREE.MeshBasicMaterial({
+        color: 0xc9c4b8,
+        transparent: true,
+        opacity: 0.2,
+        depthWrite: false,
+        side: THREE.DoubleSide,
+      });
+    }
+    const spots: [string, number, number, number][] = [
+      ["farm", -17, 3.8, 3],
+      ["hall", 0, 5.5, -11],
+    ];
+    for (const [site, x, y, z] of spots) {
+      const mesh = new THREE.Mesh(new THREE.PlaneGeometry(1.4, 2.2), this.smokeMat.clone());
+      mesh.position.set(x, y, z);
+      mesh.renderOrder = 2;
+      mesh.visible = false;
+      this.scene.add(mesh);
+      this.smokes.push({ mesh, phase: Math.random() * 6, baseY: y, site });
+    }
+  }
+
+  private syncSmokeVisibility(): void {
+    this.ensureSmoke();
+    const farmLv = this.levels.get("farm") ?? 0;
+    const hallLv = this.levels.get("hall") ?? 0;
+    for (const s of this.smokes) {
+      const on =
+        !this.reducedMotion &&
+        ((s.site === "farm" && farmLv > 0) || (s.site === "hall" && hallLv >= 2));
+      s.mesh.visible = on;
+    }
+  }
+
+  private updateSmoke(t: number): void {
+    if (!this.camera || this.reducedMotion) return;
+    for (const s of this.smokes) {
+      if (!s.mesh.visible) continue;
+      s.mesh.quaternion.copy(this.camera.quaternion);
+      s.mesh.position.y = s.baseY + Math.sin(t * 0.9 + s.phase) * 0.35;
+      const mat = s.mesh.material as THREE.MeshBasicMaterial;
+      mat.opacity = 0.12 + 0.1 * (0.5 + 0.5 * Math.sin(t * 1.1 + s.phase));
+      const sc = 0.9 + 0.15 * Math.sin(t * 0.7 + s.phase * 0.5);
+      s.mesh.scale.set(sc, sc * 1.15, 1);
+    }
+  }
+
+  /** Nút HUD: Bày trận / Tướng / Phó bản / Lôi đài — không chặn kéo map. */
+  private ensureHudActions(): void {
+    if (!this.labelsEl || this.hudActionsEl) return;
+    const el = document.createElement("div");
+    el.className = "city-hud-actions";
+    el.innerHTML =
+      `<button type="button" class="city-hotspot" data-act="deploy">Bày trận</button>` +
+      `<button type="button" class="city-hotspot" data-act="generals">Tướng</button>` +
+      `<button type="button" class="city-hotspot" data-act="campaign">Phó bản</button>` +
+      `<button type="button" class="city-hotspot" data-act="arena">Lôi đài</button>`;
+    const fire = (act: string | undefined) => {
+      if (act === "deploy") this.onDeployClick?.();
+      else if (act === "generals") this.onGeneralsClick?.();
+      else if (act === "campaign") this.onCampaignClick?.();
+      else if (act === "arena") this.onArenaClick?.();
+    };
+    el.addEventListener("pointerup", (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLElement>("[data-act]");
+      if (!btn) return;
+      e.stopPropagation();
+      e.preventDefault();
+      fire(btn.dataset.act);
+    });
+    // Chặn pointerdown để MapControls không nhận gesture từ nút
+    el.addEventListener("pointerdown", (e) => {
+      if ((e.target as HTMLElement).closest("[data-act]")) e.stopPropagation();
+    });
+    this.labelsEl.appendChild(el);
+    this.hudActionsEl = el;
   }
 
   private buildingList(): BuildingInfo[] {
@@ -445,24 +782,36 @@ export class CityRenderer {
     let html = "";
     for (const site of SITES) {
       const info = byId.get(site.id) ?? byId.get(site.building_id);
-      const lv = info?.level ?? this.state.buildings?.[site.id] ?? this.state.buildings?.[site.building_id] ?? 1;
+      const lv = Number(info?.level ?? this.state.buildings?.[site.id] ?? this.state.buildings?.[site.building_id] ?? 1) || 0;
       const tier = tierOf(lv);
-      this.levels.set(site.id, Number(lv) || 0);
-      if (this.tiers.get(site.id) !== tier || !this.actors.has(site.id)) this.mountActor(site, tier);
+      const prevLv = this.levels.get(site.id);
+      const leveledUp = prevLv != null && lv > prevLv;
+      this.levels.set(site.id, lv);
+      const remount = this.tiers.get(site.id) !== tier || !this.actors.has(site.id);
+      if (remount) this.mountActor(site, tier);
       const actor = this.actors.get(site.id);
-      if (actor) actor.userData.upgrading = !!info?.upgrading;
+      if (actor) {
+        actor.userData.upgrading = !!info?.upgrading;
+        if (leveledUp) actor.userData.levelUpUntil = performance.now() + LEVEL_UP_MS;
+        // remount mất emissive state — gắn lại hover/select
+        if (remount) {
+          if (site.id === this.selectedId) this.applyHighlight(site.id, "select");
+          else if (site.id === this.hoverId) this.applyHighlight(site.id, "hover");
+        }
+      }
 
       if (firstPaint) {
         html +=
-          `<div class="city-pin" data-bid="${site.id}">` +
+          `<div class="city-pin${info?.upgrading ? " is-upgrading" : ""}" data-bid="${site.id}">` +
           `<button type="button" class="blabel iso-nameplate" data-bid="${site.id}">` +
           `<span class="iso-nameplate-title">${site.name}</span>` +
           `<span class="lv iso-nameplate-lv">Lv.${lv}</span></button>` +
           `<div class="iso-upgrade-banner"${info?.upgrading ? "" : " hidden"}>` +
           `Đang nâng cấp: <b class="iso-cd-time">${info?.countdown ?? ""}</b></div></div>`;
       } else if (this.labelsEl) {
-        const node = this.labelsEl.querySelector(`.city-pin[data-bid="${site.id}"]`);
+        const node = this.labelsEl.querySelector<HTMLElement>(`.city-pin[data-bid="${site.id}"]`);
         if (!node) continue;
+        node.classList.toggle("is-upgrading", !!info?.upgrading);
         const lvEl = node.querySelector(".iso-nameplate-lv");
         if (lvEl) lvEl.textContent = `Lv.${lv}`;
         const banner = node.querySelector<HTMLElement>(".iso-upgrade-banner");
@@ -480,11 +829,16 @@ export class CityRenderer {
         node.addEventListener("click", (e) => {
           e.stopPropagation();
           const bid = node.dataset.bid;
-          if (bid) this.onBuildingClick?.(bid);
+          if (!bid) return;
+          this.setSelect(bid);
+          this.onBuildingClick?.(bid);
         });
       });
+      this.syncPinClasses();
     }
     this.rescanFlags();
+    this.syncSmokeVisibility();
+    if (this.mapEl?.getAttribute("data-city") === "ready") this.ensureHudActions();
     this.syncCrowd();
   }
 

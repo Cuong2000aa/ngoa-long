@@ -33,7 +33,18 @@ export interface WallTemplates {
   tower: THREE.Group;
 }
 
-const TIER_SCALE: Record<Tier, number> = { 0: 0.92, 1: 0.96, 2: 1, 3: 1.04, 4: 1.08, 5: 1.12 };
+/**
+ * Scale tường theo tier — bước nhảy rõ (0 vs 1 vs 2…), không chỉ +4%.
+ * Patrol height lấy lại bằng raycast sau mỗi lần đổi.
+ */
+const TIER_SCALE: Record<Tier, number> = {
+  0: 0.86,
+  1: 0.96,
+  2: 1.06,
+  3: 1.16,
+  4: 1.26,
+  5: 1.36,
+};
 
 export function wallScaleFor(tier: Tier): number {
   return TIER_SCALE[tier];
@@ -233,6 +244,30 @@ export function fallbackFort(M: Materials): THREE.Group {
     box(thick, 0.7, 1, M.stone, half, h + 0.35, i);
     box(thick, 0.7, 1, M.stone, -half, h + 0.35, i);
   }
+  // Merlon cao hơn — hiện từ tier 2+ (fitWallTier đọc wallTierMin)
+  for (let i = -half + 1.25; i <= half; i += 5) {
+    const m1 = new THREE.Mesh(new THREE.BoxGeometry(1.2, 1.1, thick * 0.9), M.stone);
+    m1.position.set(i, h + 1.0, -half);
+    m1.userData.wallTierMin = 2;
+    m1.visible = false;
+    m1.castShadow = true;
+    g.add(m1);
+    const m2 = m1.clone();
+    m2.position.set(half, h + 1.0, i);
+    m2.userData.wallTierMin = 2;
+    g.add(m2);
+    const m3 = m1.clone();
+    m3.position.set(-half, h + 1.0, i);
+    m3.userData.wallTierMin = 2;
+    g.add(m3);
+  }
+  // Cờ / nóc cổng — tier 4+
+  const peak = new THREE.Mesh(new THREE.BoxGeometry(gap + 1.2, 1.4, 0.35), M.banner);
+  peak.position.set(0, h + 2.8, half);
+  peak.userData.wallTierMin = 4;
+  peak.visible = false;
+  peak.castShadow = true;
+  g.add(peak);
   addMoat(g, M, half + thick / 2);
   addCourt(g, M, half - thick / 2);
   g.userData.side = FORT.side;

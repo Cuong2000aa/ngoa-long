@@ -4,29 +4,32 @@ import type { FolkKit } from "./folk";
 import type { RavenTemplate } from "./raven";
 import type { Tier } from "./tiers";
 
-/** Đồ thị đường đi trong thành (world). Cạnh tránh thân công trình theo bố cục SITES. */
+/**
+ * Đồ thị đường đi — khớp SITES hiện tại (hall 0,-11 · farm -17,3 · barracks 17,2 · mine 17,17).
+ * Cạnh tránh thân công trình.
+ */
 const NODES: Record<string, [number, number]> = {
   gate: [0, 19.5],
-  road1: [0, 12],
-  road2: [0, 4],
-  cross: [0, -3.4],
-  hall: [0, -5.2],
-  westX: [-6, -3.6],
-  eastX: [6, -3.6],
-  kho: [-13, -6.6],
-  yard: [12, -7.4],
-  farm: [-6, 8.4],
-  plazaW: [-4.5, 14.5],
-  plazaE: [4.5, 14.5],
-  barracks: [10.5, 8.2],
-  mine: [8.2, 13.2],
+  road1: [0, 11],
+  road2: [0, 3],
+  cross: [0, -4],
+  hall: [0, -7.5],
+  westX: [-7, -4],
+  eastX: [7, -4],
+  kho: [-15, -12],
+  yard: [15, -12],
+  farm: [-14, 4],
+  plazaW: [-5, 14],
+  plazaE: [5, 14],
+  barracks: [14, 5],
+  mine: [14, 15],
 };
 const EDGES: [string, string][] = [
   ["gate", "road1"], ["road1", "road2"], ["road2", "cross"], ["cross", "hall"],
   ["cross", "westX"], ["cross", "eastX"], ["westX", "kho"], ["eastX", "yard"],
   ["road2", "farm"], ["road1", "plazaW"], ["plazaW", "farm"], ["road1", "plazaE"],
   ["plazaE", "mine"], ["plazaE", "barracks"], ["mine", "barracks"], ["road2", "barracks"],
-  ["gate", "plazaW"], ["gate", "plazaE"],
+  ["gate", "plazaW"], ["gate", "plazaE"], ["farm", "kho"],
 ];
 const WANDER_STOPS = ["gate", "hall", "kho", "yard", "farm", "plazaW", "plazaE", "barracks", "mine", "road1"];
 
@@ -93,7 +96,9 @@ interface Flyer {
   ready: boolean;
 }
 
-const BIRD_COUNT = 6;
+const BIRD_COUNT = 5;
+/** Hard cap — máy yếu không spawn hàng trăm. */
+const MAX_AGENTS = 40;
 /** Quạ model dài ~0.62, sải ~1.4 đơn vị gốc. */
 const RAVEN_SCALE = 0.65;
 const _p = new THREE.Vector3();
@@ -159,39 +164,100 @@ export class Crowd {
     const sig = JSON.stringify([tiers, built, layout.patrols.length, layout.faction, !!this.folk]);
     if (sig === this.signature) return;
     this.signature = sig;
+
     for (const a of this.agents) this.group.remove(a.rig.root);
     this.agents = [];
+    this.seq = 0;
     const f = layout.faction;
 
-    const villagers = Math.min(16, 6 + tiers.hall * 2);
-    for (let i = 0; i < villagers; i++) this.addWanderer(i % 5 === 4 ? "scholar" : "villager", f);
+    const room = () => this.agents.length < MAX_AGENTS;
 
-    for (const [x, z] of [[-2.6, 18.6], [2.6, 18.6]] as const) this.addGuard(f, x, z, 0);
-    for (const [x, z] of [[-3.4, -4.6], [3.4, -4.6]] as const) this.addGuard(f, x, z, 0);
-    if (built.barracks && tiers.barracks >= 1) this.addGuard(f, 9.6, 7, Math.PI / 4);
-
-    const fields: [number, number][] = [[-17.3, 7.6], [-10.7, 7.6], [-17.3, 14], [-10.7, 14]];
-    const farmers = built.farm ? [1, 1, 2, 3, 4, 4][tiers.farm] : 0;
-    for (let i = 0; i < farmers; i++) {
-      const [fx, fz] = fields[i];
-      this.addWorker("farmer", f, "hoe", [v3(fx - 1.2, 0, fz), v3(fx + 1.2, 0, fz + 0.8), v3(fx, 0, fz - 1)]);
+    // —— Dân đường: tăng theo hall + farm ——
+    const wanderers = Math.min(12, 4 + tiers.hall + (built.farm ? Math.floor(tiers.farm / 2) : 0));
+    for (let i = 0; i < wanderers && room(); i++) {
+      this.addWanderer(i % 5 === 4 ? "scholar" : "villager", f);
     }
 
+    // —— Hall: NPC quanh chính điện ——
+    if (built.hall && room()) {
+      const hallN = [1, 2, 3, 4, 5, 6][tiers.hall];
+      for (let i = 0; i < hallN && room(); i++) {
+        const ang = (i / hallN) * Math.PI * 2 + 0.4;
+        const r = 5.2 + (i % 2) * 0.8;
+        const role: Role = i % 3 === 0 ? "scholar" : "villager";
+        this.addGuardNear(role, f, Math.cos(ang) * r, -11 + Math.sin(ang) * r * 0.35, ang + Math.PI);
+      }
+      // Lính cửa chính điện
+      if (room()) this.addGuard(f, -3.2, -6.5, 0);
+      if (room()) this.addGuard(f, 3.2, -6.5, 0);
+    }
+
+    // Gác cổng
+    if (room()) this.addGuard(f, -2.6, 18.6, 0);
+    if (room()) this.addGuard(f, 2.6, 18.6, 0);
+
+    // —— Farm: nông dân + gánh ——
+    if (built.farm) {
+      const fields: [number, number][] = [
+        [-19.2, 4.2], [-14.8, 4.2], [-19.2, 7.0], [-14.8, 7.0], [-18.0, 1.2], [-16.0, 1.2],
+      ];
+      const farmers = [1, 2, 3, 4, 5, 6][tiers.farm];
+      for (let i = 0; i < farmers && room(); i++) {
+        const [fx, fz] = fields[i % fields.length];
+        this.addWorker("farmer", f, "hoe", [
+          v3(fx - 0.9, 0, fz),
+          v3(fx + 0.9, 0, fz + 0.6),
+          v3(fx, 0, fz - 0.8),
+        ]);
+      }
+      // Gánh nông → kho (tier≥2)
+      const carriers = Math.min(2, Math.floor(tiers.farm / 2));
+      for (let i = 0; i < carriers && room(); i++) this.addFarmCarrier(f);
+    }
+
+    // —— Barracks: tập luyện + gác + tuần ——
+    if (built.barracks) {
+      if (room()) this.addGuard(f, 14.5, 6.5, -Math.PI / 5);
+      if (tiers.barracks >= 2 && room()) this.addGuard(f, 15.5, 0.5, Math.PI / 2);
+      const rows = 1 + Math.floor(tiers.barracks / 2);
+      const cols = tiers.barracks >= 3 ? 3 : 2;
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols && room(); c++) {
+          this.addDrill(f, 14.5 + c * 1.35, -1.2 - r * 1.35);
+        }
+      }
+    }
+
+    // —— Mine ——
     if (built.mine) {
       const miners = 1 + Math.floor(tiers.mine / 2);
-      for (let i = 0; i < miners; i++) this.addWorker("miner", f, "dig", [v3(9.6 + i * 0.9, 0, 12.2), v3(10.4, 0, 11.4 + i * 0.6)]);
-      this.addCarrier(f);
-      if (tiers.mine >= 3) this.addCarrier(f);
+      for (let i = 0; i < miners && room(); i++) {
+        this.addWorker("miner", f, "dig", [
+          v3(15.5 + i * 0.7, 0, 16.2),
+          v3(16.2, 0, 15.4 + i * 0.5),
+        ]);
+      }
+      if (room()) this.addCarrier(f);
+      if (tiers.mine >= 3 && room()) this.addCarrier(f);
     }
 
-    const rows = built.academy ? 1 + Math.floor(tiers.academy / 2) : 0;
-    const cols = 3;
-    for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < cols; c++) this.addDrill(f, 10.8 + c * 1.6, -10.8 - r * 1.5);
+    // —— Academy drills ——
+    if (built.academy) {
+      const rows = 1 + Math.floor(tiers.academy / 2);
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < 3 && room(); c++) this.addDrill(f, 15.2 + c * 1.4, -13.5 - r * 1.35);
+      }
     }
 
-    const patrolCount = Math.min(layout.patrols.length, 4 + (tiers.hall >= 3 ? 4 : 0));
-    for (let i = 0; i < patrolCount; i++) this.addPatrol(f, layout.patrols[(i * 3) % layout.patrols.length]);
+    // —— Patrol trên tường: barracks↑ + hall↑ ——
+    if (layout.patrols.length) {
+      const base = built.barracks ? 2 + tiers.barracks : 1;
+      const bonus = tiers.hall >= 3 ? 2 : tiers.hall >= 1 ? 1 : 0;
+      const patrolCount = Math.min(layout.patrols.length, base + bonus, 8);
+      for (let i = 0; i < patrolCount && room(); i++) {
+        this.addPatrol(f, layout.patrols[(i * 3) % layout.patrols.length]);
+      }
+    }
   }
 
   private spawn(role: Role, faction: string, pos: THREE.Vector3, partial: Partial<Agent>): Agent {
@@ -232,6 +298,21 @@ export class Crowd {
     a.rig.root.rotation.y = yaw;
   }
 
+  private addGuardNear(role: Role, faction: string, x: number, z: number, yaw: number): void {
+    const a = this.spawn(role, faction, v3(x, 0, z), {
+      pose: role === "scholar" ? "idle" : "idle",
+      faceYaw: yaw,
+      waitRange: [4, 12],
+      next: () => {
+        const jx = x + rand(-1.2, 1.2);
+        const jz = z + rand(-0.8, 0.8);
+        return [v3(jx, 0, jz)];
+      },
+      speed: 0.35,
+    });
+    a.rig.root.rotation.y = yaw;
+  }
+
   private addWorker(role: Role, faction: string, pose: Pose, spots: THREE.Vector3[]): void {
     let i = 0;
     this.spawn(role, faction, spots[0].clone(), {
@@ -249,6 +330,17 @@ export class Crowd {
       return ids.slice(1).map((id) => this.nodeVec(id, 0.5));
     };
     this.spawn("miner", faction, this.nodeVec("mine", 0.5), { next, speed: 0.55, waitRange: [2.5, 5] });
+  }
+
+  private addFarmCarrier(faction: string): void {
+    let toKho = true;
+    const next = (a: Agent): THREE.Vector3[] => {
+      const ids = toKho ? route("farm", "kho") : route("kho", "farm");
+      a.carry = toKho;
+      toKho = !toKho;
+      return ids.slice(1).map((id) => this.nodeVec(id, 0.5));
+    };
+    this.spawn("farmer", faction, this.nodeVec("farm", 0.6), { next, speed: 0.5, waitRange: [2, 4.5] });
   }
 
   private addDrill(faction: string, x: number, z: number): void {
@@ -270,8 +362,18 @@ export class Crowd {
     });
   }
 
-  update(dt: number, t: number): void {
-    dt = Math.min(dt, 0.1);
+  /**
+   * @param motionScale 0 = đứng yên (reducedMotion / pause ambient), 1 = đầy đủ
+   */
+  update(dt: number, t: number, motionScale = 1): void {
+    dt = Math.min(dt, 0.1) * motionScale;
+    if (motionScale <= 0.001) {
+      // vẫn animate idle nhẹ rất chậm
+      for (const a of this.agents) {
+        animateRig(a.rig, a.pose, 0, 0, 0.016, t, false, a.seed);
+      }
+      return;
+    }
     for (const a of this.agents) this.step(a, dt, t);
     for (const f of this.flyers) this.fly(f, dt, t);
   }
@@ -291,7 +393,6 @@ export class Crowd {
     o.position.copy(_p);
     if (_v.lengthSq() < 1e-6) return;
     _fwd.copy(_v).normalize();
-    // Nghiêng cánh vào tâm vòng lượn, như chim thật khi rẽ.
     _up.set(f.cx - _p.x, 0, f.cz - _p.z).normalize().multiplyScalar(0.42);
     _up.y = 1;
     _x.crossVectors(_up, _fwd).normalize();
@@ -299,7 +400,6 @@ export class Crowd {
     _m.makeBasis(_x, _y, _fwd);
     _q.setFromRotationMatrix(_m);
     o.quaternion.slerp(_q, Math.min(1, dt * 3));
-    // Lên cao thì vỗ, hạ độ cao thì lượn; xen từng đợt vỗ theo nhịp riêng.
     const burst = Math.sin(t * 0.37 + f.phase * 5) > 0.15 ? 1 : 0.1;
     const effort = _v.y > 0.25 ? 1 : _v.y < -0.3 ? 0 : burst;
     (o.userData.flap as ((dt: number, effort: number) => void) | undefined)?.(dt, effort);
@@ -316,7 +416,6 @@ export class Crowd {
       const dist = Math.hypot(dx, dz);
       let remain = dist;
       for (let i = a.cur + 1; i < a.path.length; i++) remain += a.path[i].distanceTo(a.path[i - 1]);
-      // Tăng/giảm tốc dài hơn → bước vào/ra điểm dừng tự nhiên.
       const ease = Math.min(1, remain / 1.35, (a.rig.walk + 0.12) * 1.35);
       const stepLen = a.speed * Math.max(0.08, ease) * dt;
       if (dist <= stepLen) {
@@ -343,6 +442,7 @@ export class Crowd {
         }
       }
       if (a.role === "miner" && a.carry && a.cur >= a.path.length) a.carry = false;
+      if (a.role === "farmer" && a.carry && a.cur >= a.path.length) a.carry = false;
     }
     const pose = a.cur < a.path.length ? "idle" : a.pose;
     animateRig(a.rig, pose, moved, speed01, dt, t, a.carry && a.cur < a.path.length, a.seed);

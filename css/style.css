@@ -512,11 +512,140 @@ textarea {
 .city-pin {
   position: absolute;
   transform: translate(-50%, -130%);
-  pointer-events: auto;
+  pointer-events: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+}
+/* P0: nameplate chỉ hiện khi hover/select; banner nâng cấp luôn thấy */
+.city-labels .city-pin .blabel.iso-nameplate {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.15s ease, transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  pointer-events: none;
+}
+.city-labels .city-pin.is-hot .blabel.iso-nameplate,
+.city-labels .city-pin.is-selected .blabel.iso-nameplate {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.city-labels .city-pin.is-selected .blabel.iso-nameplate {
+  border-color: var(--nl-bronze-hi);
+  color: #fff3c4;
+  background: rgba(26, 15, 10, 0.96);
+}
+.city-labels .city-pin.is-hot,
+.city-labels .city-pin.is-selected,
+.city-labels .city-pin.is-upgrading {
+  pointer-events: auto;
+}
+
+/* P1/P2: hotspot Hub — góc trái, không che giữa map */
+.city-hud-actions {
+  position: absolute;
+  left: 0.45rem;
+  bottom: 4.8rem;
+  z-index: 8;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  pointer-events: none; /* chỉ nút nhận touch — không chặn kéo map */
+  max-width: min(42vw, 9.5rem);
+}
+.city-hotspot {
+  pointer-events: auto;
+  margin: 0;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--nl-bronze);
+  border-radius: 2px;
+  background: rgba(18, 12, 8, 0.92);
+  color: var(--nl-ochre);
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+  text-align: left;
+}
+.city-hotspot:hover,
+.city-hotspot:focus-visible {
+  border-color: var(--nl-bronze-hi);
+  color: #fff3c4;
+  background: rgba(26, 15, 10, 0.96);
+  outline: none;
+}
+
+/* First paint — overlay trong viewport thành */
+.city-boot-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(42, 26, 16, 0.55) 0%, transparent 55%),
+    rgba(14, 10, 8, 0.55);
+  transition: opacity 0.3s ease;
+}
+.city-boot-overlay.is-done {
+  opacity: 0;
+}
+.city-boot-overlay[hidden] {
+  display: none !important;
+}
+.city-boot-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(197, 155, 39, 0.4);
+  background: rgba(18, 12, 8, 0.88);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+}
+.city-boot-spin {
+  width: 28px;
+  height: 28px;
+  border: 2px solid rgba(197, 155, 39, 0.25);
+  border-top-color: var(--nl-ochre, #e8c547);
+  border-radius: 50%;
+  animation: city-boot-spin 0.75s linear infinite;
+}
+.city-boot-label {
+  margin: 0;
+  color: var(--nl-ochre, #e8c547);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+@keyframes city-boot-spin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .city-boot-spin { animation: none; border-top-color: var(--nl-ochre, #e8c547); }
+  .city-boot-overlay { transition: none; }
+}
+
+@media (max-width: 720px) {
+  .city-hud-actions {
+    left: 0.35rem;
+    bottom: 5.6rem;
+    max-width: 7.8rem;
+    gap: 0.3rem;
+  }
+  .city-hotspot {
+    font-size: 0.72rem;
+    padding: 0.4rem 0.55rem;
+  }
 }
 .iso-tile {
   position: absolute;
@@ -1172,13 +1301,35 @@ textarea {
 
 .nl-tip {
   position: absolute;
-  left: 0.5rem;
-  bottom: 3.8rem;
-  z-index: 15;
-  font-size: 0.62rem;
-  color: var(--nl-ink-dim);
-  max-width: 55vw;
+  left: 50%;
+  bottom: 5.8rem;
+  transform: translateX(-50%) translateY(8px);
+  z-index: 16;
+  max-width: min(88vw, 22rem);
+  padding: 0.55rem 0.85rem;
+  border: 1px solid rgba(197, 155, 39, 0.45);
+  border-radius: 2px;
+  background: rgba(18, 12, 8, 0.92);
+  color: var(--nl-ochre);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  opacity: 0;
   pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.nl-tip.is-show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+  cursor: pointer;
+}
+@media (max-width: 720px) {
+  .nl-tip {
+    bottom: 6.8rem;
+    font-size: 0.72rem;
+  }
 }
 .nl-toast {
   position: absolute;

@@ -452,6 +452,7 @@
         n.classList.toggle("active", n.getAttribute("data-panel") === "city-home");
       });
       refresh();
+      if (city && city.focusHome) city.focusHome(500);
       return;
     }
     if (panel === "city") UI.renderCityPanel(state, h);
@@ -554,6 +555,19 @@
       NLCity.city = city;
       city.onBuildingClick = function (id) {
         UI.renderBuildingDetail(state, id, makeHandlers());
+        if (city && city.focusBuilding) city.focusBuilding(id, 500);
+      };
+      city.onDeployClick = function () {
+        openNav("tower");
+      };
+      city.onGeneralsClick = function () {
+        openNav("generals");
+      };
+      city.onCampaignClick = function () {
+        openNav("tower");
+      };
+      city.onArenaClick = function () {
+        openNav("arena");
       };
       city.bindInput();
       if (state) city.refresh(state);

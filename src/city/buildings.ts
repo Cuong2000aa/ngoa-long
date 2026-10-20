@@ -14,16 +14,17 @@ export interface Site {
 }
 
 /**
- * Vị trí trong thành (đơn vị world, tường trong ở khoảng ±21). id/building_id khớp NLGame.getBuildingList.
+ * Vị trí trong thành (đơn vị world, tường trong ở khoảng ±25). id/building_id khớp NLGame.getBuildingList.
  * Trục x = 0 để trống làm đường từ cổng nam vào Ty Vũ.
+ * Khoảng cách đủ cho footprint tier max (hall-c ~14, farm fields gọn).
  */
 export const SITES: Site[] = [
-  { id: "hall", building_id: "ty_vu", name: "Ty Vũ", x: 0, z: -12, kind: "hall" },
-  { id: "wall", building_id: "kho", name: "Kho", x: -15, z: -13, kind: "granary" },
-  { id: "academy", building_id: "san_tap", name: "Sân Tập", x: 15, z: -13, kind: "yard" },
-  { id: "farm", building_id: "nong_trai", name: "Nông Trại", x: -14, z: 5, kind: "farm" },
-  { id: "barracks", building_id: "doanh_trai", name: "Doanh Trại", x: 14, z: 1, kind: "barracks" },
-  { id: "mine", building_id: "mo_bac", name: "Mỏ Bạc", x: 14, z: 15, kind: "mine" },
+  { id: "hall", building_id: "ty_vu", name: "Ty Vũ", x: 0, z: -11, kind: "hall" },
+  { id: "wall", building_id: "kho", name: "Kho", x: -18, z: -15, kind: "granary" },
+  { id: "academy", building_id: "san_tap", name: "Sân Tập", x: 18, z: -15, kind: "yard" },
+  { id: "farm", building_id: "nong_trai", name: "Nông Trại", x: -17, z: 3, kind: "farm" },
+  { id: "barracks", building_id: "doanh_trai", name: "Doanh Trại", x: 17, z: 2, kind: "barracks" },
+  { id: "mine", building_id: "mo_bac", name: "Mỏ Bạc", x: 17, z: 17, kind: "mine" },
 ];
 
 /** Hệ số phóng công trình so với khung dựng gốc. */
