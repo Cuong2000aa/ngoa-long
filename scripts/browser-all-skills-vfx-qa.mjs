@@ -174,110 +174,135 @@ async function enterBattle() {
   });
 }
 
-/** Fire one skill + probe colors. Returns result row. */
-async function probeSkill(spec) {
-  const expect = FLASH_HEX[spec.flash] || FLASH_HEX[spec.motif] || null;
-  const flashMeta = await page.evaluate((s) => {
-    const br = window.NLCombatUI.getView()._battle3d;
-    try {
-      br.clearFx();
-    } catch (_) {
-      /* ignore */
-    }
-    br.pausedForShot = false;
-    const allies = [];
-    const foes = [];
-    br.fighters.forEach((f, uid) => {
-      if (!f || f.dead) return;
-      if (f.side === "ally") allies.push(uid);
-      else foes.push(uid);
-    });
-    const caster = allies[0];
-    let targets = foes.slice();
-    const pat = (s.pattern || "single").toLowerCase();
-    if (pat === "single") targets = foes.slice(0, 1);
-    if (pat === "self") targets = [caster];
-    if (pat === "ally_all") targets = allies.slice();
-    if (!caster) return { ok: false, reason: "no allies" };
-    try {
-      br.skillFlash(caster, s.flash, targets, {
-        pattern: s.pattern,
-        quality: "purple",
-        motif: s.motif || s.flash,
-        wave: true,
-      });
-      return { ok: true, bornBefore: performance.now() };
-    } catch (e) {
-      return { ok: false, reason: String(e && e.message ? e.message : e) };
-    }
-  }, spec);
-
-  if (!flashMeta.ok) {
-    return {
-      id: spec.id,
-      name: spec.name,
-      flash: spec.flash,
-      motif: spec.motif,
-      pattern: spec.pattern,
-      pass: false,
-      fxN: 0,
-      colors: [],
-      reason: flashMeta.reason || "flash fail",
-    };
-  }
-
-  // Chờ playSheet(loadTex) — đợi phía Node, không trong evaluate
-  await page.waitForTimeout(180);
-
-  // Poll ngắn đến khi có fx-sprite mới
-  let probe = { n: 0, nNew: 0, colors: [] };
-  const t0 = Date.now();
-  while (Date.now() - t0 < 500) {
-    probe = await page.evaluate((bornBefore) => {
+/**
+ * Chạy 1 batch trong page event loop (1 evaluate + waitForFunction).
+ * Tránh N× CDP round-trip / chiêu.
+ */
+async function probeBatch(batch) {
+  await page.evaluate(
+    ({ specs, flashHex }) => {
       const br = window.NLCombatUI.getView()._battle3d;
-      const colors = [];
-      let n = 0;
-      let nNew = 0;
-      if (br.scene) {
-        br.scene.traverse((o) => {
-          if (!(o && o.name === "fx-sprite")) return;
-          n++;
-          const born = o.userData && o.userData.born;
-          if (born != null && born >= bornBefore - 30) nNew++;
-          if (o.material && o.material.color) colors.push(o.material.color.getHexString());
-        });
-      }
-      return { n, nNew, colors: colors.slice(0, 12) };
-    }, flashMeta.bornBefore);
-    if (probe.nNew > 0 || probe.n > 0) break;
-    await page.waitForTimeout(35);
-  }
+      const allies = [];
+      const foes = [];
+      br.fighters.forEach((f, uid) => {
+        if (!f || f.dead) return;
+        if (f.side === "ally") allies.push(uid);
+        else foes.push(uid);
+      });
+      const caster = allies[0];
+      const state = {
+        i: 0,
+        results: [],
+        done: false,
+        failed: 0,
+        total: specs.length,
+        progress: `0/${specs.length}`,
+      };
+      window.__NL_SKILL_QA_BATCH__ = state;
 
-  const fxN = probe.nNew || probe.n;
-  const joined = probe.colors.join(",").toLowerCase();
-  const colorOk = !expect || expect.some((h) => joined.includes(String(h).toLowerCase()));
-  const pass = !!(fxN > 0 && colorOk);
+      const step = () => {
+        if (state.i >= specs.length) {
+          state.done = true;
+          state.progress = `${state.i}/${specs.length} failed=${state.failed}`;
+          return;
+        }
+        const spec = specs[state.i++];
+        const expect = flashHex[spec.flash] || flashHex[spec.motif] || null;
+        try {
+          br.clearFx();
+        } catch (_) {
+          /* ignore */
+        }
+        br.pausedForShot = false;
+        let targets = foes.slice();
+        const pat = (spec.pattern || "single").toLowerCase();
+        if (pat === "single") targets = foes.slice(0, 1);
+        if (pat === "self") targets = [caster];
+        if (pat === "ally_all") targets = allies.slice();
+        let flashOk = true;
+        let reason = null;
+        const bornBefore = performance.now();
+        try {
+          if (!caster) throw new Error("no allies");
+          br.skillFlash(caster, spec.flash, targets, {
+            pattern: spec.pattern,
+            quality: "purple",
+            motif: spec.motif || spec.flash,
+            wave: true,
+          });
+        } catch (e) {
+          flashOk = false;
+          reason = String(e && e.message ? e.message : e);
+        }
+        setTimeout(() => {
+          try {
+            const colors = [];
+            let n = 0;
+            let nNew = 0;
+            if (flashOk && br.scene) {
+              br.scene.traverse((o) => {
+                if (!(o && o.name === "fx-sprite")) return;
+                n++;
+                const born = o.userData && o.userData.born;
+                if (born != null && born >= bornBefore - 30) nNew++;
+                if (o.material && o.material.color) colors.push(o.material.color.getHexString());
+              });
+            }
+            const fxN = nNew || n;
+            const joined = colors.join(",").toLowerCase();
+            const colorOk = !expect || expect.some((h) => joined.includes(String(h).toLowerCase()));
+            const pass = !!(flashOk && fxN > 0 && colorOk);
+            if (!pass) state.failed++;
+            state.results.push({
+              id: spec.id,
+              name: spec.name,
+              flash: spec.flash,
+              motif: spec.motif,
+              pattern: spec.pattern,
+              pass,
+              fxN,
+              colors: colors.slice(0, 8),
+              reason: !flashOk
+                ? reason
+                : !fxN
+                  ? "no fx-sprite"
+                  : !colorOk
+                    ? `color miss expect=${expect}`
+                    : null,
+            });
+          } catch (err) {
+            state.failed++;
+            state.results.push({
+              id: spec.id,
+              name: spec.name,
+              flash: spec.flash,
+              motif: spec.motif,
+              pattern: spec.pattern,
+              pass: false,
+              fxN: 0,
+              colors: [],
+              reason: "probe:" + String(err && err.message ? err.message : err),
+            });
+          }
+          state.progress = `${state.i}/${specs.length} failed=${state.failed}`;
+          try {
+            br.clearFx();
+          } catch (_) {
+            /* ignore */
+          }
+          setTimeout(step, 40);
+        }, 200);
+      };
+      setTimeout(step, 0);
+    },
+    { specs: batch, flashHex: FLASH_HEX }
+  );
 
-  // Dọn trước chiêu kế
-  await page.evaluate(() => {
-    try {
-      window.NLCombatUI.getView()._battle3d.clearFx();
-    } catch (_) {
-      /* ignore */
-    }
+  await page.waitForFunction(() => !!(window.__NL_SKILL_QA_BATCH__ && window.__NL_SKILL_QA_BATCH__.done), {
+    timeout: Math.max(60000, batch.length * 800),
+    polling: 250,
   });
-
-  return {
-    id: spec.id,
-    name: spec.name,
-    flash: spec.flash,
-    motif: spec.motif,
-    pattern: spec.pattern,
-    pass,
-    fxN,
-    colors: probe.colors.slice(0, 8),
-    reason: !fxN ? "no fx-sprite" : !colorOk ? `color miss expect=${expect}` : null,
-  };
+  return page.evaluate(() => window.__NL_SKILL_QA_BATCH__.results || []);
 }
 
 try {
@@ -285,36 +310,36 @@ try {
   console.log("battle3d ready — firing all skills");
 
   const tCatalog = Date.now();
-  for (let i = 0; i < skills.length; i++) {
-    const spec = skills[i];
-    let row;
+  const BATCH = 40;
+  for (let off = 0; off < skills.length; off += BATCH) {
+    const batch = skills.slice(off, off + BATCH);
+    let rows;
     try {
-      row = await probeSkill(spec);
+      rows = await probeBatch(batch);
     } catch (e) {
-      row = {
-        id: spec.id,
-        name: spec.name,
-        flash: spec.flash,
-        motif: spec.motif,
-        pattern: spec.pattern,
-        pass: false,
-        fxN: 0,
-        colors: [],
-        reason: "probe:" + String(e && e.message ? e.message : e),
-      };
-      // Thử hồi phục nếu page còn sống
+      console.error("batch fail at", off, e && e.message ? e.message : e, "— re-enter + retry once");
       try {
-        await page.evaluate(() => !!window.NLCombatUI?.getView?.()?._battle3d);
-      } catch (_) {
-        console.error("page lost at", i + 1, "— re-entering battle");
         await enterBattle();
+        rows = await probeBatch(batch);
+      } catch (e2) {
+        rows = batch.map((spec) => ({
+          id: spec.id,
+          name: spec.name,
+          flash: spec.flash,
+          motif: spec.motif,
+          pattern: spec.pattern,
+          pass: false,
+          fxN: 0,
+          colors: [],
+          reason: "batch:" + String(e2 && e2.message ? e2.message : e2),
+        }));
       }
     }
-    if (!row.pass) failed++;
-    results.push(row);
-    if ((i + 1) % 25 === 0 || i + 1 === skills.length) {
-      console.log(`… ${i + 1}/${skills.length} failed=${failed}`);
+    for (const row of rows) {
+      if (!row.pass) failed++;
+      results.push(row);
     }
+    console.log(`… ${Math.min(off + BATCH, skills.length)}/${skills.length} failed=${failed}`);
   }
   console.log(`catalog done in ${Date.now() - tCatalog}ms`);
 
