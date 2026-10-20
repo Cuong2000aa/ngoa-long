@@ -65,6 +65,42 @@ html, body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Letterbox khi mobile-scale thu nhỏ khung thiết kế */
+body {
+  background: #050302;
+}
+
+/**
+ * Mobile auto-scale root (js/mobile-scale.js):
+ * - Desktop rộng: .is-fluid → full viewport
+ * - Mobile: cố định design size + transform scale (letterbox)
+ */
+#nl-scale-root {
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+  z-index: 1;
+  overflow: hidden;
+  background: var(--nl-bg);
+}
+#nl-scale-root.is-fluid {
+  width: 100% !important;
+  height: 100% !important;
+  transform: none !important;
+}
+#nl-scale-root.is-scaled {
+  box-shadow: 0 0 0 1px rgba(197, 155, 39, 0.12);
+}
+#nl-scale-root #app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
 }
 
 #app {
@@ -74,6 +110,14 @@ html, body {
   min-height: 100vh;
   min-height: 100dvh;
   font-family: var(--font-ui);
+}
+#nl-scale-root #app {
+  min-height: 0;
+}
+
+/* Loading luôn full viewport — không nằm trong scale root */
+#nl-loading {
+  z-index: 10000;
 }
 
 /* —— Boot / lazy-load overlay (gỗ · đồng · hoàng thổ) —— */
