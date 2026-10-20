@@ -222,7 +222,8 @@ export type BattleActor = {
 };
 
 /** 1 chủ lực / ô — ~70% size đợt trước (1.35 → 0.95) */
-const SOLO_LEADER_H = 0.95;
+/** Chiều cao world sprite tướng — cân với VFX (trước 0.95 hơi nhỏ so với vòng/ấn) */
+const SOLO_LEADER_H = 1.28;
 
 export async function createBattleActor(
   troop: string | undefined,

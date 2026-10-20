@@ -1,27 +1,25 @@
-# Hồn spirit packs — qi-stream (style Hỏa Long)
+# Skill qi-stream packs
 
-## Emission chính = qi sheet (không GLB thú)
+Runtime folder: `assets/fx/skill/{rong|xa|ho|…}/qi_*`  
+Code id vẫn `hon_rong` / `hon_xa` / … (xem `honPackForStyle`).
 
-Runtime `emitHonSpiritSequence3d` khi có `qi_*`:
+## Emission = qi sheet
 
-1. **Charge** — vortex tụ lực (`charge_01..04`)
-2. **Flight** — **1** silhouette bay, `headOnRight` + `headLeadFrac` (đầu đâm địch)
-3. **Impact** — bùm đúng lúc đầu chạm (`impact_01..03`)
+1. **Charge** — `charge_01..04` (vòng đất)
+2. **Flight** — `flight_01..04` (đầu dẫn)
+3. **Impact** — `impact_01..03` (+ `strike_*` cho bagua)
 
-| Pack | Qi folder | Palette / motif |
-|------|-----------|-----------------|
-| `hon_rong` | `qi_fire` / `qi_azure` / `qi_ivory` | lửa · thanh · bạch |
-| `hon_xa` | `qi_poison` | lục độc |
-| `hon_ho` | `qi_tiger` | hổ phách |
-| `hon_soi` | `qi_wolf` | xám bạc |
-| `hon_thuy` | `qi_water` | lam nước |
-| `hon_loi` | `qi_thunder` | vàng sét |
-| `hon_phong` | `qi_wind` | cyan gió |
+| Code id | Folder | Palette |
+|---------|--------|---------|
+| `hon_rong` | `skill/rong/qi_fire` · `qi_azure` · `qi_ivory` | lửa · thanh · bạch |
+| `hon_xa` | `skill/xa/qi_poison` | lục độc |
+| `hon_ho` | `skill/ho/qi_tiger` | hổ phách |
+| `hon_soi` | `skill/soi/qi_wolf` | xám bạc |
+| `hon_thuy` | `skill/thuy/qi_water` | lam nước |
+| `hon_loi` | `skill/loi/qi_thunder` | vàng sét |
+| `hon_phong` | `skill/phong/qi_wind` | cyan gió |
+| `hon_bagua` | `skill/bagua/qi_bagua` | pháp trận đa màu |
+| `hon_hon` | `skill/hon/qi_soul` | linh hồn |
 
-Gen / expand: `python3 scripts/gen-qi-spirit-packs.py`  
-Seed AI (hổ/sói): `…/qi_*/qi_seed/` · credits: `assets/CREDITS.md`.
-
-## Legacy
-
-`serpent_*` / `fx/dragon` / `tiger` / `wolf` — underlay hoặc fallback cũ.  
-`hon_3d/*.glb` — **không** emission chính.
+Gen: `python3 scripts/gen-qi-spirit-packs.py`  
+Index: `assets/fx/README.md`

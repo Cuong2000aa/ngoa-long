@@ -46,12 +46,14 @@ type MeshFx = {
   id: number;
   obj: THREE.Object3D;
   until: number;
-  kind: "ring" | "core" | "flash" | "spirit" | "spin" | "bolt";
+  kind: "ring" | "core" | "flash" | "spirit" | "spin" | "bolt" | "decal";
   born: number;
   lifeMs: number;
-  // ring / spin
+  // ring / spin / decal
   maxScale?: number;
   spinSpeed?: number;
+  /** MeshBasicMaterial của decal mặt đất */
+  meshMat?: THREE.MeshBasicMaterial;
   // core / spirit flight
   from?: THREE.Vector3;
   to?: THREE.Vector3;
@@ -102,7 +104,16 @@ const _texLoader = new THREE.TextureLoader();
 const _texCache = new Map<string, THREE.Texture>();
 
 /** Soft volumetric Hồn packs — gen: `npm run gen:hon-packs` */
-export type HonPackId = "hon_rong" | "hon_xa" | "hon_ho" | "hon_soi" | "hon_thuy" | "hon_loi" | "hon_phong";
+export type HonPackId =
+  | "hon_rong"
+  | "hon_xa"
+  | "hon_ho"
+  | "hon_soi"
+  | "hon_thuy"
+  | "hon_loi"
+  | "hon_phong"
+  | "hon_bagua"
+  | "hon_hon";
 
 type HonPackPaths = {
   serpent: string[];
@@ -113,7 +124,7 @@ type HonPackPaths = {
   orb: string;
   tint: number;
   flash: string;
-  /** Đầu silhouette flipbook (luồng khí — không GLB thú) */
+  /** Đầu silhouette flipbook (qi flight) */
   head: string[];
   /** Thân/đuôi qi stream */
   body: string[];
@@ -122,99 +133,50 @@ type HonPackPaths = {
   yawOffset: number;
 };
 
+const _pad2 = (n: number) => String(n).padStart(2, "0");
+const _fxSeq = (folder: string, prefix: string, n: number, start = 1) =>
+  Array.from({ length: n }, (_, i) => `assets/fx/${folder}/${prefix}_${_pad2(start + i)}.png`);
+
+/** Pack qi-stream dưới assets/fx/skill/{short}/qi_* */
 function honPaths(
-  id: HonPackId,
   tint: number,
   flash: string,
   emissive: number,
-  head: string[],
-  body?: string[],
+  qiFolder: string,
   yawOffset = 0
 ): HonPackPaths {
-  const pad = (n: number) => String(n).padStart(2, "0");
-  const base = `assets/fx/${id}`;
-  const serpent = [1, 2, 3, 4, 5, 6, 7, 8].map((i) => `${base}/serpent_${pad(i)}.png`);
+  const flight = _fxSeq(qiFolder, "flight", 4);
+  const charge = _fxSeq(qiFolder, "charge", 4);
   return {
-    serpent,
-    mist: [1, 2, 3, 4].map((i) => `${base}/mist_${pad(i)}.png`),
-    sparkle: [1, 2, 3, 4].map((i) => `${base}/sparkle_${pad(i)}.png`),
-    ring: [1, 2, 3, 4].map((i) => `${base}/ring_${pad(i)}.png`),
-    crescent: [1, 2, 3].map((i) => `${base}/crescent_${pad(i)}.png`),
-    orb: `${base}/orb.png`,
+    serpent: flight,
+    mist: charge,
+    sparkle: [],
+    ring: charge,
+    crescent: [],
+    orb: "",
     tint,
     flash,
-    head,
-    body: body && body.length ? body : serpent,
+    head: flight,
+    body: flight,
     emissive,
     yawOffset,
   };
 }
 
-const _pad2 = (n: number) => String(n).padStart(2, "0");
-const _fxSeq = (folder: string, prefix: string, n: number, start = 1) =>
-  Array.from({ length: n }, (_, i) => `assets/fx/${folder}/${prefix}_${_pad2(start + i)}.png`);
-
 /**
- * Hồn = luồng khí + silhouette (sheet CC0). Không GLB thú giữa sân.
- * Head: dragon/tiger/wolf/whirl; body: serpent qi trong hon_*.
+ * Hồn = qi-stream trong assets/fx/skill/* (charge → flight → impact).
+ * Id code giữ hon_* ; folder runtime = skill/{short}/qi_*.
  */
 const HON_PACKS: Record<HonPackId, HonPackPaths> = {
-  hon_rong: honPaths(
-    "hon_rong",
-    0xff8a3a,
-    "fire",
-    0xff4a12,
-    _fxSeq("dragon", "dragon", 11),
-    _fxSeq("hon_rong", "serpent", 8)
-  ),
-  hon_xa: honPaths(
-    "hon_xa",
-    0x6ee7a8,
-    "green_poison",
-    0x22c55e,
-    _fxSeq("hon_xa", "serpent", 8),
-    _fxSeq("hon_xa", "serpent", 8)
-  ),
-  hon_ho: honPaths(
-    "hon_ho",
-    0xfbbf24,
-    "tiger",
-    0xf59e0b,
-    _fxSeq("tiger", "roar", 8),
-    _fxSeq("hon_ho", "serpent", 8)
-  ),
-  hon_soi: honPaths(
-    "hon_soi",
-    0xcbd5e1,
-    "wolf",
-    0x94a3b8,
-    _fxSeq("wolf", "wolf", 8),
-    _fxSeq("hon_soi", "serpent", 8)
-  ),
-  hon_thuy: honPaths(
-    "hon_thuy",
-    0x38bdf8,
-    "blue_water",
-    0x0ea5e9,
-    _fxSeq("hon_thuy", "serpent", 8),
-    _fxSeq("hon_thuy", "serpent", 8)
-  ),
-  hon_loi: honPaths(
-    "hon_loi",
-    0xfde047,
-    "thunder",
-    0xfacc15,
-    _fxSeq("dragon", "dragon", 11),
-    _fxSeq("hon_rong", "serpent_gold", 8)
-  ),
-  hon_phong: honPaths(
-    "hon_phong",
-    0xa5f3fc,
-    "whirlwind",
-    0x67e8f9,
-    _fxSeq("whirlwind", "whirl", 4),
-    _fxSeq("hon_phong", "serpent", 8)
-  ),
+  hon_rong: honPaths(0xff8a3a, "fire", 0xff4a12, "skill/rong/qi_fire"),
+  hon_xa: honPaths(0x6ee7a8, "green_poison", 0x22c55e, "skill/xa/qi_poison"),
+  hon_ho: honPaths(0xfbbf24, "tiger", 0xf59e0b, "skill/ho/qi_tiger"),
+  hon_soi: honPaths(0xcbd5e1, "wolf", 0x94a3b8, "skill/soi/qi_wolf"),
+  hon_thuy: honPaths(0x38bdf8, "blue_water", 0x0ea5e9, "skill/thuy/qi_water"),
+  hon_loi: honPaths(0xfde047, "thunder", 0xfacc15, "skill/loi/qi_thunder"),
+  hon_phong: honPaths(0xa5f3fc, "whirlwind", 0x67e8f9, "skill/phong/qi_wind"),
+  hon_bagua: honPaths(0xf5e6c8, "bagua", 0xc4b5fd, "skill/bagua/qi_bagua"),
+  hon_hon: honPaths(0xe0e7ff, "violet_spirit", 0xa78bfa, "skill/hon/qi_soul"),
 };
 
 /** Combat sprite scale — head longest ~1.05–1.75 (không showcase). */
@@ -229,6 +191,7 @@ export function clampHonTargetSize(raw: number): number {
 }
 
 function loadFxTex(url: string): Promise<THREE.Texture> {
+  if (!url) return Promise.reject(new Error("empty fx url"));
   const hit = _texCache.get(url);
   if (hit) return Promise.resolve(hit);
   return new Promise((resolve, reject) => {
@@ -254,7 +217,9 @@ function loadFxTex(url: string): Promise<THREE.Texture> {
 }
 
 async function loadFrameSet(urls: string[]): Promise<THREE.Texture[]> {
-  return Promise.all(urls.map((u) => loadFxTex(u)));
+  const list = (urls || []).filter(Boolean);
+  if (!list.length) return [];
+  return Promise.all(list.map((u) => loadFxTex(u)));
 }
 
 function trackTimer(ms: number, fn: () => void): number {
@@ -307,6 +272,9 @@ export function resolveFx3dStyle(opts: {
   if (opts.isRush || flash === "rush" || motif === "rush") return "rush";
   if (flash === "dragon" || motif === "dragon") return "breath";
   if (flash === "tiger" || motif === "tiger" || flash === "wolf" || motif === "wolf") return "roar";
+  // Linh hồn người / pháp trận — map sớm trước beam generic
+  if (flash === "violet_spirit" || motif === "spirit") return "beam";
+  if (flash === "jade_gold" || flash === "bagua" || motif === "bagua") return "beam";
   if (flash === "whirlwind" || motif === "whirlwind" || flash === "wind") return "whirl";
   if (
     flash === "green_poison" ||
@@ -347,9 +315,27 @@ export function resolveFx3dStyle(opts: {
 }
 
 /** Map style 3D → pack hồn (null = không dùng spirit sequence). */
-function honPackForStyle(style: Fx3dStyle, flash?: string, skillId?: string | null): HonPackId | null {
+export function honPackForStyle(style: Fx3dStyle, flash?: string, skillId?: string | null): HonPackId | null {
   const f = (flash || "").toLowerCase();
   const id = String(skillId || "").toLowerCase();
+  // Pháp trận Bát Quái (đa màu) — ưu tiên trước beam generic
+  if (
+    f === "bagua" ||
+    f === "jade_gold" ||
+    /bagua|bat_tran|ky_mon|am_duong|huyen_phap|huyen_thuat|kinh_dien_luan|thien_dia_van_tuong|than_uy_pha_tran|thuong_tran|tien_co_chien_tran/.test(
+      id
+    )
+  )
+    return "hon_bagua";
+  // Linh hồn người (không long/rồng)
+  if (
+    (f === "violet_spirit" ||
+      /truy_hon|toa_hon|tran_hon|de_hon|thu_hon|doat_phach|thien_menh|hieu_lenh|bach_hong|hong_hoang|hong_lien|hong_viem|xich_vu/.test(
+        id
+      )) &&
+    !/long|rong/.test(id)
+  )
+    return "hon_hon";
   if (style === "breath") return "hon_rong";
   if (style === "poison") return "hon_xa";
   if (style === "tide") return "hon_thuy";
@@ -723,6 +709,42 @@ function honElementLayers(packId: HonPackId): {
           { folder: "spritepilot", pack: "hit_spark", n: 6, w: 2.3, h: 2.3, opacity: 0.9 },
         ],
       };
+    case "hon_bagua":
+      return {
+        charge: [
+          { folder: "codemanu", pack: "elden_ring", n: 16, w: 3.4, h: 3.4, opacity: 0.9 },
+          { folder: "codemanu", pack: "constellation", n: 16, w: 3.0, h: 3.0, opacity: 0.8 },
+          { folder: "codemanu", pack: "anima", n: 16, w: 2.6, h: 2.6, opacity: 0.7 },
+        ],
+        form: [
+          { folder: "codemanu", pack: "vortex", n: 16, w: 2.8, h: 2.8, opacity: 0.75 },
+          { folder: "codemanu", pack: "wheel", n: 16, w: 2.5, h: 2.5, opacity: 0.7 },
+        ],
+        flight: { urls: cm("constellation", 16), w: 2.0, h: 2.0 },
+        hit: [
+          { folder: "codemanu", pack: "big_hit", n: 16, w: 3.4, h: 3.4, opacity: 0.95 },
+          { folder: "codemanu", pack: "elden_ring", n: 16, w: 3.0, h: 3.0, opacity: 0.85 },
+          { folder: "codemanu", pack: "puff_stars", n: 16, w: 2.6, h: 2.6, opacity: 0.75 },
+        ],
+      };
+    case "hon_hon":
+      return {
+        charge: [
+          { folder: "codemanu", pack: "anima", n: 16, w: 3.2, h: 3.2, opacity: 0.9 },
+          { folder: "codemanu", pack: "constellation", n: 16, w: 2.8, h: 2.8, opacity: 0.75 },
+          { folder: "brackeys", pack: "shadow_burst", n: 16, w: 2.5, h: 2.5, opacity: 0.65 },
+        ],
+        form: [
+          { folder: "codemanu", pack: "vortex", n: 16, w: 2.8, h: 2.8, opacity: 0.7 },
+          { folder: "codemanu", pack: "anima", n: 16, w: 2.4, h: 2.4, opacity: 0.75 },
+        ],
+        flight: { urls: cm("anima", 16), w: 1.9, h: 1.9 },
+        hit: [
+          { folder: "codemanu", pack: "impact", n: 16, w: 3.2, h: 3.2, opacity: 0.92 },
+          { folder: "codemanu", pack: "anima", n: 16, w: 2.8, h: 2.8, opacity: 0.8 },
+          { folder: "spritepilot", pack: "hit_spark", n: 6, w: 2.3, h: 2.3, opacity: 0.9 },
+        ],
+      };
   }
 }
 
@@ -833,8 +855,10 @@ function flashPalette(flash?: string): { base: THREE.Color; hot: THREE.Color; co
     return { base: new THREE.Color(0x7dd3fc), hot: new THREE.Color(0xf0f9ff), cool: new THREE.Color(0x0369a1) };
   if (f === "blue" || f === "blue_water" || f === "cyan" || f === "frost")
     return { base: new THREE.Color(0x38bdf8), hot: new THREE.Color(0xe0f2fe), cool: new THREE.Color(0x1d4ed8) };
-  if (f === "purple" || f === "shadow" || f === "bagua")
+  if (f === "purple" || f === "shadow" || f === "bagua" || f === "jade_gold" || f === "violet_spirit")
     return { base: new THREE.Color(0xa78bfa), hot: new THREE.Color(0xe9d5ff), cool: new THREE.Color(0x5b21b6) };
+  if (f === "electric_blue")
+    return { base: new THREE.Color(0x7dd3fc), hot: new THREE.Color(0xf0f9ff), cool: new THREE.Color(0x0369a1) };
   if (f === "crimson" || f === "blood" || f === "gold_red")
     return { base: new THREE.Color(0xf87171), hot: new THREE.Color(0xfecaca), cool: new THREE.Color(0x991b1b) };
   if (f === "green_poison" || f === "poison" || f === "nature" || f === "snake" || f === "fire_green")
@@ -951,6 +975,8 @@ const HON_PACK_BASE_SIZE: Record<HonPackId, number> = {
   hon_thuy: 1.35,
   hon_loi: 1.4,
   hon_phong: 1.35,
+  hon_bagua: 1.55,
+  hon_hon: 1.4,
 };
 
 /** Palette + size theo pack (+ skillId override cho biến thể rồng). */
@@ -995,6 +1021,13 @@ function resolveHonCombatVariant(packId: HonPackId, skillId?: string | null): Ho
   }
   if (packId === "hon_phong") {
     return { tint: 0xa5f3fc, emissive: 0x67e8f9, size: 1.45, arcMul: 1.08, hot: false, tintStrength: 0.48 };
+  }
+  if (packId === "hon_bagua") {
+    // Tint nhẹ — sheet đã đa màu (jade/gold/cyan/violet)
+    return { tint: 0xf5e6c8, emissive: 0xc4b5fd, size: 1.65, arcMul: 0.72, hot: false, tintStrength: 0.22 };
+  }
+  if (packId === "hon_hon") {
+    return { tint: 0xe0e7ff, emissive: 0xa78bfa, size: 1.5, arcMul: 0.95, hot: false, tintStrength: 0.28 };
   }
   return base;
 }
@@ -1050,18 +1083,20 @@ function qiSeq(folder: string, stem: string, n: number): string[] {
 }
 
 const QI_PACK_FOLDERS: Record<HonPackId, string> = {
-  hon_rong: "hon_rong/qi_fire",
-  hon_xa: "hon_xa/qi_poison",
-  hon_ho: "hon_ho/qi_tiger",
-  hon_soi: "hon_soi/qi_wolf",
-  hon_thuy: "hon_thuy/qi_water",
-  hon_loi: "hon_loi/qi_thunder",
-  hon_phong: "hon_phong/qi_wind",
+  hon_rong: "skill/rong/qi_fire",
+  hon_xa: "skill/xa/qi_poison",
+  hon_ho: "skill/ho/qi_tiger",
+  hon_soi: "skill/soi/qi_wolf",
+  hon_thuy: "skill/thuy/qi_water",
+  hon_loi: "skill/loi/qi_thunder",
+  hon_phong: "skill/phong/qi_wind",
+  hon_bagua: "skill/bagua/qi_bagua",
+  hon_hon: "skill/hon/qi_soul",
 };
 
 /**
  * Sheet qi-stream. Mọi pack hồn: charge → flight (đầu dẫn) → impact.
- * thanh/bạch long → qi_azure / qi_ivory.
+ * thanh/bạch long → qi_azure / qi_ivory. bagua thêm strike (sét xuống).
  */
 function resolveHonStreamSheets(
   packId: HonPackId,
@@ -1073,18 +1108,20 @@ function resolveHonStreamSheets(
   mist: string[];
   charge: string[];
   impact: string[];
+  strike: string[];
 } {
   const pack = HON_PACKS[packId];
   const id = String(skillId || "").toLowerCase();
   let folder = QI_PACK_FOLDERS[packId];
   if (packId === "hon_rong") {
-    if (/thanh_long|thuong_long/.test(id)) folder = "hon_rong/qi_azure";
-    else if (/bach_long|ngan_long/.test(id)) folder = "hon_rong/qi_ivory";
-    else folder = "hon_rong/qi_fire";
+    if (/thanh_long|thuong_long/.test(id)) folder = "skill/rong/qi_azure";
+    else if (/bach_long|ngan_long/.test(id)) folder = "skill/rong/qi_ivory";
+    else folder = "skill/rong/qi_fire";
   }
   const flight = qiSeq(folder, "flight", 4);
   const charge = qiSeq(folder, "charge", 4);
   const impact = qiSeq(folder, "impact", 3);
+  const strike = packId === "hon_bagua" ? qiSeq(folder, "strike", 3) : [];
   return {
     head: flight.slice(),
     body: flight.slice(),
@@ -1092,6 +1129,340 @@ function resolveHonStreamSheets(
     mist: pack.mist.slice(),
     charge,
     impact,
+    strike,
+  };
+}
+
+function formationCentroid(points: THREE.Vector3[]): { center: THREE.Vector3; radius: number } {
+  const center = new THREE.Vector3();
+  const list = points.length ? points : [new THREE.Vector3()];
+  list.forEach((p) => center.add(p));
+  center.multiplyScalar(1 / list.length);
+  let radius = 1.35;
+  list.forEach((p) => {
+    radius = Math.max(radius, Math.hypot(p.x - center.x, p.z - center.z) + 1.05);
+  });
+  return { center, radius };
+}
+
+/**
+ * Decal qi nằm phẳng trên đất — Group xoay Y + plane con rot.x=-π/2.
+ * (Xoay mesh.rotation.y sau khi đã rot.x sẽ bị “gãy” Euler.)
+ */
+function emitGroundQiDecal3d(
+  scene: THREE.Scene,
+  at: THREE.Vector3,
+  frameUrls: string[],
+  opts: {
+    durationMs?: number;
+    diameter?: number;
+    opacity?: number;
+    spinSpeed?: number;
+    y?: number;
+    delayMs?: number;
+    color?: number;
+    /** false = chỉ xoay texture cố định (vòng bát quái mượt) */
+    animateFrames?: boolean;
+  } = {}
+): Fx3dHandle {
+  const durationMs = opts.durationMs ?? 520;
+  const delayMs = opts.delayMs ?? 0;
+  const diameter = opts.diameter ?? 3.2;
+  const cancelled = { v: false };
+  const handles: Fx3dHandle[] = [];
+
+  const start = () => {
+    if (cancelled.v || !scene) return;
+    void loadFrameSet(frameUrls).then((frames) => {
+      if (cancelled.v || !scene || !frames.length) return;
+      const mat = new THREE.MeshBasicMaterial({
+        map: frames[0],
+        color: opts.color ?? 0xffffff,
+        transparent: true,
+        opacity: opts.opacity ?? 0.92,
+        depthWrite: false,
+        depthTest: true,
+        side: THREE.DoubleSide,
+        blending: THREE.AdditiveBlending,
+        toneMapped: false,
+        fog: false,
+      });
+      const root = new THREE.Group();
+      root.position.set(at.x, opts.y ?? 0.05, at.z);
+      root.renderOrder = 46;
+      const mesh = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), mat);
+      mesh.rotation.x = -Math.PI / 2;
+      mesh.scale.set(diameter, diameter, 1);
+      mesh.frustumCulled = false;
+      root.add(mesh);
+      const now = performance.now();
+      const useFrames = opts.animateFrames === false ? [frames[0]] : frames;
+      handles.push(
+        pushMesh(scene, {
+          id: nextId++,
+          obj: root,
+          until: now + durationMs + 40,
+          kind: "decal",
+          born: now,
+          lifeMs: durationMs,
+          spinSpeed: opts.spinSpeed ?? 2.4,
+          frames: useFrames,
+          frameI: 0,
+          nextFrame: now + 99999,
+          frameMs: 99999,
+          meshMat: mat,
+          baseOpacity: opts.opacity ?? 0.92,
+          maxScale: 1,
+        })
+      );
+    });
+  };
+
+  if (delayMs > 0) {
+    const tid = trackTimer(delayMs, start);
+    return {
+      cancel() {
+        cancelled.v = true;
+        clearTimeout(tid);
+        const ti = PENDING_TIMERS.indexOf(tid);
+        if (ti >= 0) PENDING_TIMERS.splice(ti, 1);
+        handles.forEach((h) => h.cancel());
+      },
+    };
+  }
+  start();
+  return {
+    cancel() {
+      cancelled.v = true;
+      handles.forEach((h) => h.cancel());
+    },
+  };
+}
+
+/**
+ * Pháp trận Bát Quái — KHÔNG ném ấn / không billboard đứng.
+ * Tụ lực → vòng nằm DƯỚI CHÂN đội hình địch (xoay) → sét đánh xuống.
+ */
+function emitBaguaFormationSequence3d(
+  scene: THREE.Scene,
+  from: THREE.Vector3,
+  to: THREE.Vector3,
+  opts: {
+    scale?: string | null;
+    skillId?: string | null;
+    pattern?: string | null;
+    targets?: THREE.Vector3[];
+  } = {}
+): Fx3dHandle {
+  const sheets = resolveHonStreamSheets("hon_bagua", opts.skillId);
+  const targets = (opts.targets && opts.targets.length ? opts.targets : [to]).map((p) => p.clone());
+  const { center, radius } = formationCentroid(targets);
+  const mul = scaleMul(opts.scale);
+  const CHARGE_MS = 360;
+  const RING_MS = 560;
+  const STRIKE_STAGGER = 70;
+  const handles: Fx3dHandle[] = [];
+  const timers: number[] = [];
+  const cancelled = { v: false };
+  // Phủ đội hình nhưng không nuốt cả sân — cân với tướng ~1.28 cao
+  const ringDiam = Math.min(6.8, Math.max(2.8, radius * 2.15)) * mul;
+  const ringUrls = sheets.head.length ? sheets.head : sheets.charge;
+
+  const start = () => {
+    if (cancelled.v || !scene) return;
+    const casterGround = from.clone();
+    casterGround.y = 0.05;
+    // 1) Tụ lực nhỏ dưới chân caster
+    handles.push(
+      emitGroundSigil3d(scene, casterGround, {
+        flash: "bagua",
+        scale: opts.scale,
+        durationMs: CHARGE_MS + 60,
+        color: 0xe8dcc8,
+      })
+    );
+    handles.push(
+      emitGroundQiDecal3d(scene, from, sheets.charge.length ? sheets.charge : ringUrls, {
+        durationMs: CHARGE_MS,
+        diameter: 1.9 * mul,
+        opacity: 0.88,
+        spinSpeed: 3.2,
+        y: 0.04,
+        animateFrames: false,
+      })
+    );
+
+    // 2) Vòng Bát Quái nằm phẳng dưới chân địch — xoay mượt (1 texture)
+    timers.push(
+      trackTimer(CHARGE_MS, () => {
+        if (cancelled.v || !scene) return;
+        handles.push(
+          emitGroundQiDecal3d(scene, center, ringUrls, {
+            durationMs: RING_MS + 120,
+            diameter: ringDiam,
+            opacity: 0.96,
+            spinSpeed: 2.8,
+            y: 0.05,
+            animateFrames: false,
+          })
+        );
+        handles.push(
+          emitGroundQiDecal3d(scene, center, ringUrls, {
+            durationMs: RING_MS + 80,
+            diameter: ringDiam * 1.06,
+            opacity: 0.4,
+            spinSpeed: -1.6,
+            y: 0.035,
+            delayMs: 20,
+            animateFrames: false,
+          })
+        );
+      })
+    );
+
+    // 3) Sét đánh xuống từng mục tiêu
+    const strikeAt = CHARGE_MS + Math.round(RING_MS * 0.5);
+    const strikeUrls = sheets.strike.length ? sheets.strike : sheets.impact;
+    targets.forEach((tgt, i) => {
+      timers.push(
+        trackTimer(strikeAt + i * STRIKE_STAGGER, () => {
+          if (cancelled.v || !scene) return;
+          void loadFrameSet(strikeUrls).then((frames) => {
+            if (cancelled.v || !scene || !frames.length) return;
+            handles.push(
+              emitHonSheetAt(scene, tgt, frames, {
+                durationMs: 360,
+                w: 0.85 * mul,
+                h: 2.8 * mul,
+                opacity: 0.98,
+                y: 1.15,
+                color: 0xffffff,
+              })
+            );
+          });
+          handles.push(emitBurst3d(scene, tgt, "thunder", opts.scale));
+          handles.push(emitSparksBurst3d(scene, tgt, { flash: "thunder", scale: opts.scale }));
+          handles.push(
+            emitGroundMark3d(scene, tgt, {
+              flash: "bagua",
+              scale: opts.scale,
+              durationMs: 480,
+              color: 0xc4b5fd,
+            })
+          );
+        })
+      );
+    });
+  };
+
+  start();
+  return {
+    cancel() {
+      cancelled.v = true;
+      timers.forEach((tid) => {
+        clearTimeout(tid);
+        const ti = PENDING_TIMERS.indexOf(tid);
+        if (ti >= 0) PENDING_TIMERS.splice(ti, 1);
+      });
+      handles.forEach((h) => h.cancel());
+    },
+  };
+}
+
+/**
+ * Linh hồn người — pháp sư đối diện camera, hiện ở CASTER (người thi triển).
+ * Tụ lực → hồn hiện trên caster → xung hit địch.
+ */
+function emitSoulMageSequence3d(
+  scene: THREE.Scene,
+  from: THREE.Vector3,
+  to: THREE.Vector3,
+  opts: {
+    scale?: string | null;
+    skillId?: string | null;
+    pattern?: string | null;
+    targets?: THREE.Vector3[];
+  } = {}
+): Fx3dHandle {
+  const sheets = resolveHonStreamSheets("hon_hon", opts.skillId);
+  const mul = scaleMul(opts.scale);
+  /** Caster chỉ vòng vận sức dưới chân — không aura thân / không hồn lớn. */
+  const CHARGE_MS = 420;
+  const handles: Fx3dHandle[] = [];
+  const timers: number[] = [];
+  const cancelled = { v: false };
+  const hitTargets = (opts.targets && opts.targets.length ? opts.targets : [to]).map((p) => p.clone());
+
+  const start = () => {
+    if (cancelled.v || !scene) return;
+    handles.push(
+      emitGroundQiDecal3d(scene, from, sheets.charge.length ? sheets.charge : sheets.head, {
+        durationMs: CHARGE_MS + 40,
+        diameter: 1.85 * mul,
+        opacity: 0.88,
+        spinSpeed: 2.6,
+        y: 0.04,
+        animateFrames: false,
+      })
+    );
+    handles.push(
+      emitShockwave3d(scene, from, {
+        flash: "violet_spirit",
+        scale: opts.scale,
+        radius: 1.35 * mul,
+        durationMs: CHARGE_MS,
+      })
+    );
+
+    // Sau vận sức → xung hit tại mục tiêu
+    timers.push(
+      trackTimer(CHARGE_MS, () => {
+        if (cancelled.v || !scene) return;
+        hitTargets.forEach((tgt, i) => {
+          timers.push(
+            trackTimer(i * 45, () => {
+              if (cancelled.v || !scene) return;
+              void loadFrameSet(sheets.impact).then((frames) => {
+                if (cancelled.v || !scene || !frames.length) return;
+                handles.push(
+                  emitHonSheetAt(scene, tgt, frames, {
+                    durationMs: 380,
+                    w: 2.4 * mul,
+                    h: 2.4 * mul,
+                    opacity: 0.92,
+                    y: 0.75,
+                    color: 0xffffff,
+                  })
+                );
+              });
+              handles.push(emitBurst3d(scene, tgt, "violet_spirit", opts.scale));
+              handles.push(emitSparksBurst3d(scene, tgt, { flash: "violet_spirit", scale: opts.scale }));
+              handles.push(
+                emitGroundMark3d(scene, tgt, {
+                  flash: "violet_spirit",
+                  scale: opts.scale,
+                  durationMs: 420,
+                  color: 0xa78bfa,
+                })
+              );
+            })
+          );
+        });
+      })
+    );
+  };
+
+  start();
+  return {
+    cancel() {
+      cancelled.v = true;
+      timers.forEach((tid) => {
+        clearTimeout(tid);
+        const ti = PENDING_TIMERS.indexOf(tid);
+        if (ti >= 0) PENDING_TIMERS.splice(ti, 1);
+      });
+      handles.forEach((h) => h.cancel());
+    },
   };
 }
 
@@ -1597,22 +1968,19 @@ function skillPremiumLayers(
   if (style === "bless") {
     return {
       cast: [
-        { folder: "codemanu", pack: "anima", n: 16, w: 2.9, h: 2.9, opacity: 0.88 },
-        { folder: "brackeys", pack: "radiance_aura", n: 16, w: 2.6, h: 2.6, opacity: 0.8 },
+        { folder: "codemanu", pack: "elden_ring", n: 16, w: 2.4, h: 2.4, opacity: 0.75 },
       ],
       hit: [
         { folder: "codemanu", pack: "puff_stars", n: 16, w: 3.0, h: 3.0, opacity: 0.9 },
-        { folder: "brackeys", pack: "radiance_aura", n: 16, w: 2.7, h: 2.7, opacity: 0.85 },
         { folder: "superpowers", pack: "sp_heal", n: 6, w: 2.4, h: 2.4, opacity: 0.95 },
       ],
-      flightUnder: itchFrameUrls("codemanu", "anima", 16),
+      flightUnder: itchFrameUrls("codemanu", "elden_ring", 16),
     };
   }
   if (style === "slash") {
     return {
       cast: [
-        { folder: "codemanu", pack: "charged", n: 16, w: 2.9, h: 2.9, opacity: 0.88 },
-        { folder: "brackeys", pack: "hit_burst", n: 11, w: 2.5, h: 2.5, opacity: 0.8 },
+        { folder: "brackeys", pack: "hit_burst", n: 11, w: 2.2, h: 2.2, opacity: 0.72 },
         { folder: "spritepilot", pack: "hit_spark", n: 6, w: 2.0, h: 2.0, opacity: 0.85 },
       ],
       hit: [
@@ -2064,7 +2432,7 @@ export function emitDragonSpirit3d(
 
 /**
  * Chuỗi Hồn combat — charge → flight (đầu dẫn) → impact bùm.
- * Mọi pack có qi_* sheets dùng cùng pipeline Hỏa Long.
+ * bagua / linh hồn người: pipeline riêng (không ném bolt).
  */
 export function emitHonSpiritSequence3d(
   scene: THREE.Scene,
@@ -2075,9 +2443,27 @@ export function emitHonSpiritSequence3d(
     pack?: HonPackId;
     skillId?: string | null;
     pattern?: string | null;
+    /** Mục tiêu đội hình — bagua phủ hết */
+    targets?: THREE.Vector3[];
   } = {}
 ): Fx3dHandle {
   const packId = opts.pack || "hon_rong";
+  if (packId === "hon_bagua") {
+    return emitBaguaFormationSequence3d(scene, from, to, {
+      scale: opts.scale,
+      skillId: opts.skillId,
+      pattern: opts.pattern,
+      targets: opts.targets,
+    });
+  }
+  if (packId === "hon_hon") {
+    return emitSoulMageSequence3d(scene, from, to, {
+      scale: opts.scale,
+      skillId: opts.skillId,
+      pattern: opts.pattern,
+      targets: opts.targets,
+    });
+  }
   const pack = HON_PACKS[packId];
   const layers = honElementLayers(packId);
   const variant = resolveHonCombatVariant(packId, opts.skillId);
@@ -2102,6 +2488,7 @@ export function emitHonSpiritSequence3d(
   const flightSide = tune.side;
   const flightW = packId === "hon_rong" ? 3.6 : packId === "hon_ho" || packId === "hon_soi" ? 3.2 : 3.4;
   const flightH = packId === "hon_rong" ? 1.85 : 1.7;
+  const headLead = 0.38;
 
   const pushLayer = (at: THREE.Vector3, ref: HonLayerRef, extra: ItchSheetOpts = {}) => {
     handles.push(
@@ -2125,49 +2512,39 @@ export function emitHonSpiritSequence3d(
       loadFrameSet(pack.ring),
       loadFrameSet(pack.crescent),
       loadFrameSet(pack.sparkle),
-      loadFxTex(pack.orb),
+      pack.orb ? loadFxTex(pack.orb).catch(() => null) : Promise.resolve(null),
     ]).then(([rings, crescents, sparkles, orbG]) => {
       if (cancelled.v || !scene) return;
 
-      // 1) TỤ LỰ — qiStream: vortex sheet; fallback: sigil itch
-      handles.push(
-        emitGroundSigil3d(scene, ground, {
-          flash: pack.flash,
-          scale: opts.scale,
-          durationMs: CHARGE_MS + FORM_MS,
-          color: tint,
-        })
-      );
+      // 1) TỤ LỰ — qiStream: chỉ vòng đất dưới chân (không aura thân che tướng)
       if (qiStream) {
-        void loadFrameSet(streamSheets.charge).then((chargeFrames) => {
-          if (cancelled.v || !scene || !chargeFrames.length) return;
-          handles.push(
-            emitHonSheetAt(scene, from, chargeFrames, {
-              durationMs: CHARGE_MS + 40,
-              w: 3.2 * sheetMul,
-              h: 3.2 * sheetMul,
-              opacity: 0.98,
-              spin: true,
-              spinSpeed: 2.4,
-              y: 0.35,
-              color: 0xffffff,
-            })
-          );
-          handles.push(
-            emitHonSheetAt(scene, ground, chargeFrames, {
-              durationMs: CHARGE_MS,
-              w: 2.4 * sheetMul,
-              h: 2.4 * sheetMul,
-              opacity: 0.75,
-              spin: true,
-              spinSpeed: -1.8,
-              y: 0.05,
-              delayMs: 40,
-              color: tintHot,
-            })
-          );
-        });
+        handles.push(
+          emitShockwave3d(scene, ground, {
+            flash: pack.flash,
+            scale: opts.scale,
+            radius: 1.45 * sheetMul,
+            durationMs: CHARGE_MS,
+          })
+        );
+        handles.push(
+          emitGroundQiDecal3d(scene, from, streamSheets.charge, {
+            durationMs: CHARGE_MS + 40,
+            diameter: 1.9 * sheetMul,
+            opacity: 0.9,
+            spinSpeed: 2.6,
+            y: 0.04,
+            animateFrames: false,
+          })
+        );
       } else {
+        handles.push(
+          emitGroundSigil3d(scene, ground, {
+            flash: pack.flash,
+            scale: opts.scale,
+            durationMs: CHARGE_MS + FORM_MS,
+            color: tint,
+          })
+        );
         layers.charge.slice(0, 2).forEach((ref, i) => {
           pushLayer(i === 0 ? ground : from, ref, {
             durationMs: CHARGE_MS + FORM_MS * 0.6,
@@ -2258,7 +2635,7 @@ export function emitHonSpiritSequence3d(
                 yLift: 0.95,
                 opacity: 1,
                 headOnRight: true,
-                headLeadFrac: 0.38,
+                headLeadFrac: headLead,
               })
             );
             handles.push(
@@ -2345,21 +2722,23 @@ export function emitHonSpiritSequence3d(
               color: i === 0 ? 0xffffff : tintHot,
             });
           });
-          const orbSpr = makeFxSprite(orbG, tintHot, 0.95, 0.55 * sheetMul, 0.55 * sheetMul);
-          orbSpr.position.copy(hit);
-          const now = performance.now();
-          handles.push(
-            pushMesh(scene, {
-              id: nextId++,
-              obj: orbSpr,
-              until: now + 280,
-              kind: "flash",
-              born: now,
-              lifeMs: 280,
-              spriteMat: orbSpr.material as THREE.SpriteMaterial,
-              baseOpacity: 0.95,
-            })
-          );
+          if (orbG) {
+            const orbSpr = makeFxSprite(orbG, tintHot, 0.95, 0.55 * sheetMul, 0.55 * sheetMul);
+            orbSpr.position.copy(hit);
+            const now = performance.now();
+            handles.push(
+              pushMesh(scene, {
+                id: nextId++,
+                obj: orbSpr,
+                until: now + 280,
+                kind: "flash",
+                born: now,
+                lifeMs: 280,
+                spriteMat: orbSpr.material as THREE.SpriteMaterial,
+                baseOpacity: 0.95,
+              })
+            );
+          }
           if (sparkles.length) {
             handles.push(
               emitHonSheetAt(scene, hit, sparkles.slice(2), {
@@ -2606,6 +2985,8 @@ export function playSkillFx3d(params: {
   style?: Fx3dStyle;
   skillId?: string | null;
   pattern?: string | null;
+  /** Đội hình mục tiêu — pháp trận phủ hết */
+  targets?: THREE.Vector3[];
 }): Fx3dHandle {
   const handles: Fx3dHandle[] = [];
   const timers: number[] = [];
@@ -2616,7 +2997,6 @@ export function playSkillFx3d(params: {
   const skillId = params.skillId;
   const pattern = params.pattern;
   const palHex = flashPalette(flash).base.getHex();
-  const palHot = flashPalette(flash).hot.getHex();
 
   const runEmission = () => {
     const premium = skillPremiumLayers(style, flash);
@@ -2655,16 +3035,22 @@ export function playSkillFx3d(params: {
         })
       );
       handles.push(
-        emitBodyAura3d(params.scene, params.from, {
+        emitShockwave3d(params.scene, params.from, {
           flash: flash || "gold_soft",
           scale,
+          radius: 1.5,
           durationMs: 480,
-          color: 0xfef08a,
-          pack: "anima",
         })
       );
       handles.push(emitFlashDisc3d(params.scene, params.from, flash || "gold_soft", scale));
-      handles.push(...emitPremiumLayersAt(params.scene, params.from, premium.cast, { scale, durationMs: 460, color: 0xfef08a }));
+      handles.push(
+        ...emitPremiumLayersAt(params.scene, params.from, premium.cast.slice(0, 1), {
+          scale,
+          durationMs: 420,
+          color: 0xfef08a,
+          y0: 0.06,
+        })
+      );
       handles.push(...emitHostileProjectile3d(params.scene, params.from, params.to, "bless", flash || "gold_soft", scale));
       return;
     }
@@ -2679,13 +3065,14 @@ export function playSkillFx3d(params: {
             pack: hon,
             skillId,
             pattern,
+            targets: params.targets?.length ? params.targets : [params.to],
           })
         );
         return;
       }
     }
 
-    // —— Core combat 8 lớp: sigil + aura + cast + projectile + (impact sau) ——
+    // —— Style tụ lực: vòng đất + cast nhẹ → projectile → impact (không aura thân lớn) ——
     handles.push(
       emitGroundSigil3d(params.scene, params.from, {
         flash,
@@ -2695,21 +3082,21 @@ export function playSkillFx3d(params: {
       })
     );
     handles.push(
-      emitBodyAura3d(params.scene, params.from, {
+      emitShockwave3d(params.scene, params.from, {
         flash,
         scale,
-        durationMs: style === "slash" ? 380 : 460,
-        color: palHot,
-        pack: style === "beam" ? "constellation" : style === "shadow" ? "vortex" : "charged",
+        radius: style === "nova" ? 1.7 : 1.4,
+        durationMs: style === "slash" ? 320 : 420,
       })
     );
     handles.push(emitDust3d(params.scene, params.from, scale));
     handles.push(emitFlashDisc3d(params.scene, params.from, flash, scale));
+    // Cast premium thấp gần chân — tránh cánh/aura che sprite
     handles.push(
-      ...emitPremiumLayersAt(params.scene, params.from, premium.cast, {
+      ...emitPremiumLayersAt(params.scene, params.from, premium.cast.slice(0, 1), {
         scale,
-        durationMs: style === "nova" ? 520 : style === "beam" ? 480 : 420,
-        y0: 0.28,
+        durationMs: style === "nova" ? 480 : style === "beam" ? 420 : 360,
+        y0: 0.08,
       })
     );
     if (style === "roar" || style === "whirl" || style === "nova" || style === "beam") {
@@ -2882,6 +3269,31 @@ export function playPatternFx3d(params: {
   const kids: Fx3dHandle[] = [];
   const list = params.targets.length ? params.targets : [params.from];
   const phase = params.phase || "emission";
+  const hon = honPackForStyle(style, params.flash, params.skillId);
+
+  // Pháp trận / linh hồn: MỘT sequence (không spawn N aura cũ chồng)
+  if ((hon === "hon_bagua" || hon === "hon_hon") && phase !== "impact") {
+    const focus = list[Math.floor((list.length - 1) / 2)] || list[0] || params.from;
+    kids.push(
+      emitHonSpiritSequence3d(params.scene, params.from, focus, {
+        scale: params.scale,
+        pack: hon,
+        skillId: params.skillId,
+        pattern: params.pattern,
+        targets: list,
+      })
+    );
+    const handle: Fx3dHandle = {
+      cancel() {
+        kids.forEach((h) => h.cancel());
+        const hi = ACTIVE_HANDLES.indexOf(handle);
+        if (hi >= 0) ACTIVE_HANDLES.splice(hi, 1);
+      },
+    };
+    ACTIVE_HANDLES.push(handle);
+    return handle;
+  }
+
   const stagger =
     style === "nova" || style === "roar"
       ? 38
@@ -2904,6 +3316,7 @@ export function playPatternFx3d(params: {
           phase,
           skillId: params.skillId,
           pattern: params.pattern,
+          targets: list,
         })
       );
     });
@@ -3006,6 +3419,21 @@ export function tickBattleVfx3d(_scene: THREE.Scene, now: number, dt: number): v
         spr.scale.set(spr.userData.baseW * grow * pulse, spr.userData.baseH * grow * pulse, 1);
         const baseOp = fx.baseOpacity ?? 0.9;
         mat.opacity = Math.max(0, baseOp * (t < 0.75 ? 1 : 1 - (t - 0.75) / 0.25));
+      }
+    } else if (fx.kind === "decal") {
+      // Group root xoay Y — plane con đã nằm đất (không gãy Euler)
+      fx.obj.rotation.y += (fx.spinSpeed || 2.4) * dtSec;
+      const mat = fx.meshMat;
+      if (mat && fx.frames && fx.frames.length > 1 && now >= (fx.nextFrame || 0)) {
+        fx.frameI = ((fx.frameI || 0) + 1) % fx.frames.length;
+        mat.map = fx.frames[fx.frameI];
+        mat.needsUpdate = true;
+        fx.nextFrame = now + (fx.frameMs || 70);
+      }
+      if (mat) {
+        const baseOp = fx.baseOpacity ?? 0.92;
+        const appear = t < 0.1 ? t / 0.1 : 1;
+        mat.opacity = Math.max(0, baseOp * appear * (t < 0.82 ? 1 : 1 - (t - 0.82) / 0.18));
       }
     } else if (fx.kind === "spirit" && fx.from && fx.to) {
       const formMs = fx.formMs || 0;
@@ -3115,7 +3543,9 @@ export function tickBattleVfx3d(_scene: THREE.Scene, now: number, dt: number): v
         fx.until = now - 1;
       }
     } else if (fx.kind === "flash") {
-      const s = 0.6 + ease * 1.4;
+      // maxScale ≤ 1.15 = billboard “giữ hình” (pháp sư); còn lại = flash nổ phóng to
+      const hold = (fx.maxScale ?? 2) <= 1.15;
+      const s = hold ? 0.94 + 0.08 * Math.sin(t * Math.PI * 2) : 0.6 + ease * 1.4;
       const spr = fx.obj as THREE.Sprite;
       if (spr.isSprite) {
         if (!spr.userData.baseW) {
@@ -3130,7 +3560,10 @@ export function tickBattleVfx3d(_scene: THREE.Scene, now: number, dt: number): v
           mat.needsUpdate = true;
           fx.nextFrame = now + (fx.frameMs || 70);
         }
-        mat.opacity = Math.max(0, 1 - t);
+        const baseOp = fx.baseOpacity ?? 1;
+        mat.opacity = hold
+          ? Math.max(0, baseOp * (t < 0.78 ? 1 : 1 - (t - 0.78) / 0.22))
+          : Math.max(0, 1 - t);
       } else {
         fx.obj.scale.setScalar(s);
         const mat = (fx.obj as THREE.Mesh).material as THREE.MeshBasicMaterial;

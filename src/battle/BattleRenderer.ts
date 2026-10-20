@@ -3,6 +3,7 @@ import {
   createBattleActor,
   playActor,
   prefetchBattleActors,
+  troopArtUrl,
   type BattleActor,
 } from "./battleActors";
 import {
@@ -16,10 +17,12 @@ import {
   spawnSkillWindup,
   spawnSlashArc,
   spawnStatusOrb,
+  syncStatusMarkers,
   tickBattleVfx,
 } from "./battleVfx";
 import {
   clearBattleVfx3d,
+  honPackForStyle,
   playPatternFx3d,
   playSkillFx3d,
   resolveFx3dStyle,
@@ -116,7 +119,13 @@ type Lunge = {
   durBack: number;
 };
 
-type StatusChip = { id: string; label: string; kind: "buff" | "debuff" | "control" };
+type StatusChip = {
+  id: string;
+  label: string;
+  kind: "buff" | "debuff" | "control";
+  short?: string;
+  icon?: string | null;
+};
 
 type Fighter = {
   uid: string;
@@ -144,12 +153,11 @@ type Fighter = {
  *
  * Sân đá 15.2×9.8 → X∈[−7.6,7.6] Z∈[−4.9,4.9].
  * Camera (0,7.4,12.4) nhìn về −Z (+Z = đáy màn hình).
- * - COL_Z bước đều ~1.95, khối lệch nhẹ về +Z để lề trên/dưới nhìn cân
- *   (tránh đội dồn mép trên / kỵ sát viền dưới).
- * - ROW_DEPTH bước đều 1.2 — đội gọn nửa sân, đủ 5 slot không thưa giữa sân.
+ * - COL_Z / ROW_DEPTH nới để VFX AoE (bát quái…) không chồng sát tướng.
+ * - Camera (0,7.4,12.4) nhìn về −Z (+Z = đáy màn hình).
  */
-const COL_Z = [-1.85, 0.15, 2.05] as const;
-const ROW_DEPTH = [2.2, 3.4, 4.6] as const;
+const COL_Z = [-2.45, 0.15, 2.75] as const;
+const ROW_DEPTH = [2.55, 4.15, 5.75] as const;
 
 type Cell = { col: 0 | 1 | 2; row: 0 | 1 | 2 };
 
@@ -491,7 +499,6 @@ export class BattleRenderer {
         );
         actor.root.position.set(x, 0, z);
         scene.add(actor.root);
-        // Máu/sĩ khí ở panel 2 góc — không chip trên đầu (che FX)
         const hud = this.createHud(u.name, enemy, u.troop || "infantry", tier);
         this.fighters.set(u.uid, {
           uid: u.uid,
@@ -527,12 +534,24 @@ export class BattleRenderer {
   }
 
   private createHud(
-    _name: string,
-    _enemy: boolean,
-    _troop: string,
-    _tier = 1
+    name: string,
+    enemy: boolean,
+    troop: string,
+    tier = 1
   ): HTMLElement | null {
-    return null;
+    if (!this.hudLayer || this.preview) return null;
+    const el = document.createElement("div");
+    el.className = "unit-overhead" + (enemy ? " enemy" : " ally");
+    const src = troopArtUrl(troop, tier);
+    el.innerHTML =
+      '<div class="uo-chip"><img class="uo-face" src="' +
+      src +
+      '" alt="" /><div class="uo-meta"><div class="uo-name"></div>' +
+      '<div class="uo-hp"><i></i></div><div class="uo-morale"><i></i></div>' +
+      '<div class="uo-status"></div></div></div>';
+    (el.querySelector(".uo-name") as HTMLElement).textContent = name;
+    this.hudLayer.appendChild(el);
+    return el;
   }
 
   private paintHud(f: Fighter): void {
@@ -548,16 +567,23 @@ export class BattleRenderer {
     if (row) {
       const chips = (f.statuses || []).slice(0, 4);
       row.innerHTML = chips
-        .map(
-          (s) =>
+        .map((s) => {
+          const text = (s.short || s.label || s.id || "").slice(0, 4);
+          const icon =
+            s.icon && !/^https?:\/\//i.test(s.icon)
+              ? '<img class="uo-st-ico" src="' + s.icon + '" alt="" />'
+              : "";
+          return (
             '<span class="uo-st uo-st-' +
             s.kind +
             '" title="' +
-            s.label +
+            (s.label || s.id) +
             '">' +
-            s.label +
+            icon +
+            text +
             "</span>"
-        )
+          );
+        })
         .join("");
     }
   }
@@ -608,13 +634,15 @@ export class BattleRenderer {
     this.paintHud(f);
   }
 
-  /** Icon trạng thái wiki (Trúng độc / Anh dũng / Hỗn loạn…) trên HUD cụm */
+  /** Icon trạng thái wiki (giáp / độc / Anh dũng…) — chip HUD + marker trên đầu */
   setStatuses(uid: string, statuses: StatusChip[]): void {
     const f = this.fighters.get(uid);
     if (!f) return;
+    const prevLen = (f.statuses || []).length;
     f.statuses = statuses || [];
     this.paintHud(f);
-    if (this.scene && statuses && statuses.length) {
+    syncStatusMarkers(f.actor.root, f.actor.sprite, f.statuses);
+    if (this.scene && statuses && statuses.length > prevLen) {
       const last = statuses[statuses.length - 1];
       spawnStatusOrb(this.scene, f.actor.root.position.clone(), last.kind === "buff" ? "buff" : "debuff");
     }
@@ -753,6 +781,8 @@ export class BattleRenderer {
       isCharge,
       isRush,
     });
+    /** Qi-stream (rồng/hồn/bát quái…) — bỏ aura/windup 2D cũ kẻo đè FX mới */
+    const honQi = honPackForStyle(fx3dStyle, skillKind, skillId);
     const usePatternChoreo =
       !support &&
       !isCharge &&
@@ -976,7 +1006,7 @@ export class BattleRenderer {
           if (!this.scene || f.dead) return;
           const at = this.casterFxAt(f);
           if (phase === "windup") {
-            spawnSkillWindup(this.scene, at, skillKind, scale);
+            if (!honQi) spawnSkillWindup(this.scene, at, skillKind, scale);
             // Nhún nhẹ ra sau trước khi xung
             if (!isShield) {
               const back = f.side === "ally" ? 0.18 : -0.18;
@@ -989,8 +1019,10 @@ export class BattleRenderer {
               };
             }
           } else if (phase === "cast") {
-            // 1 aura gắn tướng — không spawn lại ở emission (tránh lửa tím chồng / bay cao)
-            spawnSkillAura(this.scene, at, skillKind, performance.now(), attach, { scale, phase: "cast" });
+            // Qi-stream tự có tụ lực — không spawn aura 2D cũ (vòng cam / hộp trắng)
+            if (!honQi) {
+              spawnSkillAura(this.scene, at, skillKind, performance.now(), attach, { scale, phase: "cast" });
+            }
             if (isShield) spawnShieldBarrier(this.scene, at, performance.now(), scale);
             beginLunge();
           } else if (phase === "emission") {
@@ -1007,8 +1039,10 @@ export class BattleRenderer {
       this.skillPlayCancel = () => play.cancel();
     } else {
       // Fallback nếu chưa load skill-design
-      spawnSkillWindup(this.scene, at0, skillKind, scale);
-      spawnSkillAura(this.scene, at0, skillKind, performance.now(), attach, { scale, phase: "full" });
+      if (!honQi) {
+        spawnSkillWindup(this.scene, at0, skillKind, scale);
+        spawnSkillAura(this.scene, at0, skillKind, performance.now(), attach, { scale, phase: "full" });
+      }
       if (isShield) spawnShieldBarrier(this.scene, at0, performance.now(), scale);
       beginLunge();
       this.scheduleSkillFx(() => deliverToTargets("emission"), 140);
@@ -1159,6 +1193,12 @@ export class BattleRenderer {
     this.cancelSkillPlay();
     clearBattleVfx(this.scene);
     clearBattleVfx3d(this.scene);
+    this.fighters.forEach((f) => {
+      if (!f.statuses.length) return;
+      f.statuses = [];
+      this.paintHud(f);
+      syncStatusMarkers(f.actor.root, f.actor.sprite, []);
+    });
   }
 
   private tick = (): void => {

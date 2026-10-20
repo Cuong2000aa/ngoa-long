@@ -1,17 +1,10 @@
 import * as THREE from "three";
 
 /**
- * VFX chiến trường — sprite only (không geometry procedural).
+ * VFX chiến trường — sprite only.
  *
- * Nguồn:
- * - Kenney Particle Pack → assets/fx/particles/
- * - Cethiel Arcane / Earth / Fire-Wrath / Slash / Blood / Water / Pure
- * - Starsteel / SpritePilot / Nineball dragon…
- * - **Pixel Ability FX Forge** (Apache-2.0) → assets/fx/forge/* — generate:
- *   `node scripts/forge-generate-fx.mjs`
- * - **Brackeys VFX Bundle** (itch) → assets/fx/itch/brackeys/* (ưu tiên khi có)
- *
- * Flash → sheet: ưu tiên Brackeys/forge theo element, fallback Kenney/Cethiel.
+ * Runtime folders: `particles/` · `slash/` · `whirlwind/` · `itch/` · `forge/` (frost/tide/nature)
+ * · `skill/{rong,xa,…}/qi_*` (chiêu hồn — battleVfx3d).
  */
 
 /** Packs đã slice từ Brackeys — ưu tiên hơn forge. */
@@ -89,149 +82,27 @@ const TEX = {
     "assets/fx/particles/flame_03.png",
     "assets/fx/particles/flame_04.png",
   ],
-  /** Cethiel Fire Wrath — ultimate / Thần Hoàng hỏa */
-  fireWrath: [
-    "assets/fx/fire-wrath/sd_1_fire-wrath__01.png",
-    "assets/fx/fire-wrath/sd_1_fire-wrath__02.png",
-    "assets/fx/fire-wrath/sd_1_fire-wrath__03.png",
-    "assets/fx/fire-wrath/sd_1_fire-wrath__04.png",
-    "assets/fx/fire-wrath/sd_1_fire-wrath__05.png",
-  ],
-  blood: [
-    "assets/fx/blood/blood-magic-effect_01.png",
-    "assets/fx/blood/blood-magic-effect_02.png",
-    "assets/fx/blood/blood-magic-effect_03.png",
-    "assets/fx/blood/blood-magic-effect_04.png",
-    "assets/fx/blood/blood-magic-effect_05.png",
-  ],
-  water: [
-    "assets/fx/water/01_water__01.png",
-    "assets/fx/water/01_water__02.png",
-    "assets/fx/water/01_water__03.png",
-    "assets/fx/water/01_water__04.png",
-    "assets/fx/water/01_water__05.png",
-  ],
-  pure: [
-    "assets/fx/pure/files_pure_01.png",
-    "assets/fx/pure/files_pure_02.png",
-    "assets/fx/pure/files_pure_03.png",
-    "assets/fx/pure/files_pure_04.png",
-    "assets/fx/pure/files_pure_05.png",
-  ],
-  thunderSpell: [
-    "assets/fx/skill/starsteel/Thundersphere1.png",
-    "assets/fx/skill/starsteel/Thundersphere2.png",
-    "assets/fx/skill/starsteel/Thundersphere3.png",
-    "assets/fx/skill/starsteel/Thundersphere4.png",
-    "assets/fx/skill/starsteel/Thundersphere5.png",
-    "assets/fx/skill/starsteel/Thundersphere6.png",
-    "assets/fx/skill/starsteel/Thundersphere7.png",
-    "assets/fx/skill/starsteel/Thundersphere8.png",
-  ],
-  fireballSpell: [
-    "assets/fx/skill/starsteel/Fireball1.png",
-    "assets/fx/skill/starsteel/Fireball2.png",
-    "assets/fx/skill/starsteel/Fireball3.png",
-    "assets/fx/skill/starsteel/Fireball4.png",
-    "assets/fx/skill/starsteel/Fireball5.png",
-    "assets/fx/skill/starsteel/Fireball6.png",
-    "assets/fx/skill/starsteel/Fireball7.png",
-    "assets/fx/skill/starsteel/Fireball8.png",
-    "assets/fx/skill/starsteel/Fireball9.png",
-  ],
-  magic: [
-    "assets/fx/arcane/Arcane_Effect_1.png",
-    "assets/fx/arcane/Arcane_Effect_2.png",
-    "assets/fx/arcane/Arcane_Effect_3.png",
-    "assets/fx/arcane/Arcane_Effect_4.png",
-    "assets/fx/arcane/Arcane_Effect_5.png",
-    "assets/fx/arcane/Arcane_Effect_6.png",
-    "assets/fx/arcane/Arcane_Effect_7.png",
-  ],
-  earth: [
-    "assets/fx/earth/1_Earth-Impact_01.png",
-    "assets/fx/earth/1_Earth-Impact_02.png",
-    "assets/fx/earth/1_Earth-Impact_03.png",
-    "assets/fx/earth/1_Earth-Impact_04.png",
-    "assets/fx/earth/1_Earth-Impact_05.png",
-  ],
-  /** Nineball Fire Dragon Roller — CC0 (OpenGameArt) */
-  dragon: [
-    "assets/fx/dragon/dragon_01.png",
-    "assets/fx/dragon/dragon_03.png",
-    "assets/fx/dragon/dragon_05.png",
-    "assets/fx/dragon/dragon_07.png",
-    "assets/fx/dragon/dragon_09.png",
-    "assets/fx/dragon/dragon_11.png",
-  ],
-  /** Kenney + tint xanh — rắn / độc (không geometry tự vẽ) */
-  snake: [
-    "assets/fx/particles/magic_02.png",
-    "assets/fx/particles/twirl_01.png",
-    "assets/fx/particles/twirl_02.png",
-    "assets/fx/particles/trace_01.png",
-    "assets/fx/water/01_water__03.png",
-  ],
-  /** n4 — Whirlwind for effects (OGA, CC0) */
+  /** n4 — Whirlwind (OGA CC0) — kỵ xung / gió */
   whirlwind: [
     "assets/fx/whirlwind/whirl_01.png",
     "assets/fx/whirlwind/whirl_02.png",
     "assets/fx/whirlwind/whirl_03.png",
     "assets/fx/whirlwind/whirl_04.png",
   ],
-  /** Segel2D Wolf Attack frames (OGA, CC0) — tint tối cho bóng sói */
-  wolf: [
-    "assets/fx/wolf/wolf_01.png",
-    "assets/fx/wolf/wolf_02.png",
-    "assets/fx/wolf/wolf_03.png",
-    "assets/fx/wolf/wolf_04.png",
-    "assets/fx/wolf/wolf_05.png",
-    "assets/fx/wolf/wolf_06.png",
-    "assets/fx/wolf/wolf_07.png",
-    "assets/fx/wolf/wolf_08.png",
-  ],
-  /**
-   * SpritePilot Combat (CC0) — Hổ Khiếu / motif tiger:
-   * roar = shockwave (tiếng gầm lan), claw = cào thú, slam/crit = phụ
-   */
-  tigerRoar: [
-    "assets/fx/tiger/roar_01.png",
-    "assets/fx/tiger/roar_02.png",
-    "assets/fx/tiger/roar_03.png",
-    "assets/fx/tiger/roar_04.png",
-    "assets/fx/tiger/roar_05.png",
-    "assets/fx/tiger/roar_06.png",
-    "assets/fx/tiger/roar_07.png",
-    "assets/fx/tiger/roar_08.png",
-  ],
-  tigerClaw: [
-    "assets/fx/tiger/claw_01.png",
-    "assets/fx/tiger/claw_02.png",
-    "assets/fx/tiger/claw_03.png",
-    "assets/fx/tiger/claw_04.png",
-    "assets/fx/tiger/claw_05.png",
-    "assets/fx/tiger/claw_06.png",
-    "assets/fx/tiger/claw_07.png",
-    "assets/fx/tiger/claw_08.png",
-  ],
-  tigerSlam: [
-    "assets/fx/tiger/slam_01.png",
-    "assets/fx/tiger/slam_02.png",
-    "assets/fx/tiger/slam_03.png",
-    "assets/fx/tiger/slam_04.png",
-    "assets/fx/tiger/slam_05.png",
-    "assets/fx/tiger/slam_06.png",
-    "assets/fx/tiger/slam_07.png",
-    "assets/fx/tiger/slam_08.png",
-    "assets/fx/tiger/slam_09.png",
-  ],
-  // Chỉ grayscale particle — tint xanh độc (tránh Arcane tím → vàng bẩn khi multiply)
+  // Chỉ grayscale particle — tint xanh độc
   poison: [
     "assets/fx/particles/magic_03.png",
     "assets/fx/particles/circle_03.png",
     "assets/fx/particles/magic_05.png",
     "assets/fx/particles/star_01.png",
     "assets/fx/particles/smoke_04.png",
+  ],
+  snake: [
+    "assets/fx/particles/magic_02.png",
+    "assets/fx/particles/twirl_01.png",
+    "assets/fx/particles/twirl_02.png",
+    "assets/fx/particles/trace_01.png",
+    "assets/fx/particles/magic_03.png",
   ],
   /** Kenney đã có alpha — aura chân sạch, tránh LightEffect hộp đen */
   kenneyAura: [
@@ -601,42 +472,42 @@ export function resolveFxKey(flash?: string | null, motif?: string | null): stri
 
 function sheetForFlash(flash: string): string[] {
   // Hổ — gầm (shockwave); claw dùng overlay riêng
-  if (flash === "tiger") return TEX.tigerRoar.length ? TEX.tigerRoar : TEX.slashFire;
+  if (flash === "tiger") return TEX.slashFire.length ? TEX.slashFire : TEX.slashFire;
   // Hỏa / ultimate — forge ember + fire-wrath
   if (flash === "fire_rain" || flash === "red_fire")
-    return TEX.forgeEmber.length ? TEX.forgeEmber : TEX.fireWrath;
+    return TEX.forgeEmber.length ? TEX.forgeEmber : TEX.forgeEmber;
   if (flash === "fire_green") return TEX.forgeNature.length ? TEX.forgeNature : TEX.poison;
   if (flash === "fire" || flash === "orange")
-    return TEX.forgeEmber.length ? TEX.forgeEmber : TEX.fireballSpell;
+    return TEX.forgeEmber.length ? TEX.forgeEmber : TEX.forgeEmber;
   // Sét / kim quang
-  if (flash === "thunder") return TEX.forgeStorm.length ? TEX.forgeStorm : TEX.thunderSpell;
+  if (flash === "thunder") return TEX.forgeStorm.length ? TEX.forgeStorm : TEX.forgeStorm;
   if (flash === "gold" || flash === "gold_soft" || flash === "gold_pierce" || flash === "yellow" || flash === "yellow_cult" || flash === "pure")
-    return TEX.forgeRadiance.length ? TEX.forgeRadiance : TEX.pure;
+    return TEX.forgeRadiance.length ? TEX.forgeRadiance : TEX.forgeRadiance;
   // Lốc / gió
   if (flash === "wind" || flash === "whirlwind")
-    return TEX.whirlwind.length ? TEX.whirlwind : TEX.water;
+    return TEX.whirlwind.length ? TEX.whirlwind : TEX.forgeTide;
   // Thủy / băng — forge tide / frost
   if (flash === "blue_water" || flash === "cyan" || flash === "teal" || flash === "white_blue")
-    return TEX.forgeTide.length ? TEX.forgeTide : TEX.water.length ? TEX.water : TEX.kenneyAura;
+    return TEX.forgeTide.length ? TEX.forgeTide : TEX.forgeTide.length ? TEX.forgeTide : TEX.kenneyAura;
   if (flash === "frost" || flash === "ice") return TEX.forgeFrost.length ? TEX.forgeFrost : TEX.forgeFrostAura;
   // Sói
-  if (flash === "wolf") return TEX.wolf.length ? TEX.wolf : TEX.blood;
+  if (flash === "wolf") return TEX.forgeBlood.length ? TEX.forgeBlood : TEX.forgeBlood;
   // Huyết / son
   if (flash === "crimson" || flash === "dark_red" || flash === "red" || flash === "gold_red")
-    return TEX.forgeBlood.length ? TEX.forgeBlood : TEX.blood;
+    return TEX.forgeBlood.length ? TEX.forgeBlood : TEX.forgeBlood;
   // Độc / rắn / rồng (wiki chiêu cao)
   if (flash === "green_poison" || flash === "poison")
     return TEX.forgeNature.length ? TEX.forgeNature : TEX.poison;
   if (flash === "snake") return TEX.snake;
-  if (flash === "dragon") return TEX.dragon;
+  if (flash === "dragon") return TEX.forgeEmber;
   // Bát quái / thần / ám — forge arcane / shadow
-  if (flash === "bagua") return TEX.forgeArcane.length ? TEX.forgeArcane : TEX.magic;
+  if (flash === "bagua") return TEX.forgeArcane.length ? TEX.forgeArcane : TEX.forgeArcane;
   if (flash === "purple" || flash === "violet")
-    return TEX.forgeShadow.length ? TEX.forgeShadow : TEX.magic;
+    return TEX.forgeShadow.length ? TEX.forgeShadow : TEX.forgeArcane;
   // Kỵ xung kích
-  if (flash === "charge") return TEX.whirlwind.length ? TEX.whirlwind : TEX.earth;
+  if (flash === "charge") return TEX.whirlwind.length ? TEX.whirlwind : TEX.forgeEarth;
   if (flash === "rush") return TEX.slashClassic.length ? TEX.slashClassic : TEX.slash;
-  if (flash === "shield") return TEX.forgeWard.length ? TEX.forgeWard : TEX.circle.length ? TEX.circle : TEX.pure;
+  if (flash === "shield") return TEX.forgeWard.length ? TEX.forgeWard : TEX.circle.length ? TEX.circle : TEX.forgeRadiance;
   // Vật lý / thép / đất
   if (flash === "brown") return TEX.forgeEarth.length ? TEX.forgeEarth : TEX.slashClassic;
   if (flash === "white" || flash === "steel" || flash === "iron" || flash === "silver" || flash === "chain")
@@ -655,17 +526,17 @@ function slashSheetForFlash(flash: string): string[] {
   // Độc / rắn — dùng sheet độc (không classic trắng)
   if (flash === "green_poison" || flash === "poison" || flash === "snake" || flash === "fire_green")
     return TEX.poison.length ? TEX.poison : TEX.slashBlue;
-  if (flash === "dragon") return TEX.dragon.length ? TEX.dragon : TEX.slashFire;
+  if (flash === "dragon") return TEX.forgeEmber.length ? TEX.forgeEmber : TEX.slashFire;
   if (flash === "thunder")
     return TEX.stylizedLightning.length
       ? TEX.stylizedLightning
-      : TEX.thunderSpell.length
-        ? TEX.thunderSpell
+      : TEX.forgeStorm.length
+        ? TEX.forgeStorm
         : TEX.slashPurple;
   if (flash === "wind" || flash === "whirlwind")
     return TEX.whirlwind.length ? TEX.whirlwind : TEX.slashBlue;
-  if (flash === "tiger") return TEX.tigerRoar.length ? TEX.tigerRoar : TEX.slashFire;
-  if (flash === "wolf") return TEX.wolf.length ? TEX.wolf : TEX.slashFire;
+  if (flash === "tiger") return TEX.slashFire.length ? TEX.slashFire : TEX.slashFire;
+  if (flash === "wolf") return TEX.forgeBlood.length ? TEX.forgeBlood : TEX.slashFire;
   return TEX.stylizedSlash.length
     ? TEX.stylizedSlash
     : TEX.slashClassic.length
@@ -717,24 +588,24 @@ function auraRecipe(flash: string): AuraRecipe {
   switch (flash) {
     case "tiger":
       return {
-        main: TEX.tigerRoar.length ? TEX.tigerRoar : TEX.slashFire,
+        main: TEX.slashFire.length ? TEX.slashFire : TEX.slashFire,
         mainSize: 1.55,
         mainLife: 620,
         mainY: 0.05,
         mainColor: 0xfbbf24,
-        overlay: TEX.tigerClaw.length ? TEX.tigerClaw : TEX.slashFire,
+        overlay: TEX.slashFire.length ? TEX.slashFire : TEX.slashFire,
         overlaySize: 1.35,
         overlayLife: 500,
         overlayY: 0.1,
         overlayColor: 0xfdba74,
-        ground: TEX.tigerSlam.length ? TEX.tigerSlam : TEX.earth,
+        ground: TEX.forgeEarth.length ? TEX.forgeEarth : TEX.forgeEarth,
         groundSize: 1.25,
         groundColor: 0xf59e0b,
         footSize: 0.85,
       };
     case "wolf":
       return {
-        main: TEX.wolf.length ? TEX.wolf : TEX.blood,
+        main: TEX.forgeBlood.length ? TEX.forgeBlood : TEX.forgeBlood,
         mainSize: 1.5,
         mainLife: 580,
         mainY: 0.05,
@@ -744,7 +615,7 @@ function auraRecipe(flash: string): AuraRecipe {
         overlayLife: 440,
         overlayY: 0.08,
         overlayColor: 0xfca5a5,
-        ground: TEX.earth,
+        ground: TEX.forgeEarth,
         groundSize: 1.1,
         groundColor: 0x94a3b8,
         footSize: 0.8,
@@ -752,7 +623,7 @@ function auraRecipe(flash: string): AuraRecipe {
     case "whirlwind":
     case "wind":
       return {
-        main: TEX.whirlwind.length ? TEX.whirlwind : TEX.water,
+        main: TEX.whirlwind.length ? TEX.whirlwind : TEX.forgeTide,
         mainSize: 1.45,
         mainLife: 600,
         mainY: 0.05,
@@ -818,17 +689,17 @@ function auraRecipe(flash: string): AuraRecipe {
     case "fire_rain":
     case "red_fire":
       return {
-        main: TEX.fireWrath,
+        main: TEX.forgeEmber,
         mainSize: 1.65,
         mainLife: 620,
         mainY: 0.08,
         mainColor: 0xfb923c,
-        overlay: TEX.fireballSpell,
+        overlay: TEX.forgeEmber,
         overlaySize: 1.2,
         overlayLife: 480,
         overlayY: 0.12,
         overlayColor: 0xff8844,
-        ground: TEX.earth,
+        ground: TEX.forgeEarth,
         groundSize: 1.15,
         groundColor: 0xea580c,
         footSize: 0.85,
@@ -836,7 +707,7 @@ function auraRecipe(flash: string): AuraRecipe {
     case "fire":
     case "orange":
       return {
-        main: TEX.fireballSpell,
+        main: TEX.forgeEmber,
         mainSize: 1.35,
         mainLife: 520,
         mainY: 0.08,
@@ -850,7 +721,7 @@ function auraRecipe(flash: string): AuraRecipe {
       };
     case "thunder":
       return {
-        main: TEX.forgeStorm.length ? TEX.forgeStorm : TEX.thunderSpell,
+        main: TEX.forgeStorm.length ? TEX.forgeStorm : TEX.forgeStorm,
         mainSize: 1.55,
         mainLife: 560,
         mainY: 0.15,
@@ -867,7 +738,7 @@ function auraRecipe(flash: string): AuraRecipe {
     case "teal":
     case "white_blue":
       return {
-        main: TEX.water.length ? TEX.water : TEX.kenneyAura,
+        main: TEX.forgeTide.length ? TEX.forgeTide : TEX.kenneyAura,
         mainSize: 1.4,
         mainLife: 560,
         mainY: 0.05,
@@ -881,7 +752,7 @@ function auraRecipe(flash: string): AuraRecipe {
       };
     case "bagua":
       return {
-        main: TEX.magic,
+        main: TEX.forgeArcane,
         mainSize: 1.55,
         mainLife: 620,
         mainY: 0.05,
@@ -897,7 +768,7 @@ function auraRecipe(flash: string): AuraRecipe {
     case "violet":
     case "dark_red":
       return {
-        main: TEX.magic,
+        main: TEX.forgeArcane,
         mainSize: 1.35,
         mainLife: 540,
         mainY: 0.05,
@@ -921,7 +792,7 @@ function auraRecipe(flash: string): AuraRecipe {
         mainLife: 720,
         mainY: 0.02,
         mainColor: 0xffe8a0,
-        overlay: TEX.pure.length ? TEX.pure : TEX.kenneyAura,
+        overlay: TEX.forgeRadiance.length ? TEX.forgeRadiance : TEX.kenneyAura,
         overlaySize: 1.05,
         overlayLife: 580,
         overlayY: 0.04,
@@ -930,7 +801,7 @@ function auraRecipe(flash: string): AuraRecipe {
       };
     case "gold_pierce":
       return {
-        main: TEX.pure,
+        main: TEX.forgeRadiance,
         mainSize: 1.35,
         mainLife: 500,
         mainY: 0.05,
@@ -946,7 +817,7 @@ function auraRecipe(flash: string): AuraRecipe {
     case "red":
     case "gold_red":
       return {
-        main: TEX.blood,
+        main: TEX.forgeBlood,
         mainSize: 1.4,
         mainLife: 540,
         mainY: 0.05,
@@ -965,7 +836,7 @@ function auraRecipe(flash: string): AuraRecipe {
         mainLife: 500,
         mainY: 0.05,
         mainColor: 0x7dd3fc,
-        overlay: TEX.magic,
+        overlay: TEX.forgeArcane,
         overlaySize: 1.0,
         overlayLife: 380,
         overlayY: 0.05,
@@ -980,7 +851,7 @@ function auraRecipe(flash: string): AuraRecipe {
         mainLife: 520,
         mainY: 0.08,
         mainColor: 0xe8d4b0,
-        overlay: TEX.earth,
+        overlay: TEX.forgeEarth,
         overlaySize: 1.35,
         overlayLife: 480,
         overlayY: 0.02,
@@ -1014,12 +885,12 @@ function auraRecipe(flash: string): AuraRecipe {
         mainLife: 900,
         mainY: 0.15,
         mainColor: 0xffe08a,
-        overlay: TEX.light.length ? TEX.light : TEX.pure,
+        overlay: TEX.light.length ? TEX.light : TEX.forgeRadiance,
         overlaySize: 1.45,
         overlayLife: 780,
         overlayY: 0.2,
         overlayColor: 0xfff3c4,
-        ground: TEX.pure.length ? TEX.pure : TEX.kenneyAura,
+        ground: TEX.forgeRadiance.length ? TEX.forgeRadiance : TEX.kenneyAura,
         groundColor: 0xfde68a,
         footSize: 1.15,
       };
@@ -1170,7 +1041,7 @@ export function spawnPremiumImpact(
     y: 0.75,
     color: tint,
   });
-  void playSheet(scene, at, r.ground?.length ? r.ground : TEX.earth, {
+  void playSheet(scene, at, r.ground?.length ? r.ground : TEX.forgeEarth, {
     size: 1.45 * mul,
     life: 480,
     y: 0.28,
@@ -1196,16 +1067,16 @@ export function spawnPremiumImpact(
 
 /** Quả cầu lửa / đạn pháp bay từ caster → mục tiêu (Kenney flame / light) */
 function projectileFrames(flash: string): string[] {
-  if (flash === "tiger" && TEX.tigerClaw.length) return TEX.tigerClaw;
-  if (flash === "wolf" && TEX.wolf.length) return TEX.wolf;
+  if (flash === "tiger" && TEX.slashFire.length) return TEX.slashFire;
+  if (flash === "wolf" && TEX.forgeBlood.length) return TEX.forgeBlood;
   if (flash === "whirlwind" || flash === "wind")
     return TEX.whirlwind.length ? TEX.whirlwind : sheetForFlash(flash);
-  if (flash === "dragon") return TEX.dragon;
+  if (flash === "dragon") return TEX.forgeEmber;
   if (flash === "fire_rain" || flash === "red_fire" || flash === "fire" || flash === "orange")
-    return TEX.fireballSpell;
-  if (flash === "thunder") return TEX.thunderSpell;
+    return TEX.forgeEmber;
+  if (flash === "thunder") return TEX.forgeStorm;
   if (flash === "blue_water" || flash === "cyan" || flash === "teal" || flash === "white_blue")
-    return TEX.water.length ? TEX.water : sheetForFlash(flash);
+    return TEX.forgeTide.length ? TEX.forgeTide : sheetForFlash(flash);
   if (flash === "green_poison" || flash === "poison" || flash === "snake") return TEX.poison;
   return sheetForFlash(flash);
 }
@@ -1297,7 +1168,7 @@ function spawnImpactAt(scene: THREE.Scene, to: THREE.Vector3, flash: string): vo
     y: 0.85,
     color: r.overlayColor ?? r.mainColor ?? auraTint(flash),
   });
-  const ground = r.ground?.length ? r.ground : TEX.earth;
+  const ground = r.ground?.length ? r.ground : TEX.forgeEarth;
   void playSheet(scene, to, ground, {
     size: 1.35,
     life: 400,
@@ -1326,7 +1197,7 @@ export function spawnStatusOrb(
   const frames =
     kind === "buff"
       ? ["assets/fx/particles/magic_02.png", "assets/fx/particles/star_01.png"]
-      : ["assets/fx/arcane/Arcane_Effect_3.png", "assets/fx/arcane/Arcane_Effect_5.png"];
+      : ["assets/fx/particles/magic_04.png", "assets/fx/particles/magic_05.png"];
   void playSheet(scene, at, frames, {
     size: 0.55,
     life: 1400,
@@ -1525,7 +1396,7 @@ export function spawnCavalryCharge(
       void playSheet(scene, to, TEX.hit, { size: 0.9 * mul, life: 280, y: 0.55 });
       return;
     }
-    void playSheet(scene, to, TEX.earth, { size: 2.1 * mul, life: 560, y: 0.32, color: 0xc9a070 });
+    void playSheet(scene, to, TEX.forgeEarth, { size: 2.1 * mul, life: 560, y: 0.32, color: 0xc9a070 });
     void playSheet(scene, to, TEX.muzzle, { size: 1.85 * mul, life: 400, y: 0.58, color: 0xffe8c8 });
     void playSheet(scene, to, TEX.whirlwind, { size: 2.0 * mul, life: 440, y: 0.55, color: 0xf5e6c8 });
   });
@@ -1534,7 +1405,7 @@ export function spawnCavalryCharge(
 
 export function spawnHitBurst(scene: THREE.Scene, at: THREE.Vector3): void {
   void playSheet(scene, at, TEX.hit, { size: 0.95, life: 360, y: 0.7 });
-  void playSheet(scene, at, TEX.earth, { size: 1.0, life: 380, y: 0.45 });
+  void playSheet(scene, at, TEX.forgeEarth, { size: 1.0, life: 380, y: 0.45 });
 }
 
 /** Thiết Bích / hộ thể — vòng khiên vàng quanh caster (đọc được ngay). */
@@ -1551,13 +1422,13 @@ export function spawnShieldBarrier(
     y: 0.55,
     color: 0xffe08a,
   });
-  void playSheet(scene, at, TEX.light.length ? TEX.light : TEX.pure, {
+  void playSheet(scene, at, TEX.light.length ? TEX.light : TEX.forgeRadiance, {
     size: 1.7 * mul,
     life: 920,
     y: 0.72,
     color: 0xfff7d6,
   });
-  void playSheet(scene, at, TEX.pure.length ? TEX.pure : TEX.kenneyAura, {
+  void playSheet(scene, at, TEX.forgeRadiance.length ? TEX.forgeRadiance : TEX.kenneyAura, {
     size: 1.4 * mul,
     life: 780,
     y: 0.35,
@@ -1610,7 +1481,7 @@ export function spawnRushAssault(
       y: 0.72,
       color: 0xffe8c8,
     });
-    void playSheet(scene, to, TEX.earth, { size: 1.45 * mul, life: 440, y: 0.3, color: 0xc9a070 });
+    void playSheet(scene, to, TEX.forgeEarth, { size: 1.45 * mul, life: 440, y: 0.3, color: 0xc9a070 });
     void playSheet(scene, to, TEX.muzzle, { size: 1.35 * mul, life: 360, y: 0.55, color: 0xf8fafc });
     void playSheet(scene, to, TEX.hit, { size: 1.1 * mul, life: 320, y: 0.7, color: 0xffffff });
   });
@@ -1780,7 +1651,7 @@ export function spawnAllyBless(
         y: 0.4,
         color: tint,
       });
-      void playSheet(scene, to, TEX.pure.length ? TEX.pure : TEX.kenneyAura, {
+      void playSheet(scene, to, TEX.forgeRadiance.length ? TEX.forgeRadiance : TEX.kenneyAura, {
         size: 1.15 * mul,
         life: 700,
         y: 0.75,
@@ -1934,22 +1805,22 @@ export function prefetchBattleVfx(): void {
     ...TEX.hit,
     ...TEX.fire,
     ...TEX.kenneyAura,
-    TEX.fireWrath[0],
-    TEX.blood[0],
-    TEX.water[0],
-    TEX.pure[0],
-    TEX.thunderSpell[0],
-    TEX.fireballSpell[0],
-    TEX.magic[0],
-    TEX.earth[0],
-    TEX.dragon[0],
+    TEX.forgeEmber[0],
+    TEX.forgeBlood[0],
+    TEX.forgeTide[0],
+    TEX.forgeRadiance[0],
+    TEX.forgeStorm[0],
+    TEX.forgeEmber[0],
+    TEX.forgeArcane[0],
+    TEX.forgeEarth[0],
+    TEX.forgeEmber[0],
     TEX.snake[0],
     TEX.poison[0],
     TEX.whirlwind[0],
-    TEX.wolf[0],
-    TEX.tigerRoar[0],
-    TEX.tigerClaw[0],
-    TEX.tigerSlam[0],
+    TEX.forgeBlood[0],
+    TEX.slashFire[0],
+    TEX.slashFire[0],
+    TEX.forgeEarth[0],
   ];
   all.forEach((u) => void loadTex(u));
 }

@@ -20,28 +20,11 @@
 ## Combat VFX (CC0) — sprite only
 - **Kenney Particle Pack** — CC0 — https://kenney.nl/assets/particle-pack  
   → `assets/fx/particles/` (**PNG Transparent** only)
-- **Cethiel** (OGA, CC0): Arcane, Earth, Fire Wrath, Weapon Slash, Blood, Water, Pure  
-  → `assets/fx/arcane|earth|fire-wrath|slash|blood|water|pure/`
-- **StarsteelGaming Spell Effects** — CC0  
-  → `assets/fx/skill/starsteel/`
-- **Fire Dragon Roller** by Nineball — CC0  
-  → `assets/fx/dragon/` — legacy thin outline (không dùng làm emission chính Hỏa Long)
+- **Cethiel Weapon Slash** (OGA, CC0) → `assets/fx/slash/` (classic/blue/purple/fire)
 - **Qi spirit packs** (style Hỏa Long) — **original / AI-assisted for fan remake**  
-  - `hon_rong/qi_fire` · `qi_azure` · `qi_ivory`  
-  - `hon_xa/qi_poison` · `hon_ho/qi_tiger` · `hon_soi/qi_wolf`  
-  - `hon_thuy/qi_water` · `hon_loi/qi_thunder` · `hon_phong/qi_wind`  
-  Mỗi pack: `charge_*` tụ lực · `flight_*` silhouette bay (đầu phải) · `impact_*` bùm.  
-  Pipeline: `scripts/gen-qi-spirit-packs.py` (+ seed AI hổ/sói). **Không** asset client VNG.
-- **Hồn spirit packs** (`assets/fx/hon_*`) — sheet luồng khí (không GLB thú full-body)  
-  (`python3 scripts/assemble-hon-cc0.py` / `npm run assemble:hon`):  
-  - GreatDog_ARt — [3 Dragon Animation Pack](https://opengameart.org/content/3-dragon-animation-pack) (CC0) → `hon_rong` serpent / mist  
-  - Master484 — [Dragon 1](https://opengameart.org/content/dragon-1-m484) (CC0) → assemble trong `hon_rong`  
-  - Blooming Pixels / Shepardskin snake (CC0) → `hon_xa`  
-  - Segel2D Wolf + SpritePilot tiger → `wolf/` / `tiger/`  
-  - n4 Whirlwind / water / thunder packs → `whirlwind/` / `hon_thuy` / `hon_loi`  
-  Soft mist/orb: Kenney Particle Pack (**Transparent**).
-- **Hồn 3D GLB** (`assets/fx/hon_3d/`) — **không dùng làm emission chính** (tránh summon thú 3D giữa sân).  
-  Giữ file CC0 (Grab3D Loong / Quaternius / Kenney Cube Pets) phòng secondary rất nhỏ — xem `assets/fx/HON_PACKS.md`.
+  → `assets/fx/skill/{rong,xa,ho,soi,thuy,loi,phong,bagua,hon}/qi_*`  
+  Mỗi pack: `charge_*` · `flight_*` · `impact_*`. Gen: `scripts/gen-qi-spirit-packs.py`.
+- **Whirlwind** by n4 — CC0 → `assets/fx/whirlwind/` (kỵ xung)
 - **Whirlwind for effects** by n4 — CC0  
   https://opengameart.org/content/whirlwind-for-effects  
   → `assets/fx/whirlwind/`

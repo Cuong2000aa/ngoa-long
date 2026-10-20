@@ -1,0 +1,10 @@
+# hon_hon/qi_soul — qi spirit (style Hỏa Long)
+
+Linh hồn người — cyan/tím/bạc
+
+- `charge_01..04` — vortex tụ lực
+- `flight_01..04` — silhouette bay (đầu bên phải)
+- `impact_01..03` — bùm tại đích
+
+Pipeline: `scripts/gen-qi-spirit-packs.py` từ `hon_rong/qi_fire` (+ optional `qi_seed/`).
+Không dùng asset VNG.

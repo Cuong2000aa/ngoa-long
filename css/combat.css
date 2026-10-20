@@ -436,6 +436,9 @@
   min-height: 0;
 }
 .unit-overhead .uo-st {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
   font-size: 0.58rem;
   font-weight: 700;
   line-height: 1.2;
@@ -444,6 +447,13 @@
   letter-spacing: 0.02em;
   text-shadow: 0 1px 2px #000;
   border: 1px solid rgba(0, 0, 0, 0.35);
+}
+.unit-overhead .uo-st-ico {
+  width: 10px;
+  height: 10px;
+  object-fit: contain;
+  flex-shrink: 0;
+  image-rendering: pixelated;
 }
 .unit-overhead .uo-st-buff {
   color: #fef3c7;

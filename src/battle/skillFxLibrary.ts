@@ -82,11 +82,11 @@ const DIRT = [
 ];
 
 const EARTH = [
-  "assets/fx/earth/1_Earth-Impact_01.png",
-  "assets/fx/earth/1_Earth-Impact_02.png",
-  "assets/fx/earth/1_Earth-Impact_03.png",
-  "assets/fx/earth/1_Earth-Impact_04.png",
-  "assets/fx/earth/1_Earth-Impact_05.png",
+  "assets/fx/itch/brackeys/earth_burst/frame_01.png",
+  "assets/fx/itch/brackeys/earth_burst/frame_04.png",
+  "assets/fx/itch/brackeys/earth_burst/frame_08.png",
+  "assets/fx/itch/brackeys/earth_burst/frame_12.png",
+  "assets/fx/itch/brackeys/earth_burst/frame_16.png",
 ];
 
 const CIRCLE = [
@@ -104,26 +104,19 @@ const LIGHT = [
 
 /** Nineball Fire Dragon Roller — CC0 — đủ 11 frame để đọc hình đầu long */
 const DRAGON = [
-  "assets/fx/dragon/dragon_01.png",
-  "assets/fx/dragon/dragon_02.png",
-  "assets/fx/dragon/dragon_03.png",
-  "assets/fx/dragon/dragon_04.png",
-  "assets/fx/dragon/dragon_05.png",
-  "assets/fx/dragon/dragon_06.png",
-  "assets/fx/dragon/dragon_07.png",
-  "assets/fx/dragon/dragon_08.png",
-  "assets/fx/dragon/dragon_09.png",
-  "assets/fx/dragon/dragon_10.png",
-  "assets/fx/dragon/dragon_11.png",
+  "assets/fx/slash/fire_alternative_3_1_alternative_3_01.png",
+  "assets/fx/slash/fire_alternative_3_1_alternative_3_02.png",
+  "assets/fx/slash/fire_alternative_3_1_alternative_3_03.png",
+  "assets/fx/slash/fire_alternative_3_1_alternative_3_04.png",
+  "assets/fx/slash/fire_alternative_3_1_alternative_3_05.png",
+  "assets/fx/slash/fire_alternative_3_1_alternative_3_06.png",
 ];
 
 /** Frames giữa chu kỳ — đầu long rõ nhất */
 const DRAGON_HEAD = [
-  "assets/fx/dragon/dragon_04.png",
-  "assets/fx/dragon/dragon_05.png",
-  "assets/fx/dragon/dragon_06.png",
-  "assets/fx/dragon/dragon_07.png",
-  "assets/fx/dragon/dragon_08.png",
+  "assets/fx/slash/fire_alternative_3_1_alternative_3_02.png",
+  "assets/fx/slash/fire_alternative_3_1_alternative_3_03.png",
+  "assets/fx/slash/fire_alternative_3_1_alternative_3_04.png",
 ];
 
 const FLAME = [
@@ -134,10 +127,10 @@ const FLAME = [
 ];
 
 const FIRE_WRATH = [
-  "assets/fx/fire-wrath/sd_1_fire-wrath__01.png",
-  "assets/fx/fire-wrath/sd_1_fire-wrath__03.png",
-  "assets/fx/fire-wrath/sd_1_fire-wrath__05.png",
-  "assets/fx/fire-wrath/sd_2_fire-wrath__07.png",
+  "assets/fx/itch/brackeys/ember_burst/frame_01.png",
+  "assets/fx/itch/brackeys/ember_burst/frame_05.png",
+  "assets/fx/itch/brackeys/ember_burst/frame_09.png",
+  "assets/fx/itch/brackeys/ember_burst/frame_13.png",
 ];
 
 const SMOKE = [
@@ -585,36 +578,21 @@ export function usesPolishedDragon(skillId?: string | null, motif?: string | nul
 }
 
 const TIGER_ROAR = [
-  "assets/fx/tiger/roar_01.png",
-  "assets/fx/tiger/roar_02.png",
-  "assets/fx/tiger/roar_03.png",
-  "assets/fx/tiger/roar_04.png",
-  "assets/fx/tiger/roar_05.png",
-  "assets/fx/tiger/roar_06.png",
-  "assets/fx/tiger/roar_07.png",
-  "assets/fx/tiger/roar_08.png",
+  "assets/fx/slash/fire_alternative_3_1_alternative_3_01.png",
+  "assets/fx/slash/fire_alternative_3_1_alternative_3_03.png",
+  "assets/fx/slash/fire_alternative_3_1_alternative_3_05.png",
 ];
 
 const TIGER_CLAW = [
-  "assets/fx/tiger/claw_01.png",
-  "assets/fx/tiger/claw_02.png",
-  "assets/fx/tiger/claw_03.png",
-  "assets/fx/tiger/claw_04.png",
-  "assets/fx/tiger/claw_05.png",
-  "assets/fx/tiger/claw_06.png",
-  "assets/fx/tiger/claw_07.png",
-  "assets/fx/tiger/claw_08.png",
+  "assets/fx/slash/fire_alternative_3_1_alternative_3_02.png",
+  "assets/fx/slash/fire_alternative_3_1_alternative_3_04.png",
+  "assets/fx/slash/fire_alternative_3_1_alternative_3_06.png",
 ];
 
 const TIGER_SLAM = [
-  "assets/fx/tiger/slam_01.png",
-  "assets/fx/tiger/slam_02.png",
-  "assets/fx/tiger/slam_03.png",
-  "assets/fx/tiger/slam_04.png",
-  "assets/fx/tiger/slam_05.png",
-  "assets/fx/tiger/slam_06.png",
-  "assets/fx/tiger/slam_07.png",
-  "assets/fx/tiger/slam_08.png",
+  "assets/fx/itch/brackeys/earth_burst/frame_01.png",
+  "assets/fx/itch/brackeys/earth_burst/frame_08.png",
+  "assets/fx/itch/brackeys/earth_burst/frame_16.png",
 ];
 
 function tigerTint(flash?: string, override?: number): number {

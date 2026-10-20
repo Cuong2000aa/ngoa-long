@@ -287,10 +287,14 @@
       ["wu_sheng", "thủy"],
       ["sam_set", "lôi"],
       ["gio_loc", "phong"],
+      ["bagua_zhen", "bát·quái"],
+      ["bat_tran_do", "pháp·trận"],
+      ["tran_hon", "linh·hồn"],
+      ["thu_hon_doat_phach", "hồn·người"],
       ["basic_strike", "slash"],
       ["khong_thanh", "beam"],
       ["thien_hoa", "nova"],
-      ["thien_menh", "bless"],
+      ["thien_menh", "hồn/mệnh"],
       ["thiet_bich", "barrier"],
     ];
     const hintEl = document.getElementById("overlay-hint");
@@ -575,6 +579,34 @@
           skillId: s.id || null,
           support: support,
         });
+        // Demo chip HUD (giáp / buff / debuff) — combat thật lấy từ engine
+        if (typeof br.setStatuses === "function") {
+          const id = String(s.id || "").toLowerCase();
+          const motif = String(s.motif || "").toLowerCase();
+          if (flash === "shield" || motif === "shield" || /thiet_bich|kien_thu|giap/.test(id)) {
+            br.setStatuses(casterUid, [
+              { id: "def_up", label: s.name || "Thiết Bích", short: "Giáp", kind: "buff" },
+            ]);
+          } else if (support) {
+            targets.forEach((uid) =>
+              br.setStatuses(uid, [
+                { id: "atk_up", label: s.name || "Buff", short: "Buff", kind: "buff" },
+              ])
+            );
+          } else if (motif === "poison" || /doc_|poison/.test(id)) {
+            targets.forEach((uid) =>
+              br.setStatuses(uid, [
+                { id: "poison", label: "Trúng độc", short: "Độc", kind: "debuff" },
+              ])
+            );
+          } else if (motif === "control" || /hon_loan|choang|stun/.test(id)) {
+            targets.forEach((uid) =>
+              br.setStatuses(uid, [
+                { id: "stun", label: "Hỗn loạn", short: "Loạn", kind: "control" },
+              ])
+            );
+          }
+        }
         statusEl.textContent =
           "Đang phát: " +
           s.name +
