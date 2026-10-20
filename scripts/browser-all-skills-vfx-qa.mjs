@@ -170,70 +170,70 @@ try {
     }
   });
 
-  // Batch in-page: tránh round-trip Playwright mỗi 30ms × 590
-  const BATCH = 20;
-  for (let i = 0; i < skills.length; i += BATCH) {
-    const chunk = skills.slice(i, i + BATCH);
-    const chunkRows = await page.evaluate(async (payload) => {
-      const { specs, flashHex } = payload;
-      const br = window.NLCombatUI.getView()._battle3d;
-      const allies = [];
-      const foes = [];
-      br.fighters.forEach((f, uid) => {
-        if (!f || f.dead) return;
-        if (f.side === "ally") allies.push(uid);
-        else foes.push(uid);
-      });
-      const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-      const out = [];
-      if (!allies.length) {
-        return specs.map((spec) => ({
-          id: spec.id,
-          name: spec.name,
-          flash: spec.flash,
-          motif: spec.motif,
-          pattern: spec.pattern,
-          pass: false,
-          fxN: 0,
-          colors: [],
-          reason: "no allies",
-        }));
+  // Runner chạy trong page event loop (không await sleep trong Playwright evaluate — dễ treo CDP)
+  await page.evaluate((payload) => {
+    const { specs, flashHex } = payload;
+    const state = {
+      specs,
+      flashHex,
+      i: 0,
+      results: [],
+      done: false,
+      failed: 0,
+      startedAt: performance.now(),
+    };
+    window.__NL_SKILL_QA_RUN__ = state;
+    const br = window.NLCombatUI.getView()._battle3d;
+    const allies = [];
+    const foes = [];
+    br.fighters.forEach((f, uid) => {
+      if (!f || f.dead) return;
+      if (f.side === "ally") allies.push(uid);
+      else foes.push(uid);
+    });
+    const caster = allies[0];
+
+    const step = () => {
+      if (state.i >= specs.length) {
+        state.done = true;
+        state.ms = performance.now() - state.startedAt;
+        return;
       }
-      const caster = allies[0];
-      for (let si = 0; si < specs.length; si++) {
-        const spec = specs[si];
-        const expect = flashHex[spec.flash] || flashHex[spec.motif] || null;
-        // clear mỗi vài chiêu — tránh dispose race với playSheet async
-        if (si === 0 || si % 5 === 0) {
-          if (typeof br.clearFx === "function") br.clearFx();
-          await sleep(30);
-        }
-        let targets = foes.slice();
-        const pat = (spec.pattern || "single").toLowerCase();
-        if (pat === "single") targets = foes.slice(0, 1);
-        if (pat === "self") targets = [caster];
-        if (pat === "ally_all") targets = allies.slice();
-        let flashOk = true;
-        let reason = null;
-        const bornBefore = performance.now();
+      const spec = specs[state.i++];
+      const expect = flashHex[spec.flash] || flashHex[spec.motif] || null;
+      if (state.i === 1 || state.i % 8 === 0) {
         try {
-          br.skillFlash(caster, spec.flash, targets, {
-            pattern: spec.pattern,
-            quality: "purple",
-            motif: spec.motif || spec.flash,
-            wave: true,
-          });
-        } catch (e) {
-          flashOk = false;
-          reason = String(e && e.message ? e.message : e);
+          br.clearFx();
+        } catch (_) {
+          /* ignore */
         }
-        // playSheet await loadTex — cần ≥100ms
-        await sleep(150);
-        let probe = { n: 0, colors: [] };
-        if (flashOk) {
-          const colors = [];
-          let n = 0;
-          let nNew = 0;
+      }
+      let targets = foes.slice();
+      const pat = (spec.pattern || "single").toLowerCase();
+      if (pat === "single") targets = foes.slice(0, 1);
+      if (pat === "self") targets = [caster];
+      if (pat === "ally_all") targets = allies.slice();
+      let flashOk = true;
+      let reason = null;
+      const bornBefore = performance.now();
+      try {
+        if (!caster) throw new Error("no allies");
+        br.skillFlash(caster, spec.flash, targets, {
+          pattern: spec.pattern,
+          quality: "purple",
+          motif: spec.motif || spec.flash,
+          wave: true,
+        });
+      } catch (e) {
+        flashOk = false;
+        reason = String(e && e.message ? e.message : e);
+      }
+      // Đợi playSheet(loadTex) trên event loop trang
+      setTimeout(() => {
+        const colors = [];
+        let n = 0;
+        let nNew = 0;
+        if (flashOk && br.scene) {
           br.scene.traverse((o) => {
             if (!(o && o.name === "fx-sprite")) return;
             n++;
@@ -241,37 +241,69 @@ try {
             if (born != null && born >= bornBefore - 20) nNew++;
             if (o.material && o.material.color) colors.push(o.material.color.getHexString());
           });
-          probe = { n: nNew || n, colors };
         }
-        const joined = (probe.colors || []).join(",").toLowerCase();
+        const fxN = nNew || n;
+        const joined = colors.join(",").toLowerCase();
         const colorOk = !expect || expect.some((h) => joined.includes(String(h).toLowerCase()));
-        const pass = !!(flashOk && probe.n > 0 && colorOk);
-        out.push({
+        const pass = !!(flashOk && fxN > 0 && colorOk);
+        if (!pass) state.failed++;
+        state.results.push({
           id: spec.id,
           name: spec.name,
           flash: spec.flash,
           motif: spec.motif,
           pattern: spec.pattern,
           pass,
-          fxN: probe.n,
-          colors: (probe.colors || []).slice(0, 8),
+          fxN,
+          colors: colors.slice(0, 8),
           reason: !flashOk
             ? reason
-            : !probe.n
+            : !fxN
               ? "no fx-sprite"
               : !colorOk
                 ? `color miss expect=${expect}`
                 : null,
         });
-      }
-      return out;
-    }, { specs: chunk, flashHex: FLASH_HEX });
+        if (state.i % 50 === 0 || state.i >= specs.length) {
+          state.progress = `${state.i}/${specs.length} failed=${state.failed}`;
+        }
+        setTimeout(step, 0);
+      }, 160);
+    };
+    setTimeout(step, 0);
+    return "started";
+  }, { specs: skills, flashHex: FLASH_HEX });
 
-    for (const row of chunkRows) {
-      if (!row.pass) failed++;
-      results.push(row);
+  // Poll tiến độ
+  let lastProg = "";
+  for (;;) {
+    const st = await page.evaluate(() => {
+      const s = window.__NL_SKILL_QA_RUN__;
+      if (!s) return { done: true, error: "no run state" };
+      return {
+        done: !!s.done,
+        i: s.i,
+        total: s.specs.length,
+        failed: s.failed,
+        progress: s.progress || "",
+        ms: s.ms || 0,
+      };
+    });
+    if (st.progress && st.progress !== lastProg) {
+      console.log("…", st.progress);
+      lastProg = st.progress;
     }
-    console.log(`… ${Math.min(i + BATCH, skills.length)}/${skills.length} failed=${failed}`);
+    if (st.done) {
+      console.log(`catalog done in ${Math.round(st.ms || 0)}ms`);
+      break;
+    }
+    await page.waitForTimeout(500);
+  }
+
+  const catalogRows = await page.evaluate(() => window.__NL_SKILL_QA_RUN__.results || []);
+  for (const row of catalogRows) {
+    if (!row.pass) failed++;
+    results.push(row);
   }
 
   // Pass 2: visual proof — 1 shot / motif (không chụp 590 lần)
