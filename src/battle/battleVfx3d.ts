@@ -70,7 +70,96 @@ type MeshFx = {
 
 const ACTIVE_EMIT: Emitter[] = [];
 const ACTIVE_MESH: MeshFx[] = [];
+const ACTIVE_HANDLES: Fx3dHandle[] = [];
+const PENDING_TIMERS: number[] = [];
 let nextId = 1;
+
+function trackTimer(ms: number, fn: () => void): number {
+  const tid = window.setTimeout(() => {
+    const i = PENDING_TIMERS.indexOf(tid);
+    if (i >= 0) PENDING_TIMERS.splice(i, 1);
+    fn();
+  }, ms);
+  PENDING_TIMERS.push(tid);
+  return tid;
+}
+
+/** Styles cho rebuild 3D toàn catalog */
+export type Fx3dStyle =
+  | "slash"
+  | "breath"
+  | "roar"
+  | "rush"
+  | "charge"
+  | "beam"
+  | "nova"
+  | "tide"
+  | "poison"
+  | "whirl"
+  | "shadow"
+  | "bless"
+  | "barrier";
+
+/**
+ * Map flash/motif/pattern → style 3D (mọi chiêu đi qua đây).
+ */
+export function resolveFx3dStyle(opts: {
+  flash?: string | null;
+  motif?: string | null;
+  pattern?: string | null;
+  support?: boolean;
+  isShield?: boolean;
+  isCharge?: boolean;
+  isRush?: boolean;
+}): Fx3dStyle {
+  const flash = String(opts.flash || "").toLowerCase();
+  const motif = String(opts.motif || "").toLowerCase();
+  const pat = String(opts.pattern || "single").toLowerCase();
+  if (opts.isShield || flash === "shield" || motif === "shield") return "barrier";
+  if (opts.support || motif === "heal" || motif === "buff" || pat === "ally_all" || pat === "self") {
+    if (flash === "shield") return "barrier";
+    return "bless";
+  }
+  if (opts.isCharge || flash === "charge" || flash === "brown" || motif === "charge") return "charge";
+  if (opts.isRush || flash === "rush" || motif === "rush") return "rush";
+  if (flash === "dragon" || motif === "dragon") return "breath";
+  if (flash === "tiger" || motif === "tiger" || flash === "wolf" || motif === "wolf") return "roar";
+  if (flash === "whirlwind" || motif === "whirlwind" || flash === "wind") return "whirl";
+  if (
+    flash === "green_poison" ||
+    flash === "poison" ||
+    flash === "snake" ||
+    flash === "fire_green" ||
+    motif === "poison" ||
+    motif === "snake"
+  )
+    return "poison";
+  if (flash === "blue_water" || flash === "cyan" || flash === "teal" || flash === "white_blue" || motif === "water")
+    return "tide";
+  if (flash === "fire_rain" || flash === "fire" || flash === "orange" || flash === "red_fire" || motif === "fire")
+    return "nova";
+  if (
+    flash === "crimson" ||
+    flash === "dark_red" ||
+    flash === "gold_red" ||
+    flash === "red" ||
+    motif === "shadow"
+  )
+    return "shadow";
+  if (
+    flash === "thunder" ||
+    flash === "purple" ||
+    flash === "violet" ||
+    flash === "bagua" ||
+    flash === "blue" ||
+    motif === "arcane" ||
+    motif === "thunder" ||
+    motif === "bagua"
+  )
+    return "beam";
+  if (motif === "pierce" || flash === "gold_pierce") return "rush";
+  return "slash";
+}
 const _tmp = new THREE.Vector3();
 const _tmp2 = new THREE.Vector3();
 const _col = new THREE.Color();
@@ -274,13 +363,17 @@ function flashPalette(flash?: string): { base: THREE.Color; hot: THREE.Color; co
     return { base: new THREE.Color(0xa78bfa), hot: new THREE.Color(0xe9d5ff), cool: new THREE.Color(0x5b21b6) };
   if (f === "crimson" || f === "blood" || f === "gold_red")
     return { base: new THREE.Color(0xf87171), hot: new THREE.Color(0xfecaca), cool: new THREE.Color(0x991b1b) };
-  if (f === "green_poison" || f === "poison" || f === "nature")
+  if (f === "green_poison" || f === "poison" || f === "nature" || f === "snake" || f === "fire_green")
     return { base: new THREE.Color(0x4ade80), hot: new THREE.Color(0xdcfce7), cool: new THREE.Color(0x166534) };
-  if (f === "rush" || f === "steel" || f === "iron" || f === "white")
+  if (f === "whirlwind" || f === "wind")
+    return { base: new THREE.Color(0xa7f3d0), hot: new THREE.Color(0xecfdf5), cool: new THREE.Color(0x0f766e) };
+  if (f === "wolf")
+    return { base: new THREE.Color(0xfca5a5), hot: new THREE.Color(0xffe4e6), cool: new THREE.Color(0x7f1d1d) };
+  if (f === "rush" || f === "steel" || f === "iron" || f === "white" || f === "silver" || f === "chain")
     return { base: new THREE.Color(0xe2e8f0), hot: new THREE.Color(0xffffff), cool: new THREE.Color(0x64748b) };
   if (f === "brown" || f === "charge" || f === "earth")
     return { base: new THREE.Color(0xd2b48c), hot: new THREE.Color(0xf5e6c8), cool: new THREE.Color(0x785a3a) };
-  if (f === "shield" || f === "pure")
+  if (f === "shield" || f === "pure" || f === "gold" || f === "gold_soft" || f === "gold_pierce" || f === "yellow" || f === "yellow_cult")
     return { base: new THREE.Color(0xfde68a), hot: new THREE.Color(0xfffbeb), cool: new THREE.Color(0xb45309) };
   return { base: new THREE.Color(0xf8fafc), hot: new THREE.Color(0xffffff), cool: new THREE.Color(0x94a3b8) };
 }
@@ -527,11 +620,13 @@ export function emitDragonSpirit3d(
   };
 
   if (delayMs > 0) {
-    const tid = window.setTimeout(start, delayMs);
+    const tid = trackTimer(delayMs, start);
     return {
       cancel() {
         cancelled.v = true;
         clearTimeout(tid);
+        const ti = PENDING_TIMERS.indexOf(tid);
+        if (ti >= 0) PENDING_TIMERS.splice(ti, 1);
         handles.forEach((h) => h.cancel());
       },
     };
@@ -713,7 +808,7 @@ export function emitTrail3d(
 }
 
 /**
- * Full skill cast — polished 3D look per style.
+ * Full skill cast — 3D look per style (toàn catalog).
  */
 export function playSkillFx3d(params: {
   scene: THREE.Scene;
@@ -722,7 +817,7 @@ export function playSkillFx3d(params: {
   flash?: string;
   scale?: string | null;
   phase?: "emission" | "impact" | "full";
-  style?: "slash" | "breath" | "roar" | "rush";
+  style?: Fx3dStyle;
 }): Fx3dHandle {
   const handles: Fx3dHandle[] = [];
   const flash = params.flash || "steel";
@@ -731,19 +826,34 @@ export function playSkillFx3d(params: {
   const scale = params.scale;
 
   const runEmission = () => {
+    if (style === "barrier") {
+      handles.push(emitShockwave3d(params.scene, params.from, { flash: "shield", scale, radius: 1.6, durationMs: 900 }));
+      handles.push(emitFlashDisc3d(params.scene, params.from, "shield", scale));
+      handles.push(emitBurst3d(params.scene, params.from, "gold_soft", scale));
+      return;
+    }
+    if (style === "bless") {
+      handles.push(emitShockwave3d(params.scene, params.to, { flash: flash || "gold_soft", scale, radius: 1.2, durationMs: 720 }));
+      handles.push(emitFlashDisc3d(params.scene, params.to, flash || "gold_soft", scale));
+      handles.push(emitBurst3d(params.scene, params.to, flash || "gold_soft", scale));
+      return;
+    }
     if (style === "roar") {
       handles.push(emitShockwave3d(params.scene, params.from, { flash, scale, radius: 3.0, durationMs: 680 }));
       handles.push(emitBurst3d(params.scene, params.from, flash, scale));
       handles.push(emitDust3d(params.scene, params.from, scale));
+      handles.push(
+        emitTrail3d(params.scene, params.from, params.to, {
+          flash,
+          durationMs: 400,
+          density: 7,
+          arc: 0.22,
+          scale,
+        })
+      );
+      return;
     }
-
-    if (style === "rush" || style === "slash") {
-      handles.push(emitDust3d(params.scene, params.from, scale));
-      handles.push(emitFlashDisc3d(params.scene, params.from, flash, scale));
-    }
-
     if (style === "breath") {
-      // Hỏa Long — hồn long ethereal bay vào địch (không tem vẽ, không flash trắng)
       const flightMs = 1050;
       handles.push(
         emitDragonSpirit3d(params.scene, params.from, params.to, {
@@ -765,44 +875,89 @@ export function playSkillFx3d(params: {
       );
       return;
     }
-
-    if (style === "rush") {
+    if (style === "rush" || style === "charge") {
+      handles.push(emitDust3d(params.scene, params.from, scale));
+      handles.push(emitFlashDisc3d(params.scene, params.from, flash, scale));
+      const dur = style === "charge" ? 360 : 280;
       handles.push(
         emitCoreFlight3d(params.scene, params.from, params.to, {
           flash,
           scale,
-          durationMs: 280,
-          arc: 0.18,
-          size: 0.18,
+          durationMs: dur,
+          arc: style === "charge" ? 0.12 : 0.18,
+          size: style === "charge" ? 0.22 : 0.18,
         })
       );
       handles.push(
         emitTrail3d(params.scene, params.from, params.to, {
           flash,
-          durationMs: 280,
-          density: 10,
-          arc: 0.16,
+          durationMs: dur,
+          density: style === "charge" ? 12 : 10,
+          arc: style === "charge" ? 0.1 : 0.16,
           scale,
           streak: true,
         })
       );
+      if (style === "charge") {
+        handles.push(emitDust3d(params.scene, params.from.clone().lerp(params.to, 0.45), scale));
+      }
       return;
     }
-
-    if (style === "roar") {
+    if (style === "beam" || style === "tide" || style === "poison" || style === "shadow") {
+      handles.push(emitFlashDisc3d(params.scene, params.from, flash, scale));
+      const dur = style === "beam" ? 420 : 480;
+      handles.push(
+        emitCoreFlight3d(params.scene, params.from, params.to, {
+          flash,
+          scale,
+          durationMs: dur,
+          arc: style === "tide" ? 0.4 : style === "poison" ? 0.32 : 0.25,
+          size: style === "shadow" ? 0.2 : 0.16,
+        })
+      );
       handles.push(
         emitTrail3d(params.scene, params.from, params.to, {
           flash,
-          durationMs: 400,
-          density: 7,
-          arc: 0.22,
+          durationMs: dur,
+          density: style === "poison" ? 11 : 8,
+          arc: style === "tide" ? 0.38 : 0.22,
+          scale,
+          streak: style === "beam" || style === "shadow",
+        })
+      );
+      return;
+    }
+    if (style === "nova") {
+      handles.push(emitFlashDisc3d(params.scene, params.from, flash, scale));
+      handles.push(
+        emitTrail3d(params.scene, params.from, params.to, {
+          flash,
+          durationMs: 520,
+          density: 8,
+          arc: 0.55,
+          scale,
+        })
+      );
+      return;
+    }
+    if (style === "whirl") {
+      handles.push(emitShockwave3d(params.scene, params.from, { flash, scale, radius: 2.2, durationMs: 700 }));
+      handles.push(emitDust3d(params.scene, params.from, scale));
+      handles.push(
+        emitTrail3d(params.scene, params.from, params.to, {
+          flash,
+          durationMs: 450,
+          density: 9,
+          arc: 0.5,
           scale,
         })
       );
       return;
     }
 
-    // slash — wide crescent feel via dense trail + side offset trail
+    // slash — wide crescent
+    handles.push(emitDust3d(params.scene, params.from, scale));
+    handles.push(emitFlashDisc3d(params.scene, params.from, flash, scale));
     handles.push(
       emitTrail3d(params.scene, params.from, params.to, {
         flash,
@@ -850,18 +1005,27 @@ export function playSkillFx3d(params: {
           durationMs: 480,
         })
       );
-    } else if (style === "roar") {
+    } else if (style === "roar" || style === "nova" || style === "whirl") {
       handles.push(
         emitShockwave3d(params.scene, params.to, {
           flash,
           scale,
-          radius: 1.9,
+          radius: style === "nova" ? 2.2 : 1.9,
           durationMs: 480,
         })
       );
-    }
-    if (style === "rush") {
+    } else if (style === "rush" || style === "charge") {
       handles.push(emitFlashDisc3d(params.scene, params.to, flash, scale));
+      if (style === "charge") {
+        handles.push(emitShockwave3d(params.scene, params.to, { flash, scale, radius: 1.4, durationMs: 400 }));
+      }
+    } else if (style === "barrier" || style === "bless") {
+      handles.push(emitFlashDisc3d(params.scene, params.to, flash || "gold_soft", scale));
+    } else if (style === "tide" || style === "poison" || style === "shadow" || style === "beam") {
+      handles.push(emitFlashDisc3d(params.scene, params.to, flash, scale));
+      if (style === "poison" || style === "shadow") {
+        handles.push(emitShockwave3d(params.scene, params.to, { flash, scale, radius: 1.35, durationMs: 420 }));
+      }
     }
   };
 
@@ -870,20 +1034,84 @@ export function playSkillFx3d(params: {
   else if (phase === "impact") runImpact();
   else {
     runEmission();
-    const delay = style === "breath" ? 980 : style === "rush" ? 250 : 380;
+    const delay =
+      style === "breath" ? 980 : style === "rush" || style === "charge" ? 280 : style === "nova" ? 480 : 380;
     timers.push(
-      window.setTimeout(() => {
+      trackTimer(delay, () => {
         if (params.scene) runImpact();
-      }, delay)
+      })
     );
   }
 
-  return {
+  const handle: Fx3dHandle = {
     cancel() {
-      timers.forEach(clearTimeout);
+      timers.forEach((tid) => {
+        clearTimeout(tid);
+        const ti = PENDING_TIMERS.indexOf(tid);
+        if (ti >= 0) PENDING_TIMERS.splice(ti, 1);
+      });
       handles.forEach((h) => h.cancel());
+      const hi = ACTIVE_HANDLES.indexOf(handle);
+      if (hi >= 0) ACTIVE_HANDLES.splice(hi, 1);
     },
   };
+  ACTIVE_HANDLES.push(handle);
+  return handle;
+}
+
+/** Pattern AoE / hàng — mỗi mục tiêu một playSkillFx3d staggered. */
+export function playPatternFx3d(params: {
+  scene: THREE.Scene;
+  from: THREE.Vector3;
+  targets: THREE.Vector3[];
+  flash?: string;
+  motif?: string | null;
+  pattern?: string | null;
+  scale?: string | null;
+  phase?: "emission" | "impact" | "full";
+  support?: boolean;
+}): Fx3dHandle {
+  const style = resolveFx3dStyle({
+    flash: params.flash,
+    motif: params.motif,
+    pattern: params.pattern,
+    support: params.support,
+  });
+  const kids: Fx3dHandle[] = [];
+  const list = params.targets.length ? params.targets : [params.from];
+  const phase = params.phase || "emission";
+  list.forEach((to, i) => {
+    const delay = i * (style === "nova" || style === "roar" ? 40 : 55);
+    const tid = trackTimer(delay, () => {
+      kids.push(
+        playSkillFx3d({
+          scene: params.scene,
+          from: style === "bless" || style === "barrier" ? to : params.from,
+          to,
+          flash: params.flash,
+          scale: params.scale,
+          style,
+          phase,
+        })
+      );
+    });
+    kids.push({
+      cancel() {
+        clearTimeout(tid);
+        const ti = PENDING_TIMERS.indexOf(tid);
+        if (ti >= 0) PENDING_TIMERS.splice(ti, 1);
+      },
+    });
+  });
+  const handle: Fx3dHandle = {
+    cancel() {
+      kids.forEach((h) => h.cancel());
+      const hi = ACTIVE_HANDLES.indexOf(handle);
+      if (hi >= 0) ACTIVE_HANDLES.splice(hi, 1);
+    },
+  };
+  ACTIVE_HANDLES.push(handle);
+  return handle;
 }
 
 export function tickBattleVfx3d(_scene: THREE.Scene, now: number, dt: number): void {
@@ -1050,6 +1278,14 @@ export function tickBattleVfx3d(_scene: THREE.Scene, now: number, dt: number): v
 }
 
 export function clearBattleVfx3d(scene?: THREE.Scene | null): void {
+  for (const tid of PENDING_TIMERS.splice(0, PENDING_TIMERS.length)) clearTimeout(tid);
+  for (const h of ACTIVE_HANDLES.splice(0, ACTIVE_HANDLES.length)) {
+    try {
+      h.cancel();
+    } catch {
+      /* ignore */
+    }
+  }
   for (const em of ACTIVE_EMIT.splice(0, ACTIVE_EMIT.length)) {
     scene?.remove(em.points);
     em.points.parent?.remove(em.points);

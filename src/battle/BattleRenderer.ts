@@ -8,12 +8,8 @@ import {
 import {
   prefetchBattleVfx,
   clearBattleVfx,
-  spawnAllyBless,
   spawnCavalryCharge,
   spawnHitBurst,
-  spawnPatternEmission,
-  spawnPremiumImpact,
-  spawnRushAssault,
   spawnShieldBarrier,
   spawnSkillAura,
   spawnSkillBeam,
@@ -22,13 +18,13 @@ import {
   spawnStatusOrb,
   tickBattleVfx,
 } from "./battleVfx";
-import { clearBattleVfx3d, playSkillFx3d, tickBattleVfx3d } from "./battleVfx3d";
 import {
-  usesPolishedDragon,
-  usesPolishedRush,
-  usesPolishedSteelSlash,
-  usesPolishedTiger,
-} from "./skillFxLibrary";
+  clearBattleVfx3d,
+  playPatternFx3d,
+  playSkillFx3d,
+  resolveFx3dStyle,
+  tickBattleVfx3d,
+} from "./battleVfx3d";
 
 
 type SkillFlashOpts = {
@@ -715,7 +711,6 @@ export class BattleRenderer {
     const visual = profile.visual || "default";
     const delivery = profile.delivery || "arcane";
     const motif = ((opts && opts.motif) || "").toLowerCase();
-    const skillId = ((opts && opts.skillId) || "").trim();
     const support =
       !!(opts && opts.support) ||
       delivery === "buff" ||
@@ -736,39 +731,29 @@ export class BattleRenderer {
     const isShield = kind === "shield";
     /** Flash AA trắng → thép skill; tránh chiêu = đúng path đánh thường */
     const skillKind = kind === "white" ? "steel" : kind;
-    /** basic_strike (Mãnh Kích) — polished trail/sigil library, ≠ AA */
-    const polishedSteel = usesPolishedSteelSlash(skillId, motif, skillKind);
-    /** hoa_long (Hỏa Long) — dragon body + lửa theo đường bay */
-    const polishedDragon = usesPolishedDragon(skillId, motif, skillKind);
-    /** ho_khieu (Hổ Khiếu) — gầm AoE + cào */
-    const polishedTiger = usesPolishedTiger(skillId, motif, skillKind);
-    /** dot_kich (Đột Kích) — xông đâm polished */
-    const polishedRush = usesPolishedRush(skillId, motif, skillKind);
-    // Support không chạy AoE nova thép lên địch (Thiên Mệnh… pattern all)
-    // Polished skills bypass pattern choreo (kể cả pattern all)
+    /** Rebuild 3D — mọi chiêu map style, không còn chỉ 4 polished */
+    const fx3dStyle = resolveFx3dStyle({
+      flash: skillKind,
+      motif,
+      pattern,
+      support,
+      isShield,
+      isCharge,
+      isRush,
+    });
     const usePatternChoreo =
       !support &&
       !isCharge &&
       !isRush &&
       !isShield &&
-      !polishedSteel &&
-      !polishedDragon &&
-      !polishedTiger &&
-      !polishedRush &&
       (pattern === "column" ||
         pattern === "row" ||
         pattern === "front_row" ||
         pattern === "all" ||
         pattern === "ally_all" ||
         pattern === "self");
-    const rangedEmit =
-      emission === "projectile" ||
-      emission === "rain" ||
-      visual === "arrow" ||
-      visual === "meteor" ||
-      visual === "thunder" ||
-      visual === "fireball" ||
-      visual === "bagua";
+    void emission;
+    void melee;
     const targets = targetUids.length ? targetUids : [];
     const firstTarget = targets.map((tid) => this.fighters.get(tid)).find((t) => t && !t.dead);
     const attach = { root: f.actor.root, leader: f.actor.sprite };
@@ -793,194 +778,126 @@ export class BattleRenderer {
 
     const deliverToTargets = (mode: "emission" | "impact") => {
       if (!this.scene) return;
-      if (mode === "emission" && support && !isShield) {
+      const phase = mode === "emission" ? "emission" : "impact";
+      const fromPos = this.casterFxAt(f);
+
+      // Hỗ trợ / khiên — 3D bless/barrier trên đồng minh
+      if (mode === "emission" && (support || isShield)) {
         const blessFlash =
           skillKind === "steel" || skillKind === "iron" || skillKind === "brown" ? "gold_soft" : skillKind;
-        spawnAllyBless(this.scene, allyBlessPoints(), blessFlash, scale);
-        // Debuff sĩ khí địch (nếu targets là địch): impact nhẹ vàng, không slash
+        const pts = isShield ? [fromPos] : allyBlessPoints();
+        playPatternFx3d({
+          scene: this.scene,
+          from: fromPos,
+          targets: pts,
+          flash: isShield ? "shield" : blessFlash,
+          motif,
+          pattern: isShield ? "self" : "ally_all",
+          scale,
+          phase: "emission",
+          support: true,
+        });
         targets.forEach((tid, i) => {
           const to = this.fighters.get(tid);
           if (!to || to.dead || to.side === f.side || !this.scene) return;
           setTimeout(() => {
             if (!this.scene || to.dead) return;
-            spawnPremiumImpact(this.scene, this.casterFxAt(to), "gold_soft", "S");
+            playSkillFx3d({
+              scene: this.scene,
+              from: fromPos,
+              to: this.casterFxAt(to),
+              flash: "gold_soft",
+              scale: "S",
+              style: "bless",
+              phase: "impact",
+            });
           }, 80 + i * 45);
         });
         return;
       }
+
+      // Pattern AoE / hàng — 3D staggered
       if (mode === "emission" && usePatternChoreo) {
-        spawnPatternEmission(this.scene, this.casterFxAt(f), targetPoints(), skillKind, pattern, scale);
-        // Vẫn hit-react từng mục tiêu ở impact phase
+        playPatternFx3d({
+          scene: this.scene,
+          from: fromPos,
+          targets: targetPoints(),
+          flash: skillKind,
+          motif,
+          pattern,
+          scale,
+          phase: "emission",
+        });
         return;
       }
-      targets.forEach((tid, i) => {
-        const to = this.fighters.get(tid);
+
+      const destList = targets.length
+        ? targets
+        : isShield || support
+          ? ["__self__"]
+          : [];
+
+      destList.forEach((tid, i) => {
+        const to = tid === "__self__" ? f : this.fighters.get(tid);
         if (!to || to.dead || !this.scene) return;
         const stagger = i * (scale === "L" ? 70 : 55);
         setTimeout(() => {
           if (!this.scene || to.dead) return;
           const dest = this.casterFxAt(to);
-          const fromPos = this.casterFxAt(f);
           const tnow = performance.now();
-          if (mode === "emission") {
-            if (isCharge) {
-              spawnCavalryCharge(this.scene, f.home.clone(), to.home.clone(), tnow, scale);
-            } else if (polishedRush) {
-              // Đột Kích — 3D trail + dust (không sprite billboard)
-              playSkillFx3d({
-                scene: this.scene,
-                from: fromPos,
-                to: dest,
-                flash: skillKind,
-                scale,
-                style: "rush",
-                phase: "emission",
-              });
-            } else if (isRush) {
-              spawnRushAssault(this.scene, f.home.clone(), to.home.clone(), tnow, scale);
-            } else if (isShield) {
-              spawnShieldBarrier(this.scene, this.casterFxAt(f), tnow, scale);
-            } else if (polishedSteel) {
-              playSkillFx3d({
-                scene: this.scene,
-                from: fromPos,
-                to: dest,
-                flash: skillKind,
-                scale,
-                style: "slash",
-                phase: "emission",
-              });
-            } else if (polishedDragon) {
-              playSkillFx3d({
-                scene: this.scene,
-                from: fromPos,
-                to: dest,
-                flash: skillKind === "steel" ? "dragon" : skillKind,
-                scale,
-                style: "breath",
-                phase: "emission",
-              });
-            } else if (polishedTiger) {
-              playSkillFx3d({
-                scene: this.scene,
-                from: fromPos,
-                to: dest,
-                flash: skillKind === "steel" ? "tiger" : skillKind,
-                scale,
-                style: "roar",
-                phase: i === 0 ? "emission" : "emission",
-              });
-            } else if (rangedEmit || (!melee && !support) || support) {
-              spawnSkillBeam(this.scene, fromPos, dest, skillKind, tnow);
-            } else if (visual === "pierce" || movement === "thrust") {
-              // Đâm skill: beam + slash màu flash (không chỉ steel AA)
-              spawnSlashArc(this.scene, fromPos, to.home, tnow, skillKind);
-              spawnSkillBeam(this.scene, fromPos, dest, skillKind, tnow);
-            } else {
-              // Chém skill ≠ AA (AA = 1 slash white/steel, không beam/windup)
-              spawnSlashArc(this.scene, fromPos, to.home, tnow, skillKind);
-              spawnSkillBeam(this.scene, fromPos, dest, skillKind, tnow);
-              setTimeout(() => {
-                if (!this.scene || to.dead) return;
-                spawnSlashArc(this.scene, fromPos, to.home, performance.now(), skillKind);
-              }, 55);
+          playSkillFx3d({
+            scene: this.scene,
+            from: fromPos,
+            to: dest,
+            flash: skillKind,
+            scale,
+            style: fx3dStyle,
+            phase,
+          });
+          if (mode === "impact") {
+            if (isCharge || isRush || fx3dStyle === "rush" || fx3dStyle === "charge") {
+              const push =
+                f.side === "ally"
+                  ? isCharge || fx3dStyle === "charge"
+                    ? -0.35
+                    : -0.3
+                  : isCharge || fx3dStyle === "charge"
+                    ? 0.35
+                    : 0.3;
+              to.lunge = {
+                from: to.home.clone(),
+                peak: to.home.clone().add(new THREE.Vector3(push, 0, 0)),
+                t0: tnow,
+                durOut: isCharge ? 100 : 80,
+                durBack: isCharge ? 240 : 200,
+              };
             }
-            return;
-          }
-          // impact
-          if (polishedRush || isCharge || isRush) {
-            if (polishedRush) {
-              playSkillFx3d({
-                scene: this.scene,
-                from: fromPos,
-                to: dest,
-                flash: skillKind,
-                scale,
-                style: "rush",
-                phase: "impact",
-              });
+            if (!support || isShield) {
+              playActor(to.actor, "hit", 0.05);
+              to.hitFlashUntil = tnow + (isShield ? 360 : 560);
             } else {
-              spawnPremiumImpact(this.scene, dest, skillKind, scale);
+              to.hitFlashUntil = tnow + 320;
             }
-            const push = f.side === "ally" ? (isCharge || polishedRush ? -0.35 : -0.3) : isCharge || polishedRush ? 0.35 : 0.3;
-            to.lunge = {
-              from: to.home.clone(),
-              peak: to.home.clone().add(new THREE.Vector3(push, 0, 0)),
-              t0: tnow,
-              durOut: isCharge ? 100 : 80,
-              durBack: isCharge ? 240 : 200,
-            };
-          } else if (isShield) {
-            spawnHitBurst(this.scene, dest);
-            spawnShieldBarrier(this.scene, this.casterFxAt(f), tnow, scale);
-          } else if (polishedSteel) {
-            playSkillFx3d({
-              scene: this.scene,
-              from: fromPos,
-              to: dest,
-              flash: skillKind,
-              scale,
-              style: "slash",
-              phase: "impact",
-            });
-          } else if (polishedDragon) {
-            // Flight ~980ms; emission timeline ~900ms → chờ nốt rồi impact
-            const arriveMs = 120;
-            setTimeout(() => {
-              if (!this.scene || to.dead) return;
-              const hitAt = performance.now();
-              playSkillFx3d({
-                scene: this.scene,
-                from: fromPos,
-                to: this.casterFxAt(to),
-                flash: skillKind === "steel" ? "dragon" : skillKind,
-                scale,
-                style: "breath",
-                phase: "impact",
-              });
-              playActor(to.actor, "hit", 0.05);
-              to.hitFlashUntil = hitAt + 560;
-            }, arriveMs);
-            return;
-          } else if (polishedTiger) {
-            const arriveMs = 60;
-            setTimeout(() => {
-              if (!this.scene || to.dead) return;
-              const hitAt = performance.now();
-              playSkillFx3d({
-                scene: this.scene,
-                from: fromPos,
-                to: this.casterFxAt(to),
-                flash: skillKind === "steel" ? "tiger" : skillKind,
-                scale,
-                style: "roar",
-                phase: "impact",
-              });
-              playActor(to.actor, "hit", 0.05);
-              to.hitFlashUntil = hitAt + 520;
-            }, arriveMs);
-            return;
-          } else {
-            spawnPremiumImpact(this.scene, dest, skillKind, scale);
-          }
-          if (!support || isShield) {
-            playActor(to.actor, "hit", 0.05);
-            to.hitFlashUntil = tnow + (isShield ? 360 : 560);
-          } else {
-            to.hitFlashUntil = tnow + 320;
           }
         }, stagger);
       });
+
       if (mode === "impact") {
-        // Pattern choreo: vẫn cần hit-react + premium impact từng mục tiêu
         if (usePatternChoreo) {
           targets.forEach((tid, i) => {
             const to = this.fighters.get(tid);
             if (!to || to.dead || !this.scene) return;
             setTimeout(() => {
               if (!this.scene || to.dead) return;
-              const dest = this.casterFxAt(to);
-              spawnPremiumImpact(this.scene, dest, skillKind, scale);
+              playSkillFx3d({
+                scene: this.scene,
+                from: fromPos,
+                to: this.casterFxAt(to),
+                flash: skillKind,
+                scale,
+                style: fx3dStyle,
+                phase: "impact",
+              });
               if (!support) {
                 playActor(to.actor, "hit", 0.05);
                 to.hitFlashUntil = performance.now() + 560;

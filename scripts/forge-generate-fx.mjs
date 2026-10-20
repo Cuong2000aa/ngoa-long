@@ -20,6 +20,7 @@ const FORGE = join(ROOT, "_dl/vfx-refs/pixel-ability-fx-generator");
 const OUT = join(ROOT, "assets/fx/forge");
 
 /** One-shot combat sheets — family/element tuned for Ngọa Long (not neon sci-fi). */
+/** Full element set for 3D rebuild — regenerate anytime. */
 const BATCH = [
   { id: "frost_burst", family: "burst", element: "frost", power: "standard", seed: 31001, looping: false, frames: 12, size: 128 },
   { id: "storm_burst", family: "burst", element: "storm", power: "standard", seed: 31002, looping: false, frames: 12, size: 128 },
@@ -33,6 +34,13 @@ const BATCH = [
   { id: "radiance_aura", family: "aura", element: "radiance", power: "standard", seed: 32001, looping: true, frames: 12, size: 128 },
   { id: "frost_aura", family: "aura", element: "frost", power: "restrained", seed: 32002, looping: true, frames: 12, size: 128 },
   { id: "ward_barrier", family: "barrier", element: "radiance", power: "standard", seed: 33001, looping: true, frames: 12, size: 128 },
+  // Extra packs — 3D rebuild coverage
+  { id: "ember_aura", family: "aura", element: "fire", power: "standard", seed: 32003, looping: true, frames: 12, size: 128 },
+  { id: "nature_aura", family: "aura", element: "nature", power: "standard", seed: 32004, looping: true, frames: 12, size: 128 },
+  { id: "blood_aura", family: "aura", element: "blood", power: "restrained", seed: 32005, looping: true, frames: 12, size: 128 },
+  { id: "storm_aura", family: "aura", element: "storm", power: "standard", seed: 32006, looping: true, frames: 12, size: 128 },
+  { id: "steel_burst", family: "burst", element: "earth", power: "restrained", seed: 31010, looping: false, frames: 12, size: 128 },
+  { id: "shadow_barrier", family: "barrier", element: "shadow", power: "standard", seed: 33002, looping: true, frames: 12, size: 128 },
 ];
 
 const MIME = {
