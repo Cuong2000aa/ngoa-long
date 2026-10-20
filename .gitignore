@@ -11,6 +11,7 @@ city-drag.png
 city-click.png
 tests/out/
 docs/_shots/skill-qa/
+docs/_shots/skill-qa-full/
 .DS_Store
 Thumbs.db
 
