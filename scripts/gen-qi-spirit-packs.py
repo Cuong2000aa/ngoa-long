@@ -31,9 +31,10 @@ PACKS = [
     ("skill/hon/qi_soul", 210, 0.55, 1.1, "Linh hồn người — cyan/tím/bạc"),
 ]
 
-CHARGE_N = 4
-FLIGHT_N = 4
-IMPACT_N = 3
+# Đồng bộ với expand-qi-flipbook.py (≥24 frame / stem)
+CHARGE_N = 24
+FLIGHT_N = 24
+IMPACT_N = 24
 
 
 def load_rgba(p: Path) -> Image.Image:

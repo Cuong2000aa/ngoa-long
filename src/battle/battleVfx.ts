@@ -7,6 +7,9 @@ import * as THREE from "three";
  * · `skill/{rong,xa,…}/qi_*` (chiêu hồn — battleVfx3d).
  */
 
+/** Flipbook tối thiểu — đồng bộ `scripts/expand-fx-flipbook.py` */
+const FX_FRAMES = 24;
+
 /** Packs đã slice từ Brackeys — ưu tiên hơn forge. */
 const ITCH_BRACKETS = new Set([
   "arcane_burst",
@@ -19,76 +22,36 @@ const ITCH_BRACKETS = new Set([
   "earth_burst",
 ]);
 
+function fxSeq(root: string, stem: string, n = FX_FRAMES): string[] {
+  return Array.from({ length: n }, (_, i) => {
+    const pad = String(i + 1).padStart(2, "0");
+    return `${root}/${stem}_${pad}.png`;
+  });
+}
+
 /** Frame packs: Brackeys (itch) nếu có, không thì Pixel Ability FX Forge */
 function forgePack(id: string): string[] {
   const useItch = ITCH_BRACKETS.has(id);
   const root = useItch ? `assets/fx/itch/brackeys/${id}` : `assets/fx/forge/${id}`;
-  const count = useItch ? 16 : 12;
-  return Array.from({ length: count }, (_, i) => {
-    const n = String(i + 1).padStart(2, "0");
-    return `${root}/frame_${n}.png`;
-  });
+  return fxSeq(root, "frame", FX_FRAMES);
 }
 
 const TEX = {
-  slash: [
-    "assets/fx/particles/slash_01.png",
-    "assets/fx/particles/slash_02.png",
-    "assets/fx/particles/slash_03.png",
-    "assets/fx/particles/slash_04.png",
-  ],
+  slash: fxSeq("assets/fx/particles", "slash"),
   /** Cethiel Weapon Slash — classic (Thường / vật lý cơ bản) */
-  slashClassic: [
-    "assets/fx/slash/classic_classic_1_classic_01.png",
-    "assets/fx/slash/classic_classic_1_classic_02.png",
-    "assets/fx/slash/classic_classic_1_classic_03.png",
-    "assets/fx/slash/classic_classic_1_classic_04.png",
-    "assets/fx/slash/classic_classic_1_classic_05.png",
-    "assets/fx/slash/classic_classic_1_classic_06.png",
-  ],
-  slashBlue: [
-    "assets/fx/slash/blue_alternative_2_1_alternative_2_01.png",
-    "assets/fx/slash/blue_alternative_2_1_alternative_2_02.png",
-    "assets/fx/slash/blue_alternative_2_1_alternative_2_03.png",
-    "assets/fx/slash/blue_alternative_2_1_alternative_2_04.png",
-    "assets/fx/slash/blue_alternative_2_1_alternative_2_05.png",
-    "assets/fx/slash/blue_alternative_2_1_alternative_2_06.png",
-  ],
-  slashPurple: [
-    "assets/fx/slash/purple_alternative_1_1_alternative_1_01.png",
-    "assets/fx/slash/purple_alternative_1_1_alternative_1_02.png",
-    "assets/fx/slash/purple_alternative_1_1_alternative_1_03.png",
-    "assets/fx/slash/purple_alternative_1_1_alternative_1_04.png",
-    "assets/fx/slash/purple_alternative_1_1_alternative_1_05.png",
-    "assets/fx/slash/purple_alternative_1_1_alternative_1_06.png",
-  ],
-  slashFire: [
-    "assets/fx/slash/fire_alternative_3_1_alternative_3_01.png",
-    "assets/fx/slash/fire_alternative_3_1_alternative_3_02.png",
-    "assets/fx/slash/fire_alternative_3_1_alternative_3_03.png",
-    "assets/fx/slash/fire_alternative_3_1_alternative_3_04.png",
-    "assets/fx/slash/fire_alternative_3_1_alternative_3_05.png",
-    "assets/fx/slash/fire_alternative_3_1_alternative_3_06.png",
-  ],
+  slashClassic: fxSeq("assets/fx/slash", "classic_classic_1_classic"),
+  slashBlue: fxSeq("assets/fx/slash", "blue_alternative_2_1_alternative_2"),
+  slashPurple: fxSeq("assets/fx/slash", "purple_alternative_1_1_alternative_1"),
+  slashFire: fxSeq("assets/fx/slash", "fire_alternative_3_1_alternative_3"),
   hit: [
     "assets/fx/particles/flare_01.png",
     "assets/fx/particles/star_01.png",
     "assets/fx/particles/spark_02.png",
     "assets/fx/particles/magic_02.png",
   ],
-  fire: [
-    "assets/fx/particles/flame_01.png",
-    "assets/fx/particles/flame_02.png",
-    "assets/fx/particles/flame_03.png",
-    "assets/fx/particles/flame_04.png",
-  ],
+  fire: fxSeq("assets/fx/particles", "flame"),
   /** n4 — Whirlwind (OGA CC0) — kỵ xung / gió */
-  whirlwind: [
-    "assets/fx/whirlwind/whirl_01.png",
-    "assets/fx/whirlwind/whirl_02.png",
-    "assets/fx/whirlwind/whirl_03.png",
-    "assets/fx/whirlwind/whirl_04.png",
-  ],
+  whirlwind: fxSeq("assets/fx/whirlwind", "whirl"),
   // Chỉ grayscale particle — tint xanh độc
   poison: [
     "assets/fx/particles/magic_03.png",
@@ -111,35 +74,12 @@ const TEX = {
     "assets/fx/particles/star_01.png",
   ],
   /** Bụi / đất — dấu vó ngựa khi kỵ xung kích */
-  dirt: [
-    "assets/fx/particles/dirt_01.png",
-    "assets/fx/particles/dirt_02.png",
-    "assets/fx/particles/dirt_03.png",
-  ],
-  smoke: [
-    "assets/fx/particles/smoke_01.png",
-    "assets/fx/particles/smoke_03.png",
-    "assets/fx/particles/smoke_05.png",
-    "assets/fx/particles/smoke_07.png",
-  ],
-  muzzle: [
-    "assets/fx/particles/muzzle_01.png",
-    "assets/fx/particles/muzzle_03.png",
-    "assets/fx/particles/muzzle_05.png",
-  ],
+  dirt: fxSeq("assets/fx/particles", "dirt"),
+  smoke: fxSeq("assets/fx/particles", "smoke"),
+  muzzle: fxSeq("assets/fx/particles", "muzzle"),
   /** Vòng khiên / barrier (Thiết Bích) */
-  circle: [
-    "assets/fx/particles/circle_01.png",
-    "assets/fx/particles/circle_02.png",
-    "assets/fx/particles/circle_03.png",
-    "assets/fx/particles/circle_04.png",
-    "assets/fx/particles/circle_05.png",
-  ],
-  light: [
-    "assets/fx/particles/light_01.png",
-    "assets/fx/particles/light_02.png",
-    "assets/fx/particles/light_03.png",
-  ],
+  circle: fxSeq("assets/fx/particles", "circle"),
+  light: fxSeq("assets/fx/particles", "light"),
   /** Pixel Ability FX Forge — element packs (scripts/forge-generate-fx.mjs) */
   forgeFrost: forgePack("frost_burst"),
   forgeStorm: forgePack("storm_burst"),
@@ -153,27 +93,14 @@ const TEX = {
   forgeRadiance: forgePack("radiance_aura"),
   forgeFrostAura: forgePack("frost_aura"),
   forgeWard: forgePack("ward_barrier"),
-  /** Stylized Projectiles (itch) — texture extract từ Unity demo */
-  stylizedSlash: [
-    "assets/fx/itch/stylized/slash_a/frame_01.png",
-    "assets/fx/itch/stylized/slash_a/frame_02.png",
-  ],
-  stylizedLightning: ["assets/fx/itch/stylized/lightning/frame_01.png"],
-  stylizedFlash: [
-    "assets/fx/itch/stylized/flash/frame_01.png",
-    "assets/fx/itch/stylized/flash/frame_02.png",
-    "assets/fx/itch/stylized/flash/frame_03.png",
-  ],
-  stylizedStar: [
-    "assets/fx/itch/stylized/star_sheet_a/frame_01.png",
-    "assets/fx/itch/stylized/star_sheet_a/frame_02.png",
-    "assets/fx/itch/stylized/star_sheet_a/frame_03.png",
-    "assets/fx/itch/stylized/star_sheet_a/frame_04.png",
-    "assets/fx/itch/stylized/star_sheet_a/frame_05.png",
-    "assets/fx/itch/stylized/star_sheet_a/frame_06.png",
-    "assets/fx/itch/stylized/star_sheet_a/frame_07.png",
-    "assets/fx/itch/stylized/star_sheet_a/frame_08.png",
-  ],
+  /** Stylized Projectiles (itch) — ≥24 frame sau expand-fx-flipbook */
+  stylizedSlash: fxSeq("assets/fx/itch/stylized/slash_a", "frame"),
+  stylizedLightning: fxSeq("assets/fx/itch/stylized/lightning", "frame"),
+  stylizedFlash: fxSeq("assets/fx/itch/stylized/flash", "frame"),
+  stylizedStar: fxSeq("assets/fx/itch/stylized/star_sheet_a", "frame"),
+  stylizedArrow: fxSeq("assets/fx/itch/stylized/arrow", "frame"),
+  stylizedBeam: fxSeq("assets/fx/itch/stylized/beam", "frame"),
+  stylizedTrail: fxSeq("assets/fx/itch/stylized/trail", "frame"),
 };
 
 const cache = new Map<string, THREE.Texture>();

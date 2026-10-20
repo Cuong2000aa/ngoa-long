@@ -5,9 +5,13 @@ Code id vẫn `hon_rong` / `hon_xa` / … (xem `honPackForStyle`).
 
 ## Emission = qi sheet
 
-1. **Charge** — `charge_01..04` (vòng đất)
-2. **Flight** — `flight_01..04` (đầu dẫn)
-3. **Impact** — `impact_01..03` (+ `strike_*` cho bagua)
+Mọi pack dưới `assets/fx/skill/*/qi_*` — **≥24 frame / stem**:
+
+1. **Charge** — `charge_01..24`
+2. **Flight** — `flight_01..24` (frame 1 xuất chiêu → 24 trúng địch)
+3. **Impact** — `impact_01..24` (+ `strike_01..24` bagua)
+
+Gen lại hết: `python3 scripts/expand-qi-flipbook.py` — expand **in-place từng pack** từ `qi_key/` riêng (không remap từ rồng).
 
 | Code id | Folder | Palette |
 |---------|--------|---------|

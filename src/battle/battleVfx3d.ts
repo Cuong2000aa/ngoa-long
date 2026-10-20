@@ -70,6 +70,8 @@ type MeshFx = {
   facing?: number;
   /** Bolt theo dõi đầu — fade sớm lúc chạm đích */
   headLed?: boolean;
+  /** Flipbook 1→N đúng 1 lần theo tiến độ bay (không loop, không chồng) */
+  sequenceOnce?: boolean;
   // volumetric dragon spirit
   segments?: THREE.Object3D[];
   segSpacing?: number;
@@ -145,8 +147,8 @@ function honPaths(
   qiFolder: string,
   yawOffset = 0
 ): HonPackPaths {
-  const flight = _fxSeq(qiFolder, "flight", 4);
-  const charge = _fxSeq(qiFolder, "charge", 4);
+  const flight = _fxSeq(qiFolder, "flight", 24);
+  const charge = _fxSeq(qiFolder, "charge", 24);
   return {
     serpent: flight,
     mist: charge,
@@ -585,164 +587,164 @@ function honElementLayers(packId: HonPackId): {
     case "hon_rong":
       return {
         charge: [
-          { folder: "codemanu", pack: "charged", n: 16, w: 3.2, h: 3.2, opacity: 0.88 },
-          { folder: "brackeys", pack: "ember_burst", n: 16, w: 2.8, h: 2.8, opacity: 0.7 },
-          { folder: "codemanu", pack: "elden_ring", n: 16, w: 2.6, h: 2.6, opacity: 0.65 },
+          { folder: "codemanu", pack: "charged", n: 24, w: 3.2, h: 3.2, opacity: 0.88 },
+          { folder: "brackeys", pack: "ember_burst", n: 24, w: 2.8, h: 2.8, opacity: 0.7 },
+          { folder: "codemanu", pack: "elden_ring", n: 24, w: 2.6, h: 2.6, opacity: 0.65 },
         ],
         form: [
-          { folder: "codemanu", pack: "vortex", n: 16, w: 3.0, h: 3.0, opacity: 0.75 },
-          { folder: "codemanu", pack: "dithered_fire", n: 16, w: 2.4, h: 2.4, opacity: 0.8 },
+          { folder: "codemanu", pack: "vortex", n: 24, w: 3.0, h: 3.0, opacity: 0.75 },
+          { folder: "codemanu", pack: "dithered_fire", n: 24, w: 2.4, h: 2.4, opacity: 0.8 },
         ],
-        flight: { urls: br("fire_point", 12), w: 2.0, h: 2.0 },
+        flight: { urls: br("fire_point", 24), w: 2.0, h: 2.0 },
         hit: [
-          { folder: "codemanu", pack: "explosion", n: 16, w: 3.4, h: 3.4, opacity: 0.95 },
-          { folder: "codemanu", pack: "kabooms", n: 16, w: 2.8, h: 2.8, opacity: 0.8 },
-          { folder: "brackeys", pack: "explosion_burst", n: 16, w: 2.6, h: 2.6, opacity: 0.7 },
-          { folder: "spritepilot", pack: "explosion", n: 10, w: 2.2, h: 2.2, opacity: 0.9 },
+          { folder: "codemanu", pack: "explosion", n: 24, w: 3.4, h: 3.4, opacity: 0.95 },
+          { folder: "codemanu", pack: "kabooms", n: 24, w: 2.8, h: 2.8, opacity: 0.8 },
+          { folder: "brackeys", pack: "explosion_burst", n: 24, w: 2.6, h: 2.6, opacity: 0.7 },
+          { folder: "spritepilot", pack: "explosion", n: 24, w: 2.2, h: 2.2, opacity: 0.9 },
         ],
       };
     case "hon_loi":
       return {
         charge: [
-          { folder: "codemanu", pack: "electric_shield", n: 16, w: 3.0, h: 3.0, opacity: 0.9 },
-          { folder: "codemanu", pack: "charged", n: 16, w: 2.8, h: 2.8, opacity: 0.75 },
-          { folder: "brackeys", pack: "storm_burst", n: 16, w: 2.6, h: 2.6, opacity: 0.7 },
+          { folder: "codemanu", pack: "electric_shield", n: 24, w: 3.0, h: 3.0, opacity: 0.9 },
+          { folder: "codemanu", pack: "charged", n: 24, w: 2.8, h: 2.8, opacity: 0.75 },
+          { folder: "brackeys", pack: "storm_burst", n: 24, w: 2.6, h: 2.6, opacity: 0.7 },
         ],
         form: [
-          { folder: "codemanu", pack: "vortex", n: 16, w: 2.8, h: 2.8, opacity: 0.7 },
-          { folder: "codemanu", pack: "electric_shield", n: 16, w: 2.4, h: 2.4, opacity: 0.75 },
+          { folder: "codemanu", pack: "vortex", n: 24, w: 2.8, h: 2.8, opacity: 0.7 },
+          { folder: "codemanu", pack: "electric_shield", n: 24, w: 2.4, h: 2.4, opacity: 0.75 },
         ],
-        flight: { urls: br("storm_burst", 12), w: 1.9, h: 1.9 },
+        flight: { urls: br("storm_burst", 24), w: 1.9, h: 1.9 },
         hit: [
-          { folder: "codemanu", pack: "big_hit", n: 16, w: 3.2, h: 3.2, opacity: 0.95 },
-          { folder: "brackeys", pack: "storm_burst", n: 16, w: 2.8, h: 2.8, opacity: 0.8 },
-          { folder: "spritepilot", pack: "hit_spark", n: 6, w: 2.4, h: 2.4, opacity: 0.95 },
+          { folder: "codemanu", pack: "big_hit", n: 24, w: 3.2, h: 3.2, opacity: 0.95 },
+          { folder: "brackeys", pack: "storm_burst", n: 24, w: 2.8, h: 2.8, opacity: 0.8 },
+          { folder: "spritepilot", pack: "hit_spark", n: 24, w: 2.4, h: 2.4, opacity: 0.95 },
         ],
       };
     case "hon_xa":
       return {
         charge: [
-          { folder: "codemanu", pack: "tentacles", n: 16, w: 3.0, h: 3.0, opacity: 0.85 },
-          { folder: "codemanu", pack: "worm", n: 16, w: 2.6, h: 2.6, opacity: 0.7 },
-          { folder: "superpowers", pack: "sp_smoke", n: 6, w: 2.4, h: 2.4, opacity: 0.65 },
+          { folder: "codemanu", pack: "tentacles", n: 24, w: 3.0, h: 3.0, opacity: 0.85 },
+          { folder: "codemanu", pack: "worm", n: 24, w: 2.6, h: 2.6, opacity: 0.7 },
+          { folder: "superpowers", pack: "sp_smoke", n: 24, w: 2.4, h: 2.4, opacity: 0.65 },
         ],
         form: [
-          { folder: "codemanu", pack: "vortex", n: 16, w: 2.8, h: 2.8, opacity: 0.7 },
-          { folder: "spritepilot", pack: "smoke_puff", n: 8, w: 2.2, h: 2.2, opacity: 0.75 },
+          { folder: "codemanu", pack: "vortex", n: 24, w: 2.8, h: 2.8, opacity: 0.7 },
+          { folder: "spritepilot", pack: "smoke_puff", n: 24, w: 2.2, h: 2.2, opacity: 0.75 },
         ],
-        flight: { urls: sp("sp_smoke", 6), w: 1.8, h: 1.8 },
+        flight: { urls: sp("sp_smoke", 24), w: 1.8, h: 1.8 },
         hit: [
-          { folder: "codemanu", pack: "impact", n: 16, w: 3.0, h: 3.0, opacity: 0.9 },
-          { folder: "codemanu", pack: "puff_stars", n: 16, w: 2.6, h: 2.6, opacity: 0.75 },
-          { folder: "spritepilot", pack: "smoke_puff", n: 8, w: 2.4, h: 2.4, opacity: 0.8 },
+          { folder: "codemanu", pack: "impact", n: 24, w: 3.0, h: 3.0, opacity: 0.9 },
+          { folder: "codemanu", pack: "puff_stars", n: 24, w: 2.6, h: 2.6, opacity: 0.75 },
+          { folder: "spritepilot", pack: "smoke_puff", n: 24, w: 2.4, h: 2.4, opacity: 0.8 },
         ],
       };
     case "hon_thuy":
       return {
         charge: [
-          { folder: "codemanu", pack: "anima", n: 16, w: 3.0, h: 3.0, opacity: 0.85 },
-          { folder: "brackeys", pack: "water_wave", n: 12, w: 2.8, h: 2.8, opacity: 0.75 },
-          { folder: "codemanu", pack: "elden_ring", n: 16, w: 2.5, h: 2.5, opacity: 0.65 },
+          { folder: "codemanu", pack: "anima", n: 24, w: 3.0, h: 3.0, opacity: 0.85 },
+          { folder: "brackeys", pack: "water_wave", n: 24, w: 2.8, h: 2.8, opacity: 0.75 },
+          { folder: "codemanu", pack: "elden_ring", n: 24, w: 2.5, h: 2.5, opacity: 0.65 },
         ],
         form: [
-          { folder: "codemanu", pack: "vortex", n: 16, w: 2.8, h: 2.8, opacity: 0.7 },
-          { folder: "spritepilot", pack: "water_splash", n: 9, w: 2.4, h: 2.4, opacity: 0.8 },
+          { folder: "codemanu", pack: "vortex", n: 24, w: 2.8, h: 2.8, opacity: 0.7 },
+          { folder: "spritepilot", pack: "water_splash", n: 24, w: 2.4, h: 2.4, opacity: 0.8 },
         ],
-        flight: { urls: br("water_wave", 12), w: 1.9, h: 1.9 },
+        flight: { urls: br("water_wave", 24), w: 1.9, h: 1.9 },
         hit: [
-          { folder: "spritepilot", pack: "water_splash", n: 9, w: 3.0, h: 3.0, opacity: 0.95 },
-          { folder: "brackeys", pack: "water_wave", n: 12, w: 2.8, h: 2.8, opacity: 0.8 },
-          { folder: "codemanu", pack: "impact", n: 16, w: 2.6, h: 2.6, opacity: 0.75 },
+          { folder: "spritepilot", pack: "water_splash", n: 24, w: 3.0, h: 3.0, opacity: 0.95 },
+          { folder: "brackeys", pack: "water_wave", n: 24, w: 2.8, h: 2.8, opacity: 0.8 },
+          { folder: "codemanu", pack: "impact", n: 24, w: 2.6, h: 2.6, opacity: 0.75 },
         ],
       };
     case "hon_phong":
       return {
         charge: [
-          { folder: "codemanu", pack: "wheel", n: 16, w: 3.0, h: 3.0, opacity: 0.88 },
-          { folder: "codemanu", pack: "vortex", n: 16, w: 2.8, h: 2.8, opacity: 0.75 },
-          { folder: "codemanu", pack: "anima", n: 16, w: 2.5, h: 2.5, opacity: 0.7 },
+          { folder: "codemanu", pack: "wheel", n: 24, w: 3.0, h: 3.0, opacity: 0.88 },
+          { folder: "codemanu", pack: "vortex", n: 24, w: 2.8, h: 2.8, opacity: 0.75 },
+          { folder: "codemanu", pack: "anima", n: 24, w: 2.5, h: 2.5, opacity: 0.7 },
         ],
         form: [
-          { folder: "codemanu", pack: "vortex", n: 16, w: 2.6, h: 2.6, opacity: 0.75 },
-          { folder: "codemanu", pack: "constellation", n: 16, w: 2.4, h: 2.4, opacity: 0.7 },
+          { folder: "codemanu", pack: "vortex", n: 24, w: 2.6, h: 2.6, opacity: 0.75 },
+          { folder: "codemanu", pack: "constellation", n: 24, w: 2.4, h: 2.4, opacity: 0.7 },
         ],
-        flight: { urls: cm("vortex", 16), w: 1.9, h: 1.9 },
+        flight: { urls: cm("vortex", 24), w: 1.9, h: 1.9 },
         hit: [
-          { folder: "codemanu", pack: "big_hit", n: 16, w: 3.0, h: 3.0, opacity: 0.9 },
-          { folder: "codemanu", pack: "wheel", n: 16, w: 2.6, h: 2.6, opacity: 0.75 },
-          { folder: "spritepilot", pack: "landing_dust", n: 7, w: 2.4, h: 2.4, opacity: 0.85 },
+          { folder: "codemanu", pack: "big_hit", n: 24, w: 3.0, h: 3.0, opacity: 0.9 },
+          { folder: "codemanu", pack: "wheel", n: 24, w: 2.6, h: 2.6, opacity: 0.75 },
+          { folder: "spritepilot", pack: "landing_dust", n: 24, w: 2.4, h: 2.4, opacity: 0.85 },
         ],
       };
     case "hon_ho":
       return {
         charge: [
-          { folder: "codemanu", pack: "charged", n: 16, w: 3.0, h: 3.0, opacity: 0.88 },
-          { folder: "codemanu", pack: "charged", n: 16, w: 2.8, h: 2.8, opacity: 0.75 },
-          { folder: "brackeys", pack: "hit_burst", n: 11, w: 2.5, h: 2.5, opacity: 0.7 },
+          { folder: "codemanu", pack: "charged", n: 24, w: 3.0, h: 3.0, opacity: 0.88 },
+          { folder: "codemanu", pack: "charged", n: 24, w: 2.8, h: 2.8, opacity: 0.75 },
+          { folder: "brackeys", pack: "hit_burst", n: 24, w: 2.5, h: 2.5, opacity: 0.7 },
         ],
         form: [
-          { folder: "codemanu", pack: "vortex", n: 16, w: 2.8, h: 2.8, opacity: 0.7 },
-          { folder: "superpowers", pack: "sp_shock", n: 7, w: 2.4, h: 2.4, opacity: 0.8 },
+          { folder: "codemanu", pack: "vortex", n: 24, w: 2.8, h: 2.8, opacity: 0.7 },
+          { folder: "superpowers", pack: "sp_shock", n: 24, w: 2.4, h: 2.4, opacity: 0.8 },
         ],
-        flight: { urls: sp("sp_shock", 7), w: 1.9, h: 1.9 },
+        flight: { urls: sp("sp_shock", 24), w: 1.9, h: 1.9 },
         hit: [
-          { folder: "codemanu", pack: "big_hit", n: 16, w: 3.2, h: 3.2, opacity: 0.95 },
-          { folder: "brackeys", pack: "hit_burst", n: 11, w: 2.8, h: 2.8, opacity: 0.85 },
-          { folder: "spritepilot", pack: "hit_spark", n: 6, w: 2.4, h: 2.4, opacity: 0.95 },
+          { folder: "codemanu", pack: "big_hit", n: 24, w: 3.2, h: 3.2, opacity: 0.95 },
+          { folder: "brackeys", pack: "hit_burst", n: 24, w: 2.8, h: 2.8, opacity: 0.85 },
+          { folder: "spritepilot", pack: "hit_spark", n: 24, w: 2.4, h: 2.4, opacity: 0.95 },
         ],
       };
     case "hon_soi":
       return {
         charge: [
-          { folder: "codemanu", pack: "constellation", n: 16, w: 3.0, h: 3.0, opacity: 0.85 },
-          { folder: "codemanu", pack: "charged", n: 16, w: 2.7, h: 2.7, opacity: 0.75 },
-          { folder: "brackeys", pack: "shadow_burst", n: 16, w: 2.5, h: 2.5, opacity: 0.7 },
+          { folder: "codemanu", pack: "constellation", n: 24, w: 3.0, h: 3.0, opacity: 0.85 },
+          { folder: "codemanu", pack: "charged", n: 24, w: 2.7, h: 2.7, opacity: 0.75 },
+          { folder: "brackeys", pack: "shadow_burst", n: 24, w: 2.5, h: 2.5, opacity: 0.7 },
         ],
         form: [
-          { folder: "codemanu", pack: "vortex", n: 16, w: 2.8, h: 2.8, opacity: 0.7 },
-          { folder: "spritepilot", pack: "smoke_puff", n: 8, w: 2.3, h: 2.3, opacity: 0.75 },
+          { folder: "codemanu", pack: "vortex", n: 24, w: 2.8, h: 2.8, opacity: 0.7 },
+          { folder: "spritepilot", pack: "smoke_puff", n: 24, w: 2.3, h: 2.3, opacity: 0.75 },
         ],
-        flight: { urls: sp("sp_ember_trail", 12), w: 1.8, h: 1.8 },
+        flight: { urls: sp("sp_ember_trail", 24), w: 1.8, h: 1.8 },
         hit: [
-          { folder: "codemanu", pack: "impact", n: 16, w: 3.0, h: 3.0, opacity: 0.9 },
-          { folder: "brackeys", pack: "shadow_burst", n: 16, w: 2.6, h: 2.6, opacity: 0.8 },
-          { folder: "spritepilot", pack: "hit_spark", n: 6, w: 2.3, h: 2.3, opacity: 0.9 },
+          { folder: "codemanu", pack: "impact", n: 24, w: 3.0, h: 3.0, opacity: 0.9 },
+          { folder: "brackeys", pack: "shadow_burst", n: 24, w: 2.6, h: 2.6, opacity: 0.8 },
+          { folder: "spritepilot", pack: "hit_spark", n: 24, w: 2.3, h: 2.3, opacity: 0.9 },
         ],
       };
     case "hon_bagua":
       return {
         charge: [
-          { folder: "codemanu", pack: "elden_ring", n: 16, w: 3.4, h: 3.4, opacity: 0.9 },
-          { folder: "codemanu", pack: "constellation", n: 16, w: 3.0, h: 3.0, opacity: 0.8 },
-          { folder: "codemanu", pack: "anima", n: 16, w: 2.6, h: 2.6, opacity: 0.7 },
+          { folder: "codemanu", pack: "elden_ring", n: 24, w: 3.4, h: 3.4, opacity: 0.9 },
+          { folder: "codemanu", pack: "constellation", n: 24, w: 3.0, h: 3.0, opacity: 0.8 },
+          { folder: "codemanu", pack: "anima", n: 24, w: 2.6, h: 2.6, opacity: 0.7 },
         ],
         form: [
-          { folder: "codemanu", pack: "vortex", n: 16, w: 2.8, h: 2.8, opacity: 0.75 },
-          { folder: "codemanu", pack: "wheel", n: 16, w: 2.5, h: 2.5, opacity: 0.7 },
+          { folder: "codemanu", pack: "vortex", n: 24, w: 2.8, h: 2.8, opacity: 0.75 },
+          { folder: "codemanu", pack: "wheel", n: 24, w: 2.5, h: 2.5, opacity: 0.7 },
         ],
-        flight: { urls: cm("constellation", 16), w: 2.0, h: 2.0 },
+        flight: { urls: cm("constellation", 24), w: 2.0, h: 2.0 },
         hit: [
-          { folder: "codemanu", pack: "big_hit", n: 16, w: 3.4, h: 3.4, opacity: 0.95 },
-          { folder: "codemanu", pack: "elden_ring", n: 16, w: 3.0, h: 3.0, opacity: 0.85 },
-          { folder: "codemanu", pack: "puff_stars", n: 16, w: 2.6, h: 2.6, opacity: 0.75 },
+          { folder: "codemanu", pack: "big_hit", n: 24, w: 3.4, h: 3.4, opacity: 0.95 },
+          { folder: "codemanu", pack: "elden_ring", n: 24, w: 3.0, h: 3.0, opacity: 0.85 },
+          { folder: "codemanu", pack: "puff_stars", n: 24, w: 2.6, h: 2.6, opacity: 0.75 },
         ],
       };
     case "hon_hon":
       return {
         charge: [
-          { folder: "codemanu", pack: "anima", n: 16, w: 3.2, h: 3.2, opacity: 0.9 },
-          { folder: "codemanu", pack: "constellation", n: 16, w: 2.8, h: 2.8, opacity: 0.75 },
-          { folder: "brackeys", pack: "shadow_burst", n: 16, w: 2.5, h: 2.5, opacity: 0.65 },
+          { folder: "codemanu", pack: "anima", n: 24, w: 3.2, h: 3.2, opacity: 0.9 },
+          { folder: "codemanu", pack: "constellation", n: 24, w: 2.8, h: 2.8, opacity: 0.75 },
+          { folder: "brackeys", pack: "shadow_burst", n: 24, w: 2.5, h: 2.5, opacity: 0.65 },
         ],
         form: [
-          { folder: "codemanu", pack: "vortex", n: 16, w: 2.8, h: 2.8, opacity: 0.7 },
-          { folder: "codemanu", pack: "anima", n: 16, w: 2.4, h: 2.4, opacity: 0.75 },
+          { folder: "codemanu", pack: "vortex", n: 24, w: 2.8, h: 2.8, opacity: 0.7 },
+          { folder: "codemanu", pack: "anima", n: 24, w: 2.4, h: 2.4, opacity: 0.75 },
         ],
-        flight: { urls: cm("anima", 16), w: 1.9, h: 1.9 },
+        flight: { urls: cm("anima", 24), w: 1.9, h: 1.9 },
         hit: [
-          { folder: "codemanu", pack: "impact", n: 16, w: 3.2, h: 3.2, opacity: 0.92 },
-          { folder: "codemanu", pack: "anima", n: 16, w: 2.8, h: 2.8, opacity: 0.8 },
-          { folder: "spritepilot", pack: "hit_spark", n: 6, w: 2.3, h: 2.3, opacity: 0.9 },
+          { folder: "codemanu", pack: "impact", n: 24, w: 3.2, h: 3.2, opacity: 0.92 },
+          { folder: "codemanu", pack: "anima", n: 24, w: 2.8, h: 2.8, opacity: 0.8 },
+          { folder: "spritepilot", pack: "hit_spark", n: 24, w: 2.3, h: 2.3, opacity: 0.9 },
         ],
       };
   }
@@ -1061,11 +1063,12 @@ function honCombatTimeline(
   const tune = patternFlightTune(pattern);
   if (opts?.qiStream) {
     return {
-      chargeMs: 340,
+      chargeMs: 380,
       formMs: 90,
-      flightMs: 180 * 3 + tune.flightExtraMs, // 3 nhịp × ~180ms
-      dissolveMs: 300,
-      flightBeats: 3,
+      // Đủ dài để flipbook 12 frame chạy ~2 vòng mượt
+      flightMs: 720 + tune.flightExtraMs,
+      dissolveMs: 320,
+      flightBeats: 2,
     };
   }
   return {
@@ -1118,10 +1121,11 @@ function resolveHonStreamSheets(
     else if (/bach_long|ngan_long/.test(id)) folder = "skill/rong/qi_ivory";
     else folder = "skill/rong/qi_fire";
   }
-  const flight = qiSeq(folder, "flight", 4);
-  const charge = qiSeq(folder, "charge", 4);
-  const impact = qiSeq(folder, "impact", 3);
-  const strike = packId === "hon_bagua" ? qiSeq(folder, "strike", 3) : [];
+  /** Flipbook ≥24 frame / stem (expand-qi-flipbook.py) */
+  const flight = qiSeq(folder, "flight", 24);
+  const charge = qiSeq(folder, "charge", 24);
+  const impact = qiSeq(folder, "impact", 24);
+  const strike = packId === "hon_bagua" ? qiSeq(folder, "strike", 24) : [];
   return {
     head: flight.slice(),
     body: flight.slice(),
@@ -1196,7 +1200,9 @@ function emitGroundQiDecal3d(
       mesh.frustumCulled = false;
       root.add(mesh);
       const now = performance.now();
-      const useFrames = opts.animateFrames === false ? [frames[0]] : frames;
+      const animate = opts.animateFrames !== false && frames.length > 1;
+      const useFrames = animate ? frames : [frames[0]];
+      const frameMs = animate ? Math.max(40, Math.floor(durationMs / Math.max(1, useFrames.length))) : 99999;
       handles.push(
         pushMesh(scene, {
           id: nextId++,
@@ -1208,8 +1214,8 @@ function emitGroundQiDecal3d(
           spinSpeed: opts.spinSpeed ?? 2.4,
           frames: useFrames,
           frameI: 0,
-          nextFrame: now + 99999,
-          frameMs: 99999,
+          nextFrame: now + frameMs,
+          frameMs,
           meshMat: mat,
           baseOpacity: opts.opacity ?? 0.92,
           maxScale: 1,
@@ -1759,8 +1765,8 @@ export function emitCoreFlight3d(
 }
 
 /**
- * Flipbook bay theo cung caster → địch (đầu đạn nhìn rõ).
- * Sheet mỏng thì chồng với emitCoreFlight3d.
+ * Flipbook bay theo cung caster → địch.
+ * sequenceOnce: frame 1 lúc xuất chiêu → frame N lúc trúng đích (1 sprite, không loop/chồng).
  */
 export function emitFlyingSheet3d(
   scene: THREE.Scene,
@@ -1784,6 +1790,8 @@ export function emitFlyingSheet3d(
      * 0.34 ≈ hàm mở ~mép leading; tăng nếu vẫn thấy thân đâm trước.
      */
     headLeadFrac?: number;
+    /** Frame 1→N đúng 1 lần theo tiến độ bay */
+    sequenceOnce?: boolean;
   } = {}
 ): Fx3dHandle {
   const mul = scaleMul(opts.scale);
@@ -1864,8 +1872,8 @@ export function emitFlyingSheet3d(
           baseOpacity: opts.opacity ?? 0.98,
           baseScale: 1,
           facing: face,
-          // Đầu dẫn path → fade sớm khi chạm để nhường chỗ impact “bùm”
           headLed: !!opts.headOnRight,
+          sequenceOnce: opts.sequenceOnce !== false && !!opts.headOnRight,
         })
       );
     })
@@ -1895,22 +1903,45 @@ function boltUrlsForStyle(style: Fx3dStyle, flash?: string): { urls: string[]; w
   const cm = (pack: string, n: number) => itchFrameUrls("codemanu", pack, n);
 
   // Không dùng hyperspeed / lightstreaks làm billboard — đúng là sọc ngang.
-  if (style === "slash") return { urls: sp("sp_slash", 8), w: 2.15, h: 2.15 };
+  // Kiếm / chém — slash classic ≥24
+  if (style === "slash" || f === "white" || f === "steel" || f === "iron") {
+    const stem =
+      f === "crimson" || f === "red" || f === "gold_red"
+        ? "fire_alternative_3_1_alternative_3"
+        : f === "blue" || f === "cyan"
+          ? "blue_alternative_2_1_alternative_2"
+          : f === "purple" || f === "violet"
+            ? "purple_alternative_1_1_alternative_1"
+            : "classic_classic_1_classic";
+    const slashUrls = Array.from(
+      { length: 24 },
+      (_, i) => `assets/fx/slash/${stem}_${String(i + 1).padStart(2, "0")}.png`
+    );
+    return { urls: slashUrls, w: 2.35, h: 2.35 };
+  }
+  // Cung / tiễn / xuyên — mũi tên stylized ≥24
+  if (f === "gold_pierce" || f.includes("pierce")) {
+    return { urls: st("arrow", 24), w: 2.15, h: 1.6 };
+  }
   if (style === "nova" || f === "fire" || f === "fire_rain" || f === "orange" || f === "red_fire")
-    return { urls: cm("pixel_fire", 16), w: 2.2, h: 2.2 };
-  if (f === "thunder" || f === "storm") return { urls: br("storm_burst", 12), w: 2.2, h: 2.2 };
+    return { urls: cm("pixel_fire", 24), w: 2.2, h: 2.2 };
+  if (f === "thunder" || f === "storm") return { urls: br("storm_burst", 24), w: 2.2, h: 2.2 };
   if (style === "tide" || f === "blue_water" || f === "cyan" || f === "teal" || f === "white_blue")
-    return { urls: br("water_wave", 12), w: 2.15, h: 2.15 };
+    return { urls: br("water_wave", 24), w: 2.15, h: 2.15 };
   if (style === "beam" || style === "shadow" || f === "bagua" || f === "purple" || f === "violet")
-    return { urls: sp("sp_magic", 6), w: 2.1, h: 2.1 };
-  if (style === "poison") return { urls: cm("worm", 16), w: 2.0, h: 2.0 };
-  if (style === "rush" || style === "charge") return { urls: br("muzzle_seq", 5), w: 1.9, h: 1.9 };
-  if (style === "roar") return { urls: sp("sp_shock", 7), w: 2.2, h: 2.2 };
-  if (style === "whirl") return { urls: cm("vortex", 16), w: 2.15, h: 2.15 };
-  if (style === "bless") return { urls: cm("anima", 16), w: 2.0, h: 2.0 };
+    return { urls: sp("sp_magic", 24), w: 2.1, h: 2.1 };
+  if (style === "poison") return { urls: cm("worm", 24), w: 2.0, h: 2.0 };
+  if (style === "rush" || style === "charge") {
+    // Đâm thương / kỵ xung — muzzle dày
+    return { urls: br("muzzle_seq", 24), w: 2.0, h: 2.0 };
+  }
+  if (style === "roar") return { urls: sp("sp_shock", 24), w: 2.2, h: 2.2 };
+  if (style === "whirl") return { urls: cm("vortex", 24), w: 2.15, h: 2.15 };
+  if (style === "bless") return { urls: cm("anima", 24), w: 2.0, h: 2.0 };
   // breath: lửa chỉ underlay — silhouette rồng = serpent trong emitDragonSpirit3d
-  if (style === "breath") return { urls: cm("dithered_fire", 16), w: 1.4, h: 1.4 };
-  return { urls: st("arrow", 2), w: 2.0, h: 1.55 };
+  if (style === "breath") return { urls: cm("dithered_fire", 24), w: 1.4, h: 1.4 };
+  // fallback cung/tiễn
+  return { urls: st("arrow", 24), w: 2.0, h: 1.55 };
 }
 
 /** Profile bay caster → mục tiêu — size/sheet lớn hơn (core game không phèn). */
@@ -1950,7 +1981,7 @@ function skillPremiumLayers(
 ): { cast: HonLayerRef[]; hit: HonLayerRef[]; flightUnder: string[] } {
   const f = (flash || "").toLowerCase();
   // Soft blob underlay — KHÔNG hyperspeed (sọc ngang cố định)
-  const under = itchFrameUrls("codemanu", "impact", 16);
+  const under = itchFrameUrls("codemanu", "impact", 24);
   const fire =
     style === "nova" || f === "fire" || f === "fire_rain" || f === "orange" || f === "red_fire";
   const thunder = f === "thunder" || f === "storm";
@@ -1958,8 +1989,8 @@ function skillPremiumLayers(
   if (style === "barrier") {
     return {
       cast: [
-        { folder: "codemanu", pack: "elden_ring", n: 16, w: 3.2, h: 3.2, opacity: 0.9 },
-        { folder: "brackeys", pack: "ward_barrier", n: 16, w: 2.9, h: 2.9, opacity: 0.85 },
+        { folder: "codemanu", pack: "elden_ring", n: 24, w: 3.2, h: 3.2, opacity: 0.9 },
+        { folder: "brackeys", pack: "ward_barrier", n: 24, w: 2.9, h: 2.9, opacity: 0.85 },
       ],
       hit: [],
       flightUnder: under,
@@ -1968,26 +1999,26 @@ function skillPremiumLayers(
   if (style === "bless") {
     return {
       cast: [
-        { folder: "codemanu", pack: "elden_ring", n: 16, w: 2.4, h: 2.4, opacity: 0.75 },
+        { folder: "codemanu", pack: "elden_ring", n: 24, w: 2.4, h: 2.4, opacity: 0.75 },
       ],
       hit: [
-        { folder: "codemanu", pack: "puff_stars", n: 16, w: 3.0, h: 3.0, opacity: 0.9 },
-        { folder: "superpowers", pack: "sp_heal", n: 6, w: 2.4, h: 2.4, opacity: 0.95 },
+        { folder: "codemanu", pack: "puff_stars", n: 24, w: 3.0, h: 3.0, opacity: 0.9 },
+        { folder: "superpowers", pack: "sp_heal", n: 24, w: 2.4, h: 2.4, opacity: 0.95 },
       ],
-      flightUnder: itchFrameUrls("codemanu", "elden_ring", 16),
+      flightUnder: itchFrameUrls("codemanu", "elden_ring", 24),
     };
   }
   if (style === "slash") {
     return {
       cast: [
-        { folder: "brackeys", pack: "hit_burst", n: 11, w: 2.2, h: 2.2, opacity: 0.72 },
-        { folder: "spritepilot", pack: "hit_spark", n: 6, w: 2.0, h: 2.0, opacity: 0.85 },
+        { folder: "brackeys", pack: "hit_burst", n: 24, w: 2.2, h: 2.2, opacity: 0.72 },
+        { folder: "spritepilot", pack: "hit_spark", n: 24, w: 2.0, h: 2.0, opacity: 0.85 },
       ],
       hit: [
-        { folder: "codemanu", pack: "big_hit", n: 16, w: 3.5, h: 3.5, opacity: 0.96 },
-        { folder: "codemanu", pack: "impact", n: 16, w: 3.0, h: 3.0, opacity: 0.85 },
-        { folder: "superpowers", pack: "sp_hit", n: 11, w: 2.7, h: 2.7, opacity: 0.98 },
-        { folder: "spritepilot", pack: "hit_spark", n: 6, w: 2.5, h: 2.5, opacity: 0.95 },
+        { folder: "codemanu", pack: "big_hit", n: 24, w: 3.5, h: 3.5, opacity: 0.96 },
+        { folder: "codemanu", pack: "impact", n: 24, w: 3.0, h: 3.0, opacity: 0.85 },
+        { folder: "superpowers", pack: "sp_hit", n: 24, w: 2.7, h: 2.7, opacity: 0.98 },
+        { folder: "spritepilot", pack: "hit_spark", n: 24, w: 2.5, h: 2.5, opacity: 0.95 },
       ],
       flightUnder: under,
     };
@@ -1995,28 +2026,28 @@ function skillPremiumLayers(
   if (fire) {
     return {
       cast: [
-        { folder: "codemanu", pack: "charged", n: 16, w: 3.0, h: 3.0, opacity: 0.88 },
-        { folder: "codemanu", pack: "dithered_fire", n: 16, w: 2.7, h: 2.7, opacity: 0.8 },
-        { folder: "brackeys", pack: "ember_burst", n: 16, w: 2.5, h: 2.5, opacity: 0.72 },
+        { folder: "codemanu", pack: "charged", n: 24, w: 3.0, h: 3.0, opacity: 0.88 },
+        { folder: "codemanu", pack: "dithered_fire", n: 24, w: 2.7, h: 2.7, opacity: 0.8 },
+        { folder: "brackeys", pack: "ember_burst", n: 24, w: 2.5, h: 2.5, opacity: 0.72 },
       ],
       hit: [
-        { folder: "codemanu", pack: "explosion", n: 16, w: 3.6, h: 3.6, opacity: 0.95 },
-        { folder: "codemanu", pack: "kabooms", n: 16, w: 3.0, h: 3.0, opacity: 0.85 },
-        { folder: "brackeys", pack: "explosion_burst", n: 16, w: 2.8, h: 2.8, opacity: 0.78 },
+        { folder: "codemanu", pack: "explosion", n: 24, w: 3.6, h: 3.6, opacity: 0.95 },
+        { folder: "codemanu", pack: "kabooms", n: 24, w: 3.0, h: 3.0, opacity: 0.85 },
+        { folder: "brackeys", pack: "explosion_burst", n: 24, w: 2.8, h: 2.8, opacity: 0.78 },
       ],
-      flightUnder: itchFrameUrls("codemanu", "pixel_fire", 16),
+      flightUnder: itchFrameUrls("codemanu", "pixel_fire", 24),
     };
   }
   if (thunder) {
     return {
       cast: [
-        { folder: "codemanu", pack: "electric_shield", n: 16, w: 3.0, h: 3.0, opacity: 0.9 },
-        { folder: "brackeys", pack: "storm_burst", n: 16, w: 2.7, h: 2.7, opacity: 0.8 },
+        { folder: "codemanu", pack: "electric_shield", n: 24, w: 3.0, h: 3.0, opacity: 0.9 },
+        { folder: "brackeys", pack: "storm_burst", n: 24, w: 2.7, h: 2.7, opacity: 0.8 },
       ],
       hit: [
-        { folder: "codemanu", pack: "big_hit", n: 16, w: 3.4, h: 3.4, opacity: 0.95 },
-        { folder: "brackeys", pack: "storm_burst", n: 16, w: 3.0, h: 3.0, opacity: 0.88 },
-        { folder: "spritepilot", pack: "hit_spark", n: 6, w: 2.6, h: 2.6, opacity: 0.98 },
+        { folder: "codemanu", pack: "big_hit", n: 24, w: 3.4, h: 3.4, opacity: 0.95 },
+        { folder: "brackeys", pack: "storm_burst", n: 24, w: 3.0, h: 3.0, opacity: 0.88 },
+        { folder: "spritepilot", pack: "hit_spark", n: 24, w: 2.6, h: 2.6, opacity: 0.98 },
       ],
       flightUnder: under,
     };
@@ -2024,41 +2055,41 @@ function skillPremiumLayers(
   if (style === "tide") {
     return {
       cast: [
-        { folder: "codemanu", pack: "anima", n: 16, w: 3.0, h: 3.0, opacity: 0.88 },
-        { folder: "brackeys", pack: "water_wave", n: 12, w: 2.7, h: 2.7, opacity: 0.82 },
+        { folder: "codemanu", pack: "anima", n: 24, w: 3.0, h: 3.0, opacity: 0.88 },
+        { folder: "brackeys", pack: "water_wave", n: 24, w: 2.7, h: 2.7, opacity: 0.82 },
       ],
       hit: [
-        { folder: "spritepilot", pack: "water_splash", n: 9, w: 3.2, h: 3.2, opacity: 0.95 },
-        { folder: "brackeys", pack: "water_wave", n: 12, w: 3.0, h: 3.0, opacity: 0.88 },
-        { folder: "codemanu", pack: "impact", n: 16, w: 2.6, h: 2.6, opacity: 0.75 },
+        { folder: "spritepilot", pack: "water_splash", n: 24, w: 3.2, h: 3.2, opacity: 0.95 },
+        { folder: "brackeys", pack: "water_wave", n: 24, w: 3.0, h: 3.0, opacity: 0.88 },
+        { folder: "codemanu", pack: "impact", n: 24, w: 2.6, h: 2.6, opacity: 0.75 },
       ],
-      flightUnder: itchFrameUrls("brackeys", "water_wave", 12),
+      flightUnder: itchFrameUrls("brackeys", "water_wave", 24),
     };
   }
   if (style === "poison") {
     return {
       cast: [
-        { folder: "codemanu", pack: "tentacles", n: 16, w: 3.0, h: 3.0, opacity: 0.88 },
-        { folder: "codemanu", pack: "worm", n: 16, w: 2.6, h: 2.6, opacity: 0.75 },
+        { folder: "codemanu", pack: "tentacles", n: 24, w: 3.0, h: 3.0, opacity: 0.88 },
+        { folder: "codemanu", pack: "worm", n: 24, w: 2.6, h: 2.6, opacity: 0.75 },
       ],
       hit: [
-        { folder: "codemanu", pack: "impact", n: 16, w: 3.2, h: 3.2, opacity: 0.9 },
-        { folder: "codemanu", pack: "puff_stars", n: 16, w: 2.8, h: 2.8, opacity: 0.8 },
-        { folder: "spritepilot", pack: "smoke_puff", n: 8, w: 2.5, h: 2.5, opacity: 0.85 },
+        { folder: "codemanu", pack: "impact", n: 24, w: 3.2, h: 3.2, opacity: 0.9 },
+        { folder: "codemanu", pack: "puff_stars", n: 24, w: 2.8, h: 2.8, opacity: 0.8 },
+        { folder: "spritepilot", pack: "smoke_puff", n: 24, w: 2.5, h: 2.5, opacity: 0.85 },
       ],
-      flightUnder: itchFrameUrls("codemanu", "worm", 16),
+      flightUnder: itchFrameUrls("codemanu", "worm", 24),
     };
   }
   if (style === "shadow") {
     return {
       cast: [
-        { folder: "codemanu", pack: "vortex", n: 16, w: 3.0, h: 3.0, opacity: 0.88 },
-        { folder: "brackeys", pack: "shadow_burst", n: 16, w: 2.7, h: 2.7, opacity: 0.8 },
+        { folder: "codemanu", pack: "vortex", n: 24, w: 3.0, h: 3.0, opacity: 0.88 },
+        { folder: "brackeys", pack: "shadow_burst", n: 24, w: 2.7, h: 2.7, opacity: 0.8 },
       ],
       hit: [
-        { folder: "codemanu", pack: "impact", n: 16, w: 3.2, h: 3.2, opacity: 0.9 },
-        { folder: "brackeys", pack: "shadow_burst", n: 16, w: 2.9, h: 2.9, opacity: 0.85 },
-        { folder: "codemanu", pack: "vortex", n: 16, w: 2.5, h: 2.5, opacity: 0.7 },
+        { folder: "codemanu", pack: "impact", n: 24, w: 3.2, h: 3.2, opacity: 0.9 },
+        { folder: "brackeys", pack: "shadow_burst", n: 24, w: 2.9, h: 2.9, opacity: 0.85 },
+        { folder: "codemanu", pack: "vortex", n: 24, w: 2.5, h: 2.5, opacity: 0.7 },
       ],
       flightUnder: under,
     };
@@ -2067,22 +2098,22 @@ function skillPremiumLayers(
     const bagua = f === "bagua" || f === "blue" || f === "purple" || f === "violet";
     return {
       cast: [
-        { folder: "codemanu", pack: "charged", n: 16, w: 3.0, h: 3.0, opacity: 0.9 },
-        { folder: "codemanu", pack: "constellation", n: 16, w: 2.8, h: 2.8, opacity: 0.82 },
+        { folder: "codemanu", pack: "charged", n: 24, w: 3.0, h: 3.0, opacity: 0.9 },
+        { folder: "codemanu", pack: "constellation", n: 24, w: 2.8, h: 2.8, opacity: 0.82 },
         {
           folder: "codemanu",
           pack: bagua ? "elden_ring" : "anima",
-          n: 16,
+          n: 24,
           w: 2.5,
           h: 2.5,
           opacity: 0.72,
         },
       ],
       hit: [
-        { folder: "codemanu", pack: "anima", n: 16, w: 3.3, h: 3.3, opacity: 0.92 },
-        { folder: "brackeys", pack: "arcane_burst", n: 16, w: 3.0, h: 3.0, opacity: 0.88 },
-        { folder: "superpowers", pack: "sp_magic", n: 6, w: 2.6, h: 2.6, opacity: 0.96 },
-        { folder: "spritepilot", pack: "hit_spark", n: 6, w: 2.4, h: 2.4, opacity: 0.9 },
+        { folder: "codemanu", pack: "anima", n: 24, w: 3.3, h: 3.3, opacity: 0.92 },
+        { folder: "brackeys", pack: "arcane_burst", n: 24, w: 3.0, h: 3.0, opacity: 0.88 },
+        { folder: "superpowers", pack: "sp_magic", n: 24, w: 2.6, h: 2.6, opacity: 0.96 },
+        { folder: "spritepilot", pack: "hit_spark", n: 24, w: 2.4, h: 2.4, opacity: 0.9 },
       ],
       flightUnder: under,
     };
@@ -2090,13 +2121,13 @@ function skillPremiumLayers(
   if (style === "roar") {
     return {
       cast: [
-        { folder: "codemanu", pack: "charged", n: 16, w: 3.0, h: 3.0, opacity: 0.9 },
-        { folder: "superpowers", pack: "sp_shock", n: 7, w: 2.7, h: 2.7, opacity: 0.78 },
+        { folder: "codemanu", pack: "charged", n: 24, w: 3.0, h: 3.0, opacity: 0.9 },
+        { folder: "superpowers", pack: "sp_shock", n: 24, w: 2.7, h: 2.7, opacity: 0.78 },
       ],
       hit: [
-        { folder: "codemanu", pack: "big_hit", n: 16, w: 3.5, h: 3.5, opacity: 0.95 },
-        { folder: "superpowers", pack: "sp_shock", n: 7, w: 2.9, h: 2.9, opacity: 0.9 },
-        { folder: "spritepilot", pack: "hit_spark", n: 6, w: 2.5, h: 2.5, opacity: 0.95 },
+        { folder: "codemanu", pack: "big_hit", n: 24, w: 3.5, h: 3.5, opacity: 0.95 },
+        { folder: "superpowers", pack: "sp_shock", n: 24, w: 2.9, h: 2.9, opacity: 0.9 },
+        { folder: "spritepilot", pack: "hit_spark", n: 24, w: 2.5, h: 2.5, opacity: 0.95 },
       ],
       flightUnder: under,
     };
@@ -2104,27 +2135,27 @@ function skillPremiumLayers(
   if (style === "whirl") {
     return {
       cast: [
-        { folder: "codemanu", pack: "wheel", n: 16, w: 3.1, h: 3.1, opacity: 0.9 },
-        { folder: "codemanu", pack: "vortex", n: 16, w: 2.8, h: 2.8, opacity: 0.8 },
+        { folder: "codemanu", pack: "wheel", n: 24, w: 3.1, h: 3.1, opacity: 0.9 },
+        { folder: "codemanu", pack: "vortex", n: 24, w: 2.8, h: 2.8, opacity: 0.8 },
       ],
       hit: [
-        { folder: "codemanu", pack: "wheel", n: 16, w: 3.3, h: 3.3, opacity: 0.92 },
-        { folder: "codemanu", pack: "big_hit", n: 16, w: 2.9, h: 2.9, opacity: 0.85 },
-        { folder: "spritepilot", pack: "landing_dust", n: 7, w: 2.6, h: 1.5, opacity: 0.88 },
+        { folder: "codemanu", pack: "wheel", n: 24, w: 3.3, h: 3.3, opacity: 0.92 },
+        { folder: "codemanu", pack: "big_hit", n: 24, w: 2.9, h: 2.9, opacity: 0.85 },
+        { folder: "spritepilot", pack: "landing_dust", n: 24, w: 2.6, h: 1.5, opacity: 0.88 },
       ],
-      flightUnder: itchFrameUrls("codemanu", "vortex", 16),
+      flightUnder: itchFrameUrls("codemanu", "vortex", 24),
     };
   }
   if (style === "rush" || style === "charge") {
     return {
       cast: [
-        { folder: "codemanu", pack: "charged", n: 16, w: 2.9, h: 2.9, opacity: 0.88 },
-        { folder: "brackeys", pack: "earth_burst", n: 16, w: 2.6, h: 2.6, opacity: 0.8 },
+        { folder: "codemanu", pack: "charged", n: 24, w: 2.9, h: 2.9, opacity: 0.88 },
+        { folder: "brackeys", pack: "earth_burst", n: 24, w: 2.6, h: 2.6, opacity: 0.8 },
       ],
       hit: [
-        { folder: "codemanu", pack: "impact", n: 16, w: 3.3, h: 3.3, opacity: 0.92 },
-        { folder: "brackeys", pack: "earth_burst", n: 16, w: 2.9, h: 2.9, opacity: 0.85 },
-        { folder: "spritepilot", pack: "landing_dust", n: 7, w: 2.8, h: 1.6, opacity: 0.9 },
+        { folder: "codemanu", pack: "impact", n: 24, w: 3.3, h: 3.3, opacity: 0.92 },
+        { folder: "brackeys", pack: "earth_burst", n: 24, w: 2.9, h: 2.9, opacity: 0.85 },
+        { folder: "spritepilot", pack: "landing_dust", n: 24, w: 2.8, h: 1.6, opacity: 0.9 },
       ],
       flightUnder: under,
     };
@@ -2132,13 +2163,13 @@ function skillPremiumLayers(
   // fallback generic combat
   return {
     cast: [
-      { folder: "codemanu", pack: "charged", n: 16, w: 2.8, h: 2.8, opacity: 0.88 },
-      { folder: "brackeys", pack: "hit_burst", n: 11, w: 2.5, h: 2.5, opacity: 0.78 },
+      { folder: "codemanu", pack: "charged", n: 24, w: 2.8, h: 2.8, opacity: 0.88 },
+      { folder: "brackeys", pack: "hit_burst", n: 24, w: 2.5, h: 2.5, opacity: 0.78 },
     ],
     hit: [
-      { folder: "codemanu", pack: "explosion2", n: 16, w: 3.3, h: 3.3, opacity: 0.92 },
-      { folder: "codemanu", pack: "impact", n: 16, w: 2.9, h: 2.9, opacity: 0.82 },
-      { folder: "spritepilot", pack: "hit_spark", n: 6, w: 2.5, h: 2.5, opacity: 0.95 },
+      { folder: "codemanu", pack: "explosion2", n: 24, w: 3.3, h: 3.3, opacity: 0.92 },
+      { folder: "codemanu", pack: "impact", n: 24, w: 2.9, h: 2.9, opacity: 0.82 },
+      { folder: "spritepilot", pack: "hit_spark", n: 24, w: 2.5, h: 2.5, opacity: 0.95 },
     ],
     flightUnder: under,
   };
@@ -2533,7 +2564,8 @@ export function emitHonSpiritSequence3d(
             opacity: 0.9,
             spinSpeed: 2.6,
             y: 0.04,
-            animateFrames: false,
+            // charge×24 — flipbook + xoay = tụ lực sống
+            animateFrames: true,
           })
         );
       } else {
@@ -2623,6 +2655,7 @@ export function emitHonSpiritSequence3d(
             });
           }
           if (qiStream) {
+            // 1 sprite: flight_01 lúc xuất → flight_N lúc trúng (không ghost chồng)
             handles.push(
               emitFlyingSheet3d(scene, from, to, streamSheets.head, {
                 durationMs: FLIGHT_MS,
@@ -2631,21 +2664,11 @@ export function emitHonSpiritSequence3d(
                 arc: flightArc,
                 scale: opts.scale,
                 color: 0xffffff,
-                frameMs: Math.max(55, Math.floor(FLIGHT_MS / Math.max(1, streamSheets.head.length))),
                 yLift: 0.95,
                 opacity: 1,
                 headOnRight: true,
                 headLeadFrac: headLead,
-              })
-            );
-            handles.push(
-              emitTrail3d(scene, from, to, {
-                flash: pack.flash,
-                durationMs: FLIGHT_MS,
-                density: 5,
-                arc: flightArc * 0.85,
-                scale: "S",
-                streak: true,
+                sequenceOnce: true,
               })
             );
           } else {
@@ -3383,11 +3406,22 @@ export function tickBattleVfx3d(_scene: THREE.Scene, now: number, dt: number): v
       fx.obj.position.copy(_tmp);
       const spr = fx.obj as THREE.Sprite;
       const mat = fx.spriteMat || (spr.material as THREE.SpriteMaterial);
-      if (mat && fx.frames && fx.frames.length > 1 && now >= (fx.nextFrame || 0)) {
-        fx.frameI = ((fx.frameI || 0) + 1) % fx.frames.length;
-        mat.map = fx.frames[fx.frameI];
-        mat.needsUpdate = true;
-        fx.nextFrame = now + (fx.frameMs || 55);
+      // Frame 1 → N đúng 1 lần theo tiến độ bay (không loop, 1 sprite)
+      if (mat && fx.frames && fx.frames.length > 1) {
+        if (fx.sequenceOnce) {
+          const last = fx.frames.length - 1;
+          const fi = Math.min(last, Math.floor(e * fx.frames.length));
+          if (fi !== fx.frameI) {
+            fx.frameI = fi;
+            mat.map = fx.frames[fi];
+            mat.needsUpdate = true;
+          }
+        } else if (now >= (fx.nextFrame || 0)) {
+          fx.frameI = ((fx.frameI || 0) + 1) % fx.frames.length;
+          mat.map = fx.frames[fx.frameI];
+          mat.needsUpdate = true;
+          fx.nextFrame = now + (fx.frameMs || 55);
+        }
       }
       const pulse = 1 + 0.1 * Math.sin(t * Math.PI * 5);
       const grow = e < 0.15 ? 0.55 + (e / 0.15) * 0.45 : 1;
