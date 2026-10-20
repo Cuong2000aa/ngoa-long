@@ -106,8 +106,15 @@ function collectSkills() {
   });
 }
 
-const skills = collectSkills();
-console.log(`catalog skills=${skills.length}`);
+let skills = collectSkills();
+const limitArg = process.argv.find((a) => a.startsWith("--limit="));
+if (limitArg) {
+  const n = Math.max(1, parseInt(limitArg.split("=")[1], 10) || skills.length);
+  skills = skills.slice(0, n);
+  console.log(`catalog skills=${skills.length} (limited)`);
+} else {
+  console.log(`catalog skills=${skills.length}`);
+}
 
 const browser = await chromium.launch({
   executablePath: chrome,
@@ -170,9 +177,20 @@ try {
     }
   });
 
+  // Inject catalog + hex map first (tránh evaluate payload khổng lồ treo CDP)
+  await page.evaluate(
+    ({ specs, flashHex }) => {
+      window.__NL_SKILL_QA_SPECS__ = specs;
+      window.__NL_SKILL_QA_HEX__ = flashHex;
+    },
+    { specs: skills, flashHex: FLASH_HEX }
+  );
+  console.log("catalog injected");
+
   // Runner chạy trong page event loop (không await sleep trong Playwright evaluate — dễ treo CDP)
-  await page.evaluate((payload) => {
-    const { specs, flashHex } = payload;
+  const runnerInfo = await page.evaluate(() => {
+    const specs = window.__NL_SKILL_QA_SPECS__ || [];
+    const flashHex = window.__NL_SKILL_QA_HEX__ || {};
     const state = {
       specs,
       flashHex,
@@ -181,6 +199,7 @@ try {
       done: false,
       failed: 0,
       startedAt: performance.now(),
+      progress: `0/${specs.length}`,
     };
     window.__NL_SKILL_QA_RUN__ = state;
     const br = window.NLCombatUI.getView()._battle3d;
@@ -197,6 +216,7 @@ try {
       if (state.i >= specs.length) {
         state.done = true;
         state.ms = performance.now() - state.startedAt;
+        state.progress = `${state.i}/${specs.length} failed=${state.failed}`;
         return;
       }
       const spec = specs[state.i++];
@@ -230,52 +250,69 @@ try {
       }
       // Đợi playSheet(loadTex) trên event loop trang
       setTimeout(() => {
-        const colors = [];
-        let n = 0;
-        let nNew = 0;
-        if (flashOk && br.scene) {
-          br.scene.traverse((o) => {
-            if (!(o && o.name === "fx-sprite")) return;
-            n++;
-            const born = o.userData && o.userData.born;
-            if (born != null && born >= bornBefore - 20) nNew++;
-            if (o.material && o.material.color) colors.push(o.material.color.getHexString());
+        try {
+          const colors = [];
+          let n = 0;
+          let nNew = 0;
+          if (flashOk && br.scene) {
+            br.scene.traverse((o) => {
+              if (!(o && o.name === "fx-sprite")) return;
+              n++;
+              const born = o.userData && o.userData.born;
+              if (born != null && born >= bornBefore - 20) nNew++;
+              if (o.material && o.material.color) colors.push(o.material.color.getHexString());
+            });
+          }
+          const fxN = nNew || n;
+          const joined = colors.join(",").toLowerCase();
+          const colorOk = !expect || expect.some((h) => joined.includes(String(h).toLowerCase()));
+          const pass = !!(flashOk && fxN > 0 && colorOk);
+          if (!pass) state.failed++;
+          state.results.push({
+            id: spec.id,
+            name: spec.name,
+            flash: spec.flash,
+            motif: spec.motif,
+            pattern: spec.pattern,
+            pass,
+            fxN,
+            colors: colors.slice(0, 8),
+            reason: !flashOk
+              ? reason
+              : !fxN
+                ? "no fx-sprite"
+                : !colorOk
+                  ? `color miss expect=${expect}`
+                  : null,
+          });
+        } catch (err) {
+          state.failed++;
+          state.results.push({
+            id: spec.id,
+            name: spec.name,
+            flash: spec.flash,
+            motif: spec.motif,
+            pattern: spec.pattern,
+            pass: false,
+            fxN: 0,
+            colors: [],
+            reason: "probe:" + String(err && err.message ? err.message : err),
           });
         }
-        const fxN = nNew || n;
-        const joined = colors.join(",").toLowerCase();
-        const colorOk = !expect || expect.some((h) => joined.includes(String(h).toLowerCase()));
-        const pass = !!(flashOk && fxN > 0 && colorOk);
-        if (!pass) state.failed++;
-        state.results.push({
-          id: spec.id,
-          name: spec.name,
-          flash: spec.flash,
-          motif: spec.motif,
-          pattern: spec.pattern,
-          pass,
-          fxN,
-          colors: colors.slice(0, 8),
-          reason: !flashOk
-            ? reason
-            : !fxN
-              ? "no fx-sprite"
-              : !colorOk
-                ? `color miss expect=${expect}`
-                : null,
-        });
-        if (state.i % 50 === 0 || state.i >= specs.length) {
+        if (state.i % 25 === 0 || state.i >= specs.length) {
           state.progress = `${state.i}/${specs.length} failed=${state.failed}`;
         }
         setTimeout(step, 0);
-      }, 160);
+      }, 180);
     };
     setTimeout(step, 0);
-    return "started";
-  }, { specs: skills, flashHex: FLASH_HEX });
+    return { started: true, total: specs.length, allies: allies.length, foes: foes.length };
+  });
+  console.log("runner", JSON.stringify(runnerInfo));
 
-  // Poll tiến độ
+  // Poll tiến độ (không evaluate nặng — chỉ đọc flag)
   let lastProg = "";
+  const pollStart = Date.now();
   for (;;) {
     const st = await page.evaluate(() => {
       const s = window.__NL_SKILL_QA_RUN__;
@@ -283,21 +320,31 @@ try {
       return {
         done: !!s.done,
         i: s.i,
-        total: s.specs.length,
+        total: (s.specs && s.specs.length) || 0,
         failed: s.failed,
         progress: s.progress || "",
         ms: s.ms || 0,
       };
     });
+    if (st.error) {
+      console.error("runner error", st.error);
+      break;
+    }
     if (st.progress && st.progress !== lastProg) {
       console.log("…", st.progress);
       lastProg = st.progress;
+    } else if (!st.done && Date.now() - pollStart > 3000 && st.i === 0) {
+      console.log("waiting — i still 0, elapsed", Date.now() - pollStart);
     }
     if (st.done) {
       console.log(`catalog done in ${Math.round(st.ms || 0)}ms`);
       break;
     }
-    await page.waitForTimeout(500);
+    if (Date.now() - pollStart > 400000) {
+      console.error("FATAL poll timeout");
+      break;
+    }
+    await page.waitForTimeout(400);
   }
 
   const catalogRows = await page.evaluate(() => window.__NL_SKILL_QA_RUN__.results || []);
