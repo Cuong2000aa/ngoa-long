@@ -185,36 +185,29 @@ try {
         else foes.push(uid);
       });
       const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-      const probeFx = () => {
-        const colors = [];
-        let n = 0;
-        br.scene.traverse((o) => {
-          if (o && o.name === "fx-sprite") {
-            n++;
-            if (o.material && o.material.color) colors.push(o.material.color.getHexString());
-          }
-        });
-        return { n, colors };
-      };
       const out = [];
-      for (const spec of specs) {
+      if (!allies.length) {
+        return specs.map((spec) => ({
+          id: spec.id,
+          name: spec.name,
+          flash: spec.flash,
+          motif: spec.motif,
+          pattern: spec.pattern,
+          pass: false,
+          fxN: 0,
+          colors: [],
+          reason: "no allies",
+        }));
+      }
+      const caster = allies[0];
+      for (let si = 0; si < specs.length; si++) {
+        const spec = specs[si];
         const expect = flashHex[spec.flash] || flashHex[spec.motif] || null;
-        if (typeof br.clearFx === "function") br.clearFx();
-        if (!allies.length) {
-          out.push({
-            id: spec.id,
-            name: spec.name,
-            flash: spec.flash,
-            motif: spec.motif,
-            pattern: spec.pattern,
-            pass: false,
-            fxN: 0,
-            colors: [],
-            reason: "no allies",
-          });
-          continue;
+        // clear mỗi vài chiêu — tránh dispose race với playSheet async
+        if (si === 0 || si % 5 === 0) {
+          if (typeof br.clearFx === "function") br.clearFx();
+          await sleep(30);
         }
-        const caster = allies[0];
         let targets = foes.slice();
         const pat = (spec.pattern || "single").toLowerCase();
         if (pat === "single") targets = foes.slice(0, 1);
@@ -222,6 +215,7 @@ try {
         if (pat === "ally_all") targets = allies.slice();
         let flashOk = true;
         let reason = null;
+        const bornBefore = performance.now();
         try {
           br.skillFlash(caster, spec.flash, targets, {
             pattern: spec.pattern,
@@ -233,14 +227,21 @@ try {
           flashOk = false;
           reason = String(e && e.message ? e.message : e);
         }
+        // playSheet await loadTex — cần ≥100ms
+        await sleep(150);
         let probe = { n: 0, colors: [] };
         if (flashOk) {
-          const t0 = performance.now();
-          while (performance.now() - t0 < 400) {
-            probe = probeFx();
-            if (probe.n > 0) break;
-            await sleep(16);
-          }
+          const colors = [];
+          let n = 0;
+          let nNew = 0;
+          br.scene.traverse((o) => {
+            if (!(o && o.name === "fx-sprite")) return;
+            n++;
+            const born = o.userData && o.userData.born;
+            if (born != null && born >= bornBefore - 20) nNew++;
+            if (o.material && o.material.color) colors.push(o.material.color.getHexString());
+          });
+          probe = { n: nNew || n, colors };
         }
         const joined = (probe.colors || []).join(",").toLowerCase();
         const colorOk = !expect || expect.some((h) => joined.includes(String(h).toLowerCase()));
