@@ -19,6 +19,13 @@ isProject: false
 
 # Gameplay/UI trước — cốt truyện sau
 
+## Trạng thái (cập nhật)
+
+- **Repo:** `main` @ `001b0be` (đã `git pull` — fast-forward từ `3e4cf62`)
+- **Phase A + B:** hoàn thành (commit `9046631` gameplay/UI + story hooks; `3e4cf62` docs/plan)
+- **Todos frontmatter:** cả 4 mục `completed`
+- **Tiếp theo (ngoài plan này):** nội dung phụ Lôi đài/Thế giới, hoặc mở rộng cốt truyện dialog nếu cần sâu hơn briefing/epilogue hiện có
+
 ## Kết luận
 
 **Đúng:** làm gameplay + UI trước, cốt truyện sau. Hiện đã có khung sử (3 chương, story/mission ngắn mỗi ải) nhưng loop chính vẫn là đánh phó bản — viết hội thoại sớm sẽ phải sửa lại khi UI/flow đổi.
