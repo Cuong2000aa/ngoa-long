@@ -527,124 +527,9 @@ function spiritFacing(from: THREE.Vector3, to: THREE.Vector3): number {
 }
 
 /**
- * Flipbook packs cho chiêu KHÔNG phải hồn thú.
- * Ưu tiên Brackeys (itch) đã slice → `assets/fx/itch/brackeys/{id}/`
- * Fallback Pixel Ability FX Forge → `assets/fx/forge/{id}/`
+ * Flipbook packs — CodeManu underlay + Brackeys / Superpowers / SpritePilot.
+ * Map theo style: `skillPremiumLayers` / `honElementLayers`.
  */
-type ForgePackId =
-  | "arcane_burst"
-  | "radiance_aura"
-  | "ward_barrier"
-  | "shadow_burst"
-  | "ember_burst"
-  | "blood_burst"
-  | "storm_burst"
-  | "earth_burst"
-  | "explosion_burst"
-  | "hit_burst";
-
-/** Packs đã slice từ Brackeys VFX Bundle (có frame_XX.png). */
-const ITCH_BRACKETS: ReadonlySet<ForgePackId> = new Set([
-  "arcane_burst",
-  "radiance_aura",
-  "ward_barrier",
-  "shadow_burst",
-  "ember_burst",
-  "blood_burst",
-  "storm_burst",
-  "earth_burst",
-  "explosion_burst",
-  "hit_burst",
-]);
-
-function forgeFrameUrls(id: ForgePackId, n = 16): string[] {
-  const pad = (i: number) => String(i).padStart(2, "0");
-  const base = ITCH_BRACKETS.has(id)
-    ? `assets/fx/itch/brackeys/${id}`
-    : `assets/fx/forge/${id}`;
-  return Array.from({ length: n }, (_, i) => `${base}/frame_${pad(i + 1)}.png`);
-}
-
-/** Map style 3D → sheet pack (null = chỉ particle). */
-function forgePackForStyle(style: Fx3dStyle, flash?: string): ForgePackId | null {
-  const f = (flash || "").toLowerCase();
-  if (style === "bless") return "radiance_aura";
-  if (style === "barrier") return "ward_barrier";
-  if (style === "shadow") return "shadow_burst";
-  if (style === "nova") return "explosion_burst";
-  if (style === "beam") {
-    if (f === "thunder" || f === "storm") return "storm_burst";
-    if (f === "bagua" || f === "purple" || f === "violet" || f === "blue") return "arcane_burst";
-    return "arcane_burst";
-  }
-  if (style === "slash") {
-    if (f === "crimson" || f === "dark_red" || f === "red" || f === "gold_red") return "blood_burst";
-    if (f === "brown" || f === "iron") return "earth_burst";
-    return "hit_burst";
-  }
-  if (style === "rush" || style === "charge") return "earth_burst";
-  if (style === "tide") return "ward_barrier"; // sheet chính; overlay water_wave ở cast/impact
-  return null;
-}
-
-function emitForgeSheetAt(
-  scene: THREE.Scene,
-  at: THREE.Vector3,
-  pack: ForgePackId,
-  opts: {
-    durationMs?: number;
-    w?: number;
-    h?: number;
-    opacity?: number;
-    spin?: boolean;
-    y?: number;
-    delayMs?: number;
-    color?: number;
-    scale?: string | null;
-  } = {}
-): Fx3dHandle {
-  const mul = scaleMul(opts.scale);
-  const cancelled = { v: false };
-  const handles: Fx3dHandle[] = [];
-  const delayMs = opts.delayMs ?? 0;
-  const start = () => {
-    if (cancelled.v || !scene) return;
-    void loadFrameSet(forgeFrameUrls(pack))
-      .then((frames) => {
-        if (cancelled.v || !scene || !frames.length) return;
-        handles.push(
-          emitHonSheetAt(scene, at, frames, {
-            durationMs: opts.durationMs ?? 520,
-            w: (opts.w ?? 2.4) * mul,
-            h: (opts.h ?? 2.4) * mul,
-            opacity: opts.opacity ?? 0.92,
-            spin: opts.spin,
-            y: opts.y ?? 0.35,
-            color: opts.color ?? 0xffffff,
-          })
-        );
-      })
-      .catch(() => {});
-  };
-  if (delayMs > 0) {
-    const tid = trackTimer(delayMs, start);
-    return {
-      cancel() {
-        cancelled.v = true;
-        clearTimeout(tid);
-        handles.forEach((h) => h.cancel());
-      },
-    };
-  }
-  start();
-  return {
-    cancel() {
-      cancelled.v = true;
-      handles.forEach((h) => h.cancel());
-    },
-  };
-}
-
 type ItchSheetOpts = {
   durationMs?: number;
   w?: number;
@@ -657,11 +542,13 @@ type ItchSheetOpts = {
   spin?: boolean;
 };
 
+type ItchFxFolder = "stylized" | "brackeys" | "superpowers" | "codemanu" | "spritepilot";
+
 /** Sheet pack dưới assets/fx/itch/{folder}/{pack}/frame_XX.png */
 function emitItchFolderPackAt(
   scene: THREE.Scene,
   at: THREE.Vector3,
-  folder: "stylized" | "brackeys" | "superpowers",
+  folder: ItchFxFolder,
   pack: string,
   frameCount: number,
   opts: ItchSheetOpts = {}
@@ -713,26 +600,166 @@ function emitItchFolderPackAt(
   };
 }
 
-/** Brackeys slice thêm (slash_seq / fire_point / water_wave …) */
-function emitBrackeysExtraAt(
+/** SpritePilot CC0 strips (đã slice) */
+function emitSpritepilotAt(
   scene: THREE.Scene,
   at: THREE.Vector3,
   pack: string,
   frameCount: number,
   opts: ItchSheetOpts = {}
 ): Fx3dHandle {
-  return emitItchFolderPackAt(scene, at, "brackeys", pack, frameCount, opts);
+  return emitItchFolderPackAt(scene, at, "spritepilot", pack, frameCount, opts);
 }
 
-/** Sparklin Superpowers CC0 battle FX (GitHub auto-import) */
-function emitSuperpowersAt(
-  scene: THREE.Scene,
-  at: THREE.Vector3,
-  pack: string,
-  frameCount: number,
-  opts: ItchSheetOpts = {}
-): Fx3dHandle {
-  return emitItchFolderPackAt(scene, at, "superpowers", pack, frameCount, opts);
+type HonLayerRef = { folder: ItchFxFolder; pack: string; n: number; w?: number; h?: number; opacity?: number };
+
+/**
+ * Lớp element dày cho hồn — CodeManu + Brackeys + SpritePilot / Superpowers.
+ * Không săn pack “spirit thú”; tint theo pack.tint ở runtime.
+ */
+function honElementLayers(packId: HonPackId): {
+  charge: HonLayerRef[];
+  form: HonLayerRef[];
+  flight: { urls: string[]; w: number; h: number };
+  hit: HonLayerRef[];
+} {
+  const pad = (i: number) => String(i).padStart(2, "0");
+  const br = (pack: string, n: number) =>
+    Array.from({ length: n }, (_, i) => `assets/fx/itch/brackeys/${pack}/frame_${pad(i + 1)}.png`);
+  const cm = (pack: string, n: number) =>
+    Array.from({ length: n }, (_, i) => `assets/fx/itch/codemanu/${pack}/frame_${pad(i + 1)}.png`);
+  const sp = (pack: string, n: number) =>
+    Array.from({ length: n }, (_, i) => `assets/fx/itch/superpowers/${pack}/frame_${pad(i + 1)}.png`);
+
+  switch (packId) {
+    case "hon_rong":
+      return {
+        charge: [
+          { folder: "codemanu", pack: "charged", n: 16, w: 3.2, h: 3.2, opacity: 0.88 },
+          { folder: "brackeys", pack: "ember_burst", n: 16, w: 2.8, h: 2.8, opacity: 0.7 },
+          { folder: "codemanu", pack: "elden_ring", n: 16, w: 2.6, h: 2.6, opacity: 0.65 },
+        ],
+        form: [
+          { folder: "codemanu", pack: "vortex", n: 16, w: 3.0, h: 3.0, opacity: 0.75 },
+          { folder: "codemanu", pack: "dithered_fire", n: 16, w: 2.4, h: 2.4, opacity: 0.8 },
+        ],
+        flight: { urls: [...cm("hyperspeed", 16), ...br("fire_point", 12)].slice(0, 16), w: 2.0, h: 2.0 },
+        hit: [
+          { folder: "codemanu", pack: "explosion", n: 16, w: 3.4, h: 3.4, opacity: 0.95 },
+          { folder: "codemanu", pack: "kabooms", n: 16, w: 2.8, h: 2.8, opacity: 0.8 },
+          { folder: "brackeys", pack: "explosion_burst", n: 16, w: 2.6, h: 2.6, opacity: 0.7 },
+          { folder: "spritepilot", pack: "explosion", n: 10, w: 2.2, h: 2.2, opacity: 0.9 },
+        ],
+      };
+    case "hon_loi":
+      return {
+        charge: [
+          { folder: "codemanu", pack: "electric_shield", n: 16, w: 3.0, h: 3.0, opacity: 0.9 },
+          { folder: "codemanu", pack: "charged", n: 16, w: 2.8, h: 2.8, opacity: 0.75 },
+          { folder: "brackeys", pack: "storm_burst", n: 16, w: 2.6, h: 2.6, opacity: 0.7 },
+        ],
+        form: [
+          { folder: "codemanu", pack: "vortex", n: 16, w: 2.8, h: 2.8, opacity: 0.7 },
+          { folder: "codemanu", pack: "power_chords", n: 16, w: 2.4, h: 2.4, opacity: 0.75 },
+        ],
+        flight: { urls: cm("hyperspeed", 16), w: 1.9, h: 1.9 },
+        hit: [
+          { folder: "codemanu", pack: "big_hit", n: 16, w: 3.2, h: 3.2, opacity: 0.95 },
+          { folder: "brackeys", pack: "storm_burst", n: 16, w: 2.8, h: 2.8, opacity: 0.8 },
+          { folder: "spritepilot", pack: "hit_spark", n: 6, w: 2.4, h: 2.4, opacity: 0.95 },
+        ],
+      };
+    case "hon_xa":
+      return {
+        charge: [
+          { folder: "codemanu", pack: "tentacles", n: 16, w: 3.0, h: 3.0, opacity: 0.85 },
+          { folder: "codemanu", pack: "worm", n: 16, w: 2.6, h: 2.6, opacity: 0.7 },
+          { folder: "superpowers", pack: "sp_smoke", n: 6, w: 2.4, h: 2.4, opacity: 0.65 },
+        ],
+        form: [
+          { folder: "codemanu", pack: "vortex", n: 16, w: 2.8, h: 2.8, opacity: 0.7 },
+          { folder: "spritepilot", pack: "smoke_puff", n: 8, w: 2.2, h: 2.2, opacity: 0.75 },
+        ],
+        flight: { urls: sp("sp_smoke", 6), w: 1.8, h: 1.8 },
+        hit: [
+          { folder: "codemanu", pack: "impact", n: 16, w: 3.0, h: 3.0, opacity: 0.9 },
+          { folder: "codemanu", pack: "puff_stars", n: 16, w: 2.6, h: 2.6, opacity: 0.75 },
+          { folder: "spritepilot", pack: "smoke_puff", n: 8, w: 2.4, h: 2.4, opacity: 0.8 },
+        ],
+      };
+    case "hon_thuy":
+      return {
+        charge: [
+          { folder: "codemanu", pack: "anima", n: 16, w: 3.0, h: 3.0, opacity: 0.85 },
+          { folder: "brackeys", pack: "water_wave", n: 12, w: 2.8, h: 2.8, opacity: 0.75 },
+          { folder: "codemanu", pack: "elden_ring", n: 16, w: 2.5, h: 2.5, opacity: 0.65 },
+        ],
+        form: [
+          { folder: "codemanu", pack: "vortex", n: 16, w: 2.8, h: 2.8, opacity: 0.7 },
+          { folder: "spritepilot", pack: "water_splash", n: 9, w: 2.4, h: 2.4, opacity: 0.8 },
+        ],
+        flight: { urls: br("water_wave", 12), w: 1.9, h: 1.9 },
+        hit: [
+          { folder: "spritepilot", pack: "water_splash", n: 9, w: 3.0, h: 3.0, opacity: 0.95 },
+          { folder: "brackeys", pack: "water_wave", n: 12, w: 2.8, h: 2.8, opacity: 0.8 },
+          { folder: "codemanu", pack: "impact", n: 16, w: 2.6, h: 2.6, opacity: 0.75 },
+        ],
+      };
+    case "hon_phong":
+      return {
+        charge: [
+          { folder: "codemanu", pack: "wheel", n: 16, w: 3.0, h: 3.0, opacity: 0.88 },
+          { folder: "codemanu", pack: "vortex", n: 16, w: 2.8, h: 2.8, opacity: 0.75 },
+          { folder: "brackeys", pack: "lightstreaks", n: 12, w: 2.5, h: 2.5, opacity: 0.7 },
+        ],
+        form: [
+          { folder: "codemanu", pack: "hyperspeed", n: 16, w: 2.6, h: 2.6, opacity: 0.75 },
+          { folder: "codemanu", pack: "constellation", n: 16, w: 2.4, h: 2.4, opacity: 0.7 },
+        ],
+        flight: { urls: [...cm("hyperspeed", 16), ...br("lightstreaks", 12)].slice(0, 16), w: 1.9, h: 1.9 },
+        hit: [
+          { folder: "codemanu", pack: "big_hit", n: 16, w: 3.0, h: 3.0, opacity: 0.9 },
+          { folder: "codemanu", pack: "wheel", n: 16, w: 2.6, h: 2.6, opacity: 0.75 },
+          { folder: "spritepilot", pack: "landing_dust", n: 7, w: 2.4, h: 2.4, opacity: 0.85 },
+        ],
+      };
+    case "hon_ho":
+      return {
+        charge: [
+          { folder: "codemanu", pack: "charged", n: 16, w: 3.0, h: 3.0, opacity: 0.88 },
+          { folder: "codemanu", pack: "power_chords", n: 16, w: 2.8, h: 2.8, opacity: 0.75 },
+          { folder: "brackeys", pack: "hit_burst", n: 11, w: 2.5, h: 2.5, opacity: 0.7 },
+        ],
+        form: [
+          { folder: "codemanu", pack: "vortex", n: 16, w: 2.8, h: 2.8, opacity: 0.7 },
+          { folder: "superpowers", pack: "sp_shock", n: 7, w: 2.4, h: 2.4, opacity: 0.8 },
+        ],
+        flight: { urls: sp("sp_shock", 7), w: 1.9, h: 1.9 },
+        hit: [
+          { folder: "codemanu", pack: "big_hit", n: 16, w: 3.2, h: 3.2, opacity: 0.95 },
+          { folder: "brackeys", pack: "hit_burst", n: 11, w: 2.8, h: 2.8, opacity: 0.85 },
+          { folder: "spritepilot", pack: "hit_spark", n: 6, w: 2.4, h: 2.4, opacity: 0.95 },
+        ],
+      };
+    case "hon_soi":
+      return {
+        charge: [
+          { folder: "codemanu", pack: "constellation", n: 16, w: 3.0, h: 3.0, opacity: 0.85 },
+          { folder: "codemanu", pack: "charged", n: 16, w: 2.7, h: 2.7, opacity: 0.75 },
+          { folder: "brackeys", pack: "shadow_burst", n: 16, w: 2.5, h: 2.5, opacity: 0.7 },
+        ],
+        form: [
+          { folder: "codemanu", pack: "vortex", n: 16, w: 2.8, h: 2.8, opacity: 0.7 },
+          { folder: "spritepilot", pack: "smoke_puff", n: 8, w: 2.3, h: 2.3, opacity: 0.75 },
+        ],
+        flight: { urls: sp("sp_ember_trail", 12), w: 1.8, h: 1.8 },
+        hit: [
+          { folder: "codemanu", pack: "impact", n: 16, w: 3.0, h: 3.0, opacity: 0.9 },
+          { folder: "brackeys", pack: "shadow_burst", n: 16, w: 2.6, h: 2.6, opacity: 0.8 },
+          { folder: "spritepilot", pack: "hit_spark", n: 6, w: 2.3, h: 2.3, opacity: 0.9 },
+        ],
+      };
+  }
 }
 
 /** Sheet ground / spark — spin hoặc flash. */
@@ -1138,35 +1165,39 @@ export function emitFlyingSheet3d(
   };
 }
 
-function boltUrlsForStyle(style: Fx3dStyle, flash?: string): { urls: string[]; w: number; h: number } {
-  const f = (flash || "").toLowerCase();
+function itchFrameUrls(folder: ItchFxFolder, pack: string, n: number): string[] {
   const pad = (i: number) => String(i).padStart(2, "0");
-  const br = (pack: string, n: number) =>
-    Array.from({ length: n }, (_, i) => `assets/fx/itch/brackeys/${pack}/frame_${pad(i + 1)}.png`);
-  const st = (pack: string, n: number) =>
-    Array.from({ length: n }, (_, i) => `assets/fx/itch/stylized/${pack}/frame_${pad(i + 1)}.png`);
-  const sp = (pack: string, n: number) =>
-    Array.from({ length: n }, (_, i) => `assets/fx/itch/superpowers/${pack}/frame_${pad(i + 1)}.png`);
-
-  if (style === "slash") return { urls: sp("sp_slash", 8), w: 1.65, h: 1.65 };
-  if (style === "nova" || f === "fire" || f === "fire_rain" || f === "orange" || f === "red_fire")
-    return { urls: br("fire_point", 12), w: 1.55, h: 1.55 };
-  if (f === "thunder" || f === "storm") return { urls: st("lightning", 1), w: 1.85, h: 1.05 };
-  if (style === "tide" || f === "blue_water" || f === "cyan" || f === "teal" || f === "white_blue")
-    return { urls: br("water_wave", 10), w: 1.55, h: 1.55 };
-  if (style === "beam" || style === "shadow" || f === "bagua" || f === "purple" || f === "violet")
-    return { urls: sp("sp_magic", 6), w: 1.5, h: 1.5 };
-  if (style === "poison") return { urls: sp("sp_smoke", 6), w: 1.4, h: 1.4 };
-  if (style === "rush" || style === "charge") return { urls: br("muzzle_seq", 5), w: 1.35, h: 1.35 };
-  if (style === "roar") return { urls: sp("sp_shock", 7), w: 1.55, h: 1.55 };
-  if (style === "whirl") return { urls: br("lightstreaks", 12), w: 1.5, h: 1.5 };
-  if (style === "bless") return { urls: sp("sp_heal", 6), w: 1.4, h: 1.4 };
-  if (style === "breath") return { urls: br("ember_burst", 12), w: 1.6, h: 1.6 };
-  // fallback — mũi tên stylized (luôn có)
-  return { urls: st("arrow", 2), w: 1.55, h: 1.25 };
+  return Array.from(
+    { length: n },
+    (_, i) => `assets/fx/itch/${folder}/${pack}/frame_${pad(i + 1)}.png`
+  );
 }
 
-/** Profile bay caster → mục tiêu theo style (dùng cho mọi chiêu non-spirit). */
+function boltUrlsForStyle(style: Fx3dStyle, flash?: string): { urls: string[]; w: number; h: number } {
+  const f = (flash || "").toLowerCase();
+  const br = (pack: string, n: number) => itchFrameUrls("brackeys", pack, n);
+  const st = (pack: string, n: number) => itchFrameUrls("stylized", pack, n);
+  const sp = (pack: string, n: number) => itchFrameUrls("superpowers", pack, n);
+  const cm = (pack: string, n: number) => itchFrameUrls("codemanu", pack, n);
+
+  if (style === "slash") return { urls: sp("sp_slash", 8), w: 2.15, h: 2.15 };
+  if (style === "nova" || f === "fire" || f === "fire_rain" || f === "orange" || f === "red_fire")
+    return { urls: cm("pixel_fire", 16), w: 2.2, h: 2.2 };
+  if (f === "thunder" || f === "storm") return { urls: cm("hyperspeed", 16), w: 2.3, h: 1.4 };
+  if (style === "tide" || f === "blue_water" || f === "cyan" || f === "teal" || f === "white_blue")
+    return { urls: br("water_wave", 12), w: 2.15, h: 2.15 };
+  if (style === "beam" || style === "shadow" || f === "bagua" || f === "purple" || f === "violet")
+    return { urls: cm("hyperspeed", 16), w: 2.1, h: 2.1 };
+  if (style === "poison") return { urls: cm("worm", 16), w: 2.0, h: 2.0 };
+  if (style === "rush" || style === "charge") return { urls: br("muzzle_seq", 5), w: 1.9, h: 1.9 };
+  if (style === "roar") return { urls: sp("sp_shock", 7), w: 2.2, h: 2.2 };
+  if (style === "whirl") return { urls: cm("wheel", 16), w: 2.15, h: 2.15 };
+  if (style === "bless") return { urls: cm("anima", 16), w: 2.0, h: 2.0 };
+  if (style === "breath") return { urls: cm("dithered_fire", 16), w: 2.25, h: 2.25 };
+  return { urls: st("arrow", 2), w: 2.0, h: 1.55 };
+}
+
+/** Profile bay caster → mục tiêu — size/sheet lớn hơn (core game không phèn). */
 function flightProfile(style: Fx3dStyle, flash?: string): {
   durationMs: number;
   arc: number;
@@ -1175,26 +1206,246 @@ function flightProfile(style: Fx3dStyle, flash?: string): {
   sheetMul: number;
 } {
   const f = (flash || "").toLowerCase();
-  if (style === "charge") return { durationMs: 420, arc: 0.14, size: 0.34, density: 14, sheetMul: 1.1 };
-  if (style === "rush") return { durationMs: 360, arc: 0.22, size: 0.3, density: 13, sheetMul: 1.15 };
-  if (style === "nova") return { durationMs: 560, arc: 0.55, size: 0.42, density: 13, sheetMul: 1.25 };
-  if (style === "tide") return { durationMs: 560, arc: 0.5, size: 0.36, density: 13, sheetMul: 1.2 };
-  if (style === "poison") return { durationMs: 540, arc: 0.38, size: 0.32, density: 14, sheetMul: 1.15 };
-  if (style === "shadow") return { durationMs: 520, arc: 0.34, size: 0.3, density: 12, sheetMul: 1.15 };
+  if (style === "charge") return { durationMs: 420, arc: 0.14, size: 0.48, density: 18, sheetMul: 1.35 };
+  if (style === "rush") return { durationMs: 360, arc: 0.22, size: 0.44, density: 17, sheetMul: 1.4 };
+  if (style === "nova") return { durationMs: 560, arc: 0.55, size: 0.58, density: 18, sheetMul: 1.45 };
+  if (style === "tide") return { durationMs: 560, arc: 0.5, size: 0.52, density: 17, sheetMul: 1.4 };
+  if (style === "poison") return { durationMs: 540, arc: 0.38, size: 0.48, density: 18, sheetMul: 1.35 };
+  if (style === "shadow") return { durationMs: 520, arc: 0.34, size: 0.46, density: 16, sheetMul: 1.35 };
   if (style === "beam") {
-    if (f === "thunder" || f === "storm") return { durationMs: 500, arc: 0.28, size: 0.36, density: 14, sheetMul: 1.2 };
-    return { durationMs: 520, arc: 0.32, size: 0.34, density: 12, sheetMul: 1.2 };
+    if (f === "thunder" || f === "storm") return { durationMs: 500, arc: 0.28, size: 0.52, density: 18, sheetMul: 1.4 };
+    return { durationMs: 520, arc: 0.32, size: 0.5, density: 16, sheetMul: 1.4 };
   }
-  if (style === "slash") return { durationMs: 440, arc: 0.35, size: 0.32, density: 13, sheetMul: 1.25 };
-  if (style === "roar") return { durationMs: 480, arc: 0.3, size: 0.38, density: 12, sheetMul: 1.2 };
-  if (style === "whirl") return { durationMs: 500, arc: 0.45, size: 0.34, density: 12, sheetMul: 1.15 };
-  if (style === "bless") return { durationMs: 480, arc: 0.4, size: 0.3, density: 10, sheetMul: 1.15 };
-  if (style === "breath") return { durationMs: 620, arc: 0.6, size: 0.4, density: 14, sheetMul: 1.3 };
-  return { durationMs: 460, arc: 0.35, size: 0.32, density: 12, sheetMul: 1.15 };
+  if (style === "slash") return { durationMs: 440, arc: 0.35, size: 0.48, density: 17, sheetMul: 1.45 };
+  if (style === "roar") return { durationMs: 480, arc: 0.3, size: 0.54, density: 16, sheetMul: 1.4 };
+  if (style === "whirl") return { durationMs: 500, arc: 0.45, size: 0.5, density: 16, sheetMul: 1.35 };
+  if (style === "bless") return { durationMs: 480, arc: 0.4, size: 0.44, density: 14, sheetMul: 1.35 };
+  if (style === "breath") return { durationMs: 620, arc: 0.6, size: 0.58, density: 18, sheetMul: 1.5 };
+  return { durationMs: 460, arc: 0.35, size: 0.48, density: 16, sheetMul: 1.35 };
 }
 
 /**
- * Đầu đạn đầy đủ: core glow + flipbook bay + trail streak.
+ * Lớp premium toàn chiêu (non-spirit): CodeManu underlay + Brackeys/Superpowers/SpritePilot.
+ * Tối đa ~3 sheet/pha — lớn, đậm, không hộp đen.
+ */
+function skillPremiumLayers(
+  style: Fx3dStyle,
+  flash?: string
+): { cast: HonLayerRef[]; hit: HonLayerRef[]; flightUnder: string[] } {
+  const f = (flash || "").toLowerCase();
+  const under = itchFrameUrls("codemanu", "hyperspeed", 16);
+  const fire =
+    style === "nova" || f === "fire" || f === "fire_rain" || f === "orange" || f === "red_fire";
+  const thunder = f === "thunder" || f === "storm";
+
+  if (style === "barrier") {
+    return {
+      cast: [
+        { folder: "codemanu", pack: "elden_ring", n: 16, w: 3.2, h: 3.2, opacity: 0.9 },
+        { folder: "brackeys", pack: "ward_barrier", n: 16, w: 2.9, h: 2.9, opacity: 0.85 },
+      ],
+      hit: [],
+      flightUnder: under,
+    };
+  }
+  if (style === "bless") {
+    return {
+      cast: [
+        { folder: "codemanu", pack: "anima", n: 16, w: 2.9, h: 2.9, opacity: 0.88 },
+        { folder: "brackeys", pack: "radiance_aura", n: 16, w: 2.6, h: 2.6, opacity: 0.8 },
+      ],
+      hit: [
+        { folder: "codemanu", pack: "puff_stars", n: 16, w: 3.0, h: 3.0, opacity: 0.9 },
+        { folder: "brackeys", pack: "radiance_aura", n: 16, w: 2.7, h: 2.7, opacity: 0.85 },
+        { folder: "superpowers", pack: "sp_heal", n: 6, w: 2.4, h: 2.4, opacity: 0.95 },
+      ],
+      flightUnder: itchFrameUrls("codemanu", "anima", 16),
+    };
+  }
+  if (style === "slash") {
+    return {
+      cast: [
+        { folder: "codemanu", pack: "charged", n: 16, w: 2.8, h: 2.8, opacity: 0.85 },
+        { folder: "brackeys", pack: "hit_burst", n: 11, w: 2.4, h: 2.4, opacity: 0.75 },
+      ],
+      hit: [
+        { folder: "codemanu", pack: "big_hit", n: 16, w: 3.4, h: 3.4, opacity: 0.95 },
+        { folder: "codemanu", pack: "impact", n: 16, w: 2.9, h: 2.9, opacity: 0.82 },
+        { folder: "superpowers", pack: "sp_hit", n: 11, w: 2.6, h: 2.6, opacity: 0.98 },
+      ],
+      flightUnder: under,
+    };
+  }
+  if (fire) {
+    return {
+      cast: [
+        { folder: "codemanu", pack: "charged", n: 16, w: 3.0, h: 3.0, opacity: 0.88 },
+        { folder: "codemanu", pack: "dithered_fire", n: 16, w: 2.7, h: 2.7, opacity: 0.8 },
+        { folder: "brackeys", pack: "ember_burst", n: 16, w: 2.5, h: 2.5, opacity: 0.72 },
+      ],
+      hit: [
+        { folder: "codemanu", pack: "explosion", n: 16, w: 3.6, h: 3.6, opacity: 0.95 },
+        { folder: "codemanu", pack: "kabooms", n: 16, w: 3.0, h: 3.0, opacity: 0.85 },
+        { folder: "brackeys", pack: "explosion_burst", n: 16, w: 2.8, h: 2.8, opacity: 0.78 },
+      ],
+      flightUnder: itchFrameUrls("codemanu", "pixel_fire", 16),
+    };
+  }
+  if (thunder) {
+    return {
+      cast: [
+        { folder: "codemanu", pack: "electric_shield", n: 16, w: 3.0, h: 3.0, opacity: 0.9 },
+        { folder: "brackeys", pack: "storm_burst", n: 16, w: 2.7, h: 2.7, opacity: 0.8 },
+      ],
+      hit: [
+        { folder: "codemanu", pack: "big_hit", n: 16, w: 3.4, h: 3.4, opacity: 0.95 },
+        { folder: "brackeys", pack: "storm_burst", n: 16, w: 3.0, h: 3.0, opacity: 0.88 },
+        { folder: "spritepilot", pack: "hit_spark", n: 6, w: 2.6, h: 2.6, opacity: 0.98 },
+      ],
+      flightUnder: under,
+    };
+  }
+  if (style === "tide") {
+    return {
+      cast: [
+        { folder: "codemanu", pack: "anima", n: 16, w: 3.0, h: 3.0, opacity: 0.88 },
+        { folder: "brackeys", pack: "water_wave", n: 12, w: 2.7, h: 2.7, opacity: 0.82 },
+      ],
+      hit: [
+        { folder: "spritepilot", pack: "water_splash", n: 9, w: 3.2, h: 3.2, opacity: 0.95 },
+        { folder: "brackeys", pack: "water_wave", n: 12, w: 3.0, h: 3.0, opacity: 0.88 },
+        { folder: "codemanu", pack: "impact", n: 16, w: 2.6, h: 2.6, opacity: 0.75 },
+      ],
+      flightUnder: itchFrameUrls("brackeys", "water_wave", 12),
+    };
+  }
+  if (style === "poison") {
+    return {
+      cast: [
+        { folder: "codemanu", pack: "tentacles", n: 16, w: 3.0, h: 3.0, opacity: 0.88 },
+        { folder: "codemanu", pack: "worm", n: 16, w: 2.6, h: 2.6, opacity: 0.75 },
+      ],
+      hit: [
+        { folder: "codemanu", pack: "impact", n: 16, w: 3.2, h: 3.2, opacity: 0.9 },
+        { folder: "codemanu", pack: "puff_stars", n: 16, w: 2.8, h: 2.8, opacity: 0.8 },
+        { folder: "spritepilot", pack: "smoke_puff", n: 8, w: 2.5, h: 2.5, opacity: 0.85 },
+      ],
+      flightUnder: itchFrameUrls("codemanu", "worm", 16),
+    };
+  }
+  if (style === "shadow") {
+    return {
+      cast: [
+        { folder: "codemanu", pack: "vortex", n: 16, w: 3.0, h: 3.0, opacity: 0.88 },
+        { folder: "brackeys", pack: "shadow_burst", n: 16, w: 2.7, h: 2.7, opacity: 0.8 },
+      ],
+      hit: [
+        { folder: "codemanu", pack: "impact", n: 16, w: 3.2, h: 3.2, opacity: 0.9 },
+        { folder: "brackeys", pack: "shadow_burst", n: 16, w: 2.9, h: 2.9, opacity: 0.85 },
+        { folder: "codemanu", pack: "vortex", n: 16, w: 2.5, h: 2.5, opacity: 0.7 },
+      ],
+      flightUnder: under,
+    };
+  }
+  if (style === "beam") {
+    return {
+      cast: [
+        { folder: "codemanu", pack: "charged", n: 16, w: 2.9, h: 2.9, opacity: 0.88 },
+        { folder: "codemanu", pack: "constellation", n: 16, w: 2.6, h: 2.6, opacity: 0.78 },
+      ],
+      hit: [
+        { folder: "codemanu", pack: "anima", n: 16, w: 3.2, h: 3.2, opacity: 0.9 },
+        { folder: "brackeys", pack: "arcane_burst", n: 16, w: 2.9, h: 2.9, opacity: 0.85 },
+        { folder: "superpowers", pack: "sp_magic", n: 6, w: 2.5, h: 2.5, opacity: 0.95 },
+      ],
+      flightUnder: under,
+    };
+  }
+  if (style === "roar") {
+    return {
+      cast: [
+        { folder: "codemanu", pack: "power_chords", n: 16, w: 3.0, h: 3.0, opacity: 0.9 },
+        { folder: "codemanu", pack: "charged", n: 16, w: 2.7, h: 2.7, opacity: 0.78 },
+      ],
+      hit: [
+        { folder: "codemanu", pack: "big_hit", n: 16, w: 3.5, h: 3.5, opacity: 0.95 },
+        { folder: "superpowers", pack: "sp_shock", n: 7, w: 2.9, h: 2.9, opacity: 0.9 },
+        { folder: "spritepilot", pack: "hit_spark", n: 6, w: 2.5, h: 2.5, opacity: 0.95 },
+      ],
+      flightUnder: under,
+    };
+  }
+  if (style === "whirl") {
+    return {
+      cast: [
+        { folder: "codemanu", pack: "wheel", n: 16, w: 3.1, h: 3.1, opacity: 0.9 },
+        { folder: "codemanu", pack: "vortex", n: 16, w: 2.8, h: 2.8, opacity: 0.8 },
+      ],
+      hit: [
+        { folder: "codemanu", pack: "wheel", n: 16, w: 3.3, h: 3.3, opacity: 0.92 },
+        { folder: "codemanu", pack: "big_hit", n: 16, w: 2.9, h: 2.9, opacity: 0.85 },
+        { folder: "spritepilot", pack: "landing_dust", n: 7, w: 2.6, h: 1.5, opacity: 0.88 },
+      ],
+      flightUnder: itchFrameUrls("codemanu", "hyperspeed", 16),
+    };
+  }
+  if (style === "rush" || style === "charge") {
+    return {
+      cast: [
+        { folder: "codemanu", pack: "charged", n: 16, w: 2.9, h: 2.9, opacity: 0.88 },
+        { folder: "brackeys", pack: "earth_burst", n: 16, w: 2.6, h: 2.6, opacity: 0.8 },
+      ],
+      hit: [
+        { folder: "codemanu", pack: "impact", n: 16, w: 3.3, h: 3.3, opacity: 0.92 },
+        { folder: "brackeys", pack: "earth_burst", n: 16, w: 2.9, h: 2.9, opacity: 0.85 },
+        { folder: "spritepilot", pack: "landing_dust", n: 7, w: 2.8, h: 1.6, opacity: 0.9 },
+      ],
+      flightUnder: under,
+    };
+  }
+  // fallback generic combat
+  return {
+    cast: [
+      { folder: "codemanu", pack: "charged", n: 16, w: 2.8, h: 2.8, opacity: 0.88 },
+      { folder: "brackeys", pack: "hit_burst", n: 11, w: 2.5, h: 2.5, opacity: 0.78 },
+    ],
+    hit: [
+      { folder: "codemanu", pack: "explosion2", n: 16, w: 3.3, h: 3.3, opacity: 0.92 },
+      { folder: "codemanu", pack: "impact", n: 16, w: 2.9, h: 2.9, opacity: 0.82 },
+      { folder: "spritepilot", pack: "hit_spark", n: 6, w: 2.5, h: 2.5, opacity: 0.95 },
+    ],
+    flightUnder: under,
+  };
+}
+
+function emitPremiumLayersAt(
+  scene: THREE.Scene,
+  at: THREE.Vector3,
+  layers: HonLayerRef[],
+  opts: { scale?: string | null; durationMs?: number; color?: number; y0?: number } = {}
+): Fx3dHandle[] {
+  const out: Fx3dHandle[] = [];
+  const mul = scaleMul(opts.scale);
+  layers.forEach((ref, i) => {
+    out.push(
+      emitItchFolderPackAt(scene, at, ref.folder, ref.pack, ref.n, {
+        durationMs: (opts.durationMs ?? 520) + i * 40,
+        w: (ref.w ?? 2.8) * mul,
+        h: (ref.h ?? 2.8) * mul,
+        opacity: ref.opacity ?? 0.88,
+        y: (opts.y0 ?? 0.32) + i * 0.1,
+        delayMs: i * 30,
+        color: opts.color ?? 0xffffff,
+        scale: opts.scale,
+        spin: i === 0,
+      })
+    );
+  });
+  return out;
+}
+
+/**
+ * Đầu đạn đầy đủ: core + sheet element + underlay CodeManu + trail dày.
  * Gọi cho mọi chiêu có đích (địch / đồng minh), trừ barrier / hồn GLB.
  */
 function emitHostileProjectile3d(
@@ -1208,6 +1459,7 @@ function emitHostileProjectile3d(
   const handles: Fx3dHandle[] = [];
   const prof = flightProfile(style, flash);
   const bolt = boltUrlsForStyle(style, flash);
+  const premium = skillPremiumLayers(style, flash);
   handles.push(
     emitCoreFlight3d(scene, from, to, {
       flash,
@@ -1217,15 +1469,29 @@ function emitHostileProjectile3d(
       size: prof.size,
     })
   );
+  // Underlay CodeManu (đậm) rồi overlay element
+  handles.push(
+    emitFlyingSheet3d(scene, from, to, premium.flightUnder, {
+      durationMs: prof.durationMs,
+      w: bolt.w * prof.sheetMul * 1.15,
+      h: bolt.h * prof.sheetMul * 1.15,
+      arc: prof.arc,
+      scale,
+      color: 0xffffff,
+      frameMs: 52,
+      yLift: 0.95,
+    })
+  );
   handles.push(
     emitFlyingSheet3d(scene, from, to, bolt.urls, {
       durationMs: prof.durationMs,
       w: bolt.w * prof.sheetMul,
       h: bolt.h * prof.sheetMul,
-      arc: prof.arc,
+      arc: prof.arc * 1.02,
       scale,
       color: 0xffffff,
-      frameMs: 48,
+      frameMs: 44,
+      yLift: 1.05,
     })
   );
   handles.push(
@@ -1339,7 +1605,7 @@ export function emitDragonSpirit3d(
 }
 
 /**
- * Chuỗi Hồn 4 giai đoạn — dùng cho rồng / xà / hổ / sói / thủy / lôi / phong.
+ * Chuỗi Hồn 4 giai đoạn — GLB + lớp CodeManu/Brackeys/SpritePilot dày (không săn pack spirit).
  */
 export function emitHonSpiritSequence3d(
   scene: THREE.Scene,
@@ -1349,18 +1615,35 @@ export function emitHonSpiritSequence3d(
 ): Fx3dHandle {
   const packId = opts.pack || "hon_rong";
   const pack = HON_PACKS[packId];
+  const layers = honElementLayers(packId);
   const tint = pack.tint;
   const tintHot = new THREE.Color(tint).lerp(new THREE.Color(0xfffbeb), 0.45).getHex();
   const tintDeep = new THREE.Color(tint).multiplyScalar(0.7).getHex();
   const mul = scaleMul(opts.scale);
-  const CHARGE_MS = 420;
-  const FORM_MS = 400;
-  const FLIGHT_MS = 1050;
+  const CHARGE_MS = 520;
+  const FORM_MS = 420;
+  const FLIGHT_MS = 1100;
   const handles: Fx3dHandle[] = [];
   const timers: number[] = [];
   const cancelled = { v: false };
   const ground = from.clone();
   ground.y = Math.min(from.y, 0.12);
+
+  const pushLayer = (at: THREE.Vector3, ref: HonLayerRef, extra: ItchSheetOpts = {}) => {
+    handles.push(
+      emitItchFolderPackAt(scene, at, ref.folder, ref.pack, ref.n, {
+        durationMs: extra.durationMs ?? CHARGE_MS,
+        w: (ref.w ?? 2.6) * mul,
+        h: (ref.h ?? 2.6) * mul,
+        opacity: ref.opacity ?? 0.85,
+        y: extra.y ?? 0.35,
+        delayMs: extra.delayMs,
+        color: extra.color ?? tint,
+        scale: opts.scale,
+        spin: extra.spin,
+      })
+    );
+  };
 
   const start = () => {
     if (cancelled.v || !scene) return;
@@ -1372,13 +1655,23 @@ export function emitHonSpiritSequence3d(
     ]).then(([rings, crescents, sparkles, orbG]) => {
       if (cancelled.v || !scene) return;
 
+      // 1) Charge — CodeManu/Brackeys underlay (đậm) + ring/crescent hon cũ
+      layers.charge.forEach((ref, i) => {
+        pushLayer(i === 0 ? ground : from, ref, {
+          durationMs: CHARGE_MS + FORM_MS * 0.5,
+          y: i === 0 ? 0.06 : 0.4 + i * 0.12,
+          delayMs: i * 40,
+          color: i === 0 ? tint : tintHot,
+          spin: i === 0,
+        });
+      });
       if (rings.length) {
         handles.push(
           emitHonSheetAt(scene, ground, rings, {
             durationMs: CHARGE_MS + FORM_MS,
             w: 2.8 * mul,
             h: 1.55 * mul,
-            opacity: 0.85,
+            opacity: 0.75,
             spin: true,
             spinSpeed: 2.8,
             y: 0.04,
@@ -1392,7 +1685,7 @@ export function emitHonSpiritSequence3d(
             durationMs: CHARGE_MS + 120,
             w: 2.2 * mul,
             h: 1.2 * mul,
-            opacity: 0.7,
+            opacity: 0.65,
             spin: true,
             spinSpeed: -3.4,
             y: 0.08,
@@ -1405,29 +1698,28 @@ export function emitHonSpiritSequence3d(
         handles.push(
           emitHonSheetAt(scene, from, sparkles, {
             durationMs: CHARGE_MS,
-            w: 1.6 * mul,
-            h: 1.6 * mul,
-            opacity: 0.8,
-            y: 0.35,
+            w: 1.8 * mul,
+            h: 1.8 * mul,
+            opacity: 0.85,
+            y: 0.4,
             color: tintHot,
-          })
-        );
-        handles.push(
-          emitHonSheetAt(scene, from, sparkles, {
-            durationMs: CHARGE_MS - 40,
-            w: 1.2 * mul,
-            h: 1.2 * mul,
-            opacity: 0.55,
-            y: 0.55,
-            delayMs: 90,
-            color: tint,
           })
         );
       }
 
+      // 2) Form — vortex / element + GLB spirit
       timers.push(
-        trackTimer(CHARGE_MS * 0.65, () => {
+        trackTimer(CHARGE_MS * 0.55, () => {
           if (cancelled.v || !scene) return;
+          layers.form.forEach((ref, i) => {
+            pushLayer(from, ref, {
+              durationMs: FORM_MS + 180,
+              y: 0.45 + i * 0.15,
+              delayMs: i * 50,
+              color: tintHot,
+              spin: true,
+            });
+          });
           handles.push(
             emitDragonSpirit3d(scene, from, to, {
               durationMs: FLIGHT_MS,
@@ -1439,52 +1731,84 @@ export function emitHonSpiritSequence3d(
               pack: packId,
             })
           );
+          // Trail sheet bay cùng GLB (element dày)
+          handles.push(
+            emitFlyingSheet3d(scene, from, to, layers.flight.urls, {
+              durationMs: FORM_MS + FLIGHT_MS,
+              w: layers.flight.w * 1.15,
+              h: layers.flight.h * 1.15,
+              arc: 0.82,
+              scale: opts.scale,
+              color: tintHot,
+              frameMs: 50,
+              yLift: 1.05,
+            })
+          );
+          handles.push(
+            emitTrail3d(scene, from, to, {
+              flash: pack.flash,
+              durationMs: FORM_MS + FLIGHT_MS,
+              density: 16,
+              arc: 0.78,
+              scale: opts.scale,
+              streak: true,
+            })
+          );
         })
       );
 
-      const hitAt = CHARGE_MS * 0.65 + FORM_MS + FLIGHT_MS - 40;
+      // 3) Hit — CodeManu explosion + Brackeys + SpritePilot
+      const hitAt = CHARGE_MS * 0.55 + FORM_MS + FLIGHT_MS - 50;
       timers.push(
         trackTimer(hitAt, () => {
           if (cancelled.v || !scene) return;
           const hit = to.clone();
           hit.y += 0.2;
-          const orbSpr = makeFxSprite(orbG, tintHot, 0.95, 0.6 * mul, 0.6 * mul);
+          layers.hit.forEach((ref, i) => {
+            pushLayer(hit, ref, {
+              durationMs: 520 + i * 40,
+              y: 0.25 + i * 0.08,
+              delayMs: i * 35,
+              color: i === 0 ? 0xffffff : tintHot,
+            });
+          });
+          const orbSpr = makeFxSprite(orbG, tintHot, 0.95, 0.75 * mul, 0.75 * mul);
           orbSpr.position.copy(hit);
           const now = performance.now();
           handles.push(
             pushMesh(scene, {
               id: nextId++,
               obj: orbSpr,
-              until: now + 420,
+              until: now + 480,
               kind: "flash",
               born: now,
-              lifeMs: 420,
+              lifeMs: 480,
               spriteMat: orbSpr.material as THREE.SpriteMaterial,
               baseOpacity: 0.95,
             })
           );
-          const orbOuter = makeFxSprite(orbG, tintDeep, 0.75, 1.0 * mul, 1.0 * mul);
+          const orbOuter = makeFxSprite(orbG, tintDeep, 0.8, 1.25 * mul, 1.25 * mul);
           orbOuter.position.copy(hit);
           handles.push(
             pushMesh(scene, {
               id: nextId++,
               obj: orbOuter,
-              until: now + 480,
+              until: now + 560,
               kind: "flash",
               born: now,
-              lifeMs: 480,
+              lifeMs: 560,
               spriteMat: orbOuter.material as THREE.SpriteMaterial,
-              baseOpacity: 0.75,
+              baseOpacity: 0.8,
             })
           );
           if (sparkles.length) {
             handles.push(
               emitHonSheetAt(scene, hit, sparkles.slice(2), {
-                durationMs: 400,
-                w: 2.4 * mul,
-                h: 2.4 * mul,
+                durationMs: 440,
+                w: 2.8 * mul,
+                h: 2.8 * mul,
                 opacity: 0.9,
-                y: 0.1,
+                y: 0.12,
                 color: tintHot,
               })
             );
@@ -1494,11 +1818,22 @@ export function emitHonSpiritSequence3d(
             emitShockwave3d(scene, to, {
               flash: pack.flash,
               scale: opts.scale,
-              radius: 2.0,
-              durationMs: 560,
+              radius: 2.35,
+              durationMs: 620,
             })
           );
           handles.push(emitDust3d(scene, to, opts.scale));
+          handles.push(
+            emitSpritepilotAt(scene, to, "landing_dust", 7, {
+              durationMs: 420,
+              w: 2.4,
+              h: 1.4,
+              opacity: 0.85,
+              y: 0.05,
+              color: tintDeep,
+              scale: opts.scale,
+            })
+          );
         })
       );
     });
@@ -1720,30 +2055,21 @@ export function playSkillFx3d(params: {
   const scale = params.scale;
 
   const runEmission = () => {
+    const premium = skillPremiumLayers(style, flash);
     if (style === "barrier") {
-      handles.push(emitShockwave3d(params.scene, params.from, { flash: "shield", scale, radius: 1.6, durationMs: 900 }));
+      handles.push(emitShockwave3d(params.scene, params.from, { flash: "shield", scale, radius: 2.0, durationMs: 980 }));
       handles.push(emitFlashDisc3d(params.scene, params.from, "shield", scale));
       handles.push(emitBurst3d(params.scene, params.from, "gold_soft", scale));
-      handles.push(
-        emitForgeSheetAt(params.scene, params.from, "ward_barrier", {
-          durationMs: 720,
-          w: 2.8,
-          h: 2.8,
-          y: 0.5,
-          spin: true,
-          scale,
-          color: 0xdbeafe,
-        })
-      );
+      handles.push(...emitPremiumLayersAt(params.scene, params.from, premium.cast, { scale, durationMs: 780, color: 0xdbeafe }));
       return;
     }
     if (style === "bless") {
-      // Buff/heal: đầu đạn bay tới đồng minh rồi aura nổ tại đích
       handles.push(emitFlashDisc3d(params.scene, params.from, flash || "gold_soft", scale));
+      handles.push(...emitPremiumLayersAt(params.scene, params.from, premium.cast, { scale, durationMs: 420, color: 0xfef08a }));
       handles.push(...emitHostileProjectile3d(params.scene, params.from, params.to, "bless", flash || "gold_soft", scale));
       return;
     }
-    // Hồn packs (rồng/xà/hổ/sói/thủy/lôi/phong) — GLB bay sẵn, giữ nguyên
+    // Hồn packs — GLB + lớp CodeManu riêng
     {
       const hon = honPackForStyle(style, flash);
       if (hon) {
@@ -1753,30 +2079,23 @@ export function playSkillFx3d(params: {
       }
     }
 
-    // —— Mọi chiêu còn lại: cast nhẹ + đầu đạn bay full (core + sheet + trail) ——
+    // —— Core combat: cast CodeManu dày + đầu đạn dual-sheet + trail ——
     handles.push(emitDust3d(params.scene, params.from, scale));
     handles.push(emitFlashDisc3d(params.scene, params.from, flash, scale));
-    const castPack = forgePackForStyle(style, flash);
-    if (castPack) {
-      handles.push(
-        emitForgeSheetAt(params.scene, params.from, castPack, {
-          durationMs: 340,
-          w: style === "nova" ? 2.4 : 1.9,
-          h: style === "nova" ? 2.4 : 1.9,
-          y: 0.35,
-          opacity: 0.78,
-          scale,
-          color: 0xffffff,
-        })
-      );
-    }
-    if (style === "roar" || style === "whirl") {
+    handles.push(
+      ...emitPremiumLayersAt(params.scene, params.from, premium.cast, {
+        scale,
+        durationMs: style === "nova" ? 480 : 400,
+        y0: 0.28,
+      })
+    );
+    if (style === "roar" || style === "whirl" || style === "nova") {
       handles.push(
         emitShockwave3d(params.scene, params.from, {
           flash,
           scale,
-          radius: style === "roar" ? 2.4 : 2.0,
-          durationMs: 520,
+          radius: style === "nova" ? 2.6 : style === "roar" ? 2.6 : 2.2,
+          durationMs: 560,
         })
       );
     }
@@ -1789,194 +2108,52 @@ export function playSkillFx3d(params: {
   const runImpact = () => {
     // Hồn spirit tự nổ khi tới đích — tránh nổ sớm
     if (honPackForStyle(style, flash)) return;
+    const premium = skillPremiumLayers(style, flash);
     handles.push(emitBurst3d(params.scene, params.to, flash, scale));
     handles.push(emitDust3d(params.scene, params.to, scale));
-    /**
-     * Chồng lớp khi sheet mỏng: nền Brackeys/forge (đậm, hơi mờ) + overlay chi tiết.
-     * Tối đa 2 flipbook — không dồn 4–5 sheet cùng loại.
-     */
+    // CodeManu + Brackeys + SpritePilot/Superpowers — underlay đậm, không phèn
+    handles.push(
+      ...emitPremiumLayersAt(params.scene, params.to, premium.hit, {
+        scale,
+        durationMs: 560,
+        y0: 0.3,
+      })
+    );
     const fHit = (flash || "").toLowerCase();
     if (fHit === "thunder" || fHit === "storm") {
       handles.push(
-        emitForgeSheetAt(params.scene, params.to, "storm_burst", {
-          durationMs: 520,
-          w: 2.9,
-          h: 2.9,
-          y: 0.35,
-          opacity: 0.82,
-          scale,
-          color: 0xe9d5ff,
-        })
-      );
-      handles.push(
         emitItchFolderPackAt(params.scene, params.to, "stylized", "lightning", 1, {
           durationMs: 420,
-          w: 2.8,
-          h: 1.5,
-          y: 0.55,
-          delayMs: 35,
+          w: 3.0,
+          h: 1.7,
+          y: 0.65,
+          delayMs: 40,
           opacity: 0.98,
           scale,
           color: 0xf5f3ff,
         })
       );
-    } else if (style === "nova") {
-      handles.push(
-        emitForgeSheetAt(params.scene, params.to, "explosion_burst", {
-          durationMs: 560,
-          w: 3.1,
-          h: 3.1,
-          y: 0.35,
-          opacity: 0.85,
-          scale,
-          color: 0xffedd5,
-        })
-      );
-      handles.push(
-        emitSuperpowersAt(params.scene, params.to, "sp_fire", 6, {
-          durationMs: 480,
-          w: 2.5,
-          h: 2.5,
-          y: 0.5,
-          delayMs: 50,
-          opacity: 0.95,
-          scale,
-          color: 0xfb923c,
-        })
-      );
-    } else if (style === "tide") {
-      handles.push(
-        emitBrackeysExtraAt(params.scene, params.to, "water_wave", 16, {
-          durationMs: 560,
-          w: 2.9,
-          h: 2.9,
-          y: 0.28,
-          opacity: 0.88,
-          scale,
-          color: 0xbae6fd,
-        })
-      );
-      handles.push(
-        emitItchFolderPackAt(params.scene, params.to, "stylized", "flash", 3, {
-          durationMs: 400,
-          w: 2.0,
-          h: 2.0,
-          y: 0.45,
-          delayMs: 40,
-          opacity: 0.9,
-          scale,
-          color: 0xe0f2fe,
-        })
-      );
-    } else if (style === "slash") {
-      handles.push(
-        emitForgeSheetAt(params.scene, params.to, "hit_burst", {
-          durationMs: 460,
-          w: 2.8,
-          h: 2.8,
-          y: 0.35,
-          opacity: 0.8,
-          scale,
-          color: 0xffffff,
-        })
-      );
-      handles.push(
-        emitSuperpowersAt(params.scene, params.to, "sp_hit", 11, {
-          durationMs: 420,
-          w: 2.4,
-          h: 2.4,
-          y: 0.5,
-          delayMs: 25,
-          opacity: 0.98,
-          scale,
-          color: 0xffffff,
-        })
-      );
-    } else if (style === "bless") {
-      handles.push(
-        emitForgeSheetAt(params.scene, params.to, "radiance_aura", {
-          durationMs: 520,
-          w: 2.7,
-          h: 2.7,
-          y: 0.35,
-          opacity: 0.82,
-          scale,
-          color: 0xfef08a,
-        })
-      );
-      handles.push(
-        emitSuperpowersAt(params.scene, params.to, "sp_heal", 6, {
-          durationMs: 460,
-          w: 2.3,
-          h: 2.3,
-          y: 0.5,
-          delayMs: 30,
-          opacity: 0.95,
-          scale,
-          color: 0xfef9c3,
-        })
-      );
-    } else if (style === "beam") {
-      handles.push(
-        emitForgeSheetAt(params.scene, params.to, "arcane_burst", {
-          durationMs: 500,
-          w: 2.7,
-          h: 2.7,
-          y: 0.35,
-          opacity: 0.82,
-          scale,
-          color: 0xc4b5fd,
-        })
-      );
-      handles.push(
-        emitSuperpowersAt(params.scene, params.to, "sp_magic", 6, {
-          durationMs: 440,
-          w: 2.3,
-          h: 2.3,
-          y: 0.5,
-          delayMs: 30,
-          opacity: 0.95,
-          scale,
-          color: 0xe9d5ff,
-        })
-      );
-    } else {
-      const forgeHit = forgePackForStyle(style, flash);
-      if (forgeHit && style !== "barrier") {
-        handles.push(
-          emitForgeSheetAt(params.scene, params.to, forgeHit, {
-            durationMs: 500,
-            w: 2.6,
-            h: 2.6,
-            y: 0.35,
-            opacity: 0.88,
-            scale,
-            color: 0xffffff,
-          })
-        );
-      }
     }
-    if (style === "roar" || style === "nova" || style === "whirl") {
+    if (style === "roar" || style === "nova" || style === "whirl" || style === "slash") {
       handles.push(
         emitShockwave3d(params.scene, params.to, {
           flash,
           scale,
-          radius: style === "nova" ? 2.6 : 1.9,
-          durationMs: 560,
+          radius: style === "nova" ? 3.0 : style === "slash" ? 2.0 : 2.3,
+          durationMs: 620,
         })
       );
     } else if (style === "rush" || style === "charge") {
       handles.push(emitFlashDisc3d(params.scene, params.to, flash, scale));
-      if (style === "charge") {
-        handles.push(emitShockwave3d(params.scene, params.to, { flash, scale, radius: 1.4, durationMs: 400 }));
-      }
+      handles.push(emitShockwave3d(params.scene, params.to, { flash, scale, radius: 1.8, durationMs: 460 }));
     } else if (style === "barrier" || style === "bless") {
       handles.push(emitFlashDisc3d(params.scene, params.to, flash || "gold_soft", scale));
     } else if (style === "tide" || style === "poison" || style === "shadow" || style === "beam") {
       handles.push(emitFlashDisc3d(params.scene, params.to, flash, scale));
-      if (style === "poison" || style === "shadow") {
-        handles.push(emitShockwave3d(params.scene, params.to, { flash, scale, radius: 1.35, durationMs: 420 }));
-      }
+      handles.push(emitShockwave3d(params.scene, params.to, { flash, scale, radius: 1.7, durationMs: 480 }));
+    } else {
+      handles.push(emitFlashDisc3d(params.scene, params.to, flash, scale));
+      handles.push(emitShockwave3d(params.scene, params.to, { flash, scale, radius: 1.6, durationMs: 450 }));
     }
   };
 

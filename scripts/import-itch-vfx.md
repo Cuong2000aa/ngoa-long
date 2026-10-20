@@ -3,24 +3,26 @@
 Itch.io / OGA thường chặn auto-DL (Cloudflare).  
 Bạn tải tay → thả `.zip` vào `_dl/itch-fx/drop/` → báo agent chạy import.
 
-## Đã auto-tải được (GitHub)
+## Đã auto-tải được (GitHub / OGA CDN)
 
 | Pack | URL | Status |
 |------|-----|--------|
 | Kenney Particle Pack | https://github.com/Calinou/kenney-particle-pack | ✅ (đã có `assets/fx/particles`) |
 | RPicster VFX textures | https://github.com/RPicster/Godot-particle-and-vfx-textures | ✅ `itch/rpicster_particles` |
 | Superpowers asset packs | https://github.com/sparklinlabs/superpowers-asset-packs | ✅ `itch/superpowers_*` + curated |
+| **CodeManu Free VFX Pack** | https://opengameart.org/sites/default/files/vfx_free_pack.zip | ✅ `itch/codemanu/*` — `python3 scripts/import-codemanu-hon-fx.py` |
+| **SpritePilot Effects** | https://spritepilot.com/free-assets/effects/*.png | ✅ `itch/spritepilot/*` |
 
 ## Pack itch/OGA (thường Cloudflare — tải tay nếu được)
 
 | Pack | URL | Ghi chú |
 |------|-----|---------|
 | Brackeys / Stylized | itch | ✅ Đã wire trước đó |
-| CodeManu / PVFX Foundry | OGA / itch | ❌ Agent không tải được |
+| PVFX Foundry | itch | Cloudflare — thả zip vào drop nếu cần |
 
 ## Pack **không** dùng
 
-Binbun Free = Godot shader.
+Binbun Free = Godot shader (Battle/Electric/Dark/Elemental/Status FX Free).
 
 ## Sau khi thả zip
 
@@ -36,5 +38,5 @@ python3 scripts/slice-brackeys-fx.py      # nếu có Brackeys
 
 ## Runtime hiện tại
 
-- Hồn thú: GLB `hon_3d/`
+- Hồn thú: GLB `hon_3d/` + charge/form/hit **CodeManu + Brackeys + SpritePilot** (tint theo pack)
 - Non-spirit: Brackeys slice (`explosion` / `slash_seq` / `fire_point` / `water_wave` / …) + Stylized overlay + forge fallback

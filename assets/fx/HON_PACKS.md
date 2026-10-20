@@ -13,18 +13,17 @@
 
 Runtime: `battleVfx3d.ts` → `GLTFLoader`. **Không** tự gen mesh thú.
 
-## Charge / hit sheets (sprite CC0)
+## Charge / form / hit — **lớp dày** (không săn pack “spirit thú”)
 
-Assembled by `python3 scripts/assemble-hon-cc0.py` — ring/crescent/sparkle only (not the flying body).
+Runtime `emitHonSpiritSequence3d` chồng:
 
-| Folder | Look | Source |
-|--------|------|--------|
-| `hon_rong/` | charge fire | GreatDog_ARt / Master484 / Kenney particles |
-| `hon_xa/` | poison | Blooming Pixels / Shepardskin overlays |
-| `hon_ho/` | tiger | SpritePilot claw/roar |
-| `hon_soi/` | wolf | Segel2D |
-| `hon_thuy/` | water | Cethiel Water |
-| `hon_loi/` | thunder | Starsteel |
-| `hon_phong/` | whirl | n4 Whirlwind |
+1. **CodeManu Free VFX** (`assets/fx/itch/codemanu/`) — OGA CC0, tải được  
+   charge / vortex / fire / explosion / tentacles / electric_shield / wheel…
+2. **Brackeys** (`itch/brackeys/`) — ember / storm / water / explosion…
+3. **SpritePilot** (`itch/spritepilot/`) — explosion / fire / water_splash / hit_spark…
+4. Ring/crescent/sparkle cũ trong `hon_*` (assemble CC0)
+
+Import: `python3 scripts/import-codemanu-hon-fx.py`  
+Map: `honElementLayers()` trong `battleVfx3d.ts`.
 
 Do **not** use `npm run gen:hon-packs` for creature silhouettes.

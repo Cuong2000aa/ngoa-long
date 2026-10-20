@@ -91,3 +91,9 @@ Buff/debuff: wiki [Hiệu ứng](https://ngoalong.vnggames.com/ngoa-long-wiki/hi
 - **superpowers_prehistoric_fx** — Sparklin Superpowers CC0 → `assets/fx/itch/superpowers_prehistoric_fx/` (30 png)
 - **rpicster_particles** — RPicster Godot VFX textures CC0 → `assets/fx/itch/rpicster_particles/` (66 png)
 
+## CodeManu + SpritePilot (hồn upgrade)
+- **CodeManu Free VFX Pack** — CC0 — https://opengameart.org/content/free-vfx-asset-pack
+  → `assets/fx/itch/codemanu/{charged , vortex , dithered_fire , pixel_fire , magma , explosion , explosion2 , kabooms , anima , constellation , puff_stars , electric_shield , tentacles , worm , hyperspeed , elden_ring , impact , big_hit , wheel , power_chords}/` (30fps subsampled)
+- **SpritePilot Free Effects** — CC0 — https://spritepilot.com/free-game-assets/effects
+  → `assets/fx/itch/spritepilot/{explosion , smoke_puff , landing_dust , hit_spark , fire , water_splash , magic_sparkle}/`
+
