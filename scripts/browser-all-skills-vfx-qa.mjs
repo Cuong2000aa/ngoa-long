@@ -302,8 +302,8 @@ try {
       if (br.renderer && br.scene && br.camera) br.renderer.render(br.scene, br.camera);
     });
     const motifKey = s.motif || s.flash;
-    const shot = resolve(outDir, `motif-${motifKey}.png`);
-    await page.screenshot({ path: shot, fullPage: false, type: "png", timeout: 35000 });
+    const shot = resolve(outDir, `motif-${motifKey}.jpg`);
+    await page.screenshot({ path: shot, fullPage: false, type: "jpeg", quality: 70, timeout: 25000 });
     motifShot.add(motifKey);
     console.log("SHOT", motifKey);
   }
