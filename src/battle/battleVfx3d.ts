@@ -54,7 +54,7 @@ type MeshFx = {
   id: number;
   obj: THREE.Object3D;
   until: number;
-  kind: "ring" | "core" | "flash" | "spirit" | "spin";
+  kind: "ring" | "core" | "flash" | "spirit" | "spin" | "bolt";
   born: number;
   lifeMs: number;
   // ring / spin
@@ -583,6 +583,7 @@ function forgePackForStyle(style: Fx3dStyle, flash?: string): ForgePackId | null
     return "hit_burst";
   }
   if (style === "rush" || style === "charge") return "earth_burst";
+  if (style === "tide") return "ward_barrier"; // sheet chính; overlay water_wave ở cast/impact
   return null;
 }
 
@@ -644,27 +645,31 @@ function emitForgeSheetAt(
   };
 }
 
-/** Stylized Projectiles (itch) — pack đã curate dưới assets/fx/itch/stylized/ */
-function emitItchStylizedAt(
+type ItchSheetOpts = {
+  durationMs?: number;
+  w?: number;
+  h?: number;
+  opacity?: number;
+  y?: number;
+  delayMs?: number;
+  color?: number;
+  scale?: string | null;
+  spin?: boolean;
+};
+
+/** Sheet pack dưới assets/fx/itch/{folder}/{pack}/frame_XX.png */
+function emitItchFolderPackAt(
   scene: THREE.Scene,
   at: THREE.Vector3,
+  folder: "stylized" | "brackeys" | "superpowers",
   pack: string,
   frameCount: number,
-  opts: {
-    durationMs?: number;
-    w?: number;
-    h?: number;
-    opacity?: number;
-    y?: number;
-    delayMs?: number;
-    color?: number;
-    scale?: string | null;
-  } = {}
+  opts: ItchSheetOpts = {}
 ): Fx3dHandle {
   const pad = (i: number) => String(i).padStart(2, "0");
   const urls = Array.from(
     { length: frameCount },
-    (_, i) => `assets/fx/itch/stylized/${pack}/frame_${pad(i + 1)}.png`
+    (_, i) => `assets/fx/itch/${folder}/${pack}/frame_${pad(i + 1)}.png`
   );
   const mul = scaleMul(opts.scale);
   const cancelled = { v: false };
@@ -681,6 +686,7 @@ function emitItchStylizedAt(
             w: (opts.w ?? 2.2) * mul,
             h: (opts.h ?? 2.2) * mul,
             opacity: opts.opacity ?? 0.95,
+            spin: opts.spin,
             y: opts.y ?? 0.4,
             color: opts.color ?? 0xffffff,
           })
@@ -705,6 +711,28 @@ function emitItchStylizedAt(
       handles.forEach((h) => h.cancel());
     },
   };
+}
+
+/** Brackeys slice thêm (slash_seq / fire_point / water_wave …) */
+function emitBrackeysExtraAt(
+  scene: THREE.Scene,
+  at: THREE.Vector3,
+  pack: string,
+  frameCount: number,
+  opts: ItchSheetOpts = {}
+): Fx3dHandle {
+  return emitItchFolderPackAt(scene, at, "brackeys", pack, frameCount, opts);
+}
+
+/** Sparklin Superpowers CC0 battle FX (GitHub auto-import) */
+function emitSuperpowersAt(
+  scene: THREE.Scene,
+  at: THREE.Vector3,
+  pack: string,
+  frameCount: number,
+  opts: ItchSheetOpts = {}
+): Fx3dHandle {
+  return emitItchFolderPackAt(scene, at, "superpowers", pack, frameCount, opts);
 }
 
 /** Sheet ground / spark — spin hoặc flash. */
@@ -975,46 +1003,242 @@ export function emitCoreFlight3d(
   const mul = scaleMul(opts.scale);
   const durationMs = opts.durationMs ?? 520;
   const pal = flashPalette(opts.flash);
-  const size = (opts.size ?? 0.28) * mul;
+  const size = (opts.size ?? 0.38) * mul;
 
   const core = new THREE.Mesh(
-    new THREE.SphereGeometry(size, 12, 10),
+    new THREE.SphereGeometry(size, 14, 12),
     new THREE.MeshBasicMaterial({
       color: pal.hot,
       transparent: true,
-      opacity: 0.95,
+      opacity: 1,
       depthWrite: false,
       blending: THREE.AdditiveBlending,
     })
   );
   const shell = new THREE.Mesh(
-    new THREE.SphereGeometry(size * 1.55, 12, 10),
+    new THREE.SphereGeometry(size * 1.7, 14, 12),
     new THREE.MeshBasicMaterial({
       color: pal.base,
       transparent: true,
-      opacity: 0.35,
+      opacity: 0.45,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+    })
+  );
+  const halo = new THREE.Mesh(
+    new THREE.SphereGeometry(size * 2.4, 12, 10),
+    new THREE.MeshBasicMaterial({
+      color: pal.cool,
+      transparent: true,
+      opacity: 0.18,
       depthWrite: false,
       blending: THREE.AdditiveBlending,
     })
   );
   const root = new THREE.Group();
+  root.add(halo);
   root.add(shell);
   root.add(core);
-  root.position.copy(from);
-  root.renderOrder = 55;
+  // Bay ngang ngực thủ lĩnh, không sát đất
+  const start = from.clone();
+  start.y = Math.max(from.y, 0.85);
+  const end = to.clone();
+  end.y = Math.max(to.y, 0.85);
+  root.position.copy(start);
+  root.renderOrder = 58;
 
   const now = performance.now();
   return pushMesh(scene, {
     id: nextId++,
     obj: root,
-    until: now + durationMs + 60,
+    until: now + durationMs + 80,
     kind: "core",
     born: now,
     lifeMs: durationMs,
-    from: from.clone(),
-    to: to.clone(),
-    arc: opts.arc ?? 0.5,
+    from: start,
+    to: end,
+    arc: opts.arc ?? 0.55,
   });
+}
+
+/**
+ * Flipbook bay theo cung caster → địch (đầu đạn nhìn rõ).
+ * Sheet mỏng thì chồng với emitCoreFlight3d.
+ */
+export function emitFlyingSheet3d(
+  scene: THREE.Scene,
+  from: THREE.Vector3,
+  to: THREE.Vector3,
+  frameUrls: string[],
+  opts: {
+    durationMs?: number;
+    w?: number;
+    h?: number;
+    arc?: number;
+    color?: number;
+    opacity?: number;
+    scale?: string | null;
+    frameMs?: number;
+    yLift?: number;
+  } = {}
+): Fx3dHandle {
+  const mul = scaleMul(opts.scale);
+  const durationMs = opts.durationMs ?? 480;
+  const cancelled = { v: false };
+  const handles: Fx3dHandle[] = [];
+  const start = from.clone();
+  start.y = Math.max(from.y, opts.yLift ?? 0.9);
+  const end = to.clone();
+  end.y = Math.max(to.y, opts.yLift ?? 0.9);
+
+  void loadFrameSet(frameUrls)
+    .then((frames) => {
+      if (cancelled.v || !scene || !frames.length) return;
+      const mat = new THREE.SpriteMaterial({
+        map: frames[0],
+        color: opts.color ?? 0xffffff,
+        transparent: true,
+        opacity: opts.opacity ?? 0.98,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending,
+      });
+      const spr = new THREE.Sprite(mat);
+      spr.scale.set((opts.w ?? 1.4) * mul, (opts.h ?? 1.4) * mul, 1);
+      spr.position.copy(start);
+      spr.renderOrder = 60;
+      const now = performance.now();
+      handles.push(
+        pushMesh(scene, {
+          id: nextId++,
+          obj: spr,
+          until: now + durationMs + 80,
+          kind: "bolt",
+          born: now,
+          lifeMs: durationMs,
+          from: start,
+          to: end,
+          arc: opts.arc ?? 0.5,
+          frames,
+          frameI: 0,
+          nextFrame: now + (opts.frameMs ?? 55),
+          frameMs: opts.frameMs ?? 55,
+          spriteMat: mat,
+          baseOpacity: opts.opacity ?? 0.98,
+          baseScale: 1,
+        })
+      );
+    })
+    .catch(() => {});
+
+  return {
+    cancel() {
+      cancelled.v = true;
+      handles.forEach((h) => h.cancel());
+    },
+  };
+}
+
+function boltUrlsForStyle(style: Fx3dStyle, flash?: string): { urls: string[]; w: number; h: number } {
+  const f = (flash || "").toLowerCase();
+  const pad = (i: number) => String(i).padStart(2, "0");
+  const br = (pack: string, n: number) =>
+    Array.from({ length: n }, (_, i) => `assets/fx/itch/brackeys/${pack}/frame_${pad(i + 1)}.png`);
+  const st = (pack: string, n: number) =>
+    Array.from({ length: n }, (_, i) => `assets/fx/itch/stylized/${pack}/frame_${pad(i + 1)}.png`);
+  const sp = (pack: string, n: number) =>
+    Array.from({ length: n }, (_, i) => `assets/fx/itch/superpowers/${pack}/frame_${pad(i + 1)}.png`);
+
+  if (style === "slash") return { urls: sp("sp_slash", 8), w: 1.65, h: 1.65 };
+  if (style === "nova" || f === "fire" || f === "fire_rain" || f === "orange" || f === "red_fire")
+    return { urls: br("fire_point", 12), w: 1.55, h: 1.55 };
+  if (f === "thunder" || f === "storm") return { urls: st("lightning", 1), w: 1.85, h: 1.05 };
+  if (style === "tide" || f === "blue_water" || f === "cyan" || f === "teal" || f === "white_blue")
+    return { urls: br("water_wave", 10), w: 1.55, h: 1.55 };
+  if (style === "beam" || style === "shadow" || f === "bagua" || f === "purple" || f === "violet")
+    return { urls: sp("sp_magic", 6), w: 1.5, h: 1.5 };
+  if (style === "poison") return { urls: sp("sp_smoke", 6), w: 1.4, h: 1.4 };
+  if (style === "rush" || style === "charge") return { urls: br("muzzle_seq", 5), w: 1.35, h: 1.35 };
+  if (style === "roar") return { urls: sp("sp_shock", 7), w: 1.55, h: 1.55 };
+  if (style === "whirl") return { urls: br("lightstreaks", 12), w: 1.5, h: 1.5 };
+  if (style === "bless") return { urls: sp("sp_heal", 6), w: 1.4, h: 1.4 };
+  if (style === "breath") return { urls: br("ember_burst", 12), w: 1.6, h: 1.6 };
+  // fallback — mũi tên stylized (luôn có)
+  return { urls: st("arrow", 2), w: 1.55, h: 1.25 };
+}
+
+/** Profile bay caster → mục tiêu theo style (dùng cho mọi chiêu non-spirit). */
+function flightProfile(style: Fx3dStyle, flash?: string): {
+  durationMs: number;
+  arc: number;
+  size: number;
+  density: number;
+  sheetMul: number;
+} {
+  const f = (flash || "").toLowerCase();
+  if (style === "charge") return { durationMs: 420, arc: 0.14, size: 0.34, density: 14, sheetMul: 1.1 };
+  if (style === "rush") return { durationMs: 360, arc: 0.22, size: 0.3, density: 13, sheetMul: 1.15 };
+  if (style === "nova") return { durationMs: 560, arc: 0.55, size: 0.42, density: 13, sheetMul: 1.25 };
+  if (style === "tide") return { durationMs: 560, arc: 0.5, size: 0.36, density: 13, sheetMul: 1.2 };
+  if (style === "poison") return { durationMs: 540, arc: 0.38, size: 0.32, density: 14, sheetMul: 1.15 };
+  if (style === "shadow") return { durationMs: 520, arc: 0.34, size: 0.3, density: 12, sheetMul: 1.15 };
+  if (style === "beam") {
+    if (f === "thunder" || f === "storm") return { durationMs: 500, arc: 0.28, size: 0.36, density: 14, sheetMul: 1.2 };
+    return { durationMs: 520, arc: 0.32, size: 0.34, density: 12, sheetMul: 1.2 };
+  }
+  if (style === "slash") return { durationMs: 440, arc: 0.35, size: 0.32, density: 13, sheetMul: 1.25 };
+  if (style === "roar") return { durationMs: 480, arc: 0.3, size: 0.38, density: 12, sheetMul: 1.2 };
+  if (style === "whirl") return { durationMs: 500, arc: 0.45, size: 0.34, density: 12, sheetMul: 1.15 };
+  if (style === "bless") return { durationMs: 480, arc: 0.4, size: 0.3, density: 10, sheetMul: 1.15 };
+  if (style === "breath") return { durationMs: 620, arc: 0.6, size: 0.4, density: 14, sheetMul: 1.3 };
+  return { durationMs: 460, arc: 0.35, size: 0.32, density: 12, sheetMul: 1.15 };
+}
+
+/**
+ * Đầu đạn đầy đủ: core glow + flipbook bay + trail streak.
+ * Gọi cho mọi chiêu có đích (địch / đồng minh), trừ barrier / hồn GLB.
+ */
+function emitHostileProjectile3d(
+  scene: THREE.Scene,
+  from: THREE.Vector3,
+  to: THREE.Vector3,
+  style: Fx3dStyle,
+  flash: string,
+  scale?: string | null
+): Fx3dHandle[] {
+  const handles: Fx3dHandle[] = [];
+  const prof = flightProfile(style, flash);
+  const bolt = boltUrlsForStyle(style, flash);
+  handles.push(
+    emitCoreFlight3d(scene, from, to, {
+      flash,
+      scale,
+      durationMs: prof.durationMs,
+      arc: prof.arc,
+      size: prof.size,
+    })
+  );
+  handles.push(
+    emitFlyingSheet3d(scene, from, to, bolt.urls, {
+      durationMs: prof.durationMs,
+      w: bolt.w * prof.sheetMul,
+      h: bolt.h * prof.sheetMul,
+      arc: prof.arc,
+      scale,
+      color: 0xffffff,
+      frameMs: 48,
+    })
+  );
+  handles.push(
+    emitTrail3d(scene, from, to, {
+      flash,
+      durationMs: prof.durationMs,
+      density: prof.density,
+      arc: prof.arc * 0.92,
+      scale,
+      streak: true,
+    })
+  );
+  return handles;
 }
 
 /**
@@ -1442,11 +1666,16 @@ export function emitTrail3d(
   const density = opts.density ?? 8;
   const arc = opts.arc ?? 0.45;
   const mul = scaleMul(opts.scale);
-  const capacity = Math.min(280, Math.round((durationMs / 14) * density * mul));
-  const { points, geom } = makePoints(capacity, true, 0.32 * mul, !!opts.streak);
+  const capacity = Math.min(320, Math.round((durationMs / 12) * density * mul));
+  const { points, geom } = makePoints(capacity, true, 0.38 * mul, !!opts.streak);
   const particles = allocParticles(capacity);
   const pal = flashPalette(opts.flash);
   const now = performance.now();
+  // Trail ngang ngực — khớp đầu đạn bay
+  const a = from.clone();
+  a.y = Math.max(from.y, 0.85);
+  const b = to.clone();
+  b.y = Math.max(to.y, 0.85);
 
   return pushEmit(scene, {
     id: nextId++,
@@ -1455,8 +1684,8 @@ export function emitTrail3d(
     geom,
     until: now + durationMs + 420,
     kind: "trail",
-    from: from.clone(),
-    to: to.clone(),
+    from: a,
+    to: b,
     born: now,
     durationMs,
     tint: pal.base,
@@ -1466,8 +1695,8 @@ export function emitTrail3d(
     density,
     lastSpawn: -999,
     cursor: 0,
-    gravity: 1.2,
-    drag: 1.4,
+    gravity: 0.9,
+    drag: 1.2,
   });
 }
 
@@ -1509,23 +1738,12 @@ export function playSkillFx3d(params: {
       return;
     }
     if (style === "bless") {
-      handles.push(emitShockwave3d(params.scene, params.to, { flash: flash || "gold_soft", scale, radius: 1.2, durationMs: 720 }));
-      handles.push(emitFlashDisc3d(params.scene, params.to, flash || "gold_soft", scale));
-      handles.push(emitBurst3d(params.scene, params.to, flash || "gold_soft", scale));
-      handles.push(
-        emitForgeSheetAt(params.scene, params.to, "radiance_aura", {
-          durationMs: 680,
-          w: 2.6,
-          h: 2.6,
-          y: 0.45,
-          spin: true,
-          scale,
-          color: 0xfde68a,
-        })
-      );
+      // Buff/heal: đầu đạn bay tới đồng minh rồi aura nổ tại đích
+      handles.push(emitFlashDisc3d(params.scene, params.from, flash || "gold_soft", scale));
+      handles.push(...emitHostileProjectile3d(params.scene, params.from, params.to, "bless", flash || "gold_soft", scale));
       return;
     }
-    // Hồn packs (rồng/xà/hổ/sói/thủy/lôi/phong) — 4 pha, tự nổ lúc tới đích
+    // Hồn packs (rồng/xà/hổ/sói/thủy/lôi/phong) — GLB bay sẵn, giữ nguyên
     {
       const hon = honPackForStyle(style, flash);
       if (hon) {
@@ -1534,175 +1752,38 @@ export function playSkillFx3d(params: {
         return;
       }
     }
-    if (style === "roar") {
-      handles.push(emitShockwave3d(params.scene, params.from, { flash, scale, radius: 3.0, durationMs: 680 }));
-      handles.push(emitBurst3d(params.scene, params.from, flash, scale));
-      handles.push(emitDust3d(params.scene, params.from, scale));
-      return;
-    }
-    if (style === "rush" || style === "charge") {
-      handles.push(emitDust3d(params.scene, params.from, scale));
-      handles.push(emitFlashDisc3d(params.scene, params.from, flash, scale));
-      handles.push(
-        emitForgeSheetAt(params.scene, params.from, "earth_burst", {
-          durationMs: 360,
-          w: 1.8,
-          h: 1.8,
-          y: 0.25,
-          scale,
-          color: 0xf5d0a9,
-        })
-      );
-      const dur = style === "charge" ? 360 : 280;
-      handles.push(
-        emitCoreFlight3d(params.scene, params.from, params.to, {
-          flash,
-          scale,
-          durationMs: dur,
-          arc: style === "charge" ? 0.12 : 0.18,
-          size: style === "charge" ? 0.22 : 0.18,
-        })
-      );
-      handles.push(
-        emitTrail3d(params.scene, params.from, params.to, {
-          flash,
-          durationMs: dur,
-          density: style === "charge" ? 12 : 10,
-          arc: style === "charge" ? 0.1 : 0.16,
-          scale,
-          streak: true,
-        })
-      );
-      if (style === "charge") {
-        handles.push(emitDust3d(params.scene, params.from.clone().lerp(params.to, 0.45), scale));
-      }
-      return;
-    }
-    if (style === "beam" || style === "tide" || style === "poison" || style === "shadow") {
-      handles.push(emitFlashDisc3d(params.scene, params.from, flash, scale));
-      const forge = forgePackForStyle(style, flash);
-      if (forge) {
-        handles.push(
-          emitForgeSheetAt(params.scene, params.from, forge, {
-            durationMs: 420,
-            w: 2.0,
-            h: 2.0,
-            y: 0.4,
-            scale,
-            color: 0xffffff,
-          })
-        );
-      }
-      const dur = style === "beam" ? 420 : 480;
-      handles.push(
-        emitCoreFlight3d(params.scene, params.from, params.to, {
-          flash,
-          scale,
-          durationMs: dur,
-          arc: style === "tide" ? 0.4 : style === "poison" ? 0.32 : 0.25,
-          size: style === "shadow" ? 0.2 : 0.16,
-        })
-      );
-      handles.push(
-        emitTrail3d(params.scene, params.from, params.to, {
-          flash,
-          durationMs: dur,
-          density: style === "poison" ? 11 : 8,
-          arc: style === "tide" ? 0.38 : 0.22,
-          scale,
-          streak: style === "beam" || style === "shadow",
-        })
-      );
-      return;
-    }
-    if (style === "nova") {
-      handles.push(emitFlashDisc3d(params.scene, params.from, flash, scale));
-      handles.push(
-        emitForgeSheetAt(params.scene, params.from, "explosion_burst", {
-          durationMs: 560,
-          w: 2.8,
-          h: 2.8,
-          y: 0.4,
-          scale,
-          color: 0xffedd5,
-        })
-      );
-      handles.push(
-        emitTrail3d(params.scene, params.from, params.to, {
-          flash,
-          durationMs: 520,
-          density: 8,
-          arc: 0.55,
-          scale,
-        })
-      );
-      return;
-    }
-    if (style === "whirl") {
-      handles.push(emitShockwave3d(params.scene, params.from, { flash, scale, radius: 2.2, durationMs: 700 }));
-      handles.push(emitDust3d(params.scene, params.from, scale));
-      handles.push(
-        emitTrail3d(params.scene, params.from, params.to, {
-          flash,
-          durationMs: 450,
-          density: 9,
-          arc: 0.5,
-          scale,
-        })
-      );
-      return;
-    }
 
-    // slash — wide crescent + forge impact sheet
+    // —— Mọi chiêu còn lại: cast nhẹ + đầu đạn bay full (core + sheet + trail) ——
     handles.push(emitDust3d(params.scene, params.from, scale));
     handles.push(emitFlashDisc3d(params.scene, params.from, flash, scale));
-    {
-      const forge = forgePackForStyle("slash", flash);
-      if (forge) {
-        handles.push(
-          emitForgeSheetAt(params.scene, params.from, forge, {
-            durationMs: 400,
-            w: 2.2,
-            h: 2.2,
-            y: 0.4,
-            scale,
-            color: 0xffffff,
-          })
-        );
-      }
+    const castPack = forgePackForStyle(style, flash);
+    if (castPack) {
       handles.push(
-        emitItchStylizedAt(params.scene, params.from, "slash_a", 2, {
-          durationMs: 380,
-          w: 2.4,
-          h: 2.4,
-          y: 0.45,
+        emitForgeSheetAt(params.scene, params.from, castPack, {
+          durationMs: 340,
+          w: style === "nova" ? 2.4 : 1.9,
+          h: style === "nova" ? 2.4 : 1.9,
+          y: 0.35,
+          opacity: 0.78,
           scale,
           color: 0xffffff,
         })
       );
     }
-    handles.push(
-      emitTrail3d(params.scene, params.from, params.to, {
-        flash,
-        durationMs: 400,
-        density: 9,
-        arc: 0.28,
-        scale,
-        streak: true,
-      })
-    );
-    _tmp.copy(params.from);
-    _tmp2.copy(params.to).sub(params.from);
-    const side = new THREE.Vector3(-_tmp2.z, 0, _tmp2.x).normalize().multiplyScalar(0.25);
-    handles.push(
-      emitTrail3d(params.scene, params.from.clone().add(side), params.to.clone().add(side), {
-        flash,
-        durationMs: 380,
-        density: 5,
-        arc: 0.35,
-        scale,
-      })
-    );
+    if (style === "roar" || style === "whirl") {
+      handles.push(
+        emitShockwave3d(params.scene, params.from, {
+          flash,
+          scale,
+          radius: style === "roar" ? 2.4 : 2.0,
+          durationMs: 520,
+        })
+      );
+    }
+    handles.push(...emitHostileProjectile3d(params.scene, params.from, params.to, style, flash, scale));
+    if (style === "charge") {
+      handles.push(emitDust3d(params.scene, params.from.clone().lerp(params.to, 0.45), scale));
+    }
   };
 
   const runImpact = () => {
@@ -1710,50 +1791,178 @@ export function playSkillFx3d(params: {
     if (honPackForStyle(style, flash)) return;
     handles.push(emitBurst3d(params.scene, params.to, flash, scale));
     handles.push(emitDust3d(params.scene, params.to, scale));
-    const forgeHit = forgePackForStyle(style, flash);
-    if (forgeHit && style !== "barrier" && style !== "bless") {
-      handles.push(
-        emitForgeSheetAt(params.scene, params.to, forgeHit, {
-          durationMs: 480,
-          w: 2.5,
-          h: 2.5,
-          y: 0.35,
-          scale,
-          color: 0xffffff,
-        })
-      );
-    }
+    /**
+     * Chồng lớp khi sheet mỏng: nền Brackeys/forge (đậm, hơi mờ) + overlay chi tiết.
+     * Tối đa 2 flipbook — không dồn 4–5 sheet cùng loại.
+     */
     const fHit = (flash || "").toLowerCase();
     if (fHit === "thunder" || fHit === "storm") {
       handles.push(
-        emitItchStylizedAt(params.scene, params.to, "lightning", 1, {
-          durationMs: 420,
-          w: 2.6,
-          h: 1.4,
-          y: 0.55,
+        emitForgeSheetAt(params.scene, params.to, "storm_burst", {
+          durationMs: 520,
+          w: 2.9,
+          h: 2.9,
+          y: 0.35,
+          opacity: 0.82,
           scale,
           color: 0xe9d5ff,
         })
       );
-    } else if (style === "beam" || style === "bless") {
       handles.push(
-        emitItchStylizedAt(params.scene, params.to, "flash", 3, {
+        emitItchFolderPackAt(params.scene, params.to, "stylized", "lightning", 1, {
+          durationMs: 420,
+          w: 2.8,
+          h: 1.5,
+          y: 0.55,
+          delayMs: 35,
+          opacity: 0.98,
+          scale,
+          color: 0xf5f3ff,
+        })
+      );
+    } else if (style === "nova") {
+      handles.push(
+        emitForgeSheetAt(params.scene, params.to, "explosion_burst", {
+          durationMs: 560,
+          w: 3.1,
+          h: 3.1,
+          y: 0.35,
+          opacity: 0.85,
+          scale,
+          color: 0xffedd5,
+        })
+      );
+      handles.push(
+        emitSuperpowersAt(params.scene, params.to, "sp_fire", 6, {
+          durationMs: 480,
+          w: 2.5,
+          h: 2.5,
+          y: 0.5,
+          delayMs: 50,
+          opacity: 0.95,
+          scale,
+          color: 0xfb923c,
+        })
+      );
+    } else if (style === "tide") {
+      handles.push(
+        emitBrackeysExtraAt(params.scene, params.to, "water_wave", 16, {
+          durationMs: 560,
+          w: 2.9,
+          h: 2.9,
+          y: 0.28,
+          opacity: 0.88,
+          scale,
+          color: 0xbae6fd,
+        })
+      );
+      handles.push(
+        emitItchFolderPackAt(params.scene, params.to, "stylized", "flash", 3, {
           durationMs: 400,
           w: 2.0,
           h: 2.0,
-          y: 0.4,
+          y: 0.45,
+          delayMs: 40,
+          opacity: 0.9,
+          scale,
+          color: 0xe0f2fe,
+        })
+      );
+    } else if (style === "slash") {
+      handles.push(
+        emitForgeSheetAt(params.scene, params.to, "hit_burst", {
+          durationMs: 460,
+          w: 2.8,
+          h: 2.8,
+          y: 0.35,
+          opacity: 0.8,
           scale,
           color: 0xffffff,
         })
       );
+      handles.push(
+        emitSuperpowersAt(params.scene, params.to, "sp_hit", 11, {
+          durationMs: 420,
+          w: 2.4,
+          h: 2.4,
+          y: 0.5,
+          delayMs: 25,
+          opacity: 0.98,
+          scale,
+          color: 0xffffff,
+        })
+      );
+    } else if (style === "bless") {
+      handles.push(
+        emitForgeSheetAt(params.scene, params.to, "radiance_aura", {
+          durationMs: 520,
+          w: 2.7,
+          h: 2.7,
+          y: 0.35,
+          opacity: 0.82,
+          scale,
+          color: 0xfef08a,
+        })
+      );
+      handles.push(
+        emitSuperpowersAt(params.scene, params.to, "sp_heal", 6, {
+          durationMs: 460,
+          w: 2.3,
+          h: 2.3,
+          y: 0.5,
+          delayMs: 30,
+          opacity: 0.95,
+          scale,
+          color: 0xfef9c3,
+        })
+      );
+    } else if (style === "beam") {
+      handles.push(
+        emitForgeSheetAt(params.scene, params.to, "arcane_burst", {
+          durationMs: 500,
+          w: 2.7,
+          h: 2.7,
+          y: 0.35,
+          opacity: 0.82,
+          scale,
+          color: 0xc4b5fd,
+        })
+      );
+      handles.push(
+        emitSuperpowersAt(params.scene, params.to, "sp_magic", 6, {
+          durationMs: 440,
+          w: 2.3,
+          h: 2.3,
+          y: 0.5,
+          delayMs: 30,
+          opacity: 0.95,
+          scale,
+          color: 0xe9d5ff,
+        })
+      );
+    } else {
+      const forgeHit = forgePackForStyle(style, flash);
+      if (forgeHit && style !== "barrier") {
+        handles.push(
+          emitForgeSheetAt(params.scene, params.to, forgeHit, {
+            durationMs: 500,
+            w: 2.6,
+            h: 2.6,
+            y: 0.35,
+            opacity: 0.88,
+            scale,
+            color: 0xffffff,
+          })
+        );
+      }
     }
     if (style === "roar" || style === "nova" || style === "whirl") {
       handles.push(
         emitShockwave3d(params.scene, params.to, {
           flash,
           scale,
-          radius: style === "nova" ? 2.2 : 1.9,
-          durationMs: 480,
+          radius: style === "nova" ? 2.6 : 1.9,
+          durationMs: 560,
         })
       );
     } else if (style === "rush" || style === "charge") {
@@ -1776,8 +1985,9 @@ export function playSkillFx3d(params: {
   else {
     runEmission();
     // Hồn packs đã tự schedule impact trong emission
-    if (!honPackForStyle(style, flash)) {
-      const delay = style === "rush" || style === "charge" ? 280 : style === "nova" ? 480 : 380;
+    if (!honPackForStyle(style, flash) && style !== "barrier") {
+      // Nổ đúng lúc đầu đạn tới đích
+      const delay = flightProfile(style, flash).durationMs;
       timers.push(
         trackTimer(delay, () => {
           if (params.scene) runImpact();
@@ -1884,15 +2094,38 @@ export function tickBattleVfx3d(_scene: THREE.Scene, now: number, dt: number): v
       if (_tmp2.lengthSq() > 0.001) {
         fx.obj.lookAt(fx.obj.position.clone().add(_tmp2));
       }
-      const pulse = 1 + 0.12 * Math.sin(t * Math.PI * 6);
-      fx.obj.scale.setScalar(pulse * (1 - t * 0.12));
+      const pulse = 1 + 0.14 * Math.sin(t * Math.PI * 7);
+      fx.obj.scale.setScalar(pulse * (1 - t * 0.08));
       fx.obj.traverse((o) => {
         const m = o as THREE.Mesh;
         if (!m.isMesh) return;
         const mat = m.material as THREE.MeshBasicMaterial;
-        const base = m === fx.obj.children[1] ? 0.95 : 0.35;
-        mat.opacity = t < 0.82 ? base : Math.max(0, base * (1 - (t - 0.82) / 0.18));
+        const idx = fx.obj.children.indexOf(m);
+        const base = idx === 2 ? 1 : idx === 1 ? 0.45 : 0.18;
+        mat.opacity = t < 0.85 ? base : Math.max(0, base * (1 - (t - 0.85) / 0.15));
       });
+    } else if (fx.kind === "bolt" && fx.from && fx.to) {
+      const e = ease;
+      _tmp.copy(fx.from).lerp(fx.to, e);
+      _tmp.y += Math.sin(e * Math.PI) * (fx.arc || 0.5);
+      fx.obj.position.copy(_tmp);
+      const spr = fx.obj as THREE.Sprite;
+      const mat = fx.spriteMat || (spr.material as THREE.SpriteMaterial);
+      if (mat && fx.frames && fx.frames.length > 1 && now >= (fx.nextFrame || 0)) {
+        fx.frameI = ((fx.frameI || 0) + 1) % fx.frames.length;
+        mat.map = fx.frames[fx.frameI];
+        mat.needsUpdate = true;
+        fx.nextFrame = now + (fx.frameMs || 55);
+      }
+      const pulse = 1 + 0.1 * Math.sin(t * Math.PI * 5);
+      const grow = e < 0.15 ? 0.55 + (e / 0.15) * 0.45 : 1;
+      if (!spr.userData.baseW) {
+        spr.userData.baseW = spr.scale.x;
+        spr.userData.baseH = spr.scale.y;
+      }
+      spr.scale.set(spr.userData.baseW * grow * pulse, spr.userData.baseH * grow * pulse, 1);
+      const baseOp = fx.baseOpacity ?? 0.98;
+      mat.opacity = Math.max(0, baseOp * (t < 0.88 ? 1 : 1 - (t - 0.88) / 0.12));
     } else if (fx.kind === "spin") {
       const spr = fx.obj as THREE.Sprite;
       const mat = spr.isSprite ? (spr.material as THREE.SpriteMaterial) : null;

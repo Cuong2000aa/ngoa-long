@@ -84,3 +84,10 @@ Buff/debuff: wiki [Hiệu ứng](https://ngoalong.vnggames.com/ngoa-long-wiki/hi
   Overlay slash / thunder / beam.
 - **Binbun Free** (Electric / Dark Magic / Status / Battle / Elemental) — Godot **shader-only**, không PNG flipbook → không dùng.
 
+## GitHub auto-import VFX
+- **superpowers_rpg_fx** — Sparklin Superpowers CC0 → `assets/fx/itch/superpowers_rpg_fx/` (30 png)
+- **superpowers_ninja_fx** — Sparklin Superpowers CC0 → `assets/fx/itch/superpowers_ninja_fx/` (17 png)
+- **superpowers_medieval_fx** — Sparklin Superpowers CC0 → `assets/fx/itch/superpowers_medieval_fx/` (2 png)
+- **superpowers_prehistoric_fx** — Sparklin Superpowers CC0 → `assets/fx/itch/superpowers_prehistoric_fx/` (30 png)
+- **rpicster_particles** — RPicster Godot VFX textures CC0 → `assets/fx/itch/rpicster_particles/` (66 png)
+

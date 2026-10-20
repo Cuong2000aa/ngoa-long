@@ -1,43 +1,40 @@
-# Import itch.io free 3D Effects → Ngọa Long
+# Import free VFX (itch / OpenGameArt) → Ngọa Long
 
-Itch.io bật Cloudflare — agent **không tải được** zip tự động.  
-Bạn tải tay → thả vào `_dl/itch-fx/drop/` → chạy script.
+Itch.io / OGA thường chặn auto-DL (Cloudflare).  
+Bạn tải tay → thả `.zip` vào `_dl/itch-fx/drop/` → báo agent chạy import.
 
-## Pack nên lấy (free, tag 3D+Effects)
+## Đã auto-tải được (GitHub)
 
-| Pack | URL | Dùng cho motif |
-|------|-----|----------------|
-| **Brackeys' VFX Bundle** | https://brackeys.itch.io/brackeys-vfx-bundle | ✅ PNG flipbook — đã wire |
-| **Stylized Projectiles** | https://laplahce.itch.io/stylized-projectiles-pack | ✅ Unity tex extract → slash/lightning/flash |
-| Elemental / Battle / Electric / Dark / Status Free (binbun) | itch binbun | ❌ Free = Godot **shader**, không PNG |
+| Pack | URL | Status |
+|------|-----|--------|
+| Kenney Particle Pack | https://github.com/Calinou/kenney-particle-pack | ✅ (đã có `assets/fx/particles`) |
+| RPicster VFX textures | https://github.com/RPicster/Godot-particle-and-vfx-textures | ✅ `itch/rpicster_particles` |
+| Superpowers asset packs | https://github.com/sparklinlabs/superpowers-asset-packs | ✅ `itch/superpowers_*` + curated |
 
-Sau Brackeys: `python3 scripts/slice-brackeys-fx.py`  
-Stylized (Unity zip): extract Texture2D → `assets/fx/itch/stylized/` (xem session import).
+## Pack itch/OGA (thường Cloudflare — tải tay nếu được)
 
-## Cách import
+| Pack | URL | Ghi chú |
+|------|-----|---------|
+| Brackeys / Stylized | itch | ✅ Đã wire trước đó |
+| CodeManu / PVFX Foundry | OGA / itch | ❌ Agent không tải được |
+
+## Pack **không** dùng
+
+Binbun Free = Godot shader.
+
+## Sau khi thả zip
 
 ```bash
+# copy zip vào drop (hoặc báo path Downloads)
 mkdir -p _dl/itch-fx/drop
-# Copy *.zip đã tải vào drop/
-python3 scripts/import-itch-vfx.py
+cp ~/Downloads/*.zip _dl/itch-fx/drop/   # chọn file cần
+
+npm run import:itch-fx
+python3 scripts/slice-brackeys-fx.py      # nếu có Brackeys
+# CodeManu / PVFX: agent slice → assets/fx/itch/codemanu|pvfx/ rồi wire
 ```
 
-Script chỉ **copy PNG/WebP flipbook** (bỏ `.tscn` / shader Godot / Unity) → `assets/fx/itch/{pack}/`  
-và ghi `assets/CREDITS.md`.
+## Runtime hiện tại
 
-## Runtime hiện tại (không cần itch)
-
-440 chiêu không phải hồn thú đã dùng **Pixel Ability FX Forge** (Apache-2.0) trong `battleVfx3d`:
-
-| Style 3D | Motif data | Forge pack |
-|----------|------------|------------|
-| bless | heal / buff | `radiance_aura` |
-| barrier | shield | `ward_barrier` |
-| beam | arcane / bagua | `arcane_burst` |
-| shadow | shadow | `shadow_burst` |
-| slash | slash | `blood_burst` / `earth_burst` |
-| nova | fire | `ember_burst` |
-| rush / charge | rush / charge | `earth_burst` |
-| beam+thunder | thunder | `storm_burst` |
-
-Hồn thú (150 chiêu) vẫn = GLB `hon_3d/` + sequence riêng.
+- Hồn thú: GLB `hon_3d/`
+- Non-spirit: Brackeys slice (`explosion` / `slash_seq` / `fire_point` / `water_wave` / …) + Stylized overlay + forge fallback

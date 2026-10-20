@@ -26,6 +26,11 @@ MAP = {
     "earth_burst": "011_charge_7x6.png",
     "hit_burst": "002_big_hit_6x5.png",
     "explosion_burst": "003_explosion_6x5.png",
+    "fire_point": "012_fire_point_6x5.png",
+    "dithered_fire": "013_dithered_fire_6x5.png",
+    "water_wave": "008_wavy_blue_6x5.png",
+    "lightstreaks": "005_lightstreaks_6x5.png",
+    "impact_white": "007_impact_white_6x4.png",
 }
 
 GRID_RE = re.compile(r"_(\d+)x(\d+)\.png$", re.I)
