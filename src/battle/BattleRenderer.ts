@@ -301,7 +301,18 @@ export class BattleRenderer {
   private camPunchAmp = 0;
   private hitStopUntil = 0;
   private skillPlayCancel: (() => void) | null = null;
+  /** setTimeout từ skillFlash/wave — phải hủy trong clearFx kẻo FX sót sang chiêu sau */
+  private skillFxTimers: ReturnType<typeof setTimeout>[] = [];
   private onResizeBound = () => this.resize();
+
+  private scheduleSkillFx(fn: () => void, ms: number): void {
+    const id = setTimeout(() => {
+      const i = this.skillFxTimers.indexOf(id);
+      if (i >= 0) this.skillFxTimers.splice(i, 1);
+      fn();
+    }, ms);
+    this.skillFxTimers.push(id);
+  }
 
   async mount(host: HTMLElement, opts?: BattleMountOpts): Promise<void> {
     this.dispose();
@@ -757,7 +768,7 @@ export class BattleRenderer {
         const to = this.fighters.get(tid);
         if (!to || to.dead || !this.scene) return;
         const stagger = i * (scale === "L" ? 70 : 55);
-        setTimeout(() => {
+        this.scheduleSkillFx(() => {
           if (!this.scene || to.dead) return;
           const dest = this.casterFxAt(to);
           const fromPos = this.casterFxAt(f);
@@ -810,7 +821,7 @@ export class BattleRenderer {
           targets.forEach((tid, i) => {
             const to = this.fighters.get(tid);
             if (!to || to.dead || !this.scene) return;
-            setTimeout(() => {
+            this.scheduleSkillFx(() => {
               if (!this.scene || to.dead) return;
               const dest = this.casterFxAt(to);
               spawnPremiumImpact(this.scene, dest, kind, scale);
@@ -856,7 +867,7 @@ export class BattleRenderer {
     // Wave 2+: chỉ emission + impact gọn
     if (wave) {
       deliverToTargets("emission");
-      setTimeout(() => deliverToTargets("impact"), 120);
+      this.scheduleSkillFx(() => deliverToTargets("impact"), 120);
       return;
     }
 
@@ -907,8 +918,8 @@ export class BattleRenderer {
       spawnSkillAura(this.scene, at0, kind, performance.now(), attach, { scale, phase: "full" });
       if (isShield) spawnShieldBarrier(this.scene, at0, performance.now(), scale);
       beginLunge();
-      setTimeout(() => deliverToTargets("emission"), 140);
-      setTimeout(() => deliverToTargets("impact"), 280);
+      this.scheduleSkillFx(() => deliverToTargets("emission"), 140);
+      this.scheduleSkillFx(() => deliverToTargets("impact"), 280);
     }
   }
 
@@ -1046,6 +1057,8 @@ export class BattleRenderer {
       this.skillPlayCancel();
       this.skillPlayCancel = null;
     }
+    for (const id of this.skillFxTimers) clearTimeout(id);
+    this.skillFxTimers.length = 0;
   }
 
   /** Xóa FX đang chạy — dùng trước khi bắn motif QA */

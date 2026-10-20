@@ -402,9 +402,30 @@ function makeSprite(tex: THREE.Texture, size: number, color = 0xffffff): THREE.S
 
 /** Active FX list — tránh scan toàn scene mỗi frame */
 const ACTIVE_FX = new Set<THREE.Sprite>();
+/** Tăng mỗi lần clearBattleVfx — hủy spawn async (playSheet/loadTex + setTimeout) còn treo */
+let fxEpoch = 0;
+export function battleVfxEpoch(): number {
+  return fxEpoch;
+}
+
+/** setTimeout gắn epoch — clearFx bỏ qua callback cũ */
+function afterFx(ms: number, fn: () => void): void {
+  const epoch = fxEpoch;
+  setTimeout(() => {
+    if (epoch !== fxEpoch) return;
+    fn();
+  }, ms);
+}
 
 function disposeLater(obj: THREE.Object3D, ms: number, host: THREE.Object3D): void {
+  const epoch = fxEpoch;
   setTimeout(() => {
+    if (epoch !== fxEpoch) {
+      // Đã clear — chỉ gỡ nếu vẫn còn trên host
+      if (obj.parent === host) host.remove(obj);
+      ACTIVE_FX.delete(obj as THREE.Sprite);
+      return;
+    }
     host.remove(obj);
     ACTIVE_FX.delete(obj as THREE.Sprite);
     obj.traverse((o) => {
@@ -433,9 +454,11 @@ async function playSheet(
   } = {}
 ): Promise<void> {
   if (!frames.length) return;
+  const epoch = fxEpoch;
   const size = opts.size ?? 1.6;
   const life = opts.life ?? 480;
   const tex = await loadTex(frames[0]);
+  if (epoch !== fxEpoch) return; // clearFx trong lúc load — bỏ spawn sót
   const spr = makeSprite(tex, size, opts.color ?? 0xffffff) as FxSprite;
   spr.center.set(0.5, 0.5);
   const host = opts.parent ?? scene;
@@ -1064,7 +1087,7 @@ export function spawnPremiumImpact(
     color: 0xffe8c8,
   });
   // Lớp 2 trễ nhẹ — đọc được “nổ”
-  setTimeout(() => {
+  afterFx(70, () => {
     if (!scene) return;
     void playSheet(scene, at, TEX.muzzle.length ? TEX.muzzle : TEX.hit, {
       size: 1.25 * mul,
@@ -1072,7 +1095,7 @@ export function spawnPremiumImpact(
       y: 0.55,
       color: tint,
     });
-  }, 70);
+  });
 }
 
 /** Quả cầu lửa / đạn pháp bay từ caster → mục tiêu (Kenney flame / light) */
@@ -1158,7 +1181,7 @@ export function spawnSkillBeam(
   now: number
 ): void {
   spawnSkillProjectile(scene, from, to, flash, now);
-  setTimeout(() => spawnImpactAt(scene, to, flash), 280);
+  afterFx(280, () => spawnImpactAt(scene, to, flash));
 }
 
 /** Icon trạng thái bay trên đầu cụm (wiki skill buff/debuff) — pop khi apply */
@@ -1322,7 +1345,7 @@ export function spawnCavalryCharge(
     const t = (i + 0.2) / steps;
     const p = from.clone().lerp(to, t);
     const delay = Math.round(i * (basic ? 32 : 42));
-    setTimeout(() => {
+    afterFx(delay, () => {
       if (!scene) return;
       void playSheet(scene, p, TEX.dirt, {
         size: (0.8 + i * 0.12) * mul,
@@ -1346,7 +1369,7 @@ export function spawnCavalryCharge(
           color: 0xf5e6c8,
         });
       }
-    }, delay);
+    });
   }
   if (!basic) {
     void playSheet(scene, from.clone().lerp(to, 0.12), TEX.whirlwind, {
@@ -1362,7 +1385,7 @@ export function spawnCavalryCharge(
     y: 0.34,
     color: 0xffe8c8,
   });
-  setTimeout(() => {
+  afterFx(basic ? 140 : 200, () => {
     if (!scene) return;
     if (basic) {
       void playSheet(scene, to, TEX.dirt, { size: 1.05 * mul, life: 340, y: 0.16, color: 0xb8956a });
@@ -1372,7 +1395,7 @@ export function spawnCavalryCharge(
     void playSheet(scene, to, TEX.earth, { size: 2.1 * mul, life: 560, y: 0.32, color: 0xc9a070 });
     void playSheet(scene, to, TEX.muzzle, { size: 1.85 * mul, life: 400, y: 0.58, color: 0xffe8c8 });
     void playSheet(scene, to, TEX.whirlwind, { size: 2.0 * mul, life: 440, y: 0.55, color: 0xf5e6c8 });
-  }, basic ? 140 : 200);
+  });
   void now;
 }
 
@@ -1407,7 +1430,7 @@ export function spawnShieldBarrier(
     y: 0.35,
     color: 0xfde68a,
   });
-  setTimeout(() => {
+  afterFx(260, () => {
     if (!scene) return;
     void playSheet(scene, at, TEX.circle.length ? TEX.circle : TEX.kenneyAura, {
       size: 1.95 * mul,
@@ -1421,7 +1444,7 @@ export function spawnShieldBarrier(
       y: 0.8,
       color: 0xfffbeb,
     });
-  }, 260);
+  });
 }
 
 /**
@@ -1446,7 +1469,7 @@ export function spawnRushAssault(
   });
   void playSheet(scene, mid, TEX.muzzle, { size: 1.35 * mul, life: 320, y: 0.55, color: 0xffe8c8 });
   void playSheet(scene, mid2, TEX.slash, { size: 1.25 * mul, life: 300, y: 0.6, color: 0xf8fafc });
-  setTimeout(() => {
+  afterFx(130, () => {
     if (!scene) return;
     void playSheet(scene, to, TEX.slash.length ? TEX.slash : TEX.hit, {
       size: 1.55 * mul,
@@ -1457,7 +1480,7 @@ export function spawnRushAssault(
     void playSheet(scene, to, TEX.earth, { size: 1.45 * mul, life: 440, y: 0.3, color: 0xc9a070 });
     void playSheet(scene, to, TEX.muzzle, { size: 1.35 * mul, life: 360, y: 0.55, color: 0xf8fafc });
     void playSheet(scene, to, TEX.hit, { size: 1.1 * mul, life: 320, y: 0.7, color: 0xffffff });
-  }, 130);
+  });
 }
 
 /**
@@ -1482,7 +1505,7 @@ export function spawnColumnStrike(
   for (let i = 0; i < steps; i++) {
     const t = (i + 0.15) / steps;
     const p = from.clone().lerp(farthest, t);
-    setTimeout(() => {
+    afterFx(i * 45, () => {
       if (!scene) return;
       void playSheet(scene, p, sheet, {
         size: (1.05 + i * 0.08) * mul,
@@ -1498,10 +1521,10 @@ export function spawnColumnStrike(
           color: 0xfff7ed,
         });
       }
-    }, i * 45);
+    });
   }
   ordered.forEach((to, i) => {
-    setTimeout(() => {
+    afterFx(90 + i * 70, () => {
       if (!scene) return;
       spawnImpactAt(scene, to, flash);
       void playSheet(scene, to, slashSheetForFlash(flash), {
@@ -1510,7 +1533,7 @@ export function spawnColumnStrike(
         y: 0.75,
         color: tint,
       });
-    }, 90 + i * 70);
+    });
   });
 }
 
@@ -1552,11 +1575,11 @@ export function spawnRowSweep(
     });
   }
   ordered.forEach((to, i) => {
-    setTimeout(() => {
+    afterFx(i * 55, () => {
       if (!scene) return;
       spawnSlashArc(scene, from, to, performance.now(), flash);
       spawnImpactAt(scene, to, flash);
-    }, i * 55);
+    });
   });
 }
 
@@ -1586,7 +1609,7 @@ export function spawnAoENova(
     color: tint,
   });
   targets.forEach((to, i) => {
-    setTimeout(() => {
+    afterFx(40 + i * 50, () => {
       if (!scene) return;
       void playSheet(scene, to, r.overlay?.length ? r.overlay : TEX.hit, {
         size: 1.2 * mul,
@@ -1602,7 +1625,7 @@ export function spawnAoENova(
         y: 1.35,
         color: tint,
       });
-    }, 40 + i * 50);
+    });
   });
 }
 
@@ -1614,9 +1637,9 @@ export function spawnAllyBless(
   scale?: string | null
 ): void {
   const mul = fxScaleMul(scale);
-  const tint = flash === "blue" || flash === "blue_water" ? 0x7dd3fc : 0xfde68a;
+  const tint = auraTint(flash);
   targets.forEach((to, i) => {
-    setTimeout(() => {
+    afterFx(i * 60, () => {
       if (!scene) return;
       void playSheet(scene, to, TEX.circle.length ? TEX.circle : TEX.kenneyAura, {
         size: 1.55 * mul,
@@ -1636,7 +1659,7 @@ export function spawnAllyBless(
         y: 0.95,
         color: tint,
       });
-    }, i * 60);
+    });
   });
 }
 
@@ -1676,16 +1699,17 @@ export function spawnPatternEmission(
   }
   // single — beam / slash theo flash
   targets.forEach((to, i) => {
-    setTimeout(() => {
+    afterFx(i * 40, () => {
       if (!scene) return;
       spawnSkillBeam(scene, from, to, flash, performance.now());
-    }, i * 40);
+    });
   });
 }
 
 /** Animate sprite sheets + fade + đạn bay */
 /** Xóa toàn bộ FX đang chạy (QA / đổi chiêu sạch khung hình) */
 export function clearBattleVfx(scene?: THREE.Scene | null): void {
+  fxEpoch++;
   const list = Array.from(ACTIVE_FX);
   ACTIVE_FX.clear();
   list.forEach((spr) => {

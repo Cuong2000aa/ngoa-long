@@ -53,10 +53,10 @@ const FLASH_HEX = {
   dark_red: ["c4b5fd", "a78bfa", "fca5a5"],
   purple: ["c4b5fd", "a78bfa"],
   violet: ["c4b5fd", "a78bfa"],
-  fire_rain: ["fb923c", "ff8844", "ea580c"],
-  fire: ["fb923c", "ff8844", "ea580c"],
-  red_fire: ["fb923c", "ff8844", "ea580c"],
-  orange: ["fb923c", "ff8844", "fdba74"],
+  fire_rain: ["fb923c", "ff8844", "ea580c", "fdba74", "f59e0b"],
+  fire: ["fb923c", "ff8844", "ea580c", "fdba74", "f59e0b"],
+  red_fire: ["fb923c", "ff8844", "ea580c", "fdba74"],
+  orange: ["fb923c", "ff8844", "fdba74", "f59e0b"],
   tiger: ["fbbf24", "fdba74", "f59e0b", "ff8844", "ffb347", "fb9", "ff"],
   steel: ["ffe8a0", "fff7ed", "ffe8c8", "e2e8f0", "fff", "ffe", "cbd"],
   white: ["ffe8a0", "fff7ed", "ffe8c8", "ffffff", "fff"],
@@ -227,12 +227,12 @@ async function probeSkill(spec) {
   }
 
   // Chờ playSheet(loadTex) — đợi phía Node, không trong evaluate
-  await page.waitForTimeout(200);
+  await page.waitForTimeout(180);
 
-  // Poll ngắn đến khi có fx-sprite mới (FX life ~300–500ms)
+  // Poll ngắn đến khi có fx-sprite mới
   let probe = { n: 0, nNew: 0, colors: [] };
   const t0 = Date.now();
-  while (Date.now() - t0 < 900) {
+  while (Date.now() - t0 < 500) {
     probe = await page.evaluate((bornBefore) => {
       const br = window.NLCombatUI.getView()._battle3d;
       const colors = [];
@@ -250,7 +250,7 @@ async function probeSkill(spec) {
       return { n, nNew, colors: colors.slice(0, 12) };
     }, flashMeta.bornBefore);
     if (probe.nNew > 0 || probe.n > 0) break;
-    await page.waitForTimeout(40);
+    await page.waitForTimeout(35);
   }
 
   const fxN = probe.nNew || probe.n;
