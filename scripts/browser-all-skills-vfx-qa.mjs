@@ -105,14 +105,20 @@ function collectSkills() {
 }
 
 let skills = collectSkills();
+const offsetArg = process.argv.find((a) => a.startsWith("--offset="));
 const limitArg = process.argv.find((a) => a.startsWith("--limit="));
-if (limitArg) {
-  const n = Math.max(1, parseInt(limitArg.split("=")[1], 10) || skills.length);
-  skills = skills.slice(0, n);
-  console.log(`catalog skills=${skills.length} (limited)`);
+const offset = offsetArg ? Math.max(0, parseInt(offsetArg.split("=")[1], 10) || 0) : 0;
+if (offset || limitArg) {
+  const n = limitArg ? Math.max(1, parseInt(limitArg.split("=")[1], 10) || skills.length) : skills.length;
+  skills = skills.slice(offset, offset + n);
+  console.log(`catalog skills=${skills.length} (offset=${offset})`);
 } else {
   console.log(`catalog skills=${skills.length}`);
 }
+const shardTag = process.argv.find((a) => a.startsWith("--shard="));
+const shardName = shardTag ? shardTag.split("=")[1] : "full";
+const reportPath = resolve(outDir, `report-${shardName}.json`);
+const resultsPath = resolve(outDir, `results-${shardName}.json`);
 
 const browser = await chromium.launch({
   executablePath: chrome,
@@ -374,16 +380,21 @@ const report = {
   fails: fails.slice(0, 80),
   motifShots: [...motifShot],
 };
-writeFileSync(resolve(outDir, "report-full.json"), JSON.stringify(report, null, 2));
-writeFileSync(resolve(outDir, "results-all.json"), JSON.stringify(results, null, 2));
+writeFileSync(reportPath, JSON.stringify(report, null, 2));
+writeFileSync(resultsPath, JSON.stringify(results, null, 2));
+if (shardName === "full") {
+  writeFileSync(resolve(outDir, "report-full.json"), JSON.stringify(report, null, 2));
+  writeFileSync(resolve(outDir, "results-all.json"), JSON.stringify(results, null, 2));
+}
 
 console.log("\n— full catalog browser QA —", {
+  shard: shardName,
   total: report.total,
   passed: report.passed,
   failed: report.failed,
   motifs: Object.keys(byMotif).length,
   shots: motifShot.size,
-  outDir,
+  reportPath,
 });
 if (fails.length) {
   console.log("sample fails:");
