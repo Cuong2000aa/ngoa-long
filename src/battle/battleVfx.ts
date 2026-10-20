@@ -1084,7 +1084,7 @@ export function spawnPremiumImpact(
     size: 1.05 * mul,
     life: 360,
     y: 0.65,
-    color: 0xffe8c8,
+    color: tint,
   });
   // Lớp 2 trễ nhẹ — đọc được “nổ”
   afterFx(70, () => {
@@ -1518,7 +1518,7 @@ export function spawnColumnStrike(
           size: 0.7 * mul,
           life: 280,
           y: 0.7,
-          color: 0xfff7ed,
+          color: tint,
         });
       }
     });
