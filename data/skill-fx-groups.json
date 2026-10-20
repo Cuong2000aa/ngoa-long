@@ -1,0 +1,4748 @@
+{
+  "breath": [
+    {
+      "id": "long_dam",
+      "name": "Long Đảm",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "long_nu",
+      "name": "Long Nỗ",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "hoa_long",
+      "name": "Hỏa Long",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "thanh_long",
+      "name": "Thanh Long",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "thanh_long_tram",
+      "name": "Thanh Long Trảm",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "column",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "thanh_long_yen_nguyet",
+      "name": "Thanh Long Yển Nguyệt",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "column",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "bach_long",
+      "name": "Bạch Long",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "ngan_long",
+      "name": "Ngân Long",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "column",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "ngan_long_tuong",
+      "name": "Ngân Long Tường",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "column",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "ngan_long_that_thiem",
+      "name": "Ngân Long Thất Thiểm",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "column",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "thien_long_thuc_tinh",
+      "name": "Thiên Long Thức Tỉnh",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "column",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "phuc_long",
+      "name": "Phục Long",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "dang_long",
+      "name": "Đằng Long",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "row",
+      "q": "Thần"
+    },
+    {
+      "id": "long_dang_tu_hai",
+      "name": "Long Đằng Tứ Hải",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "thanh_long_hon",
+      "name": "Thanh Long Hồn",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "column",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "thanh_long_nguyen",
+      "name": "Thanh Long Nguyện",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "column",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "thanh_long_khieu_nguyet",
+      "name": "Thanh Long Khiếu Nguyệt",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "column",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "dia_long",
+      "name": "Địa Long",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "troi_long_dat_lo",
+      "name": "Trời Long Đất Lở",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "thuong_long_xuat_hai",
+      "name": "Thương Long Xuất Hải",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "column",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "ba_vuong_liet_phach",
+      "name": "Bá Vương Liệt Phách",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "all",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "long_dao",
+      "name": "Long Đào",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "long_thuong",
+      "name": "Long Thương",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "column",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "xich_long",
+      "name": "Xích Long",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "viem_long_pha",
+      "name": "Viêm Long Phá",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "single",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "viem_long_sat",
+      "name": "Viêm Long Sát",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "viem_long_ky_tap",
+      "name": "Viêm Long Kỳ Tập",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "hoa_long_tien",
+      "name": "Hỏa Long Tiễn",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "long_minh",
+      "name": "Long Minh",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "column",
+      "q": "Thường"
+    },
+    {
+      "id": "long_uy",
+      "name": "Long Uy",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "no_long",
+      "name": "Nộ Long",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "long_chien_vu_da",
+      "name": "Long Chiến Vu Dã",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "phi_long_tai_thien",
+      "name": "Phi Long Tại Thiên",
+      "flash": "dragon",
+      "motif": "dragon",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    }
+  ],
+  "slash": [
+    {
+      "id": "basic_strike",
+      "name": "Mãnh Kích",
+      "flash": "steel",
+      "motif": "slash",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "huang_tian",
+      "name": "Hoàng Thiên Đương Lập",
+      "flash": "steel",
+      "motif": "slash",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "bailian",
+      "name": "Bạch Mã Nghĩa Tòng",
+      "flash": "steel",
+      "motif": "slash",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "basic_strike_chien",
+      "name": "Mãnh Kích · Chiến",
+      "flash": "steel",
+      "motif": "slash",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "basic_strike_than",
+      "name": "Mãnh Kích · Thần",
+      "flash": "steel",
+      "motif": "slash",
+      "pattern": "front_row",
+      "q": ""
+    },
+    {
+      "id": "basic_strike_legend",
+      "name": "Mãnh Kích · Truyền thuyết",
+      "flash": "steel",
+      "motif": "slash",
+      "pattern": "column",
+      "q": ""
+    },
+    {
+      "id": "basic_strike_king",
+      "name": "Mãnh Kích · Thần Hoàng",
+      "flash": "steel",
+      "motif": "slash",
+      "pattern": "column",
+      "q": ""
+    },
+    {
+      "id": "pha_kich",
+      "name": "Phá Kích",
+      "flash": "steel",
+      "motif": "slash",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "vo_cung_dung_manh",
+      "name": "Vô Cùng Dũng Mãnh",
+      "flash": "iron",
+      "motif": "slash",
+      "pattern": "row",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "thuan_kich",
+      "name": "Thuẫn Kích",
+      "flash": "iron",
+      "motif": "slash",
+      "pattern": "single",
+      "q": "Chiến"
+    }
+  ],
+  "rush": [
+    {
+      "id": "bach_bo",
+      "name": "Bách Bộ Xuyên Dương",
+      "flash": "steel",
+      "motif": "pierce",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "xiaoyaojin",
+      "name": "Tiêu Dao Tân",
+      "flash": "steel",
+      "motif": "pierce",
+      "pattern": "front_row",
+      "q": ""
+    },
+    {
+      "id": "liet_thi",
+      "name": "Liệt Thỉ",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "nghe_xa",
+      "name": "Nghệ Xạ",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "bach_ly_truy_hon",
+      "name": "Bách Lý Truy Hồn",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "single",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "lac_nhat_than_tien",
+      "name": "Lạc Nhật Thần Tiễn",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "single",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "loa_y_no_tap",
+      "name": "Lõa Y Nộ Tập",
+      "flash": "rush",
+      "motif": "rush",
+      "pattern": "single",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "kich_thich",
+      "name": "Kích Thích",
+      "flash": "steel",
+      "motif": "pierce",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "nghich_tap",
+      "name": "Nghịch Tập",
+      "flash": "rush",
+      "motif": "rush",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "to_luu_nghich_tap",
+      "name": "Tố Lưu Nghịch Tập",
+      "flash": "rush",
+      "motif": "rush",
+      "pattern": "column",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "xa_than_cuong_tap",
+      "name": "Xả Thân Cường Tập",
+      "flash": "rush",
+      "motif": "rush",
+      "pattern": "column",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "thich_sat",
+      "name": "Thích Sát",
+      "flash": "steel",
+      "motif": "pierce",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "hanh_thich",
+      "name": "Hành Thích",
+      "flash": "steel",
+      "motif": "pierce",
+      "pattern": "single",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "dot_kich",
+      "name": "Đột Kích",
+      "flash": "rush",
+      "motif": "rush",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "bac_kich",
+      "name": "Bác Kích",
+      "flash": "steel",
+      "motif": "pierce",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "dung_manh_dot_kich",
+      "name": "Dũng Mãnh Đột Kích",
+      "flash": "rush",
+      "motif": "rush",
+      "pattern": "row",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "rung_giao_tua_tua",
+      "name": "Rừng Giáo Tua Tủa",
+      "flash": "steel",
+      "motif": "pierce",
+      "pattern": "column",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "bach_ma_tuong_quan",
+      "name": "Bạch Mã Tướng Quân",
+      "flash": "steel",
+      "motif": "pierce",
+      "pattern": "column",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "te_xa",
+      "name": "Tề Xạ",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "row",
+      "q": "Thường"
+    },
+    {
+      "id": "mui_nhon",
+      "name": "Mũi Nhọn",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "dot_tien",
+      "name": "Đột Tiến",
+      "flash": "rush",
+      "motif": "rush",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "xa_sat",
+      "name": "Xạ Sát",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "dot_tap",
+      "name": "Đột Tập",
+      "flash": "rush",
+      "motif": "rush",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "phi_xa",
+      "name": "Phi Xạ",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "row",
+      "q": "Thường"
+    },
+    {
+      "id": "lien_no",
+      "name": "Liên Nỏ",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "row",
+      "q": "Chiến"
+    },
+    {
+      "id": "nhue_nhan",
+      "name": "Nhuệ Nhẫn",
+      "flash": "steel",
+      "motif": "pierce",
+      "pattern": "column",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "ky_xa",
+      "name": "Kỵ Xạ",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "row",
+      "q": "Thần"
+    },
+    {
+      "id": "phi_ngua_giuong_cung",
+      "name": "Phi Ngựa Giương Cung",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "row",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "cuong_tap",
+      "name": "Cường Tập",
+      "flash": "rush",
+      "motif": "rush",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "xuyen_thich",
+      "name": "Xuyên Thích",
+      "flash": "steel",
+      "motif": "pierce",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "xa_thich",
+      "name": "Xà Thích",
+      "flash": "steel",
+      "motif": "pierce",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "xa_thu",
+      "name": "Xạ Thủ",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "all",
+      "q": "Thường"
+    },
+    {
+      "id": "tien_vu",
+      "name": "Tiễn Vũ",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "all",
+      "q": "Thường"
+    },
+    {
+      "id": "no_tap",
+      "name": "Nộ Tập",
+      "flash": "rush",
+      "motif": "rush",
+      "pattern": "row",
+      "q": "Thần"
+    },
+    {
+      "id": "kinh_no",
+      "name": "Kình Nỏ",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "row",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "than_co_no",
+      "name": "Thần Cơ Nỏ",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "row",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "tat_xung",
+      "name": "Tật Xung",
+      "flash": "rush",
+      "motif": "rush",
+      "pattern": "column",
+      "q": "Thường"
+    },
+    {
+      "id": "ham_tran_tien_dang",
+      "name": "Hãm Trận Tiên Đăng",
+      "flash": "rush",
+      "motif": "rush",
+      "pattern": "column",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "tien_dang_tu_si",
+      "name": "Tiên Đăng Tử Sĩ",
+      "flash": "rush",
+      "motif": "rush",
+      "pattern": "column",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "tien_dap",
+      "name": "Tiễn Đạp",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "ba_thuong",
+      "name": "Bá Thương",
+      "flash": "steel",
+      "motif": "pierce",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "tien_tran",
+      "name": "Tiễn Trận",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "man_thien_tien_vu",
+      "name": "Mạn Thiên Tiễn Vũ",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "that_tinh_tien_tran",
+      "name": "Thất Tinh Tiễn Trận",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "xuyen_duong",
+      "name": "Xuyên Dương",
+      "flash": "steel",
+      "motif": "pierce",
+      "pattern": "column",
+      "q": "Thường"
+    },
+    {
+      "id": "tap_kich",
+      "name": "Tập Kích",
+      "flash": "rush",
+      "motif": "rush",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "dia_thich",
+      "name": "Địa Thích",
+      "flash": "steel",
+      "motif": "pierce",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "tien_lam",
+      "name": "Tiễn Lam",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "than_tien_ho_chu",
+      "name": "Thần Tiễn Hộ Chủ",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "cung_ma",
+      "name": "Cung Mã",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "row",
+      "q": "Thần"
+    },
+    {
+      "id": "doat_tam_tien",
+      "name": "Đoạt Tâm Tiễn",
+      "flash": "yellow",
+      "motif": "pierce",
+      "pattern": "row",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "nhieu_loan_dot_tap",
+      "name": "Nhiễu Loạn Đột Tập",
+      "flash": "rush",
+      "motif": "rush",
+      "pattern": "column",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "no_thich",
+      "name": "Nộ Thích",
+      "flash": "steel",
+      "motif": "pierce",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "lien_thich",
+      "name": "Liên Thích",
+      "flash": "steel",
+      "motif": "pierce",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "xuyen_van_thich",
+      "name": "Xuyên Vân Thích",
+      "flash": "steel",
+      "motif": "pierce",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    }
+  ],
+  "charge": [
+    {
+      "id": "tay_luong",
+      "name": "Tây Lương Thiết Kỵ",
+      "flash": "charge",
+      "motif": "charge",
+      "pattern": "column",
+      "q": ""
+    },
+    {
+      "id": "thien_ly_don_ky",
+      "name": "Thiên Lý Đơn Kỵ",
+      "flash": "charge",
+      "motif": "charge",
+      "pattern": "column",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "don_ky",
+      "name": "Đơn Kỵ",
+      "flash": "charge",
+      "motif": "charge",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "ky_than",
+      "name": "Kỵ Thần",
+      "flash": "charge",
+      "motif": "charge",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "ky_liep",
+      "name": "Kỵ Liệp",
+      "flash": "charge",
+      "motif": "charge",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "chien_ky",
+      "name": "Chiến Kỵ",
+      "flash": "charge",
+      "motif": "charge",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "ky_kich",
+      "name": "Kỵ Kích",
+      "flash": "charge",
+      "motif": "charge",
+      "pattern": "column",
+      "q": "Thường"
+    },
+    {
+      "id": "ky_chien",
+      "name": "Kỵ Chiến",
+      "flash": "charge",
+      "motif": "charge",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "bach_ky_duong_ky",
+      "name": "Bạch Kỵ Dương Kỳ",
+      "flash": "charge",
+      "motif": "charge",
+      "pattern": "column",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "nhat_ky_pha_thanh",
+      "name": "Nhất Kỵ Phá Thánh",
+      "flash": "charge",
+      "motif": "charge",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "thiet_ky",
+      "name": "Thiết Kỵ",
+      "flash": "charge",
+      "motif": "charge",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "nhat_ky_duong_thien",
+      "name": "Nhất Kỵ Đương Thiên",
+      "flash": "charge",
+      "motif": "charge",
+      "pattern": "single",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "chan_kich",
+      "name": "Chấn Kích",
+      "flash": "brown",
+      "motif": "slash",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "hoang_thien_quy_dao",
+      "name": "Hoàng Thiên Quỷ Đạo",
+      "flash": "brown",
+      "motif": "slash",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "thiet_thuong",
+      "name": "Thiết Thương",
+      "flash": "brown",
+      "motif": "slash",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "phan_thien",
+      "name": "Phần Thiên",
+      "flash": "brown",
+      "motif": "slash",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "di_toc_xam_nhap",
+      "name": "Dị Tộc Xâm Nhập",
+      "flash": "brown",
+      "motif": "slash",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "dai_vuong_than_chinh",
+      "name": "Đại Vương Thân Chinh",
+      "flash": "brown",
+      "motif": "slash",
+      "pattern": "all",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "diem_la_kich",
+      "name": "Diêm La Kích",
+      "flash": "brown",
+      "motif": "slash",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "thap_phuong_diet",
+      "name": "Thập Phương Diệt",
+      "flash": "brown",
+      "motif": "slash",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "nghich_chuyen_sinh_tu",
+      "name": "Nghịch Chuyển Sinh Tử",
+      "flash": "brown",
+      "motif": "slash",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    }
+  ],
+  "roar": [
+    {
+      "id": "gam_thet",
+      "name": "Gầm Thét",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "front_row",
+      "q": ""
+    },
+    {
+      "id": "ho_si",
+      "name": "Hổ Si",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "front_row",
+      "q": ""
+    },
+    {
+      "id": "dong_ngo",
+      "name": "Đông Ngô Bá Nghiệp",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "hoa_hung_slash",
+      "name": "Hổ Lao Trảm",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "tl_thuong",
+      "name": "Hổ Xung",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "tl_chien",
+      "name": "Hổ Xung · Chiến",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "column",
+      "q": ""
+    },
+    {
+      "id": "tl_than",
+      "name": "Hổ Sát",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "column",
+      "q": ""
+    },
+    {
+      "id": "tl_truyen",
+      "name": "Hổ Sát · Truyền thuyết",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "column",
+      "q": ""
+    },
+    {
+      "id": "gam_thet_king",
+      "name": "Gầm Thét · Thần Hoàng",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "manh_ho",
+      "name": "Mãnh Hổ",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "ho_khieu",
+      "name": "Hổ Khiếu",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "all",
+      "q": "Thường"
+    },
+    {
+      "id": "manh_ho_liet_son",
+      "name": "Mãnh Hổ Liệt Sơn",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "column",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "ho_tri",
+      "name": "Hổ Tri",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "single",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "ho_hau_san_no",
+      "name": "Hổ Hầu Sân Nộ",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "single",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "ho_xung",
+      "name": "Hổ Xung",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "ho_sat",
+      "name": "Hổ Sát",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "trieu_ho_pha_tran",
+      "name": "Triệu Hổ Phá Trận",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "column",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "ho_uy",
+      "name": "Hổ Uy",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "lang_tuyen",
+      "name": "Lang Tuyền",
+      "flash": "wolf",
+      "motif": "wolf",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "lang_tuyen_khon_tran",
+      "name": "Lang Tuyền Khốn Trận",
+      "flash": "wolf",
+      "motif": "wolf",
+      "pattern": "column",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "kho_ke",
+      "name": "Khổ Kế",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "hung_ho_tien_phong",
+      "name": "Hùng Hổ Tiên Phong",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "row",
+      "q": "Thần Hoàng"
+    }
+  ],
+  "beam": [
+    {
+      "id": "khong_thanh",
+      "name": "Không Thành",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "all",
+      "q": ""
+    },
+    {
+      "id": "bagua_zhen",
+      "name": "Bát Quái Trận",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "sam_set",
+      "name": "Lôi Kích",
+      "flash": "thunder",
+      "motif": "thunder",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "khong_thanh_legend",
+      "name": "Không Thành · Truyền thuyết",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "khong_thanh_king",
+      "name": "Không Thành · Thần Hoàng",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "yen_nguyet",
+      "name": "Yển Nguyệt",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "bao_hao",
+      "name": "Bào Hao",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "van_nguoi_kho_do",
+      "name": "Vạn Người Khó Đỡ",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "ba_vuong_kich_dinh",
+      "name": "Bá Vương Kích Đỉnh",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "than_toan",
+      "name": "Thần Toán",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "bat_tran_do",
+      "name": "Bát Trận Đồ",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "thien_dia_van_tuong",
+      "name": "Thiên Địa Vạn Tượng",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "ky_mon_bat_tran_do",
+      "name": "Kỳ Môn Bát Trận Đồ",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "loi_tien",
+      "name": "Lôi Tiễn",
+      "flash": "thunder",
+      "motif": "thunder",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "tu_dien",
+      "name": "Tử Điện",
+      "flash": "thunder",
+      "motif": "thunder",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "than_loi",
+      "name": "Thần Lôi",
+      "flash": "thunder",
+      "motif": "thunder",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "loi_oanh",
+      "name": "Lôi Oanh",
+      "flash": "thunder",
+      "motif": "thunder",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "cuu_thien_than_loi",
+      "name": "Cửu Thiên Thần Lôi",
+      "flash": "thunder",
+      "motif": "thunder",
+      "pattern": "single",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "diet_the_thien_loi",
+      "name": "Diệt Thế Thiên Lôi",
+      "flash": "thunder",
+      "motif": "thunder",
+      "pattern": "single",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "kinh_thien_bao_loi",
+      "name": "Kinh Thiên Bạo Lôi",
+      "flash": "thunder",
+      "motif": "thunder",
+      "pattern": "single",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "cuu_tieu_than_loi",
+      "name": "Cửu Tiêu Thần Lôi",
+      "flash": "thunder",
+      "motif": "thunder",
+      "pattern": "single",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "hoanh_hoa",
+      "name": "Hoành Họa",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "row",
+      "q": "Thường"
+    },
+    {
+      "id": "tinh_ngu",
+      "name": "Tinh Ngự",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "troi_roi_sao_sang",
+      "name": "Trời Rơi Sao Sáng",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "tinh_van_dia_liep",
+      "name": "Tinh Vẫn Địa Liệp",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "thu_kich",
+      "name": "Thư Kích",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "phan_kich",
+      "name": "Phản Kích",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "nghich_chuyen",
+      "name": "Nghịch Chuyển",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "bac_vong",
+      "name": "Bắc Vọng",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "nghia_dam_hung_tam",
+      "name": "Nghĩa Đảm Hùng Tâm",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "son_bang",
+      "name": "Sơn Băng",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thường"
+    },
+    {
+      "id": "thap_thien",
+      "name": "Tháp Thiên",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "thien_bang",
+      "name": "Thiên Băng",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "liet_thien",
+      "name": "Liệt Thiên",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "thien_bang_dia_liep",
+      "name": "Thiên Băng Địa Liệp",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "troi_tru_dat_diet",
+      "name": "Trời Tru Đất Diệt",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "hu_vo",
+      "name": "Hư Vô",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thường"
+    },
+    {
+      "id": "hac_dong",
+      "name": "Hắc Động",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "tham_uyen",
+      "name": "Thâm Uyên",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "thao_luoc_tung_hoanh",
+      "name": "Thao Lược Tung Hoành",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "muu_doan_can_khon",
+      "name": "Mưu Đoạn Càn Khôn",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "kiem_ham",
+      "name": "Kiềm Hãm",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "dap_pha",
+      "name": "Đạp Phá",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thường"
+    },
+    {
+      "id": "kinh_loi",
+      "name": "Kinh Lôi",
+      "flash": "thunder",
+      "motif": "thunder",
+      "pattern": "column",
+      "q": "Thường"
+    },
+    {
+      "id": "tu_than",
+      "name": "Tử Thần",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "tu_than_giang_lam",
+      "name": "Tử Thần Giáng Lâm",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "thu_hon_doat_phach",
+      "name": "Thu Hồn Đoạt Phách",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "cuong_bao",
+      "name": "Cuồng Bạo",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "chien_cuong",
+      "name": "Chiến Cuồng",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "cuong_loan",
+      "name": "Cuồng Loạn",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "uy_chan_tieu_dao",
+      "name": "Uy Chấn Tiêu Dao",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "man_nguu",
+      "name": "Man Ngưu",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thường"
+    },
+    {
+      "id": "cuong_nguu",
+      "name": "Cuồng Ngưu",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "man_nguu_khai_son",
+      "name": "Man Ngưu Khai Sơn",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "thien_bien",
+      "name": "Thiện Biến",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "tien_co_chien_tran",
+      "name": "Tiên Cơ Chiến Trận",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "column",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "binh_vo_thuong_hinh",
+      "name": "Binh Vô Thường Hình",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "binh_hinh_cuu_don",
+      "name": "Binh Hình Cửu Độn",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "huy_diet",
+      "name": "Hủy Diệt",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "xich_loi",
+      "name": "Xích Lôi",
+      "flash": "thunder",
+      "motif": "thunder",
+      "pattern": "row",
+      "q": "Chiến"
+    },
+    {
+      "id": "quy_muu",
+      "name": "Quỷ Mưu",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "quy_ke",
+      "name": "Quỷ Kế",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "quyet_thang_thien_ly",
+      "name": "Quyết Thắng Thiên Lý",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "row",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "bien_sao_lap_lanh",
+      "name": "Biển Sao Lấp Lánh",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "row",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "dia_liep",
+      "name": "Địa Liệp",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "row",
+      "q": "Thường"
+    },
+    {
+      "id": "dia_nha",
+      "name": "Địa Nha",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "row",
+      "q": "Chiến"
+    },
+    {
+      "id": "bang_chuy",
+      "name": "Băng Chùy",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "row",
+      "q": "Thần"
+    },
+    {
+      "id": "thien_han_dia_bang",
+      "name": "Thiên Hàn Địa Băng",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "row",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "su_hong",
+      "name": "Sư Hống",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "cuong_hao",
+      "name": "Cuồng Hào",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "de_hon",
+      "name": "Đế Hồn",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "bao_no_hong",
+      "name": "Bạo Nộ Hống",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "pha_dam_no_hong",
+      "name": "Phá Đảm Nộ Hống",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "binh_tien",
+      "name": "Binh Tiển",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thường"
+    },
+    {
+      "id": "nhien_tan",
+      "name": "Nhiên Tận",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "nghich_luu",
+      "name": "Nghịch Lưu",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "lung_hoan_tang_dich",
+      "name": "Lung Hoàn Táng Địch",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "hy_sinh",
+      "name": "Hy Sinh",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "the_tu",
+      "name": "Thệ Tử",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "ngoc_thach_cu_diet",
+      "name": "Ngọc Thạch Cụ Diệt",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "cang_gia_cang_cay",
+      "name": "Càng Già Càng Cay",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "dung_manh",
+      "name": "Dũng Mãnh",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "phan_chien",
+      "name": "Phấn Chiến",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "chien_than_can_dam",
+      "name": "Chiến Thần Can Đảm",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "chien_than_bat_khuat",
+      "name": "Chiến Thần Bất Khuất",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "xung_ba",
+      "name": "Xưng Bá",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thường"
+    },
+    {
+      "id": "ba_vuong",
+      "name": "Bá Vương",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "thien_uy",
+      "name": "Thiên Uy",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "ba_vuong_than_uy",
+      "name": "Bá Vương Thần Uy",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "than_uy_pha_tran",
+      "name": "Thần Uy Phá Trận",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "san_bang",
+      "name": "San Bằng",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "row",
+      "q": "Chiến"
+    },
+    {
+      "id": "tuong_dong",
+      "name": "Tường Đồng",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "nhuc_ma",
+      "name": "Nhục Mạ",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "diet_gon",
+      "name": "Diệt Gọn",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "huyen_thuat",
+      "name": "Huyễn Thuật",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "all",
+      "q": "Thường"
+    },
+    {
+      "id": "huyen_phap",
+      "name": "Huyễn Pháp",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "yeu_thuat",
+      "name": "Yêu Thuật",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thường"
+    },
+    {
+      "id": "yeu_phap",
+      "name": "Yêu Pháp",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "binh_thuat",
+      "name": "Bình Thuật",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "hoang_thien_duong_lap",
+      "name": "Hoàng Thiên Đương Lập",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "thuong_thien_di_tu",
+      "name": "Thương Thiên Dĩ Tử",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "giao_chien",
+      "name": "Giao Chiến",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "vo_song",
+      "name": "Vô Song",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "ma_than",
+      "name": "Ma Thần",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "minh_vuong",
+      "name": "Minh Vương",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "thien_ha_vo_song",
+      "name": "Thiên Hạ Vô Song",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "quy_than_nhat_kich",
+      "name": "Quỷ Thần Nhất Kích",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "no_hong",
+      "name": "Nộ Hống",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "bang_hoai",
+      "name": "Băng Hoại",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "bao_le",
+      "name": "Bạo Lệ",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "bao_tran",
+      "name": "Bạo Trấn",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "tuu_tri_nhuc_lam",
+      "name": "Tửu Trì Nhục Lâm",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "thien_uy_bao_nguoc",
+      "name": "Thiên Uy Bạo Ngược",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "lac_loi",
+      "name": "Lạc Lôi",
+      "flash": "thunder",
+      "motif": "thunder",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "am_loi",
+      "name": "Âm Lôi",
+      "flash": "thunder",
+      "motif": "thunder",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "lien_thanh",
+      "name": "Liên Thành",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thường"
+    },
+    {
+      "id": "thuong_tran",
+      "name": "Thương Trận",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "column",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "no_tram",
+      "name": "Nộ Trảm",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "tram_sat",
+      "name": "Trảm Sát",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "kieu_tuong",
+      "name": "Kiêu Tướng",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "quy_tuong_pha_thanh",
+      "name": "Quỷ Tướng Phá Thánh",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "phu_do",
+      "name": "Phù Đồ",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "dung_tuong",
+      "name": "Dũng Tướng",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "quy_tuong_tru_than",
+      "name": "Quỷ Tướng Tru Thần",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "quy_mon",
+      "name": "Quỷ Môn",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "ky_mon",
+      "name": "Kỳ Môn",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "quyen_muu",
+      "name": "Quyền Mưu",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "quyen_bien",
+      "name": "Quyền Biến",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "hu_thuc",
+      "name": "Hư Thực",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "mai_lang",
+      "name": "Mai Lãng",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "lien_hoan",
+      "name": "Liên Hoàn",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thường"
+    },
+    {
+      "id": "lien_kich",
+      "name": "Liên Kích",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "con_thach",
+      "name": "Cổn Thạch",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thường"
+    },
+    {
+      "id": "tru_than_diet_ma",
+      "name": "Tru Thần Diệt Ma",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "no_kiem",
+      "name": "Nộ Kiếm",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thường"
+    },
+    {
+      "id": "phan_tan",
+      "name": "Phấn Tấn",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "ngu_hanh_pha_tran",
+      "name": "Ngũ Hành Phá Trận",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "hoanh_tao",
+      "name": "Hoành Tảo",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "row",
+      "q": "Thường"
+    },
+    {
+      "id": "pha_phu",
+      "name": "Phá Phủ",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "binh_phat",
+      "name": "Binh Phạt",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "phan_diet",
+      "name": "Phần Diệt",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "huy_hoai",
+      "name": "Hủy Hoại",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "tuyen_muc_uy_nghi",
+      "name": "Tuyên Mục Uy Nghi",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "tuyet_tinh_vo_hoi",
+      "name": "Tuyệt Tình Vô Hối",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "no_xich",
+      "name": "Nộ Xích",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "thiet_no",
+      "name": "Thiết Nõ",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "row",
+      "q": "Chiến"
+    },
+    {
+      "id": "ten_lac",
+      "name": "Tên Lạc",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "cu_ma",
+      "name": "Cự Mã",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "row",
+      "q": "Thường"
+    },
+    {
+      "id": "chuoc_gioi",
+      "name": "Chước Giới",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "nhieu_tap",
+      "name": "Nhiễu Tập",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "npc_troi_tru_dat_diet",
+      "name": "[NPC] Trời Tru Đất Diệt",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thường"
+    },
+    {
+      "id": "lac_thach",
+      "name": "Lạc Thạch",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "sat_khi",
+      "name": "Sát Khí",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "tan_ra",
+      "name": "Tan Rã",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "pha_hoang_sach",
+      "name": "Phá Hoàng Sách",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "dao_phap_thien_dia",
+      "name": "Đạo Pháp Thiên Địa",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "row",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "thien_dia_vo_cuc",
+      "name": "Thiên Địa Vô Cực",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "row",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "can_khon_ta_phap",
+      "name": "Càn Khôn Tá Pháp",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "row",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "tieu_sat",
+      "name": "Tiễu Sát",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "tu_huy",
+      "name": "Tự Hủy",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "kim_ham",
+      "name": "Kìm Hãm",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "sach_phan",
+      "name": "Sách Phản",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "bo_toi_theo_sang",
+      "name": "Bỏ Tối Theo Sáng",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "hanh_binh",
+      "name": "Hành Binh",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "ky_binh_pha_thuc",
+      "name": "Kỳ Binh Phá Thục",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "loan_kich",
+      "name": "Loạn Kích",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "lang_dao",
+      "name": "Lãng Đào",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thường"
+    },
+    {
+      "id": "bao_loi",
+      "name": "Bạo Lôi",
+      "flash": "thunder",
+      "motif": "thunder",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "han_bang",
+      "name": "Hàn Băng",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "row",
+      "q": "Thần"
+    },
+    {
+      "id": "bong_lanh",
+      "name": "Bỏng Lạnh",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "row",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "bai_lang",
+      "name": "Bài Lãng",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "tat_tri",
+      "name": "Tật Trì",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "pha_ke",
+      "name": "Phá Kế",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "khi_gioi",
+      "name": "Khí Giới",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "duong_cong",
+      "name": "Dương Công",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "sat_y",
+      "name": "Sát Ý",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "am_duong_diet",
+      "name": "Âm Dương Diệt",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "bua_phep_tran_ta",
+      "name": "Bùa Phép Trấn Tà",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "doat_tam",
+      "name": "Đoạt Tâm",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "bach_y_do_giang",
+      "name": "Bạch Y Độ Giang",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "thien_nhan",
+      "name": "Thiên Nhẫn",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "kinh_dien_luan_hoi",
+      "name": "Kính Diễn Luân Hồi",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "front_row",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "tuyet_sat",
+      "name": "Tuyệt Sát",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "vo_song_thuong_tuong",
+      "name": "Vô Song Thượng Tướng",
+      "flash": "blue",
+      "motif": "arcane",
+      "pattern": "column",
+      "q": "Thượng Cổ"
+    }
+  ],
+  "nova": [
+    {
+      "id": "hoa_cong",
+      "name": "Hỏa Công",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "lua_luc",
+      "name": "Lửa Lục",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "thien_hoa",
+      "name": "Thiên Hỏa",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "hoa_nguu_dap",
+      "name": "Hỏa Ngưu Đạp",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "viem_loi",
+      "name": "Viêm Lôi",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "hoa_than",
+      "name": "Hỏa Thần",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "dai_viem_de",
+      "name": "Đại Viêm Đế",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "hong_lien_nghiep_hoa",
+      "name": "Hồng Liên Nghiệp Hỏa",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "luyen_nguc_hoa_hai",
+      "name": "Luyện Ngục Hỏa Hải",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "hong_viem",
+      "name": "Hồng Viêm",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "hac_viem",
+      "name": "Hắc Viêm",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "hoa_thieu_lien_doanh",
+      "name": "Hỏa Thiêu Liên Doanh",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "single",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "nghiep_viem_bao",
+      "name": "Nghiệp Viêm Bạo",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "single",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "hoa_the_ngut_troi",
+      "name": "Hỏa Thế Ngút Trời",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "single",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "xich_lua_tri_tue",
+      "name": "Xích Lửa Trí Tuệ",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "single",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "ma_than_no_hoa",
+      "name": "Ma Thần Nộ Hỏa",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "minh_hoa_lieu_nguyen",
+      "name": "Minh Hỏa Liêu Nguyên",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "boc_viem",
+      "name": "Bộc Viêm",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "no_nguc_viem",
+      "name": "Nộ Ngục Viêm",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "hong_hoang_no_hoa",
+      "name": "Hồng Hoang Nộ Hỏa",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "than_hoa_hien_the",
+      "name": "Thần Hỏa Hiện Thế",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "all",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "hoa_no",
+      "name": "Hỏa Nỏ",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "row",
+      "q": "Thần"
+    },
+    {
+      "id": "hoa_tien",
+      "name": "Hỏa Tiễn",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "hoa_nham",
+      "name": "Hỏa Nham",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "thien_hoa_thieu",
+      "name": "Thiên Hỏa Thiêu",
+      "flash": "fire_rain",
+      "motif": "fire",
+      "pattern": "single",
+      "q": "Truyền thuyết"
+    }
+  ],
+  "tide": [
+    {
+      "id": "wu_sheng",
+      "name": "Vũ Thánh",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "column",
+      "q": ""
+    },
+    {
+      "id": "shui_jian",
+      "name": "Thủy Chiến",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "row",
+      "q": ""
+    },
+    {
+      "id": "wu_sheng_chien",
+      "name": "Vũ Thánh · Chiến",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "wu_sheng_legend",
+      "name": "Vũ Thánh · Truyền thuyết",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "wu_sheng_king",
+      "name": "Vũ Thánh · Thần Hoàng",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "xich_vu_quan_hong",
+      "name": "Xích Vũ Quán Hồng",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "single",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "vu_dieu_lac_than",
+      "name": "Vũ Điệu Lạc Thần",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "single",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "quy_than_loan_vu",
+      "name": "Quỷ Thần Loạn Vũ",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "single",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "mon_sinh_tu_hai",
+      "name": "Môn Sinh Tứ Hải",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "single",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "hai_tieu",
+      "name": "Hải Tiếu",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "all",
+      "q": "Thường"
+    },
+    {
+      "id": "thuy_cong",
+      "name": "Thủy Công",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "tran_thu_han_thuy",
+      "name": "Trấn Thủ Hán Thủy",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "all",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "nguyet_loan_vu",
+      "name": "Nguyệt Loạn Vũ",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "single",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "thien_khai",
+      "name": "Thiên Khải",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "phuong_vu_cuu_thien",
+      "name": "Phượng Vũ Cửu Thiên",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "row",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "loan_hoi_phuong_vu",
+      "name": "Loan Hồi Phượng Vũ",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "row",
+      "q": "Thái Sơ"
+    }
+  ],
+  "poison": [
+    {
+      "id": "doc_muu",
+      "name": "Độc Mưu",
+      "flash": "green_poison",
+      "motif": "poison",
+      "pattern": "all",
+      "q": ""
+    },
+    {
+      "id": "doc_xa",
+      "name": "Độc Xà",
+      "flash": "green_poison",
+      "motif": "poison",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "doc_dia",
+      "name": "Độc Địa",
+      "flash": "green_poison",
+      "motif": "poison",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "doc_tieu",
+      "name": "Độc Tiêu",
+      "flash": "green_poison",
+      "motif": "poison",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "xa_doc",
+      "name": "Xà Độc",
+      "flash": "green_poison",
+      "motif": "poison",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "doc_loi",
+      "name": "Độc Lôi",
+      "flash": "green_poison",
+      "motif": "poison",
+      "pattern": "column",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "tuyet_sach_doc_ke",
+      "name": "Tuyệt Sách Độc Kế",
+      "flash": "green_poison",
+      "motif": "poison",
+      "pattern": "column",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "nao_loan_kinh_thanh",
+      "name": "Náo Loạn Kinh Thành",
+      "flash": "green_poison",
+      "motif": "poison",
+      "pattern": "column",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "doc_chu",
+      "name": "Độc Chú",
+      "flash": "green_poison",
+      "motif": "poison",
+      "pattern": "all",
+      "q": "Thường"
+    },
+    {
+      "id": "doc_nhan",
+      "name": "Độc Nhẫn",
+      "flash": "green_poison",
+      "motif": "poison",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "kich_doc",
+      "name": "Kịch Độc",
+      "flash": "green_poison",
+      "motif": "poison",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "doc_ke",
+      "name": "Độc Kế",
+      "flash": "green_poison",
+      "motif": "poison",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "thi_doc",
+      "name": "Thi Độc",
+      "flash": "green_poison",
+      "motif": "poison",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "thuc_tam",
+      "name": "Thực Tâm",
+      "flash": "green_poison",
+      "motif": "poison",
+      "pattern": "single",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "hu_thi_doc",
+      "name": "Hủ Thi Độc",
+      "flash": "green_poison",
+      "motif": "poison",
+      "pattern": "single",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "quy_mon_thi_doc",
+      "name": "Quỷ Môn Thi Độc",
+      "flash": "green_poison",
+      "motif": "poison",
+      "pattern": "single",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "on_dich",
+      "name": "Ôn Dịch",
+      "flash": "green_poison",
+      "motif": "poison",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "nhieu_loan_quan_dich",
+      "name": "Nhiễu Loạn Quân Địch",
+      "flash": "green_poison",
+      "motif": "poison",
+      "pattern": "row",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "bon_be_bua_vay",
+      "name": "Bốn Bề Bủa Vây",
+      "flash": "green_poison",
+      "motif": "poison",
+      "pattern": "row",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "phong_hac",
+      "name": "Phong Hạc",
+      "flash": "green_poison",
+      "motif": "poison",
+      "pattern": "row",
+      "q": "Thần Hoàng"
+    }
+  ],
+  "whirl": [
+    {
+      "id": "lu_bu_fury",
+      "name": "Phong Hầu Nộ",
+      "flash": "whirlwind",
+      "motif": "whirlwind",
+      "pattern": "column",
+      "q": ""
+    },
+    {
+      "id": "tl_thanhoang",
+      "name": "Lướt Nhanh Như Gió",
+      "flash": "whirlwind",
+      "motif": "whirlwind",
+      "pattern": "column",
+      "q": ""
+    },
+    {
+      "id": "than_phong",
+      "name": "Thần Phong",
+      "flash": "whirlwind",
+      "motif": "whirlwind",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "dong_phong",
+      "name": "Đông Phong",
+      "flash": "whirlwind",
+      "motif": "whirlwind",
+      "pattern": "all",
+      "q": "Thường"
+    },
+    {
+      "id": "phong_loi",
+      "name": "Phong Lôi",
+      "flash": "whirlwind",
+      "motif": "whirlwind",
+      "pattern": "column",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "uy_phong",
+      "name": "Uy Phong",
+      "flash": "whirlwind",
+      "motif": "whirlwind",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "tang_phong",
+      "name": "Tang Phong",
+      "flash": "whirlwind",
+      "motif": "whirlwind",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "luot_nhanh_nhu_gio",
+      "name": "Lướt Nhanh Như Gió",
+      "flash": "whirlwind",
+      "motif": "whirlwind",
+      "pattern": "column",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "bang_phong",
+      "name": "Băng Phong",
+      "flash": "whirlwind",
+      "motif": "whirlwind",
+      "pattern": "row",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "thien_ly_bang_phong",
+      "name": "Thiên Lý Băng Phong",
+      "flash": "whirlwind",
+      "motif": "whirlwind",
+      "pattern": "row",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "phong_tien",
+      "name": "Phong Tiễn",
+      "flash": "whirlwind",
+      "motif": "whirlwind",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "dong_xoay",
+      "name": "Dòng Xoáy",
+      "flash": "whirlwind",
+      "motif": "whirlwind",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "gio_loc",
+      "name": "Gió Lốc",
+      "flash": "whirlwind",
+      "motif": "whirlwind",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "vong_xoay",
+      "name": "Vòng Xoáy",
+      "flash": "whirlwind",
+      "motif": "whirlwind",
+      "pattern": "column",
+      "q": "Chiến"
+    }
+  ],
+  "shadow": [
+    {
+      "id": "basic_scheme",
+      "name": "Kỳ Mưu",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "an_muu",
+      "name": "Ẩn Mưu",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "phung_so",
+      "name": "Phụng Sồ",
+      "flash": "gold_red",
+      "motif": "slash",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "lianhuan",
+      "name": "Liên Hoàn Kế",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "basic_scheme_chien",
+      "name": "Kỳ Mưu · Chiến",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "basic_scheme_than",
+      "name": "Kỳ Mưu · Thần",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "row",
+      "q": ""
+    },
+    {
+      "id": "basic_scheme_legend",
+      "name": "Kỳ Mưu · Truyền thuyết",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "column",
+      "q": ""
+    },
+    {
+      "id": "basic_scheme_king",
+      "name": "Kỳ Mưu · Thần Hoàng",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "gam_thet_legend",
+      "name": "Gầm Thét · Truyền thuyết",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "vo_thanh",
+      "name": "Võ Thánh",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "column",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "uy_chan_hoa_ha",
+      "name": "Uy Chấn Hoa Hạ",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "column",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "no_sat",
+      "name": "Nộ Sát",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "column",
+      "q": "Thường"
+    },
+    {
+      "id": "truy_nguyet",
+      "name": "Truy Nguyệt",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "single",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "tau_sat",
+      "name": "Tấu Sát",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "bac_sat",
+      "name": "Bác Sát",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "loan_the_ky_muu",
+      "name": "Loạn Thế Kỳ Mưu",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "single",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "khu_truc",
+      "name": "Khu Trục",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "huyet_chien_bat_phuong",
+      "name": "Huyết Chiến Bát Phương",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "ac_lai",
+      "name": "Ác Lai",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "ac_quy_trien_than",
+      "name": "Ác Quỷ Triền Thân",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "ac_lai_liet_phach",
+      "name": "Ác Lai Liệt Phách",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "all",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "quy_sat",
+      "name": "Quỷ Sát",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "huyet_quy_nhan",
+      "name": "Huyết Quỷ Nhẫn",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "column",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "huyet_chinh",
+      "name": "Huyết Chinh",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "column",
+      "q": "Chiến"
+    },
+    {
+      "id": "ham_dia",
+      "name": "Hám Địa",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "row",
+      "q": "Chiến"
+    },
+    {
+      "id": "am_sat",
+      "name": "Ám Sát",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "am_da_thich_sat",
+      "name": "Ám Dạ Thích Sát",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "single",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "huyet_lo",
+      "name": "Huyết Lộ",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "can_quet_bao_luc",
+      "name": "Càn Quét Bạo Lực",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "row",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "kich_no",
+      "name": "Kích Nộ",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "am_te",
+      "name": "Ám Tế",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "huyet_nhan",
+      "name": "Huyết Nhẫn",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "quy_coc_sach",
+      "name": "Quỷ Cốc Sách",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "huyet_tram",
+      "name": "Huyết Trảm",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "liet_nhan",
+      "name": "Liệt Nhẫn",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "thi_huyet",
+      "name": "Thị Huyết",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "column",
+      "q": "Thần"
+    },
+    {
+      "id": "cuong_no",
+      "name": "Cuồng Nộ",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "man_no_hong",
+      "name": "Man Nộ Hống",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "ham_doanh_thoi_nhue",
+      "name": "Hãm Doanh Thôi Nhuệ",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "column",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "huyet_che",
+      "name": "Huyết Chế",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "than_binh_am_do",
+      "name": "Thần Binh Ám Độ",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "column",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "ma_quan",
+      "name": "Ma Quân",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "column",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "bac_thay_u_mich",
+      "name": "Bậc Thầy U Mịch",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "huyet_ach_su",
+      "name": "Huyết Ách Sư",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "am_van",
+      "name": "Ám Vân",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "be_nguyet",
+      "name": "Bế Nguyệt",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "phan_no",
+      "name": "Phẫn Nộ",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "muc_huyet_ho_chu",
+      "name": "Mục Huyết Hộ Chủ",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "dao_thuat_huyen_thong",
+      "name": "Đạo Thuật Huyền Thông",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "all",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "huyen_bang",
+      "name": "Huyền Băng",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "huyet_chien",
+      "name": "Huyết Chiến",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "huyen_ho_te_chung",
+      "name": "Huyền Hồ Tế Chúng",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "single",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "khai_son_huyet_phu",
+      "name": "Khai Sơn Huyết Phủ",
+      "flash": "crimson",
+      "motif": "slash",
+      "pattern": "column",
+      "q": "Truyền thuyết"
+    }
+  ],
+  "bless": [
+    {
+      "id": "ho_khi",
+      "name": "Hổ Khí",
+      "flash": "tiger",
+      "motif": "tiger",
+      "pattern": "ally_all",
+      "q": ""
+    },
+    {
+      "id": "co_chien",
+      "name": "Cổ Chiến",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "self",
+      "q": ""
+    },
+    {
+      "id": "phan_cot",
+      "name": "Phản Cốt",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "self",
+      "q": ""
+    },
+    {
+      "id": "nhan_duc",
+      "name": "Nhân Đức",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "ally_all",
+      "q": ""
+    },
+    {
+      "id": "phong_van",
+      "name": "Phong Vân Biến",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "ally_all",
+      "q": ""
+    },
+    {
+      "id": "hieu_lenh",
+      "name": "Hiệu Lệnh",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "ally_all",
+      "q": "Thường"
+    },
+    {
+      "id": "thien_menh",
+      "name": "Thiên Mệnh",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Chiến"
+    },
+    {
+      "id": "thien_chinh",
+      "name": "Thiên Chinh",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thần"
+    },
+    {
+      "id": "quan_lam",
+      "name": "Quân Lâm",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "thien_ha_chia_ba",
+      "name": "Thiên Hạ Chia Ba",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "pha_quan",
+      "name": "Phá Quân",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "thi_quan",
+      "name": "Thí Quân",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "bach_hong_quan_nhat",
+      "name": "Bạch Hồng Quán Nhật",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "column",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "te_nhat_thien_ky",
+      "name": "Tế Nhật Thiên Kỵ",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "column",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "than_ngu",
+      "name": "Thần Ngự",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thần"
+    },
+    {
+      "id": "an_nghia",
+      "name": "Ân Nghĩa",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "kieu_hung",
+      "name": "Kiêu Hùng",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Chiến"
+    },
+    {
+      "id": "sinh_sat",
+      "name": "Sinh Sát",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "self",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "cong_tam",
+      "name": "Công Tâm",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "tu_lap",
+      "name": "Tự Lập",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "dang_co",
+      "name": "Đăng Cơ",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "quy_tam",
+      "name": "Quy Tâm",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "uy_ap",
+      "name": "Uy Áp",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "tuong_dong_vach_sat",
+      "name": "Tường Đồng Vách Sắt",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "ally_all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "vung_nhu_ban_thach",
+      "name": "Vững Như Bàn Thạch",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "ally_all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "co_vu",
+      "name": "Cổ Vũ",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thường"
+    },
+    {
+      "id": "kich_duong",
+      "name": "Kích Dương",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Chiến"
+    },
+    {
+      "id": "ngang_duong",
+      "name": "Ngang Dương",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thần"
+    },
+    {
+      "id": "uy_duong",
+      "name": "Uy Dương",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "tung_ca",
+      "name": "Tụng Ca",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "phan_chan_long_quan",
+      "name": "Phấn Chấn Lòng Quân",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "ca_tung_cong_duc",
+      "name": "Ca Tụng Công Đức",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "lac_thuy_tien",
+      "name": "Lạc Thủy Tiên",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "ally_all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "lac_than_mac",
+      "name": "Lạc Thần Mạc",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "single",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "khuynh_the_giai_nhan",
+      "name": "Khuynh Thế Giai Nhân",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "single",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "yeu_thuan",
+      "name": "Yêu Thuẫn",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "dong_quan_phong_thu",
+      "name": "Đóng Quân Phòng Thủ",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "single",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "loan_the_hao_kiet",
+      "name": "Loạn Thế Hào Kiệt",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "hung_cu",
+      "name": "Hùng Cứ",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "single",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "vang_danh_thien_ha",
+      "name": "Vang Danh Thiên Hạ",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "single",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "loi_co",
+      "name": "Lôi Cổ",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Chiến"
+    },
+    {
+      "id": "hieu_trieu",
+      "name": "Hiệu Triệu",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thần"
+    },
+    {
+      "id": "dinh_quan_co",
+      "name": "Định Quân Cổ",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "vo_ngai",
+      "name": "Vô Ngại",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Chiến"
+    },
+    {
+      "id": "ly_gian",
+      "name": "Ly Gián",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thường"
+    },
+    {
+      "id": "phien_dong",
+      "name": "Phiến Động",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "muu_thu",
+      "name": "Mưu Thủ",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "loan_the_pho_do",
+      "name": "Loạn Thế Phổ Độ",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "te_the_chi_qua",
+      "name": "Tế Thế Chỉ Qua",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "column",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "kim_quy_yeu_luoc",
+      "name": "Kim Quý Yếu Lược",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "column",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "tu_sanh",
+      "name": "Tử Sanh",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "self",
+      "q": "Chiến"
+    },
+    {
+      "id": "vien_binh",
+      "name": "Viện Binh",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "pha_dich",
+      "name": "Phá Địch",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "the_pha_dich",
+      "name": "Thế Phá Địch",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "thong_quan_pha_dich",
+      "name": "Thống Quân Phá Địch",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "bay_tran_nhu_nui",
+      "name": "Bày Trận Như Núi",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "cuu_vien",
+      "name": "Cứu Viện",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "tran_hon",
+      "name": "Trấn Hồn",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "phong_ngu_can_than",
+      "name": "Phòng Ngự Cẩn Thận",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "che_ngu_quan_dich",
+      "name": "Chế Ngự Quân Địch",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "khai_trieu_thua_van",
+      "name": "Khai Triều Thừa Vận",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "tran_dinh_son_ha",
+      "name": "Trấn Định Sơn Hà",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "thinh_the_vuong_quyen",
+      "name": "Thịnh Thế Vương Quyền",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "khich_le",
+      "name": "Khích Lệ",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Chiến"
+    },
+    {
+      "id": "ngu_say",
+      "name": "Ngủ Say",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "bao_ho",
+      "name": "Bảo Hộ",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "cau_phuc",
+      "name": "Cầu Phúc",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "chien_ca",
+      "name": "Chiến Ca",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "single",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "song_sao_ruc_ro",
+      "name": "Sông Sao Rực Rỡ",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "single",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "bi_ngan_tinh_kieu",
+      "name": "Bỉ Ngạn Tinh Kiều",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "single",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "xua_duoi",
+      "name": "Xua Đuổi",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "thanh_tam",
+      "name": "Thanh Tâm",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "thanh_nha_can_chinh",
+      "name": "Thanh Nhã Cần Chính",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "tri_lieu",
+      "name": "Trị Liệu",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "tri_du",
+      "name": "Trị Dũ",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "self",
+      "q": "Thần"
+    },
+    {
+      "id": "du_hop",
+      "name": "Dũ Hợp",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "self",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "an_hue_chi_vu",
+      "name": "Ân Huệ Chi Vũ",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "self",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "mua_han",
+      "name": "Mưa Hạn",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "self",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "bai_nhieu",
+      "name": "Bài Nhiễu",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thường"
+    },
+    {
+      "id": "giai_nan",
+      "name": "Giải Nan",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Chiến"
+    },
+    {
+      "id": "giai_tru",
+      "name": "Giải Trừ",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thần"
+    },
+    {
+      "id": "phan_ke",
+      "name": "Phản Kế",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "thanh_huy",
+      "name": "Thanh Huy",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "giao_nguyet_thanh_huy",
+      "name": "Giảo Nguyệt Thanh Huy",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "self",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "than_binh_xuat_hien",
+      "name": "Thần Binh Xuất Hiện",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "self",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "loi_nhan",
+      "name": "Lợi Nhẫn",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thường"
+    },
+    {
+      "id": "ban_ly",
+      "name": "Bạn Ly",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "me_tran",
+      "name": "Mê Trận",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "cu_ngao_uy_ap",
+      "name": "Cư Ngạo Uy Áp",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "chuyen_chu",
+      "name": "Chuyên Chú",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thường"
+    },
+    {
+      "id": "cot_thich",
+      "name": "Cốt Thích",
+      "flash": "steel",
+      "motif": "pierce",
+      "pattern": "self",
+      "q": "Thần"
+    },
+    {
+      "id": "phan_chan",
+      "name": "Phấn Chấn",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thường"
+    },
+    {
+      "id": "trung_nghia_ho_chu",
+      "name": "Trung Nghĩa Hộ Chủ",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "dia_trach_van_vat",
+      "name": "Địa Trạch Vạn Vật",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "ally_all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "than_huu_mot_phuong",
+      "name": "Thần Hữu Một Phương",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "ally_all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "tru_tam",
+      "name": "Tru Tâm",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Chiến"
+    },
+    {
+      "id": "toa_hon",
+      "name": "Tỏa Hồn",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "quyen_hanh",
+      "name": "Quyền Hành",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "vuong_trieu_tan_ra",
+      "name": "Vương Triều Tan Rã",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "tan_ca",
+      "name": "Tán Ca",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Chiến"
+    },
+    {
+      "id": "khuynh_quoc",
+      "name": "Khuynh Quốc",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thần"
+    },
+    {
+      "id": "vu_dieu_duoi_trang",
+      "name": "Vũ Điệu Dưới Trăng",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "ally_all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "thien_vu_khuynh_thanh",
+      "name": "Thiên Vũ Khuynh Thành",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "ally_all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "nghe_thuong_thien_vu",
+      "name": "Nghê Thường Thiên Vũ",
+      "flash": "blue_water",
+      "motif": "water",
+      "pattern": "ally_all",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "ho_chu",
+      "name": "Hộ Chủ",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thần"
+    },
+    {
+      "id": "vien_ho",
+      "name": "Viện Hộ",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "sa_truong_ngu_dich",
+      "name": "Sa Trường Ngự Địch",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "thanh_u_thu_tuyet",
+      "name": "Thanh U Thù Tuyệt",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "hien_thuc_luu_phuong",
+      "name": "Hiền Thục Lưu Phương",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "dinh_ke_nhat_thong",
+      "name": "Định Kế Nhất Thống",
+      "flash": "purple",
+      "motif": "shadow",
+      "pattern": "ally_all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "thau_tom_thien_ha",
+      "name": "Thâu Tóm Thiên Hạ",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "ally_all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "bach_y_pha_lang",
+      "name": "Bạch Y Phá Lãng",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "row",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "chuy_kich",
+      "name": "Chùy Kích",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "loan_the_muu",
+      "name": "Loạn Thế Mưu",
+      "flash": "gold_soft",
+      "motif": "buff",
+      "pattern": "all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "ngao_nghe_thien_ha",
+      "name": "Ngạo Nghễ Thiên Hạ",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "cu_cong_ngao_thuong",
+      "name": "Cư Công Ngạo Thượng",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "gia_chieu_cu_binh",
+      "name": "Giả Chiếu Cử Binh",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "all",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "do_chung_sinh",
+      "name": "Độ Chúng Sinh",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "self",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "kinh_anh_son_ha",
+      "name": "Kính Ánh Sơn Hà",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "front_row",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "cam_vu",
+      "name": "Cam Vũ",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "self",
+      "q": "Thần"
+    },
+    {
+      "id": "nhan_y",
+      "name": "Nhân Y",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "self",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "thanh_thu_hoi_xuan",
+      "name": "Thánh Thủ Hồi Xuân",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "single",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "thanh_thu_te_the",
+      "name": "Thánh Thủ Tề Thế",
+      "flash": "gold_soft",
+      "motif": "heal",
+      "pattern": "self",
+      "q": "Thái Sơ"
+    }
+  ],
+  "barrier": [
+    {
+      "id": "ngu_giap",
+      "name": "Ngự Giáp",
+      "flash": "shield",
+      "motif": "shield",
+      "pattern": "single",
+      "q": "Chiến"
+    },
+    {
+      "id": "lay_than_lam_giap",
+      "name": "Lấy Thân Làm Giáp",
+      "flash": "shield",
+      "motif": "shield",
+      "pattern": "column",
+      "q": "Thần Hoàng"
+    },
+    {
+      "id": "thu_ho",
+      "name": "Thủ Hộ",
+      "flash": "shield",
+      "motif": "shield",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "han_ve",
+      "name": "Hãn Vệ",
+      "flash": "shield",
+      "motif": "shield",
+      "pattern": "ally_all",
+      "q": "Chiến"
+    },
+    {
+      "id": "bich_luy",
+      "name": "Bích Lũy",
+      "flash": "shield",
+      "motif": "shield",
+      "pattern": "ally_all",
+      "q": "Thần"
+    },
+    {
+      "id": "thuan_tuong",
+      "name": "Thuẫn Tường",
+      "flash": "shield",
+      "motif": "shield",
+      "pattern": "ally_all",
+      "q": "Truyền thuyết"
+    },
+    {
+      "id": "tu_thu_giu_minh",
+      "name": "Tự Thủ Giữ Mình",
+      "flash": "shield",
+      "motif": "shield",
+      "pattern": "ally_all",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "bao_ve_kinh_giang",
+      "name": "Bảo Vệ Kinh Giang",
+      "flash": "shield",
+      "motif": "shield",
+      "pattern": "ally_all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "yeu_giap",
+      "name": "Yêu Giáp",
+      "flash": "shield",
+      "motif": "shield",
+      "pattern": "single",
+      "q": "Thần"
+    },
+    {
+      "id": "thiet_bich",
+      "name": "Thiết Bích",
+      "flash": "shield",
+      "motif": "shield",
+      "pattern": "single",
+      "q": "Thường"
+    },
+    {
+      "id": "ngam_tho_giai_sau",
+      "name": "Ngâm Thơ Giải Sầu",
+      "flash": "shield",
+      "motif": "shield",
+      "pattern": "self",
+      "q": "Thượng Cổ"
+    },
+    {
+      "id": "bai_ca_bien_ai",
+      "name": "Bài Ca Biên Ải",
+      "flash": "shield",
+      "motif": "shield",
+      "pattern": "self",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "nho_thanh_ho_the",
+      "name": "Nho Thánh Hộ Thể",
+      "flash": "shield",
+      "motif": "shield",
+      "pattern": "ally_all",
+      "q": "Thái Sơ"
+    },
+    {
+      "id": "truong_ca",
+      "name": "Trường Ca",
+      "flash": "shield",
+      "motif": "shield",
+      "pattern": "self",
+      "q": "Thần"
+    }
+  ]
+}

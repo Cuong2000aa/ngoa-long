@@ -722,6 +722,7 @@ export class BattleRenderer {
     const visual = profile.visual || "default";
     const delivery = profile.delivery || "arcane";
     const motif = ((opts && opts.motif) || "").toLowerCase();
+    const skillId = (opts && opts.skillId) || null;
     const support =
       !!(opts && opts.support) ||
       delivery === "buff" ||
@@ -807,6 +808,7 @@ export class BattleRenderer {
           scale,
           phase: "emission",
           support: true,
+          skillId,
         });
         targets.forEach((tid, i) => {
           const to = this.fighters.get(tid);
@@ -821,6 +823,8 @@ export class BattleRenderer {
               scale: "S",
               style: "bless",
               phase: "impact",
+              skillId,
+              pattern,
             });
           }, 80 + i * 45);
         });
@@ -838,6 +842,7 @@ export class BattleRenderer {
           pattern,
           scale,
           phase: "emission",
+          skillId,
         });
         return;
       }
@@ -864,6 +869,8 @@ export class BattleRenderer {
             scale,
             style: fx3dStyle,
             phase,
+            skillId,
+            pattern,
           });
           if (mode === "impact") {
             if (isCharge || isRush || fx3dStyle === "rush" || fx3dStyle === "charge") {
@@ -908,6 +915,8 @@ export class BattleRenderer {
                 scale,
                 style: fx3dStyle,
                 phase: "impact",
+                skillId,
+                pattern,
               });
               if (!support) {
                 playActor(to.actor, "hit", 0.05);

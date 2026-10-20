@@ -241,6 +241,8 @@
         <option value="">Tất cả motif</option>
       </select>
       <div class="motif-chips" id="motif-chips" aria-label="Motif nhanh"></div>
+      <p class="sub" style="margin:0.15rem 0 0">QA mẫu theo nhóm style:</p>
+      <div class="motif-chips" id="qa-chips" aria-label="Chiêu mẫu polish"></div>
       <div id="skill-list" role="listbox" aria-label="Danh sách chiêu"></div>
       <div class="actions">
         <button type="button" class="primary" id="btn-play">Phát chiêu</button>
@@ -272,7 +274,27 @@
     const qEl = document.getElementById("q");
     const motifSel = document.getElementById("motif-filter");
     const chipsEl = document.getElementById("motif-chips");
+    const qaChipsEl = document.getElementById("qa-chips");
     const metaEl = document.getElementById("meta");
+    /** Mẫu polish theo nhóm style — bấm → chọn + phát */
+    const QA_SAMPLES = [
+      ["hoa_long", "breath"],
+      ["thanh_long", "breath·lam"],
+      ["bach_long", "breath·bạc"],
+      ["basic_strike", "slash"],
+      ["doc_xa", "poison"],
+      ["ho_khieu", "roar"],
+      ["khong_thanh", "beam"],
+      ["bagua_zhen", "bagua"],
+      ["wu_sheng", "tide"],
+      ["dot_kich", "rush"],
+      ["tay_luong", "charge"],
+      ["thien_hoa", "nova"],
+      ["gio_loc", "whirl"],
+      ["basic_scheme", "shadow"],
+      ["thien_menh", "bless"],
+      ["thiet_bich", "barrier"],
+    ];
     const hintEl = document.getElementById("overlay-hint");
     const statusEl = document.getElementById("status");
     const btnPlay = document.getElementById("btn-play");
@@ -391,6 +413,33 @@
           renderList();
         });
       });
+      if (qaChipsEl) {
+        qaChipsEl.innerHTML = QA_SAMPLES.map(([id, label]) => {
+          const ok = skills.some((s) => s.id === id);
+          return (
+            '<button type="button" data-qa="' +
+            id +
+            '"' +
+            (ok ? "" : " disabled title=\"thiếu id\"") +
+            ">" +
+            label +
+            "</button>"
+          );
+        }).join("");
+        qaChipsEl.querySelectorAll("button[data-qa]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const id = btn.getAttribute("data-qa");
+            if (!id || !skills.some((s) => s.id === id)) return;
+            motifFilter = "";
+            motifSel.value = "";
+            qEl.value = id;
+            renderList();
+            selectSkill(id);
+            playSelected();
+            qaChipsEl.querySelectorAll("button").forEach((b) => b.classList.toggle("on", b === btn));
+          });
+        });
+      }
     }
 
     /** Bỏ dấu tiếng Việt — "Hoả" / "Hỏa" / "hoa" đều khớp */

@@ -1,0 +1,591 @@
+﻿ten,loai,he_mau,kieu_fx,id,flash,motif,style,pattern,damageType,power
+Binh Hình Cửu Độn,sát thương+buff,Mưu · lam,mưu|cột,binh_hinh_cuu_don,blue,arcane,column_pierce,column,physical,1.91
+Binh Phạt,sát thương,Mưu · lam,mưu|aoe,binh_phat,blue,arcane,aoe_nova,all,physical,1.1
+Binh Tiển,sát thương,Mưu · lam,mưu|aoe,binh_tien,blue,arcane,aoe_nova,all,strategy,1.54
+Binh Vô Thường Hình,sát thương+buff,Mưu · lam,mưu|cột,binh_vo_thuong_hinh,blue,arcane,column_pierce,column,physical,1.83
+Biển Sao Lấp Lánh,sát thương+buff+khống chế,Mưu · lam,mưu|hàng,bien_sao_lap_lanh,blue,arcane,row_sweep,row,strategy,1.83
+Bài Ca Biên Ải,buff+giáp+trị liệu,Khiên · vàng,khiên,bai_ca_bien_ai,shield,shield,ally_bless,self,strategy,1.05
+Bài Lãng,sát thương,Mưu · lam,mưu|aoe,bai_lang,blue,arcane,aoe_nova,all,strategy,1.9
+Bài Nhiễu,buff,Kim khí · vàng,aura_buff,bai_nhieu,gold_soft,buff,ally_bless,ally_all,physical,1.35
+Bào Hao,sát thương,Mưu · lam,mưu|cột,bao_hao,blue,arcane,column_pierce,column,physical,1.78
+Bày Trận Như Núi,sát thương+buff+trị liệu,Kim khí · vàng,aura_buff,bay_tran_nhu_nui,gold_soft,heal,ally_bless,all,physical,1.91
+Bá Thương,sát thương+buff+giáp,Kim/Thép · bạc,người_đâm|cột,ba_thuong,steel,pierce,column_pierce,column,physical,2.2
+Bá Vương,sát thương+buff,Mưu · lam,mưu|aoe,ba_vuong,blue,arcane,aoe_nova,all,physical,1.75
+Bá Vương Kích Đỉnh,sát thương+buff,Mưu · lam,mưu|đơn,ba_vuong_kich_dinh,blue,arcane,single_strike,single,physical,1.83
+Bá Vương Liệt Phách,sát thương+buff,Hỏa · đỏ-cam,hồn_rồng|aoe,ba_vuong_liet_phach,dragon,dragon,aoe_nova,all,physical,1.91
+Bá Vương Thần Uy,sát thương+buff,Mưu · lam,mưu|aoe,ba_vuong_than_uy,blue,arcane,aoe_nova,all,physical,1.6700000000000002
+Bác Kích,sát thương,Kim/Thép · bạc,người_đâm|cột,bac_kich,steel,pierce,column_pierce,column,physical,1.65
+Bác Sát,sát thương+buff,Huyết · son,người_chém|cột,bac_sat,crimson,slash,column_pierce,column,physical,2.2
+Bách Bộ Xuyên Dương,sát thương,Kim/Thép · bạc,người_đâm|đơn,bach_bo,steel,pierce,single_strike,single,physical,1.9
+Bách Lý Truy Hồn,sát thương+buff,Kim khí · vàng,linh hồn|triệu hồi,bach_ly_truy_hon,violet_spirit,spirit,spirit_summon,single,physical,1.75
+Bát Quái Trận,sát thương,Huyền · tím,trận pháp|bát quái,bagua_zhen,jade_gold,bagua,element_bagua,single,strategy,1.15
+Bát Trận Đồ,sát thương+buff,Huyền · tím,bát_quái|aoe,bat_tran_do,bagua,bagua,aoe_nova,all,strategy,1.6700000000000002
+Bình Thuật,sát thương+buff+debuff+khống chế,Mưu · lam,mưu|aoe,binh_thuat,blue,arcane,aoe_nova,all,strategy,1.05
+Bích Lũy,giáp,Khiên · vàng,khiên,bich_luy,shield,shield,ally_bless,ally_all,physical,1.05
+Bùa Phép Trấn Tà,sát thương+buff+debuff,Mưu · lam,mưu|aoe,bua_phep_tran_ta,blue,arcane,aoe_nova,all,strategy,1.83
+Băng Chùy,sát thương+debuff,Mưu · lam,băng|đóng băng,bang_chuy,ice_blue,ice,element_ice,row,strategy,2.2
+Băng Hoại,sát thương+giáp,Mưu · lam,băng|đóng băng,bang_hoai,ice_blue,ice,element_ice,column,physical,2.2
+Băng Phong,sát thương+buff+debuff,Phong · cyan,băng|đóng băng,bang_phong,ice_blue,ice,element_ice,row,strategy,1.6700000000000002
+Bạch Hồng Quán Nhật,sát thương+buff+debuff+giáp+trị liệu+khống chế,Kim khí · vàng,linh hồn|triệu hồi,bach_hong_quan_nhat,violet_spirit,spirit,spirit_summon,column,physical,1.75
+Bạch Kỵ Dương Kỳ,sát thương+buff,Thổ · nâu,aura_buff,bach_ky_duong_ky,charge,charge,ally_bless,column,physical,1.91
+Bạch Long,sát thương+buff,Hỏa · đỏ-cam,long|linh thú,bach_long,cyan_dragon,dragon,beast_dragon,column,physical,2.2
+Bạch Mã Nghĩa Tòng,sát thương,Kim/Thép · bạc,người_chém|đơn,bailian,steel,slash,single_strike,single,physical,1.45
+Bạch Mã Tướng Quân,sát thương+buff,Kim/Thép · bạc,aura_buff,bach_ma_tuong_quan,steel,pierce,ally_bless,column,physical,1.83
+Bạch Y Phá Lãng,sát thương+debuff+thiêu+trị liệu+câm lặng,Kim khí · vàng,aura_buff,bach_y_pha_lang,gold_soft,heal,ally_bless,row,physical,1.83
+Bạch Y Độ Giang,sát thương+buff+debuff+thiêu,Mưu · lam,mưu|đơn,bach_y_do_giang,blue,arcane,single_strike,single,physical,1.6700000000000002
+Bạn Ly,sát thương+debuff+trị liệu,Kim khí · vàng,aura_buff,ban_ly,gold_soft,heal,ally_bless,all,strategy,2.05
+Bạo Lôi,sát thương+buff,Lôi · vàng tím,lôi điện,bao_loi,electric_blue,thunder,element_thunder,single,strategy,2.2
+Bạo Lệ,sát thương+buff+giáp,Mưu · lam,mưu|cột,bao_le,blue,arcane,column_pierce,column,physical,1.6700000000000002
+Bạo Nộ Hống,sát thương,Mưu · lam,mưu|aoe,bao_no_hong,blue,arcane,aoe_nova,all,physical,1.75
+Bạo Trấn,sát thương+buff+giáp,Mưu · lam,mưu|cột,bao_tran,blue,arcane,column_pierce,column,physical,1.75
+Bảo Hộ,sát thương+giáp+trị liệu,Kim khí · vàng,aura_buff,bao_ho,gold_soft,heal,ally_bless,single,strategy,1.05
+Bảo Vệ Kinh Giang,buff+giáp,Khiên · vàng,khiên,bao_ve_kinh_giang,shield,shield,ally_bless,ally_all,physical,1.85
+Bậc Thầy U Mịch,sát thương+buff,Huyết · son,người_chém|aoe,bac_thay_u_mich,crimson,slash,aoe_nova,all,physical,1.75
+Bắc Vọng,sát thương+buff,Mưu · lam,mưu|đơn,bac_vong,blue,arcane,single_strike,single,strategy,1.75
+Bế Nguyệt,sát thương,Huyết · son,bóng_ám|aoe,be_nguyet,purple,shadow,aoe_nova,all,physical,1.05
+Bỉ Ngạn Tinh Kiều,sát thương+trị liệu,Kim khí · vàng,aura_buff,bi_ngan_tinh_kieu,gold_soft,heal,ally_bless,single,strategy,1.91
+Bỏ Tối Theo Sáng,sát thương+buff+khống chế,Mưu · lam,mưu|đơn,bo_toi_theo_sang,blue,arcane,single_strike,single,strategy,1.83
+Bỏng Lạnh,sát thương+buff+debuff,Mưu · lam,mưu|hàng,bong_lanh,blue,arcane,row_sweep,row,strategy,1.6700000000000002
+Bốn Bề Bủa Vây,sát thương+buff+debuff+độc,Độc · lục,hồn_xà|hàng,bon_be_bua_vay,green_poison,poison,row_sweep,row,strategy,1.83
+Bộc Viêm,sát thương,Hỏa · đỏ-cam,hỏa|thiêu đốt,boc_viem,ember_orange,fire,element_fire,single,strategy,2.04
+Ca Tụng Công Đức,buff,Kim khí · vàng,aura_buff,ca_tung_cong_duc,gold_soft,buff,ally_bless,ally_all,physical,1.05
+Cam Vũ,buff+trị liệu,Kim khí · vàng,aura_buff,cam_vu,gold_soft,heal,ally_bless,self,strategy,1.05
+Chiến Ca,sát thương+giáp+trị liệu,Kim khí · vàng,aura_buff,chien_ca,gold_soft,heal,ally_bless,single,strategy,2.2
+Chiến Cuồng,sát thương+buff,Mưu · lam,mưu|đơn,chien_cuong,blue,arcane,single_strike,single,physical,2.2
+Chiến Kỵ,sát thương+buff+debuff,Thổ · nâu,kỵ_xung,chien_ky,charge,charge,cavalry_charge,column,physical,2.2
+Chiến Thần Bất Khuất,sát thương+buff+debuff+giáp,Mưu · lam,mưu|cột,chien_than_bat_khuat,blue,arcane,column_pierce,column,physical,1.83
+Chiến Thần Can Đảm,sát thương+buff+debuff,Mưu · lam,mưu|cột,chien_than_can_dam,blue,arcane,column_pierce,column,physical,1.75
+Chuyên Chú,buff,Kim khí · vàng,aura_buff,chuyen_chu,gold_soft,buff,ally_bless,ally_all,strategy,1.05
+Chùy Kích,sát thương+buff+trị liệu+khống chế,Kim khí · vàng,aura_buff,chuy_kich,gold_soft,heal,ally_bless,single,physical,1.59
+Chước Giới,sát thương,Mưu · lam,mưu|đơn,chuoc_gioi,blue,arcane,single_strike,single,physical,1.5
+Chấn Kích,sát thương,Thổ · nâu,người_chém|aoe,chan_kich,brown,slash,aoe_nova,all,physical,1.59
+Chế Ngự Quân Địch,sát thương+buff+trị liệu,Kim khí · vàng,aura_buff,che_ngu_quan_dich,gold_soft,heal,ally_bless,all,physical,1.83
+Cung Mã,sát thương+buff,Kim khí · vàng,người_đâm|hàng,cung_ma,yellow,pierce,row_sweep,row,physical,2.2
+Cuồng Bạo,sát thương+buff,Mưu · lam,mưu|đơn,cuong_bao,blue,arcane,single_strike,single,physical,2.2
+Cuồng Hào,sát thương,Mưu · lam,mưu|aoe,cuong_hao,blue,arcane,aoe_nova,all,physical,1.55
+Cuồng Loạn,sát thương+buff,Mưu · lam,mưu|đơn,cuong_loan,blue,arcane,single_strike,single,physical,1.59
+Cuồng Ngưu,sát thương+buff,Mưu · lam,mưu|aoe,cuong_nguu,blue,arcane,aoe_nova,all,physical,1.25
+Cuồng Nộ,sát thương+buff+debuff,Huyết · son,người_chém|aoe,cuong_no,crimson,slash,aoe_nova,all,physical,1.6700000000000002
+Càn Khôn Tá Pháp,sát thương+buff+debuff,Mưu · lam,mưu|hàng,can_khon_ta_phap,blue,arcane,row_sweep,row,strategy,1.91
+Càn Quét Bạo Lực,sát thương+buff,Huyết · son,người_chém|hàng,can_quet_bao_luc,crimson,slash,row_sweep,row,physical,1.83
+Càng Già Càng Cay,sát thương+buff,Mưu · lam,mưu|cột,cang_gia_cang_cay,blue,arcane,column_pierce,column,physical,1.83
+Công Tâm,sát thương+trị liệu,Kim khí · vàng,aura_buff,cong_tam,gold_soft,heal,ally_bless,single,strategy,1.76
+Cư Công Ngạo Thượng,sát thương+buff+trị liệu,Kim khí · vàng,aura_buff,cu_cong_ngao_thuong,gold_soft,heal,ally_bless,all,strategy,1.05
+Cư Ngạo Uy Áp,sát thương+debuff+trị liệu,Kim khí · vàng,aura_buff,cu_ngao_uy_ap,gold_soft,heal,ally_bless,all,strategy,1.83
+Cường Tập,sát thương+khống chế,Xung · thép,xung_kích,cuong_tap,rush,rush,rush_assault,single,physical,1.43
+Cầu Phúc,sát thương+buff+giáp+trị liệu,Kim khí · vàng,aura_buff,cau_phuc,gold_soft,heal,ally_bless,single,strategy,1.77
+Cốt Thích,buff,Kim/Thép · bạc,aura_buff,cot_thich,steel,pierce,ally_bless,self,physical,1.55
+Cổ Chiến,buff,Kim khí · vàng,aura_buff,co_chien,gold_soft,buff,ally_bless,self,physical,1.7
+Cổ Vũ,buff,Kim khí · vàng,aura_buff,co_vu,gold_soft,buff,ally_bless,ally_all,physical,1.35
+Cổn Thạch,sát thương,Mưu · lam,mưu|cột,con_thach,blue,arcane,column_pierce,column,strategy,1.57
+Cứu Viện,sát thương+trị liệu,Kim khí · vàng,aura_buff,cuu_vien,gold_soft,heal,ally_bless,all,physical,1.8
+Cửu Thiên Thần Lôi,sát thương+buff,Lôi · vàng tím,lôi điện,cuu_thien_than_loi,electric_blue,thunder,element_thunder,single,strategy,1.6700000000000002
+Cửu Tiêu Thần Lôi,sát thương+buff,Lôi · vàng tím,lôi điện,cuu_tieu_than_loi,electric_blue,thunder,element_thunder,single,strategy,1.91
+Cự Mã,sát thương,Mưu · lam,mưu|hàng,cu_ma,blue,arcane,row_sweep,row,physical,1.28
+Diêm La Kích,sát thương+buff,Thổ · nâu,người_chém|aoe,diem_la_kich,brown,slash,aoe_nova,all,physical,2.2
+Diệt Gọn,sát thương+buff+debuff+khống chế,Mưu · lam,mưu|đơn,diet_gon,blue,arcane,single_strike,single,physical,1.75
+Diệt Thế Thiên Lôi,sát thương+buff,Lôi · vàng tím,lôi điện,diet_the_thien_loi,electric_blue,thunder,element_thunder,single,strategy,1.75
+Dòng Xoáy,sát thương,Phong · cyan,hồn_phong|đơn,dong_xoay,whirlwind,whirlwind,element_whirlwind,single,physical,1.7
+Dũ Hợp,debuff+trị liệu,Kim khí · vàng,aura_buff,du_hop,gold_soft,heal,ally_bless,self,strategy,1.05
+Dũng Mãnh,sát thương+buff+debuff,Mưu · lam,mưu|cột,dung_manh,blue,arcane,column_pierce,column,physical,1.59
+Dũng Mãnh Đột Kích,sát thương+buff,Xung · thép,xung_kích,dung_manh_dot_kich,rush,rush,rush_assault,row,physical,1.6700000000000002
+Dũng Tướng,sát thương+buff,Mưu · lam,mưu|đơn,dung_tuong,blue,arcane,single_strike,single,physical,2.2
+Dương Công,sát thương,Mưu · lam,mưu|cột,duong_cong,blue,arcane,column_pierce,column,physical,2.2
+Dị Tộc Xâm Nhập,sát thương+debuff,Thổ · nâu,người_chém|aoe,di_toc_xam_nhap,brown,slash,aoe_nova,all,physical,1.83
+Giao Chiến,sát thương+debuff+câm lặng,Mưu · lam,mưu|đơn,giao_chien,blue,arcane,single_strike,single,physical,1.54
+Gió Lốc,sát thương+khống chế,Phong · cyan,phong|lốc xoáy,gio_loc,wind_silver,whirlwind,element_whirlwind,single,strategy,1.05
+Giả Chiếu Cử Binh,sát thương+buff+trị liệu,Kim khí · vàng,aura_buff,gia_chieu_cu_binh,gold_soft,heal,ally_bless,all,strategy,1.05
+Giải Nan,buff,Kim khí · vàng,aura_buff,giai_nan,gold_soft,buff,ally_bless,ally_all,physical,1.45
+Giải Trừ,buff,Kim khí · vàng,aura_buff,giai_tru,gold_soft,buff,ally_bless,ally_all,physical,1.55
+Giảo Nguyệt Thanh Huy,buff+trị liệu,Kim khí · vàng,aura_buff,giao_nguyet_thanh_huy,gold_soft,heal,ally_bless,self,strategy,1.05
+Gầm Thét,sát thương,Hổ · vàng hổ,hồn_hổ|hàng,gam_thet,tiger,tiger,row_sweep,front_row,physical,1.25
+Gầm Thét · Thần Hoàng,sát thương,Hổ · vàng hổ,hồn_hổ|đơn,gam_thet_king,tiger,tiger,single_strike,single,physical,1.2
+Gầm Thét · Truyền thuyết,sát thương,Huyết · son,người_chém|đơn,gam_thet_legend,crimson,slash,single_strike,single,physical,1.45
+Hiền Thục Lưu Phương,sát thương+buff+trị liệu,Kim khí · vàng,aura_buff,hien_thuc_luu_phuong,gold_soft,heal,ally_bless,all,strategy,1.05
+Hiệu Lệnh,buff,Linh hồn · tím,linh hồn|triệu hồi,hieu_lenh,violet_spirit,spirit,spirit_summon,ally_all,physical,1.35
+Hiệu Triệu,buff,Kim khí · vàng,aura_buff,hieu_trieu,gold_soft,buff,ally_bless,ally_all,physical,1.55
+Hoàng Thiên Quỷ Đạo,sát thương+buff+debuff+giáp,Thổ · nâu,người_chém|aoe,hoang_thien_quy_dao,brown,slash,aoe_nova,all,physical,1.6700000000000002
+Hoàng Thiên Đương Lập,sát thương,Kim/Thép · bạc,người_chém|đơn,huang_tian,steel,slash,single_strike,single,strategy,1.3
+Hoàng Thiên Đương Lập,sát thương+buff+debuff+khống chế,Mưu · lam,mưu|aoe,hoang_thien_duong_lap,blue,arcane,aoe_nova,all,strategy,1.5
+Hoành Họa,sát thương+khống chế,Mưu · lam,mưu|hàng,hoanh_hoa,blue,arcane,row_sweep,row,physical,1.33
+Hoành Tảo,sát thương,Mưu · lam,mưu|hàng,hoanh_tao,blue,arcane,row_sweep,row,physical,1.41
+Huyết Chinh,sát thương+buff,Huyết · son,người_chém|cột,huyet_chinh,crimson,slash,column_pierce,column,physical,2.2
+Huyết Chiến,sát thương,Huyết · son,người_chém|đơn,huyet_chien,crimson,slash,single_strike,single,physical,2.2
+Huyết Chiến Bát Phương,sát thương+buff,Huyết · son,người_chém|aoe,huyet_chien_bat_phuong,crimson,slash,aoe_nova,all,physical,1.6700000000000002
+Huyết Chế,sát thương+buff+khống chế,Huyết · son,người_chém|đơn,huyet_che,crimson,slash,single_strike,single,strategy,1.05
+Huyết Lộ,sát thương,Huyết · son,người_chém|đơn,huyet_lo,crimson,slash,single_strike,single,physical,2.2
+Huyết Nhẫn,sát thương+buff,Huyết · son,người_chém|cột,huyet_nhan,crimson,slash,column_pierce,column,physical,2.2
+Huyết Quỷ Nhẫn,sát thương+buff+debuff+câm lặng,Huyết · son,người_chém|cột,huyet_quy_nhan,crimson,slash,column_pierce,column,physical,1.6700000000000002
+Huyết Trảm,sát thương+trị liệu,Huyết · son,người_chém|aoe,huyet_tram,crimson,slash,aoe_nova,all,physical,1.8
+Huyết Ách Sư,sát thương+buff+trị liệu,Huyết · son,người_chém|aoe,huyet_ach_su,crimson,slash,aoe_nova,all,physical,1.83
+Huyền Băng,sát thương,Huyết · son,băng|đóng băng,huyen_bang,ice_blue,ice,element_ice,single,strategy,2.1
+Huyền Hồ Tế Chúng,sát thương+buff+giáp+trị liệu,Huyết · son,bóng_ám|đơn,huyen_ho_te_chung,purple,shadow,single_strike,single,strategy,1.05
+Huyễn Pháp,sát thương,Huyền · tím,bát_quái|aoe,huyen_phap,bagua,bagua,aoe_nova,all,strategy,1.05
+Huyễn Thuật,sát thương,Huyền · tím,bát_quái|aoe,huyen_thuat,bagua,bagua,aoe_nova,all,strategy,1.05
+Hy Sinh,sát thương,Mưu · lam,mưu|cột,hy_sinh,blue,arcane,column_pierce,column,physical,2.2
+Hàn Băng,sát thương+buff,Mưu · lam,băng|đóng băng,han_bang,ice_blue,ice,element_ice,row,strategy,1.05
+Hành Binh,sát thương,Mưu · lam,băng|đóng băng,hanh_binh,ice_blue,ice,element_ice,column,physical,1.75
+Hành Thích,sát thương+buff+khống chế,Kim/Thép · bạc,băng|đóng băng,hanh_thich,ice_blue,ice,element_ice,single,physical,2.2
+Hám Địa,sát thương,Huyết · son,bóng_ám|hàng,ham_dia,purple,shadow,row_sweep,row,physical,1.9
+Hãm Doanh Thôi Nhuệ,sát thương+buff,Huyết · son,người_chém|cột,ham_doanh_thoi_nhue,crimson,slash,column_pierce,column,physical,1.83
+Hãm Trận Tiên Đăng,sát thương+buff,Xung · thép,xung_kích,ham_tran_tien_dang,rush,rush,rush_assault,column,physical,1.75
+Hãn Vệ,giáp,Khiên · vàng,khiên,han_ve,shield,shield,ally_bless,ally_all,physical,1.45
+Hùng Cứ,sát thương+buff+giáp+trị liệu,Kim khí · vàng,aura_buff,hung_cu,gold_soft,heal,ally_bless,single,strategy,1.05
+Hùng Hổ Tiên Phong,sát thương+buff,Hổ · vàng hổ,mãnh thú|hổ,hung_ho_tien_phong,gold_beast,tiger,beast_tiger,row,physical,1.91
+Hư Thực,sát thương+debuff+câm lặng,Mưu · lam,mưu|đơn,hu_thuc,blue,arcane,single_strike,single,strategy,2.2
+Hư Vô,sát thương+debuff+câm lặng,Mưu · lam,mưu|aoe,hu_vo,blue,arcane,aoe_nova,all,strategy,1.05
+Hải Tiếu,sát thương,Thủy · lam,hồn_thủy|aoe,hai_tieu,blue_water,water,aoe_nova,all,strategy,1.05
+Hắc Viêm,sát thương+buff,Hỏa · đỏ-cam,hỏa|thiêu đốt,hac_viem,ember_orange,fire,element_fire,single,strategy,2.2
+Hắc Động,sát thương+debuff+câm lặng,Mưu · lam,mưu|aoe,hac_dong,blue,arcane,aoe_nova,all,strategy,1.6
+Hỏa Công,sát thương,Hỏa · đỏ-cam,hỏa|thiêu đốt,hoa_cong,ember_orange,fire,element_fire,single,strategy,1.45
+Hỏa Long,sát thương+thiêu,Hỏa · đỏ-cam,hỏa|thiêu đốt,hoa_long,ember_orange,fire,element_fire,single,strategy,1.85
+Hỏa Long Tiễn,sát thương+buff+debuff+giáp,Hỏa · đỏ-cam,hỏa|thiêu đốt,hoa_long_tien,ember_orange,fire,element_fire,all,physical,1.6700000000000002
+Hỏa Ngưu Đạp,sát thương,Hỏa · đỏ-cam,hỏa|thiêu đốt,hoa_nguu_dap,ember_orange,fire,element_fire,all,physical,1.65
+Hỏa Nham,sát thương+thiêu,Hỏa · đỏ-cam,hỏa|thiêu đốt,hoa_nham,ember_orange,fire,element_fire,single,strategy,2.2
+Hỏa Nỏ,sát thương+buff,Hỏa · đỏ-cam,hỏa|thiêu đốt,hoa_no,ember_orange,fire,element_fire,row,physical,2.2
+Hỏa Thiêu Liên Doanh,sát thương+buff+thiêu,Hỏa · đỏ-cam,hỏa|thiêu đốt,hoa_thieu_lien_doanh,ember_orange,fire,element_fire,single,strategy,1.6700000000000002
+Hỏa Thần,sát thương+thiêu,Hỏa · đỏ-cam,hỏa|thiêu đốt,hoa_than,ember_orange,fire,element_fire,all,strategy,2.2
+Hỏa Thế Ngút Trời,sát thương+buff+thiêu,Hỏa · đỏ-cam,hỏa|thiêu đốt,hoa_the_ngut_troi,ember_orange,fire,element_fire,single,strategy,1.83
+Hỏa Tiễn,sát thương+thiêu,Hỏa · đỏ-cam,hỏa|thiêu đốt,hoa_tien,ember_orange,fire,element_fire,all,physical,1.4
+Hồng Hoang Nộ Hỏa,sát thương,Hỏa · đỏ-cam,linh hồn|triệu hồi,hong_hoang_no_hoa,violet_spirit,spirit,spirit_summon,all,physical,1.83
+Hồng Liên Nghiệp Hỏa,sát thương+buff,Hỏa · đỏ-cam,linh hồn|triệu hồi,hong_lien_nghiep_hoa,violet_spirit,spirit,spirit_summon,all,strategy,1.75
+Hồng Viêm,sát thương+buff,Hỏa · đỏ-cam,linh hồn|triệu hồi,hong_viem,violet_spirit,spirit,spirit_summon,single,strategy,2.1
+Hổ Hầu Sân Nộ,sát thương+buff,Hổ · vàng hổ,mãnh thú|hổ,ho_hau_san_no,gold_beast,tiger,beast_tiger,single,physical,1.75
+Hổ Khiếu,sát thương,Hổ · vàng hổ,mãnh thú|hổ,ho_khieu,gold_beast,tiger,beast_tiger,all,physical,1.05
+Hổ Khí,buff,Hổ · vàng hổ,mãnh thú|hổ,ho_khi,gold_beast,tiger,beast_tiger,ally_all,strategy,0.0
+Hổ Lao Trảm,sát thương,Hổ · vàng hổ,mãnh thú|hổ,hoa_hung_slash,gold_beast,tiger,beast_tiger,single,physical,1.85
+Hổ Si,sát thương,Hổ · vàng hổ,mãnh thú|hổ,ho_si,gold_beast,tiger,beast_tiger,front_row,physical,1.35
+Hổ Sát,sát thương,Hổ · vàng hổ,mãnh thú|hổ,tl_than,gold_beast,tiger,beast_tiger,column,strategy,1.65
+Hổ Sát,sát thương+buff+debuff+câm lặng,Hổ · vàng hổ,mãnh thú|hổ,ho_sat,gold_beast,tiger,beast_tiger,column,physical,2.2
+Hổ Sát · Truyền thuyết,sát thương,Hổ · vàng hổ,mãnh thú|hổ,tl_truyen,gold_beast,tiger,beast_tiger,column,strategy,1.9
+Hổ Tri,sát thương+buff,Hổ · vàng hổ,mãnh thú|hổ,ho_tri,gold_beast,tiger,beast_tiger,single,physical,1.6700000000000002
+Hổ Uy,sát thương+buff,Hổ · vàng hổ,mãnh thú|hổ,ho_uy,gold_beast,tiger,beast_tiger,column,physical,2.2
+Hổ Xung,sát thương+buff,Hổ · vàng hổ,mãnh thú|hổ,tl_thuong,gold_beast,tiger,beast_tiger,single,strategy,1.55
+Hổ Xung,sát thương+buff+debuff+câm lặng,Hổ · vàng hổ,mãnh thú|hổ,ho_xung,gold_beast,tiger,beast_tiger,single,physical,1.95
+Hổ Xung · Chiến,sát thương,Hổ · vàng hổ,mãnh thú|hổ,tl_chien,gold_beast,tiger,beast_tiger,column,strategy,1.45
+Hộ Chủ,sát thương+buff+debuff+trị liệu,Kim khí · vàng,aura_buff,ho_chu,gold_soft,heal,ally_bless,all,physical,2.2
+Hủ Thi Độc,sát thương+giáp+độc+khống chế,Độc · lục,độc|độc vụ,hu_thi_doc,toxic_green,poison,element_poison,single,strategy,1.75
+Hủy Diệt,sát thương+buff,Mưu · lam,mưu|cột,huy_diet,blue,arcane,column_pierce,column,strategy,2.2
+Hủy Hoại,sát thương,Mưu · lam,mưu|aoe,huy_hoai,blue,arcane,aoe_nova,all,physical,1.05
+Khai Sơn Huyết Phủ,sát thương+buff,Huyết · son,người_chém|cột,khai_son_huyet_phu,crimson,slash,column_pierce,column,physical,1.6700000000000002
+Khai Triều Thừa Vận,buff,Kim khí · vàng,aura_buff,khai_trieu_thua_van,gold_soft,buff,ally_bless,ally_all,physical,1.75
+Khu Trục,sát thương+buff,Huyết · son,bóng_ám|đơn,khu_truc,purple,shadow,single_strike,single,physical,2.2
+Khuynh Quốc,buff+debuff,Kim khí · vàng,aura_buff,khuynh_quoc,gold_soft,buff,ally_bless,ally_all,physical,1.05
+Khuynh Thế Giai Nhân,sát thương+buff+trị liệu,Kim khí · vàng,aura_buff,khuynh_the_giai_nhan,gold_soft,heal,ally_bless,single,strategy,1.05
+Khí Giới,sát thương,Mưu · lam,mưu|cột,khi_gioi,blue,arcane,column_pierce,column,physical,2.0
+Khích Lệ,buff,Kim khí · vàng,aura_buff,khich_le,gold_soft,buff,ally_bless,ally_all,physical,1.45
+Không Thành,sát thương,Huyền · tím,băng|đóng băng,khong_thanh,ice_blue,ice,element_ice,all,strategy,0.95
+Không Thành · Thần Hoàng,sát thương,Huyền · tím,băng|đóng băng,khong_thanh_king,ice_blue,ice,element_ice,single,strategy,1.05
+Không Thành · Truyền thuyết,sát thương,Huyền · tím,băng|đóng băng,khong_thanh_legend,ice_blue,ice,element_ice,single,strategy,1.15
+Khổ Kế,sát thương,Hổ · vàng hổ,mãnh thú|hổ,kho_ke,gold_beast,tiger,beast_tiger,column,physical,2.2
+Kim Quý Yếu Lược,sát thương+buff+trị liệu,Kim khí · vàng,aura_buff,kim_quy_yeu_luoc,gold_soft,heal,ally_bless,column,strategy,1.83
+Kinh Lôi,sát thương+khống chế,Lôi · vàng tím,lôi điện,kinh_loi,electric_blue,thunder,element_thunder,column,strategy,1.6
+Kinh Thiên Bạo Lôi,sát thương+buff,Lôi · vàng tím,lôi điện,kinh_thien_bao_loi,electric_blue,thunder,element_thunder,single,strategy,1.83
+Kiêu Hùng,buff,Kim khí · vàng,aura_buff,kieu_hung,gold_soft,buff,ally_bless,ally_all,physical,1.05
+Kiêu Tướng,sát thương+buff+debuff+giáp,Mưu · lam,mưu|aoe,kieu_tuong,blue,arcane,aoe_nova,all,physical,2.2
+Kiềm Hãm,sát thương+buff,Mưu · lam,mưu|đơn,kiem_ham,blue,arcane,single_strike,single,physical,1.6700000000000002
+Kìm Hãm,sát thương+buff+khống chế,Mưu · lam,mưu|đơn,kim_ham,blue,arcane,single_strike,single,strategy,2.2
+Kình Nỏ,sát thương+buff+debuff,Kim khí · vàng,người_đâm|hàng,kinh_no,yellow,pierce,row_sweep,row,physical,2.2
+Kích Dương,buff,Kim khí · vàng,aura_buff,kich_duong,gold_soft,buff,ally_bless,ally_all,physical,1.45
+Kích Nộ,sát thương+buff,Huyết · son,người_chém|đơn,kich_no,crimson,slash,single_strike,single,physical,1.59
+Kích Thích,sát thương,Kim/Thép · bạc,người_đâm|đơn,kich_thich,steel,pierce,single_strike,single,physical,1.65
+Kính Diễn Luân Hồi,sát thương+buff+trị liệu,Huyền · tím,bát_quái|hàng,kinh_dien_luan_hoi,bagua,bagua,row_sweep,front_row,strategy,1.05
+Kính Ánh Sơn Hà,sát thương+buff+giáp+trị liệu,Kim khí · vàng,aura_buff,kinh_anh_son_ha,gold_soft,heal,ally_bless,front_row,strategy,1.05
+Kịch Độc,sát thương+độc,Độc · lục,độc|độc vụ,kich_doc,toxic_green,poison,element_poison,single,strategy,1.3
+Kỳ Binh Phá Thục,sát thương+buff+debuff,Mưu · lam,mưu|cột,ky_binh_pha_thuc,blue,arcane,column_pierce,column,physical,1.91
+Kỳ Môn,sát thương+debuff,Huyền · tím,trận pháp|bát quái,ky_mon,jade_gold,bagua,element_bagua,all,strategy,2.2
+Kỳ Môn Bát Trận Đồ,sát thương+buff,Huyền · tím,trận pháp|bát quái,ky_mon_bat_tran_do,jade_gold,bagua,element_bagua,all,strategy,1.83
+Kỳ Mưu,sát thương,Huyết · son,bóng_ám|đơn,basic_scheme,purple,shadow,single_strike,single,strategy,1.5
+Kỳ Mưu · Chiến,sát thương,Huyết · son,bóng_ám|đơn,basic_scheme_chien,purple,shadow,single_strike,single,strategy,1.7
+Kỳ Mưu · Thần,sát thương,Huyết · son,bóng_ám|hàng,basic_scheme_than,purple,shadow,row_sweep,row,strategy,1.35
+Kỳ Mưu · Thần Hoàng,sát thương,Huyết · son,bóng_ám|đơn,basic_scheme_king,purple,shadow,single_strike,single,strategy,1.15
+Kỳ Mưu · Truyền thuyết,sát thương,Huyết · son,bóng_ám|cột,basic_scheme_legend,purple,shadow,column_pierce,column,strategy,1.5
+Kỵ Chiến,sát thương+buff,Thổ · nâu,kỵ_xung,ky_chien,charge,charge,cavalry_charge,column,physical,2.2
+Kỵ Kích,sát thương+khống chế,Thổ · nâu,kỵ_xung,ky_kich,charge,charge,cavalry_charge,column,physical,1.26
+Kỵ Liệp,sát thương+buff,Thổ · nâu,kỵ_xung,ky_liep,charge,charge,cavalry_charge,column,physical,2.2
+Kỵ Thần,sát thương+buff+giáp+trị liệu,Thổ · nâu,kỵ_xung,ky_than,charge,charge,cavalry_charge,column,physical,2.2
+Kỵ Xạ,sát thương+buff,Kim khí · vàng,người_đâm|hàng,ky_xa,yellow,pierce,row_sweep,row,physical,2.2
+Lang Tuyền,sát thương+buff+giáp,Sói · bạc xám,hồn_sói|cột,lang_tuyen,wolf,wolf,column_pierce,column,physical,2.2
+Lang Tuyền Khốn Trận,sát thương+giáp+khống chế,Sói · bạc xám,hồn_sói|cột,lang_tuyen_khon_tran,wolf,wolf,column_pierce,column,physical,1.91
+Liên Hoàn,sát thương+khống chế,Mưu · lam,mưu|aoe,lien_hoan,blue,arcane,aoe_nova,all,physical,1.05
+Liên Hoàn Kế,sát thương,Huyết · son,bóng_ám|đơn,lianhuan,purple,shadow,single_strike,single,strategy,0.7
+Liên Kích,sát thương+buff,Mưu · lam,mưu|đơn,lien_kich,blue,arcane,single_strike,single,physical,1.54
+Liên Nỏ,sát thương+buff,Kim khí · vàng,người_đâm|hàng,lien_no,yellow,pierce,row_sweep,row,physical,1.35
+Liên Thành,sát thương,Mưu · lam,băng|đóng băng,lien_thanh,ice_blue,ice,element_ice,all,physical,1.05
+Liên Thích,sát thương,Kim/Thép · bạc,người_đâm|aoe,lien_thich,steel,pierce,aoe_nova,all,physical,2.2
+Liệt Nhẫn,sát thương+buff,Huyết · son,người_chém|cột,liet_nhan,crimson,slash,column_pierce,column,physical,2.2
+Liệt Thiên,sát thương+buff+debuff,Mưu · lam,mưu|aoe,liet_thien,blue,arcane,aoe_nova,all,strategy,1.6700000000000002
+Liệt Thỉ,sát thương+buff,Kim khí · vàng,người_đâm|cột,liet_thi,yellow,pierce,column_pierce,column,physical,2.2
+Loan Hồi Phượng Vũ,sát thương+buff,Thủy · lam,linh thú|phượng hoàng,loan_hoi_phuong_vu,crimson_flame,firebird,beast_firebird,row,physical,1.83
+Long Chiến Vu Dã,sát thương+debuff,Hỏa · đỏ-cam,hồn_rồng|aoe,long_chien_vu_da,dragon,dragon,aoe_nova,all,physical,1.75
+Long Minh,sát thương,Hỏa · đỏ-cam,hồn_rồng|cột,long_minh,dragon,dragon,column_pierce,column,physical,1.05
+Long Nỗ,sát thương,Hỏa · đỏ-cam,hồn_rồng|đơn,long_nu,dragon,dragon,beast_dragon,single,physical,1.75
+Long Thương,sát thương+buff+giáp,Hỏa · đỏ-cam,hồn_rồng|cột,long_thuong,dragon,dragon,column_pierce,column,physical,1.6700000000000002
+Long Uy,sát thương+buff,Hỏa · đỏ-cam,hồn_rồng|cột,long_uy,dragon,dragon,column_pierce,column,physical,2.05
+Long Đào,sát thương,Hỏa · đỏ-cam,hồn_rồng|aoe,long_dao,dragon,dragon,aoe_nova,all,strategy,2.2
+Long Đảm,sát thương,Hỏa · đỏ-cam,hồn_rồng|đơn,long_dam,dragon,dragon,beast_dragon,single,physical,2.1
+Long Đằng Tứ Hải,sát thương+buff,Hỏa · đỏ-cam,hồn_rồng|aoe,long_dang_tu_hai,dragon,dragon,aoe_nova,all,physical,1.75
+Loạn Kích,sát thương,Mưu · lam,mưu|aoe,loan_kich,blue,arcane,aoe_nova,all,physical,2.2
+Loạn Thế Hào Kiệt,buff+debuff+giáp+câm lặng,Kim khí · vàng,aura_buff,loan_the_hao_kiet,gold_soft,buff,ally_bless,ally_all,physical,1.65
+Loạn Thế Kỳ Mưu,sát thương+debuff+câm lặng,Huyết · son,bóng_ám|đơn,loan_the_ky_muu,purple,shadow,single_strike,single,strategy,1.75
+Loạn Thế Mưu,sát thương+buff+trị liệu,Kim khí · vàng,aura_buff,loan_the_muu,gold_soft,buff,ally_bless,all,strategy,1.65
+Loạn Thế Phổ Độ,sát thương+buff+trị liệu,Kim khí · vàng,mãnh thú|hổ,loan_the_pho_do,gold_beast,tiger,beast_tiger,all,strategy,1.65
+Lung Hoàn Táng Địch,sát thương+buff+giáp,Mưu · lam,mưu|cột,lung_hoan_tang_dich,blue,arcane,column_pierce,column,physical,1.83
+Luyện Ngục Hỏa Hải,sát thương+buff+thiêu,Hỏa · đỏ-cam,hỏa|thiêu đốt,luyen_nguc_hoa_hai,ember_orange,fire,element_fire,all,strategy,1.83
+Ly Gián,sát thương+trị liệu,Kim khí · vàng,aura_buff,ly_gian,gold_soft,heal,ally_bless,all,strategy,1.05
+Lãng Đào,sát thương,Mưu · lam,mưu|cột,lang_dao,blue,arcane,column_pierce,column,strategy,1.71
+Lôi Cổ,buff,Kim khí · vàng,lôi điện,loi_co,electric_blue,thunder,element_thunder,ally_all,physical,1.45
+Lôi Kích,sát thương,Lôi · vàng tím,lôi điện,sam_set,electric_blue,thunder,element_thunder,single,strategy,2.2
+Lôi Oanh,sát thương+buff,Lôi · vàng tím,lôi điện,loi_oanh,electric_blue,thunder,element_thunder,single,strategy,2.2
+Lôi Tiễn,sát thương+buff,Lôi · vàng tím,lôi điện,loi_tien,electric_blue,thunder,element_thunder,column,physical,1.6
+Lõa Y Nộ Tập,sát thương+buff,Xung · thép,xung_kích,loa_y_no_tap,rush,rush,rush_assault,single,physical,1.83
+Lướt Nhanh Như Gió,sát thương,Phong · cyan,hồn_phong|cột,tl_thanhoang,whirlwind,whirlwind,column_pierce,column,strategy,1.55
+Lướt Nhanh Như Gió,sát thương+debuff+câm lặng,Phong · cyan,hồn_phong|cột,luot_nhanh_nhu_gio,whirlwind,whirlwind,column_pierce,column,physical,1.83
+Lạc Lôi,sát thương,Lôi · vàng tím,lôi điện,lac_loi,electric_blue,thunder,element_thunder,single,strategy,2.13
+Lạc Nhật Thần Tiễn,sát thương+buff+debuff,Kim khí · vàng,người_đâm|đơn,lac_nhat_than_tien,yellow,pierce,single_strike,single,physical,1.83
+Lạc Thạch,sát thương,Mưu · lam,mưu|đơn,lac_thach,blue,arcane,single_strike,single,strategy,2.1
+Lạc Thần Mạc,sát thương+buff+trị liệu,Kim khí · vàng,aura_buff,lac_than_mac,gold_soft,heal,ally_bless,single,strategy,1.05
+Lạc Thủy Tiên,buff,Thủy · lam,thủy|sóng,lac_thuy_tien,aqua,water,element_water,ally_all,physical,1.65
+Lấy Thân Làm Giáp,sát thương+buff+debuff+giáp,Khiên · vàng,khiên,lay_than_lam_giap,shield,shield,barrier,column,physical,1.91
+Lợi Nhẫn,buff,Kim khí · vàng,aura_buff,loi_nhan,gold_soft,buff,ally_bless,ally_all,physical,1.05
+Lửa Lục,sát thương,Hỏa · đỏ-cam,hỏa|thiêu đốt,lua_luc,ember_orange,fire,element_fire,single,strategy,1.15
+Ma Quân,sát thương+buff,Huyết · son,người_chém|cột,ma_quan,crimson,slash,column_pierce,column,physical,2.2
+Ma Thần,sát thương+buff,Mưu · lam,mưu|aoe,ma_than,blue,arcane,aoe_nova,all,physical,1.85
+Ma Thần Nộ Hỏa,sát thương+buff+debuff+khống chế,Hỏa · đỏ-cam,hỏa|thiêu đốt,ma_than_no_hoa,ember_orange,fire,element_fire,all,physical,1.83
+Mai Lãng,sát thương,Mưu · lam,mưu|aoe,mai_lang,blue,arcane,aoe_nova,all,strategy,1.25
+Man Ngưu,sát thương+buff,Mưu · lam,mưu|aoe,man_nguu,blue,arcane,aoe_nova,all,physical,1.05
+Man Ngưu Khai Sơn,sát thương,Mưu · lam,mưu|aoe,man_nguu_khai_son,blue,arcane,aoe_nova,all,physical,1.75
+Man Nộ Hống,sát thương+debuff,Huyết · son,người_chém|aoe,man_no_hong,crimson,slash,aoe_nova,all,physical,1.75
+Minh Hỏa Liêu Nguyên,sát thương+buff+debuff+khống chế,Hỏa · đỏ-cam,hỏa|thiêu đốt,minh_hoa_lieu_nguyen,ember_orange,fire,element_fire,all,physical,1.05
+Minh Vương,sát thương+buff,Mưu · lam,mưu|aoe,minh_vuong,blue,arcane,aoe_nova,all,physical,2.2
+Mãnh Hổ,sát thương,Hổ · vàng hổ,mãnh thú|hổ,manh_ho,gold_beast,tiger,beast_tiger,column,physical,2.2
+Mãnh Hổ Liệt Sơn,sát thương+buff,Hổ · vàng hổ,mãnh thú|hổ,manh_ho_liet_son,gold_beast,tiger,beast_tiger,column,physical,1.91
+Mãnh Kích,sát thương,Kim/Thép · bạc,người_chém|đơn,basic_strike,steel,slash,single_strike,single,physical,1.5
+Mãnh Kích · Chiến,sát thương,Kim/Thép · bạc,người_chém|đơn,basic_strike_chien,steel,slash,single_strike,single,physical,1.7
+Mãnh Kích · Thần,sát thương,Kim/Thép · bạc,người_chém|hàng,basic_strike_than,steel,slash,row_sweep,front_row,physical,1.45
+Mãnh Kích · Thần Hoàng,sát thương,Kim/Thép · bạc,người_chém|cột,basic_strike_king,steel,slash,column_pierce,column,physical,1.35
+Mãnh Kích · Truyền thuyết,sát thương,Kim/Thép · bạc,người_chém|cột,basic_strike_legend,steel,slash,column_pierce,column,physical,1.55
+Mê Trận,sát thương+debuff+trị liệu,Kim khí · vàng,aura_buff,me_tran,gold_soft,heal,ally_bless,all,strategy,2.2
+Môn Sinh Tứ Hải,sát thương+buff+giáp+trị liệu,Thủy · lam,hồn_thủy|đơn,mon_sinh_tu_hai,blue_water,water,element_water,single,strategy,1.05
+Mũi Nhọn,sát thương+buff,Kim khí · vàng,người_đâm|cột,mui_nhon,yellow,pierce,column_pierce,column,physical,1.3
+Mưa Hạn,buff+debuff+trị liệu,Kim khí · vàng,aura_buff,mua_han,gold_soft,heal,ally_bless,self,strategy,1.05
+Mưu Thủ,sát thương+buff+trị liệu,Kim khí · vàng,aura_buff,muu_thu,gold_soft,heal,ally_bless,all,strategy,2.2
+Mưu Đoạn Càn Khôn,sát thương+debuff+câm lặng,Mưu · lam,mưu|aoe,muu_doan_can_khon,blue,arcane,aoe_nova,all,strategy,1.91
+Mạn Thiên Tiễn Vũ,sát thương+buff+debuff+giáp,Kim khí · vàng,người_đâm|aoe,man_thien_tien_vu,yellow,pierce,aoe_nova,all,physical,1.75
+Mục Huyết Hộ Chủ,sát thương+debuff+giáp+trị liệu,Huyết · son,người_chém|aoe,muc_huyet_ho_chu,crimson,slash,aoe_nova,all,physical,1.83
+Ngang Dương,buff,Kim khí · vàng,aura_buff,ngang_duong,gold_soft,buff,ally_bless,ally_all,physical,1.55
+Nghiệp Viêm Bạo,sát thương+buff+thiêu,Hỏa · đỏ-cam,hỏa|thiêu đốt,nghiep_viem_bao,ember_orange,fire,element_fire,single,strategy,1.75
+Nghê Thường Thiên Vũ,debuff,Thủy · lam,aura_buff,nghe_thuong_thien_vu,blue_water,water,ally_bless,ally_all,physical,1.05
+Nghĩa Đảm Hùng Tâm,sát thương+buff+debuff,Mưu · lam,mưu|đơn,nghia_dam_hung_tam,blue,arcane,single_strike,single,strategy,1.83
+Nghệ Xạ,sát thương+buff,Kim khí · vàng,người_đâm|cột,nghe_xa,yellow,pierce,column_pierce,column,physical,2.2
+Nghịch Chuyển,sát thương+buff,Mưu · lam,mưu|đơn,nghich_chuyen,blue,arcane,single_strike,single,physical,1.4
+Nghịch Chuyển Sinh Tử,sát thương+buff,Thổ · nâu,người_chém|aoe,nghich_chuyen_sinh_tu,brown,slash,aoe_nova,all,physical,1.83
+Nghịch Lưu,sát thương,Mưu · lam,mưu|cột,nghich_luu,blue,arcane,column_pierce,column,physical,2.0
+Nghịch Tập,sát thương,Xung · thép,xung_kích,nghich_tap,rush,rush,rush_assault,single,physical,1.5
+Nguyệt Loạn Vũ,sát thương+giáp+trị liệu,Thủy · lam,hồn_thủy|đơn,nguyet_loan_vu,blue_water,water,element_water,single,strategy,1.75
+Ngâm Thơ Giải Sầu,buff+giáp+trị liệu,Khiên · vàng,khiên,ngam_tho_giai_sau,shield,shield,ally_bless,self,strategy,1.05
+Ngân Long,sát thương+buff,Hỏa · đỏ-cam,hồn_rồng|cột,ngan_long,dragon,dragon,column_pierce,column,physical,1.6700000000000002
+Ngân Long Thất Thiểm,sát thương+buff,Hỏa · đỏ-cam,hồn_rồng|cột,ngan_long_that_thiem,dragon,dragon,column_pierce,column,physical,1.05
+Ngân Long Tường,sát thương+buff,Hỏa · đỏ-cam,hồn_rồng|cột,ngan_long_tuong,dragon,dragon,column_pierce,column,physical,1.75
+Ngũ Hành Phá Trận,sát thương+buff+debuff+giáp,Huyền · tím,băng|đóng băng,ngu_hanh_pha_tran,ice_blue,ice,element_ice,all,physical,1.83
+Ngạo Nghễ Thiên Hạ,sát thương+buff+trị liệu,Kim khí · vàng,aura_buff,ngao_nghe_thien_ha,gold_soft,heal,ally_bless,all,strategy,1.75
+Ngọc Thạch Cụ Diệt,sát thương+buff,Mưu · lam,mưu|cột,ngoc_thach_cu_diet,blue,arcane,column_pierce,column,physical,1.6700000000000002
+Ngủ Say,sát thương+buff+khống chế,Kim khí · vàng,aura_buff,ngu_say,gold_soft,buff,ally_bless,all,physical,1.05
+Ngự Giáp,sát thương+giáp+trị liệu,Khiên · vàng,khiên,ngu_giap,shield,shield,barrier,single,physical,1.05
+Nhiên Tận,sát thương+buff+thiêu,Mưu · lam,mưu|đơn,nhien_tan,blue,arcane,single_strike,single,strategy,1.59
+Nhiễu Loạn Quân Địch,sát thương+buff+debuff+độc,Độc · lục,hồn_xà|hàng,nhieu_loan_quan_dich,green_poison,poison,row_sweep,row,strategy,1.75
+Nhiễu Loạn Đột Tập,sát thương,Xung · thép,xung_kích,nhieu_loan_dot_tap,rush,rush,rush_assault,column,physical,1.75
+Nhiễu Tập,sát thương+khống chế,Mưu · lam,mưu|đơn,nhieu_tap,blue,arcane,single_strike,single,physical,2.0
+Nho Thánh Hộ Thể,buff+giáp,Khiên · vàng,khiên,nho_thanh_ho_the,shield,shield,ally_bless,ally_all,physical,1.85
+Nhuệ Nhẫn,sát thương+buff,Kim/Thép · bạc,người_đâm|cột,nhue_nhan,steel,pierce,column_pierce,column,physical,1.6700000000000002
+Nhân Y,buff+giáp+trị liệu,Kim khí · vàng,aura_buff,nhan_y,gold_soft,heal,ally_bless,self,strategy,1.05
+Nhân Đức,buff+trị liệu,Kim khí · vàng,aura_buff,nhan_duc,gold_soft,heal,ally_bless,ally_all,strategy,0.0
+Nhất Kỵ Phá Thánh,sát thương+buff+debuff+giáp,Thổ · nâu,kỵ_xung,nhat_ky_pha_thanh,charge,charge,cavalry_charge,all,physical,1.75
+Nhất Kỵ Đương Thiên,sát thương+buff,Thổ · nâu,kỵ_xung,nhat_ky_duong_thien,charge,charge,cavalry_charge,single,physical,1.75
+Nhục Mạ,sát thương+debuff+câm lặng,Mưu · lam,mưu|aoe,nhuc_ma,blue,arcane,aoe_nova,all,strategy,1.05
+Náo Loạn Kinh Thành,sát thương+buff+độc+khống chế,Độc · lục,băng|đóng băng,nao_loan_kinh_thanh,ice_blue,ice,element_ice,column,strategy,1.83
+Nộ Hống,sát thương,Mưu · lam,mưu|đơn,no_hong,blue,arcane,single_strike,single,physical,1.15
+Nộ Kiếm,sát thương,Mưu · lam,mưu|cột,no_kiem,blue,arcane,column_pierce,column,physical,1.4
+Nộ Long,sát thương+buff+debuff,Hỏa · đỏ-cam,hồn_rồng|cột,no_long,dragon,dragon,column_pierce,column,physical,2.2
+Nộ Ngục Viêm,sát thương,Hỏa · đỏ-cam,hỏa|thiêu đốt,no_nguc_viem,ember_orange,fire,element_fire,all,physical,1.75
+Nộ Sát,sát thương,Huyết · son,người_chém|cột,no_sat,crimson,slash,column_pierce,column,physical,1.26
+Nộ Thích,sát thương,Kim/Thép · bạc,người_đâm|aoe,no_thich,steel,pierce,aoe_nova,all,physical,1.05
+Nộ Trảm,sát thương,Mưu · lam,mưu|cột,no_tram,blue,arcane,column_pierce,column,physical,1.4
+Nộ Tập,sát thương+buff,Xung · thép,xung_kích,no_tap,rush,rush,rush_assault,row,physical,2.2
+Nộ Xích,sát thương,Mưu · lam,mưu|đơn,no_xich,blue,arcane,single_strike,single,physical,2.2
+Phi Long Tại Thiên,sát thương+buff+debuff,Hỏa · đỏ-cam,hồn_rồng|aoe,phi_long_tai_thien,dragon,dragon,aoe_nova,all,physical,1.83
+Phi Ngựa Giương Cung,sát thương+buff+debuff+khống chế,Kim khí · vàng,người_đâm|hàng,phi_ngua_giuong_cung,yellow,pierce,row_sweep,row,physical,1.05
+Phi Xạ,sát thương+buff,Kim khí · vàng,người_đâm|hàng,phi_xa,yellow,pierce,row_sweep,row,physical,1.35
+Phiến Động,sát thương+trị liệu,Kim khí · vàng,aura_buff,phien_dong,gold_soft,heal,ally_bless,all,strategy,1.93
+Phong Hạc,sát thương+buff+debuff+độc,Độc · lục,hồn_xà|hàng,phong_hac,green_poison,poison,row_sweep,row,strategy,1.91
+Phong Hầu Nộ,sát thương,Phong · cyan,hồn_phong|cột,lu_bu_fury,whirlwind,whirlwind,column_pierce,column,physical,1.75
+Phong Lôi,sát thương+buff+debuff+trị liệu+khống chế,Phong · cyan,lôi điện,phong_loi,electric_blue,thunder,element_thunder,column,physical,1.6700000000000002
+Phong Tiễn,sát thương+thiêu,Phong · cyan,hồn_phong|aoe,phong_tien,whirlwind,whirlwind,aoe_nova,all,strategy,2.2
+Phong Vân Biến,buff+trị liệu,Kim khí · vàng,aura_buff,phong_van,gold_soft,heal,ally_bless,ally_all,strategy,0.0
+Phá Hoàng Sách,sát thương+buff,Mưu · lam,mưu|đơn,pha_hoang_sach,blue,arcane,single_strike,single,strategy,1.6700000000000002
+Phá Kích,sát thương,Kim/Thép · bạc,người_chém|đơn,pha_kich,steel,slash,single_strike,single,physical,2.2
+Phá Kế,sát thương,Mưu · lam,mưu|cột,pha_ke,blue,arcane,column_pierce,column,strategy,1.43
+Phá Phủ,sát thương,Mưu · lam,mưu|đơn,pha_phu,blue,arcane,single_strike,single,physical,1.8
+Phá Quân,sát thương+buff+trị liệu,Kim khí · vàng,aura_buff,pha_quan,gold_soft,heal,ally_bless,single,physical,1.35
+Phá Đảm Nộ Hống,sát thương+buff,Mưu · lam,mưu|aoe,pha_dam_no_hong,blue,arcane,aoe_nova,all,physical,1.05
+Phá Địch,sát thương+buff+trị liệu,Kim khí · vàng,aura_buff,pha_dich,gold_soft,heal,ally_bless,all,physical,2.2
+Phòng Ngự Cẩn Thận,sát thương+buff+trị liệu,Kim khí · vàng,hộ thuẫn|phòng ngự,phong_ngu_can_than,steel_blue,shield,barrier,all,physical,1.75
+Phù Đồ,sát thương+khống chế,Mưu · lam,mưu|cột,phu_do,blue,arcane,column_pierce,column,physical,2.2
+Phượng Vũ Cửu Thiên,sát thương+buff,Thủy · lam,linh thú|phượng hoàng,phuong_vu_cuu_thien,crimson_flame,firebird,beast_firebird,row,physical,1.75
+Phản Cốt,buff,Kim khí · vàng,aura_buff,phan_cot,gold_soft,buff,ally_bless,self,physical,1.6
+Phản Kích,sát thương+buff,Mưu · lam,mưu|đơn,phan_kich,blue,arcane,single_strike,single,physical,1.05
+Phản Kế,buff,Kim khí · vàng,aura_buff,phan_ke,gold_soft,buff,ally_bless,ally_all,physical,1.75
+Phấn Chiến,sát thương,Mưu · lam,mưu|đơn,phan_chien,blue,arcane,single_strike,single,physical,1.43
+Phấn Chấn,buff,Kim khí · vàng,aura_buff,phan_chan,gold_soft,buff,ally_bless,ally_all,physical,1.35
+Phấn Chấn Lòng Quân,buff,Kim khí · vàng,aura_buff,phan_chan_long_quan,gold_soft,buff,ally_bless,ally_all,physical,1.05
+Phấn Tấn,sát thương,Mưu · lam,mưu|đơn,phan_tan,blue,arcane,single_strike,single,physical,1.68
+Phần Diệt,sát thương,Mưu · lam,mưu|đơn,phan_diet,blue,arcane,single_strike,single,strategy,2.2
+Phần Thiên,sát thương,Thổ · nâu,người_chém|aoe,phan_thien,brown,slash,aoe_nova,all,physical,1.6700000000000002
+Phẫn Nộ,sát thương+buff,Huyết · son,người_chém|đơn,phan_no,crimson,slash,single_strike,single,physical,1.59
+Phục Long,sát thương+buff,Hỏa · đỏ-cam,hồn_rồng|aoe,phuc_long,dragon,dragon,aoe_nova,all,strategy,1.93
+Phụng Sồ,sát thương,Huyết · son,người_chém|đơn,phung_so,gold_red,slash,single_strike,single,strategy,1.35
+Quy Tâm,sát thương+debuff+trị liệu,Kim khí · vàng,aura_buff,quy_tam,gold_soft,heal,ally_bless,all,strategy,2.2
+Quyết Thắng Thiên Lý,sát thương+buff+khống chế,Mưu · lam,mưu|hàng,quyet_thang_thien_ly,blue,arcane,row_sweep,row,strategy,1.75
+Quyền Biến,sát thương+debuff,Mưu · lam,mưu|aoe,quyen_bien,blue,arcane,aoe_nova,all,strategy,1.83
+Quyền Hành,sát thương+buff+trị liệu,Kim khí · vàng,băng|đóng băng,quyen_hanh,ice_blue,ice,element_ice,all,strategy,1.75
+Quyền Mưu,sát thương+buff+debuff,Mưu · lam,mưu|aoe,quyen_muu,blue,arcane,aoe_nova,all,strategy,1.75
+Quân Lâm,buff,Kim khí · vàng,aura_buff,quan_lam,gold_soft,buff,ally_bless,ally_all,physical,1.05
+Quỷ Cốc Sách,sát thương+buff+debuff+giáp,Huyết · son,bóng_ám|aoe,quy_coc_sach,purple,shadow,aoe_nova,all,physical,1.75
+Quỷ Kế,sát thương,Mưu · lam,mưu|đơn,quy_ke,blue,arcane,single_strike,single,strategy,2.2
+Quỷ Môn,sát thương+khống chế,Mưu · lam,mưu|aoe,quy_mon,blue,arcane,aoe_nova,all,strategy,2.05
+Quỷ Môn Thi Độc,sát thương+giáp+độc+khống chế,Độc · lục,độc|độc vụ,quy_mon_thi_doc,toxic_green,poison,element_poison,single,strategy,1.83
+Quỷ Mưu,sát thương,Mưu · lam,mưu|đơn,quy_muu,blue,arcane,single_strike,single,strategy,1.55
+Quỷ Sát,sát thương+buff+debuff+câm lặng,Huyết · son,người_chém|cột,quy_sat,crimson,slash,column_pierce,column,physical,2.2
+Quỷ Thần Loạn Vũ,sát thương+buff+debuff+khống chế,Thủy · lam,hồn_thủy|đơn,quy_than_loan_vu,blue_water,water,element_water,single,physical,1.91
+Quỷ Thần Nhất Kích,sát thương+buff+debuff+khống chế,Mưu · lam,mưu|aoe,quy_than_nhat_kich,blue,arcane,aoe_nova,all,physical,1.75
+Quỷ Tướng Phá Thánh,sát thương+buff+debuff+giáp,Mưu · lam,mưu|aoe,quy_tuong_pha_thanh,blue,arcane,aoe_nova,all,physical,1.83
+Quỷ Tướng Tru Thần,sát thương+buff+debuff,Mưu · lam,mưu|đơn,quy_tuong_tru_than,blue,arcane,single_strike,single,physical,1.83
+Rừng Giáo Tua Tủa,sát thương+buff,Kim/Thép · bạc,người_đâm|cột,rung_giao_tua_tua,steel,pierce,column_pierce,column,physical,1.75
+Sa Trường Ngự Địch,sát thương+debuff+giáp+trị liệu,Kim khí · vàng,aura_buff,sa_truong_ngu_dich,gold_soft,heal,ally_bless,all,physical,1.75
+San Bằng,sát thương,Mưu · lam,mưu|hàng,san_bang,blue,arcane,row_sweep,row,physical,2.2
+Sinh Sát,buff+khống chế,Kim khí · vàng,aura_buff,sinh_sat,gold_soft,buff,ally_bless,self,strategy,1.65
+Sách Phản,sát thương+buff+khống chế,Mưu · lam,mưu|đơn,sach_phan,blue,arcane,single_strike,single,strategy,2.2
+Sát Khí,sát thương+buff,Mưu · lam,mưu|cột,sat_khi,blue,arcane,column_pierce,column,physical,2.2
+Sát Ý,sát thương,Mưu · lam,mưu|đơn,sat_y,blue,arcane,single_strike,single,physical,1.4
+Sông Sao Rực Rỡ,sát thương+giáp+trị liệu,Kim khí · vàng,aura_buff,song_sao_ruc_ro,gold_soft,heal,ally_bless,single,strategy,1.83
+Sơn Băng,sát thương+khống chế,Mưu · lam,băng|đóng băng,son_bang,ice_blue,ice,element_ice,all,strategy,1.05
+Sư Hống,sát thương,Mưu · lam,mưu|aoe,su_hong,blue,arcane,aoe_nova,all,physical,1.05
+Tan Rã,sát thương,Mưu · lam,mưu|đơn,tan_ra,blue,arcane,single_strike,single,strategy,1.59
+Tang Phong,sát thương+buff,Phong · cyan,hồn_phong|đơn,tang_phong,whirlwind,whirlwind,element_whirlwind,single,physical,1.82
+Thanh Huy,buff,Kim khí · vàng,aura_buff,thanh_huy,gold_soft,buff,ally_bless,ally_all,physical,1.75
+Thanh Long,sát thương+buff+debuff+câm lặng,Hỏa · đỏ-cam,long|linh thú,thanh_long,cyan_dragon,dragon,beast_dragon,column,physical,2.2
+Thanh Long Hồn,sát thương+buff,Hỏa · đỏ-cam,linh hồn|triệu hồi,thanh_long_hon,violet_spirit,spirit,spirit_summon,column,physical,1.6700000000000002
+Thanh Long Khiếu Nguyệt,sát thương+buff,Hỏa · đỏ-cam,long|linh thú,thanh_long_khieu_nguyet,cyan_dragon,dragon,beast_dragon,column,physical,1.83
+Thanh Long Nguyện,sát thương+buff,Hỏa · đỏ-cam,long|linh thú,thanh_long_nguyen,cyan_dragon,dragon,beast_dragon,column,physical,1.75
+Thanh Long Trảm,sát thương+buff+debuff+giáp+câm lặng,Hỏa · đỏ-cam,long|linh thú,thanh_long_tram,cyan_dragon,dragon,beast_dragon,column,physical,1.6
+Thanh Long Yển Nguyệt,sát thương+buff+debuff+giáp+câm lặng,Hỏa · đỏ-cam,long|linh thú,thanh_long_yen_nguyet,cyan_dragon,dragon,beast_dragon,column,physical,1.75
+Thanh Nhã Cần Chính,buff,Kim khí · vàng,aura_buff,thanh_nha_can_chinh,gold_soft,buff,ally_bless,ally_all,physical,1.85
+Thanh Tâm,buff,Kim khí · vàng,aura_buff,thanh_tam,gold_soft,buff,ally_bless,ally_all,physical,1.75
+Thanh U Thù Tuyệt,sát thương+buff+trị liệu,Kim khí · vàng,aura_buff,thanh_u_thu_tuyet,gold_soft,heal,ally_bless,all,strategy,1.05
+Thao Lược Tung Hoành,sát thương+debuff+câm lặng,Mưu · lam,mưu|aoe,thao_luoc_tung_hoanh,blue,arcane,aoe_nova,all,strategy,1.83
+Thi Độc,sát thương+độc+khống chế,Độc · lục,độc|độc vụ,thi_doc,toxic_green,poison,element_poison,single,strategy,2.2
+Thiên Băng,sát thương+khống chế,Mưu · lam,băng|đóng băng,thien_bang,ice_blue,ice,element_ice,all,strategy,2.0
+Thiên Băng Địa Liệp,sát thương+buff+debuff,Mưu · lam,băng|đóng băng,thien_bang_dia_liep,ice_blue,ice,element_ice,all,strategy,1.75
+Thiên Chinh,buff,Kim khí · vàng,aura_buff,thien_chinh,gold_soft,buff,ally_bless,ally_all,physical,1.55
+Thiên Hàn Địa Băng,sát thương+buff+debuff,Mưu · lam,băng|đóng băng,thien_han_dia_bang,ice_blue,ice,element_ice,row,strategy,1.75
+Thiên Hạ Chia Ba,buff,Kim khí · vàng,aura_buff,thien_ha_chia_ba,gold_soft,buff,ally_bless,ally_all,physical,1.05
+Thiên Hạ Vô Song,sát thương+buff+debuff+khống chế,Mưu · lam,mưu|aoe,thien_ha_vo_song,blue,arcane,aoe_nova,all,physical,1.6700000000000002
+Thiên Hỏa,sát thương,Hỏa · đỏ-cam,hỏa|thiêu đốt,thien_hoa,ember_orange,fire,element_fire,single,strategy,1.6
+Thiên Hỏa Thiêu,sát thương+buff+thiêu,Hỏa · đỏ-cam,hỏa|thiêu đốt,thien_hoa_thieu,ember_orange,fire,element_fire,single,strategy,1.6700000000000002
+Thiên Khải,sát thương+buff,Thủy · lam,hồn_thủy|aoe,thien_khai,blue_water,water,aoe_nova,all,strategy,2.1
+Thiên Long Thức Tỉnh,sát thương+buff,Hỏa · đỏ-cam,hồn_rồng|cột,thien_long_thuc_tinh,dragon,dragon,column_pierce,column,physical,1.05
+Thiên Lý Băng Phong,sát thương+debuff,Phong · cyan,băng|đóng băng,thien_ly_bang_phong,ice_blue,ice,element_ice,row,strategy,1.83
+Thiên Lý Đơn Kỵ,sát thương+buff+debuff+giáp+câm lặng,Thổ · nâu,kỵ_xung,thien_ly_don_ky,charge,charge,cavalry_charge,column,physical,2.2
+Thiên Mệnh,buff,Linh hồn · tím,linh hồn|triệu hồi,thien_menh,violet_spirit,spirit,spirit_summon,ally_all,physical,1.45
+Thiên Nhẫn,sát thương,Mưu · lam,mưu|đơn,thien_nhan,blue,arcane,single_strike,single,physical,1.75
+Thiên Uy,sát thương+buff,Mưu · lam,mưu|aoe,thien_uy,blue,arcane,aoe_nova,all,physical,2.2
+Thiên Uy Bạo Ngược,sát thương+buff+giáp,Mưu · lam,mưu|cột,thien_uy_bao_nguoc,blue,arcane,column_pierce,column,physical,1.91
+Thiên Vũ Khuynh Thành,debuff,Thủy · lam,băng|đóng băng,thien_vu_khuynh_thanh,ice_blue,ice,element_ice,ally_all,physical,1.05
+Thiên Địa Vô Cực,sát thương+buff,Mưu · lam,mưu|hàng,thien_dia_vo_cuc,blue,arcane,row_sweep,row,strategy,1.83
+Thiên Địa Vạn Tượng,sát thương+buff,Huyền · tím,bát_quái|aoe,thien_dia_van_tuong,bagua,bagua,aoe_nova,all,strategy,1.75
+Thiết Bích,sát thương+giáp,Khiên · vàng,hộ thuẫn|phòng ngự,thiet_bich,steel_blue,shield,barrier,single,physical,1.05
+Thiết Kỵ,sát thương+khống chế,Thổ · nâu,kỵ_xung,thiet_ky,charge,charge,cavalry_charge,column,physical,1.35
+Thiết Nõ,sát thương+buff,Mưu · lam,mưu|hàng,thiet_no,blue,arcane,row_sweep,row,physical,1.15
+Thiết Thương,sát thương+giáp,Thổ · nâu,người_chém|đơn,thiet_thuong,brown,slash,single_strike,single,physical,1.3
+Thiện Biến,sát thương+buff,Mưu · lam,mưu|cột,thien_bien,blue,arcane,column_pierce,column,physical,1.6700000000000002
+Thu Hồn Đoạt Phách,sát thương+buff,Mưu · lam,linh hồn|triệu hồi,thu_hon_doat_phach,violet_spirit,spirit,spirit_summon,single,strategy,1.83
+Thuẫn Kích,sát thương+buff+giáp,Kim/Thép · bạc,người_chém|đơn,thuan_kich,iron,slash,single_strike,single,physical,1.25
+Thuẫn Tường,buff+giáp,Khiên · vàng,khiên,thuan_tuong,shield,shield,ally_bless,ally_all,physical,1.65
+Thánh Thủ Hồi Xuân,sát thương+buff+giáp+trị liệu,Kim khí · vàng,aura_buff,thanh_thu_hoi_xuan,gold_soft,heal,ally_bless,single,strategy,1.05
+Thánh Thủ Tề Thế,buff+giáp+trị liệu,Kim khí · vàng,aura_buff,thanh_thu_te_the,gold_soft,heal,ally_bless,self,strategy,1.05
+Tháp Thiên,sát thương+khống chế,Mưu · lam,mưu|aoe,thap_thien,blue,arcane,aoe_nova,all,strategy,1.5
+Thâm Uyên,sát thương+debuff+câm lặng,Mưu · lam,mưu|aoe,tham_uyen,blue,arcane,aoe_nova,all,strategy,2.1
+Thâu Tóm Thiên Hạ,buff+debuff+khống chế,Kim khí · vàng,aura_buff,thau_tom_thien_ha,gold_soft,buff,ally_bless,ally_all,physical,1.05
+Thí Quân,sát thương+buff+giáp+trị liệu,Kim khí · vàng,aura_buff,thi_quan,gold_soft,heal,ally_bless,single,physical,1.75
+Thích Sát,sát thương+khống chế,Kim/Thép · bạc,người_đâm|đơn,thich_sat,steel,pierce,single_strike,single,physical,2.1
+Thư Kích,sát thương+buff,Mưu · lam,mưu|đơn,thu_kich,blue,arcane,single_strike,single,physical,1.85
+Thương Long Xuất Hải,sát thương+buff+giáp,Hỏa · đỏ-cam,hồn_rồng|cột,thuong_long_xuat_hai,dragon,dragon,column_pierce,column,physical,1.75
+Thương Thiên Dĩ Tử,sát thương+buff+debuff+khống chế,Mưu · lam,mưu|aoe,thuong_thien_di_tu,blue,arcane,aoe_nova,all,strategy,1.5
+Thương Trận,sát thương+buff,Huyền · tím,bát_quái|cột,thuong_tran,bagua,bagua,column_pierce,column,physical,1.6700000000000002
+Thất Tinh Tiễn Trận,sát thương+buff+debuff+giáp,Kim khí · vàng,người_đâm|aoe,that_tinh_tien_tran,yellow,pierce,aoe_nova,all,physical,1.83
+Thần Binh Xuất Hiện,buff,Kim khí · vàng,aura_buff,than_binh_xuat_hien,gold_soft,buff,ally_bless,self,physical,1.65
+Thần Binh Ám Độ,sát thương+buff,Huyết · son,bóng_ám|cột,than_binh_am_do,purple,shadow,column_pierce,column,physical,1.83
+Thần Cơ Nỏ,sát thương+buff+debuff,Kim khí · vàng,người_đâm|hàng,than_co_no,yellow,pierce,row_sweep,row,physical,1.75
+Thần Hỏa Hiện Thế,sát thương,Hỏa · đỏ-cam,hỏa|thiêu đốt,than_hoa_hien_the,ember_orange,fire,element_fire,all,physical,1.91
+Thần Hữu Một Phương,buff+giáp+trị liệu,Kim khí · vàng,aura_buff,than_huu_mot_phuong,gold_soft,heal,ally_bless,ally_all,physical,1.85
+Thần Lôi,sát thương,Lôi · vàng tím,lôi điện,than_loi,electric_blue,thunder,element_thunder,single,strategy,1.8
+Thần Ngự,buff+giáp+trị liệu,Kim khí · vàng,aura_buff,than_ngu,gold_soft,buff,ally_bless,ally_all,physical,1.55
+Thần Phong,sát thương+buff,Phong · cyan,hồn_phong|cột,than_phong,whirlwind,whirlwind,column_pierce,column,physical,2.2
+Thần Tiễn Hộ Chủ,sát thương+giáp,Kim khí · vàng,người_đâm|aoe,than_tien_ho_chu,yellow,pierce,aoe_nova,all,physical,1.83
+Thần Toán,sát thương+buff,Mưu · lam,mưu|aoe,than_toan,blue,arcane,aoe_nova,all,strategy,2.2
+Thần Uy Phá Trận,sát thương+buff,Huyền · tím,bát_quái|aoe,than_uy_pha_tran,bagua,bagua,aoe_nova,all,physical,1.83
+Thập Phương Diệt,sát thương+buff,Thổ · nâu,người_chém|aoe,thap_phuong_diet,brown,slash,aoe_nova,all,physical,1.75
+Thế Phá Địch,sát thương+buff+trị liệu,Kim khí · vàng,aura_buff,the_pha_dich,gold_soft,heal,ally_bless,all,physical,1.75
+Thệ Tử,sát thương,Mưu · lam,mưu|cột,the_tu,blue,arcane,column_pierce,column,physical,1.59
+Thị Huyết,sát thương+buff,Huyết · son,người_chém|cột,thi_huyet,crimson,slash,column_pierce,column,physical,2.2
+Thịnh Thế Vương Quyền,buff,Kim khí · vàng,aura_buff,thinh_the_vuong_quyen,gold_soft,buff,ally_bless,ally_all,physical,1.95
+Thống Quân Phá Địch,sát thương+buff+trị liệu,Kim khí · vàng,aura_buff,thong_quan_pha_dich,gold_soft,heal,ally_bless,all,physical,1.83
+Thủ Hộ,sát thương+giáp,Khiên · vàng,khiên,thu_ho,shield,shield,barrier,single,strategy,1.05
+Thủy Chiến,sát thương,Thủy · lam,thủy|sóng,shui_jian,aqua,water,element_water,row,physical,1.3
+Thủy Công,sát thương,Thủy · lam,thủy|sóng,thuy_cong,aqua,water,element_water,all,strategy,2.2
+Thực Tâm,sát thương+độc,Độc · lục,hồn_xà|đơn,thuc_tam,green_poison,poison,element_poison,single,strategy,1.65
+Tinh Ngự,sát thương+buff,Mưu · lam,mưu|aoe,tinh_ngu,blue,arcane,aoe_nova,all,physical,1.6700000000000002
+Tinh Vẫn Địa Liệp,sát thương+buff,Mưu · lam,mưu|aoe,tinh_van_dia_liep,blue,arcane,aoe_nova,all,physical,1.91
+Tiên Cơ Chiến Trận,sát thương+buff,Huyền · tím,bát_quái|cột,tien_co_chien_tran,bagua,bagua,column_pierce,column,physical,1.75
+Tiên Đăng Tử Sĩ,sát thương+buff,Xung · thép,xung_kích,tien_dang_tu_si,rush,rush,rush_assault,column,physical,1.91
+Tiêu Dao Tân,sát thương,Kim/Thép · bạc,người_đâm|hàng,xiaoyaojin,steel,pierce,row_sweep,front_row,physical,1.5
+Tiễn Lam,sát thương,Kim khí · vàng,người_đâm|aoe,tien_lam,yellow,pierce,aoe_nova,all,physical,2.2
+Tiễn Trận,sát thương+debuff+giáp,Kim khí · vàng,người_đâm|aoe,tien_tran,yellow,pierce,aoe_nova,all,physical,2.2
+Tiễn Vũ,sát thương,Kim khí · vàng,người_đâm|aoe,tien_vu,yellow,pierce,aoe_nova,all,physical,1.05
+Tiễn Đạp,sát thương+buff+khống chế,Kim khí · vàng,người_đâm|cột,tien_dap,yellow,pierce,column_pierce,column,physical,2.2
+Tiễu Sát,sát thương+buff,Mưu · lam,mưu|đơn,tieu_sat,blue,arcane,single_strike,single,physical,1.95
+Triệu Hổ Phá Trận,sát thương+debuff+câm lặng,Hổ · vàng hổ,mãnh thú|hổ,trieu_ho_pha_tran,gold_beast,tiger,beast_tiger,column,physical,1.91
+Tru Thần Diệt Ma,sát thương+buff+debuff+khống chế,Mưu · lam,mưu|aoe,tru_than_diet_ma,blue,arcane,aoe_nova,all,physical,1.05
+Tru Tâm,sát thương+trị liệu,Kim khí · vàng,aura_buff,tru_tam,gold_soft,heal,ally_bless,all,strategy,1.8
+Trung Nghĩa Hộ Chủ,sát thương+giáp+trị liệu,Kim khí · vàng,aura_buff,trung_nghia_ho_chu,gold_soft,heal,ally_bless,all,physical,1.75
+Truy Nguyệt,sát thương+buff,Huyết · son,bóng_ám|đơn,truy_nguyet,purple,shadow,single_strike,single,physical,1.6700000000000002
+Trường Ca,buff+giáp+trị liệu,Khiên · vàng,khiên,truong_ca,shield,shield,ally_bless,self,strategy,1.05
+Trảm Sát,sát thương,Mưu · lam,mưu|cột,tram_sat,blue,arcane,column_pierce,column,physical,2.2
+Trấn Hồn,sát thương+buff+trị liệu,Kim khí · vàng,linh hồn|triệu hồi,tran_hon,violet_spirit,spirit,spirit_summon,all,physical,1.65
+Trấn Thủ Hán Thủy,sát thương+buff+trị liệu,Thủy · lam,thủy|sóng,tran_thu_han_thuy,aqua,water,element_water,all,physical,1.91
+Trấn Định Sơn Hà,buff,Kim khí · vàng,aura_buff,tran_dinh_son_ha,gold_soft,buff,ally_bless,ally_all,physical,1.85
+Trị Dũ,buff+trị liệu,Kim khí · vàng,aura_buff,tri_du,gold_soft,heal,ally_bless,self,strategy,1.05
+Trị Liệu,sát thương+trị liệu,Kim khí · vàng,trị liệu|hồi phục,tri_lieu,healing_green,heal,ally_bless,single,strategy,1.05
+Trời Long Đất Lở,sát thương+buff+debuff+khống chế,Hỏa · đỏ-cam,hồn_rồng|aoe,troi_long_dat_lo,dragon,dragon,aoe_nova,all,physical,1.83
+Trời Rơi Sao Sáng,sát thương+buff,Mưu · lam,mưu|aoe,troi_roi_sao_sang,blue,arcane,aoe_nova,all,physical,1.83
+Trời Tru Đất Diệt,sát thương+buff+debuff,Mưu · lam,mưu|aoe,troi_tru_dat_diet,blue,arcane,aoe_nova,all,strategy,1.83
+Tuyên Mục Uy Nghi,sát thương+buff+debuff+câm lặng,Mưu · lam,mưu|đơn,tuyen_muc_uy_nghi,blue,arcane,single_strike,single,strategy,1.75
+Tuyệt Sách Độc Kế,sát thương+buff+độc+khống chế,Độc · lục,độc|độc vụ,tuyet_sach_doc_ke,toxic_green,poison,element_poison,column,strategy,1.75
+Tuyệt Sát,sát thương,Mưu · lam,mưu|đơn,tuyet_sat,blue,arcane,single_strike,single,physical,1.59
+Tuyệt Tình Vô Hối,sát thương+buff+debuff+câm lặng,Mưu · lam,mưu|đơn,tuyet_tinh_vo_hoi,blue,arcane,single_strike,single,strategy,1.83
+Tán Ca,buff,Kim khí · vàng,aura_buff,tan_ca,gold_soft,buff,ally_bless,ally_all,physical,1.05
+Tây Lương Thiết Kỵ,sát thương,Thổ · nâu,kỵ_xung,tay_luong,charge,charge,cavalry_charge,column,physical,1.4
+Tên Lạc,sát thương,Mưu · lam,mưu|aoe,ten_lac,blue,arcane,aoe_nova,all,physical,1.05
+Tường Đồng,sát thương+giáp,Mưu · lam,mưu|đơn,tuong_dong,blue,arcane,single_strike,single,strategy,1.05
+Tường Đồng Vách Sắt,buff+giáp+trị liệu,Kim khí · vàng,aura_buff,tuong_dong_vach_sat,gold_soft,heal,ally_bless,ally_all,physical,1.75
+Tấu Sát,sát thương+buff+debuff,Huyết · son,bóng_ám|đơn,tau_sat,purple,shadow,single_strike,single,physical,1.9
+Tập Kích,sát thương,Xung · thép,xung_kích,tap_kich,rush,rush,rush_assault,single,physical,2.2
+Tật Trì,sát thương+buff,Mưu · lam,mưu|cột,tat_tri,blue,arcane,column_pierce,column,physical,2.2
+Tật Xung,sát thương,Xung · thép,xung_kích,tat_xung,rush,rush,rush_assault,column,physical,1.3
+Tế Nhật Thiên Kỵ,sát thương+buff+debuff+giáp+trị liệu+khống chế,Kim khí · vàng,aura_buff,te_nhat_thien_ky,gold_soft,heal,ally_bless,column,physical,1.83
+Tế Thế Chỉ Qua,sát thương+buff+trị liệu,Kim khí · vàng,aura_buff,te_the_chi_qua,gold_soft,heal,ally_bless,column,strategy,1.75
+Tề Xạ,sát thương,Kim khí · vàng,người_đâm|hàng,te_xa,yellow,pierce,row_sweep,row,physical,1.24
+Tỏa Hồn,sát thương+buff+trị liệu,Kim khí · vàng,linh hồn|triệu hồi,toa_hon,violet_spirit,spirit,spirit_summon,all,strategy,2.2
+Tố Lưu Nghịch Tập,sát thương+buff+giáp,Xung · thép,xung_kích,to_luu_nghich_tap,rush,rush,rush_assault,column,physical,1.6700000000000002
+Tụng Ca,buff,Kim khí · vàng,aura_buff,tung_ca,gold_soft,buff,ally_bless,ally_all,physical,1.05
+Tử Sanh,trị liệu,Kim khí · vàng,aura_buff,tu_sanh,gold_soft,heal,ally_bless,self,strategy,2.2
+Tử Thần,sát thương+buff+khống chế,Mưu · lam,mưu|đơn,tu_than,blue,arcane,single_strike,single,strategy,1.59
+Tử Thần Giáng Lâm,sát thương+buff,Mưu · lam,mưu|đơn,tu_than_giang_lam,blue,arcane,single_strike,single,strategy,1.75
+Tử Điện,sát thương,Lôi · vàng tím,lôi điện,tu_dien,electric_blue,thunder,element_thunder,single,strategy,1.4
+Tửu Trì Nhục Lâm,sát thương+buff+giáp,Mưu · lam,mưu|cột,tuu_tri_nhuc_lam,blue,arcane,column_pierce,column,physical,1.83
+Tự Hủy,sát thương,Mưu · lam,mưu|đơn,tu_huy,blue,arcane,single_strike,single,physical,1.51
+Tự Lập,sát thương+trị liệu,Kim khí · vàng,aura_buff,tu_lap,gold_soft,heal,ally_bless,all,strategy,1.26
+Tự Thủ Giữ Mình,giáp,Khiên · vàng,khiên,tu_thu_giu_minh,shield,shield,ally_bless,ally_all,physical,1.75
+Uy Chấn Hoa Hạ,sát thương+buff+debuff+câm lặng,Huyết · son,bóng_ám|cột,uy_chan_hoa_ha,purple,shadow,column_pierce,column,physical,2.2
+Uy Chấn Tiêu Dao,sát thương+debuff+câm lặng,Mưu · lam,mưu|cột,uy_chan_tieu_dao,blue,arcane,column_pierce,column,physical,1.75
+Uy Dương,buff,Kim khí · vàng,aura_buff,uy_duong,gold_soft,buff,ally_bless,ally_all,physical,1.05
+Uy Phong,sát thương+buff,Phong · cyan,hồn_phong|đơn,uy_phong,whirlwind,whirlwind,element_whirlwind,single,physical,1.5
+Uy Áp,sát thương+debuff+trị liệu,Kim khí · vàng,aura_buff,uy_ap,gold_soft,heal,ally_bless,all,strategy,1.75
+Vang Danh Thiên Hạ,sát thương+buff+giáp+trị liệu,Kim khí · vàng,aura_buff,vang_danh_thien_ha,gold_soft,heal,ally_bless,single,strategy,1.05
+Viêm Long Kỳ Tập,sát thương+buff+trị liệu,Hỏa · đỏ-cam,hỏa|thiêu đốt,viem_long_ky_tap,ember_orange,fire,element_fire,all,physical,1.05
+Viêm Long Phá,sát thương+buff+trị liệu,Hỏa · đỏ-cam,hỏa|thiêu đốt,viem_long_pha,ember_orange,fire,element_fire,single,physical,1.6700000000000002
+Viêm Long Sát,sát thương+buff+trị liệu,Hỏa · đỏ-cam,hỏa|thiêu đốt,viem_long_sat,ember_orange,fire,element_fire,all,physical,1.75
+Viêm Lôi,sát thương+buff+khống chế,Hỏa · đỏ-cam,lôi điện,viem_loi,electric_blue,thunder,element_thunder,single,strategy,1.76
+Viện Binh,sát thương+trị liệu,Kim khí · vàng,aura_buff,vien_binh,gold_soft,heal,ally_bless,all,physical,1.05
+Viện Hộ,sát thương+debuff+giáp+trị liệu,Kim khí · vàng,aura_buff,vien_ho,gold_soft,heal,ally_bless,all,physical,1.6700000000000002
+Vòng Xoáy,sát thương+buff,Phong · cyan,hồn_phong|cột,vong_xoay,whirlwind,whirlwind,column_pierce,column,strategy,1.05
+Vô Cùng Dũng Mãnh,sát thương+buff,Kim/Thép · bạc,người_chém|hàng,vo_cung_dung_manh,iron,slash,row_sweep,row,physical,1.75
+Vô Ngại,buff,Kim khí · vàng,aura_buff,vo_ngai,gold_soft,buff,ally_bless,ally_all,physical,1.45
+Vô Song,sát thương,Mưu · lam,mưu|đơn,vo_song,blue,arcane,single_strike,single,physical,1.98
+Vô Song Thượng Tướng,sát thương+buff,Mưu · lam,mưu|cột,vo_song_thuong_tuong,blue,arcane,column_pierce,column,physical,1.75
+Võ Thánh,sát thương+buff+debuff+câm lặng,Huyết · son,bóng_ám|cột,vo_thanh,purple,shadow,column_pierce,column,physical,1.6700000000000002
+Vũ Thánh,sát thương,Thủy · lam,hồn_thủy|cột,wu_sheng,blue_water,water,column_pierce,column,physical,1.55
+Vũ Thánh · Chiến,sát thương,Thủy · lam,hồn_thủy|đơn,wu_sheng_chien,blue_water,water,element_water,single,physical,1.7
+Vũ Thánh · Thần Hoàng,sát thương,Thủy · lam,hồn_thủy|đơn,wu_sheng_king,blue_water,water,element_water,single,physical,1.5
+Vũ Thánh · Truyền thuyết,sát thương,Thủy · lam,hồn_thủy|đơn,wu_sheng_legend,blue_water,water,element_water,single,physical,1.85
+Vũ Điệu Dưới Trăng,debuff,Thủy · lam,aura_buff,vu_dieu_duoi_trang,blue_water,water,ally_bless,ally_all,physical,1.05
+Vũ Điệu Lạc Thần,sát thương+buff+trị liệu,Thủy · lam,aura_buff,vu_dieu_lac_than,blue_water,water,ally_bless,single,strategy,1.05
+Vương Triều Tan Rã,sát thương+buff+trị liệu,Kim khí · vàng,aura_buff,vuong_trieu_tan_ra,gold_soft,heal,ally_bless,all,strategy,1.83
+Vạn Người Khó Đỡ,sát thương+buff+khống chế,Mưu · lam,mưu|đơn,van_nguoi_kho_do,blue,arcane,single_strike,single,physical,1.75
+Vững Như Bàn Thạch,buff+giáp+trị liệu,Kim khí · vàng,aura_buff,vung_nhu_ban_thach,gold_soft,heal,ally_bless,ally_all,physical,1.85
+Xua Đuổi,buff,Kim khí · vàng,aura_buff,xua_duoi,gold_soft,buff,ally_bless,ally_all,physical,1.65
+Xuyên Dương,sát thương,Kim/Thép · bạc,người_đâm|cột,xuyen_duong,steel,pierce,column_pierce,column,physical,1.19
+Xuyên Thích,sát thương,Kim/Thép · bạc,người_đâm|aoe,xuyen_thich,steel,pierce,aoe_nova,all,physical,2.2
+Xuyên Vân Thích,sát thương,Kim/Thép · bạc,người_đâm|aoe,xuyen_van_thich,steel,pierce,aoe_nova,all,physical,1.75
+Xà Thích,sát thương+độc,Kim/Thép · bạc,người_đâm|cột,xa_thich,steel,pierce,column_pierce,column,physical,1.58
+Xà Độc,sát thương+độc,Độc · lục,độc|độc vụ,xa_doc,toxic_green,poison,element_poison,column,physical,1.58
+Xích Long,sát thương+trị liệu,Hỏa · đỏ-cam,hồn_rồng|cột,xich_long,dragon,dragon,column_pierce,column,physical,2.2
+Xích Lôi,sát thương+buff+khống chế,Lôi · vàng tím,lôi điện,xich_loi,electric_blue,thunder,element_thunder,row,strategy,2.2
+Xích Lửa Trí Tuệ,sát thương+buff+thiêu,Hỏa · đỏ-cam,hỏa|thiêu đốt,xich_lua_tri_tue,ember_orange,fire,element_fire,single,strategy,1.91
+Xích Vũ Quán Hồng,sát thương+buff+debuff,Thủy · lam,linh hồn|triệu hồi,xich_vu_quan_hong,violet_spirit,spirit,spirit_summon,single,physical,1.91
+Xưng Bá,sát thương+buff,Mưu · lam,mưu|aoe,xung_ba,blue,arcane,aoe_nova,all,physical,1.25
+Xạ Sát,sát thương+buff,Kim khí · vàng,người_đâm|đơn,xa_sat,yellow,pierce,single_strike,single,physical,2.2
+Xạ Thủ,sát thương,Kim khí · vàng,người_đâm|aoe,xa_thu,yellow,pierce,aoe_nova,all,physical,1.37
+Xả Thân Cường Tập,sát thương+buff,Xung · thép,xung_kích,xa_than_cuong_tap,rush,rush,rush_assault,column,physical,1.75
+Yêu Giáp,sát thương+buff+giáp+trị liệu,Khiên · vàng,khiên,yeu_giap,shield,shield,barrier,single,physical,1.05
+Yêu Pháp,sát thương+khống chế,Mưu · lam,mưu|aoe,yeu_phap,blue,arcane,aoe_nova,all,strategy,1.05
+Yêu Thuẫn,sát thương+trị liệu,Kim khí · vàng,aura_buff,yeu_thuan,gold_soft,heal,ally_bless,single,strategy,1.05
+Yêu Thuật,sát thương+khống chế,Mưu · lam,mưu|aoe,yeu_thuat,blue,arcane,aoe_nova,all,strategy,1.05
+Yển Nguyệt,sát thương+buff+debuff+câm lặng,Mưu · lam,mưu|đơn,yen_nguyet,blue,arcane,single_strike,single,physical,2.2
+[NPC] Trời Tru Đất Diệt,sát thương+buff+debuff,Mưu · lam,mưu|aoe,npc_troi_tru_dat_diet,blue,arcane,aoe_nova,all,strategy,1.4300000000000002
+Ác Lai,sát thương+buff,Huyết · son,người_chém|aoe,ac_lai,crimson,slash,aoe_nova,all,physical,1.75
+Ác Lai Liệt Phách,sát thương+buff,Huyết · son,người_chém|aoe,ac_lai_liet_phach,crimson,slash,aoe_nova,all,physical,1.91
+Ác Quỷ Triền Thân,sát thương+buff,Huyết · son,người_chém|aoe,ac_quy_trien_than,crimson,slash,aoe_nova,all,physical,1.83
+Ám Dạ Thích Sát,sát thương+buff+debuff+khống chế,Huyết · son,bóng_ám|đơn,am_da_thich_sat,purple,shadow,single_strike,single,physical,1.83
+Ám Sát,sát thương+khống chế,Huyết · son,bóng_ám|đơn,am_sat,purple,shadow,single_strike,single,physical,1.54
+Ám Tế,sát thương+debuff+câm lặng,Huyết · son,bóng_ám|đơn,am_te,purple,shadow,single_strike,single,strategy,1.28
+Ám Vân,sát thương+buff+trị liệu,Huyết · son,bóng_ám|aoe,am_van,purple,shadow,aoe_nova,all,strategy,1.6700000000000002
+Âm Dương Diệt,sát thương+buff+debuff,Mưu · lam,trận pháp|bát quái,am_duong_diet,jade_gold,bagua,element_bagua,all,strategy,1.75
+Âm Lôi,sát thương+buff+khống chế,Lôi · vàng tím,lôi điện,am_loi,electric_blue,thunder,element_thunder,column,strategy,1.59
+Ân Huệ Chi Vũ,buff+debuff+trị liệu,Thủy · lam,aura_buff,an_hue_chi_vu,blue_water,water,ally_bless,self,strategy,1.05
+Ân Nghĩa,buff+giáp,Kim khí · vàng,aura_buff,an_nghia,gold_soft,buff,ally_bless,ally_all,physical,1.65
+Ôn Dịch,sát thương+độc+khống chế,Độc · lục,độc|độc vụ,on_dich,toxic_green,poison,element_poison,single,strategy,1.05
+Đoạt Tâm,sát thương,Mưu · lam,mưu|đơn,doat_tam,blue,arcane,single_strike,single,strategy,1.6700000000000002
+Đoạt Tâm Tiễn,sát thương+buff,Kim khí · vàng,người_đâm|hàng,doat_tam_tien,yellow,pierce,row_sweep,row,physical,1.6700000000000002
+Đóng Quân Phòng Thủ,sát thương+buff+giáp+trị liệu,Kim khí · vàng,aura_buff,dong_quan_phong_thu,gold_soft,heal,ally_bless,single,strategy,1.05
+Đông Ngô Bá Nghiệp,sát thương,Hổ · vàng hổ,hồn_hổ|đơn,dong_ngo,tiger,tiger,single_strike,single,strategy,0.0
+Đông Phong,sát thương+buff,Phong · cyan,hồn_phong|aoe,dong_phong,whirlwind,whirlwind,aoe_nova,all,strategy,1.32
+Đăng Cơ,sát thương+debuff+trị liệu,Kim khí · vàng,aura_buff,dang_co,gold_soft,heal,ally_bless,all,strategy,2.2
+Đơn Kỵ,sát thương+buff,Thổ · nâu,kỵ_xung,don_ky,charge,charge,cavalry_charge,column,physical,1.6
+Đại Viêm Đế,sát thương+buff,Hỏa · đỏ-cam,hỏa|thiêu đốt,dai_viem_de,ember_orange,fire,element_fire,all,strategy,1.6700000000000002
+Đại Vương Thân Chinh,sát thương+debuff,Thổ · nâu,người_chém|aoe,dai_vuong_than_chinh,brown,slash,aoe_nova,all,physical,1.91
+Đạo Pháp Thiên Địa,sát thương+buff,Mưu · lam,mưu|hàng,dao_phap_thien_dia,blue,arcane,row_sweep,row,strategy,1.75
+Đạo Thuật Huyền Thông,sát thương+buff+debuff,Huyết · son,bóng_ám|aoe,dao_thuat_huyen_thong,purple,shadow,aoe_nova,all,strategy,1.91
+Đạp Phá,sát thương,Mưu · lam,mưu|cột,dap_pha,blue,arcane,column_pierce,column,physical,1.32
+Đằng Long,sát thương+buff,Hỏa · đỏ-cam,hồn_rồng|hàng,dang_long,dragon,dragon,row_sweep,row,physical,2.2
+Đế Hồn,sát thương,Mưu · lam,linh hồn|triệu hồi,de_hon,violet_spirit,spirit,spirit_summon,all,physical,1.6700000000000002
+Địa Liệp,sát thương+khống chế,Mưu · lam,mưu|hàng,dia_liep,blue,arcane,row_sweep,row,strategy,1.85
+Địa Long,sát thương+buff,Hỏa · đỏ-cam,hồn_rồng|aoe,dia_long,dragon,dragon,aoe_nova,all,physical,1.55
+Địa Nha,sát thương+khống chế,Mưu · lam,mưu|hàng,dia_nha,blue,arcane,row_sweep,row,strategy,1.35
+Địa Thích,sát thương,Kim/Thép · bạc,người_đâm|aoe,dia_thich,steel,pierce,aoe_nova,all,physical,1.5
+Địa Trạch Vạn Vật,buff+giáp+trị liệu,Kim khí · vàng,aura_buff,dia_trach_van_vat,gold_soft,heal,ally_bless,ally_all,physical,1.75
+Định Kế Nhất Thống,buff+debuff+khống chế,Huyết · son,aura_buff,dinh_ke_nhat_thong,purple,shadow,ally_bless,ally_all,physical,1.05
+Định Quân Cổ,buff+giáp,Kim khí · vàng,aura_buff,dinh_quan_co,gold_soft,buff,ally_bless,ally_all,physical,1.65
+Độ Chúng Sinh,buff+giáp+trị liệu,Kim khí · vàng,aura_buff,do_chung_sinh,gold_soft,heal,ally_bless,self,strategy,1.05
+Độc Chú,sát thương+độc,Độc · lục,độc|độc vụ,doc_chu,toxic_green,poison,element_poison,all,strategy,1.05
+Độc Kế,sát thương+debuff+độc,Độc · lục,độc|độc vụ,doc_ke,toxic_green,poison,element_poison,single,strategy,2.05
+Độc Lôi,sát thương+buff+độc+khống chế,Độc · lục,lôi điện,doc_loi,electric_blue,thunder,element_thunder,column,strategy,1.6700000000000002
+Độc Mưu,sát thương+độc,Độc · lục,độc|độc vụ,doc_muu,toxic_green,poison,element_poison,all,strategy,0.85
+Độc Nhẫn,sát thương+độc,Độc · lục,độc|độc vụ,doc_nhan,toxic_green,poison,element_poison,single,physical,1.58
+Độc Tiêu,sát thương+độc,Độc · lục,độc|độc vụ,doc_tieu,toxic_green,poison,element_poison,single,physical,1.58
+Độc Xà,sát thương+độc,Độc · lục,độc|độc vụ,doc_xa,toxic_green,poison,element_poison,single,strategy,1.2
+Độc Địa,sát thương+buff+debuff+độc+câm lặng,Độc · lục,độc|độc vụ,doc_dia,toxic_green,poison,element_poison,all,strategy,1.6700000000000002
+Đột Kích,sát thương,Xung · thép,xung_kích,dot_kich,rush,rush,rush_assault,single,physical,1.92
+Đột Tiến,sát thương,Xung · thép,xung_kích,dot_tien,rush,rush,rush_assault,single,physical,1.54
+Đột Tập,sát thương,Xung · thép,xung_kích,dot_tap,rush,rush,rush_assault,single,physical,1.92
+Ẩn Mưu,sát thương,Huyết · son,bóng_ám|đơn,an_muu,purple,shadow,single_strike,single,strategy,1.8
