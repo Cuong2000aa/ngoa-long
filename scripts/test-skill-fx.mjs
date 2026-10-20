@@ -133,18 +133,16 @@ ok(br.includes("isRush") || br.includes('kind === "rush"'), "BattleRenderer xử
 ok(br.includes("playTimeline"), "BattleRenderer chạy skill timeline");
 ok(br.includes("triggerCamPunch") || br.includes("camPunch"), "BattleRenderer có camera punch");
 ok(br.includes("hitStopUntil"), "BattleRenderer có hit-stop");
-ok(br.includes("spawnPatternEmission"), "BattleRenderer gọi spawnPatternEmission");
+ok(br.includes("playPatternFx3d"), "BattleRenderer gọi playPatternFx3d (3D AoE)");
 ok(br.includes("qualityToScale"), "BattleRenderer scale theo phẩm");
 ok(br.includes("pattern?:"), "SkillFlashOpts có pattern");
 ok(br.includes("clearFx"), "BattleRenderer.clearFx");
 ok(br.includes("pausedForShot"), "BattleRenderer.pausedForShot");
-ok(br.includes("playSkillFx3d"), "BattleRenderer gọi playSkillFx3d (polished 3D)");
+ok(br.includes("playSkillFx3d"), "BattleRenderer gọi playSkillFx3d (3D toàn catalog)");
 ok(br.includes("tickBattleVfx3d"), "BattleRenderer tick 3D VFX");
 ok(br.includes("skillId?:"), "SkillFlashOpts có skillId");
-ok(br.includes("usesPolishedSteelSlash"), "BattleRenderer gate polished theo skillId");
-ok(br.includes("usesPolishedDragon"), "BattleRenderer gate polished dragon");
-ok(br.includes("usesPolishedTiger"), "BattleRenderer gate polished tiger");
-ok(br.includes("usesPolishedRush"), "BattleRenderer gate polished rush");
+ok(br.includes("resolveFx3dStyle"), "BattleRenderer map flash→style 3D");
+ok(br.includes("fx3dStyle"), "BattleRenderer dùng fx3dStyle cho mọi chiêu");
 
 // —— skillFxLibrary ——
 const libPath = path.join(ROOT, "src/battle/skillFxLibrary.ts");
