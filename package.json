@@ -11,6 +11,7 @@
     "test:fx": "node scripts/test-skill-fx.mjs",
     "test:skills": "node scripts/test-skill-pipeline.mjs",
     "repair:skills": "python3 scripts/repair-skill-pipeline.py",
+    "gallery:skills": "vite --open /preview-skill-3d.html",
     "shot": "node scripts/shot-city.mjs",
     "test:click": "node scripts/click-city.mjs"
   },
@@ -21,6 +22,7 @@
     "@gltf-transform/cli": "^4.5.1",
     "@types/node": "^26.6.5",
     "@types/three": "^0.186.0",
+    "playwright": "^1.64.1",
     "playwright-core": "^1.64.1",
     "typescript": "^7.0.2",
     "vite": "^8.3.4"

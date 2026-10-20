@@ -870,6 +870,7 @@
                   type: "skill_wave",
                   uid: actor.uid,
                   wave: hi + 1,
+                  skillId: skill.id,
                   flash: skillFlash,
                   motif: skillFx.motif || null,
                   pattern: skill.pattern || "single",

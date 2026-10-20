@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery chiêu 3D — Ngọa Long</title>
+  <link rel="stylesheet" href="assets/fonts/be-vietnam-pro.css" />
+  <link rel="stylesheet" href="css/combat.css" />
+  <style>
+    :root {
+      --panel: rgba(18, 12, 8, 0.92);
+      --line: rgba(197, 155, 39, 0.35);
+      --gold: #fde68a;
+      --muted: #a89070;
+      --text: #f5e6c8;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #1a100c;
+      color: var(--text);
+      font-family: "Be Vietnam Pro", system-ui, sans-serif;
+      overflow: hidden;
+    }
+    #app {
+      display: grid;
+      grid-template-columns: minmax(280px, 340px) 1fr;
+      height: 100%;
+    }
+    #side {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 0.75rem;
+      background: var(--panel);
+      border-right: 1px solid var(--line);
+      z-index: 2;
+      min-height: 0;
+    }
+    #side h1 {
+      margin: 0;
+      font-size: 1rem;
+      color: var(--gold);
+    }
+    #side .sub {
+      margin: 0;
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+    #side input[type="search"],
+    #side select {
+      width: 100%;
+      background: #120c08;
+      color: var(--text);
+      border: 1px solid var(--line);
+      padding: 0.4rem 0.5rem;
+      font: inherit;
+      font-size: 0.85rem;
+    }
+    .motif-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      max-height: 5.5rem;
+      overflow: auto;
+    }
+    .motif-chips button {
+      border: 1px solid var(--line);
+      background: #1a100c;
+      color: var(--muted);
+      font-size: 0.65rem;
+      padding: 0.15rem 0.4rem;
+      cursor: pointer;
+    }
+    .motif-chips button.on,
+    .motif-chips button:hover {
+      color: var(--gold);
+      border-color: rgba(197, 155, 39, 0.7);
+    }
+    #skill-list {
+      flex: 1;
+      overflow: auto;
+      border: 1px solid var(--line);
+      background: rgba(10, 8, 6, 0.6);
+      min-height: 0;
+    }
+    .sk {
+      display: block;
+      width: 100%;
+      text-align: left;
+      border: none;
+      border-bottom: 1px solid rgba(197, 155, 39, 0.12);
+      background: transparent;
+      color: var(--text);
+      padding: 0.45rem 0.55rem;
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.78rem;
+    }
+    .sk:hover, .sk.active {
+      background: rgba(197, 155, 39, 0.12);
+    }
+    .sk strong { color: var(--gold); font-weight: 600; }
+    .sk small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.65rem;
+      margin-top: 0.1rem;
+    }
+    .actions {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .actions button {
+      flex: 1;
+      min-width: 5rem;
+      border: 1px solid var(--line);
+      background: #2a1c12;
+      color: var(--gold);
+      padding: 0.45rem 0.5rem;
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.8rem;
+    }
+    .actions button.primary {
+      background: rgba(197, 155, 39, 0.25);
+      border-color: #e8c547;
+    }
+    .actions button:disabled { opacity: 0.4; cursor: default; }
+    #meta {
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.4;
+      min-height: 3.2rem;
+    }
+    #meta b { color: var(--gold); }
+    #stage-wrap {
+      position: relative;
+      min-width: 0;
+      background: #0c0907;
+    }
+    #battle-host {
+      position: absolute;
+      inset: 0;
+    }
+    #battle-host.has-battle-gl .battle-gl-host {
+      position: absolute;
+      inset: 0;
+    }
+    #battle-host .battle-gl {
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+    }
+    #overlay-hint {
+      position: absolute;
+      left: 50%;
+      top: 0.75rem;
+      transform: translateX(-50%);
+      z-index: 3;
+      pointer-events: none;
+      background: rgba(12, 8, 6, 0.75);
+      border: 1px solid var(--line);
+      padding: 0.35rem 0.75rem;
+      font-size: 0.78rem;
+      color: var(--gold);
+      max-width: 90%;
+      text-align: center;
+    }
+    #status {
+      position: absolute;
+      right: 0.75rem;
+      bottom: 0.75rem;
+      z-index: 3;
+      font-size: 0.7rem;
+      color: var(--muted);
+      background: rgba(12, 8, 6, 0.7);
+      padding: 0.3rem 0.5rem;
+      border: 1px solid var(--line);
+    }
+    @media (max-width: 860px) {
+      #app { grid-template-columns: 1fr; grid-template-rows: 42% 58%; }
+      #side { border-right: none; border-bottom: 1px solid var(--line); }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <aside id="side">
+      <h1>Gallery chiêu 3D</h1>
+      <p class="sub">Sân BattleRenderer như trong trận. Chọn chiêu → Phát. Có thể lọc motif / tìm tên.</p>
+      <input type="search" id="q" placeholder="Tìm tên / id chiêu…" autocomplete="off" />
+      <select id="motif-filter" aria-label="Lọc motif">
+        <option value="">Tất cả motif</option>
+      </select>
+      <div class="motif-chips" id="motif-chips" aria-label="Motif nhanh"></div>
+      <div id="skill-list" role="listbox" aria-label="Danh sách chiêu"></div>
+      <div class="actions">
+        <button type="button" class="primary" id="btn-play">Phát chiêu</button>
+        <button type="button" id="btn-replay">Phát lại</button>
+        <button type="button" id="btn-clear">Xóa FX</button>
+      </div>
+      <div id="meta">Đang nạp…</div>
+      <p class="sub">Phím: Enter = phát · Esc = xóa FX · ↑↓ chọn trong danh sách đã lọc.</p>
+    </aside>
+    <div id="stage-wrap">
+      <div id="overlay-hint">Đang dựng sân 3D…</div>
+      <div id="battle-host"></div>
+      <div id="status">—</div>
+    </div>
+  </div>
+
+  <script src="js/db/nl-db.bundle.js"></script>
+  <script src="js/db/database.js"></script>
+  <script src="js/combat/skill-design.js"></script>
+  <script type="module">
+    import "/src/main.ts";
+
+    const host = document.getElementById("battle-host");
+    const listEl = document.getElementById("skill-list");
+    const qEl = document.getElementById("q");
+    const motifSel = document.getElementById("motif-filter");
+    const chipsEl = document.getElementById("motif-chips");
+    const metaEl = document.getElementById("meta");
+    const hintEl = document.getElementById("overlay-hint");
+    const statusEl = document.getElementById("status");
+    const btnPlay = document.getElementById("btn-play");
+    const btnReplay = document.getElementById("btn-replay");
+    const btnClear = document.getElementById("btn-clear");
+
+    let br = null;
+    let skills = [];
+    let filtered = [];
+    let selectedId = null;
+    let motifFilter = "";
+    let casterUid = "a0";
+    let foeUids = [];
+
+    const ALLIES = [
+      { uid: "a0", name: "Caster", slot: 1, side: "ally", troop: "strategist", level: 12, quality: "purple" },
+      { uid: "a1", name: "Đồng minh 1", slot: 0, side: "ally", troop: "infantry", level: 10, quality: "blue" },
+      { uid: "a2", name: "Đồng minh 2", slot: 2, side: "ally", troop: "spear", level: 10, quality: "blue" },
+      { uid: "a3", name: "Đồng minh 3", slot: 3, side: "ally", troop: "archer", level: 9, quality: "green" },
+      { uid: "a4", name: "Đồng minh 4", slot: 4, side: "ally", troop: "cavalry", level: 11, quality: "blue" },
+    ];
+    const FOES = [
+      { uid: "e0", name: "Địch 1", slot: 0, side: "enemy", troop: "infantry", level: 10, quality: "white" },
+      { uid: "e1", name: "Địch 2", slot: 1, side: "enemy", troop: "spear", level: 10, quality: "white" },
+      { uid: "e2", name: "Địch 3", slot: 2, side: "enemy", troop: "archer", level: 9, quality: "green" },
+      { uid: "e3", name: "Địch 4", slot: 3, side: "enemy", troop: "cavalry", level: 10, quality: "white" },
+      { uid: "e4", name: "Địch 5", slot: 4, side: "enemy", troop: "strategist", level: 11, quality: "blue" },
+    ];
+
+    function waitCity() {
+      return new Promise((resolve) => {
+        if (window.NLCity && window.NLCity.BattleRenderer) return resolve();
+        window.addEventListener("nl-city-ready", () => resolve(), { once: true });
+        setTimeout(resolve, 8000);
+      });
+    }
+
+    function loadSkills() {
+      const db = window.NL_DB || (window.NLDatabase && window.NLDatabase.raw && window.NLDatabase.raw());
+      const map = (db && db.skills && db.skills.skills) || {};
+      skills = Object.keys(map)
+        .map((id) => {
+          const s = map[id];
+          const fx = s.fx || {};
+          return {
+            id,
+            name: s.name || id,
+            desc: s.desc || "",
+            pattern: s.pattern || "single",
+            motif: fx.motif || "slash",
+            flash: fx.flash || "steel",
+            style: fx.style || "",
+            text: fx.text || (s.name || id),
+            quality: s.wikiQuality || "",
+          };
+        })
+        .sort((a, b) => a.name.localeCompare(b.name, "vi"));
+    }
+
+    function uniqueMotifs() {
+      const set = {};
+      skills.forEach((s) => {
+        set[s.motif] = (set[s.motif] || 0) + 1;
+      });
+      return Object.keys(set)
+        .sort()
+        .map((m) => ({ id: m, n: set[m] }));
+    }
+
+    function fillFilters() {
+      const motifs = uniqueMotifs();
+      motifSel.innerHTML =
+        '<option value="">Tất cả motif (' +
+        skills.length +
+        ")</option>" +
+        motifs
+          .map((m) => '<option value="' + m.id + '">' + m.id + " (" + m.n + ")</option>")
+          .join("");
+      chipsEl.innerHTML = motifs
+        .slice(0, 24)
+        .map(
+          (m) =>
+            '<button type="button" data-motif="' +
+            m.id +
+            '">' +
+            m.id +
+            "</button>"
+        )
+        .join("");
+      chipsEl.querySelectorAll("button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          motifFilter = btn.getAttribute("data-motif") || "";
+          motifSel.value = motifFilter;
+          chipsEl.querySelectorAll("button").forEach((b) => b.classList.toggle("on", b === btn));
+          renderList();
+        });
+      });
+    }
+
+    function renderList() {
+      const q = (qEl.value || "").trim().toLowerCase();
+      filtered = skills.filter((s) => {
+        if (motifFilter && s.motif !== motifFilter) return false;
+        if (!q) return true;
+        return (
+          s.name.toLowerCase().includes(q) ||
+          s.id.toLowerCase().includes(q) ||
+          s.flash.toLowerCase().includes(q) ||
+          (s.desc || "").toLowerCase().includes(q)
+        );
+      });
+      listEl.innerHTML = filtered
+        .map((s) => {
+          const active = s.id === selectedId ? " active" : "";
+          return (
+            '<button type="button" class="sk' +
+            active +
+            '" data-id="' +
+            s.id +
+            '" role="option">' +
+            "<strong>" +
+            s.name +
+            "</strong>" +
+            "<small>" +
+            s.motif +
+            " · " +
+            s.flash +
+            " · " +
+            s.pattern +
+            (s.style ? " · " + s.style : "") +
+            "</small></button>"
+          );
+        })
+        .join("");
+      statusEl.textContent = filtered.length + " / " + skills.length + " chiêu";
+      listEl.querySelectorAll(".sk").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          selectSkill(btn.getAttribute("data-id"));
+          playSelected();
+        });
+      });
+    }
+
+    function getSelected() {
+      return skills.find((s) => s.id === selectedId) || null;
+    }
+
+    function selectSkill(id) {
+      selectedId = id;
+      const s = getSelected();
+      listEl.querySelectorAll(".sk").forEach((btn) => {
+        btn.classList.toggle("active", btn.getAttribute("data-id") === id);
+      });
+      if (!s) {
+        metaEl.innerHTML = "Chưa chọn chiêu.";
+        return;
+      }
+      metaEl.innerHTML =
+        "<b>" +
+        s.name +
+        "</b> <code>" +
+        s.id +
+        "</code><br/>motif=<b>" +
+        s.motif +
+        "</b> flash=<b>" +
+        s.flash +
+        "</b> pattern=<b>" +
+        s.pattern +
+        "</b>" +
+        (s.style ? " style=<b>" + s.style + "</b>" : "") +
+        "<br/>" +
+        (s.desc || "").replace(/</g, "&lt;").slice(0, 160);
+      const active = listEl.querySelector(".sk.active");
+      if (active) active.scrollIntoView({ block: "nearest" });
+    }
+
+    function resolveTargets(pattern) {
+      const p = (pattern || "single").toLowerCase();
+      if (p === "self") return [casterUid];
+      if (p === "ally_all") return ALLIES.map((a) => a.uid);
+      if (p === "single") return foeUids.slice(0, 1);
+      if (p === "column" || p === "front_row") return foeUids.slice(0, 3);
+      if (p === "row") return foeUids.slice(0, 3);
+      return foeUids.slice();
+    }
+
+    function playSelected() {
+      const s = getSelected();
+      if (!s || !br) return;
+      if (typeof br.clearFx === "function") br.clearFx();
+      const Design = window.NLSkillDesign;
+      const flash =
+        Design && Design.resolveFxKey
+          ? Design.resolveFxKey({ flash: s.flash, motif: s.motif })
+          : s.flash;
+      const targets = resolveTargets(s.pattern);
+      const support =
+        s.motif === "buff" ||
+        s.motif === "heal" ||
+        s.flash === "gold_soft" ||
+        s.flash === "gold" ||
+        s.flash === "pure" ||
+        s.pattern === "ally_all" ||
+        s.pattern === "self";
+      hintEl.textContent = s.text || s.name;
+      try {
+        br.skillFlash(casterUid, flash, targets, {
+          pattern: s.pattern,
+          quality: "purple",
+          motif: s.motif,
+          skillId: s.id || null,
+          support: support,
+        });
+        statusEl.textContent =
+          "Đang phát: " + s.name + " → " + flash + " [" + s.pattern + "] ×" + targets.length;
+      } catch (e) {
+        statusEl.textContent = "Lỗi: " + (e && e.message ? e.message : e);
+      }
+    }
+
+    function clearFx() {
+      if (br && br.clearFx) br.clearFx();
+      hintEl.textContent = "Đã xóa FX — chọn chiêu khác";
+    }
+
+    async function boot() {
+      await waitCity();
+      if (!window.NLCity || !window.NLCity.BattleRenderer) {
+        hintEl.textContent = "BattleRenderer chưa sẵn sàng — kiểm tra Vite /src/main.ts";
+        return;
+      }
+      loadSkills();
+      fillFilters();
+      renderList();
+      if (skills.length) selectSkill(skills[0].id);
+
+      br = new window.NLCity.BattleRenderer();
+      await br.mount(host, { preview: false });
+      br.spawn(ALLIES, FOES, "shu", {
+        allyFormation: "crane_wing",
+        enemyFormation: "square",
+      });
+      casterUid = "a0";
+      foeUids = FOES.map((f) => f.uid);
+      // Chờ actor load nhẹ
+      await new Promise((r) => setTimeout(r, 600));
+      hintEl.textContent = "Sẵn sàng — chọn chiêu bên trái hoặc Enter để phát";
+      statusEl.textContent = skills.length + " chiêu · sân 3D OK";
+    }
+
+    qEl.addEventListener("input", () => renderList());
+    motifSel.addEventListener("change", () => {
+      motifFilter = motifSel.value || "";
+      chipsEl.querySelectorAll("button").forEach((b) => {
+        b.classList.toggle("on", b.getAttribute("data-motif") === motifFilter);
+      });
+      renderList();
+    });
+    btnPlay.addEventListener("click", playSelected);
+    btnReplay.addEventListener("click", playSelected);
+    btnClear.addEventListener("click", clearFx);
+
+    window.addEventListener("keydown", (ev) => {
+      if (ev.key === "Enter") {
+        ev.preventDefault();
+        playSelected();
+      } else if (ev.key === "Escape") {
+        clearFx();
+      } else if (ev.key === "ArrowDown" || ev.key === "ArrowUp") {
+        if (!filtered.length) return;
+        ev.preventDefault();
+        let idx = filtered.findIndex((s) => s.id === selectedId);
+        if (idx < 0) idx = 0;
+        else idx += ev.key === "ArrowDown" ? 1 : -1;
+        idx = Math.max(0, Math.min(filtered.length - 1, idx));
+        selectSkill(filtered[idx].id);
+      }
+    });
+
+    boot().catch((e) => {
+      hintEl.textContent = "Boot lỗi: " + (e && e.message ? e.message : e);
+    });
+  </script>
+</body>
+</html>

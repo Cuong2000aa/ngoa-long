@@ -1,0 +1,15 @@
+{
+  "id": "frost_burst",
+  "seed": 31001,
+  "family": "burst",
+  "element": "frost",
+  "power": "standard",
+  "name": "Glacial Cataclysm",
+  "formation": "fissure",
+  "looping": false,
+  "duration": 1.85,
+  "frames": 12,
+  "size": 128,
+  "source": "pixel-ability-fx-forge",
+  "license": "Apache-2.0"
+}

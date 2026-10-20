@@ -1,71 +1,71 @@
 {
   "basic_strike": {
     "name": "Mãnh Kích",
-    "motif": null,
-    "flash": "white",
+    "motif": "slash",
+    "flash": "steel",
     "pattern": "single",
     "source": null
   },
   "basic_scheme": {
     "name": "Kỳ Mưu",
-    "motif": null,
-    "flash": "blue",
+    "motif": "shadow",
+    "flash": "purple",
     "pattern": "single",
     "source": null
   },
   "wu_sheng": {
     "name": "Vũ Thánh",
-    "motif": null,
-    "flash": "gold_red",
+    "motif": "water",
+    "flash": "blue_water",
     "pattern": "column",
     "source": null
   },
   "gam_thet": {
     "name": "Gầm Thét",
-    "motif": null,
-    "flash": "brown",
+    "motif": "slash",
+    "flash": "steel",
     "pattern": "front_row",
     "source": null
   },
   "long_dam": {
     "name": "Long Đảm",
-    "motif": null,
-    "flash": "white_blue",
+    "motif": "dragon",
+    "flash": "dragon",
     "pattern": "single",
     "source": null
   },
   "khong_thanh": {
     "name": "Không Thành",
-    "motif": null,
-    "flash": "cyan",
+    "motif": "bagua",
+    "flash": "bagua",
     "pattern": "all",
     "source": null
   },
   "ho_khi": {
     "name": "Hổ Khí",
-    "motif": null,
-    "flash": "orange",
+    "motif": "tiger",
+    "flash": "tiger",
     "pattern": "ally_all",
     "source": null
   },
   "hoa_cong": {
     "name": "Hỏa Công",
-    "motif": null,
-    "flash": "red_fire",
-    "pattern": "row",
+    "motif": "fire",
+    "flash": "fire_rain",
+    "pattern": "single",
     "source": null
   },
   "an_muu": {
     "name": "Ẩn Mưu",
-    "motif": null,
+    "motif": "shadow",
     "flash": "purple",
     "pattern": "single",
     "source": null
   },
   "bach_bo": {
     "name": "Bách Bộ Xuyên Dương",
-    "motif": null,
-    "flash": "yellow",
+    "motif": "pierce",
+    "flash": "steel",
     "pattern": "single",
     "source": null
   },
@@ -78,140 +78,140 @@
   },
   "co_chien": {
     "name": "Cổ Chiến",
-    "motif": null,
-    "flash": "iron",
-    "pattern": "single",
+    "motif": "buff",
+    "flash": "gold_soft",
+    "pattern": "self",
     "source": null
   },
   "ho_si": {
     "name": "Hổ Si",
-    "motif": null,
-    "flash": "brown",
+    "motif": "tiger",
+    "flash": "tiger",
     "pattern": "front_row",
     "source": null
   },
   "dong_ngo": {
     "name": "Đông Ngô Bá Nghiệp",
-    "motif": null,
-    "flash": "teal",
-    "pattern": "ally_all",
+    "motif": "slash",
+    "flash": "steel",
+    "pattern": "single",
     "source": null
   },
   "doc_muu": {
     "name": "Độc Mưu",
-    "motif": null,
+    "motif": "poison",
     "flash": "green_poison",
     "pattern": "all",
     "source": null
   },
   "phung_so": {
     "name": "Phụng Sồ",
-    "motif": null,
-    "flash": "violet",
-    "pattern": "row",
+    "motif": "slash",
+    "flash": "steel",
+    "pattern": "single",
     "source": null
   },
   "lua_luc": {
     "name": "Lửa Lục",
-    "motif": null,
-    "flash": "fire_green",
-    "pattern": "all",
+    "motif": "fire",
+    "flash": "fire_rain",
+    "pattern": "single",
     "source": null
   },
   "phan_cot": {
     "name": "Phản Cốt",
-    "motif": null,
-    "flash": "dark_red",
-    "pattern": "single",
+    "motif": "buff",
+    "flash": "gold_soft",
+    "pattern": "self",
     "source": null
   },
   "nhan_duc": {
     "name": "Nhân Đức",
-    "motif": null,
+    "motif": "heal",
     "flash": "gold_soft",
     "pattern": "ally_all",
     "source": null
   },
   "huang_tian": {
     "name": "Hoàng Thiên Đương Lập",
-    "motif": null,
-    "flash": "yellow_cult",
-    "pattern": "all",
+    "motif": "slash",
+    "flash": "steel",
+    "pattern": "single",
     "source": null
   },
   "hoa_hung_slash": {
     "name": "Hổ Lao Trảm",
-    "motif": null,
-    "flash": "red",
+    "motif": "tiger",
+    "flash": "tiger",
     "pattern": "single",
     "source": null
   },
   "lu_bu_fury": {
     "name": "Phong Hầu Nộ",
-    "motif": null,
-    "flash": "crimson",
+    "motif": "whirlwind",
+    "flash": "whirlwind",
     "pattern": "column",
     "source": null
   },
   "xiaoyaojin": {
     "name": "Tiêu Dao Tân",
-    "motif": null,
+    "motif": "slash",
     "flash": "steel",
     "pattern": "front_row",
     "source": null
   },
   "shui_jian": {
     "name": "Thủy Chiến",
-    "motif": null,
+    "motif": "water",
     "flash": "blue_water",
     "pattern": "row",
     "source": null
   },
   "bailian": {
     "name": "Bạch Mã Nghĩa Tòng",
-    "motif": null,
-    "flash": "white",
-    "pattern": "column",
+    "motif": "slash",
+    "flash": "steel",
+    "pattern": "single",
     "source": null
   },
   "lianhuan": {
     "name": "Liên Hoàn Kế",
-    "motif": null,
-    "flash": "chain",
-    "pattern": "all",
+    "motif": "shadow",
+    "flash": "purple",
+    "pattern": "single",
     "source": null
   },
   "bagua_zhen": {
     "name": "Bát Quái Trận",
-    "motif": null,
+    "motif": "bagua",
     "flash": "bagua",
-    "pattern": "all",
+    "pattern": "single",
     "source": null
   },
   "thien_hoa": {
     "name": "Thiên Hỏa",
-    "motif": null,
+    "motif": "fire",
     "flash": "fire_rain",
-    "pattern": "row",
+    "pattern": "single",
     "source": null
   },
   "long_nu": {
     "name": "Long Nỗ",
-    "motif": null,
+    "motif": "dragon",
     "flash": "dragon",
-    "pattern": "column",
+    "pattern": "single",
     "source": null
   },
   "phong_van": {
     "name": "Phong Vân Biến",
-    "motif": null,
-    "flash": "wind",
+    "motif": "heal",
+    "flash": "gold_soft",
     "pattern": "ally_all",
     "source": null
   },
   "sam_set": {
     "name": "Lôi Kích",
-    "motif": null,
+    "motif": "thunder",
     "flash": "thunder",
     "pattern": "single",
     "source": null
@@ -232,85 +232,85 @@
   },
   "basic_strike_chien": {
     "name": "Mãnh Kích · Chiến",
-    "motif": null,
+    "motif": "slash",
     "flash": "steel",
     "pattern": "single",
     "source": null
   },
   "basic_strike_than": {
     "name": "Mãnh Kích · Thần",
-    "motif": null,
-    "flash": "gold_red",
+    "motif": "slash",
+    "flash": "steel",
     "pattern": "front_row",
     "source": null
   },
   "basic_strike_legend": {
     "name": "Mãnh Kích · Truyền thuyết",
-    "motif": null,
-    "flash": "crimson",
+    "motif": "slash",
+    "flash": "steel",
     "pattern": "column",
     "source": null
   },
   "basic_strike_king": {
     "name": "Mãnh Kích · Thần Hoàng",
-    "motif": null,
-    "flash": "fire_rain",
+    "motif": "slash",
+    "flash": "steel",
     "pattern": "column",
     "source": null
   },
   "basic_scheme_chien": {
     "name": "Kỳ Mưu · Chiến",
-    "motif": null,
-    "flash": "cyan",
+    "motif": "shadow",
+    "flash": "purple",
     "pattern": "single",
     "source": null
   },
   "basic_scheme_than": {
     "name": "Kỳ Mưu · Thần",
-    "motif": null,
-    "flash": "bagua",
+    "motif": "shadow",
+    "flash": "purple",
     "pattern": "row",
     "source": null
   },
   "basic_scheme_legend": {
     "name": "Kỳ Mưu · Truyền thuyết",
-    "motif": null,
-    "flash": "thunder",
+    "motif": "shadow",
+    "flash": "purple",
     "pattern": "column",
     "source": null
   },
   "basic_scheme_king": {
     "name": "Kỳ Mưu · Thần Hoàng",
-    "motif": null,
-    "flash": "bagua",
-    "pattern": "all",
+    "motif": "shadow",
+    "flash": "purple",
+    "pattern": "single",
     "source": null
   },
   "tl_thuong": {
     "name": "Hổ Xung",
-    "motif": null,
-    "flash": "steel",
+    "motif": "tiger",
+    "flash": "tiger",
     "pattern": "single",
     "source": null
   },
   "tl_chien": {
     "name": "Hổ Xung · Chiến",
-    "motif": null,
-    "flash": "steel",
+    "motif": "tiger",
+    "flash": "tiger",
     "pattern": "column",
     "source": null
   },
   "tl_than": {
     "name": "Hổ Sát",
-    "motif": null,
-    "flash": "crimson",
+    "motif": "tiger",
+    "flash": "tiger",
     "pattern": "column",
     "source": null
   },
   "tl_truyen": {
     "name": "Hổ Sát · Truyền thuyết",
-    "motif": null,
-    "flash": "gold_red",
+    "motif": "tiger",
+    "flash": "tiger",
     "pattern": "column",
     "source": null
   },
@@ -323,92 +323,92 @@
   },
   "wu_sheng_chien": {
     "name": "Vũ Thánh · Chiến",
-    "motif": null,
-    "flash": "gold_red",
-    "pattern": "column",
+    "motif": "water",
+    "flash": "blue_water",
+    "pattern": "single",
     "source": null
   },
   "wu_sheng_legend": {
     "name": "Vũ Thánh · Truyền thuyết",
-    "motif": null,
-    "flash": "crimson",
-    "pattern": "column",
+    "motif": "water",
+    "flash": "blue_water",
+    "pattern": "single",
     "source": null
   },
   "wu_sheng_king": {
     "name": "Vũ Thánh · Thần Hoàng",
-    "motif": null,
-    "flash": "fire_rain",
-    "pattern": "column",
+    "motif": "water",
+    "flash": "blue_water",
+    "pattern": "single",
     "source": null
   },
   "gam_thet_legend": {
     "name": "Gầm Thét · Truyền thuyết",
-    "motif": null,
-    "flash": "brown",
-    "pattern": "front_row",
+    "motif": "slash",
+    "flash": "steel",
+    "pattern": "single",
     "source": null
   },
   "gam_thet_king": {
     "name": "Gầm Thét · Thần Hoàng",
-    "motif": null,
-    "flash": "thunder",
-    "pattern": "all",
+    "motif": "slash",
+    "flash": "steel",
+    "pattern": "single",
     "source": null
   },
   "khong_thanh_legend": {
     "name": "Không Thành · Truyền thuyết",
-    "motif": null,
+    "motif": "bagua",
     "flash": "bagua",
-    "pattern": "all",
+    "pattern": "single",
     "source": null
   },
   "khong_thanh_king": {
     "name": "Không Thành · Thần Hoàng",
-    "motif": null,
+    "motif": "bagua",
     "flash": "bagua",
-    "pattern": "all",
+    "pattern": "single",
     "source": null
   },
   "hieu_lenh": {
     "name": "Hiệu Lệnh",
-    "motif": "slash",
-    "flash": "steel",
-    "pattern": "all",
+    "motif": "buff",
+    "flash": "gold_soft",
+    "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "thien_menh": {
     "name": "Thiên Mệnh",
-    "motif": "slash",
-    "flash": "steel",
-    "pattern": "all",
+    "motif": "buff",
+    "flash": "gold_soft",
+    "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "thien_chinh": {
     "name": "Thiên Chinh",
-    "motif": "slash",
-    "flash": "steel",
-    "pattern": "all",
+    "motif": "buff",
+    "flash": "gold_soft",
+    "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "quan_lam": {
     "name": "Quân Lâm",
-    "motif": "slash",
-    "flash": "steel",
-    "pattern": "all",
+    "motif": "buff",
+    "flash": "gold_soft",
+    "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "thien_ha_chia_ba": {
     "name": "Thiên Hạ Chia Ba",
-    "motif": "slash",
-    "flash": "steel",
-    "pattern": "all",
+    "motif": "buff",
+    "flash": "gold_soft",
+    "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "yen_nguyet": {
     "name": "Yển Nguyệt",
-    "motif": "shadow",
-    "flash": "purple",
+    "motif": "slash",
+    "flash": "steel",
     "pattern": "single",
     "source": "wiki-hero"
   },
@@ -421,8 +421,8 @@
   },
   "vo_thanh": {
     "name": "Võ Thánh",
-    "motif": "shadow",
-    "flash": "purple",
+    "motif": "slash",
+    "flash": "steel",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -449,15 +449,15 @@
   },
   "uy_chan_hoa_ha": {
     "name": "Uy Chấn Hoa Hạ",
-    "motif": "shadow",
-    "flash": "purple",
+    "motif": "slash",
+    "flash": "steel",
     "pattern": "column",
     "source": "wiki-hero"
   },
   "no_sat": {
     "name": "Nộ Sát",
     "motif": "slash",
-    "flash": "steel",
+    "flash": "crimson",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -471,14 +471,14 @@
   "manh_ho": {
     "name": "Mãnh Hổ",
     "motif": "tiger",
-    "flash": "orange",
+    "flash": "tiger",
     "pattern": "column",
     "source": "wiki-hero"
   },
   "ho_khieu": {
     "name": "Hổ Khiếu",
     "motif": "tiger",
-    "flash": "orange",
+    "flash": "tiger",
     "pattern": "all",
     "source": "wiki-hero"
   },
@@ -499,7 +499,7 @@
   "manh_ho_liet_son": {
     "name": "Mãnh Hổ Liệt Sơn",
     "motif": "tiger",
-    "flash": "orange",
+    "flash": "tiger",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -513,7 +513,7 @@
   "than_phong": {
     "name": "Thần Phong",
     "motif": "whirlwind",
-    "flash": "wind",
+    "flash": "whirlwind",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -555,7 +555,7 @@
   "dong_phong": {
     "name": "Đông Phong",
     "motif": "whirlwind",
-    "flash": "wind",
+    "flash": "whirlwind",
     "pattern": "all",
     "source": "wiki-hero"
   },
@@ -603,14 +603,14 @@
   },
   "liet_thi": {
     "name": "Liệt Thỉ",
-    "motif": "slash",
+    "motif": "pierce",
     "flash": "yellow",
     "pattern": "column",
     "source": "wiki-hero"
   },
   "nghe_xa": {
     "name": "Nghệ Xạ",
-    "motif": "slash",
+    "motif": "pierce",
     "flash": "yellow",
     "pattern": "column",
     "source": "wiki-hero"
@@ -631,15 +631,15 @@
   },
   "lac_nhat_than_tien": {
     "name": "Lạc Nhật Thần Tiễn",
-    "motif": "slash",
+    "motif": "pierce",
     "flash": "yellow",
     "pattern": "single",
     "source": "wiki-hero"
   },
   "xich_vu_quan_hong": {
     "name": "Xích Vũ Quán Hồng",
-    "motif": "fire",
-    "flash": "fire_rain",
+    "motif": "water",
+    "flash": "blue_water",
     "pattern": "single",
     "source": "wiki-hero"
   },
@@ -659,22 +659,22 @@
   },
   "ky_than": {
     "name": "Kỵ Thần",
-    "motif": "heal",
-    "flash": "gold_soft",
+    "motif": "charge",
+    "flash": "charge",
     "pattern": "column",
     "source": "wiki-hero"
   },
   "phong_loi": {
     "name": "Phong Lôi",
     "motif": "whirlwind",
-    "flash": "wind",
+    "flash": "whirlwind",
     "pattern": "column",
     "source": "wiki-hero"
   },
   "bach_hong_quan_nhat": {
     "name": "Bạch Hồng Quán Nhật",
-    "motif": "fire",
-    "flash": "fire_rain",
+    "motif": "heal",
+    "flash": "gold_soft",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -743,8 +743,8 @@
   },
   "tau_sat": {
     "name": "Tấu Sát",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "shadow",
+    "flash": "purple",
     "pattern": "single",
     "source": "wiki-hero"
   },
@@ -807,7 +807,7 @@
   "bac_sat": {
     "name": "Bác Sát",
     "motif": "slash",
-    "flash": "steel",
+    "flash": "crimson",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -841,14 +841,14 @@
   },
   "than_ngu": {
     "name": "Thần Ngự",
-    "motif": "heal",
+    "motif": "buff",
     "flash": "gold_soft",
     "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "an_nghia": {
     "name": "Ân Nghĩa",
-    "motif": "heal",
+    "motif": "buff",
     "flash": "gold_soft",
     "pattern": "ally_all",
     "source": "wiki-hero"
@@ -911,22 +911,22 @@
   },
   "hu_vo": {
     "name": "Hư Vô",
-    "motif": "shadow",
-    "flash": "purple",
+    "motif": "arcane",
+    "flash": "blue",
     "pattern": "all",
     "source": "wiki-hero"
   },
   "hac_dong": {
     "name": "Hắc Động",
-    "motif": "shadow",
-    "flash": "purple",
+    "motif": "arcane",
+    "flash": "blue",
     "pattern": "all",
     "source": "wiki-hero"
   },
   "tham_uyen": {
     "name": "Thâm Uyên",
-    "motif": "shadow",
-    "flash": "purple",
+    "motif": "arcane",
+    "flash": "blue",
     "pattern": "all",
     "source": "wiki-hero"
   },
@@ -946,36 +946,36 @@
   },
   "thao_luoc_tung_hoanh": {
     "name": "Thao Lược Tung Hoành",
-    "motif": "shadow",
-    "flash": "purple",
+    "motif": "arcane",
+    "flash": "blue",
     "pattern": "all",
     "source": "wiki-hero"
   },
   "muu_doan_can_khon": {
     "name": "Mưu Đoạn Càn Khôn",
-    "motif": "shadow",
-    "flash": "purple",
+    "motif": "arcane",
+    "flash": "blue",
     "pattern": "all",
     "source": "wiki-hero"
   },
   "uy_phong": {
     "name": "Uy Phong",
     "motif": "whirlwind",
-    "flash": "wind",
+    "flash": "whirlwind",
     "pattern": "single",
     "source": "wiki-hero"
   },
   "tang_phong": {
     "name": "Tang Phong",
     "motif": "whirlwind",
-    "flash": "wind",
+    "flash": "whirlwind",
     "pattern": "single",
     "source": "wiki-hero"
   },
   "khu_truc": {
     "name": "Khu Trục",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "shadow",
+    "flash": "purple",
     "pattern": "single",
     "source": "wiki-hero"
   },
@@ -1002,9 +1002,9 @@
   },
   "kieu_hung": {
     "name": "Kiêu Hùng",
-    "motif": "slash",
-    "flash": "steel",
-    "pattern": "all",
+    "motif": "buff",
+    "flash": "gold_soft",
+    "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "kinh_loi": {
@@ -1066,28 +1066,28 @@
   "ho_tri": {
     "name": "Hổ Tri",
     "motif": "tiger",
-    "flash": "orange",
+    "flash": "tiger",
     "pattern": "single",
     "source": "wiki-hero"
   },
   "ho_hau_san_no": {
     "name": "Hổ Hầu Sân Nộ",
     "motif": "tiger",
-    "flash": "orange",
+    "flash": "tiger",
     "pattern": "single",
     "source": "wiki-hero"
   },
   "loa_y_no_tap": {
     "name": "Lõa Y Nộ Tập",
-    "motif": "poison",
-    "flash": "green_poison",
+    "motif": "rush",
+    "flash": "rush",
     "pattern": "single",
     "source": "wiki-hero"
   },
   "huyet_chien_bat_phuong": {
     "name": "Huyết Chiến Bát Phương",
     "motif": "slash",
-    "flash": "steel",
+    "flash": "crimson",
     "pattern": "all",
     "source": "wiki-hero"
   },
@@ -1115,28 +1115,28 @@
   "ho_xung": {
     "name": "Hổ Xung",
     "motif": "tiger",
-    "flash": "orange",
+    "flash": "tiger",
     "pattern": "single",
     "source": "wiki-hero"
   },
   "ho_sat": {
     "name": "Hổ Sát",
     "motif": "tiger",
-    "flash": "orange",
+    "flash": "tiger",
     "pattern": "column",
     "source": "wiki-hero"
   },
   "quy_sat": {
     "name": "Quỷ Sát",
     "motif": "slash",
-    "flash": "steel",
+    "flash": "crimson",
     "pattern": "column",
     "source": "wiki-hero"
   },
   "huyet_quy_nhan": {
     "name": "Huyết Quỷ Nhẫn",
     "motif": "slash",
-    "flash": "steel",
+    "flash": "crimson",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -1157,7 +1157,7 @@
   "trieu_ho_pha_tran": {
     "name": "Triệu Hổ Phá Trận",
     "motif": "tiger",
-    "flash": "orange",
+    "flash": "tiger",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -1213,7 +1213,7 @@
   "ho_uy": {
     "name": "Hổ Uy",
     "motif": "tiger",
-    "flash": "orange",
+    "flash": "tiger",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -1226,8 +1226,8 @@
   },
   "tien_co_chien_tran": {
     "name": "Tiên Cơ Chiến Trận",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "bagua",
+    "flash": "bagua",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -1332,7 +1332,7 @@
   "bang_phong": {
     "name": "Băng Phong",
     "motif": "whirlwind",
-    "flash": "wind",
+    "flash": "whirlwind",
     "pattern": "row",
     "source": "wiki-hero"
   },
@@ -1346,7 +1346,7 @@
   "thien_ly_bang_phong": {
     "name": "Thiên Lý Băng Phong",
     "motif": "whirlwind",
-    "flash": "wind",
+    "flash": "whirlwind",
     "pattern": "row",
     "source": "wiki-hero"
   },
@@ -1430,7 +1430,7 @@
   "phong_tien": {
     "name": "Phong Tiễn",
     "motif": "whirlwind",
-    "flash": "wind",
+    "flash": "whirlwind",
     "pattern": "all",
     "source": "wiki-hero"
   },
@@ -1528,7 +1528,7 @@
   "lang_tuyen": {
     "name": "Lang Tuyền",
     "motif": "wolf",
-    "flash": "crimson",
+    "flash": "wolf",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -1556,14 +1556,14 @@
   "lang_tuyen_khon_tran": {
     "name": "Lang Tuyền Khốn Trận",
     "motif": "wolf",
-    "flash": "crimson",
+    "flash": "wolf",
     "pattern": "column",
     "source": "wiki-hero"
   },
   "kho_ke": {
     "name": "Khổ Kế",
     "motif": "tiger",
-    "flash": "orange",
+    "flash": "tiger",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -1590,8 +1590,8 @@
   },
   "xa_than_cuong_tap": {
     "name": "Xả Thân Cường Tập",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "rush",
+    "flash": "rush",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -1605,7 +1605,7 @@
   "huyet_chinh": {
     "name": "Huyết Chinh",
     "motif": "slash",
-    "flash": "steel",
+    "flash": "crimson",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -1653,8 +1653,8 @@
   },
   "xa_doc": {
     "name": "Xà Độc",
-    "motif": "snake",
-    "flash": "snake",
+    "motif": "poison",
+    "flash": "green_poison",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -1668,21 +1668,21 @@
   "han_ve": {
     "name": "Hãn Vệ",
     "motif": "shield",
-    "flash": "gold_soft",
+    "flash": "shield",
     "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "bich_luy": {
     "name": "Bích Lũy",
-    "motif": "buff",
-    "flash": "gold_soft",
+    "motif": "shield",
+    "flash": "shield",
     "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "thuan_tuong": {
     "name": "Thuẫn Tường",
-    "motif": "buff",
-    "flash": "gold_soft",
+    "motif": "shield",
+    "flash": "shield",
     "pattern": "ally_all",
     "source": "wiki-hero"
   },
@@ -1730,8 +1730,8 @@
   },
   "than_uy_pha_tran": {
     "name": "Thần Uy Phá Trận",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "bagua",
+    "flash": "bagua",
     "pattern": "all",
     "source": "wiki-hero"
   },
@@ -1744,8 +1744,8 @@
   },
   "ham_dia": {
     "name": "Hám Địa",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "shadow",
+    "flash": "purple",
     "pattern": "row",
     "source": "wiki-hero"
   },
@@ -1786,9 +1786,9 @@
   },
   "tung_ca": {
     "name": "Tụng Ca",
-    "motif": "slash",
-    "flash": "steel",
-    "pattern": "all",
+    "motif": "buff",
+    "flash": "gold_soft",
+    "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "phan_chan_long_quan": {
@@ -1814,8 +1814,8 @@
   },
   "lac_thuy_tien": {
     "name": "Lạc Thủy Tiên",
-    "motif": "water",
-    "flash": "blue_water",
+    "motif": "buff",
+    "flash": "gold_soft",
     "pattern": "ally_all",
     "source": "wiki-hero"
   },
@@ -1842,8 +1842,8 @@
   },
   "nhuc_ma": {
     "name": "Nhục Mạ",
-    "motif": "shadow",
-    "flash": "purple",
+    "motif": "arcane",
+    "flash": "blue",
     "pattern": "all",
     "source": "wiki-hero"
   },
@@ -1870,7 +1870,7 @@
   },
   "thich_sat": {
     "name": "Thích Sát",
-    "motif": "slash",
+    "motif": "pierce",
     "flash": "steel",
     "pattern": "single",
     "source": "wiki-hero"
@@ -1891,8 +1891,8 @@
   },
   "am_da_thich_sat": {
     "name": "Ám Dạ Thích Sát",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "shadow",
+    "flash": "purple",
     "pattern": "single",
     "source": "wiki-hero"
   },
@@ -1913,7 +1913,7 @@
   "huyet_lo": {
     "name": "Huyết Lộ",
     "motif": "slash",
-    "flash": "steel",
+    "flash": "crimson",
     "pattern": "single",
     "source": "wiki-hero"
   },
@@ -1961,8 +1961,8 @@
   },
   "giao_chien": {
     "name": "Giao Chiến",
-    "motif": "shadow",
-    "flash": "purple",
+    "motif": "slash",
+    "flash": "steel",
     "pattern": "single",
     "source": "wiki-hero"
   },
@@ -2003,9 +2003,9 @@
   },
   "vo_song": {
     "name": "Vô Song",
-    "motif": "buff",
-    "flash": "gold_soft",
-    "pattern": "self",
+    "motif": "slash",
+    "flash": "steel",
+    "pattern": "single",
     "source": "wiki-hero"
   },
   "ma_than": {
@@ -2150,9 +2150,9 @@
   },
   "loan_the_hao_kiet": {
     "name": "Loạn Thế Hào Kiệt",
-    "motif": "slash",
-    "flash": "steel",
-    "pattern": "all",
+    "motif": "buff",
+    "flash": "gold_soft",
+    "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "hung_cu": {
@@ -2171,9 +2171,9 @@
   },
   "mon_sinh_tu_hai": {
     "name": "Môn Sinh Tứ Hải",
-    "motif": "heal",
-    "flash": "gold_soft",
-    "pattern": "ally_all",
+    "motif": "water",
+    "flash": "blue_water",
+    "pattern": "single",
     "source": "wiki-hero"
   },
   "doc_chu": {
@@ -2185,8 +2185,8 @@
   },
   "thuong_tran": {
     "name": "Thương Trận",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "bagua",
+    "flash": "bagua",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -2199,22 +2199,22 @@
   },
   "bach_ma_tuong_quan": {
     "name": "Bạch Mã Tướng Quân",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "buff",
+    "flash": "gold_soft",
     "pattern": "column",
     "source": "wiki-hero"
   },
   "bach_ky_duong_ky": {
     "name": "Bạch Kỵ Dương Kỳ",
-    "motif": "charge",
-    "flash": "charge",
+    "motif": "buff",
+    "flash": "gold_soft",
     "pattern": "column",
     "source": "wiki-hero"
   },
   "loi_co": {
     "name": "Lôi Cổ",
-    "motif": "thunder",
-    "flash": "thunder",
+    "motif": "buff",
+    "flash": "gold_soft",
     "pattern": "ally_all",
     "source": "wiki-hero"
   },
@@ -2234,22 +2234,22 @@
   },
   "tu_thu_giu_minh": {
     "name": "Tự Thủ Giữ Mình",
-    "motif": "buff",
-    "flash": "gold_soft",
+    "motif": "shield",
+    "flash": "shield",
     "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "bao_ve_kinh_giang": {
     "name": "Bảo Vệ Kinh Giang",
-    "motif": "buff",
-    "flash": "gold_soft",
+    "motif": "shield",
+    "flash": "shield",
     "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "te_xa": {
     "name": "Tề Xạ",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "pierce",
+    "flash": "yellow",
     "pattern": "row",
     "source": "wiki-hero"
   },
@@ -2311,9 +2311,9 @@
   },
   "dung_tuong": {
     "name": "Dũng Tướng",
-    "motif": "buff",
-    "flash": "gold_soft",
-    "pattern": "self",
+    "motif": "slash",
+    "flash": "steel",
+    "pattern": "single",
     "source": "wiki-hero"
   },
   "nhat_ky_duong_thien": {
@@ -2325,9 +2325,9 @@
   },
   "quy_tuong_tru_than": {
     "name": "Quỷ Tướng Tru Thần",
-    "motif": "buff",
-    "flash": "gold_soft",
-    "pattern": "self",
+    "motif": "slash",
+    "flash": "steel",
+    "pattern": "single",
     "source": "wiki-hero"
   },
   "quy_mon": {
@@ -2374,8 +2374,8 @@
   },
   "hu_thuc": {
     "name": "Hư Thực",
-    "motif": "shadow",
-    "flash": "purple",
+    "motif": "arcane",
+    "flash": "blue",
     "pattern": "single",
     "source": "wiki-hero"
   },
@@ -2388,29 +2388,29 @@
   },
   "mui_nhon": {
     "name": "Mũi Nhọn",
-    "motif": "slash",
+    "motif": "pierce",
     "flash": "yellow",
     "pattern": "column",
     "source": "wiki-hero"
   },
   "dot_tien": {
     "name": "Đột Tiến",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "rush",
+    "flash": "rush",
     "pattern": "single",
     "source": "wiki-hero"
   },
   "xa_sat": {
     "name": "Xạ Sát",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "pierce",
+    "flash": "yellow",
     "pattern": "single",
     "source": "wiki-hero"
   },
   "dot_tap": {
     "name": "Đột Tập",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "rush",
+    "flash": "rush",
     "pattern": "single",
     "source": "wiki-hero"
   },
@@ -2430,8 +2430,8 @@
   },
   "hai_tieu": {
     "name": "Hải Tiếu",
-    "motif": "arcane",
-    "flash": "blue",
+    "motif": "water",
+    "flash": "blue_water",
     "pattern": "all",
     "source": "wiki-hero"
   },
@@ -2451,8 +2451,8 @@
   },
   "thuy_cong": {
     "name": "Thủy Công",
-    "motif": "arcane",
-    "flash": "blue",
+    "motif": "water",
+    "flash": "blue_water",
     "pattern": "all",
     "source": "wiki-hero"
   },
@@ -2465,22 +2465,22 @@
   },
   "phi_xa": {
     "name": "Phi Xạ",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "pierce",
+    "flash": "yellow",
     "pattern": "row",
     "source": "wiki-hero"
   },
   "lien_no": {
     "name": "Liên Nỏ",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "pierce",
+    "flash": "yellow",
     "pattern": "row",
     "source": "wiki-hero"
   },
   "huyet_nhan": {
     "name": "Huyết Nhẫn",
     "motif": "slash",
-    "flash": "steel",
+    "flash": "crimson",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -2528,8 +2528,8 @@
   },
   "loan_the_pho_do": {
     "name": "Loạn Thế Phổ Độ",
-    "motif": "tiger",
-    "flash": "orange",
+    "motif": "buff",
+    "flash": "gold_soft",
     "pattern": "all",
     "source": "wiki-hero"
   },
@@ -2556,15 +2556,15 @@
   },
   "ky_xa": {
     "name": "Kỵ Xạ",
-    "motif": "charge",
-    "flash": "charge",
+    "motif": "pierce",
+    "flash": "yellow",
     "pattern": "row",
     "source": "wiki-hero"
   },
   "phi_ngua_giuong_cung": {
     "name": "Phi Ngựa Giương Cung",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "pierce",
+    "flash": "yellow",
     "pattern": "row",
     "source": "wiki-hero"
   },
@@ -2599,7 +2599,7 @@
   "dong_xoay": {
     "name": "Dòng Xoáy",
     "motif": "whirlwind",
-    "flash": "wind",
+    "flash": "whirlwind",
     "pattern": "single",
     "source": "wiki-hero"
   },
@@ -2619,8 +2619,8 @@
   },
   "cuong_tap": {
     "name": "Cường Tập",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "rush",
+    "flash": "rush",
     "pattern": "single",
     "source": "wiki-hero"
   },
@@ -2647,22 +2647,22 @@
   },
   "quy_coc_sach": {
     "name": "Quỷ Cốc Sách",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "shadow",
+    "flash": "purple",
     "pattern": "all",
     "source": "wiki-hero"
   },
   "ngu_hanh_pha_tran": {
     "name": "Ngũ Hành Phá Trận",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "bagua",
+    "flash": "bagua",
     "pattern": "all",
     "source": "wiki-hero"
   },
   "huyet_tram": {
     "name": "Huyết Trảm",
-    "motif": "heal",
-    "flash": "gold_soft",
+    "motif": "slash",
+    "flash": "crimson",
     "pattern": "all",
     "source": "wiki-hero"
   },
@@ -2759,15 +2759,15 @@
   },
   "xa_thu": {
     "name": "Xạ Thủ",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "pierce",
+    "flash": "yellow",
     "pattern": "all",
     "source": "wiki-hero"
   },
   "gio_loc": {
     "name": "Gió Lốc",
     "motif": "whirlwind",
-    "flash": "wind",
+    "flash": "whirlwind",
     "pattern": "single",
     "source": "wiki-hero"
   },
@@ -2794,15 +2794,15 @@
   },
   "tien_vu": {
     "name": "Tiễn Vũ",
-    "motif": "water",
-    "flash": "blue_water",
+    "motif": "pierce",
+    "flash": "yellow",
     "pattern": "all",
     "source": "wiki-hero"
   },
   "thi_huyet": {
     "name": "Thị Huyết",
     "motif": "slash",
-    "flash": "steel",
+    "flash": "crimson",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -2878,8 +2878,8 @@
   },
   "no_tap": {
     "name": "Nộ Tập",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "rush",
+    "flash": "rush",
     "pattern": "row",
     "source": "wiki-hero"
   },
@@ -2892,22 +2892,22 @@
   },
   "khai_trieu_thua_van": {
     "name": "Khai Triều Thừa Vận",
-    "motif": "thunder",
-    "flash": "thunder",
+    "motif": "buff",
+    "flash": "gold_soft",
     "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "tran_dinh_son_ha": {
     "name": "Trấn Định Sơn Hà",
-    "motif": "thunder",
-    "flash": "thunder",
+    "motif": "buff",
+    "flash": "gold_soft",
     "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "thinh_the_vuong_quyen": {
     "name": "Thịnh Thế Vương Quyền",
-    "motif": "thunder",
-    "flash": "thunder",
+    "motif": "buff",
+    "flash": "gold_soft",
     "pattern": "ally_all",
     "source": "wiki-hero"
   },
@@ -2997,36 +2997,36 @@
   },
   "kinh_no": {
     "name": "Kình Nỏ",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "pierce",
+    "flash": "yellow",
     "pattern": "row",
     "source": "wiki-hero"
   },
   "than_co_no": {
     "name": "Thần Cơ Nỏ",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "pierce",
+    "flash": "yellow",
     "pattern": "row",
     "source": "wiki-hero"
   },
   "ngu_say": {
     "name": "Ngủ Say",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "buff",
+    "flash": "gold_soft",
     "pattern": "all",
     "source": "wiki-hero"
   },
   "tat_xung": {
     "name": "Tật Xung",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "rush",
+    "flash": "rush",
     "pattern": "column",
     "source": "wiki-hero"
   },
   "ham_tran_tien_dang": {
     "name": "Hãm Trận Tiên Đăng",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "rush",
+    "flash": "rush",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -3039,8 +3039,8 @@
   },
   "tien_dang_tu_si": {
     "name": "Tiên Đăng Tử Sĩ",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "rush",
+    "flash": "rush",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -3067,7 +3067,7 @@
   },
   "tien_dap": {
     "name": "Tiễn Đạp",
-    "motif": "slash",
+    "motif": "pierce",
     "flash": "yellow",
     "pattern": "column",
     "source": "wiki-hero"
@@ -3109,8 +3109,8 @@
   },
   "nguyet_loan_vu": {
     "name": "Nguyệt Loạn Vũ",
-    "motif": "heal",
-    "flash": "gold_soft",
+    "motif": "water",
+    "flash": "blue_water",
     "pattern": "single",
     "source": "wiki-hero"
   },
@@ -3145,43 +3145,43 @@
   "ngam_tho_giai_sau": {
     "name": "Ngâm Thơ Giải Sầu",
     "motif": "shield",
-    "flash": "gold_soft",
-    "pattern": "ally_all",
+    "flash": "shield",
+    "pattern": "self",
     "source": "wiki-hero"
   },
   "bai_ca_bien_ai": {
     "name": "Bài Ca Biên Ải",
     "motif": "shield",
-    "flash": "gold_soft",
-    "pattern": "ally_all",
+    "flash": "shield",
+    "pattern": "self",
     "source": "wiki-hero"
   },
   "thien_khai": {
     "name": "Thiên Khải",
-    "motif": "arcane",
-    "flash": "blue",
+    "motif": "water",
+    "flash": "blue_water",
     "pattern": "all",
     "source": "wiki-hero"
   },
   "xua_duoi": {
     "name": "Xua Đuổi",
-    "motif": "slash",
-    "flash": "steel",
-    "pattern": "all",
+    "motif": "buff",
+    "flash": "gold_soft",
+    "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "thanh_tam": {
     "name": "Thanh Tâm",
-    "motif": "slash",
-    "flash": "steel",
-    "pattern": "all",
+    "motif": "buff",
+    "flash": "gold_soft",
+    "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "thanh_nha_can_chinh": {
     "name": "Thanh Nhã Cần Chính",
-    "motif": "slash",
-    "flash": "steel",
-    "pattern": "all",
+    "motif": "buff",
+    "flash": "gold_soft",
+    "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "tri_lieu": {
@@ -3207,9 +3207,9 @@
   },
   "an_hue_chi_vu": {
     "name": "Ân Huệ Chi Vũ",
-    "motif": "heal",
-    "flash": "gold_soft",
-    "pattern": "ally_all",
+    "motif": "water",
+    "flash": "blue_water",
+    "pattern": "self",
     "source": "wiki-hero"
   },
   "mua_han": {
@@ -3305,28 +3305,28 @@
   },
   "tien_tran": {
     "name": "Tiễn Trận",
-    "motif": "slash",
+    "motif": "pierce",
     "flash": "yellow",
     "pattern": "all",
     "source": "wiki-hero"
   },
   "hoa_long_tien": {
     "name": "Hỏa Long Tiễn",
-    "motif": "dragon",
-    "flash": "dragon",
+    "motif": "buff",
+    "flash": "gold_soft",
     "pattern": "all",
     "source": "wiki-hero"
   },
   "man_thien_tien_vu": {
     "name": "Mạn Thiên Tiễn Vũ",
-    "motif": "water",
-    "flash": "blue_water",
+    "motif": "pierce",
+    "flash": "yellow",
     "pattern": "all",
     "source": "wiki-hero"
   },
   "that_tinh_tien_tran": {
     "name": "Thất Tinh Tiễn Trận",
-    "motif": "slash",
+    "motif": "pierce",
     "flash": "yellow",
     "pattern": "all",
     "source": "wiki-hero"
@@ -3368,7 +3368,7 @@
   },
   "xuyen_duong": {
     "name": "Xuyên Dương",
-    "motif": "slash",
+    "motif": "pierce",
     "flash": "steel",
     "pattern": "column",
     "source": "wiki-hero"
@@ -3396,8 +3396,8 @@
   },
   "huyet_che": {
     "name": "Huyết Chế",
-    "motif": "arcane",
-    "flash": "blue",
+    "motif": "slash",
+    "flash": "crimson",
     "pattern": "single",
     "source": "wiki-hero"
   },
@@ -3452,23 +3452,23 @@
   },
   "hanh_binh": {
     "name": "Hành Binh",
-    "motif": "slash",
-    "flash": "steel",
-    "pattern": "row",
+    "motif": "arcane",
+    "flash": "blue",
+    "pattern": "column",
     "source": "wiki-hero"
   },
   "than_binh_am_do": {
     "name": "Thần Binh Ám Độ",
-    "motif": "slash",
-    "flash": "steel",
-    "pattern": "row",
+    "motif": "shadow",
+    "flash": "purple",
+    "pattern": "column",
     "source": "wiki-hero"
   },
   "ky_binh_pha_thuc": {
     "name": "Kỳ Binh Phá Thục",
-    "motif": "charge",
-    "flash": "charge",
-    "pattern": "row",
+    "motif": "arcane",
+    "flash": "blue",
+    "pattern": "column",
     "source": "wiki-hero"
   },
   "loi_nhan": {
@@ -3565,7 +3565,7 @@
   "vong_xoay": {
     "name": "Vòng Xoáy",
     "motif": "whirlwind",
-    "flash": "wind",
+    "flash": "whirlwind",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -3585,8 +3585,8 @@
   },
   "huyet_ach_su": {
     "name": "Huyết Ách Sư",
-    "motif": "heal",
-    "flash": "gold_soft",
+    "motif": "slash",
+    "flash": "crimson",
     "pattern": "all",
     "source": "wiki-hero"
   },
@@ -3606,7 +3606,7 @@
   },
   "tien_lam": {
     "name": "Tiễn Lam",
-    "motif": "slash",
+    "motif": "pierce",
     "flash": "yellow",
     "pattern": "all",
     "source": "wiki-hero"
@@ -3620,8 +3620,8 @@
   },
   "than_tien_ho_chu": {
     "name": "Thần Tiễn Hộ Chủ",
-    "motif": "heal",
-    "flash": "gold_soft",
+    "motif": "pierce",
+    "flash": "yellow",
     "pattern": "all",
     "source": "wiki-hero"
   },
@@ -3662,8 +3662,8 @@
   },
   "am_van": {
     "name": "Ám Vân",
-    "motif": "heal",
-    "flash": "gold_soft",
+    "motif": "shadow",
+    "flash": "purple",
     "pattern": "all",
     "source": "wiki-hero"
   },
@@ -3697,22 +3697,22 @@
   },
   "nhieu_loan_quan_dich": {
     "name": "Nhiễu Loạn Quân Địch",
-    "motif": "arcane",
-    "flash": "blue",
+    "motif": "poison",
+    "flash": "green_poison",
     "pattern": "row",
     "source": "wiki-hero"
   },
   "bon_be_bua_vay": {
     "name": "Bốn Bề Bủa Vây",
-    "motif": "arcane",
-    "flash": "blue",
+    "motif": "poison",
+    "flash": "green_poison",
     "pattern": "row",
     "source": "wiki-hero"
   },
   "phong_hac": {
     "name": "Phong Hạc",
-    "motif": "whirlwind",
-    "flash": "wind",
+    "motif": "poison",
+    "flash": "green_poison",
     "pattern": "row",
     "source": "wiki-hero"
   },
@@ -3739,9 +3739,9 @@
   },
   "khuynh_quoc": {
     "name": "Khuynh Quốc",
-    "motif": "slash",
-    "flash": "steel",
-    "pattern": "all",
+    "motif": "buff",
+    "flash": "gold_soft",
+    "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "be_nguyet": {
@@ -3753,35 +3753,35 @@
   },
   "vu_dieu_duoi_trang": {
     "name": "Vũ Điệu Dưới Trăng",
-    "motif": "slash",
-    "flash": "steel",
-    "pattern": "all",
+    "motif": "buff",
+    "flash": "gold_soft",
+    "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "thien_vu_khuynh_thanh": {
     "name": "Thiên Vũ Khuynh Thành",
-    "motif": "slash",
-    "flash": "steel",
-    "pattern": "all",
+    "motif": "buff",
+    "flash": "gold_soft",
+    "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "nghe_thuong_thien_vu": {
     "name": "Nghê Thường Thiên Vũ",
-    "motif": "slash",
-    "flash": "steel",
-    "pattern": "all",
+    "motif": "buff",
+    "flash": "gold_soft",
+    "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "cung_ma": {
     "name": "Cung Mã",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "pierce",
+    "flash": "yellow",
     "pattern": "row",
     "source": "wiki-hero"
   },
   "doat_tam_tien": {
     "name": "Đoạt Tâm Tiễn",
-    "motif": "slash",
+    "motif": "pierce",
     "flash": "yellow",
     "pattern": "row",
     "source": "wiki-hero"
@@ -3844,8 +3844,8 @@
   },
   "muc_huyet_ho_chu": {
     "name": "Mục Huyết Hộ Chủ",
-    "motif": "heal",
-    "flash": "gold_soft",
+    "motif": "slash",
+    "flash": "crimson",
     "pattern": "all",
     "source": "wiki-hero"
   },
@@ -3865,16 +3865,16 @@
   },
   "dinh_ke_nhat_thong": {
     "name": "Định Kế Nhất Thống",
-    "motif": "slash",
-    "flash": "steel",
-    "pattern": "all",
+    "motif": "buff",
+    "flash": "gold_soft",
+    "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "thau_tom_thien_ha": {
     "name": "Thâu Tóm Thiên Hạ",
-    "motif": "slash",
-    "flash": "steel",
-    "pattern": "all",
+    "motif": "buff",
+    "flash": "gold_soft",
+    "pattern": "ally_all",
     "source": "wiki-hero"
   },
   "long_chien_vu_da": {
@@ -3907,8 +3907,8 @@
   },
   "nhieu_loan_dot_tap": {
     "name": "Nhiễu Loạn Đột Tập",
-    "motif": "slash",
-    "flash": "steel",
+    "motif": "rush",
+    "flash": "rush",
     "pattern": "column",
     "source": "wiki-hero"
   },
@@ -3935,8 +3935,8 @@
   },
   "dao_thuat_huyen_thong": {
     "name": "Đạo Thuật Huyền Thông",
-    "motif": "arcane",
-    "flash": "blue",
+    "motif": "shadow",
+    "flash": "purple",
     "pattern": "all",
     "source": "wiki-hero"
   },
@@ -3970,29 +3970,29 @@
   },
   "bach_y_do_giang": {
     "name": "Bạch Y Độ Giang",
-    "motif": "fire",
-    "flash": "fire_rain",
+    "motif": "arcane",
+    "flash": "blue",
     "pattern": "single",
     "source": "wiki-hero"
   },
   "thien_nhan": {
     "name": "Thiên Nhẫn",
-    "motif": "fire",
-    "flash": "fire_rain",
+    "motif": "arcane",
+    "flash": "blue",
     "pattern": "single",
     "source": "wiki-hero"
   },
   "bach_y_pha_lang": {
     "name": "Bạch Y Phá Lãng",
-    "motif": "fire",
-    "flash": "fire_rain",
+    "motif": "heal",
+    "flash": "gold_soft",
     "pattern": "row",
     "source": "wiki-hero"
   },
   "huyen_bang": {
     "name": "Huyền Băng",
-    "motif": "arcane",
-    "flash": "blue",
+    "motif": "shadow",
+    "flash": "purple",
     "pattern": "single",
     "source": "wiki-hero"
   },
@@ -4006,8 +4006,8 @@
   "truong_ca": {
     "name": "Trường Ca",
     "motif": "shield",
-    "flash": "gold_soft",
-    "pattern": "ally_all",
+    "flash": "shield",
+    "pattern": "self",
     "source": "wiki-hero"
   },
   "chuy_kich": {
@@ -4020,14 +4020,14 @@
   "huyet_chien": {
     "name": "Huyết Chiến",
     "motif": "slash",
-    "flash": "steel",
+    "flash": "crimson",
     "pattern": "single",
     "source": "wiki-hero"
   },
   "loan_the_muu": {
     "name": "Loạn Thế Mưu",
-    "motif": "arcane",
-    "flash": "blue",
+    "motif": "buff",
+    "flash": "gold_soft",
     "pattern": "all",
     "source": "wiki-hero"
   },
@@ -4103,9 +4103,9 @@
   },
   "huyen_ho_te_chung": {
     "name": "Huyền Hồ Tế Chúng",
-    "motif": "heal",
-    "flash": "gold_soft",
-    "pattern": "ally_all",
+    "motif": "shadow",
+    "flash": "purple",
+    "pattern": "single",
     "source": "wiki-hero"
   },
   "tuyet_sat": {
@@ -4118,7 +4118,7 @@
   "khai_son_huyet_phu": {
     "name": "Khai Sơn Huyết Phủ",
     "motif": "slash",
-    "flash": "steel",
+    "flash": "crimson",
     "pattern": "column",
     "source": "wiki-hero"
   },

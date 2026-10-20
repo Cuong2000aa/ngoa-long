@@ -1,0 +1,15 @@
+{
+  "id": "shadow_burst",
+  "seed": 31004,
+  "family": "burst",
+  "element": "shadow",
+  "power": "standard",
+  "name": "Umbral Detonation",
+  "formation": "eruption",
+  "looping": false,
+  "duration": 1.85,
+  "frames": 12,
+  "size": 128,
+  "source": "pixel-ability-fx-forge",
+  "license": "Apache-2.0"
+}

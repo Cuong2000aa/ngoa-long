@@ -476,7 +476,16 @@
             pattern: ev.pattern || "single",
             quality: ev.quality || null,
             motif: ev.motif || null,
+            skillId: ev.skillId || null,
             hits: ev.hits || 1,
+            support:
+              ev.motif === "buff" ||
+              ev.motif === "heal" ||
+              ev.flash === "gold_soft" ||
+              ev.flash === "gold" ||
+              ev.flash === "pure" ||
+              ev.pattern === "ally_all" ||
+              ev.pattern === "self",
           });
           if (global.NLCombatVfx && global.NLCombatVfx.showBanner) {
             var Design = global.NLSkillDesign;
@@ -509,6 +518,15 @@
             pattern: ev.pattern || "single",
             quality: ev.quality || null,
             motif: ev.motif || null,
+            skillId: ev.skillId || null,
+            support:
+              ev.motif === "buff" ||
+              ev.motif === "heal" ||
+              ev.flash === "gold_soft" ||
+              ev.flash === "gold" ||
+              ev.flash === "pure" ||
+              ev.pattern === "ally_all" ||
+              ev.pattern === "self",
           });
         }
         break;

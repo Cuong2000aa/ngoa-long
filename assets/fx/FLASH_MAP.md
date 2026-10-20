@@ -26,12 +26,16 @@ Chỉ sprite CC0 đã tải — không geometry procedural. Runtime: `src/battle
 
 Chiêu (`skillFlash`): **timeline** `NLSkillDesign.playTimeline` — windup → cast → emission → impact (mọi skill).  
 Juice: windup glow, aura theo scale S/M/L, `spawnPremiumImpact`, camera punch, hit-stop.  
-Motif đặc biệt: charge / rush / shield vẫn choreography riêng. `skill_wave` chỉ emission+impact.
+Motif đặc biệt: charge / rush / shield vẫn choreography riêng. `skill_wave` chỉ emission+impact.  
+**Polished library** (`src/battle/skillFxLibrary.ts`): `basic_strike` / `hoa_long` / `ho_khieu` / `dot_kich` — choreography riêng theo `skillId`. ≠ AA.  
+**Forge packs** (`assets/fx/forge/*`, Apache-2.0 Pixel Ability FX Forge): sheet theo element — frost/storm/ember/shadow/blood/earth/nature/tide/arcane/radiance/ward. Generate: `node scripts/forge-generate-fx.mjs`.  
+**Hỗ trợ / sĩ khí** (`[Hỗ Trợ]`, Thiên Mệnh…): `buff` / `gold_soft` → `spawnAllyBless` đồng minh — **không** `slash`/`steel` AoE nova địch.
 
 ## Theo loại chiêu
 
 | Loại | Flash ví dụ | Folder / sheet |
 |------|-------------|----------------|
+| Hỗ trợ / sĩ khí | `gold_soft`, `gold`, `buff`, `heal` | `pure/` + ally bless |
 | Physical / cut | `white`, `steel`, `iron`, `brown` | `slash/` classic + `particles/slash_*` |
 | Strategy / mưu thủy | `blue`, `cyan`, `blue_water`, `teal` | `slash/` blue · `water/` |
 | Arcane / thần | `purple`, `violet`, `bagua` | `arcane/` · slash purple |

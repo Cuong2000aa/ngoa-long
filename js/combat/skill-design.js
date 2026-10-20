@@ -188,7 +188,8 @@
     }),
     dragon: profile({
       id: "hoa_long", delivery: "ultimate", essence: "ember", movement: "plant", emission: "burst", visual: "meteor", scale: "L",
-      durations: { windupMs: 200, castMs: 180, emissionMs: 480, impactMs: 280, recoveryMs: 220 },
+      // Emission dài hơn — Hỏa Long bay chậm (~980ms) để đọc được
+      durations: { windupMs: 200, castMs: 180, emissionMs: 920, impactMs: 320, recoveryMs: 220 },
     }),
     violet: profile({ id: "phung_so", delivery: "arcane", essence: "umbral", movement: "plant", emission: "trail", visual: "sigil" }),
     fire_green: profile({ id: "lua_luc", delivery: "arcane", essence: "poison", movement: "plant", emission: "rain", visual: "fireball" }),

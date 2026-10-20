@@ -109,12 +109,27 @@ def main() -> None:
         if not fx.get("text"):
             fx["text"] = (name or "").upper()[:18]
             changed = True
+        # Style VFX: hỗ trợ / heal → bless; slash all → aoe_nova
+        want_style = fx.get("style")
+        if (
+            motif in ("buff", "heal")
+            or flash in ("gold_soft", "gold", "pure")
+            or new_pat in ("ally_all", "self")
+        ):
+            want_style = "ally_bless"
+        elif motif == "shield" or flash == "shield":
+            want_style = "barrier"
+        elif new_pat == "all" and motif in ("slash", "fire", "arcane", "dragon"):
+            want_style = "aoe_nova"
+        if want_style and fx.get("style") != want_style:
+            fx["style"] = want_style
+            changed = True
         # luôn ghi lại object fx khi có thay đổi (tránh lệch flash tồn tại)
         if changed:
             sk["fx"] = fx
             stats["motif_changed"] += 1
         elif fx.get("motif") != motif or fx.get("flash") != flash:
-            sk["fx"] = { **fx, "motif": motif, "flash": flash }
+            sk["fx"] = {**fx, "motif": motif, "flash": flash}
             stats["motif_changed"] += 1
 
     stats["unmapped_brackets"] = dict(

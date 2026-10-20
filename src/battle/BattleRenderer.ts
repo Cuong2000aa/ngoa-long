@@ -22,6 +22,13 @@ import {
   spawnStatusOrb,
   tickBattleVfx,
 } from "./battleVfx";
+import { clearBattleVfx3d, playSkillFx3d, tickBattleVfx3d } from "./battleVfx3d";
+import {
+  usesPolishedDragon,
+  usesPolishedRush,
+  usesPolishedSteelSlash,
+  usesPolishedTiger,
+} from "./skillFxLibrary";
 
 
 type SkillFlashOpts = {
@@ -33,6 +40,10 @@ type SkillFlashOpts = {
   quality?: string | null;
   motif?: string | null;
   hits?: number | null;
+  /** Chiêu hỗ trợ / sĩ khí — bless đồng minh, không nova thép địch */
+  support?: boolean | null;
+  /** skill id từ combat-engine — chọn choreography polished */
+  skillId?: string | null;
 };
 
 function qualityToScale(q?: string | null, fallback?: string | null): string {
@@ -697,26 +708,53 @@ export class BattleRenderer {
       flash ||
       (f.troop === "strategist" ? "bagua" : f.troop === "archer" ? "thunder" : f.troop === "cavalry" ? "brown" : "steel");
     const profile = resolveSkillProfile(kind);
-    const scale = qualityToScale(opts?.quality, profile.scale || "M");
+    // Skill luôn to hơn đánh thường (AA dùng scale ẩn / white arc) — white/green rarity vẫn ≥ M
+    let scale = qualityToScale(opts?.quality, profile.scale || "M");
     const movement = profile.movement || "plant";
     const emission = profile.emission || "burst";
     const visual = profile.visual || "default";
     const delivery = profile.delivery || "arcane";
+    const motif = ((opts && opts.motif) || "").toLowerCase();
+    const skillId = ((opts && opts.skillId) || "").trim();
     const support =
+      !!(opts && opts.support) ||
       delivery === "buff" ||
       visual === "heal" ||
       kind === "shield" ||
+      kind === "gold_soft" ||
+      kind === "gold" ||
+      kind === "pure" ||
+      motif === "buff" ||
+      motif === "heal" ||
       pattern === "ally_all" ||
       pattern === "self";
+    if (!support && scale === "S") scale = "M";
     const melee =
       delivery === "cut" || delivery === "crush" || delivery === "pierce" || visual === "slash" || visual === "pierce";
     const isCharge = kind === "charge" || (f.troop === "cavalry" && melee && !support && kind !== "rush");
     const isRush = kind === "rush";
     const isShield = kind === "shield";
+    /** Flash AA trắng → thép skill; tránh chiêu = đúng path đánh thường */
+    const skillKind = kind === "white" ? "steel" : kind;
+    /** basic_strike (Mãnh Kích) — polished trail/sigil library, ≠ AA */
+    const polishedSteel = usesPolishedSteelSlash(skillId, motif, skillKind);
+    /** hoa_long (Hỏa Long) — dragon body + lửa theo đường bay */
+    const polishedDragon = usesPolishedDragon(skillId, motif, skillKind);
+    /** ho_khieu (Hổ Khiếu) — gầm AoE + cào */
+    const polishedTiger = usesPolishedTiger(skillId, motif, skillKind);
+    /** dot_kich (Đột Kích) — xông đâm polished */
+    const polishedRush = usesPolishedRush(skillId, motif, skillKind);
+    // Support không chạy AoE nova thép lên địch (Thiên Mệnh… pattern all)
+    // Polished skills bypass pattern choreo (kể cả pattern all)
     const usePatternChoreo =
+      !support &&
       !isCharge &&
       !isRush &&
       !isShield &&
+      !polishedSteel &&
+      !polishedDragon &&
+      !polishedTiger &&
+      !polishedRush &&
       (pattern === "column" ||
         pattern === "row" ||
         pattern === "front_row" ||
@@ -742,15 +780,37 @@ export class BattleRenderer {
         .filter((t): t is NonNullable<typeof t> => !!t && !t.dead)
         .map((t) => this.casterFxAt(t));
 
+    /** Đồng minh còn sống (cùng side caster) — bless hỗ trợ. */
+    const allyBlessPoints = (): THREE.Vector3[] => {
+      const pts: THREE.Vector3[] = [];
+      this.fighters.forEach((unit) => {
+        if (!unit || unit.dead) return;
+        if (unit.side !== f.side) return;
+        pts.push(this.casterFxAt(unit));
+      });
+      return pts.length ? pts : [this.casterFxAt(f)];
+    };
+
     const deliverToTargets = (mode: "emission" | "impact") => {
       if (!this.scene) return;
-      if (mode === "emission" && usePatternChoreo) {
-        spawnPatternEmission(this.scene, this.casterFxAt(f), targetPoints(), kind, pattern, scale);
-        // Vẫn hit-react từng mục tiêu ở impact phase
+      if (mode === "emission" && support && !isShield) {
+        const blessFlash =
+          skillKind === "steel" || skillKind === "iron" || skillKind === "brown" ? "gold_soft" : skillKind;
+        spawnAllyBless(this.scene, allyBlessPoints(), blessFlash, scale);
+        // Debuff sĩ khí địch (nếu targets là địch): impact nhẹ vàng, không slash
+        targets.forEach((tid, i) => {
+          const to = this.fighters.get(tid);
+          if (!to || to.dead || to.side === f.side || !this.scene) return;
+          setTimeout(() => {
+            if (!this.scene || to.dead) return;
+            spawnPremiumImpact(this.scene, this.casterFxAt(to), "gold_soft", "S");
+          }, 80 + i * 45);
+        });
         return;
       }
-      if (mode === "emission" && support && !isShield) {
-        spawnAllyBless(this.scene, targetPoints().length ? targetPoints() : [this.casterFxAt(f)], kind, scale);
+      if (mode === "emission" && usePatternChoreo) {
+        spawnPatternEmission(this.scene, this.casterFxAt(f), targetPoints(), skillKind, pattern, scale);
+        // Vẫn hit-react từng mục tiêu ở impact phase
         return;
       }
       targets.forEach((tid, i) => {
@@ -765,24 +825,84 @@ export class BattleRenderer {
           if (mode === "emission") {
             if (isCharge) {
               spawnCavalryCharge(this.scene, f.home.clone(), to.home.clone(), tnow, scale);
+            } else if (polishedRush) {
+              // Đột Kích — 3D trail + dust (không sprite billboard)
+              playSkillFx3d({
+                scene: this.scene,
+                from: fromPos,
+                to: dest,
+                flash: skillKind,
+                scale,
+                style: "rush",
+                phase: "emission",
+              });
             } else if (isRush) {
               spawnRushAssault(this.scene, f.home.clone(), to.home.clone(), tnow, scale);
             } else if (isShield) {
               spawnShieldBarrier(this.scene, this.casterFxAt(f), tnow, scale);
+            } else if (polishedSteel) {
+              playSkillFx3d({
+                scene: this.scene,
+                from: fromPos,
+                to: dest,
+                flash: skillKind,
+                scale,
+                style: "slash",
+                phase: "emission",
+              });
+            } else if (polishedDragon) {
+              playSkillFx3d({
+                scene: this.scene,
+                from: fromPos,
+                to: dest,
+                flash: skillKind === "steel" ? "dragon" : skillKind,
+                scale,
+                style: "breath",
+                phase: "emission",
+              });
+            } else if (polishedTiger) {
+              playSkillFx3d({
+                scene: this.scene,
+                from: fromPos,
+                to: dest,
+                flash: skillKind === "steel" ? "tiger" : skillKind,
+                scale,
+                style: "roar",
+                phase: i === 0 ? "emission" : "emission",
+              });
             } else if (rangedEmit || (!melee && !support) || support) {
-              spawnSkillBeam(this.scene, fromPos, dest, kind, tnow);
+              spawnSkillBeam(this.scene, fromPos, dest, skillKind, tnow);
             } else if (visual === "pierce" || movement === "thrust") {
-              spawnSlashArc(this.scene, fromPos, to.home, tnow, "steel");
-              spawnSkillBeam(this.scene, fromPos, dest, "steel", tnow);
+              // Đâm skill: beam + slash màu flash (không chỉ steel AA)
+              spawnSlashArc(this.scene, fromPos, to.home, tnow, skillKind);
+              spawnSkillBeam(this.scene, fromPos, dest, skillKind, tnow);
             } else {
-              spawnSlashArc(this.scene, fromPos, to.home, tnow, kind);
+              // Chém skill ≠ AA (AA = 1 slash white/steel, không beam/windup)
+              spawnSlashArc(this.scene, fromPos, to.home, tnow, skillKind);
+              spawnSkillBeam(this.scene, fromPos, dest, skillKind, tnow);
+              setTimeout(() => {
+                if (!this.scene || to.dead) return;
+                spawnSlashArc(this.scene, fromPos, to.home, performance.now(), skillKind);
+              }, 55);
             }
             return;
           }
           // impact
-          if (isCharge || isRush) {
-            spawnPremiumImpact(this.scene, dest, kind, scale);
-            const push = f.side === "ally" ? (isCharge ? -0.4 : -0.3) : isCharge ? 0.4 : 0.3;
+          if (polishedRush || isCharge || isRush) {
+            if (polishedRush) {
+              playSkillFx3d({
+                scene: this.scene,
+                from: fromPos,
+                to: dest,
+                flash: skillKind,
+                scale,
+                style: "rush",
+                phase: "impact",
+              });
+            } else {
+              spawnPremiumImpact(this.scene, dest, skillKind, scale);
+            }
+            const push = f.side === "ally" ? (isCharge || polishedRush ? -0.35 : -0.3) : isCharge || polishedRush ? 0.35 : 0.3;
             to.lunge = {
               from: to.home.clone(),
               peak: to.home.clone().add(new THREE.Vector3(push, 0, 0)),
@@ -793,8 +913,55 @@ export class BattleRenderer {
           } else if (isShield) {
             spawnHitBurst(this.scene, dest);
             spawnShieldBarrier(this.scene, this.casterFxAt(f), tnow, scale);
+          } else if (polishedSteel) {
+            playSkillFx3d({
+              scene: this.scene,
+              from: fromPos,
+              to: dest,
+              flash: skillKind,
+              scale,
+              style: "slash",
+              phase: "impact",
+            });
+          } else if (polishedDragon) {
+            // Flight ~980ms; emission timeline ~900ms → chờ nốt rồi impact
+            const arriveMs = 120;
+            setTimeout(() => {
+              if (!this.scene || to.dead) return;
+              const hitAt = performance.now();
+              playSkillFx3d({
+                scene: this.scene,
+                from: fromPos,
+                to: this.casterFxAt(to),
+                flash: skillKind === "steel" ? "dragon" : skillKind,
+                scale,
+                style: "breath",
+                phase: "impact",
+              });
+              playActor(to.actor, "hit", 0.05);
+              to.hitFlashUntil = hitAt + 560;
+            }, arriveMs);
+            return;
+          } else if (polishedTiger) {
+            const arriveMs = 60;
+            setTimeout(() => {
+              if (!this.scene || to.dead) return;
+              const hitAt = performance.now();
+              playSkillFx3d({
+                scene: this.scene,
+                from: fromPos,
+                to: this.casterFxAt(to),
+                flash: skillKind === "steel" ? "tiger" : skillKind,
+                scale,
+                style: "roar",
+                phase: "impact",
+              });
+              playActor(to.actor, "hit", 0.05);
+              to.hitFlashUntil = hitAt + 520;
+            }, arriveMs);
+            return;
           } else {
-            spawnPremiumImpact(this.scene, dest, kind, scale);
+            spawnPremiumImpact(this.scene, dest, skillKind, scale);
           }
           if (!support || isShield) {
             playActor(to.actor, "hit", 0.05);
@@ -813,7 +980,7 @@ export class BattleRenderer {
             setTimeout(() => {
               if (!this.scene || to.dead) return;
               const dest = this.casterFxAt(to);
-              spawnPremiumImpact(this.scene, dest, kind, scale);
+              spawnPremiumImpact(this.scene, dest, skillKind, scale);
               if (!support) {
                 playActor(to.actor, "hit", 0.05);
                 to.hitFlashUntil = performance.now() + 560;
@@ -867,13 +1034,13 @@ export class BattleRenderer {
 
     if (design?.playTimeline) {
       const play = design.playTimeline(
-        kind,
+        skillKind,
         (phase) => {
           if (!this.scene || f.dead) return;
           const at = this.casterFxAt(f);
           if (phase === "windup") {
-            spawnSkillWindup(this.scene, at, kind, scale);
-            // NhĂºn nháº¹ ra sau trÆ°á»›c khi xĂ´ng
+            spawnSkillWindup(this.scene, at, skillKind, scale);
+            // Nhún nhẹ ra sau trước khi xung
             if (!isShield) {
               const back = f.side === "ally" ? 0.18 : -0.18;
               f.lunge = {
@@ -886,7 +1053,7 @@ export class BattleRenderer {
             }
           } else if (phase === "cast") {
             // 1 aura gắn tướng — không spawn lại ở emission (tránh lửa tím chồng / bay cao)
-            spawnSkillAura(this.scene, at, kind, performance.now(), attach, { scale, phase: "cast" });
+            spawnSkillAura(this.scene, at, skillKind, performance.now(), attach, { scale, phase: "cast" });
             if (isShield) spawnShieldBarrier(this.scene, at, performance.now(), scale);
             beginLunge();
           } else if (phase === "emission") {
@@ -902,9 +1069,9 @@ export class BattleRenderer {
       );
       this.skillPlayCancel = () => play.cancel();
     } else {
-      // Fallback náº¿u chÆ°a load skill-design
-      spawnSkillWindup(this.scene, at0, kind, scale);
-      spawnSkillAura(this.scene, at0, kind, performance.now(), attach, { scale, phase: "full" });
+      // Fallback nếu chưa load skill-design
+      spawnSkillWindup(this.scene, at0, skillKind, scale);
+      spawnSkillAura(this.scene, at0, skillKind, performance.now(), attach, { scale, phase: "full" });
       if (isShield) spawnShieldBarrier(this.scene, at0, performance.now(), scale);
       beginLunge();
       setTimeout(() => deliverToTargets("emission"), 140);
@@ -1052,6 +1219,7 @@ export class BattleRenderer {
   clearFx(): void {
     this.cancelSkillPlay();
     clearBattleVfx(this.scene);
+    clearBattleVfx3d(this.scene);
   }
 
   private tick = (): void => {
@@ -1080,6 +1248,7 @@ export class BattleRenderer {
 
     if (!freezeUnits) this.updateCamJuice(now);
     tickBattleVfx(this.scene, now, dt);
+    tickBattleVfx3d(this.scene, now, dt);
     this.syncHudPositions();
     this.renderer.render(this.scene, this.camera);
   };

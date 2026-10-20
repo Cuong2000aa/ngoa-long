@@ -1,0 +1,15 @@
+{
+  "id": "tide_burst",
+  "seed": 31008,
+  "family": "burst",
+  "element": "tide",
+  "power": "standard",
+  "name": "Tidal Rupture",
+  "formation": "fissure",
+  "looping": false,
+  "duration": 1.85,
+  "frames": 12,
+  "size": 128,
+  "source": "pixel-ability-fx-forge",
+  "license": "Apache-2.0"
+}

@@ -2208,7 +2208,7 @@
         "flash": "gold_soft",
         "text": "CỔ CHIẾN",
         "motif": "buff",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "Đánh mạnh + tăng phòng bản thân.",
       "hits": 1
@@ -2308,7 +2308,7 @@
         "flash": "gold_soft",
         "text": "PHẢN CỐT",
         "motif": "buff",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "Đòn mạnh + tăng công bản thân.",
       "hits": 1
@@ -2332,7 +2332,7 @@
         "flash": "gold_soft",
         "text": "NHÂN ĐỨC",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "Hồi máu + sĩ khí phe ta.",
       "hits": 1
@@ -2519,10 +2519,10 @@
         }
       ],
       "fx": {
-        "flash": "whirlwind",
+        "flash": "gold_soft",
         "text": "PHONG VÂN",
-        "motif": "whirlwind",
-        "style": "ally_aura"
+        "motif": "heal",
+        "style": "ally_bless"
       },
       "desc": "Gió mây đổi hướng — hồi máu, sĩ khí và công phe ta.",
       "hits": 1
@@ -2930,14 +2930,14 @@
       "id": "hieu_lenh",
       "name": "Hiệu Lệnh",
       "damageType": "physical",
-      "pattern": "all",
+      "pattern": "ally_all",
       "power": 1.35,
       "moraleCost": 100,
       "fx": {
-        "flash": "purple",
+        "flash": "gold_soft",
         "text": "HIỆU LỆNH",
-        "motif": "shadow",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Toàn phe địch giảm 15 sĩ khí, toàn phe ta hồi 55 sĩ khí.",
       "wikiQuality": "Thường",
@@ -2956,14 +2956,14 @@
       "id": "thien_menh",
       "name": "Thiên Mệnh",
       "damageType": "physical",
-      "pattern": "all",
+      "pattern": "ally_all",
       "power": 1.45,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "gold_soft",
         "text": "THIÊN MỆNH",
-        "motif": "slash",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tướng khác của phe ta hồi 75 sĩ khí, toàn phe địch giảm 15 sĩ khí.",
       "wikiQuality": "Chiến",
@@ -2982,14 +2982,14 @@
       "id": "thien_chinh",
       "name": "Thiên Chinh",
       "damageType": "physical",
-      "pattern": "all",
+      "pattern": "ally_all",
       "power": 1.55,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "gold_soft",
         "text": "THIÊN CHINH",
-        "motif": "slash",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tướng khác của phe ta hồi 85+{6} sĩ khí, toàn phe địch giảm 20 sĩ khí.",
       "wikiQuality": "Thần",
@@ -3008,14 +3008,14 @@
       "id": "quan_lam",
       "name": "Quân Lâm",
       "damageType": "physical",
-      "pattern": "all",
+      "pattern": "ally_all",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "gold_soft",
         "text": "QUÂN LÂM",
-        "motif": "slash",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Tòng Long] (Khi chiến đấu với người chơi khác, sát thương tăng 12%), duy trì 2 lượt, tướng khác của phe ta hồi 85+{6} sĩ khí, toàn phe địch giảm 20 sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -3042,14 +3042,14 @@
       "id": "thien_ha_chia_ba",
       "name": "Thiên Hạ Chia Ba",
       "damageType": "physical",
-      "pattern": "all",
+      "pattern": "ally_all",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "gold_soft",
         "text": "THIÊN HẠ CHIA BA",
-        "motif": "slash",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tướng khác của phe ta tăng 85+{6} sĩ khí, giảm 20 sĩ khí toàn phe địch, toàn phe ta nhận [Tòng Long], duy trì 2 lượt (Khi chiến đấu với người chơi khác, sát thương tăng 15%).",
       "wikiQuality": "Thái Sơ",
@@ -4240,7 +4240,7 @@
         "flash": "gold_soft",
         "text": "PHÁ QUÂN",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 135% Pháp Công. Bản thân hồi 145 sĩ khí. Bản thân nhận trị liệu (Mức trị liệu bằng 90% Mưu Công).",
       "wikiQuality": "Thường",
@@ -4272,7 +4272,7 @@
         "flash": "gold_soft",
         "text": "THÍ QUÂN",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 175% Pháp Công. Bản thân nhận trị liệu (Mức trị liệu bằng 90% Mưu Công). Bản thân nhận [Thủ Hộ], duy trì 2 lượt. Bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Chiến",
@@ -4397,7 +4397,7 @@
         "flash": "gold_soft",
         "text": "BẠCH HỒNG QUÁN NHẬ",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[C.Pháp] Tấn công 500 sĩ khí, khiến địch trên hàng dọc chịu 2 lần 5400% Pháp Công, 40% khiến mục tiêu bị [Tê Liệt], duy trì 3 lượt. Bản thân nhận [Thần Tốc] và [Thủ Hộ], duy trì 3 lượt. Trị liệu tướng có lính ít nhất phe ta 2-3 lần (Mức trị liệu bằng 20% Pháp Công). Bản thân hồi ",
       "wikiQuality": "Thượng Cổ",
@@ -4445,7 +4445,7 @@
         "flash": "gold_soft",
         "text": "TẾ NHẬT THIÊN KỴ",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[C.Pháp] tấn công 500 sĩ khí, khiến địch trên hàng dọc chịu 2 lần 10600% Pháp Công. Có 40% khiến mục tiêu bị [Tê Liệt], duy trì 3 lượt. Bản thân nhận [Thần Tốc] và [Thủ Hộ], duy trì 3 lượt. Trị liệu cho đồng đội lính ít nhất 3 lần (Mức trị liệu bằng 20% Pháp Công). Bản thân hồi 1",
       "wikiQuality": "Thái Sơ",
@@ -5137,8 +5137,8 @@
       "fx": {
         "flash": "gold_soft",
         "text": "THẦN NGỰ",
-        "motif": "heal",
-        "style": "ally_aura"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Thủ Hộ], duy trì 2 lượt, toàn phe ta nhận [Hồi Phục], duy trì 2 lượt.",
       "wikiQuality": "Thần",
@@ -5171,7 +5171,7 @@
         "flash": "gold_soft",
         "text": "ÂN NGHĨA",
         "motif": "buff",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Thủ Hộ], [Hồi Phục], duy trì 2 lượt, tướng khác của phe ta hồi 10+{4} sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -5783,14 +5783,14 @@
       "id": "kieu_hung",
       "name": "Kiêu Hùng",
       "damageType": "physical",
-      "pattern": "all",
+      "pattern": "ally_all",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "gold_soft",
         "text": "KIÊU HÙNG",
-        "motif": "slash",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tất cả tấn công của toàn phe ta tăng 20%, duy trì 2 lượt, tướng khác của phe ta hồi 55 sĩ khí, toàn phe địch giảm 15 sĩ khí.",
       "wikiQuality": "Chiến",
@@ -5874,7 +5874,7 @@
         "flash": "gold_soft",
         "text": "SINH SÁT",
         "motif": "buff",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Chọn mục tiêu ít lính nhất, giải trừ tất cả hiệu quả có lợi và gây sát thương Kế Sách lính càng ít sát thương càng cao, nếu diệt thành công sẽ hồi 500 sĩ khí, nếu không gây Hỗn Loạn cho mục tiêu 1 lượt và bản thân hồi 50 sĩ khí, sau khi tấn công nhận Thấu Suốt 3 lượt, g",
       "wikiQuality": "Truyền thuyết",
@@ -7406,7 +7406,7 @@
         "flash": "gold_soft",
         "text": "CÔNG TÂM",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 176% Mưu Công. Bản thân nhận trị liệu (Mức trị liệu bằng 50% Mưu Công).",
       "wikiQuality": "Thần",
@@ -7432,7 +7432,7 @@
         "flash": "gold_soft",
         "text": "TỰ LẬP",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 126% Mưu Công. Bản thân nhận trị liệu (Mức trị liệu bằng 50% Mưu Công).",
       "wikiQuality": "Chiến",
@@ -7458,7 +7458,7 @@
         "flash": "gold_soft",
         "text": "ĐĂNG CƠ",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 240% Mưu Công. Khiến mục tiêu bị [Đào Binh], duy trì 2 lượt. Bản thân nhận trị liệu (Mức trị liệu bằng 30% Mưu Công).",
       "wikiQuality": "Thần",
@@ -7491,7 +7491,7 @@
         "flash": "gold_soft",
         "text": "QUY TÂM",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 380% Mưu Công, sĩ khí mục tiêu càng cao sát thương càng cao. Khiến mục tiêu bị [Đào Binh], duy trì 2 lượt. Bản thân nhận trị liệu (Mức trị liệu bằng 30% Mưu Công).",
       "wikiQuality": "Truyền thuyết",
@@ -7524,7 +7524,7 @@
         "flash": "gold_soft",
         "text": "UY ÁP",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 2000% Mưu Công, lính mục tiêu càng ít sát thương càng cao. Khiến mục tiêu bị [Đào Binh], duy trì 2 lượt. Bản thân nhận trị liệu (Mức trị liệu bằng 30% Mưu Công).",
       "wikiQuality": "Thượng Cổ",
@@ -8683,10 +8683,10 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "shield",
         "text": "BÍCH LŨY",
-        "motif": "buff",
-        "style": "ally_aura"
+        "motif": "shield",
+        "style": "barrier"
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Thủ Hộ], duy trì 2 lượt, 85% khiến toàn phe ta nhận [Hộ Thuẫn], duy trì 2 lượt.",
       "wikiQuality": "Thần",
@@ -8717,10 +8717,10 @@
       "power": 1.65,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "shield",
         "text": "THUẪN TƯỜNG",
-        "motif": "buff",
-        "style": "ally_aura"
+        "motif": "shield",
+        "style": "barrier"
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Hộ Thuẫn], [Thủ Hộ], duy trì 2 lượt, bản thân hồi 0+{4} sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -8760,7 +8760,7 @@
         "flash": "gold_soft",
         "text": "TƯỜNG ĐỒNG VÁCH SẮ",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Trị liệu đồng đội khác 1 lần, toàn phe ta nhận [Hộ Thuẫn], [Thủ Hộ], duy trì 2 lượt, bản thân hồi 0+{4} sĩ khí.",
       "wikiQuality": "Thượng Cổ",
@@ -8806,7 +8806,7 @@
         "flash": "gold_soft",
         "text": "VỮNG NHƯ BÀN THẠCH",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Trị liệu đồng đội khác 1 lần, giúp mục tiêu giải trừ 2 hiệu quả bất lợi, toàn phe ta nhận [Hộ Thuẫn], [Thủ Hộ], duy trì 2 lượt, bản thân hồi 0+{4} sĩ khí.",
       "wikiQuality": "Thái Sơ",
@@ -9128,10 +9128,10 @@
       "power": 1.35,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue_water",
+        "flash": "gold_soft",
         "text": "CỔ VŨ",
-        "motif": "water",
-        "style": "ally_aura"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tướng khác của phe ta hồi 45 sĩ khí.",
       "wikiQuality": "Thường",
@@ -9157,7 +9157,7 @@
         "flash": "gold_soft",
         "text": "KÍCH DƯƠNG",
         "motif": "buff",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tướng khác của phe ta hồi 50 sĩ khí, bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Chiến",
@@ -9183,7 +9183,7 @@
         "flash": "gold_soft",
         "text": "NGANG DƯƠNG",
         "motif": "buff",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tướng khác của phe ta hồi 55+{4} sĩ khí, bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thần",
@@ -9209,7 +9209,7 @@
         "flash": "gold_soft",
         "text": "UY DƯƠNG",
         "motif": "buff",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] 25% giải trừ hiệu quả bất lợi toàn phe ta (Khi chiến đấu với người chơi khác, giải trừ tối đa 2 hiệu quả bất lợi cho mỗi tướng phe ta), giúp tướng khác phe ta hồi 60+{4} sĩ khí, bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -9228,14 +9228,14 @@
       "id": "tung_ca",
       "name": "Tụng Ca",
       "damageType": "physical",
-      "pattern": "all",
+      "pattern": "ally_all",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "gold_soft",
         "text": "TỤNG CA",
-        "motif": "slash",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] 25% giải trừ hiệu quả có lợi của toàn phe địch (Khi chiến đấu với người chơi khác, giải trừ tối đa 2 hiệu quả có lợi của mỗi tướng địch). Giúp các đồng đội khác hồi 60+{4} sĩ khí. Bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -9261,7 +9261,7 @@
         "flash": "gold_soft",
         "text": "PHẤN CHẤN LÒNG QUÂ",
         "motif": "buff",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Giúp các đồng đội khác hồi 60 +{4} sĩ khí, bản thân nhận [Nguyệt Hồn], duy trì 2 lượt, 25% giải trừ hiệu quả bất lợi cho toàn phe ta (Khi chiến đấu với người chơi khác, giải trừ tối đa 2 hiệu quả bất lợi cho mỗi tướng phe ta), tăng cho đồng đội lính nhiều nhất hiệu quả [",
       "wikiQuality": "Thái Sơ",
@@ -9295,7 +9295,7 @@
         "flash": "gold_soft",
         "text": "CA TỤNG CÔNG ĐỨC",
         "motif": "buff",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Các tướng khác của phe ta hồi 60+{4} sĩ khí. Bản thân nhận [Nguyệt Hồn], duy trì 2 lượt, có xác suất 25% giải trừ tất cả hiệu quả bất lợi cho toàn phe ta (Khi chiến đấu với người chơi khác, tối đa giải trừ 2 hiệu quả bất lợi cho mỗi tướng phe ta), các tướng khác của phe ",
       "wikiQuality": "Thần Hoàng",
@@ -9353,10 +9353,10 @@
       "power": 1.65,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue_water",
+        "flash": "gold_soft",
         "text": "LẠC THỦY TIÊN",
-        "motif": "water",
-        "style": "ally_aura"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Hoạt Lực], duy trì 2 lượt, tướng khác của phe ta hồi 80+{4} sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -9390,7 +9390,7 @@
         "flash": "gold_soft",
         "text": "LẠC THẦN MẠC",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Trị liệu toàn phe ta (Mức trị liệu bằng 20% Mưu Công). Khiến mục tiêu bị [Hoạt Lực], duy trì 3 lượt. Giúp các đồng đội khác hồi 80+{4} sĩ khí.",
       "wikiQuality": "Thượng Cổ",
@@ -9429,7 +9429,7 @@
         "flash": "gold_soft",
         "text": "KHUYNH THẾ GIAI NH",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Hoạt Lực], duy trì 3 lượt, Trị Liệu toàn phe ta 1 lần, sau đó Trị Liệu tướng phe ta ngẫu nhiên 2-3 lần (Mức Trị Liệu bằng 20% Mưu Công), giúp các đồng đội khác hồi 80 +{10} sĩ khí.",
       "wikiQuality": "Thái Sơ",
@@ -9466,10 +9466,10 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue_water",
+        "flash": "gold_soft",
         "text": "VŨ ĐIỆU LẠC THẦN",
-        "motif": "water",
-        "style": "element_water"
+        "motif": "heal",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận hiệu quả [Hoạt Lực], duy trì 3 lượt, trị liệu toàn phe ta 2 lần, sau đó trị liệu tiếp cho đồng đội ngẫu nhiên 1-2 lần (Mức trị liệu bằng 20% Mưu Công), giúp các đồng đội khác hồi 80+{10} sĩ khí.",
       "wikiQuality": "Thần Hoàng",
@@ -10795,7 +10795,7 @@
         "flash": "gold_soft",
         "text": "YÊU THUẪN",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Trị liệu toàn phe ta (Mức trị liệu bằng 20% Mưu Công). Toàn phe ta binh lực tối đa tăng 20%, duy trì 2 lượt.",
       "wikiQuality": "Thần",
@@ -10821,7 +10821,7 @@
         "flash": "gold_soft",
         "text": "ĐÓNG QUÂN PHÒNG TH",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ trợ] Trị liệu toàn phe ta (lượng trị liệu bằng 20% Mưu Công, giúp toàn phe ta vào [Đề Kháng], duy trì 3 lượt, toàn phe ta hồi 25 +{4} Sĩ Khí",
       "wikiQuality": "Truyền thuyết",
@@ -10853,14 +10853,14 @@
       "id": "loan_the_hao_kiet",
       "name": "Loạn Thế Hào Kiệt",
       "damageType": "physical",
-      "pattern": "all",
+      "pattern": "ally_all",
       "power": 1.65,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "gold_soft",
         "text": "LOẠN THẾ HÀO KIỆT",
-        "motif": "slash",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Toàn phe địch bị [Tỏa Binh], duy trì 3 lượt, toàn phe ta nhận [Đề Kháng], duy trì 3 lượt, bản thân hồi 50+{4} sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -10900,7 +10900,7 @@
         "flash": "gold_soft",
         "text": "HÙNG CỨ",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Trị liệu toàn phe ta (Mức trị liệu bằng 20% Mưu Công) và hồi 25+{4} sĩ khí. Toàn phe ta nhận [Kiên Thủ] và [Đề Kháng], duy trì 3 lượt, 1 đồng đội ngẫu nhiên nhận được [Đồn Điền], duy trì 2 lượt.",
       "wikiQuality": "Thượng Cổ",
@@ -10954,7 +10954,7 @@
         "flash": "gold_soft",
         "text": "VANG DANH THIÊN HẠ",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Trị liệu toàn phe ta (Mức trị liệu bằng 20% Mưu Công) và hồi 25+{4} sĩ khí. Toàn phe ta nhận [Kiên Thủ] và [Đề Kháng], duy trì 3 lượt, 1 đồng đội ngẫu nhiên nhận được [Đồn Điền], duy trì 2 lượt.",
       "wikiQuality": "Thái Sơ",
@@ -11160,10 +11160,10 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "gold_soft",
         "text": "BẠCH MÃ TƯỚNG QUÂN",
-        "motif": "slash",
-        "style": "column_pierce"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Vật Lý] Địch trên hàng dọc chịu 2 lần 8400% sát thương vật lý, lính mục tiêu càng ít sát thương càng cao. Toàn phe ta nhận hiệu quả [Thần Binh], [Kiêu Binh], duy trì 3 lượt. Bản thân hồi 50+{8} sĩ khí.",
       "wikiQuality": "Thái Sơ",
@@ -11202,10 +11202,10 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "charge",
+        "flash": "gold_soft",
         "text": "BẠCH KỴ DƯƠNG KỲ",
-        "motif": "charge",
-        "style": "cavalry_charge"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Vật Lý] Địch trên hàng dọc chịu 2 lần 19000% sát thương vật lý, lính mục tiêu càng ít sát thương càng cao. Toàn phe ta nhận hiệu quả [Thần Binh], [Kiêu Binh], duy trì 3 lượt. Bản thân hồi 75+{8} sĩ khí.",
       "wikiQuality": "Thần Hoàng",
@@ -11244,10 +11244,10 @@
       "power": 1.45,
       "moraleCost": 100,
       "fx": {
-        "flash": "thunder",
+        "flash": "gold_soft",
         "text": "LÔI CỔ",
-        "motif": "thunder",
-        "style": "ally_aura"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tướng khác của phe ta hồi 75 sĩ khí.",
       "wikiQuality": "Chiến",
@@ -11273,7 +11273,7 @@
         "flash": "gold_soft",
         "text": "HIỆU TRIỆU",
         "motif": "buff",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tướng khác của phe ta hồi 85+{4} sĩ khí.",
       "wikiQuality": "Thần",
@@ -11299,7 +11299,7 @@
         "flash": "gold_soft",
         "text": "ĐỊNH QUÂN CỔ",
         "motif": "buff",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Bản thân nhận [Thủ Hộ], duy trì 3 lượt, tướng khác của phe ta hồi 85+{4} sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -11329,10 +11329,10 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "shield",
         "text": "TỰ THỦ GIỮ MÌNH",
-        "motif": "buff",
-        "style": "ally_aura"
+        "motif": "shield",
+        "style": "barrier"
       },
       "desc": "[Hỗ Trợ] Tăng cho đồng đội 85+{4} sĩ khí, toàn phe ta nhận hiệu quả [Kiên Thủ], duy trì 3 lượt.",
       "wikiQuality": "Thượng Cổ",
@@ -11356,10 +11356,10 @@
       "power": 1.85,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "shield",
         "text": "BẢO VỆ KINH GIANG",
-        "motif": "buff",
-        "style": "ally_aura"
+        "motif": "shield",
+        "style": "barrier"
       },
       "desc": "[Hỗ Trợ] Tăng cho đồng đội 85+{4} sĩ khí, toàn phe ta nhận hiệu quả [Anh Dũng], [Kiên Thủ], duy trì 3 lượt.",
       "wikiQuality": "Thái Sơ",
@@ -11411,7 +11411,7 @@
         "flash": "gold_soft",
         "text": "VÔ NGẠI",
         "motif": "buff",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Miễn Dịch], duy trì 2 lượt, toàn phe ta hồi 25 sĩ khí.",
       "wikiQuality": "Chiến",
@@ -12093,7 +12093,7 @@
         "flash": "gold_soft",
         "text": "LY GIÁN",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 92% Mưu Công. Bản thân nhận trị liệu (Mức trị liệu bằng 50% Mưu Công).",
       "wikiQuality": "Thường",
@@ -12434,7 +12434,7 @@
         "flash": "gold_soft",
         "text": "PHIẾN ĐỘNG",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 193% Mưu Công. Bản thân nhận trị liệu (Mức trị liệu bằng 20% Mưu Công).",
       "wikiQuality": "Chiến",
@@ -12460,7 +12460,7 @@
         "flash": "gold_soft",
         "text": "MƯU THỦ",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 270% Mưu Công. Trị liệu toàn phe ta (Mức trị liệu bằng 20% Mưu Công). Bản thân hồi 50+{6} sĩ khí.",
       "wikiQuality": "Thần",
@@ -12489,10 +12489,10 @@
       "power": 1.65,
       "moraleCost": 100,
       "fx": {
-        "flash": "tiger",
+        "flash": "gold_soft",
         "text": "LOẠN THẾ PHỔ ĐỘ",
-        "motif": "tiger",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Sát thương Mưu Công toàn phe địch 3 lần, giảm Mưu Phòng toàn phe địch 2 lượt, hồi lính toàn phe ta, bản thân hồi 50 +{10} sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -12524,7 +12524,7 @@
         "flash": "gold_soft",
         "text": "TẾ THẾ CHỈ QUA",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Địch trên hàng dọc chịu 2 lần 5200% Mưu Công, lính mục tiêu càng ít sát thương càng cao. Chuyển 100% sát thương thành trị liệu cho toàn phe ta (không vượt quá 10% binh lực tối đa), bản thân nhận hiệu quả [Áp Chế], duy trì 3 lượt, sau đó hồi 145 sĩ khí.",
       "wikiQuality": "Thượng Cổ",
@@ -12564,7 +12564,7 @@
         "flash": "gold_soft",
         "text": "KIM QUÝ YẾU LƯỢC",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Địch trên hàng dọc chịu 2 lần 12000% Mưu Công, lính mục tiêu càng ít sát thương càng cao. Chuyển 100% sát thương thành trị liệu cho toàn phe ta (không vượt quá 10% binh lực tối đa), bản thân nhận hiệu quả [Áp Chế], duy trì 3 lượt, sau đó hồi 145 sĩ khí.",
       "wikiQuality": "Thái Sơ",
@@ -12604,7 +12604,7 @@
         "flash": "gold_soft",
         "text": "TỬ SANH",
         "motif": "heal",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Bản thân nhận trị liệu (Mức trị liệu bằng 294% Mưu Công).",
       "wikiQuality": "Chiến",
@@ -12856,7 +12856,7 @@
         "flash": "gold_soft",
         "text": "VIỆN BINH",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 85% Pháp Công. Trị liệu 1 đồng đội ngẫu nhiên (Mức trị liệu bằng 13% Mưu Công).",
       "wikiQuality": "Chiến",
@@ -13145,7 +13145,7 @@
         "flash": "gold_soft",
         "text": "PHÁ ĐỊCH",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Thường] Toàn phe địch chịu 320% sát thương vật lý. Toàn phe ta Vật Công tăng 30%, duy trì 2 lượt. Trị liệu toàn phe ta (Mức trị liệu bằng 20% Vật Công). Bản thân hồi 50+{6} sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -13177,7 +13177,7 @@
         "flash": "gold_soft",
         "text": "THẾ PHÁ ĐỊCH",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Thường] Toàn phe địch chịu 4500% sát thương vật lý, trị liệu toàn phe ta (Mức trị liệu bằng 20% Vật Công). Vật Công toàn phe ta tăng 30%, duy trì 2 lượt, giúp các đồng đội khác hồi 25 sĩ khí. Bản thân hồi 50+{6} sĩ khí.",
       "wikiQuality": "Thượng Cổ",
@@ -13209,7 +13209,7 @@
         "flash": "gold_soft",
         "text": "THỐNG QUÂN PHÁ ĐỊC",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Thường] Toàn phe địch chịu 19000% sát thương vật lý, trị liệu toàn phe ta (Mức trị liệu bằng 20% Vật Công), toàn phe ta nhận [Tăng Vật Công] và [Thống Quân], duy trì 2 lượt, giúp các đồng đội khác hồi 25 sĩ khí, bản thân hồi 50+{6} sĩ khí.",
       "wikiQuality": "Thái Sơ",
@@ -13256,7 +13256,7 @@
         "flash": "gold_soft",
         "text": "BÀY TRẬN NHƯ NÚI",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Thường] Toàn phe địch chịu 36000% sát thương vật lý, trị liệu toàn phe ta 1 lần (Mức trị liệu bằng 20% Vật Công). Toàn phe ta nhận hiệu quả [Tăng Vật Công] và [Thống Quân], duy trì 2 lượt, Giúp các đồng đội khác hồi 25 sĩ khí, bản thân hồi 50+{6} sĩ khí.",
       "wikiQuality": "Thần Hoàng",
@@ -13796,7 +13796,7 @@
         "flash": "gold_soft",
         "text": "CỨU VIỆN",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 180% Pháp Công. Trị liệu toàn phe ta (Mức trị liệu bằng 20% Pháp Công).",
       "wikiQuality": "Thần",
@@ -13822,7 +13822,7 @@
         "flash": "gold_soft",
         "text": "TRẤN HỒN",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[C.Pháp] Tấn công toàn phe địch, trị liệu Toàn phe đội phe ta và tăng 25 +{6} sĩ khí, bản thân nhận Nguyệt Hồn 3 lượt.",
       "wikiQuality": "Truyền thuyết",
@@ -13854,7 +13854,7 @@
         "flash": "gold_soft",
         "text": "PHÒNG NGỰ CẨN THẬN",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 2000% Pháp Công, trị liệu toàn phe ta (Mức trị liệu bằng 20% Pháp Công), giúp Pháp Phòng của đồng đội khác tăng 10%, duy trì 2 lượt. Bản thân nhận [Nguyệt Hồn], duy trì 3 lượt, giúp các đồng đội khác hồi 25+{6} sĩ khí.",
       "wikiQuality": "Thượng Cổ",
@@ -13894,7 +13894,7 @@
         "flash": "gold_soft",
         "text": "CHẾ NGỰ QUÂN ĐỊCH",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 17000% Pháp Công, trị liệu toàn phe ta 2 lần (Mức trị liệu bằng 20% Pháp Công), giúp tướng khác phe ta tăng pháp phòng 40%, duy trì 2 lượt. Bản thân nhận [Nguyệt Hồn], duy trì 3 lượt, toàn bộ tướng phe ta hồi 25+{8} sĩ khí.",
       "wikiQuality": "Thái Sơ",
@@ -14022,10 +14022,10 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "thunder",
+        "flash": "gold_soft",
         "text": "KHAI TRIỀU THỪA VẬ",
-        "motif": "thunder",
-        "style": "ally_aura"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] [200 Sĩ Khí] Tăng toàn bộ Chỉ Huy, Võ, Trí của ta 50+{4} điểm, hiệu quả không thể giải trừ, tất cả tướng phe ta nhận [Đóng Đô], bản thân nhận [Lôi Cổ 2], tất cả hiệu quả duy trì 3 lượt.",
       "wikiQuality": "Thượng Cổ",
@@ -14064,10 +14064,10 @@
       "power": 1.85,
       "moraleCost": 100,
       "fx": {
-        "flash": "thunder",
+        "flash": "gold_soft",
         "text": "TRẤN ĐỊNH SƠN HÀ",
-        "motif": "thunder",
-        "style": "ally_aura"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] [200 Sĩ Khí] Hồi phục toàn bộ lính của ta 1 lần, tăng toàn bộ Chỉ Huy, Võ, Trí của ta 60+{8} điểm, hiệu quả không thể giải trừ, tất cả tướng phe ta nhận [Đóng Đô], bản thân nhận [Lôi Cổ 2], tất cả hiệu quả duy trì 3 lượt.",
       "wikiQuality": "Thái Sơ",
@@ -14106,10 +14106,10 @@
       "power": 1.95,
       "moraleCost": 100,
       "fx": {
-        "flash": "thunder",
+        "flash": "gold_soft",
         "text": "THỊNH THẾ VƯƠNG QU",
-        "motif": "thunder",
-        "style": "ally_aura"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] [200 Sĩ Khí] Hồi phục toàn bộ lính của ta 2 lần, tăng toàn bộ Chỉ Huy, Võ, Trí của ta 70+{10} điểm, hiệu quả không thể giải trừ, tất cả tướng phe ta nhận [Đóng Đô], bản thân nhận [Lôi Cổ 2], tất cả hiệu quả duy trì 3 lượt.",
       "wikiQuality": "Thần Hoàng",
@@ -14265,7 +14265,7 @@
         "flash": "gold_soft",
         "text": "KHÍCH LỆ",
         "motif": "buff",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Một đơn vị phe ta ngãu nhiên hồi 100 sĩ khí, bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Chiến",
@@ -14573,10 +14573,10 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "gold_soft",
         "text": "NGỦ SAY",
-        "motif": "slash",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] 20% khiến toàn phe địch bị [Ngủ Say], duy trì 3 lượt.",
       "wikiQuality": "Chiến",
@@ -14887,7 +14887,7 @@
         "flash": "gold_soft",
         "text": "BẢO HỘ",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 85% Mưu Công. Trị liệu tướng có lính ít nhất phe ta (Mức trị liệu bằng 50% Mưu Công). Toàn phe ta nhận [Thủ Hộ], duy trì 2 lượt.",
       "wikiQuality": "Chiến",
@@ -14920,7 +14920,7 @@
         "flash": "gold_soft",
         "text": "CẦU PHÚC",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 177% Mưu Công. Trị liệu cho bản thân và đồng đội lính ít nhất (Mức trị liệu bằng 50% Mưu Công). Toàn phe ta nhận [Thủ Hộ], duy trì 2 lượt. Bản thân hồi 50+{8} sĩ khí",
       "wikiQuality": "Thần",
@@ -14959,7 +14959,7 @@
         "flash": "gold_soft",
         "text": "CHIẾN CA",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 350% Mưu Công. Khiến tất cả tấn công của mục tiêu giảm 100%, duy trì 1 lượt. Bản thân nhận trị liệu (Mức trị liệu bằng 50% Mưu Công). Trị liệu tướng có lính ít nhất phe ta 2 lần (Mức trị liệu bằng 50% Mưu Công). Toàn phe ta nhận [Thủ Hộ], duy trì 2 lượ",
       "wikiQuality": "Truyền thuyết",
@@ -15025,7 +15025,7 @@
         "flash": "gold_soft",
         "text": "SÔNG SAO RỰC RỠ",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 2000% Mưu Công, khiến tấn công của mục tiêu giảm 100%, duy trì 1 lượt. Trị liệu toàn phe ta (Mức trị liệu bằng 20% Mưu Công), sau đó trị liệu đồng đội lính ít nhất 2 lần (Mức trị liệu bằng 20% Mưu Công), toàn phe ta nhận [Thủ Hộ], duy trì 2 lượt. Bản t",
       "wikiQuality": "Thái Sơ",
@@ -15058,7 +15058,7 @@
         "flash": "gold_soft",
         "text": "BỈ NGẠN TINH KIỀU",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Khiến toàn bộ phe địch chịu 2000% mưu công, khiến tấn công của mục tiêu đơn giảm 200%, duy trì 1 lượt. Trị liệu 2 lần cho toàn bộ phe ta (Mức trị liệu bằng 20% mưu công), sau đó trị liệu đồng đội lính ít nhất 2 lần (Mức trị liệu bằng 20% mưu công), toàn bộ phe ta nhận [",
       "wikiQuality": "Thần Hoàng",
@@ -15255,14 +15255,14 @@
       "id": "xua_duoi",
       "name": "Xua Đuổi",
       "damageType": "physical",
-      "pattern": "all",
+      "pattern": "ally_all",
       "power": 1.65,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "gold_soft",
         "text": "XUA ĐUỔI",
-        "motif": "slash",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Giải trừ hiệu quả có lợi toàn phe địch (Khí chiến đấu với người chơi khác, giải trừ tối đa 2 hiệu quả có lợi của mỗi tướng địch), giúp tướng khác phe ta hồi 25+{4} sĩ khí, bản thân hồi 100 sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -15281,14 +15281,14 @@
       "id": "thanh_tam",
       "name": "Thanh Tâm",
       "damageType": "physical",
-      "pattern": "all",
+      "pattern": "ally_all",
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "gold_soft",
         "text": "THANH TÂM",
-        "motif": "slash",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Giải trừ hiệu quả có lợi toàn phe địch (Khi chiến đấu với người chơi khác, giải trừ tối đa 2 hiệu quả có lợi của mỗi tướng địch, sau đó giải trừ 1 hiệu quả có lợi của hai tướng địch ngẫu nhiên), giúp tướng khác phe ta hồi 25+{4} sĩ khí, bản thân hồi 100 sĩ khí.",
       "wikiQuality": "Thượng Cổ",
@@ -15307,14 +15307,14 @@
       "id": "thanh_nha_can_chinh",
       "name": "Thanh Nhã Cần Chính",
       "damageType": "physical",
-      "pattern": "all",
+      "pattern": "ally_all",
       "power": 1.85,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "gold_soft",
         "text": "THANH NHÃ CẦN CHÍN",
-        "motif": "slash",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Giải trừ tất cả hiệu quả có lợi của toàn phe địch (Khi chiến đấu với người chơi khác, tối đa giải trừ 4 hiệu quả có lợi của mỗi mục tiêu địch), giúp các tướng khác trong phe ta hồi 50 +{4} sĩ khí, toàn phe ta nhận hiệu quả [Bền Bỉ], duy trì 2 lượt. Bản thân hồi 100 sĩ kh",
       "wikiQuality": "Thái Sơ",
@@ -15348,7 +15348,7 @@
         "flash": "gold_soft",
         "text": "TRỊ LIỆU",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Trị liệu toàn phe ta (Mức trị liệu bằng 75% Mưu Công).",
       "wikiQuality": "Chiến",
@@ -15374,7 +15374,7 @@
         "flash": "gold_soft",
         "text": "TRỊ DŨ",
         "motif": "heal",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Trị liệu toàn phe ta (Mức trị liệu bằng 75% Mưu Công). Bản thân nhận [Miễn Dịch], duy trì 3 lượt.",
       "wikiQuality": "Thần",
@@ -15408,7 +15408,7 @@
         "flash": "gold_soft",
         "text": "DŨ HỢP",
         "motif": "heal",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Trị liệu toàn phe ta 2 lần (Mức trị liệu lần lượt bằng 75% và 15% Mưu Công). Bản thân nhận [Loại Bỏ] không thể giải trừ, duy trì 3 lượt.",
       "wikiQuality": "Truyền thuyết",
@@ -15483,7 +15483,7 @@
         "flash": "gold_soft",
         "text": "MƯA HẠN",
         "motif": "heal",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] [Thi Triển 200 Sĩ Khí] Trị liệu toàn phe ta 4~5 lần (Mức trị liệu bằng 25% Mưu Công) và bản thân hồi 50 Sĩ Khí, khiến bản thân vào [Loại Bỏ] không thể giải trừ, duy trì 3 lượt, khiến Tướng khác của phe ta vào [Phấn Chấn], duy trì 3 lượt.",
       "wikiQuality": "Thái Sơ",
@@ -15884,10 +15884,10 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "dragon",
+        "flash": "gold_soft",
         "text": "HỎA LONG TIỄN",
-        "motif": "dragon",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 2 lần 2000% sát thương. Bản thân nhận [Độ Hiểm] [Đề Kháng], duy trì 3 lượt, chống đỡ sát thương bằng 15% binh lực tối đa. Bản thân hồi 100 sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -16010,7 +16010,7 @@
         "flash": "gold_soft",
         "text": "BÀI NHIỄU",
         "motif": "buff",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Giải trừ hiệu quả trạng thái toàn phe ta, giúp tướng khác phe ta hồi 25 sĩ khí.",
       "wikiQuality": "Thường",
@@ -16036,7 +16036,7 @@
         "flash": "gold_soft",
         "text": "GIẢI NAN",
         "motif": "buff",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Giải trừ hiệu quả trạng thái toàn phe ta, giúp tướng khác phe ta hồi 25 sĩ khí, bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Chiến",
@@ -16062,7 +16062,7 @@
         "flash": "gold_soft",
         "text": "GIẢI TRỪ",
         "motif": "buff",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "Giải trừ tất cả hiệu quả bất lợi cho toàn phe ta (Khi chiến đấu với người chơi khác, tối đa giải trừ 2 hiệu quả bất lợi cho mỗi tướng phe ta), đồng đội tăng 25 + {4} sĩ khí, bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thần",
@@ -16088,7 +16088,7 @@
         "flash": "gold_soft",
         "text": "PHẢN KẾ",
         "motif": "buff",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Giải trừ hiệu quả bất lợi toàn phe ta (Khi chiến đấu với người chơi khác, giải trừ tối đa 2 hiệu quả bất lợi cho mỗi tướng phe ta), giúp tướng khác phe ta hồi 25+{4} sĩ khí. Mỗi giải trừ một trạng thái bất lợi, giúp tướng tương ứng hồi 10 sĩ khí, bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thượng Cổ",
@@ -16166,7 +16166,7 @@
         "flash": "gold_soft",
         "text": "THANH HUY",
         "motif": "buff",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Nguyệt Hồn], duy trì 2 lượt, tướng khác của phe ta hồi 25+{2} sĩ khí, bản thân hồi 50+{4} sĩ khí.",
       "wikiQuality": "Thượng Cổ",
@@ -16200,7 +16200,7 @@
         "flash": "gold_soft",
         "text": "GIẢO NGUYỆT THANH ",
         "motif": "heal",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Nguyệt Hồn], duy trì 2 lượt, các tướng khác trong phe ta hồi 25+{2} sĩ khí. Trị liệu toàn phe ta 1 lần (Mức trị liệu bằng 20% Mưu Công). Bản thân hồi 50+{6} sĩ khí.",
       "wikiQuality": "Thái Sơ",
@@ -16480,7 +16480,7 @@
         "flash": "gold_soft",
         "text": "THẦN BINH XUẤT HIỆ",
         "motif": "buff",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Chiến Pháp+Kế Sách+Thường] Nhận Loại Bỏ và Tịnh Hóa, sau đó tấn công 500 sĩ khí không cùng loại 3 lần, bản thân hồi 100 sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -16590,14 +16590,14 @@
       "id": "loi_nhan",
       "name": "Lợi Nhẫn",
       "damageType": "physical",
-      "pattern": "single",
+      "pattern": "ally_all",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "gold_soft",
         "text": "LỢI NHẪN",
-        "motif": "slash",
-        "style": "single_strike"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Vật Công của toàn phe ta tăng 25%, duy trì 2 lượt.",
       "wikiQuality": "Thường",
@@ -16615,7 +16615,7 @@
         "flash": "gold_soft",
         "text": "BẠN LY",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 205% Mưu Công. Khiến mục tiêu bị [Đào Binh], duy trì 2 lượt. Bản thân nhận trị liệu (Mức trị liệu bằng 30% Mưu Công).",
       "wikiQuality": "Thần",
@@ -16648,7 +16648,7 @@
         "flash": "gold_soft",
         "text": "MÊ TRẬN",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 340% Mưu Công, sĩ khí mục tiêu càng cao sát thương càng cao. Khiến mục tiêu bị [Đào Binh], duy trì 2 lượt. Bản thân nhận trị liệu (Mức trị liệu bằng 30% Mưu Công).",
       "wikiQuality": "Truyền thuyết",
@@ -16681,7 +16681,7 @@
         "flash": "gold_soft",
         "text": "CƯ NGẠO UY ÁP",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 15000% Mưu Công, lính mục tiêu càng ít sát thương càng cao. Khiến mục tiêu bị [Đào Binh], duy trì 2 lượt, 1 lần trị liệu toàn bộ lính phe ta (Mức trị liệu bằng 30% Mưu Công).",
       "wikiQuality": "Thái Sơ",
@@ -16743,14 +16743,14 @@
       "id": "chuyen_chu",
       "name": "Chuyên Chú",
       "damageType": "strategy",
-      "pattern": "single",
+      "pattern": "ally_all",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue",
+        "flash": "gold_soft",
         "text": "CHUYÊN CHÚ",
-        "motif": "arcane",
-        "style": "single_strike"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Mưu Công của toàn phe ta tăng 25%, duy trì 3 lượt.",
       "wikiQuality": "Thường",
@@ -17064,7 +17064,7 @@
         "flash": "gold_soft",
         "text": "PHẤN CHẤN",
         "motif": "buff",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tướng khác của phe ta hồi 34 sĩ khí, bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thường",
@@ -17133,7 +17133,7 @@
         "flash": "gold_soft",
         "text": "TRUNG NGHĨA HỘ CHỦ",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[C.Pháp] Tấn công 500 sĩ khí, khiến toàn phe địch chịu 7000% Pháp Công, bản thân vào trạng thái [Hộ Chủ], duy trì đến khi kết thúc chiến đấu, khiến tướng có lính ít nhất phe ta (ngoài bản thân) vào trạng thái [Bảo Hộ], duy trì 2 lượt, bản thân nhận trị liệu 1 lần (Mức trị liệu bằ",
       "wikiQuality": "Thượng Cổ",
@@ -17233,7 +17233,7 @@
         "flash": "gold_soft",
         "text": "ĐỊA TRẠCH VẠN VẬT",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Thủ Hộ], [Hồi Phục], [Hồi Xuân], duy trì 2 lượt. Giúp các đồng đội khác hồi 10+{4} sĩ khí.",
       "wikiQuality": "Thượng Cổ",
@@ -17266,7 +17266,7 @@
         "flash": "gold_soft",
         "text": "THẦN HỮU MỘT PHƯƠN",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Thủ Hộ], [Hồi Phục], nhận 2 tầng [Hồi Xuân], duy trì 2 lượt, các tướng khác trong phe ta hồi 20+{4} sĩ khí.",
       "wikiQuality": "Thái Sơ",
@@ -17299,7 +17299,7 @@
         "flash": "gold_soft",
         "text": "TRU TÂM",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 180% Mưu Công, giảm 10 sĩ khí, hiệu quả trị liệu của mục tiêu giảm 50%, duy trì 2 lượt.",
       "wikiQuality": "Chiến",
@@ -17325,7 +17325,7 @@
         "flash": "gold_soft",
         "text": "TỎA HỒN",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 268% Mưu Công, giảm 10 sĩ khí, hiệu quả trị liệu của mục tiêu giảm 75% (Khi chiến đấu với người chơi khác, hiệu quả trị liệu giảm còn 25%), duy trì 2 lượt, mục tiêu bị [Âm Hồn], duy trì đến khi kết thúc chiến đấu, bản thân hồi 50 sĩ khí.",
       "wikiQuality": "Thần",
@@ -17403,7 +17403,7 @@
         "flash": "gold_soft",
         "text": "QUYỀN HÀNH",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 1500% Mưu Công và giảm 15 sĩ khí, khiến mục tiêu bị giảm hiệu quả trị liệu 90% (Khi chiến đấu với người chơi khác, hiệu quả trị liệu giảm 60%), duy trì 2 lượt. Khiến mục tiêu bị [Âm Hồn], duy trì đến khi kết thúc chiến đấu. Bản thân hồi 50+{4} sĩ khí.",
       "wikiQuality": "Thượng Cổ",
@@ -17442,7 +17442,7 @@
         "flash": "gold_soft",
         "text": "VƯƠNG TRIỀU TAN RÃ",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 4500% Mưu Công, gây giảm 20 sĩ khí, khiến mục tiêu giảm 100% hiệu quả Trị Liệu (Khi chiến đấu với người chơi khác, hiệu quả Trị Liệu giảm 60%), duy trì 2 lượt, khiến mục tiêu bị [Âm Hồn], duy trì đến khi kết thúc chiến đấu, bản thân hồi 50+{4} sĩ khí.",
       "wikiQuality": "Thái Sơ",
@@ -17705,7 +17705,7 @@
         "flash": "gold_soft",
         "text": "TÁN CA",
         "motif": "buff",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tất cả tấn công của toàn phe ta tăng 25%, duy trì 2 lượt.",
       "wikiQuality": "Chiến",
@@ -17717,14 +17717,14 @@
       "id": "khuynh_quoc",
       "name": "Khuynh Quốc",
       "damageType": "physical",
-      "pattern": "all",
+      "pattern": "ally_all",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "gold_soft",
         "text": "KHUYNH QUỐC",
-        "motif": "slash",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tất cả tấn công của toàn phe ta tăng 55+{3%}% (Khi chiến đấu với người chơi khác, tăng 41.25% tất cả tấn công ), duy trì 2 lượt, 25% toàn phe địch bị [Mê Hoặc], duy trì 2 lượt (Khi chiến đấu với người chơi khác, xác suất Mê Hoặc là 7.5%).",
       "wikiQuality": "Thần",
@@ -17763,14 +17763,14 @@
       "id": "vu_dieu_duoi_trang",
       "name": "Vũ Điệu Dưới Trăng",
       "damageType": "physical",
-      "pattern": "all",
+      "pattern": "ally_all",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue_water",
+        "flash": "gold_soft",
         "text": "VŨ ĐIỆU DƯỚI TRĂNG",
-        "motif": "water",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tất cả tấn công của toàn phe ta tăng 60+{3%}% (Khi chiến đấu với người chơi khác, tất cả tấn công tăng 45%), duy trì 2 lượt, tất cả tấn công của toàn phe địch giảm 24+{5%}%, duy trì 2 lượt, 25% toàn phe địch bị [Mê Hoặc], duy trì 2 lượt (Khi chiến đấu với người chơi khác",
       "wikiQuality": "Thượng Cổ",
@@ -17790,14 +17790,14 @@
       "id": "thien_vu_khuynh_thanh",
       "name": "Thiên Vũ Khuynh Thành",
       "damageType": "physical",
-      "pattern": "all",
+      "pattern": "ally_all",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue_water",
+        "flash": "gold_soft",
         "text": "THIÊN VŨ KHUYNH TH",
-        "motif": "water",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tất cả tấn công của toàn phe ta tăng 75+{3%}%, duy trì 2 lượt, khiến tấn công của tất cả địch giảm 24+{5%}%, duy trì 2 lượt, 25% khiến tất cả địch nhận [Mê Hoặc], duy trì 2 lượt (Khi chiến đấu với người chơi khác, xác suất [Mê Hoặc] là 7.5%).",
       "wikiQuality": "Thái Sơ",
@@ -17817,14 +17817,14 @@
       "id": "nghe_thuong_thien_vu",
       "name": "Nghê Thường Thiên Vũ",
       "damageType": "physical",
-      "pattern": "all",
+      "pattern": "ally_all",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue_water",
+        "flash": "gold_soft",
         "text": "NGHÊ THƯỜNG THIÊN ",
-        "motif": "water",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tất cả tấn công của toàn phe ta tăng 95+{3%}%, duy trì 2 lượt, khiến tấn công của tất cả địch giảm 30+{5%}%, duy trì 2 lượt, 25% khiến tất cả địch nhận [Mê Hoặc], duy trì 2 lượt (Khi chiến đấu với người chơi khác, xác suất [Mê Hoặc] là 9.5%).",
       "wikiQuality": "Thần Hoàng",
@@ -18026,7 +18026,7 @@
         "flash": "gold_soft",
         "text": "HỘ CHỦ",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 360% Pháp Công, lính mục tiêu càng ít sát thương càng cao. Khiến toàn phe địch bị [Đào Binh], duy trì 2 lượt. Trị liệu cho bản thân 1 lần (Mức trị liệu bằng 20% Pháp Công). Bản thân nhận Thủ Hộ trong 3 lượt. Bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thần",
@@ -18065,7 +18065,7 @@
         "flash": "gold_soft",
         "text": "VIỆN HỘ",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 1700% Pháp Công, lính mục tiêu càng ít sát thương càng cao. Khiến toàn phe địch bị [Đào Binh], duy trì 2 lượt. Trị liệu cho bản thân và đồng đội có lính ít nhất 1 lần (Mức trị liệu bằng 20% Pháp Công). Bản thân nhận [Tử Thủ], duy trì 3 lượt. Bản",
       "wikiQuality": "Truyền thuyết",
@@ -18105,7 +18105,7 @@
         "flash": "gold_soft",
         "text": "SA TRƯỜNG NGỰ ĐỊCH",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 9000% Pháp Công, lính mục tiêu càng ít sát thương càng cao. Khiến toàn phe địch bị trúng [Đào Binh], duy trì 2 lượt. Trị liệu cho bản thân và đồng đội lính ít nhất 1 lần (Mức trị liệu bằng 20% Pháp Công). Bản thân nhận [Tử Thủ], duy trì 3 lượt. ",
       "wikiQuality": "Thượng Cổ",
@@ -18185,7 +18185,7 @@
         "flash": "gold_soft",
         "text": "THANH U THÙ TUYỆT",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Trị liệu toàn phe ta (Mức trị liệu bằng 20% Mưu Công), giải trừ 2 hiệu quả có lợi của toàn phe địch. Bản thân hồi 50+{6} sĩ khí.",
       "wikiQuality": "Thượng Cổ",
@@ -18217,7 +18217,7 @@
         "flash": "gold_soft",
         "text": "HIỀN THỤC LƯU PHƯƠ",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Trị liệu toàn phe ta (Mức trị liệu bằng 20% Mưu Công), giải trừ 3 hiệu quả có lợi của toàn phe địch, bản thân nhận [Nguyệt Hồn], duy trì 2 lượt. Bản thân hồi 50+{6} sĩ khí.",
       "wikiQuality": "Thái Sơ",
@@ -18250,14 +18250,14 @@
       "id": "dinh_ke_nhat_thong",
       "name": "Định Kế Nhất Thống",
       "damageType": "physical",
-      "pattern": "all",
+      "pattern": "ally_all",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "purple",
+        "flash": "gold_soft",
         "text": "ĐỊNH KẾ NHẤT THỐNG",
-        "motif": "shadow",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tướng khác của phe ta tăng 40 sĩ khí, nhận hiệu quả [Điên Cuồng], duy trì 3 lượt, lân lượt có xác suất 50% khiến toàn phe địch bị [Vô Lực], [Do Dự] (Khi chiến đấu với người chơi khác, hiệu quả [Do Dự] đổi thành [Tê Liệt], khi bắt đầu lượt có xác suất bị Hỗn Loạn 1 lượt),",
       "wikiQuality": "Thượng Cổ",
@@ -18308,14 +18308,14 @@
       "id": "thau_tom_thien_ha",
       "name": "Thâu Tóm Thiên Hạ",
       "damageType": "physical",
-      "pattern": "all",
+      "pattern": "ally_all",
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "gold_soft",
         "text": "THÂU TÓM THIÊN HẠ",
-        "motif": "slash",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tướng khác của phe ta tăng 60 sĩ khí, nhận hiệu quả [Điên Cuồng], duy trì 3 lượt, lân lượt có xác suất 50% khiến toàn phe địch bị [Vô Lực], [Do Dự] (Khi chiến đấu với người chơi khác, hiệu quả [Do Dự] đổi thành [Tê Liệt], khi bắt đầu lượt có xác suất bị Hỗn Loạn 1 lượt),",
       "wikiQuality": "Thái Sơ",
@@ -18751,7 +18751,7 @@
         "flash": "gold_soft",
         "text": "BẠCH Y PHÁ LÃNG",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Chiến+Kế] Tấn công 500 sĩ khí, khiến địch trên hàng ngang phía sau chịu 14000% Pháp Công và Mưu Công,. Nếu mục tiêu có [Thiên Hỏa], sẽ bị [Vỡ Trận] (Sát thương và trị liệu đều là 1 điểm, duy trì 1 lượt) và [Tỏa Binh] (Mục tiêu không thể tăng binh lực, duy trì 2 lượt), bản thân v",
       "wikiQuality": "Thái Sơ",
@@ -18891,7 +18891,7 @@
         "flash": "gold_soft",
         "text": "CHÙY KÍCH",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Thường] Gây cho 1 kẻ địch 500% sát thương vật lý, 70% khiến mục tiêu bị [Hỗn Loạn]. Bản thân nhận trị liệu (Mức trị liệu bằng 20% Vật Công). Bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thần",
@@ -18944,10 +18944,10 @@
       "power": 1.65,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue",
+        "flash": "gold_soft",
         "text": "LOẠN THẾ MƯU",
-        "motif": "arcane",
-        "style": "aoe_nova"
+        "motif": "buff",
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Sát thương Mưu Công toàn phe địch 3 lần, giảm Mưu Phòng toàn phe địch 2 lượt, hồi lính toàn phe ta, bản thân hồi 50 +{10} sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -18979,7 +18979,7 @@
         "flash": "gold_soft",
         "text": "NGẠO NGHỄ THIÊN HẠ",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 3 lần sát thương, lần lượt bằng 4000%, 300%, 300% Mưu Công, khiến Mưu Phòng của mục tiêu giảm 30%, duy trì 2 lượt. Trị liệu toàn phe ta (Mức trị liệu bằng 20% Mưu Công). Bản thân hồi 50+{10} sĩ khí.",
       "wikiQuality": "Thượng Cổ",
@@ -19011,7 +19011,7 @@
         "flash": "gold_soft",
         "text": "CƯ CÔNG NGẠO THƯỢN",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Giảm 30% Mưu Phòng toàn phe địch, duy trì 2 lượt, sau đó gây 3 lần tấn công lần lượt bằng 10000%, 5000%, 5000% Mưu Công cho kẻ địch, trị liệu bản thân và toàn phe ta 1 lần (Trị liệu bằng 20% Mưu Công), bản thân hồi 50+{12} sĩ khí.",
       "wikiQuality": "Thái Sơ",
@@ -19043,7 +19043,7 @@
         "flash": "gold_soft",
         "text": "GIẢ CHIẾU CỬ BINH",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Giảm 30% Mưu Phòng toàn phe địch, duy trì 2 lượt, sau đó gây 4 lần tấn công, lần lượt bằng 10000%, 10000%, 10000%, 10000% Mưu Công, trị liệu toàn phe ta 2 lần (Mức trị liệu bằng 20% Mưu Công). Bản thân hồi 50+{14} sĩ khí.",
       "wikiQuality": "Thần Hoàng",
@@ -19075,7 +19075,7 @@
         "flash": "gold_soft",
         "text": "ĐỘ CHÚNG SINH",
         "motif": "heal",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Toàn phe ta (nhận trị liệu bằng 35% Mưu Công), tất cả tân công của đơn vị lính nhiều nhất phe ta tăng 20%, không thể giải trừ, duy trì 2 lượt, đơn vị lính ít nhất phe ta nhận [Hộ Thuẫn], duy trì 2 lượt, bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thượng Cổ",
@@ -19114,7 +19114,7 @@
         "flash": "gold_soft",
         "text": "KÍNH ÁNH SƠN HÀ",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Trị liệu toàn phe ta (Mức trị liệu bằng 20% Mưu Công), trị liệu thêm 1 lần cho hàng trước phe ta, khiến đồng đội lính nhiều nhất tăng 40% tất cả tấn công, không thể giải trừ, duy trì 2 lượt, đồng đội lính ít nhất nhận [Hộ Thuẫn], duy trì 2 lượt, bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thái Sơ",
@@ -19193,7 +19193,7 @@
         "flash": "gold_soft",
         "text": "CAM VŨ",
         "motif": "heal",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Trị liệu toàn phe ta (Mức trị liệu bằng 54% Mưu Công). Bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thần",
@@ -19225,7 +19225,7 @@
         "flash": "gold_soft",
         "text": "NHÂN Y",
         "motif": "heal",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Trị liệu đồng đội lính ít nhất (Mức trị liệu bằng 80% Mưu Công), giúp mục tiêu hồi 20+{2} sĩ khí. Mục tiêu nhận [Tử Thủ] (Khi chiến đấu với người chơi khác, phòng thủ tăng 10%), duy trì 3 lượt. Trị liệu toàn phe ta (Mức trị liệu bằng 55% Mưu Công). Bản thân hồi 145 sĩ k",
       "wikiQuality": "Truyền thuyết",
@@ -19264,7 +19264,7 @@
         "flash": "gold_soft",
         "text": "THÁNH THỦ HỒI XUÂN",
         "motif": "heal",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Trị liệu đồng đội lính ít nhất (Mức trị liệu bằng 80% Mưu Công), hồi 20+{4} sĩ khí, khiến mục tiêu nhận [Tử Thủ] (Khi chiến đấu với người chơi khác, phòng thủ tăng 10%), duy trì 3 lượt. Khiến mục tiêu nhận 2 tầng [Hồi Xuân], duy trì 2 lượt. Trị liệu toàn phe ta (Mức trị",
       "wikiQuality": "Thượng Cổ",
@@ -19303,7 +19303,7 @@
         "flash": "gold_soft",
         "text": "THÁNH THỦ TỀ THẾ",
         "motif": "heal",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Trị liệu đồng đội lính ít nhất (Mức trị liệu bằng 20% Mưu Công), hồi 20+{4} sĩ khí, khiến mục tiêu nhận [Tử Thủ], nhận 2 tầng [Hồi Xuân], duy trì 3 lượt. Trị liệu toàn phe ta 2 lần (Mức trị liệu bằng 20% Mưu Công). Bản thân hồi 145 sĩ khí.",
       "wikiQuality": "Thái Sơ",

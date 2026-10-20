@@ -1,6 +1,9 @@
 import { createReadStream, cpSync, existsSync, statSync } from "node:fs";
 import { extname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { defineConfig, type Plugin } from "vite";
+
+const rootDir = fileURLToPath(new URL(".", import.meta.url));
 
 /** Script cũ (BE, UI) nạp bằng <script> thường, giữ nguyên đường dẫn trong bản build. */
 const LEGACY_DIRS = ["js", "data", "assets", "css"];
@@ -78,12 +81,21 @@ function staticDirs(): Plugin {
 export default defineConfig({
   base: "./",
   publicDir: false,
-  optimizeDeps: { entries: ["index.html"] },
+  optimizeDeps: {
+    entries: ["index.html", "preview-skill-3d.html", "preview-combat.html"],
+  },
   server: { port: 5173, open: true },
   build: {
     target: "es2022",
     assetsDir: "_app",
     chunkSizeWarningLimit: 1500,
+    rollupOptions: {
+      input: {
+        main: resolve(rootDir, "index.html"),
+        previewSkill3d: resolve(rootDir, "preview-skill-3d.html"),
+        previewCombat: resolve(rootDir, "preview-combat.html"),
+      },
+    },
   },
   plugins: [staticDirs(), copyLegacy()],
 });

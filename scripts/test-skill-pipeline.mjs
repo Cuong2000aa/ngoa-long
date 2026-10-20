@@ -94,6 +94,32 @@ for (const s of Object.values(skills)) {
 }
 ok(shieldTotal === 0 || shieldOk === shieldTotal, `chiêu tên Thiết Bích → motif shield (${shieldOk}/${shieldTotal})`);
 
+// —— Hỗ trợ / Thiên Mệnh: buff vàng, không slash thép ——
+const tm = skills.thien_menh;
+ok(!!tm, "có skill thien_menh");
+if (tm) {
+  ok(
+    tm.fx?.motif === "buff" || tm.fx?.motif === "heal",
+    `thien_menh motif buff/heal (got ${tm.fx?.motif})`
+  );
+  ok(
+    ["gold_soft", "gold", "pure", "bagua"].includes(tm.fx?.flash),
+    `thien_menh flash vàng (got ${tm.fx?.flash})`
+  );
+  ok(tm.fx?.motif !== "slash" && tm.fx?.flash !== "steel", "thien_menh không slash/steel");
+  ok(
+    tm.pattern === "ally_all" || tm.pattern === "self",
+    `thien_menh pattern ally (got ${tm.pattern})`
+  );
+}
+let hoTroSlash = 0;
+for (const s of Object.values(skills)) {
+  const desc = s.desc || "";
+  if (!/\[Hỗ\s*Trợ\]/i.test(desc)) continue;
+  if (s.fx?.motif === "slash" || s.fx?.flash === "steel") hoTroSlash++;
+}
+ok(hoTroSlash === 0, `[Hỗ Trợ] không còn slash/steel (got ${hoTroSlash})`);
+
 // —— Phase 2: combatProfiles ——
 ok(Object.keys(profiles).length >= 200, `combatProfiles >= 200 (got ${Object.keys(profiles).length})`);
 ok(!!profiles.hoi_tam?.atkMul, "profile hoi_tam có atkMul");
@@ -125,6 +151,8 @@ ok(!!Design, "NLSkillDesign loaded");
 ok(Design.resolveFxKey({ flash: "steel", motif: "rush" }) === "rush", "rush thắng steel");
 ok(Design.resolveFxKey({ flash: "gold_soft", motif: "shield" }) === "shield", "shield wins");
 ok(Design.resolveFxKey({ flash: "steel", motif: "wolf" }) === "wolf", "wolf wins");
+const buffKey = Design.resolveFxKey({ flash: "gold_soft", motif: "buff" });
+ok(buffKey === "gold_soft" || buffKey === "buff", `buff/gold_soft resolve (got ${buffKey})`);
 
 const motifCount = {};
 for (const s of Object.values(skills)) {

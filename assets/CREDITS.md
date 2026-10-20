@@ -25,7 +25,9 @@
 - **StarsteelGaming Spell Effects** — CC0  
   → `assets/fx/skill/starsteel/`
 - **Fire Dragon Roller** by Nineball — CC0  
-  → `assets/fx/dragon/`
+  → `assets/fx/dragon/` (legacy pixel; Hỏa Long 3D dùng soft spirit)
+- **Dragon spirit soft glow** — generated (`scripts/gen-dragon-spirit-fx.mjs`)  
+  → `assets/fx/dragon_spirit/` (256px soft silhouettes for hồn rồng 3D)
 - **Whirlwind for effects** by n4 — CC0  
   https://opengameart.org/content/whirlwind-for-effects  
   → `assets/fx/whirlwind/`
@@ -35,6 +37,10 @@
 - **SpritePilot Combat Effects** (claw slash, shockwave, ground slam, critical hit) — CC0  
   https://spritepilot.com/free-game-assets/combat  
   → `assets/fx/tiger/` (Hổ Khiếu / motif tiger: roar + claw + slam)
+- **Pixel Ability FX Forge** (GamingToolset) — **Apache-2.0**  
+  https://github.com/GamingToolset/pixel-ability-fx-forge  
+  Generate: `node scripts/forge-generate-fx.mjs` → `assets/fx/forge/{frost,storm,ember,…}_*/`  
+  Used as primary sheets for thunder / water / fire / poison / arcane / shield / buff flashes.
 
 Flash map: `assets/fx/FLASH_MAP.md` · runtime `src/battle/battleVfx.ts`  
 Buff/debuff: wiki [Hiệu ứng](https://ngoalong.vnggames.com/ngoa-long-wiki/hieu-ung) → `data/status-effects.json`  

@@ -1,0 +1,15 @@
+{
+  "id": "arcane_burst",
+  "seed": 31009,
+  "family": "burst",
+  "element": "arcane",
+  "power": "standard",
+  "name": "Astral Detonation",
+  "formation": "twin",
+  "looping": false,
+  "duration": 1.85,
+  "frames": 12,
+  "size": 128,
+  "source": "pixel-ability-fx-forge",
+  "license": "Apache-2.0"
+}

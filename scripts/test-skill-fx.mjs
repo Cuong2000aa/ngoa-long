@@ -138,10 +138,41 @@ ok(br.includes("qualityToScale"), "BattleRenderer scale theo phẩm");
 ok(br.includes("pattern?:"), "SkillFlashOpts có pattern");
 ok(br.includes("clearFx"), "BattleRenderer.clearFx");
 ok(br.includes("pausedForShot"), "BattleRenderer.pausedForShot");
+ok(br.includes("playSkillFx3d"), "BattleRenderer gọi playSkillFx3d (polished 3D)");
+ok(br.includes("tickBattleVfx3d"), "BattleRenderer tick 3D VFX");
+ok(br.includes("skillId?:"), "SkillFlashOpts có skillId");
+ok(br.includes("usesPolishedSteelSlash"), "BattleRenderer gate polished theo skillId");
+ok(br.includes("usesPolishedDragon"), "BattleRenderer gate polished dragon");
+ok(br.includes("usesPolishedTiger"), "BattleRenderer gate polished tiger");
+ok(br.includes("usesPolishedRush"), "BattleRenderer gate polished rush");
+
+// —— skillFxLibrary ——
+const libPath = path.join(ROOT, "src/battle/skillFxLibrary.ts");
+ok(fs.existsSync(libPath), "skillFxLibrary.ts tồn tại");
+const libSrc = fs.readFileSync(libPath, "utf8");
+ok(libSrc.includes("spawnWeaponTrail"), "library có spawnWeaponTrail");
+ok(libSrc.includes("spawnGroundSigil"), "library có spawnGroundSigil");
+ok(libSrc.includes("spawnSparkDebris"), "library có spawnSparkDebris");
+ok(libSrc.includes("playSteelSlashSkill"), "library có playSteelSlashSkill");
+ok(libSrc.includes("playDragonBreathSkill"), "library có playDragonBreathSkill");
+ok(libSrc.includes("playTigerRoarSkill"), "library có playTigerRoarSkill");
+ok(libSrc.includes("playRushAssaultSkill"), "library có playRushAssaultSkill");
+ok(libSrc.includes("spawnFlyingFx"), "library dùng spawnFlyingFx cho rồng bay");
+ok(libSrc.includes('basic_strike'), "library whitelist basic_strike");
+ok(libSrc.includes("basic_strike_chien"), "library whitelist basic_strike_chien (phẩm Chiến)");
+ok(libSrc.includes("hoa_long"), "library whitelist hoa_long (Hỏa Long)");
+ok(libSrc.includes("ho_khieu"), "library whitelist ho_khieu (Hổ Khiếu)");
+ok(libSrc.includes("dot_kich"), "library whitelist dot_kich (Đột Kích)");
+ok(vfxSrc.includes("spawnFxSheet"), "battleVfx export spawnFxSheet cho library");
+ok(vfxSrc.includes("export function spawnFlyingFx"), "battleVfx export spawnFlyingFx");
+const libAssets = [...new Set((libSrc.match(assetRe) || []).map((s) => s.slice(1, -1)))];
+const libMissing = libAssets.filter((rel) => !fs.existsSync(path.join(ROOT, rel)));
+ok(libMissing.length === 0, `skillFxLibrary assets tồn tại (missing: ${libMissing.slice(0, 5).join(", ") || "∅"})`);
 
 // —— combat-ui wave flag ——
 const ui = fs.readFileSync(path.join(ROOT, "js/combat/combat-ui.js"), "utf8");
 ok(ui.includes("wave: true") || ui.includes("wave:!0") || ui.includes('{ wave: true }'), "combat-ui skill_wave truyền wave:true");
+ok(ui.includes("skillId: ev.skillId"), "combat-ui truyền skillId vào skillFlash");
 
 // —— Mọi BY_FLASH có case auraRecipe hoặc nhóm default vật lý ——
 const recipeCases = new Set([...vfxSrc.matchAll(/case\s+"([^"]+)":/g)].map((m) => m[1]));

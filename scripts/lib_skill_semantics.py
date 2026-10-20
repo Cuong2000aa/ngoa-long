@@ -409,6 +409,14 @@ def effects_from_desc(desc: str, name_map: dict[str, dict] | None = None) -> lis
 
 def infer_pattern(desc: str) -> str:
     d = (desc or "").lower()
+    # [Hỗ Trợ] không có % sát thương → ưu tiên ally_all (VFX bless), kể cả có «giảm sĩ khí địch»
+    if re.search(r"\[hỗ\s*trợ\]", d) and not re.search(
+        r"\d+\s*%\s*(pháp|vật|mưu)\s*công|chịu\s+\d+\s*%", d
+    ):
+        if re.search(r"bản\s*thân", d) and not re.search(r"phe\s*ta|tướng khác|đồng\s*đội", d):
+            return "self"
+        if re.search(r"phe\s*ta|tướng khác|đồng\s*đội|toàn\s*quân", d):
+            return "ally_all"
     if re.search(r"toàn\s*(phe\s*)?(địch|quân địch)|tất cả.*(địch|quân)", d):
         return "all"
     # hàng dọc trước hàng trước (desc hay nhắc thêm «hàng trước/sau» phụ)
@@ -437,6 +445,45 @@ def parse_hits(desc: str) -> int:
     return 1
 
 
+def _is_support_skill(name: str, desc: str) -> bool:
+    """Chiêu hỗ trợ / sĩ khí — VFX buff vàng, không slash thép."""
+    d = desc or ""
+    dl = d.lower()
+    n = (name or "").lower()
+    if re.search(r"\[Hỗ\s*Trợ\]", d, re.I):
+        return True
+    # Sát thương rõ (Hỏa Long Tiễn… hồi sĩ khí phụ) — không coi là support
+    if re.search(
+        r"\d+\s*%\s*(pháp|vật|mưu)\s*công|"
+        r"\d+\s*%\s*sát\s*thương|"
+        r"chịu\s+\d+\s+lần|"
+        r"chịu\s+\d+\s*%",
+        dl,
+    ):
+        return False
+    # Tên mệnh / lệnh / ca — hỗ trợ sĩ khí điển hình
+    if re.search(
+        r"Thiên Mệnh|Thiên Chinh|Quân Lâm|Thiên Hạ Chia Ba|Tụng Ca|Kiêu Hùng|"
+        r"Loạn Thế Hào Kiệt|Thanh Tâm|Thanh Nhã|Thâu Tóm Thiên Hạ|Khuynh Quốc|"
+        r"Ngủ Say|Xua Đuổi|Lợi Nhẫn",
+        name or "",
+        re.I,
+    ):
+        return True
+    # Chủ yếu hồi/giảm sĩ khí, không có % công / sát thương
+    if re.search(r"sĩ\s*khí", dl) and not re.search(
+        r"\d+\s*%\s*(pháp|vật|mưu)\s*công|\d+\s*%\s*sát\s*thương|chịu\s+\d+",
+        dl,
+    ):
+        if re.search(r"hồi|tăng|giảm", dl) and (
+            "phe ta" in dl or "đồng đội" in dl or "tướng khác" in dl
+        ):
+            return True
+    if any(k in n for k in ("nhân đức", "cam vũ", "tụng ca", "thanh tâm")):
+        return True
+    return False
+
+
 def infer_motif_flash(name: str, desc: str, pattern: str | None = None) -> tuple[str, str]:
     """Return (motif, flash) — bám FLASH_MAP + rule QA test-skill-fx (tên chiêu)."""
     raw_name = name or ""
@@ -445,7 +492,7 @@ def infer_motif_flash(name: str, desc: str, pattern: str | None = None) -> tuple
     blob = n + " " + d
     pat = pattern or infer_pattern(desc)
 
-    # Rule cứng theo TÊN — mở rộng full catalog (QA + audit mọi chiêu)
+    # Rule cứng theo TÊN trước — tránh support/gold_soft nuốt Lạc Thủy / Hỏa Long Tiễn
     named_rules: list[tuple[re.Pattern[str], str, str]] = [
         (re.compile(r"Giáp|Thiết Bích|Hộ Thể|Thủ Hộ|Lấy Thân Làm Giáp|Hãn Vệ", re.I), "shield", "shield"),
         (
@@ -572,6 +619,14 @@ def infer_motif_flash(name: str, desc: str, pattern: str | None = None) -> tuple
         if cre.search(raw_name):
             return motif, flash
 
+    # Hỗ trợ / sĩ khí — sau named (Thiên Mệnh…), trước slash mặc định
+    if _is_support_skill(raw_name, desc or ""):
+        if re.search(r"trị liệu|hồi quân|hồi máu|cam vũ|nhân đức|hồi xuân", d):
+            return "heal", "gold_soft"
+        if re.search(r"thiết bích|hộ thể|giáp|thuẫn|kiên thủ", n + " " + d):
+            return "shield", "shield"
+        return "buff", "gold_soft"
+
     # Desc / keyword bổ sung
     if any(k in n for k in ("thiết bích", "hộ thể", "hộ thuẫn", "kiên thủ", "ngự giáp")) or (
         "thiết bích" in d and pat in ("self", "ally_all")
@@ -598,7 +653,7 @@ def infer_motif_flash(name: str, desc: str, pattern: str | None = None) -> tuple
         return "fire", "fire_rain"
     if any(k in blob for k in ("lôi", "sét", "điện", "sấm")):
         return "thunder", "thunder"
-    if any(k in n for k in ("thủy", "hải", " vũ", "vũ ")):
+    if any(k in n for k in ("thủy", "hải")) or re.search(r"(?:^|[\s·])vũ(?:[\s·]|$)", n):
         return "water", "blue_water"
     if any(k in blob for k in ("độc", "trúng độc", "kịch độc", "hủ thực")):
         return "poison", "green_poison"
@@ -623,9 +678,66 @@ def infer_motif_flash(name: str, desc: str, pattern: str | None = None) -> tuple
 
     if pat in ("self", "ally_all"):
         return "buff", "gold_soft"
-    if "[kế sách]" in d or "mưu công" in d or "kỳ mưu" in n or "kế" in n:
+
+    # Pháp / mưu — không dùng slash thép (tránh giống đánh thường)
+    if "[kế sách]" in d or "mưu công" in d:
         return "arcane", "blue"
-    return "slash", "steel"
+    if "[c.pháp]" in d or ("pháp công" in d and "vật công" not in d):
+        if any(k in blob for k in ("hỏa", "viêm", "lửa")):
+            return "fire", "fire_rain"
+        if any(k in blob for k in ("lôi", "sét", "điện")):
+            return "thunder", "thunder"
+        if any(k in blob for k in ("thủy", "hải", "vũ")):
+            return "water", "blue_water"
+        return "arcane", "blue"
+
+    # Vật lý còn lại — tách motif/flash theo tên + pattern (đừng mọi chiêu = steel AA)
+    return _physical_motif_flash(raw_name, desc or "", pat)
+
+
+def _physical_motif_flash(name: str, desc: str, pat: str) -> tuple[str, str]:
+    """Chiêu vật lý: vẫn có slash nhưng flash/style khác nhau — không trùng đánh thường trắng."""
+    n = (name or "").lower()
+    d = (desc or "").lower()
+    blob = n + " " + d
+
+    # basic_strike* giữ steel (đánh thường / mãnh kích)
+    if n.startswith("mãnh kích") or "basic_strike" in n.replace(" ", "_"):
+        return "slash", "steel"
+
+    if re.search(r"nguyệt|ám |yểm|huyền|u ám", blob):
+        return "shadow", "purple"
+    if re.search(r"nộ|bạo|huyết|sát thần|phá quân|phá địch", blob):
+        return "slash", "crimson"
+    if re.search(r"võ thánh|bá vương|uy chấn|thiên hạ vô|vạn người", blob):
+        return "slash", "gold_red"
+    if re.search(r"truy|liệt|xuyên|thâu tâm|bách bộ|thâu", blob):
+        return "pierce", "yellow"
+    if re.search(r"tinh|sao|thiên tinh|sao sáng|địa liệp", blob):
+        return "thunder", "thunder"
+    if re.search(r"gầm|hống|hống thét|bào hao", blob):
+        return "tiger", "tiger"
+    if re.search(r"hoành|quét|tảo", blob):
+        return "slash", "brown"
+    if re.search(r"phụng|loan|điểu", blob):
+        return "slash", "gold_red"
+
+    # Pattern lớn → shockwave / pierce cảm giác khác AA single
+    if pat == "all":
+        return "slash", "brown"
+    if pat in ("column", "front_row"):
+        return "pierce", "steel"
+    if pat == "row":
+        return "slash", "iron"
+
+    # Hash tên → 4 biến thể flash (tránh 100 chiêu cùng steel)
+    h = sum(ord(c) for c in (name or "x")) % 4
+    return (
+        ("slash", "steel"),
+        ("slash", "iron"),
+        ("slash", "brown"),
+        ("slash", "crimson"),
+    )[h]
 
 
 def infer_combat_profile(entry: dict) -> dict:

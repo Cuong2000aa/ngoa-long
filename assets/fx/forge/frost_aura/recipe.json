@@ -1,0 +1,15 @@
+{
+  "id": "frost_aura",
+  "seed": 32002,
+  "family": "aura",
+  "element": "frost",
+  "power": "restrained",
+  "name": "Glacial Ascension",
+  "formation": "petals",
+  "looping": true,
+  "duration": 3.203402028325945,
+  "frames": 12,
+  "size": 128,
+  "source": "pixel-ability-fx-forge",
+  "license": "Apache-2.0"
+}

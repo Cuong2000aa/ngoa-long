@@ -1,21 +1,25 @@
 import * as THREE from "three";
 
 /**
- * VFX chiến trường — CHỈ dùng sprite CC0 (Kenney / Cethiel / Starsteel / SpritePilot).
- * Không tự vẽ geometry ring/beam.
+ * VFX chiến trường — sprite only (không geometry procedural).
  *
  * Nguồn:
  * - Kenney Particle Pack → assets/fx/particles/
  * - Cethiel Arcane / Earth / Fire-Wrath / Slash / Blood / Water / Pure
- * - Starsteel Spell Effects → assets/fx/skill/starsteel/
+ * - Starsteel / SpritePilot / Nineball dragon…
+ * - **Pixel Ability FX Forge** (Apache-2.0) → assets/fx/forge/* — generate:
+ *   `node scripts/forge-generate-fx.mjs`
  *
- * Flash → sheet (wiki bậc Thường→Thần Hoàng):
- * - Thường / physical cut: slashClassic (Cethiel) + Kenney slash fallback
- * - Chiến (blue/cyan/steel): slashBlue / water / light
- * - Thần (purple/gold_red): slashPurple / pure / arcane
- * - Truyền thuyết (crimson/thunder): blood / thundersphere / fire-wrath
- * - Thần Hoàng (fire_rain/bagua): fireWrath + arcane + pure
+ * Flash → sheet: ưu tiên forge pack theo element, fallback Kenney/Cethiel.
  */
+
+/** 12-frame packs từ Pixel Ability FX Forge */
+function forgePack(id: string): string[] {
+  return Array.from({ length: 12 }, (_, i) => {
+    const n = String(i + 1).padStart(2, "0");
+    return `assets/fx/forge/${id}/frame_${n}.png`;
+  });
+}
 
 const TEX = {
   slash: [
@@ -249,6 +253,19 @@ const TEX = {
     "assets/fx/particles/light_02.png",
     "assets/fx/particles/light_03.png",
   ],
+  /** Pixel Ability FX Forge — element packs (scripts/forge-generate-fx.mjs) */
+  forgeFrost: forgePack("frost_burst"),
+  forgeStorm: forgePack("storm_burst"),
+  forgeEmber: forgePack("ember_burst"),
+  forgeShadow: forgePack("shadow_burst"),
+  forgeBlood: forgePack("blood_burst"),
+  forgeEarth: forgePack("earth_burst"),
+  forgeNature: forgePack("nature_burst"),
+  forgeTide: forgePack("tide_burst"),
+  forgeArcane: forgePack("arcane_burst"),
+  forgeRadiance: forgePack("radiance_aura"),
+  forgeFrostAura: forgePack("frost_aura"),
+  forgeWard: forgePack("ward_barrier"),
 };
 
 const cache = new Map<string, THREE.Texture>();
@@ -372,6 +389,10 @@ type FxSprite = THREE.Sprite & {
     flightFrom?: THREE.Vector3;
     flightTo?: THREE.Vector3;
     baseSize?: number;
+    /** Độ cao cung bay (mặc định 0.35) */
+    flightArc?: number;
+    /** Lệch ngang kiểu thân rắn (sin) */
+    flightSide?: number;
   };
 };
 
@@ -416,6 +437,27 @@ function disposeLater(obj: THREE.Object3D, ms: number, host: THREE.Object3D): vo
       }
     });
   }, ms);
+}
+
+/**
+ * Public sheet spawn — skillFxLibrary + choreography dùng chung (CC0 sprites only).
+ * Giữ cùng prepareFxTexture / CustomBlending / ACTIVE_FX cleanup.
+ */
+export async function spawnFxSheet(
+  scene: THREE.Scene,
+  at: THREE.Vector3,
+  frames: string[],
+  opts: {
+    size?: number;
+    life?: number;
+    color?: number;
+    y?: number;
+    yMode?: "add" | "abs";
+    /** Gắn vào tướng — FX đi theo lunge/root, không đứng yên giữa sân */
+    parent?: THREE.Object3D;
+  } = {}
+): Promise<void> {
+  return playSheet(scene, at, frames, opts);
 }
 
 async function playSheet(
@@ -500,39 +542,46 @@ export function resolveFxKey(flash?: string | null, motif?: string | null): stri
 function sheetForFlash(flash: string): string[] {
   // Hổ — gầm (shockwave); claw dùng overlay riêng
   if (flash === "tiger") return TEX.tigerRoar.length ? TEX.tigerRoar : TEX.slashFire;
-  // Hỏa / ultimate
-  if (flash === "fire_rain" || flash === "red_fire") return TEX.fireWrath;
-  if (flash === "fire_green") return TEX.poison;
-  if (flash === "fire" || flash === "orange") return TEX.fireballSpell;
+  // Hỏa / ultimate — forge ember + fire-wrath
+  if (flash === "fire_rain" || flash === "red_fire")
+    return TEX.forgeEmber.length ? TEX.forgeEmber : TEX.fireWrath;
+  if (flash === "fire_green") return TEX.forgeNature.length ? TEX.forgeNature : TEX.poison;
+  if (flash === "fire" || flash === "orange")
+    return TEX.forgeEmber.length ? TEX.forgeEmber : TEX.fireballSpell;
   // Sét / kim quang
-  if (flash === "thunder") return TEX.thunderSpell;
+  if (flash === "thunder") return TEX.forgeStorm.length ? TEX.forgeStorm : TEX.thunderSpell;
   if (flash === "gold" || flash === "gold_soft" || flash === "gold_pierce" || flash === "yellow" || flash === "yellow_cult" || flash === "pure")
-    return TEX.pure;
+    return TEX.forgeRadiance.length ? TEX.forgeRadiance : TEX.pure;
   // Lốc / gió
   if (flash === "wind" || flash === "whirlwind")
     return TEX.whirlwind.length ? TEX.whirlwind : TEX.water;
-  // Thủy / mưu lục-lam
+  // Thủy / băng — forge tide / frost
   if (flash === "blue_water" || flash === "cyan" || flash === "teal" || flash === "white_blue")
-    return TEX.water.length ? TEX.water : TEX.kenneyAura;
+    return TEX.forgeTide.length ? TEX.forgeTide : TEX.water.length ? TEX.water : TEX.kenneyAura;
+  if (flash === "frost" || flash === "ice") return TEX.forgeFrost.length ? TEX.forgeFrost : TEX.forgeFrostAura;
   // Sói
   if (flash === "wolf") return TEX.wolf.length ? TEX.wolf : TEX.blood;
   // Huyết / son
   if (flash === "crimson" || flash === "dark_red" || flash === "red" || flash === "gold_red")
-    return TEX.blood;
+    return TEX.forgeBlood.length ? TEX.forgeBlood : TEX.blood;
   // Độc / rắn / rồng (wiki chiêu cao)
-  if (flash === "green_poison" || flash === "poison") return TEX.poison;
+  if (flash === "green_poison" || flash === "poison")
+    return TEX.forgeNature.length ? TEX.forgeNature : TEX.poison;
   if (flash === "snake") return TEX.snake;
   if (flash === "dragon") return TEX.dragon;
-  // Bát quái / thần / ám
-  if (flash === "bagua" || flash === "purple" || flash === "violet") return TEX.magic;
+  // Bát quái / thần / ám — forge arcane / shadow
+  if (flash === "bagua") return TEX.forgeArcane.length ? TEX.forgeArcane : TEX.magic;
+  if (flash === "purple" || flash === "violet")
+    return TEX.forgeShadow.length ? TEX.forgeShadow : TEX.magic;
   // Kỵ xung kích
   if (flash === "charge") return TEX.whirlwind.length ? TEX.whirlwind : TEX.earth;
   if (flash === "rush") return TEX.slashClassic.length ? TEX.slashClassic : TEX.slash;
-  if (flash === "shield") return TEX.circle.length ? TEX.circle : TEX.pure;
-  // Vật lý / thép
-  if (flash === "white" || flash === "steel" || flash === "iron" || flash === "silver" || flash === "chain" || flash === "brown")
+  if (flash === "shield") return TEX.forgeWard.length ? TEX.forgeWard : TEX.circle.length ? TEX.circle : TEX.pure;
+  // Vật lý / thép / đất
+  if (flash === "brown") return TEX.forgeEarth.length ? TEX.forgeEarth : TEX.slashClassic;
+  if (flash === "white" || flash === "steel" || flash === "iron" || flash === "silver" || flash === "chain")
     return TEX.slashClassic;
-  if (flash === "blue") return TEX.slashBlue;
+  if (flash === "blue") return TEX.forgeArcane.length ? TEX.forgeArcane : TEX.slashBlue;
   return TEX.kenneyAura;
 }
 
@@ -1091,6 +1140,51 @@ function projectileFrames(flash: string): string[] {
   return sheetForFlash(flash);
 }
 
+/**
+ * Sprite bay từ→đến, animate frames — dùng cho rồng / đạn pháp (skillFxLibrary).
+ */
+export function spawnFlyingFx(
+  scene: THREE.Scene,
+  from: THREE.Vector3,
+  to: THREE.Vector3,
+  frames: string[],
+  opts: {
+    size?: number;
+    life?: number;
+    color?: number;
+    arc?: number;
+    side?: number;
+    frameMs?: number;
+    now?: number;
+  } = {}
+): void {
+  if (!frames.length) return;
+  const size = opts.size ?? 1.2;
+  const life = opts.life ?? 480;
+  const now = opts.now ?? performance.now();
+  const tint = opts.color ?? 0xffffff;
+  const yFrom = Math.max(from.y, 0.7);
+  const yTo = Math.max(to.y, 0.65);
+  void loadTex(frames[0]).then((tex) => {
+    const spr = makeSprite(tex, size, tint) as FxSprite;
+    spr.position.set(from.x, yFrom, from.z);
+    spr.userData.born = now;
+    spr.userData.life = life;
+    spr.userData.frames = frames;
+    spr.userData.frameI = 0;
+    spr.userData.nextFrame = now + (opts.frameMs ?? Math.max(40, life / frames.length));
+    spr.userData.flightFrom = new THREE.Vector3(from.x, yFrom, from.z);
+    spr.userData.flightTo = new THREE.Vector3(to.x, yTo, to.z);
+    spr.userData.baseSize = size;
+    spr.userData.flightArc = opts.arc ?? 0.35;
+    spr.userData.flightSide = opts.side ?? 0;
+    spr.renderOrder = 48;
+    scene.add(spr);
+    ACTIVE_FX.add(spr);
+    disposeLater(spr, life + 60, scene);
+  });
+}
+
 export function spawnSkillProjectile(
   scene: THREE.Scene,
   from: THREE.Vector3,
@@ -1106,21 +1200,13 @@ export function spawnSkillProjectile(
     flash === "wolf" ||
     flash === "fire_rain" ||
     flash === "bagua";
-  void loadTex(frames[0]).then((tex) => {
-    const spr = makeSprite(tex, big ? 1.15 : 0.95, tint) as FxSprite;
-    spr.position.copy(from);
-    spr.position.y = 1.05;
-    spr.userData.born = now;
-    spr.userData.life = 420;
-    spr.userData.frames = frames;
-    spr.userData.frameI = 0;
-    spr.userData.nextFrame = now + 70;
-    spr.userData.flightFrom = from.clone().setY(1.05);
-    spr.userData.flightTo = to.clone().setY(0.85);
-    spr.userData.baseSize = big ? 1.15 : 0.95;
-    scene.add(spr);
-    ACTIVE_FX.add(spr);
-    disposeLater(spr, 480, scene);
+  spawnFlyingFx(scene, from, to, frames, {
+    size: big ? (flash === "dragon" ? 2.2 : 1.15) : 0.95,
+    life: flash === "dragon" ? 520 : 420,
+    color: tint,
+    arc: flash === "dragon" ? 0.55 : 0.35,
+    frameMs: flash === "dragon" ? 48 : 70,
+    now,
   });
   const mid = from.clone().lerp(to, 0.45);
   void playSheet(scene, mid, ["assets/fx/particles/flare_01.png", "assets/fx/particles/trace_01.png"], {
@@ -1746,11 +1832,21 @@ export function tickBattleVfx(_scene: THREE.Scene, now: number, _dt: number): vo
       const t = Math.min(1, age / life);
       const e = t * t * (3 - 2 * t);
       spr.position.lerpVectors(from, to, e);
-      spr.position.y += Math.sin(t * Math.PI) * 0.35;
+      const arc = spr.userData.flightArc ?? 0.35;
+      spr.position.y += Math.sin(t * Math.PI) * arc;
+      const side = spr.userData.flightSide ?? 0;
+      if (side) {
+        // Lệch ngang vuông góc hướng bay — thân rắn uốn
+        const dx = to.x - from.x;
+        const dz = to.z - from.z;
+        const len = Math.hypot(dx, dz) || 1;
+        spr.position.x += (-dz / len) * Math.sin(t * Math.PI * 2) * side;
+        spr.position.z += (dx / len) * Math.sin(t * Math.PI * 2) * side;
+      }
       const base = spr.userData.baseSize || 0.95;
-      const pulse = base * (1 + 0.25 * Math.sin(t * Math.PI * 3));
+      const pulse = base * (1 + 0.18 * Math.sin(t * Math.PI * 2.5));
       spr.scale.set(pulse, pulse, 1);
-      mat.opacity = t < 0.85 ? 1 : Math.max(0, 1 - (t - 0.85) / 0.15);
+      mat.opacity = t < 0.88 ? 1 : Math.max(0, 1 - (t - 0.88) / 0.12);
     } else {
       mat.opacity = Math.max(0, 1 - age / life);
       const s = spr.scale.x * (1 + 0.012);

@@ -1,0 +1,15 @@
+{
+  "id": "ember_burst",
+  "seed": 31003,
+  "family": "burst",
+  "element": "fire",
+  "power": "standard",
+  "name": "Ember Break",
+  "formation": "crescent",
+  "looping": false,
+  "duration": 1.85,
+  "frames": 12,
+  "size": 128,
+  "source": "pixel-ability-fx-forge",
+  "license": "Apache-2.0"
+}

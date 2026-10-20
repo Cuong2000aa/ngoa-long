@@ -1,0 +1,15 @@
+{
+  "id": "earth_burst",
+  "seed": 31006,
+  "family": "burst",
+  "element": "earth",
+  "power": "standard",
+  "name": "Runic Detonation",
+  "formation": "spokes",
+  "looping": false,
+  "duration": 1.85,
+  "frames": 12,
+  "size": 128,
+  "source": "pixel-ability-fx-forge",
+  "license": "Apache-2.0"
+}
