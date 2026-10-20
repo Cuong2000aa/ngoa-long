@@ -170,15 +170,13 @@ try {
     }
   });
 
-  for (let i = 0; i < skills.length; i++) {
-    const s = skills[i];
-    const expect = FLASH_HEX[s.flash] || FLASH_HEX[s.motif] || null;
-
-    const info = await page.evaluate((spec) => {
-      const v = window.NLCombatUI.getView();
-      const br = v && v._battle3d;
-      if (!br) return { ok: false, reason: "no battle3d" };
-      if (typeof br.clearFx === "function") br.clearFx();
+  // Batch in-page: tránh round-trip Playwright mỗi 30ms × 590
+  const BATCH = 20;
+  for (let i = 0; i < skills.length; i += BATCH) {
+    const chunk = skills.slice(i, i + BATCH);
+    const chunkRows = await page.evaluate(async (payload) => {
+      const { specs, flashHex } = payload;
+      const br = window.NLCombatUI.getView()._battle3d;
       const allies = [];
       const foes = [];
       br.fighters.forEach((f, uid) => {
@@ -186,33 +184,8 @@ try {
         if (f.side === "ally") allies.push(uid);
         else foes.push(uid);
       });
-      if (!allies.length) return { ok: false, reason: "no allies" };
-      const caster = allies[0];
-      let targets = foes.slice();
-      const pat = (spec.pattern || "single").toLowerCase();
-      if (pat === "single") targets = foes.slice(0, 1);
-      if (pat === "self") targets = [caster];
-      if (pat === "ally_all") targets = allies.slice();
-      try {
-        // wave:true → emission ngay, phù hợp QA full catalog
-        br.skillFlash(caster, spec.flash, targets, {
-          pattern: spec.pattern,
-          quality: "purple",
-          motif: spec.motif || spec.flash,
-          wave: true,
-        });
-        return { ok: true, caster, targets: targets.length };
-      } catch (e) {
-        return { ok: false, reason: String(e && e.message ? e.message : e) };
-      }
-    }, s);
-
-    // Poll nhanh đến khi có FX (wave emission gần như tức thì)
-    let probe = { n: 0, colors: [] };
-    const t0 = Date.now();
-    while (Date.now() - t0 < 900) {
-      probe = await page.evaluate(() => {
-        const br = window.NLCombatUI.getView()._battle3d;
+      const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+      const probeFx = () => {
         const colors = [];
         let n = 0;
         br.scene.traverse((o) => {
@@ -222,32 +195,82 @@ try {
           }
         });
         return { n, colors };
-      });
-      if (probe.n > 0) break;
-      await page.waitForTimeout(30);
+      };
+      const out = [];
+      for (const spec of specs) {
+        const expect = flashHex[spec.flash] || flashHex[spec.motif] || null;
+        if (typeof br.clearFx === "function") br.clearFx();
+        if (!allies.length) {
+          out.push({
+            id: spec.id,
+            name: spec.name,
+            flash: spec.flash,
+            motif: spec.motif,
+            pattern: spec.pattern,
+            pass: false,
+            fxN: 0,
+            colors: [],
+            reason: "no allies",
+          });
+          continue;
+        }
+        const caster = allies[0];
+        let targets = foes.slice();
+        const pat = (spec.pattern || "single").toLowerCase();
+        if (pat === "single") targets = foes.slice(0, 1);
+        if (pat === "self") targets = [caster];
+        if (pat === "ally_all") targets = allies.slice();
+        let flashOk = true;
+        let reason = null;
+        try {
+          br.skillFlash(caster, spec.flash, targets, {
+            pattern: spec.pattern,
+            quality: "purple",
+            motif: spec.motif || spec.flash,
+            wave: true,
+          });
+        } catch (e) {
+          flashOk = false;
+          reason = String(e && e.message ? e.message : e);
+        }
+        let probe = { n: 0, colors: [] };
+        if (flashOk) {
+          const t0 = performance.now();
+          while (performance.now() - t0 < 400) {
+            probe = probeFx();
+            if (probe.n > 0) break;
+            await sleep(16);
+          }
+        }
+        const joined = (probe.colors || []).join(",").toLowerCase();
+        const colorOk = !expect || expect.some((h) => joined.includes(String(h).toLowerCase()));
+        const pass = !!(flashOk && probe.n > 0 && colorOk);
+        out.push({
+          id: spec.id,
+          name: spec.name,
+          flash: spec.flash,
+          motif: spec.motif,
+          pattern: spec.pattern,
+          pass,
+          fxN: probe.n,
+          colors: (probe.colors || []).slice(0, 8),
+          reason: !flashOk
+            ? reason
+            : !probe.n
+              ? "no fx-sprite"
+              : !colorOk
+                ? `color miss expect=${expect}`
+                : null,
+        });
+      }
+      return out;
+    }, { specs: chunk, flashHex: FLASH_HEX });
+
+    for (const row of chunkRows) {
+      if (!row.pass) failed++;
+      results.push(row);
     }
-
-    const joined = (probe.colors || []).join(",").toLowerCase();
-    const colorOk = !expect || expect.some((h) => joined.includes(String(h).toLowerCase()));
-    const pass = !!(info && info.ok && probe.n > 0 && colorOk);
-    if (!pass) failed++;
-
-    const row = {
-      id: s.id,
-      name: s.name,
-      flash: s.flash,
-      motif: s.motif,
-      pattern: s.pattern,
-      pass,
-      fxN: probe.n,
-      colors: (probe.colors || []).slice(0, 8),
-      reason: !info?.ok ? info?.reason : !probe.n ? "no fx-sprite" : !colorOk ? `color miss expect=${expect}` : null,
-    };
-    results.push(row);
-
-    if ((i + 1) % 50 === 0 || i === skills.length - 1) {
-      console.log(`… ${i + 1}/${skills.length} failed=${failed}`);
-    }
+    console.log(`… ${Math.min(i + BATCH, skills.length)}/${skills.length} failed=${failed}`);
   }
 
   // Pass 2: visual proof — 1 shot / motif (không chụp 590 lần)
@@ -278,32 +301,21 @@ try {
       if (pat === "single") targets = foes.slice(0, 1);
       if (pat === "self") targets = [caster];
       if (pat === "ally_all") targets = allies.slice();
-      // full timeline để FX đẹp hơn khi chụp
       br.skillFlash(caster, spec.flash, targets, {
         pattern: spec.pattern,
         quality: "purple",
         motif: spec.motif || spec.flash,
+        wave: true,
       });
     }, s);
-    const t0 = Date.now();
-    while (Date.now() - t0 < 2200) {
-      const n = await page.evaluate(() => {
-        let c = 0;
-        window.NLCombatUI.getView()._battle3d.scene.traverse((o) => {
-          if (o?.name === "fx-sprite") c++;
-        });
-        return c;
-      });
-      if (n > 0) break;
-      await page.waitForTimeout(40);
-    }
+    await page.waitForTimeout(220);
     await page.evaluate(() => {
       const br = window.NLCombatUI.getView()._battle3d;
       if (br.renderer && br.scene && br.camera) br.renderer.render(br.scene, br.camera);
     });
     const motifKey = s.motif || s.flash;
     const shot = resolve(outDir, `motif-${motifKey}.jpg`);
-    await page.screenshot({ path: shot, fullPage: false, type: "jpeg", quality: 70, timeout: 25000 });
+    await page.screenshot({ path: shot, fullPage: false, type: "jpeg", quality: 70, timeout: 20000 });
     motifShot.add(motifKey);
     console.log("SHOT", motifKey);
   }
