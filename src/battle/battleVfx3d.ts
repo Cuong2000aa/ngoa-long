@@ -290,10 +290,13 @@ function loadFxTex(url: string): Promise<THREE.Texture> {
       url,
       (tex) => {
         tex.colorSpace = THREE.SRGBColorSpace;
+        // Pixel FX: không mipmap — mipmap + Additive làm mỏng thành sọc / smear
         tex.magFilter = THREE.LinearFilter;
-        tex.minFilter = THREE.LinearMipmapLinearFilter;
-        tex.generateMipmaps = true;
-        tex.premultiplyAlpha = true;
+        tex.minFilter = THREE.LinearFilter;
+        tex.generateMipmaps = false;
+        tex.premultiplyAlpha = false;
+        tex.wrapS = THREE.ClampToEdgeWrapping;
+        tex.wrapT = THREE.ClampToEdgeWrapping;
         tex.needsUpdate = true;
         _texCache.set(url, tex);
         resolve(tex);
@@ -643,7 +646,7 @@ function honElementLayers(packId: HonPackId): {
           { folder: "codemanu", pack: "vortex", n: 16, w: 3.0, h: 3.0, opacity: 0.75 },
           { folder: "codemanu", pack: "dithered_fire", n: 16, w: 2.4, h: 2.4, opacity: 0.8 },
         ],
-        flight: { urls: [...cm("hyperspeed", 16), ...br("fire_point", 12)].slice(0, 16), w: 2.0, h: 2.0 },
+        flight: { urls: br("fire_point", 12), w: 2.0, h: 2.0 },
         hit: [
           { folder: "codemanu", pack: "explosion", n: 16, w: 3.4, h: 3.4, opacity: 0.95 },
           { folder: "codemanu", pack: "kabooms", n: 16, w: 2.8, h: 2.8, opacity: 0.8 },
@@ -660,9 +663,9 @@ function honElementLayers(packId: HonPackId): {
         ],
         form: [
           { folder: "codemanu", pack: "vortex", n: 16, w: 2.8, h: 2.8, opacity: 0.7 },
-          { folder: "codemanu", pack: "power_chords", n: 16, w: 2.4, h: 2.4, opacity: 0.75 },
+          { folder: "codemanu", pack: "electric_shield", n: 16, w: 2.4, h: 2.4, opacity: 0.75 },
         ],
-        flight: { urls: cm("hyperspeed", 16), w: 1.9, h: 1.9 },
+        flight: { urls: br("storm_burst", 12), w: 1.9, h: 1.9 },
         hit: [
           { folder: "codemanu", pack: "big_hit", n: 16, w: 3.2, h: 3.2, opacity: 0.95 },
           { folder: "brackeys", pack: "storm_burst", n: 16, w: 2.8, h: 2.8, opacity: 0.8 },
@@ -710,13 +713,13 @@ function honElementLayers(packId: HonPackId): {
         charge: [
           { folder: "codemanu", pack: "wheel", n: 16, w: 3.0, h: 3.0, opacity: 0.88 },
           { folder: "codemanu", pack: "vortex", n: 16, w: 2.8, h: 2.8, opacity: 0.75 },
-          { folder: "brackeys", pack: "lightstreaks", n: 12, w: 2.5, h: 2.5, opacity: 0.7 },
+          { folder: "codemanu", pack: "anima", n: 16, w: 2.5, h: 2.5, opacity: 0.7 },
         ],
         form: [
-          { folder: "codemanu", pack: "hyperspeed", n: 16, w: 2.6, h: 2.6, opacity: 0.75 },
+          { folder: "codemanu", pack: "vortex", n: 16, w: 2.6, h: 2.6, opacity: 0.75 },
           { folder: "codemanu", pack: "constellation", n: 16, w: 2.4, h: 2.4, opacity: 0.7 },
         ],
-        flight: { urls: [...cm("hyperspeed", 16), ...br("lightstreaks", 12)].slice(0, 16), w: 1.9, h: 1.9 },
+        flight: { urls: cm("vortex", 16), w: 1.9, h: 1.9 },
         hit: [
           { folder: "codemanu", pack: "big_hit", n: 16, w: 3.0, h: 3.0, opacity: 0.9 },
           { folder: "codemanu", pack: "wheel", n: 16, w: 2.6, h: 2.6, opacity: 0.75 },
@@ -1180,18 +1183,19 @@ function boltUrlsForStyle(style: Fx3dStyle, flash?: string): { urls: string[]; w
   const sp = (pack: string, n: number) => itchFrameUrls("superpowers", pack, n);
   const cm = (pack: string, n: number) => itchFrameUrls("codemanu", pack, n);
 
+  // Không dùng hyperspeed / lightstreaks làm billboard — đúng là sọc ngang.
   if (style === "slash") return { urls: sp("sp_slash", 8), w: 2.15, h: 2.15 };
   if (style === "nova" || f === "fire" || f === "fire_rain" || f === "orange" || f === "red_fire")
     return { urls: cm("pixel_fire", 16), w: 2.2, h: 2.2 };
-  if (f === "thunder" || f === "storm") return { urls: cm("hyperspeed", 16), w: 2.3, h: 1.4 };
+  if (f === "thunder" || f === "storm") return { urls: br("storm_burst", 12), w: 2.2, h: 2.2 };
   if (style === "tide" || f === "blue_water" || f === "cyan" || f === "teal" || f === "white_blue")
     return { urls: br("water_wave", 12), w: 2.15, h: 2.15 };
   if (style === "beam" || style === "shadow" || f === "bagua" || f === "purple" || f === "violet")
-    return { urls: cm("hyperspeed", 16), w: 2.1, h: 2.1 };
+    return { urls: sp("sp_magic", 6), w: 2.1, h: 2.1 };
   if (style === "poison") return { urls: cm("worm", 16), w: 2.0, h: 2.0 };
   if (style === "rush" || style === "charge") return { urls: br("muzzle_seq", 5), w: 1.9, h: 1.9 };
   if (style === "roar") return { urls: sp("sp_shock", 7), w: 2.2, h: 2.2 };
-  if (style === "whirl") return { urls: cm("wheel", 16), w: 2.15, h: 2.15 };
+  if (style === "whirl") return { urls: cm("vortex", 16), w: 2.15, h: 2.15 };
   if (style === "bless") return { urls: cm("anima", 16), w: 2.0, h: 2.0 };
   if (style === "breath") return { urls: cm("dithered_fire", 16), w: 2.25, h: 2.25 };
   return { urls: st("arrow", 2), w: 2.0, h: 1.55 };
@@ -1233,7 +1237,8 @@ function skillPremiumLayers(
   flash?: string
 ): { cast: HonLayerRef[]; hit: HonLayerRef[]; flightUnder: string[] } {
   const f = (flash || "").toLowerCase();
-  const under = itchFrameUrls("codemanu", "hyperspeed", 16);
+  // Soft blob underlay — KHÔNG hyperspeed (sọc ngang cố định)
+  const under = itchFrameUrls("codemanu", "impact", 16);
   const fire =
     style === "nova" || f === "fire" || f === "fire_rain" || f === "orange" || f === "red_fire";
   const thunder = f === "thunder" || f === "storm";
@@ -1386,7 +1391,7 @@ function skillPremiumLayers(
         { folder: "codemanu", pack: "big_hit", n: 16, w: 2.9, h: 2.9, opacity: 0.85 },
         { folder: "spritepilot", pack: "landing_dust", n: 7, w: 2.6, h: 1.5, opacity: 0.88 },
       ],
-      flightUnder: itchFrameUrls("codemanu", "hyperspeed", 16),
+      flightUnder: itchFrameUrls("codemanu", "vortex", 16),
     };
   }
   if (style === "rush" || style === "charge") {
