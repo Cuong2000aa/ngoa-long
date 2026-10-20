@@ -1,7 +1,7 @@
 {
   "name": "3q-dien-nghia",
   "private": true,
-  "version": "0.22.2",
+  "version": "0.22.3",
   "type": "module",
   "scripts": {
     "dev": "vite",

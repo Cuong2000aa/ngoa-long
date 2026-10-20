@@ -5,7 +5,7 @@ import type { RavenTemplate } from "./raven";
 import type { Tier } from "./tiers";
 
 /**
- * Đồ thị đường đi — khớp SITES hiện tại (hall 0,-11 · farm -17,3 · barracks 17,2 · mine 17,17).
+ * Đồ thị đường đi — khớp SITES (hall 0,-10 · farm -13,4 · barracks 13,3 · mine 13,14).
  * Cạnh tránh thân công trình.
  */
 const NODES: Record<string, [number, number]> = {
@@ -13,16 +13,16 @@ const NODES: Record<string, [number, number]> = {
   road1: [0, 11],
   road2: [0, 3],
   cross: [0, -4],
-  hall: [0, -7.5],
+  hall: [0, -7],
   westX: [-7, -4],
   eastX: [7, -4],
-  kho: [-15, -12],
-  yard: [15, -12],
-  farm: [-14, 4],
-  plazaW: [-5, 14],
-  plazaE: [5, 14],
-  barracks: [14, 5],
-  mine: [14, 15],
+  kho: [-14, -12],
+  yard: [14, -12],
+  farm: [-11, 5],
+  plazaW: [-5, 13],
+  plazaE: [5, 13],
+  barracks: [11, 4],
+  mine: [11, 13],
 };
 const EDGES: [string, string][] = [
   ["gate", "road1"], ["road1", "road2"], ["road2", "cross"], ["cross", "hall"],

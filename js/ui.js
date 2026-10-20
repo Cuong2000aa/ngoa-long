@@ -460,16 +460,49 @@
   }
 
   function updateCityNextTip(state, handlers, rates) {
+    // Tip first-visit dùng #nl-tip — không ghi đè khi đang hiện hint / không mở dock
     var tip = document.getElementById("nl-tip");
-    if (!tip) return;
+    if (!tip || tip.classList.contains("is-show")) return;
+    var dock = document.getElementById("city-hud-dock");
+    if (!dock || !dock.classList.contains("is-open")) return;
     var step = computeCityNextStep(state);
-    var rateBit =
-      rates && rates.silver != null
-        ? "+" + rates.silver + " bạc/ph · +" + rates.food + " lương/ph · "
-        : "";
-    tip.textContent = rateBit + step.text;
     tip._cityStep = step;
     tip._cityHandlers = handlers;
+  }
+
+  function openCityDock() {
+    var dock = document.getElementById("city-hud-dock");
+    var scrim = document.getElementById("city-dock-scrim");
+    var stage = document.querySelector(".game-stage");
+    if (dock) {
+      dock.classList.add("is-open");
+      dock.setAttribute("aria-hidden", "false");
+    }
+    if (scrim) scrim.hidden = false;
+    if (stage) stage.classList.add("is-dock-open");
+  }
+
+  function closeCityDock() {
+    var dock = document.getElementById("city-hud-dock");
+    var scrim = document.getElementById("city-dock-scrim");
+    var stage = document.querySelector(".game-stage");
+    if (dock) {
+      dock.classList.remove("is-open");
+      dock.setAttribute("aria-hidden", "true");
+    }
+    if (scrim) scrim.hidden = true;
+    if (stage) stage.classList.remove("is-dock-open");
+  }
+
+  function toggleCityDock() {
+    var dock = document.getElementById("city-hud-dock");
+    if (dock && dock.classList.contains("is-open")) closeCityDock();
+    else openCityDock();
+  }
+
+  function isCityDockOpen() {
+    var dock = document.getElementById("city-hud-dock");
+    return !!(dock && dock.classList.contains("is-open"));
   }
 
   function renderCityDockCta(state, handlers) {
@@ -2877,6 +2910,10 @@
     toast: toast,
     renderResources: renderResources,
     renderCityDock: renderCityDock,
+    openCityDock: openCityDock,
+    closeCityDock: closeCityDock,
+    toggleCityDock: toggleCityDock,
+    isCityDockOpen: isCityDockOpen,
     closePanel: closePanel,
     openPanel: openPanel,
     disposeFormPreview: disposeFormPreview,

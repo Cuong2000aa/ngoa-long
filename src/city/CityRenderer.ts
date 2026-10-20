@@ -26,12 +26,19 @@ const PATROL_SEGMENTS: [number, number, number, number][] = (() => {
   ];
 })();
 
-const CAMERA_TARGET = new THREE.Vector3(-6, 0, 6);
-const CAMERA_HOME = CAMERA_TARGET.clone().add(new THREE.Vector3(38, 50, 54));
+/**
+ * Framing map-first: target lệch nam (+Z = cổng) + camera lùi để thành nằm
+ * trong band an toàn giữa top bar và bottom nav (không sát tường/cổng bị đè).
+ */
+const CAMERA_TARGET = new THREE.Vector3(-3, 0, 10);
+const CAMERA_HOME = CAMERA_TARGET.clone().add(new THREE.Vector3(48, 64, 70));
 /** Offset camera khi focus một nhà (cùng hướng nhìn xiên, gần hơn home). */
-const FOCUS_OFFSET = new THREE.Vector3(24, 32, 34);
+const FOCUS_OFFSET = new THREE.Vector3(28, 38, 40);
 /** Giới hạn kéo bản đồ quanh thành. */
-const PAN_LIMIT = 26;
+const PAN_LIMIT = 30;
+/** px — bias projection để tâm nhìn nằm trên dock dưới / dưới top bar. */
+const HUD_TOP_SAFE = 52;
+const HUD_BOTTOM_SAFE = 92;
 /** Ngưỡng px: vượt = kéo map, không pick. Touch rộng hơn chuột. */
 const CLICK_SLOP_MOUSE = 8;
 const CLICK_SLOP_TOUCH = 16;
@@ -46,11 +53,8 @@ const HINT_KEY = "nl-city-hint-v1";
  */
 export class CityRenderer {
   onBuildingClick: ((id: string) => void) | null = null;
-  /** Hotspot Hub — bridge từ app.js (openNav có sẵn) */
+  /** Hotspot nhanh Bày trận — Nhân vật/Phó bản/Lôi đài ở bottom nav */
   onDeployClick: (() => void) | null = null;
-  onGeneralsClick: (() => void) | null = null;
-  onCampaignClick: (() => void) | null = null;
-  onArenaClick: (() => void) | null = null;
 
   private state: GameState | null = null;
   private readonly labelsEl: HTMLElement | null;
@@ -341,7 +345,7 @@ export class CityRenderer {
     const tip = document.getElementById("nl-tip");
     if (!tip) return;
     tip.hidden = false;
-    tip.textContent = "Chạm nhà để nâng cấp · nút trái: Bày trận / Tướng";
+    tip.textContent = "Chạm nhà để nâng cấp · nút Quản lý / Bày trận bên trái";
     tip.classList.add("is-show");
     tip.setAttribute("role", "status");
     const dismiss = () => {
@@ -434,6 +438,10 @@ export class CityRenderer {
     const h = this.mapEl.clientHeight;
     if (w < 2 || h < 2) return;
     this.camera.aspect = w / h;
+    // Lệch frustum: tâm thành lên band an toàn (tránh bottom nav đè cổng/tường)
+    const top = Math.min(HUD_TOP_SAFE, Math.round(h * 0.09));
+    const bottom = Math.min(HUD_BOTTOM_SAFE, Math.round(h * 0.16));
+    this.camera.setViewOffset(w, h, 0, (top - bottom) * 0.5, w, h);
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(w, h, false);
   }
@@ -446,8 +454,8 @@ export class CityRenderer {
     c.enableDamping = !this.reducedMotion;
     c.dampingFactor = this.coarsePointer ? 0.12 : 0.08;
     c.screenSpacePanning = false;
-    c.minDistance = this.coarsePointer ? 18 : 22;
-    c.maxDistance = this.coarsePointer ? 130 : 110;
+    c.minDistance = this.coarsePointer ? 22 : 28;
+    c.maxDistance = this.coarsePointer ? 150 : 135;
     c.minPolarAngle = 0.45;
     c.maxPolarAngle = 1.12;
     c.zoomToCursor = !this.coarsePointer;
@@ -654,8 +662,8 @@ export class CityRenderer {
       });
     }
     const spots: [string, number, number, number][] = [
-      ["farm", -17, 3.8, 3],
-      ["hall", 0, 5.5, -11],
+      ["farm", -13, 3.6, 4],
+      ["hall", 0, 5.2, -10],
     ];
     for (const [site, x, y, z] of spots) {
       const mesh = new THREE.Mesh(new THREE.PlaneGeometry(1.4, 2.2), this.smokeMat.clone());
@@ -692,30 +700,19 @@ export class CityRenderer {
     }
   }
 
-  /** Nút HUD: Bày trận / Tướng / Phó bản / Lôi đài — không chặn kéo map. */
+  /** Nút Bày trận nhanh — không trùng bottom nav. */
   private ensureHudActions(): void {
     if (!this.labelsEl || this.hudActionsEl) return;
     const el = document.createElement("div");
     el.className = "city-hud-actions";
-    el.innerHTML =
-      `<button type="button" class="city-hotspot" data-act="deploy">Bày trận</button>` +
-      `<button type="button" class="city-hotspot" data-act="generals">Tướng</button>` +
-      `<button type="button" class="city-hotspot" data-act="campaign">Phó bản</button>` +
-      `<button type="button" class="city-hotspot" data-act="arena">Lôi đài</button>`;
-    const fire = (act: string | undefined) => {
-      if (act === "deploy") this.onDeployClick?.();
-      else if (act === "generals") this.onGeneralsClick?.();
-      else if (act === "campaign") this.onCampaignClick?.();
-      else if (act === "arena") this.onArenaClick?.();
-    };
+    el.innerHTML = `<button type="button" class="city-hotspot" data-act="deploy">Bày trận</button>`;
     el.addEventListener("pointerup", (e) => {
       const btn = (e.target as HTMLElement).closest<HTMLElement>("[data-act]");
-      if (!btn) return;
+      if (!btn || btn.dataset.act !== "deploy") return;
       e.stopPropagation();
       e.preventDefault();
-      fire(btn.dataset.act);
+      this.onDeployClick?.();
     });
-    // Chặn pointerdown để MapControls không nhận gesture từ nút
     el.addEventListener("pointerdown", (e) => {
       if ((e.target as HTMLElement).closest("[data-act]")) e.stopPropagation();
     });

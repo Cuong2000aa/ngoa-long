@@ -448,13 +448,20 @@
     var h = makeHandlers();
     if (panel === "city-home") {
       UI.closePanel();
+      if (UI.closeCityDock) UI.closeCityDock();
       document.querySelectorAll(".nav-item").forEach(function (n) {
         n.classList.toggle("active", n.getAttribute("data-panel") === "city-home");
       });
+      var stage = document.querySelector(".game-stage");
+      if (stage) {
+        stage.classList.add("is-map-focus");
+        stage.classList.remove("show-side-rail");
+      }
       refresh();
       if (city && city.focusHome) city.focusHome(500);
       return;
     }
+    if (UI.closeCityDock) UI.closeCityDock();
     if (panel === "city") UI.renderCityPanel(state, h);
     else if (panel === "generals") {
       if (openNav._tavernNext) {
@@ -545,6 +552,12 @@
     state = s;
     document.getElementById("screen-start").classList.remove("active");
     document.getElementById("screen-game").classList.add("active");
+    var stageHome = document.querySelector(".game-stage");
+    if (stageHome) {
+      stageHome.classList.add("is-map-focus");
+      stageHome.classList.remove("show-side-rail");
+    }
+    if (UI.closeCityDock) UI.closeCityDock();
 
     var labels = document.getElementById("building-labels");
     function mountCity() {
@@ -554,20 +567,13 @@
       // Expose để combat/form pause Thành Chính khi mở overlay
       NLCity.city = city;
       city.onBuildingClick = function (id) {
+        // P0: highlight + panel chi tiết; drawer quản lý mở kèm để nâng cấp nhanh
+        if (UI.openCityDock) UI.openCityDock();
         UI.renderBuildingDetail(state, id, makeHandlers());
         if (city && city.focusBuilding) city.focusBuilding(id, 500);
       };
       city.onDeployClick = function () {
         openNav("tower");
-      };
-      city.onGeneralsClick = function () {
-        openNav("generals");
-      };
-      city.onCampaignClick = function () {
-        openNav("tower");
-      };
-      city.onArenaClick = function () {
-        openNav("arena");
       };
       city.bindInput();
       if (state) city.refresh(state);
@@ -725,11 +731,37 @@
   document.getElementById("panel-close").addEventListener("click", UI.closePanel);
   document.getElementById("panel-backdrop").addEventListener("click", UI.closePanel);
 
+  var btnManage = document.getElementById("btn-city-manage");
+  if (btnManage) {
+    btnManage.addEventListener("click", function () {
+      if (!state) return;
+      var opening = !(UI.isCityDockOpen && UI.isCityDockOpen());
+      if (opening && UI.renderCityDock) UI.renderCityDock(state, makeHandlers());
+      if (UI.toggleCityDock) UI.toggleCityDock();
+    });
+  }
+  var btnDockClose = document.getElementById("btn-city-dock-close");
+  if (btnDockClose) {
+    btnDockClose.addEventListener("click", function () {
+      if (UI.closeCityDock) UI.closeCityDock();
+    });
+  }
+  var dockScrim = document.getElementById("city-dock-scrim");
+  if (dockScrim) {
+    dockScrim.addEventListener("click", function () {
+      if (UI.closeCityDock) UI.closeCityDock();
+    });
+  }
+
   document.addEventListener("keydown", function (e) {
     if (e.key !== "Escape") return;
     var combat = document.getElementById("combat-overlay");
     var form = document.getElementById("form-overlay");
     var panel = document.getElementById("panel-layer");
+    if (UI.isCityDockOpen && UI.isCityDockOpen()) {
+      UI.closeCityDock();
+      return;
+    }
     if (form && !form.hidden) {
       form.hidden = true;
       if (UI.disposeFormPreview) UI.disposeFormPreview();

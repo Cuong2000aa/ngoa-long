@@ -4,18 +4,18 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { MeshoptDecoder } from "three/examples/jsm/libs/meshopt_decoder.module.js";
 import { normalize, type Footprint } from "./modelUtils";
 
-/** Model công trình (Tripo AI gallery), đã nén bằng scripts/optimize-models.mjs. */
+/**
+ * Model công trình (Tripo AI gallery), đã nén bằng scripts/optimize-models.mjs.
+ * Bỏ hall-a.fbx / mine-a.fbx — mesh lỗi (Ty Vũ cụt, mỏ = đống đá).
+ */
 const FILES = {
-  "hall-a": new URL("../../assets/city/buildings3d/hall-a.fbx", import.meta.url).href,
   "hall-b": new URL("../../assets/city/buildings3d/hall-b.glb", import.meta.url).href,
   "hall-c": new URL("../../assets/city/buildings3d/hall-c.glb", import.meta.url).href,
   "granary-a": new URL("../../assets/city/buildings3d/granary-a.glb", import.meta.url).href,
   "granary-b": new URL("../../assets/city/buildings3d/granary-b.glb", import.meta.url).href,
   "granary-c": new URL("../../assets/city/buildings3d/granary-c.glb", import.meta.url).href,
   "farm-house": new URL("../../assets/city/buildings3d/farm-house.glb", import.meta.url).href,
-  "farm-field": new URL("../../assets/city/buildings3d/farm-field.glb", import.meta.url).href,
   barracks: new URL("../../assets/city/buildings3d/barracks.glb", import.meta.url).href,
-  "mine-a": new URL("../../assets/city/buildings3d/mine-a.fbx", import.meta.url).href,
   "mine-b": new URL("../../assets/city/buildings3d/mine-b.glb", import.meta.url).href,
   "weapon-rack": new URL("../../assets/city/buildings3d/weapon-rack.glb", import.meta.url).href,
   pavilion: new URL("../../assets/city/buildings3d/pavilion.glb", import.meta.url).href,

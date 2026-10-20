@@ -16,15 +16,15 @@ export interface Site {
 /**
  * Vị trí trong thành (đơn vị world, tường trong ở khoảng ±25). id/building_id khớp NLGame.getBuildingList.
  * Trục x = 0 để trống làm đường từ cổng nam vào Ty Vũ.
- * Khoảng cách đủ cho footprint tier max (hall-c ~14, farm fields gọn).
+ * Site kéo vào trong (~±13) để footprint kit không đâm walkway tường.
  */
 export const SITES: Site[] = [
-  { id: "hall", building_id: "ty_vu", name: "Ty Vũ", x: 0, z: -11, kind: "hall" },
-  { id: "wall", building_id: "kho", name: "Kho", x: -18, z: -15, kind: "granary" },
-  { id: "academy", building_id: "san_tap", name: "Sân Tập", x: 18, z: -15, kind: "yard" },
-  { id: "farm", building_id: "nong_trai", name: "Nông Trại", x: -17, z: 3, kind: "farm" },
-  { id: "barracks", building_id: "doanh_trai", name: "Doanh Trại", x: 17, z: 2, kind: "barracks" },
-  { id: "mine", building_id: "mo_bac", name: "Mỏ Bạc", x: 17, z: 17, kind: "mine" },
+  { id: "hall", building_id: "ty_vu", name: "Ty Vũ", x: 0, z: -10, kind: "hall" },
+  { id: "wall", building_id: "kho", name: "Kho", x: -16, z: -14, kind: "granary" },
+  { id: "academy", building_id: "san_tap", name: "Sân Tập", x: 16, z: -14, kind: "yard" },
+  { id: "farm", building_id: "nong_trai", name: "Nông Trại", x: -13, z: 4, kind: "farm" },
+  { id: "barracks", building_id: "doanh_trai", name: "Doanh Trại", x: 13, z: 3, kind: "barracks" },
+  { id: "mine", building_id: "mo_bac", name: "Mỏ Bạc", x: 13, z: 14, kind: "mine" },
 ];
 
 /** Hệ số phóng công trình so với khung dựng gốc. */
@@ -184,27 +184,38 @@ export class BuildingFactory {
     return top;
   }
 
+  /** Fallback mỏ: lán mái + miệng hang — đọc được là nhà/mỏ, không đống đá. */
   private mine(g: THREE.Group, tier: Tier): number {
     const M = this.M;
-    const rocks = 4 + tier;
-    for (let r = 0; r < rocks; r++) {
-      const rock = new THREE.Mesh(new THREE.DodecahedronGeometry(0.62 + (r % 3) * 0.32, 0), M.rock);
-      rock.position.set((r % 4) * 0.85 - 1.2, 0.45 + (r % 2) * 0.35, (r % 3) * 0.45 - 0.6);
-      rock.scale.y = 0.75 + tier * 0.06;
+    const shedW = 2.4 + tier * 0.2;
+    const shedD = 2.0 + tier * 0.12;
+    const shedH = 1.35 + tier * 0.08;
+    // Nền đá thấp
+    this.box(g, shedW + 1.4, 0.22, shedD + 1.8, M.stone, 0, 0.11, 0.2);
+    // Thân lán gỗ
+    this.box(g, shedW, shedH, shedD, M.wood, 0, 0.22 + shedH / 2, 0);
+    this.box(g, shedW * 0.28, shedH * 0.55, 0.08, M.door, 0, 0.22 + shedH * 0.32, shedD / 2 + 0.02);
+    const top = this.roofs(g, shedW * 1.05, shedD * 1.05, 0.22 + shedH, Math.min(2, tier) as Tier);
+    // Miệng hang phía sau lán
+    this.box(g, 1.6 + tier * 0.1, 1.1, 0.7, M.rock, 0, 0.55, -shedD / 2 - 0.55);
+    this.box(g, 0.85, 0.75, 0.12, M.cave, 0, 0.48, -shedD / 2 - 0.2);
+    // Vài tảng đá phụ (accent, không chiếm hình)
+    for (let r = 0; r < 2 + Math.min(2, tier); r++) {
+      const rock = new THREE.Mesh(new THREE.DodecahedronGeometry(0.35 + (r % 2) * 0.12, 0), M.rock);
+      rock.position.set((r % 2 ? 1 : -1) * (1.1 + r * 0.15), 0.28, 0.9 - r * 0.2);
+      rock.scale.y = 0.7;
       rock.castShadow = true;
-      rock.receiveShadow = true;
       g.add(rock);
     }
-    this.box(g, 1.15, 0.95, 0.45, M.woodDark, 0.15, 0.48, 1.35);
-    this.box(g, 0.72, 0.62, 0.12, M.cave, 0.15, 0.42, 1.6);
-    let top = 2;
-    if (tier >= 2) top = this.house(g, -2.3, 0.6, 1.8, 1.45, 1.15, (tier - 2) as Tier, M.wood);
+    if (tier >= 3) {
+      this.box(g, 0.9, 0.7, 0.9, M.woodDark, shedW * 0.7, 0.45, shedD * 0.2);
+    }
     if (tier >= 4) {
-      const ore = new THREE.Mesh(new THREE.SphereGeometry(0.2, 10, 8), M.silver);
-      ore.position.set(0.15, 0.5, 1.7);
+      const ore = new THREE.Mesh(new THREE.SphereGeometry(0.18, 10, 8), M.silver);
+      ore.position.set(0.35, 0.55, shedD / 2 + 0.15);
       g.add(ore);
     }
-    return Math.max(top, 2.2 + tier * 0.35);
+    return Math.max(top, 2.4 + tier * 0.25);
   }
 
   private yard(g: THREE.Group, tier: Tier): number {
