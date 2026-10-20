@@ -730,7 +730,7 @@ function honElementLayers(packId: HonPackId): {
       return {
         charge: [
           { folder: "codemanu", pack: "charged", n: 16, w: 3.0, h: 3.0, opacity: 0.88 },
-          { folder: "codemanu", pack: "power_chords", n: 16, w: 2.8, h: 2.8, opacity: 0.75 },
+          { folder: "codemanu", pack: "charged", n: 16, w: 2.8, h: 2.8, opacity: 0.75 },
           { folder: "brackeys", pack: "hit_burst", n: 11, w: 2.5, h: 2.5, opacity: 0.7 },
         ],
         form: [
@@ -1369,8 +1369,8 @@ function skillPremiumLayers(
   if (style === "roar") {
     return {
       cast: [
-        { folder: "codemanu", pack: "power_chords", n: 16, w: 3.0, h: 3.0, opacity: 0.9 },
-        { folder: "codemanu", pack: "charged", n: 16, w: 2.7, h: 2.7, opacity: 0.78 },
+        { folder: "codemanu", pack: "charged", n: 16, w: 3.0, h: 3.0, opacity: 0.9 },
+        { folder: "superpowers", pack: "sp_shock", n: 7, w: 2.7, h: 2.7, opacity: 0.78 },
       ],
       hit: [
         { folder: "codemanu", pack: "big_hit", n: 16, w: 3.5, h: 3.5, opacity: 0.95 },

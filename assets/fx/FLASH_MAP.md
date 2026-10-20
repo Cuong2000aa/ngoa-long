@@ -31,7 +31,7 @@ Motif đặc biệt: charge / rush / shield vẫn choreography riêng. `skill_wa
 **Forge packs** (`assets/fx/forge/*`, Apache-2.0 Pixel Ability FX Forge): sheet theo element — frost/storm/ember/shadow/blood/earth/nature/tide/arcane/radiance/ward. Generate: `node scripts/forge-generate-fx.mjs`.  
 **3D toàn chiêu** (`battleVfx3d` → `skillPremiumLayers` / `honElementLayers`):
 
-- **Underlay đậm:** CodeManu (`itch/codemanu`) — charged / explosion / big_hit / hyperspeed / anima…
+- **Underlay đậm:** CodeManu (`itch/codemanu`) — charged / explosion / big_hit / impact / anima…
 - **Element:** Brackeys + Superpowers + SpritePilot
 - **Đạn bay:** dual sheet (CodeManu under + element overlay) + core + trail dày
 - **Hồn thú:** GLB `hon_3d/` + cùng pipeline CodeManu (tint theo pack)  

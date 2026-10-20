@@ -26,8 +26,6 @@
   → `assets/fx/skill/starsteel/`
 - **Fire Dragon Roller** by Nineball — CC0  
   → `assets/fx/dragon/` (legacy pixel; Hỏa Long 3D dùng soft spirit)
-- **Dragon spirit soft glow** — generated (`scripts/gen-dragon-spirit-fx.mjs`)  
-  → `assets/fx/dragon_spirit/` (legacy soft silhouettes)
 - **Hồn spirit packs** (`assets/fx/hon_*`) — assemble từ sprite CC0 thật  
   (`python3 scripts/assemble-hon-cc0.py` / `npm run assemble:hon`):  
   - GreatDog_ARt — [3 Dragon Animation Pack](https://opengameart.org/content/3-dragon-animation-pack) (CC0) → `hon_rong`  
@@ -77,23 +75,15 @@ Buff/debuff: wiki [Hiệu ứng](https://ngoalong.vnggames.com/ngoa-long-wiki/hi
 
 ## itch.io VFX drops
 - **Brackeys' VFX Bundle** — https://brackeys.itch.io/brackeys-vfx-bundle  
-  → atlases `assets/fx/itch/brackeys_vfx_bundle/` · slice `assets/fx/itch/brackeys/{pack}/`  
-  Runtime ưu tiên cho chiêu non-spirit.
+  → slice runtime `assets/fx/itch/brackeys/{pack}/` (atlases thô đã xóa)
 - **Stylized Projectiles** — https://laplahce.itch.io/stylized-projectiles-pack  
-  (Unity demo build → extract Texture2D) → `assets/fx/itch/stylized/{slash_a,lightning,flash,star_sheet_*}/`  
-  Overlay slash / thunder / beam.
-- **Binbun Free** (Electric / Dark Magic / Status / Battle / Elemental) — Godot **shader-only**, không PNG flipbook → không dùng.
-
-## GitHub auto-import VFX
-- **superpowers_rpg_fx** — Sparklin Superpowers CC0 → `assets/fx/itch/superpowers_rpg_fx/` (30 png)
-- **superpowers_ninja_fx** — Sparklin Superpowers CC0 → `assets/fx/itch/superpowers_ninja_fx/` (17 png)
-- **superpowers_medieval_fx** — Sparklin Superpowers CC0 → `assets/fx/itch/superpowers_medieval_fx/` (2 png)
-- **superpowers_prehistoric_fx** — Sparklin Superpowers CC0 → `assets/fx/itch/superpowers_prehistoric_fx/` (30 png)
-- **rpicster_particles** — RPicster Godot VFX textures CC0 → `assets/fx/itch/rpicster_particles/` (66 png)
+  → `assets/fx/itch/stylized/{slash_a,lightning,flash,…}/`
+- **Binbun Free** — Godot shader-only → không dùng.
+- **Superpowers** (Sparklin, GitHub CC0) → curated `assets/fx/itch/superpowers/`
 
 ## CodeManu + SpritePilot (hồn upgrade)
 - **CodeManu Free VFX Pack** — CC0 — https://opengameart.org/content/free-vfx-asset-pack
-  → `assets/fx/itch/codemanu/{charged , vortex , dithered_fire , pixel_fire , magma , explosion , explosion2 , kabooms , anima , constellation , puff_stars , electric_shield , tentacles , worm , hyperspeed , elden_ring , impact , big_hit , wheel , power_chords}/` (30fps subsampled)
+  → `assets/fx/itch/codemanu/{charged,vortex,dithered_fire,pixel_fire,explosion,explosion2,kabooms,anima,constellation,puff_stars,electric_shield,tentacles,worm,elden_ring,impact,big_hit,wheel}/`
 - **SpritePilot Free Effects** — CC0 — https://spritepilot.com/free-game-assets/effects
   → `assets/fx/itch/spritepilot/{explosion , smoke_puff , landing_dust , hit_spark , fire , water_splash , magic_sparkle}/`
 
