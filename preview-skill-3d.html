@@ -102,11 +102,13 @@
       border-color: rgba(197, 155, 39, 0.7);
     }
     #skill-list {
-      flex: 1;
+      flex: 1 1 auto;
       overflow: auto;
+      -webkit-overflow-scrolling: touch;
       border: 1px solid var(--line);
       background: rgba(10, 8, 6, 0.6);
-      min-height: 0;
+      min-height: 8rem;
+      touch-action: pan-y;
     }
     .sk {
       display: block;
@@ -204,8 +206,27 @@
       border: 1px solid var(--line);
     }
     @media (max-width: 860px) {
-      #app { grid-template-columns: 1fr; grid-template-rows: 42% 58%; }
-      #side { border-right: none; border-bottom: 1px solid var(--line); }
+      /* Side panel đủ cao để list chiêu còn chỗ bấm (mobile / auto-scale) */
+      #app {
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(0, 52%) minmax(0, 48%);
+      }
+      #side {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #side .sub { display: none; } /* bớt chữ hướng dẫn trên mobile */
+      .motif-chips { max-height: 3.2rem; }
+      #skill-list {
+        flex: 0 0 auto;
+        height: 12.5rem;
+        min-height: 12.5rem;
+        max-height: 12.5rem;
+      }
+      #meta { min-height: 0; font-size: 0.68rem; }
+      .actions button { min-height: 2.4rem; }
     }
   </style>
 </head>
@@ -347,16 +368,27 @@
       });
     }
 
+    /** Bỏ dấu tiếng Việt — "Hoả" / "Hỏa" / "hoa" đều khớp */
+    function foldVi(str) {
+      return String(str || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/đ/g, "d")
+        .replace(/Đ/g, "D")
+        .toLowerCase();
+    }
+
     function renderList() {
-      const q = (qEl.value || "").trim().toLowerCase();
+      const q = foldVi((qEl.value || "").trim());
       filtered = skills.filter((s) => {
         if (motifFilter && s.motif !== motifFilter) return false;
         if (!q) return true;
         return (
-          s.name.toLowerCase().includes(q) ||
-          s.id.toLowerCase().includes(q) ||
-          s.flash.toLowerCase().includes(q) ||
-          (s.desc || "").toLowerCase().includes(q)
+          foldVi(s.name).includes(q) ||
+          foldVi(s.id).includes(q) ||
+          foldVi(s.flash).includes(q) ||
+          foldVi(s.motif).includes(q) ||
+          foldVi(s.desc || "").includes(q)
         );
       });
       listEl.innerHTML = filtered
@@ -389,6 +421,14 @@
           playSelected();
         });
       });
+      // Nếu đang lọc mà selection cũ không còn trong list → chọn kết quả đầu
+      if (filtered.length && !filtered.some((s) => s.id === selectedId)) {
+        selectSkill(filtered[0].id);
+      } else if (!filtered.length) {
+        metaEl.innerHTML = q
+          ? "Không thấy chiêu khớp «" + (qEl.value || "").trim() + "»."
+          : "Chưa chọn chiêu.";
+      }
     }
 
     function getSelected() {
