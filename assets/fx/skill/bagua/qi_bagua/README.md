@@ -1,10 +1,5 @@
-# hon_bagua/qi_bagua — qi spirit (style Hỏa Long)
+# Pháp trận Bát Quái
 
-Pháp trận Bát Quái — đa màu
+Giữ asset cũ (sigil bagua 256²) — **không** gen từ creature/rồng.
 
-- `charge_01..04` — vortex tụ lực
-- `flight_01..04` — silhouette bay (đầu bên phải)
-- `impact_01..03` — bùm tại đích
-
-Pipeline: `scripts/gen-qi-spirit-packs.py` từ `hon_rong/qi_fire` (+ optional `qi_seed/`).
-Không dùng asset VNG.
+Preview: `_preview_bagua.gif`

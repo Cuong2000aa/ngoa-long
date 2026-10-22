@@ -1,10 +1,6 @@
-# hon_soi/qi_wolf — qi spirit (style Hỏa Long)
+# qi_wolf (soi)
 
-Sói — xám bạc (AI seed + expand)
+Look từ `_ref_soi_user.gif` (cyan spirit). Flight = chiêu tụ→stream→tan.
 
-- `charge_01..04` — vortex tụ lực
-- `flight_01..04` — silhouette bay (đầu bên phải)
-- `impact_01..03` — bùm tại đích
-
-Pipeline: `scripts/gen-qi-spirit-packs.py` từ `hon_rong/qi_fire` (+ optional `qi_seed/`).
-Không dùng asset VNG.
+Gen: `python3 scripts/gen-qi-soi-from-user-gif.py`
+Preview: `_preview_soi.gif`

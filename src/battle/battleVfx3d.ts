@@ -91,6 +91,13 @@ type MeshFx = {
   headLed?: boolean;
   /** Flipbook 1→N đúng 1 lần theo tiến độ bay (không loop, không chồng) */
   sequenceOnce?: boolean;
+  /**
+   * Tiến độ path caster→đích:
+   * - out (mặc định): nhanh đầu, chậm cuối
+   * - in: chậm đầu → nhanh dần (hồn thú / chiêu lao)
+   * - inout: smoothstep
+   */
+  pathEase?: "in" | "out" | "inout";
   // volumetric dragon spirit
   segments?: THREE.Object3D[];
   segSpacing?: number;
@@ -864,10 +871,23 @@ function patternFlightTune(pattern?: string | null): {
   return { arcMul: 1, side: 0.05, densityMul: 1, flightExtraMs: 0 };
 }
 
-/** Timeline combat hồn — biên cảm giác charge 120–200 / flight 400–700. */
+/** Map pack hồn → style timeline (rồng = flight dài). */
+function styleForHonPack(packId: HonPackId): Fx3dStyle {
+  if (packId === "hon_rong") return "breath";
+  if (packId === "hon_thuy") return "tide";
+  if (packId === "hon_loi") return "thunder";
+  if (packId === "hon_xa") return "poison";
+  if (packId === "hon_phong") return "whirl";
+  if (packId === "hon_bagua") return "bagua";
+  if (packId === "hon_hon") return "shadow";
+  if (packId === "hon_ho" || packId === "hon_soi") return "roar";
+  return "breath";
+}
+
+/** Timeline combat hồn — breath/rồng flight ~1.1s+ để thấy lưỡn. */
 function honCombatTimeline(
   pattern?: string | null,
-  opts?: { qiStream?: boolean; scale?: string | null }
+  opts?: { qiStream?: boolean; scale?: string | null; pack?: HonPackId }
 ): {
   chargeMs: number;
   formMs: number;
@@ -879,6 +899,7 @@ function honCombatTimeline(
     pattern,
     scale: opts?.scale,
     qiStream: opts?.qiStream,
+    style: styleForHonPack(opts?.pack || "hon_rong"),
   });
 }
 
@@ -1066,7 +1087,12 @@ function emitBaguaFormationSequence3d(
   const targets = (opts.targets && opts.targets.length ? opts.targets : [to]).map((p) => p.clone());
   const { center, radius } = formationCentroid(targets);
   const mul = scaleMul(opts.scale);
-  const tlBagua = honHostileTimeline({ pattern: opts.pattern, scale: opts.scale, qiStream: true });
+  const tlBagua = honHostileTimeline({
+    pattern: opts.pattern,
+    scale: opts.scale,
+    qiStream: true,
+    style: "bagua",
+  });
   const CHARGE_MS = tlBagua.chargeMs;
   const RING_MS = tlBagua.flightMs;
   const STRIKE_STAGGER = 55;
@@ -1196,7 +1222,12 @@ function emitSoulMageSequence3d(
   const sheets = resolveHonStreamSheets("hon_hon", opts.skillId);
   const mul = scaleMul(opts.scale);
   /** Charge → flight hồn bay path → impact (không chỉ nhấp nháy tại chỗ). */
-  const tlSoul = honHostileTimeline({ pattern: opts.pattern, scale: opts.scale, qiStream: true });
+  const tlSoul = honHostileTimeline({
+    pattern: opts.pattern,
+    scale: opts.scale,
+    qiStream: true,
+    style: "shadow",
+  });
   const CHARGE_MS = tlSoul.chargeMs;
   const FLIGHT_MS = tlSoul.flightMs;
   const handles: Fx3dHandle[] = [];
@@ -1225,22 +1256,42 @@ function emitSoulMageSequence3d(
       })
     );
 
-    // Flight: silhouette bay caster → từng mục tiêu
+    // Flight: sheet nhân hình vung tay (qi_soul) bay caster → địch, nhanh dần
     timers.push(
       trackTimer(CHARGE_MS, () => {
         if (cancelled.v || !scene) return;
         const focus = hitTargets[Math.floor((hitTargets.length - 1) / 2)] || hitTargets[0] || to;
-        handles.push(
-          emitDragonSpirit3d(scene, from, focus, {
-            durationMs: FLIGHT_MS,
-            scale: opts.scale,
-            pack: "hon_hon",
-            skillId: opts.skillId,
-            formMs: 40,
-            dissolveMs: 180,
-            size: 1.55,
-          })
-        );
+        const urls = sheets.head.length ? sheets.head : sheets.charge;
+        if (urls.length) {
+          handles.push(
+            emitFlyingSheet3d(scene, from, focus, urls, {
+              durationMs: FLIGHT_MS,
+              w: 2.05 * mul,
+              h: 2.55 * mul, // portrait 256×320
+              arc: 0.35,
+              scale: opts.scale,
+              color: 0xffffff,
+              yLift: 1.05,
+              opacity: 0.98,
+              headOnRight: false,
+              sequenceOnce: true,
+              pathEase: "in",
+            })
+          );
+        } else {
+          handles.push(
+            emitDragonSpirit3d(scene, from, focus, {
+              durationMs: FLIGHT_MS,
+              scale: opts.scale,
+              pack: "hon_hon",
+              skillId: opts.skillId,
+              formMs: 40,
+              dissolveMs: 180,
+              size: 1.55,
+              pathEase: "in",
+            })
+          );
+        }
       })
     );
 
@@ -1616,6 +1667,8 @@ export function emitFlyingSheet3d(
     headLeadFrac?: number;
     /** Frame 1→N đúng 1 lần theo tiến độ bay */
     sequenceOnce?: boolean;
+    /** in = bay nhanh dần (chậm xuất → lao mạnh) */
+    pathEase?: "in" | "out" | "inout";
   } = {}
 ): Fx3dHandle {
   const mul = scaleMul(opts.scale);
@@ -1697,7 +1750,12 @@ export function emitFlyingSheet3d(
           baseScale: 1,
           facing: face,
           headLed: !!opts.headOnRight,
-          sequenceOnce: opts.sequenceOnce !== false && !!opts.headOnRight,
+          // sequenceOnce: caller bật tường minh; mặc định bật khi head-led qi-stream
+          sequenceOnce:
+            opts.sequenceOnce != null
+              ? !!opts.sequenceOnce
+              : !!opts.headOnRight,
+          pathEase: opts.pathEase ?? (opts.headOnRight || opts.sequenceOnce ? "in" : "out"),
         })
       );
     })
@@ -1709,6 +1767,20 @@ export function emitFlyingSheet3d(
       handles.forEach((h) => h.cancel());
     },
   };
+}
+
+/** Map thời gian tuyến tính → tiến độ path (0..1). */
+function pathProgress(t: number, ease: MeshFx["pathEase"] = "out"): number {
+  const u = Math.max(0, Math.min(1, t));
+  if (ease === "in") {
+    // chậm lúc xuất → tăng tốc về đích
+    return Math.pow(u, 2.25);
+  }
+  if (ease === "inout") {
+    return u * u * (3 - 2 * u);
+  }
+  // out: nhanh đầu, chậm cuối (đạn cũ)
+  return 1 - Math.pow(1 - u, 3);
 }
 
 function itchFrameUrls(folder: ItchFxFolder, pack: string, n: number): string[] {
@@ -2164,6 +2236,8 @@ export function emitDragonSpirit3d(
     skillId?: string | null;
     emissive?: number;
     tintStrength?: number;
+    /** in = bay nhanh dần (mặc định hồn) */
+    pathEase?: "in" | "out" | "inout";
   } = {}
 ): Fx3dHandle {
   const packId = opts.pack || "hon_rong";
@@ -2171,6 +2245,7 @@ export function emitDragonSpirit3d(
   const softMul = opts.scale === "L" ? 1.15 : opts.scale === "S" ? 0.9 : 1;
   const formMs = opts.formMs ?? 0;
   const flightMs = opts.durationMs ?? 520;
+  const pathEase = opts.pathEase ?? "in";
   const dissolveMs = opts.dissolveMs ?? 280;
   const lifeMs = formMs + flightMs + dissolveMs;
   const delayMs = opts.delayMs ?? 0;
@@ -2293,6 +2368,7 @@ export function emitDragonSpirit3d(
             flightMs,
             dissolveMs,
             facing,
+            pathEase,
             segments,
             segSpacing: isDragon ? 0.09 : 0.07,
             baseScale: 1,
@@ -2378,7 +2454,7 @@ export function emitHonSpiritSequence3d(
   const streamSheets = resolveHonStreamSheets(packId, opts.skillId);
   const qiStream = streamSheets.charge.length > 0 && streamSheets.head.length > 0;
   const tune = patternFlightTune(opts.pattern);
-  const tl = honCombatTimeline(opts.pattern, { qiStream, scale: opts.scale });
+  const tl = honCombatTimeline(opts.pattern, { qiStream, scale: opts.scale, pack: packId });
   const tint = variant.tint;
   const tintHot = new THREE.Color(tint).lerp(new THREE.Color(0xfffbeb), variant.hot ? 0.32 : 0.42).getHex();
   const tintDeep = new THREE.Color(tint).multiplyScalar(0.65).getHex();
@@ -2546,6 +2622,7 @@ export function emitHonSpiritSequence3d(
                 headOnRight: true,
                 headLeadFrac: headLead,
                 sequenceOnce: true,
+                pathEase: "in", // bay nhanh dần tới địch
               })
             );
           } else {
@@ -2562,6 +2639,7 @@ export function emitHonSpiritSequence3d(
                 skillId: opts.skillId,
                 emissive: variant.tint,
                 tintStrength: variant.tintStrength,
+                pathEase: "in",
               })
             );
             handles.push(
@@ -2574,6 +2652,7 @@ export function emitHonSpiritSequence3d(
                 color: tintHot,
                 frameMs: 42,
                 yLift: 0.75,
+                pathEase: "in",
               })
             );
             handles.push(
@@ -3143,7 +3222,7 @@ export function tickBattleVfx3d(_scene: THREE.Scene, now: number, dt: number): v
         mat.opacity = t < 0.85 ? base : Math.max(0, base * (1 - (t - 0.85) / 0.15));
       });
     } else if (fx.kind === "bolt" && fx.from && fx.to) {
-      const e = ease;
+      const e = pathProgress(t, fx.pathEase);
       _tmp.copy(fx.from).lerp(fx.to, e);
       _tmp.y += Math.sin(e * Math.PI) * (fx.arc || 0.5);
       fx.obj.position.copy(_tmp);
@@ -3224,10 +3303,7 @@ export function tickBattleVfx3d(_scene: THREE.Scene, now: number, dt: number): v
         ? 0
         : arrived
           ? 1
-          : (() => {
-              const u = Math.min(1, flightAge / Math.max(1, flightMs));
-              return u * u * (3 - 2 * u);
-            })();
+          : pathProgress(Math.min(1, flightAge / Math.max(1, flightMs)), fx.pathEase ?? "in");
       const dissolveAge = arrived ? flightAge - flightMs : 0;
       const dissolveT = arrived ? Math.min(1, dissolveAge / Math.max(1, dissolveMs)) : 0;
       const fade = 1 - dissolveT;

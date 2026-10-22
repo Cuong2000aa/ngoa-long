@@ -2,7 +2,8 @@ import type { Fx3dStyle } from "./resolveStyle";
 
 /**
  * Timeline cảm giác Ngọa Long — 3 pha tách, không slideshow tại chỗ.
- * Charge 120–200ms → Flight 400–700ms → Impact ngắn.
+ * Charge 120–220ms → Flight (đủ nhìn path) → Impact ngắn.
+ * Mọi hồn qi-stream (rồng/lôi/thủy/độc/hổ…): flight ~1.1–1.2s như Hỏa Long.
  */
 export type HostileTimeline = {
   chargeMs: number;
@@ -66,22 +67,44 @@ export function hostileTimeline(opts: {
 
   // Charge: tụ lực tại caster
   let chargeMs = 160 * sm;
-  if (style === "nova" || style === "bagua" || style === "roar") chargeMs = 180 * sm;
+  if (style === "nova" || style === "roar") chargeMs = 180 * sm;
+  if (style === "bagua") chargeMs = 180 * sm;
+  if (style === "breath") chargeMs = 200 * sm;
   if (style === "pierce" || style === "slash") chargeMs = 130 * sm;
   if (style === "rush" || style === "charge") chargeMs = 140 * sm;
-  chargeMs = clamp(chargeMs, 120, 200);
+  chargeMs = clamp(chargeMs, 120, 220);
 
-  // Flight: sprite bay path
-  let flightMs = 520 * sm + extra;
-  if (style === "pierce") flightMs = 440 * sm + extra;
-  if (style === "slash") flightMs = 480 * sm + extra;
-  if (style === "beam" || style === "shadow") flightMs = 540 * sm + extra;
-  if (style === "nova") flightMs = 500 * sm + extra;
-  if (style === "rush") flightMs = 420 * sm + extra;
-  if (style === "charge") flightMs = 560 * sm + extra;
-  if (style === "breath" || style === "tide" || style === "ice") flightMs = 600 * sm + extra;
-  if (style === "thunder" || style === "poison" || style === "whirl") flightMs = 560 * sm + extra;
-  flightMs = clamp(flightMs, 400, 700);
+  // Flight — hồn thú / long / pháp: cùng tốc độ Hỏa Long (~1.1s)
+  const spiritLike =
+    style === "breath" ||
+    style === "tide" ||
+    style === "ice" ||
+    style === "thunder" ||
+    style === "poison" ||
+    style === "whirl" ||
+    style === "roar" ||
+    style === "bagua" ||
+    style === "shadow";
+
+  let flightMs = 560 * sm + extra;
+  let flightLo = 420;
+  let flightHi = 850;
+  if (style === "pierce") flightMs = 480 * sm + extra;
+  if (style === "slash") flightMs = 520 * sm + extra;
+  if (style === "beam") {
+    flightMs = 600 * sm + extra;
+    flightHi = 900;
+  }
+  if (style === "nova") flightMs = 560 * sm + extra;
+  if (style === "rush") flightMs = 460 * sm + extra;
+  if (style === "charge") flightMs = 600 * sm + extra;
+  if (spiritLike) {
+    flightMs = 1100 * sm + extra;
+    flightLo = 950;
+    flightHi = 1300;
+    chargeMs = clamp(Math.max(chargeMs, 200 * sm), 120, 240);
+  }
+  flightMs = clamp(flightMs, flightLo, flightHi);
 
   const impactMs =
     style === "nova" || style === "roar" ? 380 : style === "pierce" || style === "slash" ? 280 : 320;
@@ -95,11 +118,13 @@ export function hostileTimeline(opts: {
   };
 }
 
-/** Timeline hon qi-stream — cùng biên cảm giác (không charge 380ms đứng hình). */
+/** Timeline hon qi-stream — flight đủ dài để flipbook lưỡn đọc được. */
 export function honHostileTimeline(opts: {
   pattern?: string | null;
   scale?: string | null;
   qiStream?: boolean;
+  /** Pack rồng / thủy… — mặc định breath timing */
+  style?: Fx3dStyle;
 }): {
   chargeMs: number;
   formMs: number;
@@ -107,18 +132,19 @@ export function honHostileTimeline(opts: {
   dissolveMs: number;
   flightBeats: number;
 } {
+  const style = opts.style || "breath";
   const base = hostileTimeline({
-    style: "breath",
+    style,
     scale: opts.scale,
     pattern: opts.pattern,
   });
-  const chargeMs = clamp(base.chargeMs + (opts.qiStream ? 20 : 0), 120, 200);
-  const flightMs = clamp(base.flightMs, 400, 700);
+  const chargeMs = clamp(base.chargeMs + (opts.qiStream ? 24 : 0), 160, 240);
+  const flightMs = base.flightMs; // spiritLike → ~1.1s
   return {
     chargeMs,
-    formMs: opts.qiStream ? 50 : 100,
+    formMs: opts.qiStream ? 60 : 100,
     flightMs,
-    dissolveMs: 240,
-    flightBeats: opts.qiStream ? 2 : 1,
+    dissolveMs: 280,
+    flightBeats: opts.qiStream ? 3 : 1,
   };
 }

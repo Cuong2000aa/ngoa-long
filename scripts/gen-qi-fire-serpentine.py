@@ -24,8 +24,8 @@ REF = OUT / "_ref_dragon.png"
 REF_SRC = Path(
     "/Users/it/.cursor/projects/Users-it-Documents-3Q/assets/flight_18-591001ff-0f08-4a87-8b6b-71bfd5aa81a1.png"
 )
-PREVIEW = OUT / "_preview_flight.gif"
-CONTACT = OUT / "_preview_flight_contact.png"
+PREVIEW = OUT / "_preview_rong.gif"
+CONTACT = OUT / "_preview_rong_contact.png"
 
 W, H = 384, 192
 N = 24
@@ -401,7 +401,7 @@ def main() -> None:
 warp thân theo sóng; remap palette lửa.
 
 Gen: `python3 scripts/gen-qi-fire-serpentine.py`
-Preview: `_preview_flight.gif`
+Preview: `_preview_rong.gif`
 """,
         encoding="utf-8",
     )

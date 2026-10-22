@@ -1,10 +1,6 @@
-# hon_thuy/qi_water — qi spirit (style Hỏa Long)
+# qi thuy
 
-Thủy hồn — lam nước
+Flight/GIF kiểu sói: tụ → stream lao → tan. Art từ `_ref_water.png`.
 
-- `charge_01..04` — vortex tụ lực
-- `flight_01..04` — silhouette bay (đầu bên phải)
-- `impact_01..03` — bùm tại đích
-
-Pipeline: `scripts/gen-qi-spirit-packs.py` từ `hon_rong/qi_fire` (+ optional `qi_seed/`).
-Không dùng asset VNG.
+Gen: `python3 scripts/gen-qi-hon-like-soi.py thuy`
+Preview: `_preview_thuy.gif`

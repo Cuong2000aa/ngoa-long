@@ -4,4 +4,4 @@
 warp thân theo sóng; remap palette lửa.
 
 Gen: `python3 scripts/gen-qi-fire-serpentine.py`
-Preview: `_preview_flight.gif`
+Preview: `_preview_rong.gif`

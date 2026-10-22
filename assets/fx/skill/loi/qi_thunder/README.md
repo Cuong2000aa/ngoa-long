@@ -1,10 +1,6 @@
-# hon_loi/qi_thunder — qi spirit (style Hỏa Long)
+# qi loi
 
-Lôi long — vàng sét
+Flight/GIF kiểu sói: tụ → stream lao → tan. Art từ `_ref_thunder.png`.
 
-- `charge_01..04` — vortex tụ lực
-- `flight_01..04` — silhouette bay (đầu bên phải)
-- `impact_01..03` — bùm tại đích
-
-Pipeline: `scripts/gen-qi-spirit-packs.py` từ `hon_rong/qi_fire` (+ optional `qi_seed/`).
-Không dùng asset VNG.
+Gen: `python3 scripts/gen-qi-hon-like-soi.py loi`
+Preview: `_preview_loi.gif`
