@@ -154,15 +154,17 @@ export class CityRenderer {
     }
     this.showBootOverlay("Đang dựng thành…");
 
-    // Thành: nét hơn (AA + DPR 1.5), shadow 1024 — không 4K (lag). Trận thì pause hẳn.
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    // Mobile: DPR 1, tắt AA/shadow — tránh OOM khi xoay. Desktop giữ nét.
+    const mobile = this.coarsePointer;
+    const dpr = Math.min(window.devicePixelRatio || 1, mobile ? 1 : 1.5);
     const renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      powerPreference: "high-performance",
+      antialias: !mobile,
+      powerPreference: mobile ? "low-power" : "high-performance",
+      failIfMajorPerformanceCaveat: false,
     });
     renderer.setPixelRatio(dpr);
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFShadowMap;
+    renderer.shadowMap.enabled = !mobile;
+    if (!mobile) renderer.shadowMap.type = THREE.PCFShadowMap;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.08;
@@ -180,14 +182,16 @@ export class CityRenderer {
     this.camera.lookAt(CAMERA_TARGET);
 
     scene.add(new THREE.HemisphereLight(0xfff3dd, 0x4a5a38, 1.15));
-    const sun = new THREE.DirectionalLight(0xffe2bf, 2.4);
+    const sun = new THREE.DirectionalLight(0xffe2bf, mobile ? 1.8 : 2.4);
     sun.position.set(30, 46, 22);
-    sun.castShadow = true;
-    sun.shadow.mapSize.set(1024, 1024);
-    Object.assign(sun.shadow.camera, { near: 5, far: 150, left: -44, right: 44, top: 44, bottom: -44 });
-    sun.shadow.bias = -0.0004;
-    sun.shadow.normalBias = 0.02;
-    sun.shadow.radius = 2;
+    sun.castShadow = !mobile;
+    if (!mobile) {
+      sun.shadow.mapSize.set(1024, 1024);
+      Object.assign(sun.shadow.camera, { near: 5, far: 150, left: -44, right: 44, top: 44, bottom: -44 });
+      sun.shadow.bias = -0.0004;
+      sun.shadow.normalBias = 0.02;
+      sun.shadow.radius = 2;
+    }
     scene.add(sun);
 
     this.M = createMaterials();
@@ -219,7 +223,14 @@ export class CityRenderer {
     renderer.domElement.addEventListener("pointercancel", () => {
       this.pressAt = null;
     });
-    new ResizeObserver(() => this.resize()).observe(map);
+    let resizeRaf = 0;
+    new ResizeObserver(() => {
+      if (resizeRaf) cancelAnimationFrame(resizeRaf);
+      resizeRaf = requestAnimationFrame(() => {
+        resizeRaf = 0;
+        this.resize();
+      });
+    }).observe(map);
     this.resize();
     // Mobile xoay màn: giữ context, tránh browser kill tab / reload về trang chủ
     renderer.domElement.addEventListener(
@@ -241,6 +252,14 @@ export class CityRenderer {
       },
       false
     );
+    const onOrientBegin = () => this.pause();
+    const onOrientEnd = () => {
+      this.resize();
+      const combat = document.getElementById("combat-overlay");
+      if (!combat || combat.hidden) this.resume();
+    };
+    window.addEventListener("nl-orientation-begin", onOrientBegin);
+    window.addEventListener("nl-orientation-end", onOrientEnd);
     renderer.setAnimationLoop(() => this.tick());
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) this.pause();
@@ -456,8 +475,15 @@ export class CityRenderer {
     if (!this.renderer || !this.camera || !this.mapEl) return;
     const w = this.mapEl.clientWidth;
     const h = this.mapEl.clientHeight;
-    // Xoay / scale transient: bỏ qua size 0 — tránh setSize(0) crash GL
+    // Xoay transient: bỏ qua size 0
     if (w < 8 || h < 8) return;
+    // Hạ DPR động nếu CSS box lớn (tablet) — giữ aspect đúng viewport
+    const maxArea = this.coarsePointer ? 900 * 500 : 1920 * 1080;
+    const pr = this.renderer.getPixelRatio() || 1;
+    if (w * h * pr * pr > maxArea && pr > 1) {
+      const next = Math.max(1, Math.sqrt(maxArea / (w * h)));
+      this.renderer.setPixelRatio(next);
+    }
     this.camera.aspect = w / h;
     // Lệch frustum: tâm thành lên band an toàn (tránh bottom nav đè cổng/tường)
     const top = Math.min(HUD_TOP_SAFE, Math.round(h * 0.09));

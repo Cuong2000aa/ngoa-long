@@ -354,15 +354,17 @@ export class BattleRenderer {
     hud.innerHTML = "";
     this.hudLayer = hud;
 
+    const coarse =
+      typeof window.matchMedia === "function" && window.matchMedia("(pointer: coarse)").matches;
     const dpr = this.preview
       ? Math.min(window.devicePixelRatio || 1, 1.25)
-      : Math.min(window.devicePixelRatio || 1, 2);
+      : Math.min(window.devicePixelRatio || 1, coarse ? 1.25 : 2);
     const renderer = new THREE.WebGLRenderer({
-      antialias: true,
+      antialias: !coarse,
       alpha: true,
-      powerPreference: "high-performance",
-      // Cho QA / toDataURL đọc buffer sau render (chi phí nhỏ)
-      preserveDrawingBuffer: true,
+      powerPreference: coarse ? "low-power" : "high-performance",
+      // Mobile tắt — preserveDrawingBuffer gần như x2 VRAM, dễ OOM khi xoay
+      preserveDrawingBuffer: !coarse,
     });
     renderer.setPixelRatio(dpr);
     renderer.setClearColor(0x000000, 0);

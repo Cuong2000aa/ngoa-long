@@ -1,20 +1,14 @@
 /* global window, document */
 /**
- * Auto-scale mobile web — letterbox fit vào khung thiết kế.
- * Desktop rộng: fluid 100% (không scale).
- * Mobile: luôn dùng khung LANDSCAPE (game SRPG), không đổi portrait khi xoay
- * (đổi design khi xoay dễ crash WebGL / văng layout → reload về màn start).
+ * Mobile layout — KHÔNG CSS-transform scale khung 1280×720.
+ * Scale làm #app vẫn 1280px → WebGL setSize(1280×dpr) trên máy hẹp = OOM / crash khi xoay.
+ * Giờ luôn fluid 100% viewport; chỉ debounce orientation → 1 lần resize sau khi ổn.
  */
 (function () {
-  var DESIGN = { w: 1280, h: 720 };
-  /** Dưới ngưỡng này → bật scale (tablet nhỏ / điện thoại) */
-  var FLUID_MIN_W = 1024;
-  var FLUID_MIN_H = 640;
-
   var root = null;
   var raf = 0;
   var orientTimer = 0;
-  var lastKey = "";
+  var lastEmit = 0;
 
   function ensureRoot() {
     if (root && root.isConnected) return root;
@@ -43,68 +37,31 @@
     };
   }
 
-  function apply() {
+  /** Luôn fluid — không transform scale. */
+  function applyFluid() {
     var el = ensureRoot();
     if (!el) return;
-
     var vp = viewportSize();
-    // Xoay / chrome ẩn hiện: bỏ qua frame kích thước rỗng (tránh WebGL setSize 0)
     if (vp.w < 8 || vp.h < 8) return;
 
-    var design = DESIGN;
-    var useFluid = vp.w >= FLUID_MIN_W && vp.h >= FLUID_MIN_H;
-    var key =
-      (useFluid ? "F" : "S") +
-      "|" +
-      Math.round(vp.w) +
-      "x" +
-      Math.round(vp.h);
+    el.classList.add("is-fluid");
+    el.classList.remove("is-scaled");
+    el.style.width = "";
+    el.style.height = "";
+    el.style.transform = "";
 
     document.documentElement.style.setProperty("--nl-vp-w", vp.w + "px");
     document.documentElement.style.setProperty("--nl-vp-h", vp.h + "px");
-
-    if (useFluid) {
-      if (lastKey === key) return;
-      lastKey = key;
-      el.classList.add("is-fluid");
-      el.classList.remove("is-scaled");
-      el.style.width = "";
-      el.style.height = "";
-      el.style.transform = "";
-      document.documentElement.style.setProperty("--nl-scale", "1");
-      document.documentElement.style.setProperty("--nl-design-w", "100%");
-      document.documentElement.style.setProperty("--nl-design-h", "100%");
-      document.documentElement.classList.remove("nl-mobile-scaled");
-      emitResize();
-      return;
-    }
-
-    var sx = vp.w / design.w;
-    var sy = vp.h / design.h;
-    var s = Math.min(sx, sy);
-    if (s > 1) s = 1;
-    if (s < 0.35) s = 0.35;
-
-    var ox = (vp.w - design.w * s) / 2;
-    var oy = (vp.h - design.h * s) / 2;
-    var scaleKey = key + "|" + s.toFixed(4) + "|" + Math.round(ox) + "|" + Math.round(oy);
-    if (lastKey === scaleKey) return;
-    lastKey = scaleKey;
-
-    el.classList.remove("is-fluid");
-    el.classList.add("is-scaled");
-    el.style.width = design.w + "px";
-    el.style.height = design.h + "px";
-    el.style.transform = "translate(" + ox + "px," + oy + "px) scale(" + s + ")";
-
-    document.documentElement.style.setProperty("--nl-scale", String(s));
-    document.documentElement.style.setProperty("--nl-design-w", design.w + "px");
-    document.documentElement.style.setProperty("--nl-design-h", design.h + "px");
-    document.documentElement.classList.add("nl-mobile-scaled");
-    emitResize();
+    document.documentElement.style.setProperty("--nl-scale", "1");
+    document.documentElement.style.setProperty("--nl-design-w", "100%");
+    document.documentElement.style.setProperty("--nl-design-h", "100%");
+    document.documentElement.classList.remove("nl-mobile-scaled");
   }
 
   function emitResize() {
+    var now = Date.now();
+    if (now - lastEmit < 120) return;
+    lastEmit = now;
     try {
       window.dispatchEvent(new Event("resize"));
     } catch (_) {
@@ -112,38 +69,50 @@
     }
   }
 
-  function schedule() {
+  function schedule(emit) {
     if (raf) cancelAnimationFrame(raf);
     raf = requestAnimationFrame(function () {
       raf = 0;
       try {
-        apply();
+        applyFluid();
+        if (emit) emitResize();
       } catch (err) {
-        console.warn("[NLMobileScale] apply lỗi", err);
+        console.warn("[NLMobileScale]", err);
       }
     });
   }
 
-  function scheduleOrient() {
+  function onOrient() {
+    // Báo city/battle tạm nghỉ trước khi layout đảo
+    try {
+      window.dispatchEvent(new CustomEvent("nl-orientation-begin"));
+    } catch (_) {}
     if (orientTimer) clearTimeout(orientTimer);
-    // iOS/Android đổi orientation: đợi layout ổn rồi mới scale (tránh frame 0×0)
     orientTimer = setTimeout(function () {
       orientTimer = 0;
-      lastKey = ""; // force re-apply
-      schedule();
-      setTimeout(schedule, 280);
-    }, 180);
+      schedule(true);
+      setTimeout(function () {
+        schedule(true);
+        try {
+          window.dispatchEvent(new CustomEvent("nl-orientation-end"));
+        } catch (_) {}
+      }, 320);
+    }, 220);
   }
 
   function boot() {
     ensureRoot();
-    apply();
-    window.addEventListener("resize", schedule, { passive: true });
-    window.addEventListener("orientationchange", scheduleOrient, { passive: true });
-    if (window.visualViewport) {
-      window.visualViewport.addEventListener("resize", schedule, { passive: true });
-      // Không listen scroll — trên mobile chrome ẩn/hiện gây storm resize → dễ crash GL
-    }
+    applyFluid();
+    // Chỉ orientation — không storm từ visualViewport/resize (browser tự fire resize)
+    window.addEventListener("orientationchange", onOrient, { passive: true });
+    // resize: chỉ sync CSS vars, không synthetic Event (tránh vòng lặp)
+    window.addEventListener(
+      "resize",
+      function () {
+        schedule(false);
+      },
+      { passive: true }
+    );
   }
 
   if (document.readyState === "loading") {
@@ -153,7 +122,9 @@
   }
 
   window.NLMobileScale = {
-    refresh: schedule,
-    apply: apply,
+    refresh: function () {
+      schedule(true);
+    },
+    apply: applyFluid,
   };
 })();
