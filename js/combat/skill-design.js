@@ -110,7 +110,8 @@
       durations: {
         windupMs: (cfg.durations && cfg.durations.windupMs) || 160,
         castMs: (cfg.durations && cfg.durations.castMs) || 200,
-        emissionMs: (cfg.durations && cfg.durations.emissionMs) || 360,
+        // ≥ charge+flight (~120–200 + 400–700) để impact không cắt đạn bay
+        emissionMs: (cfg.durations && cfg.durations.emissionMs) || 640,
         impactMs: (cfg.durations && cfg.durations.impactMs) || 200,
         recoveryMs: (cfg.durations && cfg.durations.recoveryMs) || 180,
       },
@@ -148,7 +149,7 @@
       emission: "trail",
       visual: "pierce",
       scale: "M",
-      durations: { windupMs: 90, castMs: 70, emissionMs: 180, impactMs: 260, recoveryMs: 180 },
+      durations: { windupMs: 90, castMs: 70, emissionMs: 560, impactMs: 260, recoveryMs: 180 },
     }),
     /** Thiết Bích / hộ thể — khiên vàng */
     shield: profile({
@@ -213,7 +214,7 @@
       emission: "trail",
       visual: "slash",
       scale: "M",
-      durations: { windupMs: 100, castMs: 80, emissionMs: 280, impactMs: 220, recoveryMs: 160 },
+      durations: { windupMs: 100, castMs: 80, emissionMs: 620, impactMs: 220, recoveryMs: 160 },
     }),
     blue_water: profile({
       id: "thuy_chien", delivery: "arcane", essence: "frost", movement: "plant", emission: "burst", visual: "wave",
@@ -230,7 +231,7 @@
     }),
     gold_pierce: profile({
       id: "long_nu", delivery: "pierce", essence: "radiance", movement: "thrust", emission: "projectile", visual: "pierce", scale: "L",
-      durations: { windupMs: 160, castMs: 120, emissionMs: 280, impactMs: 220, recoveryMs: 180 },
+      durations: { windupMs: 160, castMs: 120, emissionMs: 580, impactMs: 220, recoveryMs: 180 },
     }),
     wind: profile({
       id: "phong_van", delivery: "arcane", essence: "wind", movement: "plant", emission: "burst", visual: "wind", scale: "M",

@@ -21,9 +21,11 @@
 - **Kenney Particle Pack** — CC0 — https://kenney.nl/assets/particle-pack  
   → `assets/fx/particles/` (**PNG Transparent** only)
 - **Cethiel Weapon Slash** (OGA, CC0) → `assets/fx/slash/` (classic/blue/purple/fire)
-- **Qi spirit packs** (style Hỏa Long) — **original / AI-assisted for fan remake**  
+- **Qi spirit packs** (style Hỏa Long) — **original / procedural for fan remake**  
   → `assets/fx/skill/{rong,xa,ho,soi,thuy,loi,phong,bagua,hon}/qi_*`  
-  Mỗi pack: `charge_*` · `flight_*` · `impact_*`. Gen: `scripts/gen-qi-spirit-packs.py`.
+  Mỗi pack: `charge_*` · `flight_*` · `impact_*` (≥24f).  
+  - `qi_fire` — warp từ sprite rồng tham chiếu (`_ref_dragon.png`), không ống sáng procedural: `scripts/gen-qi-fire-serpentine.py`  
+  - Remap palette pack khác: `scripts/gen-qi-spirit-packs.py` (không remap chéo rồng→sét khi regen fire)
 - **Whirlwind** by n4 — CC0 → `assets/fx/whirlwind/` (kỵ xung)
 - **Whirlwind for effects** by n4 — CC0  
   https://opengameart.org/content/whirlwind-for-effects  

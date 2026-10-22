@@ -2559,9 +2559,9 @@
         }
       ],
       "fx": {
-        "flash": "ember_orange",
+        "flash": "dragon",
         "text": "HỎA LONG",
-        "motif": "fire",
+        "motif": "dragon",
         "style": "beast_dragon"
       },
       "desc": "Hỏa long thiêu cột địch — [Thiêu đốt] (wiki hiệu ứng).",
@@ -15597,9 +15597,9 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "ember_orange",
+        "flash": "dragon",
         "text": "VIÊM LONG PHÁ",
-        "motif": "fire",
+        "motif": "dragon",
         "style": "beast_dragon"
       },
       "desc": "[C.Pháp] Khiến kẻ địch ngẫu nhiên chịu 2 lần 2600% Pháp Công. Khiến Pháp Phòng của mục tiêu giảm 40%, duy trì 2 lượt. Bản thân nhận trị liệu 2 lần (Mức trị liệu bằng 20% Pháp Công). Bản thân hồi 50+{10} sĩ khí.",

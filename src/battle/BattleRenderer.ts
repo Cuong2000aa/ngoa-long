@@ -23,6 +23,7 @@ import {
 import {
   clearBattleVfx3d,
   honPackForStyle,
+  hostileTimeline,
   playPatternFx3d,
   playSkillFx3d,
   resolveFx3dStyle,
@@ -43,6 +44,8 @@ type SkillFlashOpts = {
   support?: boolean | null;
   /** skill id từ combat-engine — chọn choreography polished */
   skillId?: string | null;
+  /** skills.json fx.style (vd beast_dragon) */
+  fxStyle?: string | null;
 };
 
 function qualityToScale(q?: string | null, fallback?: string | null): string {
@@ -780,6 +783,8 @@ export class BattleRenderer {
       isShield,
       isCharge,
       isRush,
+      skillId,
+      fxStyle: opts?.fxStyle ?? null,
     });
     /** Qi-stream (rồng/hồn/bát quái…) — bỏ aura/windup 2D cũ kẻo đè FX mới */
     const honQi = honPackForStyle(fx3dStyle, skillKind, skillId);
@@ -987,10 +992,11 @@ export class BattleRenderer {
       };
     };
 
-    // Wave 2+: chỉ emission + impact gọn
+    // Wave 2+: emission rồi impact sau đủ charge+flight (không 120ms cắt flight)
     if (wave) {
+      const waveTl = hostileTimeline({ style: fx3dStyle, scale, pattern });
       deliverToTargets("emission");
-      this.scheduleSkillFx(() => deliverToTargets("impact"), 120);
+      this.scheduleSkillFx(() => deliverToTargets("impact"), waveTl.impactAtMs);
       return;
     }
 
@@ -1045,8 +1051,9 @@ export class BattleRenderer {
       }
       if (isShield) spawnShieldBarrier(this.scene, at0, performance.now(), scale);
       beginLunge();
+      const fbTl = hostileTimeline({ style: fx3dStyle, scale, pattern });
       this.scheduleSkillFx(() => deliverToTargets("emission"), 140);
-      this.scheduleSkillFx(() => deliverToTargets("impact"), 280);
+      this.scheduleSkillFx(() => deliverToTargets("impact"), 140 + fbTl.impactAtMs);
     }
   }
 

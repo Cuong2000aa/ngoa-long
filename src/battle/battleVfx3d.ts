@@ -5,8 +5,11 @@ import {
   HON_PACKS,
   honPackForStyle,
   resolveFx3dStyle,
-  runStyleEmission,
+  runStyleCharge,
+  runStyleFlight,
   runStyleImpact,
+  hostileTimeline,
+  honHostileTimeline,
   type Fx3dStyle,
   type HonPackId,
   type StylePlayApi,
@@ -23,7 +26,7 @@ import {
 
 export type Fx3dHandle = { cancel: () => void };
 export type { Fx3dStyle, HonPackId };
-export { resolveFx3dStyle, honPackForStyle, clampHonTargetSize };
+export { resolveFx3dStyle, honPackForStyle, clampHonTargetSize, hostileTimeline };
 
 type Particle = {
   pos: THREE.Vector3;
@@ -861,36 +864,22 @@ function patternFlightTune(pattern?: string | null): {
   return { arcMul: 1, side: 0.05, densityMul: 1, flightExtraMs: 0 };
 }
 
-/** Timeline combat hồn. qiStream: tụ lực rõ → bay 2–3 nhịp → đầu đâm → bùm. */
+/** Timeline combat hồn — biên cảm giác charge 120–200 / flight 400–700. */
 function honCombatTimeline(
   pattern?: string | null,
-  opts?: { qiStream?: boolean }
+  opts?: { qiStream?: boolean; scale?: string | null }
 ): {
   chargeMs: number;
   formMs: number;
   flightMs: number;
   dissolveMs: number;
-  /** Số nhịp bay (flipbook beat) trước impact */
   flightBeats: number;
 } {
-  const tune = patternFlightTune(pattern);
-  if (opts?.qiStream) {
-    return {
-      chargeMs: 380,
-      formMs: 90,
-      // Đủ dài để flipbook 12 frame chạy ~2 vòng mượt
-      flightMs: 720 + tune.flightExtraMs,
-      dissolveMs: 320,
-      flightBeats: 2,
-    };
-  }
-  return {
-    chargeMs: 160,
-    formMs: 140,
-    flightMs: 520 + tune.flightExtraMs,
-    dissolveMs: 280,
-    flightBeats: 1,
-  };
+  return honHostileTimeline({
+    pattern,
+    scale: opts?.scale,
+    qiStream: opts?.qiStream,
+  });
 }
 
 /** Qi spirit folders — style Hỏa Long (charge / flight đầu-phải / impact). */
@@ -1077,9 +1066,10 @@ function emitBaguaFormationSequence3d(
   const targets = (opts.targets && opts.targets.length ? opts.targets : [to]).map((p) => p.clone());
   const { center, radius } = formationCentroid(targets);
   const mul = scaleMul(opts.scale);
-  const CHARGE_MS = 360;
-  const RING_MS = 560;
-  const STRIKE_STAGGER = 70;
+  const tlBagua = honHostileTimeline({ pattern: opts.pattern, scale: opts.scale, qiStream: true });
+  const CHARGE_MS = tlBagua.chargeMs;
+  const RING_MS = tlBagua.flightMs;
+  const STRIKE_STAGGER = 55;
   const handles: Fx3dHandle[] = [];
   const timers: number[] = [];
   const cancelled = { v: false };
@@ -1107,7 +1097,7 @@ function emitBaguaFormationSequence3d(
         opacity: 0.88,
         spinSpeed: 3.2,
         y: 0.04,
-        animateFrames: false,
+        animateFrames: true,
       })
     );
 
@@ -1205,8 +1195,10 @@ function emitSoulMageSequence3d(
 ): Fx3dHandle {
   const sheets = resolveHonStreamSheets("hon_hon", opts.skillId);
   const mul = scaleMul(opts.scale);
-  /** Caster chỉ vòng vận sức dưới chân — không aura thân / không hồn lớn. */
-  const CHARGE_MS = 420;
+  /** Charge → flight hồn bay path → impact (không chỉ nhấp nháy tại chỗ). */
+  const tlSoul = honHostileTimeline({ pattern: opts.pattern, scale: opts.scale, qiStream: true });
+  const CHARGE_MS = tlSoul.chargeMs;
+  const FLIGHT_MS = tlSoul.flightMs;
   const handles: Fx3dHandle[] = [];
   const timers: number[] = [];
   const cancelled = { v: false };
@@ -1221,7 +1213,7 @@ function emitSoulMageSequence3d(
         opacity: 0.88,
         spinSpeed: 2.6,
         y: 0.04,
-        animateFrames: false,
+        animateFrames: true,
       })
     );
     handles.push(
@@ -1233,19 +1225,38 @@ function emitSoulMageSequence3d(
       })
     );
 
-    // Sau vận sức → xung hit tại mục tiêu
+    // Flight: silhouette bay caster → từng mục tiêu
     timers.push(
       trackTimer(CHARGE_MS, () => {
         if (cancelled.v || !scene) return;
+        const focus = hitTargets[Math.floor((hitTargets.length - 1) / 2)] || hitTargets[0] || to;
+        handles.push(
+          emitDragonSpirit3d(scene, from, focus, {
+            durationMs: FLIGHT_MS,
+            scale: opts.scale,
+            pack: "hon_hon",
+            skillId: opts.skillId,
+            formMs: 40,
+            dissolveMs: 180,
+            size: 1.55,
+          })
+        );
+      })
+    );
+
+    // Impact sau flight
+    timers.push(
+      trackTimer(CHARGE_MS + FLIGHT_MS, () => {
+        if (cancelled.v || !scene) return;
         hitTargets.forEach((tgt, i) => {
           timers.push(
-            trackTimer(i * 45, () => {
+            trackTimer(i * 40, () => {
               if (cancelled.v || !scene) return;
               void loadFrameSet(sheets.impact).then((frames) => {
                 if (cancelled.v || !scene || !frames.length) return;
                 handles.push(
                   emitHonSheetAt(scene, tgt, frames, {
-                    durationMs: 380,
+                    durationMs: 320,
                     w: 2.4 * mul,
                     h: 2.4 * mul,
                     opacity: 0.92,
@@ -2083,14 +2094,14 @@ function emitHostileProjectile3d(
   style: Fx3dStyle,
   flash: string,
   scale?: string | null,
-  pattern?: string | null
+  pattern?: string | null,
+  durationOverrideMs?: number
 ): Fx3dHandle[] {
   const handles: Fx3dHandle[] = [];
   const prof = flightProfile(style, flash);
   const tune = patternFlightTune(pattern);
-  const durationMs = prof.durationMs + tune.flightExtraMs;
+  const durationMs = durationOverrideMs ?? prof.durationMs + tune.flightExtraMs;
   const arc = prof.arc * tune.arcMul;
-  const density = Math.round(prof.density * tune.densityMul);
   const bolt = boltUrlsForStyle(style, flash);
   const premium = skillPremiumLayers(style, flash);
   // Beam: tint sheet theo flash; pierce/slash giữ trắng
@@ -2102,25 +2113,16 @@ function emitHostileProjectile3d(
       : String(pattern || "").toLowerCase() === "row" || String(pattern || "").toLowerCase() === "front_row"
         ? 1.08
         : 1;
-  handles.push(
-    emitCoreFlight3d(scene, from, to, {
-      flash,
-      scale,
-      durationMs,
-      arc,
-      size: prof.size * sizeMul,
-    })
-  );
-  // Underlay CodeManu (đậm) rồi overlay element
+  // Flight = underlay + main bay path (≤2). Trail do stylePlay. Không core đứng hình.
   handles.push(
     emitFlyingSheet3d(scene, from, to, premium.flightUnder, {
       durationMs,
-      w: bolt.w * prof.sheetMul * 1.15 * sizeMul,
-      h: bolt.h * prof.sheetMul * 1.15 * sizeMul,
+      w: bolt.w * prof.sheetMul * 1.12 * sizeMul,
+      h: bolt.h * prof.sheetMul * 1.12 * sizeMul,
       arc,
       scale,
       color: sheetTint,
-      frameMs: 52,
+      frameMs: Math.max(28, Math.floor(durationMs / 24)),
       yLift: 0.95,
     })
   );
@@ -2132,18 +2134,8 @@ function emitHostileProjectile3d(
       arc: arc * 1.02,
       scale,
       color: sheetTint,
-      frameMs: 44,
-      yLift: 1.05,
-    })
-  );
-  handles.push(
-    emitTrail3d(scene, from, to, {
-      flash,
-      durationMs,
-      density,
-      arc: arc * 0.92,
-      scale,
-      streak: true,
+      frameMs: Math.max(24, Math.floor(durationMs / 26)),
+      yLift: 1.08,
     })
   );
   return handles;
@@ -2386,7 +2378,7 @@ export function emitHonSpiritSequence3d(
   const streamSheets = resolveHonStreamSheets(packId, opts.skillId);
   const qiStream = streamSheets.charge.length > 0 && streamSheets.head.length > 0;
   const tune = patternFlightTune(opts.pattern);
-  const tl = honCombatTimeline(opts.pattern, { qiStream });
+  const tl = honCombatTimeline(opts.pattern, { qiStream, scale: opts.scale });
   const tint = variant.tint;
   const tintHot = new THREE.Color(tint).lerp(new THREE.Color(0xfffbeb), variant.hot ? 0.32 : 0.42).getHex();
   const tintDeep = new THREE.Color(tint).multiplyScalar(0.65).getHex();
@@ -2881,7 +2873,8 @@ export function emitTrail3d(
 }
 
 /**
- * Full skill cast — 3D look per style (toàn catalog, 8 lớp khi hợp lý).
+ * Full skill cast — charge → flight (sprite bay) → impact.
+ * Không slideshow tại chỗ: pha tách theo hostileTimeline.
  */
 export function playSkillFx3d(params: {
   scene: THREE.Scene;
@@ -2889,12 +2882,14 @@ export function playSkillFx3d(params: {
   to: THREE.Vector3;
   flash?: string;
   scale?: string | null;
-  phase?: "emission" | "impact" | "full";
+  phase?: "emission" | "impact" | "full" | "charge" | "flight";
   style?: Fx3dStyle;
   skillId?: string | null;
   pattern?: string | null;
   /** Đội hình mục tiêu — pháp trận phủ hết */
   targets?: THREE.Vector3[];
+  /** Optional juice (cam punch / hitstop) — BattleRenderer gắn */
+  onImpactJuice?: (style: Fx3dStyle, scale?: string | null) => void;
 }): Fx3dHandle {
   const handles: Fx3dHandle[] = [];
   const timers: number[] = [];
@@ -2904,6 +2899,7 @@ export function playSkillFx3d(params: {
   const scale = params.scale;
   const skillId = params.skillId;
   const pattern = params.pattern;
+  const tl = hostileTimeline({ style, scale, pattern });
 
   const api = {
     emitGroundSigil3d,
@@ -2922,6 +2918,7 @@ export function playSkillFx3d(params: {
     emitItchFolderPackAt,
     skillPremiumLayers,
     flashPalette,
+    onImpactJuice: params.onImpactJuice,
   } as unknown as StylePlayApi;
 
   const playParams = {
@@ -2935,24 +2932,10 @@ export function playSkillFx3d(params: {
     skillId,
     pattern,
     targets: params.targets,
+    flightMs: tl.flightMs,
   };
 
-  const runEmission = () => runStyleEmission(api, playParams, handles);
-  const runImpact = () => runStyleImpact(api, playParams, handles);
-
-  if (phase === "emission") runEmission();
-  else if (phase === "impact") runImpact();
-  else {
-    runEmission();
-    if (!honPackForStyle(style, flash, skillId) && style !== "barrier") {
-      const delay = flightProfile(style, flash).durationMs;
-      timers.push(
-        trackTimer(delay, () => {
-          if (params.scene) runImpact();
-        })
-      );
-    }
-  }
+  const hon = honPackForStyle(style, flash, skillId);
 
   const handle: Fx3dHandle = {
     cancel() {
@@ -2967,6 +2950,65 @@ export function playSkillFx3d(params: {
     },
   };
   ACTIVE_HANDLES.push(handle);
+
+  // Hon pack tự chạy charge→flight→impact bên trong
+  if (hon && phase !== "impact") {
+    if (phase === "charge" || phase === "flight") {
+      /* preview partial — vẫn full sequence */
+    }
+    handles.push(
+      emitHonSpiritSequence3d(params.scene, params.from, params.to, {
+        scale,
+        pack: hon,
+        skillId,
+        pattern,
+        targets: params.targets?.length ? params.targets : [params.to],
+      })
+    );
+    return handle;
+  }
+
+  if (phase === "charge") {
+    runStyleCharge(api, playParams, handles);
+    return handle;
+  }
+  if (phase === "flight") {
+    runStyleFlight(api, playParams, handles);
+    return handle;
+  }
+  if (phase === "impact") {
+    runStyleImpact(api, playParams, handles);
+    return handle;
+  }
+  if (phase === "emission") {
+    // Tương thích cũ: charge rồi flight ngay (không đợi) — tránh nếu caller dùng full
+    runStyleCharge(api, playParams, handles);
+    timers.push(
+      trackTimer(tl.chargeMs, () => {
+        if (!params.scene) return;
+        runStyleFlight(api, playParams, handles);
+      })
+    );
+    return handle;
+  }
+
+  // full: charge → (delay) flight → (delay) impact
+  runStyleCharge(api, playParams, handles);
+  if (tl.needsFlight) {
+    timers.push(
+      trackTimer(tl.chargeMs, () => {
+        if (!params.scene) return;
+        runStyleFlight(api, playParams, handles);
+      })
+    );
+  }
+  timers.push(
+    trackTimer(tl.impactAtMs, () => {
+      if (!params.scene) return;
+      runStyleImpact(api, playParams, handles);
+    })
+  );
+
   return handle;
 }
 
@@ -2988,6 +3030,7 @@ export function playPatternFx3d(params: {
     motif: params.motif,
     pattern: params.pattern,
     support: params.support,
+    skillId: params.skillId,
   });
   const kids: Fx3dHandle[] = [];
   const list = params.targets.length ? params.targets : [params.from];

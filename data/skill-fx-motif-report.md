@@ -71,31 +71,33 @@ Cùng `Fx3dStyle` / motif — **không** thêm motif. `patternVariant` trong `st
 | `row` | 13 | `hoanh_hoa` | quét ngang 2 vệt lệch |
 | `all` | 49 | `than_toan` | ground + shock rộng (AoE) |
 
-### Beam flash tint (cùng style)
-| Flash | Sheet bolt chính | Tint |
-|-------|------------------|------|
-| `blue` / cyan | `codemanu/anima` | `#38bdf8` |
-| `purple` | `superpowers/sp_magic` | `#a78bfa` |
-| `violet` | `codemanu/constellation` | `#c4b5fd` |
+## Cảm giác động (charge → flight → impact)
+`hostileTimeline` (`src/battle/fx3d/hostileTimeline.ts`) + `playSkillFx3d` tách 3 pha:
+- Charge **120–200ms** tại caster
+- Flight **400–700ms** — sprite **bay** from→to (≤3 layer)
+- Impact ngắn + residual; `onImpactJuice` optional
 
-*(Catalog hiện tại: toàn arcane dùng `flash: blue` — nhánh purple/violet sẵn cho data / preview.)*
+| Style | Charge | Flight (bay path) | Impact |
+|-------|:------:|:-----------------:|:------:|
+| beam / slash / pierce / shadow / nova | yes | yes (bolt+trail) | yes |
+| rush / charge | yes | yes (xông/trail) | yes |
+| breath / ice / tide / poison / thunder / whirl / roar | yes (hon) | yes (qi-stream) | yes (hon) |
+| bagua | yes | ring expand | strike |
+| spirit (`hon_hon`) | yes | soul silhouette bay | yes |
+| bless | cast+pulse | soft path | pulse |
+| barrier | cast+pulse | no | pulse |
 
-### Style → path asset chính (QA mắt ~0.5s)
-| Style | Path / pack chính | Ghi chú |
-|-------|-------------------|---------|
-| `beam` | anima / sp_magic + constellation | pattern + flash tint |
-| `thunder` | `hon_loi` qi + storm_burst | ≠ beam tím |
-| `bagua` | `hon_bagua` + elden_ring sigil | vòng / strike |
-| `ice` | `hon_thuy` + water_wave frost | ≠ arcane |
-| `pierce` | stylized/arrow + trail mỏng | ≠ rush |
-| `slash` | slash classic 24f + sparks | pattern trails |
-| `breath` | `hon_rong` qi_fire | |
-| `shadow` | vortex + shadow_burst | spirit offensive |
-| `nova` | pixel_fire / explosion | firebird |
-| `bless` | elden_ring + sp_heal | không slash |
-| `barrier` | ward_barrier | shield |
-| `charge` / `rush` | muzzle + earth trail | giữ choreography |
-| `poison` / `tide` / `whirl` / `roar` | worm / water_wave / vortex / sp_shock | hon khi có pack |
+### Pack asset (key pose)
+| Pack | Stem ≥24 | Key rhythm | Ghi chú |
+|------|:--------:|------------|---------|
+| `qi_*` (rong/loi/thuy/…) | yes | charge/flight/impact | OK |
+| `qi_soul` | yes | flight+impact **đã strengthen** | trước đó gần đứng hình |
+| `qi_fire` impact/strike | yes | **đã strengthen** | impact key từng identical |
+| `qi_bagua` strike | yes | **đã strengthen** | |
 
 ### Checklist preview
-Mở `preview-skill-3d.html` (dev: `npm run dev` → `/preview-skill-3d.html`). Bấm QA chips theo thứ tự beam → thunder → bagua → ice → pierce → slash → bless: mỗi cặp phải khác trong ~0.5s. Thêm `beam·col` / `beam·row` / `beam·all` để so pattern.
+```bash
+cd "Ngọa Long" && npm run dev
+# → /preview-skill-3d.html
+```
+QA: `yen_nguyet` `bao_hao` `than_toan` `sam_set` `bat_tran_do` `bang_chuy` `bach_bo` `long_dam` `hoa_long` `basic_strike` `nhan_duc` — mỗi chiêu hostile phải thấy **bay/quét**, không chỉ đổi texture tại chỗ.

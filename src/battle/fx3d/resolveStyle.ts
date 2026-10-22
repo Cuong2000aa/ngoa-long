@@ -34,6 +34,20 @@ export type HonPackId =
   | "hon_bagua"
   | "hon_hon";
 
+/** Chiêu rồng — không để motif fire/ember nuốt thành nova blob. */
+function isDragonSkill(skillId?: string | null, fxStyle?: string | null, flash?: string, motif?: string): boolean {
+  const id = String(skillId || "").toLowerCase();
+  const st = String(fxStyle || "").toLowerCase();
+  const f = String(flash || "").toLowerCase();
+  const m = String(motif || "").toLowerCase();
+  if (m === "dragon" || f === "dragon" || f === "cyan_dragon") return true;
+  if (st === "beast_dragon") return true;
+  // Hỏa Long / Viêm Long / … — tên long + lửa vẫn breath
+  if (/hoa_long|viem_long|xich_long|bach_long|thanh_long|ngan_long|thuong_long|long_dam|long_nu/.test(id))
+    return true;
+  return false;
+}
+
 /** Map flash/motif/pattern → style 3D (mọi chiêu đi qua đây). */
 export function resolveFx3dStyle(opts: {
   flash?: string | null;
@@ -43,6 +57,9 @@ export function resolveFx3dStyle(opts: {
   isShield?: boolean;
   isCharge?: boolean;
   isRush?: boolean;
+  skillId?: string | null;
+  /** fx.style từ skills.json (vd beast_dragon) */
+  fxStyle?: string | null;
 }): Fx3dStyle {
   const flash = String(opts.flash || "").toLowerCase();
   const motif = String(opts.motif || "").toLowerCase();
@@ -62,7 +79,8 @@ export function resolveFx3dStyle(opts: {
   if (motif === "spirit" || flash === "violet_spirit") return "shadow";
 
   // —— Thú / long / phượng ——
-  if (flash === "dragon" || motif === "dragon") return "breath";
+  // Hỏa Long: motif fire + ember vẫn breath (qi rồng), không nova
+  if (isDragonSkill(opts.skillId, opts.fxStyle, flash, motif)) return "breath";
   if (motif === "firebird" || flash === "crimson_flame") return "nova";
   if (flash === "tiger" || motif === "tiger" || flash === "wolf" || motif === "wolf") return "roar";
 
@@ -128,6 +146,13 @@ export function honPackForStyle(style: Fx3dStyle, flash?: string, skillId?: stri
     return "hon_hon";
 
   if (style === "breath") return "hon_rong";
+  // Skill rồng dù flash ember/fire — luôn hon_rong (không mất silhouette)
+  if (
+    f === "dragon" ||
+    f === "cyan_dragon" ||
+    /hoa_long|viem_long|xich_long|bach_long|thanh_long|ngan_long|thuong_long|long_dam|long_nu/.test(id)
+  )
+    return "hon_rong";
   if (style === "poison") return "hon_xa";
   if (style === "tide" || style === "ice") return "hon_thuy";
   if (style === "whirl") return "hon_phong";

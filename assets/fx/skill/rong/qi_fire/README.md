@@ -1,10 +1,7 @@
-# Hỏa Long qi_fire (AI-assisted fan remake)
+# qi_fire — từ ảnh rồng tham chiếu
 
-Style: dark fantasy SRPG — tụ lực vortex + rồng lửa bay + impact.
+**Không** procedural ống sáng. Base = `_ref_dragon.png` (rồng đầu/thân/vảy),
+warp thân theo sóng; remap palette lửa.
 
-- `charge_01..04` — vortex tụ lực (đầu rồng giữa xoáy)
-- `flight_01..04` — rồng lửa ngang (2–3 nhịp bay)
-- `impact_01..03` — nổ đầu long tại đích
-
-Nguồn: concept reference user + GenerateImage AI-assisted. License ghi `assets/CREDITS.md`.
-Không lấy từ client VNG / Nineball thin outline.
+Gen: `python3 scripts/gen-qi-fire-serpentine.py`
+Preview: `_preview_flight.gif`
