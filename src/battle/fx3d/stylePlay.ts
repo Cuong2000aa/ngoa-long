@@ -176,7 +176,9 @@ export function runStyleEmission(api: StylePlayApi, params: StylePlayParams, han
       flash,
       scale,
       durationMs:
-        style === "nova" || style === "beam" || style === "bagua" || style === "thunder" ? 620 : 480,
+        style === "nova" || style === "beam" || style === "bagua" || style === "thunder" || style === "ice"
+          ? 620
+          : 480,
       color: palHex,
     })
   );
@@ -330,8 +332,22 @@ export function runStyleImpact(api: StylePlayApi, params: StylePlayParams, handl
         })
       );
     }
-  } else if (style === "tide" || style === "poison" || style === "shadow" || style === "beam" || style === "bagua") {
-    handles.push(api.emitShockwave3d(scene, to, { flash, scale, radius: style === "bagua" ? 2.2 : 1.9, durationMs: 520 }));
+  } else if (
+    style === "tide" ||
+    style === "ice" ||
+    style === "poison" ||
+    style === "shadow" ||
+    style === "beam" ||
+    style === "bagua"
+  ) {
+    handles.push(
+      api.emitShockwave3d(scene, to, {
+        flash,
+        scale,
+        radius: style === "bagua" ? 2.2 : style === "ice" ? 2.0 : 1.9,
+        durationMs: 520,
+      })
+    );
   } else {
     handles.push(api.emitShockwave3d(scene, to, { flash, scale, radius: 1.7, durationMs: 480 }));
   }

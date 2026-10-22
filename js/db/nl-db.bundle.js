@@ -2071,9 +2071,9 @@
       "moraleCost": 100,
       "effects": [],
       "fx": {
-        "flash": "steel",
+        "flash": "tiger",
         "text": "GẦM THÉT",
-        "motif": "slash",
+        "motif": "tiger",
         "style": "row_sweep"
       },
       "desc": "Gầm thét hàng trước, tỷ lệ Choáng.",
@@ -2104,9 +2104,9 @@
       "moraleCost": 100,
       "effects": [],
       "fx": {
-        "flash": "bagua",
+        "flash": "ice_blue",
         "text": "KHÔNG THÀNH",
-        "motif": "bagua",
+        "motif": "ice",
         "style": "aoe_nova"
       },
       "desc": "Giảm phòng toàn quân địch + dame Trí lực.",
@@ -2121,10 +2121,10 @@
       "moraleCost": 100,
       "effects": [],
       "fx": {
-        "flash": "tiger",
+        "flash": "gold_beast",
         "text": "HỔ KHÍ",
         "motif": "tiger",
-        "style": "ally_aura"
+        "style": "ally_bless"
       },
       "desc": "Buff sĩ khí và tấn công phe ta.",
       "hits": 1
@@ -2138,7 +2138,7 @@
       "moraleCost": 100,
       "effects": [],
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "HỎA CÔNG",
         "motif": "fire",
         "style": "element_fire"
@@ -2221,7 +2221,7 @@
       "power": 1.35,
       "moraleCost": 100,
       "fx": {
-        "flash": "tiger",
+        "flash": "gold_beast",
         "text": "HỔ SI",
         "motif": "tiger",
         "style": "row_sweep"
@@ -2238,9 +2238,9 @@
       "moraleCost": 100,
       "effects": [],
       "fx": {
-        "flash": "steel",
+        "flash": "tiger",
         "text": "ĐÔNG NGÔ",
-        "motif": "slash",
+        "motif": "tiger",
         "style": "single_strike"
       },
       "desc": "Hồi máu nhẹ + tăng Thống lĩnh.",
@@ -2255,7 +2255,7 @@
       "moraleCost": 100,
       "effects": [],
       "fx": {
-        "flash": "green_poison",
+        "flash": "toxic_green",
         "text": "ĐỘC MƯU",
         "motif": "poison",
         "style": "aoe_nova"
@@ -2271,7 +2271,7 @@
       "power": 1.35,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "gold_red",
         "text": "PHỤNG SỒ",
         "motif": "slash",
         "style": "single_strike"
@@ -2288,7 +2288,7 @@
       "moraleCost": 100,
       "effects": [],
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "LỬA LỤC",
         "motif": "fire",
         "style": "element_fire"
@@ -2362,7 +2362,7 @@
       "power": 1.85,
       "moraleCost": 100,
       "fx": {
-        "flash": "tiger",
+        "flash": "gold_beast",
         "text": "HỔ LAO",
         "motif": "tiger",
         "style": "beast_tiger"
@@ -2397,7 +2397,7 @@
       "fx": {
         "flash": "steel",
         "text": "TIÊU DAO TÂN",
-        "motif": "slash",
+        "motif": "pierce",
         "style": "row_sweep"
       },
       "desc": "Tập kích hàng trước — Trương Liêu.",
@@ -2411,7 +2411,7 @@
       "power": 1.3,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue_water",
+        "flash": "aqua",
         "text": "THỦY CHIẾN",
         "motif": "water",
         "style": "row_sweep"
@@ -2461,7 +2461,7 @@
       "moraleCost": 100,
       "effects": [],
       "fx": {
-        "flash": "bagua",
+        "flash": "jade_gold",
         "text": "BÁT QUÁI TRẬN",
         "motif": "bagua",
         "style": "element_bagua"
@@ -2478,7 +2478,7 @@
       "moraleCost": 100,
       "effects": [],
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "THIÊN HỎA",
         "motif": "fire",
         "style": "element_fire"
@@ -2536,7 +2536,7 @@
       "moraleCost": 100,
       "effects": [],
       "fx": {
-        "flash": "thunder",
+        "flash": "electric_blue",
         "text": "LÔI KÍCH",
         "motif": "thunder",
         "style": "element_thunder"
@@ -2559,9 +2559,9 @@
         }
       ],
       "fx": {
-        "flash": "dragon",
+        "flash": "ember_orange",
         "text": "HỎA LONG",
-        "motif": "dragon",
+        "motif": "fire",
         "style": "beast_dragon"
       },
       "desc": "Hỏa long thiêu cột địch — [Thiêu đốt] (wiki hiệu ứng).",
@@ -2582,7 +2582,7 @@
         }
       ],
       "fx": {
-        "flash": "green_poison",
+        "flash": "toxic_green",
         "text": "ĐỘC XÀ",
         "motif": "poison",
         "style": "element_poison"
@@ -2734,7 +2734,7 @@
         }
       ],
       "fx": {
-        "flash": "tiger",
+        "flash": "gold_beast",
         "text": "HỔ XUNG",
         "motif": "tiger",
         "style": "beast_tiger"
@@ -2751,7 +2751,7 @@
       "moraleCost": 100,
       "effects": [],
       "fx": {
-        "flash": "tiger",
+        "flash": "gold_beast",
         "text": "HỔ XUNG",
         "motif": "tiger",
         "style": "column_pierce"
@@ -2768,7 +2768,7 @@
       "moraleCost": 100,
       "effects": [],
       "fx": {
-        "flash": "tiger",
+        "flash": "gold_beast",
         "text": "HỔ SÁT",
         "motif": "tiger",
         "style": "column_pierce"
@@ -2785,7 +2785,7 @@
       "moraleCost": 100,
       "effects": [],
       "fx": {
-        "flash": "tiger",
+        "flash": "gold_beast",
         "text": "HỔ SÁT",
         "motif": "tiger",
         "style": "column_pierce"
@@ -2867,7 +2867,7 @@
       "moraleCost": 100,
       "effects": [],
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "GẦM THÉT",
         "motif": "slash",
         "style": "single_strike"
@@ -2884,9 +2884,9 @@
       "moraleCost": 100,
       "effects": [],
       "fx": {
-        "flash": "steel",
+        "flash": "tiger",
         "text": "GẦM THÉT·HOÀNG",
-        "motif": "slash",
+        "motif": "tiger",
         "style": "single_strike"
       },
       "desc": "Trương Phi — Thần Hoàng, gầm toàn quân.",
@@ -2901,9 +2901,9 @@
       "moraleCost": 100,
       "effects": [],
       "fx": {
-        "flash": "bagua",
+        "flash": "ice_blue",
         "text": "KHÔNG THÀNH",
-        "motif": "bagua",
+        "motif": "ice",
         "style": "element_bagua"
       },
       "desc": "Gia Cát — Truyền thuyết.",
@@ -2919,9 +2919,9 @@
       "moraleCost": 100,
       "effects": [],
       "fx": {
-        "flash": "bagua",
+        "flash": "ice_blue",
         "text": "KHÔNG THÀNH·HOÀNG",
-        "motif": "bagua",
+        "motif": "ice",
         "style": "element_bagua"
       },
       "desc": "Gia Cát — Thần Hoàng, 2 nhịp."
@@ -2934,9 +2934,9 @@
       "power": 1.35,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "violet_spirit",
         "text": "HIỆU LỆNH",
-        "motif": "buff",
+        "motif": "spirit",
         "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Toàn phe địch giảm 15 sĩ khí, toàn phe ta hồi 55 sĩ khí.",
@@ -2960,9 +2960,9 @@
       "power": 1.45,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "violet_spirit",
         "text": "THIÊN MỆNH",
-        "motif": "buff",
+        "motif": "spirit",
         "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tướng khác của phe ta hồi 75 sĩ khí, toàn phe địch giảm 15 sĩ khí.",
@@ -3080,9 +3080,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "YỂN NGUYỆT",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 230% Pháp Công, mục tiêu bị [Ám Tế], duy trì 3 lượt, bản thân nhận [Phản Kích], duy trì 2 lượt.",
@@ -3114,7 +3114,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "dragon",
+        "flash": "cyan_dragon",
         "text": "THANH LONG",
         "motif": "dragon",
         "style": "column_pierce"
@@ -3148,9 +3148,9 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "purple",
         "text": "VÕ THÁNH",
-        "motif": "slash",
+        "motif": "shadow",
         "style": "column_pierce"
       },
       "desc": "[Thường] Địch trên hàng dọc chịu 500% sát thương vật lý, khiến 1 kẻ địch bị [Ám Tế], duy trì 3 lượt, Vật Công của bản thân tăng 100%, duy trì 3 lượt, bản thân nhận [Phục Thù], [Kích Nộ], duy trì 3 lượt.",
@@ -3190,7 +3190,7 @@
       "power": 1.6,
       "moraleCost": 100,
       "fx": {
-        "flash": "dragon",
+        "flash": "cyan_dragon",
         "text": "THANH LONG TRẢM",
         "motif": "dragon",
         "style": "column_pierce"
@@ -3239,7 +3239,7 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "dragon",
+        "flash": "cyan_dragon",
         "text": "THANH LONG YỂN NGU",
         "motif": "dragon",
         "style": "column_pierce"
@@ -3337,9 +3337,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "purple",
         "text": "UY CHẤN HOA HẠ",
-        "motif": "slash",
+        "motif": "shadow",
         "style": "column_pierce"
       },
       "desc": "[Thường] Khiến bản thân rơi vào trạng thái [Nghĩa Tuyệt] không thể giải trừ, duy trì đến khi kết thúc chiến đấu, sau đó gây 300% sát thương vật lý cho địch trên hàng dọc, khiến địch trên hàng dọc vào trạng thái [Ám Tế], duy trì 3 lượt, bản thân vào trạng thái [Hấp Huyết] và [Kiên",
@@ -3396,9 +3396,9 @@
       "power": 1.78,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "BÀO HAO",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 178% Pháp Công, giảm 120 sĩ khí.",
@@ -3414,7 +3414,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "tiger",
+        "flash": "gold_beast",
         "text": "MÃNH HỔ",
         "motif": "tiger",
         "style": "column_pierce"
@@ -3432,7 +3432,7 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "tiger",
+        "flash": "gold_beast",
         "text": "HỔ KHIẾU",
         "motif": "tiger",
         "style": "aoe_nova"
@@ -3450,9 +3450,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "VẠN NGƯỜI KHÓ ĐỠ",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho địch hàng thẳng 4000% Pháp Công và giảm 150+{2} Sĩ Khí, Sĩ Khí giảm càng nhiều, ST càng cao, và gây thêm cho địch hàng thẳng 6800% Pháp Công, Sĩ Khí mục tiêu càng thấp, ST càng cao, nếu cá nhân địch phía trước có [Nguyệt Hồn] sẽ rơi vào Hỗn Loạn, không thể hành đ",
@@ -3483,9 +3483,9 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "BÁ VƯƠNG KÍCH ĐỈNH",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho địch hàng thẳng 16500% Pháp Công và giảm 150+{2} Sĩ Khí, Sĩ Khí giảm càng nhiều, ST càng cao, và gây thêm cho địch hàng thẳng 21500% Pháp Công, Sĩ Khí mục tiêu càng thấp, ST càng cao, nếu cá nhân địch phía trước có [Nguyệt Hồn] hoặc [Nguyệt Huy] sẽ rơi vào Hỗn Lo",
@@ -3517,7 +3517,7 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "tiger",
+        "flash": "gold_beast",
         "text": "MÃNH HỔ LIỆT SƠN",
         "motif": "tiger",
         "style": "column_pierce"
@@ -3596,7 +3596,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "dragon",
+        "flash": "cyan_dragon",
         "text": "BẠCH LONG",
         "motif": "dragon",
         "style": "column_pierce"
@@ -3933,7 +3933,7 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "bagua",
+        "flash": "jade_gold",
         "text": "KỲ MÔN BÁT TRẬN ĐỒ",
         "motif": "bagua",
         "style": "aoe_nova"
@@ -3977,7 +3977,7 @@
       "power": 1.6,
       "moraleCost": 100,
       "fx": {
-        "flash": "thunder",
+        "flash": "electric_blue",
         "text": "LÔI TIỄN",
         "motif": "thunder",
         "style": "column_pierce"
@@ -4069,9 +4069,9 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "purple",
         "text": "TRUY NGUYỆT",
-        "motif": "slash",
+        "motif": "shadow",
         "style": "single_strike"
       },
       "desc": "[Thường] Khiến đơn vị địch lính ít nhất chịu 2300% sát thương vật lý, lính mục tiêu càng ít sát thương càng cao, bản thân nhận [Hội Tâm], [Anh Dũng], duy trì 3 lượt. Nếu diệt được mục tiêu, hồi 500 sĩ khí, nếu không sẽ khiến mục tiêu bị Hư Nhược, không thể nhận hiệu quả có lợi tr",
@@ -4110,9 +4110,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "violet_spirit",
         "text": "BÁCH LÝ TRUY HỒN",
-        "motif": "slash",
+        "motif": "spirit",
         "style": "single_strike"
       },
       "desc": "[Thường] Tấn công mục tiêu địch Lính ít nhất, Lính càng ít sát thương càng cao. Nếu diệt được mục tiêu sẽ hồi 500 sĩ khí, nếu không sẽ khiến địch Hư Nhược trong 5 lượt, bản thân hồi 145 sĩ khí và nhận hiệu quả Hội Tâm và Anh Dũng trong 3 lượt.",
@@ -4190,9 +4190,9 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue_water",
+        "flash": "violet_spirit",
         "text": "XÍCH VŨ QUÁN HỒNG",
-        "motif": "water",
+        "motif": "spirit",
         "style": "element_water"
       },
       "desc": "[Thường] Khiến tướng địch lính ít nhất chịu 30800% sát thương vật lý, lính mục tiêu càng ít sát thương càng cao. Bản thân nhận [Hội Tâm], [Anh Dũng], duy trì 3 lượt. Nếu đánh bại mục tiêu, bản thân hồi 700 sĩ khí. Nếu không, khiến mục tiêu bị [Hư Nhược] không thể giải trừ, duy tr",
@@ -4347,9 +4347,9 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "whirlwind",
+        "flash": "electric_blue",
         "text": "PHONG LÔI",
-        "motif": "whirlwind",
+        "motif": "thunder",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Tấn công 500 sĩ khí, khiến địch trên hàng dọc chịu 2200% Pháp Công, 40% khiến mục tiêu bị [Tê Liệt], duy trì 3 lượt. Bản thân nhận [Thần Tốc], duy trì 3 lượt. Trị liệu đồng đội lính ít nhất 2 lần (Mức trị liệu lần lượt bằng 30% và 10% Pháp Công). Bản thân hồi 145 sĩ khí.",
@@ -4394,9 +4394,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "violet_spirit",
         "text": "BẠCH HỒNG QUÁN NHẬ",
-        "motif": "heal",
+        "motif": "spirit",
         "style": "ally_bless"
       },
       "desc": "[C.Pháp] Tấn công 500 sĩ khí, khiến địch trên hàng dọc chịu 2 lần 5400% Pháp Công, 40% khiến mục tiêu bị [Tê Liệt], duy trì 3 lượt. Bản thân nhận [Thần Tốc] và [Thủ Hộ], duy trì 3 lượt. Trị liệu tướng có lính ít nhất phe ta 2-3 lần (Mức trị liệu bằng 20% Pháp Công). Bản thân hồi ",
@@ -4490,7 +4490,7 @@
       "power": 1.4,
       "moraleCost": 100,
       "fx": {
-        "flash": "thunder",
+        "flash": "electric_blue",
         "text": "TỬ ĐIỆN",
         "motif": "thunder",
         "style": "element_thunder"
@@ -4508,7 +4508,7 @@
       "power": 1.8,
       "moraleCost": 100,
       "fx": {
-        "flash": "thunder",
+        "flash": "electric_blue",
         "text": "THẦN LÔI",
         "motif": "thunder",
         "style": "element_thunder"
@@ -4526,7 +4526,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "thunder",
+        "flash": "electric_blue",
         "text": "LÔI OANH",
         "motif": "thunder",
         "style": "element_thunder"
@@ -4553,7 +4553,7 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "thunder",
+        "flash": "electric_blue",
         "text": "CỬU THIÊN THẦN LÔI",
         "motif": "thunder",
         "style": "element_thunder"
@@ -4586,7 +4586,7 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "thunder",
+        "flash": "electric_blue",
         "text": "DIỆT THẾ THIÊN LÔI",
         "motif": "thunder",
         "style": "element_thunder"
@@ -4619,7 +4619,7 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "thunder",
+        "flash": "electric_blue",
         "text": "KINH THIÊN BẠO LÔI",
         "motif": "thunder",
         "style": "element_thunder"
@@ -4652,7 +4652,7 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "thunder",
+        "flash": "electric_blue",
         "text": "CỬU TIÊU THẦN LÔI",
         "motif": "thunder",
         "style": "element_thunder"
@@ -4685,9 +4685,9 @@
       "power": 1.33,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "HOÀNH HỌA",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "row_sweep"
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 133% Pháp Công, 25% khiến mục tiêu bị [Hỗn Loạn], duy trì 1 lượt.",
@@ -4770,9 +4770,9 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "TINH NGỰ",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 2250% Pháp Công, Pháp Phòng của mục tiêu giảm 40%, duy trì 2 lượt, khiến toàn phe địch chịu 1350% Pháp Công, lần tấn công này 50% tính là sát thương 500 sĩ khí, bản thân hồi 50+{8} sĩ khí.",
@@ -4822,9 +4822,9 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "TRỜI RƠI SAO SÁNG",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 11000% Pháp Công, khiến Pháp Phòng của mục tiêu giảm 40%, duy trì 2 lượt. Tấn công 500 sĩ khí, khiến toàn phe địch chịu 5000% Pháp Công. Bản thân hồi 50+{8} sĩ khí.",
@@ -4848,9 +4848,9 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "TINH VẪN ĐỊA LIỆP",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 20500% Pháp Công, khiến Pháp Phòng của mục tiêu giảm 40%, duy trì 2 lượt. Tấn công 700 sĩ khí, khiến toàn phe địch chịu 9400% Pháp Công, bản thân hồi 75+{8} sĩ khí.",
@@ -4874,9 +4874,9 @@
       "power": 1.85,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "THƯ KÍCH",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 185% Pháp Công, bản thân nhận [Hội Tâm], duy trì 2 lượt.",
@@ -4902,9 +4902,9 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "PHẢN KÍCH",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 100% Pháp Công, bản thân nhận [Phản Kích], duy trì 2 lượt.",
@@ -4930,9 +4930,9 @@
       "power": 1.4,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "NGHỊCH CHUYỂN",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 140% Pháp Công, bản thân nhận [Phản Kích], duy trì 1 lượt.",
@@ -4986,9 +4986,9 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "dragon",
+        "flash": "violet_spirit",
         "text": "THANH LONG HỒN",
-        "motif": "dragon",
+        "motif": "spirit",
         "style": "column_pierce"
       },
       "desc": "[Thường] Địch trên hàng dọc chịu 2400% sát thương vật lý, Vật Công của bản thân tăng 100%. Bản thân nhận [Phục Thù] không thể giải trừ, duy trì 3 lượt, toàn phe ta nhận [Bạch Nhẫn], duy trì 5 lượt.",
@@ -5022,7 +5022,7 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "dragon",
+        "flash": "cyan_dragon",
         "text": "THANH LONG NGUYỆN",
         "motif": "dragon",
         "style": "column_pierce"
@@ -5058,7 +5058,7 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "dragon",
+        "flash": "cyan_dragon",
         "text": "THANH LONG KHIẾU N",
         "motif": "dragon",
         "style": "column_pierce"
@@ -5268,9 +5268,9 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue",
+        "flash": "ice_blue",
         "text": "SƠN BĂNG",
-        "motif": "arcane",
+        "motif": "ice",
         "style": "aoe_nova"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 90% Mưu Công, 25% khiến mục tiêu bị [Hỗn Loạn], duy trì 1 lượt.",
@@ -5320,9 +5320,9 @@
       "power": 2.0,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue",
+        "flash": "ice_blue",
         "text": "THIÊN BĂNG",
-        "motif": "arcane",
+        "motif": "ice",
         "style": "aoe_nova"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 200% Mưu Công, 30% khiến mục tiêu bị [Hỗn Loạn], duy trì 1 lượt.",
@@ -5379,9 +5379,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue",
+        "flash": "ice_blue",
         "text": "THIÊN BĂNG ĐỊA LIỆ",
-        "motif": "arcane",
+        "motif": "ice",
         "style": "aoe_nova"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 6800% Mưu Công, lính mục tiêu càng ít sát thương càng cao. Khiến mục tiêu bị [Tan Vỡ]. Bản thân hồi 0+{4} sĩ khí.",
@@ -5529,7 +5529,7 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "green_poison",
+        "flash": "toxic_green",
         "text": "ĐỘC ĐỊA",
         "motif": "poison",
         "style": "aoe_nova"
@@ -5717,9 +5717,9 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "KIỀM HÃM",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 600% Pháp Công, giảm 120 sĩ khí, Vật Công của mục tiêu giảm 100%, duy trì 2 lượt, bản thân hồi 145 sĩ khí.",
@@ -5743,9 +5743,9 @@
       "power": 1.32,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "ĐẠP PHÁ",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 132% Pháp Công.",
@@ -5813,7 +5813,7 @@
       "power": 1.6,
       "moraleCost": 100,
       "fx": {
-        "flash": "thunder",
+        "flash": "electric_blue",
         "text": "KINH LÔI",
         "motif": "thunder",
         "style": "column_pierce"
@@ -5937,9 +5937,9 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue",
+        "flash": "violet_spirit",
         "text": "THU HỒN ĐOẠT PHÁCH",
-        "motif": "arcane",
+        "motif": "spirit",
         "style": "single_strike"
       },
       "desc": "[Kế Sách] Giải trừ hiệu quả có lợi của mục tiêu địch lính ít nhất, gây 26000% Mưu Công, lính mục tiêu càng ít sát thương càng cao, bản thân nhận hiệu quả [Thấu Suốt] không thể giải trừ, duy trì 3 lượt. Nếu diệt được mục tiêu, bản thân hồi 500 sĩ khí; nếu không, bản thân hồi 100 s",
@@ -5971,9 +5971,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "CUỒNG BẠO",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 220% Pháp Công, bản thân chịu 52% Pháp Công, bản thân hồi 145 sĩ khí.",
@@ -5997,9 +5997,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "CHIẾN CUỒNG",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 240% Pháp Công, bản thân chịu 100% Pháp Công, bản thân hồi 145 sĩ khí, Pháp Công của bản thân tăng 50%, duy trì 2 lượt.",
@@ -6023,9 +6023,9 @@
       "power": 1.59,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "CUỒNG LOẠN",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 672% Pháp Công, lính mục tiêu càng ít sát thương càng cao, bản thân chịu 150% Pháp Công, bản thân hồi 145 sĩ khí.",
@@ -6049,7 +6049,7 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "tiger",
+        "flash": "gold_beast",
         "text": "HỔ TRI",
         "motif": "tiger",
         "style": "beast_tiger"
@@ -6091,7 +6091,7 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "tiger",
+        "flash": "gold_beast",
         "text": "HỔ HẦU SÂN NỘ",
         "motif": "tiger",
         "style": "beast_tiger"
@@ -6194,7 +6194,7 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "ÁC LAI",
         "motif": "slash",
         "style": "aoe_nova"
@@ -6228,7 +6228,7 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "ÁC QUỶ TRIỀN THÂN",
         "motif": "slash",
         "style": "aoe_nova"
@@ -6270,7 +6270,7 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "ÁC LAI LIỆT PHÁCH",
         "motif": "slash",
         "style": "aoe_nova"
@@ -6312,7 +6312,7 @@
       "power": 1.95,
       "moraleCost": 100,
       "fx": {
-        "flash": "tiger",
+        "flash": "gold_beast",
         "text": "HỔ XUNG",
         "motif": "tiger",
         "style": "beast_tiger"
@@ -6345,7 +6345,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "tiger",
+        "flash": "gold_beast",
         "text": "HỔ SÁT",
         "motif": "tiger",
         "style": "column_pierce"
@@ -6451,9 +6451,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "UY CHẤN TIÊU DAO",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu lần lượt 2 lần 8000% và 8000% Pháp Công, lần thứ 1 sĩ khí mục tiêu càng cao sát thương càng cao, lần thứ 2 lính mục tiêu càng ít sát thương càng cao, 80% khiến mục tiêu bị [Tỏa Binh], [Huyết Cúc] không thể giải trừ, duy trì 2 lượt, bản thân vào tr",
@@ -6519,7 +6519,7 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "tiger",
+        "flash": "gold_beast",
         "text": "TRIỆU HỔ PHÁ TRẬN",
         "motif": "tiger",
         "style": "column_pierce"
@@ -6553,9 +6553,9 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "MAN NGƯU",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 90% Pháp Công, bản thân hồi 145 sĩ khí.",
@@ -6579,9 +6579,9 @@
       "power": 1.25,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "CUỒNG NGƯU",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 125% Pháp Công, bản thân hồi 145 sĩ khí.",
@@ -6631,7 +6631,7 @@
       "power": 1.65,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "HỎA NGƯU ĐẠP",
         "motif": "fire",
         "style": "aoe_nova"
@@ -6650,9 +6650,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "MAN NGƯU KHAI SƠN",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Chiến Pháp liên tục, tấn công toàn phe địch, gây hiệu quả Giẫm Đạp không thể giải trừ trong 2 lượt. Giẫm Đạp cộng dồn 3 lần, sẽ gây Hôn Mê 1 lượt (Khi chiến đấu với người chơi khác, cần cộng dồn 4 lần), hiệu quả Hôn Mê không thể giải trừ.",
@@ -6741,7 +6741,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "tiger",
+        "flash": "gold_beast",
         "text": "HỔ UY",
         "motif": "tiger",
         "style": "column_pierce"
@@ -6767,9 +6767,9 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "THIỆN BIẾN",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 1700% Pháp Công, lính mục tiêu càng ít sát thương càng cao. Giải trừ hiệu quả có lợi của mục tiêu (Khi chiến đấu với người chơi khác, giải trừ tối đa 2 hiệu quả có lợi của mỗi tướng địch). Bản thân nhận [Thiên Vận], duy trì 3 lượt. Bản thân hồi 14",
@@ -6823,9 +6823,9 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "BINH VÔ THƯỜNG HÌN",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Bản thân nhận [Thiên Vận], duy trì 3 lượt, giải trừ hiệu quả có lợi của địch trên hàng dọc (Khi chiến đấu với người chơi khác, tối đa giải trừ 2 hiệu quả có lợi của mỗi tướng địch), sau đó khiến mục tiêu chịu 12000% Pháp Công, lính mục tiêu càng ít sát thương càng cao. B",
@@ -6851,9 +6851,9 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "BINH HÌNH CỬU ĐỘN",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Bản thân nhận [Thiên Vận] và trạng thái [Kỳ Trận] không thể giải trừ, duy trì 3 lượt. Giải trừ hiệu quả có lợi của địch trên hàng dọc (khi chiến đấu với người chơi khác, tối đa giải trừ 4 hiệu quả có lợi mỗi tướng địch), mỗi hiệu quả có lợi bị giải trừ giảm 15 sĩ khí đối",
@@ -6949,9 +6949,9 @@
       "power": 1.76,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "electric_blue",
         "text": "VIÊM LÔI",
-        "motif": "fire",
+        "motif": "thunder",
         "style": "element_fire"
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 176% Mưu Công, 70% khiến mục tiêu bị [Hỗn Loạn], duy trì 1 lượt, bản thân hồi 145 sĩ khí.",
@@ -6981,7 +6981,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "thunder",
+        "flash": "electric_blue",
         "text": "XÍCH LÔI",
         "motif": "thunder",
         "style": "row_sweep"
@@ -7184,9 +7184,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue",
+        "flash": "ice_blue",
         "text": "BĂNG CHÙY",
-        "motif": "arcane",
+        "motif": "ice",
         "style": "row_sweep"
       },
       "desc": "[Kế Sách] Địch trên hàng ngang chịu 400% Mưu Công, 65% khiến mục tiêu bị [Đóng Băng], duy trì 1 lượt.",
@@ -7211,9 +7211,9 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "whirlwind",
+        "flash": "ice_blue",
         "text": "BĂNG PHONG",
-        "motif": "whirlwind",
+        "motif": "ice",
         "style": "row_sweep"
       },
       "desc": "[Kế Sách] Địch trên hàng ngang chịu 550% Mưu Công, sĩ khí mục tiêu càng cao sát thương càng cao, 65% khiến mục tiêu bị [Đóng Băng] (Khi chiến đấu với người chơi khác, xác suất Đóng Băng là 39%), duy trì 1 lượt, bản thân hồi 50+{4} sĩ khí.",
@@ -7244,9 +7244,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue",
+        "flash": "ice_blue",
         "text": "THIÊN HÀN ĐỊA BĂNG",
-        "motif": "arcane",
+        "motif": "ice",
         "style": "row_sweep"
       },
       "desc": "[Kế Sách] Địch trên hàng ngang chịu 1250% Mưu Công, giảm 25 sĩ khí, sĩ khí mục tiêu càng cao sát thương càng cao, 65% khiến mục tiêu bị [Đóng Băng] (Khi chiến đấu với người chơi khác, xác suất [Đóng Băng] là 39%), duy trì 1 lượt, bản thân hồi 50+{4} sĩ khí.",
@@ -7277,9 +7277,9 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "whirlwind",
+        "flash": "ice_blue",
         "text": "THIÊN LÝ BĂNG PHON",
-        "motif": "whirlwind",
+        "motif": "ice",
         "style": "row_sweep"
       },
       "desc": "[Kế Sách] Địch trên hàng ngang chịu 4000% Mưu Công, gây giảm 25 sĩ khí, sĩ khí mục tiêu càng cao sát thương càng cao, có xác suất 65% khiến mục tiêu bị [Đóng Băng] (Khi chiến đấu với người chơi khác, xác suất [Đóng Băng] là 39%), duy trì 1 lượt. Trong thời gian bị Đóng Băng, khi ",
@@ -7304,9 +7304,9 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "SƯ HỐNG",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 100% Pháp Công, giảm 24 sĩ khí.",
@@ -7322,9 +7322,9 @@
       "power": 1.55,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "CUỒNG HÀO",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 155% Pháp Công, giảm 40+{2} sĩ khí.",
@@ -7340,9 +7340,9 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "violet_spirit",
         "text": "ĐẾ HỒN",
-        "motif": "slash",
+        "motif": "spirit",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 600% Pháp Công, giảm 40+{2} sĩ khí, 30% giải trừ 1 hiệu quả có lợi của mục tiêu (Khi chiến đấu với người chơi khác, không có hiệu quả Giải Trừ).",
@@ -7358,9 +7358,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "BẠO NỘ HỐNG",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 2600% Pháp Công, giảm 40+{2} sĩ khí, 80% giải trừ 1 hiệu quả có lợi của mục tiêu (Khi chiến đấu với người chơi khác, không có hiệu quả Giải Trừ).",
@@ -7376,9 +7376,9 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "PHÁ ĐẢM NỘ HỐNG",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] 50% tăng cho bản thân hiệu quả [Trảm Tiên], sau đó khiến toàn phe địch chịu 6800% Pháp Công, gây giảm 40 +{8} sĩ khí, 80% giải trừ 1 hiệu quả có lợi của mục tiêu (Khi chiến đấu với người chơi khác, sẽ không có hiệu quả Giải Trừ, sau khi gây sát thương, 50% tăng cho bản t",
@@ -7597,7 +7597,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "HỎA THẦN",
         "motif": "fire",
         "style": "aoe_nova"
@@ -7622,7 +7622,7 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "ĐẠI VIÊM ĐẾ",
         "motif": "fire",
         "style": "aoe_nova"
@@ -7650,9 +7650,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "violet_spirit",
         "text": "HỒNG LIÊN NGHIỆP H",
-        "motif": "fire",
+        "motif": "spirit",
         "style": "aoe_nova"
       },
       "desc": "[Kế Sách] Bản thân nhận [Hỏa Thần] 3 lượt, khiến toàn phe địch chịu 3750% Mưu Công, lính mục tiêu càng nhiều sát thương càng cao. Tiếp tục khiến toàn phe địch chịu 2 lần 6750% Mưu Công, lính mục tiêu càng ít sát thương càng cao.",
@@ -7678,7 +7678,7 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "LUYỆN NGỤC HỎA HẢI",
         "motif": "fire",
         "style": "aoe_nova"
@@ -7711,9 +7711,9 @@
       "power": 2.1,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "violet_spirit",
         "text": "HỒNG VIÊM",
-        "motif": "fire",
+        "motif": "spirit",
         "style": "element_fire"
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 210% Mưu Công, bản thân hồi 145 sĩ khí.",
@@ -7737,7 +7737,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "HẮC VIÊM",
         "motif": "fire",
         "style": "element_fire"
@@ -7802,7 +7802,7 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "HỎA THIÊU LIÊN DOA",
         "motif": "fire",
         "style": "element_fire"
@@ -7841,7 +7841,7 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "NGHIỆP VIÊM BẠO",
         "motif": "fire",
         "style": "element_fire"
@@ -7888,7 +7888,7 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "HỎA THẾ NGÚT TRỜI",
         "motif": "fire",
         "style": "element_fire"
@@ -7935,7 +7935,7 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "XÍCH LỬA TRÍ TUỆ",
         "motif": "fire",
         "style": "element_fire"
@@ -8000,9 +8000,9 @@
       "power": 2.0,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "NGHỊCH LƯU",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 200% Pháp Công, khiến 1 kẻ địch hàng sau chịu 170% Pháp Công, khiến 1 kẻ địch hàng trước chịu 150% Pháp Công.",
@@ -8117,9 +8117,9 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "LUNG HOÀN TÁNG ĐỊC",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 2 lần 7800% Pháp Công, lính mục tiêu càng ít sát thương càng cao. Khiến 1 kẻ địch hàng sau chịu 10200% Pháp Công, lính mục tiêu càng ít sát thương càng cao. Bản thân nhận [Thiết Bích], duy trì 1 lượt. Bản thân hồi 50+{8} sĩ khí.",
@@ -8183,7 +8183,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "tiger",
+        "flash": "gold_beast",
         "text": "KHỔ KẾ",
         "motif": "tiger",
         "style": "column_pierce"
@@ -8201,9 +8201,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "HY SINH",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 360% Pháp Công, bản thân chịu 100% Pháp Công.",
@@ -8219,9 +8219,9 @@
       "power": 1.59,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "THỆ TỬ",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 600% Pháp Công, bản thân chịu 150% Pháp Công.",
@@ -8237,9 +8237,9 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "NGỌC THẠCH CỤ DIỆT",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 1600% Pháp Công, lính mục tiêu càng nhiều sát thương càng cao, khiến mục tiêu nhận [Âm Hồn], duy trì 3 lượt, bản thân chịu sát thương bằng 300% Pháp Công. Bản thân nhận [Bất Khuất] không thể giải trừ, duy trì 4 lượt. Bản thân hồi 50+{6} sĩ khí.",
@@ -8319,9 +8319,9 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "CÀNG GIÀ CÀNG CAY",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 2 lần 5500% Pháp Công, lính mục tiêu càng nhiều sát thương càng cao, khiến mục tiêu bị [Âm Hồn], duy trì 3 lượt, bản thân nhận hiệu quả [Bất Khuất 2] không thể giải trừ, duy trì 4 lượt, bản thân hồi 50+{6} sĩ khí.",
@@ -8386,9 +8386,9 @@
       "power": 1.59,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "DŨNG MÃNH",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 500% Pháp Công, mục tiêu bị [Áp Ức], duy trì 2 lượt, bản thân chịu 150% sát thương, bản thân hồi 145 sĩ khí.",
@@ -8419,9 +8419,9 @@
       "power": 1.43,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "PHẤN CHIẾN",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 143% Pháp Công.",
@@ -8437,9 +8437,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "CHIẾN THẦN CAN ĐẢM",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 6300% Pháp Công, lính bản thân càng ít sát thương càng cao, mục tiêu bị [Áp Ức], duy trì 2 lượt, bản thân nhận [Dục Huyết], duy trì 3 lượt, bản thân hồi 145 sĩ khí.",
@@ -8478,9 +8478,9 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "CHIẾN THẦN BẤT KHU",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 18000% Pháp Công, lính bản thân càng thấp sát thương càng cao, khiến mục tiêu nhận [Áp Ức], [Thương Tích], duy trì 2 lượt. Bản thân nhận [Huyết Thuẫn] không thể giải trừ, duy trì 31 lượt. Bản thân hồi 145 sĩ khí.",
@@ -8572,7 +8572,7 @@
       "power": 1.58,
       "moraleCost": 100,
       "fx": {
-        "flash": "green_poison",
+        "flash": "toxic_green",
         "text": "ĐỘC TIÊU",
         "motif": "poison",
         "style": "element_poison"
@@ -8597,7 +8597,7 @@
       "power": 1.58,
       "moraleCost": 100,
       "fx": {
-        "flash": "green_poison",
+        "flash": "toxic_green",
         "text": "XÀ ĐỘC",
         "motif": "poison",
         "style": "column_pierce"
@@ -8652,7 +8652,7 @@
         "flash": "shield",
         "text": "HÃN VỆ",
         "motif": "shield",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Bản thân nhận [Thiết Bích], duy trì 1 lượt, toàn phe ta nhận [Thủ Hộ], duy trì 2 lượt.",
       "wikiQuality": "Chiến",
@@ -8686,7 +8686,7 @@
         "flash": "shield",
         "text": "BÍCH LŨY",
         "motif": "shield",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Thủ Hộ], duy trì 2 lượt, 85% khiến toàn phe ta nhận [Hộ Thuẫn], duy trì 2 lượt.",
       "wikiQuality": "Thần",
@@ -8720,7 +8720,7 @@
         "flash": "shield",
         "text": "THUẪN TƯỜNG",
         "motif": "shield",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Hộ Thuẫn], [Thủ Hộ], duy trì 2 lượt, bản thân hồi 0+{4} sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -8849,9 +8849,9 @@
       "power": 1.25,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "XƯNG BÁ",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 125% Pháp Công, toàn phe ta hồi 25 sĩ khí.",
@@ -8875,9 +8875,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "BÁ VƯƠNG",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 9000% Pháp Công, toàn phe ta nhận [Tịnh Hóa], duy trì 2 lượt, toàn phe ta nhận [Tòng Long], duy trì 3 lượt, toàn phe ta hồi 50+{4} sĩ khí.",
@@ -8917,9 +8917,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "THIÊN UY",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 220% Pháp Công, bản thân nhận [Tịnh Hóa], duy trì 2 lượt, toàn phe ta hồi 50 sĩ khí.",
@@ -8951,9 +8951,9 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "BÁ VƯƠNG THẦN UY",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 2000% Pháp Công, toàn phe ta nhận [Tịnh Hóa], duy trì 2 lượt, toàn phe ta nhận [Tòng Long], duy trì 3 lượt, toàn phe ta hồi 50+{4} sĩ khí.",
@@ -9109,9 +9109,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "SAN BẰNG",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "row_sweep"
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 250% Pháp Công, Pháp Phòng của mục tiêu giảm 25%, duy trì 2 lượt.",
@@ -9353,9 +9353,9 @@
       "power": 1.65,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "aqua",
         "text": "LẠC THỦY TIÊN",
-        "motif": "buff",
+        "motif": "water",
         "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận [Hoạt Lực], duy trì 2 lượt, tướng khác của phe ta hồi 80+{4} sĩ khí.",
@@ -9466,9 +9466,9 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "blue_water",
         "text": "VŨ ĐIỆU LẠC THẦN",
-        "motif": "heal",
+        "motif": "water",
         "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Toàn phe ta nhận hiệu quả [Hoạt Lực], duy trì 3 lượt, trị liệu toàn phe ta 2 lần, sau đó trị liệu tiếp cho đồng đội ngẫu nhiên 1-2 lần (Mức trị liệu bằng 20% Mưu Công), giúp các đồng đội khác hồi 80+{10} sĩ khí.",
@@ -9636,9 +9636,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "ice_blue",
         "text": "HÀNH THÍCH",
-        "motif": "pierce",
+        "motif": "ice",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Khiến 1 kẻ địch hàng sau chịu 350% Pháp Công, mục tiêu bị [Hỗn Loạn], duy trì 1 lượt, mục tiêu bị [Âm Hồn], duy trì đến khi kết thúc chiến đấu.",
@@ -9669,9 +9669,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "DIỆT GỌN",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Khiến 1 kẻ địch hàng sau chịu 3000% Pháp Công, mục tiêu bị [Hỗn Loạn], duy trì 1 lượt, mục tiêu bị [Đào Binh], duy trì 3 lượt, mục tiêu bị [Âm Hồn], duy trì đến khi kết thúc chiến đấu.",
@@ -9990,9 +9990,9 @@
       "power": 1.54,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "GIAO CHIẾN",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 154% Pháp Công, mục tiêu bị [Ám Tế], duy trì 3 lượt.",
@@ -10018,7 +10018,7 @@
       "fx": {
         "flash": "steel",
         "text": "BÁC KÍCH",
-        "motif": "slash",
+        "motif": "pierce",
         "style": "column_pierce"
       },
       "desc": "[Thường] Địch trên hàng dọc chịu 165% sát thương vật lý.",
@@ -10061,7 +10061,7 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "iron",
         "text": "VÔ CÙNG DŨNG MÃNH",
         "motif": "slash",
         "style": "row_sweep"
@@ -10088,7 +10088,7 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "CÀN QUÉT BẠO LỰC",
         "motif": "slash",
         "style": "row_sweep"
@@ -10115,7 +10115,7 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "tiger",
+        "flash": "gold_beast",
         "text": "HÙNG HỔ TIÊN PHONG",
         "motif": "tiger",
         "style": "row_sweep"
@@ -10150,9 +10150,9 @@
       "power": 1.98,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "VÔ SONG",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Tất cả đơn vị trên sân ngoại trừ bản thân chịu 198% Pháp Công.",
@@ -10168,9 +10168,9 @@
       "power": 1.85,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "MA THẦN",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 185% Pháp Công, bản thân nhận [Hội Tâm], duy trì 2 lượt, bản thân hồi 50 sĩ khí.",
@@ -10202,9 +10202,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "MINH VƯƠNG",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 235% Pháp Công, bản thân nhận [Điên Cuồng], [Hội Tâm], duy trì 2 lượt, bản thân hồi 50+{6} sĩ khí.",
@@ -10244,9 +10244,9 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "THIÊN HẠ VÔ SONG",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 1400% Pháp Công, 18% khiến mục tiêu bị [Sợ Hãi] (Khi chiến đấu với người chơi khác, xác suất là 4.5%), duy trì 2 lượt. Gây thêm 3 lần sát thương lên 1 mục tiêu ngẫu nhiên 2000% Pháp Công, bản thân nhận [Điên Cuồng] (Khi chiến đấu với người chơi khác, s",
@@ -10279,9 +10279,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "QUỶ THẦN NHẤT KÍCH",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 4000% Pháp Công, 18% khiến mục tiêu bị [Sợ Hãi] (Khi chiến đấu với người chơi khác, xác suất là 4.5%), duy trì 2 lượt, khiến mục tiêu ngẫu nhiên chịu 3 lần 6500% Pháp Công. Bản thân nhận [Điên Cuồng], [Phá Thánh], duy trì 3 lượt. Bản thân hồi 50+{10} s",
@@ -10322,7 +10322,7 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "MA THẦN NỘ HỎA",
         "motif": "fire",
         "style": "aoe_nova"
@@ -10408,9 +10408,9 @@
       "power": 1.15,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "NỘ HỐNG",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 115% Pháp Công, giảm 100 sĩ khí.",
@@ -10426,9 +10426,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "ice_blue",
         "text": "BĂNG HOẠI",
-        "motif": "slash",
+        "motif": "ice",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 330% Pháp Công, lính mục tiêu càng ít sát thương càng cao, bản thân chịu 100% Pháp Công, bản thân nhận [Tử Thủ], duy trì 2 lượt.",
@@ -10453,9 +10453,9 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "BẠO LỆ",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 2 lần 910% Pháp Công, lính mục tiêu càng ít sát thương càng cao, bản thân chịu 100% Pháp Công, bản thân nhận [Tử Thủ], [Bạo Nộ], duy trì 2 lượt, bản thân hồi 145 sĩ khí.",
@@ -10493,9 +10493,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "BẠO TRẤN",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 2 lần 5750% Pháp Công, tỉ lệ lính bản thân càng thấp sát thương càng cao, bản thân nhận [Tử Thủ], [Bạo Nộ], duy trì 2 lượt, bản thân hồi 145 sĩ khí.",
@@ -10533,9 +10533,9 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "TỬU TRÌ NHỤC LÂM",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 2 lần 14000% Pháp Công, tỉ lệ lính bản thân càng thấp sát thương càng cao, bản thân vào trạng thái [Tử Thủ], [Bạo Nộ], duy trì 2 lượt, bản thân hồi 145 sĩ khí.",
@@ -10573,9 +10573,9 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "THIÊN UY BẠO NGƯỢC",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Bản thân nhận hiệu quả [Bạo Nộ], duy trì 2 lượt, khiến địch trên hàng dọc chịu 2 lần 21000% Pháp Công, tỉ lệ lính bản thân càng thấp sát thương càng cao, bản thân nhận hiệu quả [Tử Thủ 2] không thể giải trừ, duy trì 2 lượt, bản thân hồi 145 sĩ khí.",
@@ -10613,7 +10613,7 @@
       "power": 2.13,
       "moraleCost": 100,
       "fx": {
-        "flash": "thunder",
+        "flash": "electric_blue",
         "text": "LẠC LÔI",
         "motif": "thunder",
         "style": "element_thunder"
@@ -10631,7 +10631,7 @@
       "power": 1.59,
       "moraleCost": 100,
       "fx": {
-        "flash": "thunder",
+        "flash": "electric_blue",
         "text": "ÂM LÔI",
         "motif": "thunder",
         "style": "column_pierce"
@@ -10663,9 +10663,9 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "green_poison",
+        "flash": "electric_blue",
         "text": "ĐỘC LÔI",
-        "motif": "poison",
+        "motif": "thunder",
         "style": "column_pierce"
       },
       "desc": "[Kế Sách] Địch trên hàng dọc chịu 2200% Mưu Công, kèm hiệu quả [Kịch Độc], duy trì 2 lượt, 30% khiến mục tiêu bị [Hỗn Loạn], duy trì 1 lượt, bản thân hồi 50 +{6} sĩ khí.",
@@ -10700,7 +10700,7 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "green_poison",
+        "flash": "toxic_green",
         "text": "TUYỆT SÁCH ĐỘC KẾ",
         "motif": "poison",
         "style": "column_pierce"
@@ -10737,9 +10737,9 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "green_poison",
+        "flash": "ice_blue",
         "text": "NÁO LOẠN KINH THÀN",
-        "motif": "poison",
+        "motif": "ice",
         "style": "column_pierce"
       },
       "desc": "[Kế Sách] Địch trên hàng dọc chịu 14000% Mưu Công, lập tức kích hoạt hiệu quả [Kịch Độc] trên người kẻ địch trên hàng dọc 1 lần, kèm hiệu quả [Kịch Độc], duy trì 2 lượt, 30% khiến mục tiêu bị [Hỗn Loạn], duy trì 1 lượt, bản thân hồi 50 +{8} sĩ khí.",
@@ -10774,9 +10774,9 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "ice_blue",
         "text": "LIÊN THÀNH",
-        "motif": "slash",
+        "motif": "ice",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 75% Pháp Công.",
@@ -11059,7 +11059,7 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "green_poison",
+        "flash": "toxic_green",
         "text": "ĐỘC CHÚ",
         "motif": "poison",
         "style": "aoe_nova"
@@ -11120,7 +11120,7 @@
       "fx": {
         "flash": "steel",
         "text": "RỪNG GIÁO TUA TỦA",
-        "motif": "slash",
+        "motif": "pierce",
         "style": "column_pierce"
       },
       "desc": "[Vật Lý] Địch trên hàng dọc chịu 6400% sát thương vật lý, lính mục tiêu càng ít sát thương càng cao. Toàn phe ta nhận hiệu quả [Thần Binh], [Kiêu Binh], duy trì 3 lượt. Bản thân hồi 50+{6} sĩ khí.",
@@ -11160,9 +11160,9 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "steel",
         "text": "BẠCH MÃ TƯỚNG QUÂN",
-        "motif": "buff",
+        "motif": "pierce",
         "style": "ally_bless"
       },
       "desc": "[Vật Lý] Địch trên hàng dọc chịu 2 lần 8400% sát thương vật lý, lính mục tiêu càng ít sát thương càng cao. Toàn phe ta nhận hiệu quả [Thần Binh], [Kiêu Binh], duy trì 3 lượt. Bản thân hồi 50+{8} sĩ khí.",
@@ -11202,9 +11202,9 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "charge",
         "text": "BẠCH KỴ DƯƠNG KỲ",
-        "motif": "buff",
+        "motif": "charge",
         "style": "ally_bless"
       },
       "desc": "[Vật Lý] Địch trên hàng dọc chịu 2 lần 19000% sát thương vật lý, lính mục tiêu càng ít sát thương càng cao. Toàn phe ta nhận hiệu quả [Thần Binh], [Kiêu Binh], duy trì 3 lượt. Bản thân hồi 75+{8} sĩ khí.",
@@ -11244,9 +11244,9 @@
       "power": 1.45,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "electric_blue",
         "text": "LÔI CỔ",
-        "motif": "buff",
+        "motif": "thunder",
         "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tướng khác của phe ta hồi 75 sĩ khí.",
@@ -11332,7 +11332,7 @@
         "flash": "shield",
         "text": "TỰ THỦ GIỮ MÌNH",
         "motif": "shield",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tăng cho đồng đội 85+{4} sĩ khí, toàn phe ta nhận hiệu quả [Kiên Thủ], duy trì 3 lượt.",
       "wikiQuality": "Thượng Cổ",
@@ -11359,7 +11359,7 @@
         "flash": "shield",
         "text": "BẢO VỆ KINH GIANG",
         "motif": "shield",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tăng cho đồng đội 85+{4} sĩ khí, toàn phe ta nhận hiệu quả [Anh Dũng], [Kiên Thủ], duy trì 3 lượt.",
       "wikiQuality": "Thái Sơ",
@@ -11442,9 +11442,9 @@
       "power": 1.4,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "NỘ TRẢM",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 140% Pháp Công, gây cho 1 đơn vị địch 2 lần sát thương, lần lượt là 125%, 100% Pháp Công.",
@@ -11460,9 +11460,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "TRẢM SÁT",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 450% Pháp Công, lính mục tiêu càng ít sát thương càng cao.",
@@ -11478,9 +11478,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "KIÊU TƯỚNG",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 445% Pháp Công, đơn vị lính ít nhất phe ta nhận [Hộ Thuẫn], duy trì 2 lượt, 2 kẻ địch ngẫu nhiên bị [Treo Thưởng], duy trì 2 lượt, bản thân hồi 145 sĩ khí.",
@@ -11566,9 +11566,9 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "QUỶ TƯỚNG PHÁ THÁN",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 6000% Pháp Công, lính địch càng nhiều sát thương càng cao, giúp tướng phe ta có lính ít nhất nhận [Hộ Thuẫn], duy trì 2 lượt, khiến 2 kẻ địch ngẫu nhiên nhận [Treo Thưởng] không thể giải trừ, duy trì 2 lượt. Bản thân nhận [Phá Thánh] và [Thấu Suốt] khô",
@@ -11642,9 +11642,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "PHÙ ĐỒ",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 2 lần 230% Pháp Công. Mỗi lần sát thương, 25% khiến mục tiêu bị [Hỗn Loạn], duy trì 1 lượt",
@@ -11668,9 +11668,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "DŨNG TƯỚNG",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Tấn công 500 sĩ khí 4 lần, lần lượt gây ra 300%, 400%, 500%, 600% Pháp Công lên mục tiêu ngẫu nhiên, bản thân nhận [Thấu Suốt], duy trì 1 lượt, bản thân hồi 145 sĩ khí.",
@@ -11728,9 +11728,9 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "QUỶ TƯỚNG TRU THẦN",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Tấn công 500 sĩ khí. Gây 5 lần 9000% Pháp Công. Bản thân nhận [Tru Thần] và [Thấu Suốt] không thể giải trừ, duy trì 1 lượt, bản thân hồi 145 sĩ khí.",
@@ -11796,7 +11796,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "bagua",
+        "flash": "jade_gold",
         "text": "KỲ MÔN",
         "motif": "bagua",
         "style": "aoe_nova"
@@ -11885,7 +11885,7 @@
       "power": 1.59,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "KÍCH NỘ",
         "motif": "slash",
         "style": "single_strike"
@@ -11965,7 +11965,7 @@
       "power": 1.25,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "iron",
         "text": "THUẪN KÍCH",
         "motif": "slash",
         "style": "single_strike"
@@ -12204,7 +12204,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue_water",
+        "flash": "aqua",
         "text": "THỦY CÔNG",
         "motif": "water",
         "style": "aoe_nova"
@@ -12222,7 +12222,7 @@
       "power": 1.59,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "brown",
         "text": "CHẤN KÍCH",
         "motif": "slash",
         "style": "aoe_nova"
@@ -12337,7 +12337,7 @@
       "fx": {
         "flash": "steel",
         "text": "NHUỆ NHẪN",
-        "motif": "slash",
+        "motif": "pierce",
         "style": "column_pierce"
       },
       "desc": "[Thường] Địch trên hàng dọc chịu 650% sát thương vật lý, Vật Công của toàn phe ta tăng 200%, duy trì 3 lượt, bản thân hồi 50+{4} sĩ khí.",
@@ -12361,9 +12361,9 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "LIÊN HOÀN",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 70% Pháp Công, 20% khiến mục tiêu bị [Hỗn Loạn], duy trì 1 lượt.",
@@ -12387,9 +12387,9 @@
       "power": 1.54,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "LIÊN KÍCH",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 154% Pháp Công, bản thân hồi 145 sĩ khí.",
@@ -12489,9 +12489,9 @@
       "power": 1.65,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "gold_beast",
         "text": "LOẠN THẾ PHỔ ĐỘ",
-        "motif": "buff",
+        "motif": "tiger",
         "style": "ally_bless"
       },
       "desc": "[Kế Sách] Sát thương Mưu Công toàn phe địch 3 lần, giảm Mưu Phòng toàn phe địch 2 lượt, hồi lính toàn phe ta, bản thân hồi 50 +{10} sĩ khí.",
@@ -12686,7 +12686,7 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "MINH HỎA LIÊU NGUY",
         "motif": "fire",
         "style": "aoe_nova"
@@ -12732,9 +12732,9 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "TRU THẦN DIỆT MA",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Khiến toàn phe địch chịu [Vong Đoạn], Pháp Công tăng 80% +{11%}%, duy trì 2 lượt, khiến địch trên hàng ngang chịu 16000% Pháp Công, có xác suất 70% khiến tướng địch lính ít nhất bị [Sợ Hãi], có xác suất 70% khiến tướng địch lính nhiều nhất bị [Ngủ Say], duy trì 2 lượt, b",
@@ -12772,9 +12772,9 @@
       "power": 1.4,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "NỘ KIẾM",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 140% Pháp Công, gây cho 1 đơn vị địch 125% Pháp Công.",
@@ -12790,7 +12790,7 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "shield",
+        "flash": "steel_blue",
         "text": "THIẾT BÍCH",
         "motif": "shield",
         "style": "barrier"
@@ -12835,9 +12835,9 @@
       "power": 1.68,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "PHẤN TẤN",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 168% Pháp Công.",
@@ -12905,7 +12905,7 @@
       "power": 2.04,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "BỘC VIÊM",
         "motif": "fire",
         "style": "element_fire"
@@ -12941,7 +12941,7 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "brown",
         "text": "HOÀNG THIÊN QUỶ ĐẠ",
         "motif": "slash",
         "style": "aoe_nova"
@@ -13050,9 +13050,9 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "bagua",
+        "flash": "ice_blue",
         "text": "NGŨ HÀNH PHÁ TRẬN",
-        "motif": "bagua",
+        "motif": "ice",
         "style": "aoe_nova"
       },
       "desc": "[Thường] Toàn phe địch chịu 19000% sát thương vật lý, bản thân nhận [Thiết Bích] và [Loại Bỏ] không thể giải trừ, duy trì 1 lượt, bản thân nhận [Hội Tâm], [Liên Kích], [Tử Chiến] không thể giải trừ, duy trì 4 lượt. Mỗi lượt giới hạn tối đa của hiệu quả [Điệp Nhẫn] của bản thân tă",
@@ -13300,7 +13300,7 @@
       "power": 1.3,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "brown",
         "text": "THIẾT THƯƠNG",
         "motif": "slash",
         "style": "single_strike"
@@ -13327,9 +13327,9 @@
       "power": 1.41,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "HOÀNH TẢO",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "row_sweep"
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 141% Pháp Công.",
@@ -13345,7 +13345,7 @@
       "power": 1.58,
       "moraleCost": 100,
       "fx": {
-        "flash": "green_poison",
+        "flash": "toxic_green",
         "text": "ĐỘC NHẪN",
         "motif": "poison",
         "style": "element_poison"
@@ -13395,7 +13395,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "LIỆT NHẪN",
         "motif": "slash",
         "style": "column_pierce"
@@ -13423,7 +13423,7 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "brown",
         "text": "PHẦN THIÊN",
         "motif": "slash",
         "style": "aoe_nova"
@@ -13442,7 +13442,7 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "NỘ NGỤC VIÊM",
         "motif": "fire",
         "style": "aoe_nova"
@@ -13461,9 +13461,9 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "violet_spirit",
         "text": "HỒNG HOANG NỘ HỎA",
-        "motif": "fire",
+        "motif": "spirit",
         "style": "aoe_nova"
       },
       "desc": "[Thường] Toàn phe địch chịu 11000% sát thương vật lý, khiến đơn vị địch lính nhiều nhất chịu 11000% sát thương vật lý, lính mục tiêu càng nhiều sát thương càng cao, sau đó khiến đơn vị địch lính ít nhất chịu 11000% sát thương vật lý, lính mục tiêu càng ít sát thương càng cao. Bản",
@@ -13480,7 +13480,7 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "THẦN HỎA HIỆN THẾ",
         "motif": "fire",
         "style": "aoe_nova"
@@ -13517,7 +13517,7 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "whirlwind",
+        "flash": "wind_silver",
         "text": "GIÓ LỐC",
         "motif": "whirlwind",
         "style": "element_whirlwind"
@@ -13543,9 +13543,9 @@
       "power": 1.8,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "PHÁ PHỦ",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 180% Pháp Công, lính địch càng ít sát thương càng cao.",
@@ -13561,7 +13561,7 @@
       "power": 1.3,
       "moraleCost": 100,
       "fx": {
-        "flash": "green_poison",
+        "flash": "toxic_green",
         "text": "KỊCH ĐỘC",
         "motif": "poison",
         "style": "element_poison"
@@ -13586,7 +13586,7 @@
       "power": 2.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "green_poison",
+        "flash": "toxic_green",
         "text": "ĐỘC KẾ",
         "motif": "poison",
         "style": "element_poison"
@@ -13659,7 +13659,7 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "CUỒNG NỘ",
         "motif": "slash",
         "style": "aoe_nova"
@@ -13694,7 +13694,7 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "MAN NỘ HỐNG",
         "motif": "slash",
         "style": "aoe_nova"
@@ -13721,7 +13721,7 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "brown",
         "text": "DỊ TỘC XÂM NHẬP",
         "motif": "slash",
         "style": "aoe_nova"
@@ -13748,7 +13748,7 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "brown",
         "text": "ĐẠI VƯƠNG THÂN CHI",
         "motif": "slash",
         "style": "aoe_nova"
@@ -13775,9 +13775,9 @@
       "power": 1.1,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "BINH PHẠT",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 110% Pháp Công.",
@@ -13819,9 +13819,9 @@
       "power": 1.65,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "violet_spirit",
         "text": "TRẤN HỒN",
-        "motif": "heal",
+        "motif": "spirit",
         "style": "ally_bless"
       },
       "desc": "[C.Pháp] Tấn công toàn phe địch, trị liệu Toàn phe đội phe ta và tăng 25 +{6} sĩ khí, bản thân nhận Nguyệt Hồn 3 lượt.",
@@ -13851,9 +13851,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "steel_blue",
         "text": "PHÒNG NGỰ CẨN THẬN",
-        "motif": "heal",
+        "motif": "shield",
         "style": "ally_bless"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 2000% Pháp Công, trị liệu toàn phe ta (Mức trị liệu bằng 20% Pháp Công), giúp Pháp Phòng của đồng đội khác tăng 10%, duy trì 2 lượt. Bản thân nhận [Nguyệt Hồn], duy trì 3 lượt, giúp các đồng đội khác hồi 25+{6} sĩ khí.",
@@ -13931,7 +13931,7 @@
       "power": 1.9100000000000001,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue_water",
+        "flash": "aqua",
         "text": "TRẤN THỦ HÁN THỦY",
         "motif": "water",
         "style": "aoe_nova"
@@ -14148,9 +14148,9 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "HỦY HOẠI",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 92% Pháp Công, tấn công của mục tiêu giảm 35%, duy trì 2 lượt.",
@@ -14244,9 +14244,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "NỘ XÍCH",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 370% Pháp Công, giảm 125 sĩ khí.",
@@ -14288,7 +14288,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "green_poison",
+        "flash": "toxic_green",
         "text": "THI ĐỘC",
         "motif": "poison",
         "style": "element_poison"
@@ -14338,7 +14338,7 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "green_poison",
+        "flash": "toxic_green",
         "text": "HỦ THI ĐỘC",
         "motif": "poison",
         "style": "element_poison"
@@ -14376,7 +14376,7 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "green_poison",
+        "flash": "toxic_green",
         "text": "QUỶ MÔN THI ĐỘC",
         "motif": "poison",
         "style": "element_poison"
@@ -14414,7 +14414,7 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "green_poison",
+        "flash": "toxic_green",
         "text": "ÔN DỊCH",
         "motif": "poison",
         "style": "element_poison"
@@ -14445,9 +14445,9 @@
       "power": 1.15,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "THIẾT NÕ",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "row_sweep"
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 2 lần 115% Pháp Công. Bản thân hồi 50 sĩ khí.",
@@ -14471,7 +14471,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "HỎA NỎ",
         "motif": "fire",
         "style": "row_sweep"
@@ -14651,7 +14651,7 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "HÃM DOANH THÔI NHU",
         "motif": "slash",
         "style": "column_pierce"
@@ -14733,9 +14733,9 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "TÊN LẠC",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 92% Pháp Công, gây cho 1 đơn vị địch 160% Pháp Công.",
@@ -14751,9 +14751,9 @@
       "power": 1.28,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "CỰ MÃ",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "row_sweep"
       },
       "desc": "[Thường] Địch trên hàng ngang chịu 128% sát thương vật lý, 75% khiến Pháp Công của địch giảm 25%, duy trì 2 lượt.",
@@ -14769,9 +14769,9 @@
       "power": 1.5,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "CHƯỚC GIỚI",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 150% Pháp Công, tấn công của mục tiêu giảm 100%, duy trì 1 lượt.",
@@ -14819,9 +14819,9 @@
       "power": 2.0,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "NHIỄU TẬP",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 200% Pháp Công, mục tiêu bị [Hỗn Loạn], duy trì 1 lượt.",
@@ -15083,7 +15083,7 @@
       "fx": {
         "flash": "steel",
         "text": "BÁ THƯƠNG",
-        "motif": "slash",
+        "motif": "pierce",
         "style": "column_pierce"
       },
       "desc": "[Thường] Địch trên hàng dọc chịu 400% sát thương vật lý, bản thân nhận [Thiết Bích], duy trì 1 lượt, bản thân hồi 50 sĩ khí.",
@@ -15158,7 +15158,7 @@
         "flash": "shield",
         "text": "NGÂM THƠ GIẢI SẦU",
         "motif": "shield",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Bản thân nhận trị liệu (Mức trị liệu bằng 20% Mưu Công). Có 20% khiến các tướng khác trong phe ta nhận [Thiết Bích], duy trì 2 lượt, các tướng khác trong phe ta hồi 50+{4} sĩ khí.",
       "wikiQuality": "Thượng Cổ",
@@ -15197,7 +15197,7 @@
         "flash": "shield",
         "text": "BÀI CA BIÊN ẢI",
         "motif": "shield",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Bản thân nhận trị liệu 1 lần, sau đó trị liệu cho đồng đội ngẫu nhiên 1 lần (Mức trị liệu bằng 20% Mưu Công). Có xác suất 20% tăng cho các đồng đội khác hiệu quả [Thiết Bích], duy trì 2 lượt, giúp đồng đội hồi 50+{6} sĩ khí.",
       "wikiQuality": "Thái Sơ",
@@ -15345,7 +15345,7 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "healing_green",
         "text": "TRỊ LIỆU",
         "motif": "heal",
         "style": "ally_bless"
@@ -15442,7 +15442,7 @@
         "flash": "blue_water",
         "text": "ÂN HUỆ CHI VŨ",
         "motif": "water",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Trị liệu toàn phe ta 2 lần (Mức trị liệu lần lượt là 75% và 15% Mưu Công). Bản thân nhận [Loại Bỏ], duy trì 3 lượt, đồng đội khác nhận được [Phấn Chấn], duy trì 3 lượt.",
       "wikiQuality": "Thượng Cổ",
@@ -15545,9 +15545,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "SÁT KHÍ",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 230% Pháp Công, Vật Công của mục tiêu giảm 35%, duy trì 1 lượt, bản thân hồi 145 sĩ khí.",
@@ -15597,9 +15597,9 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "dragon",
+        "flash": "ember_orange",
         "text": "VIÊM LONG PHÁ",
-        "motif": "dragon",
+        "motif": "fire",
         "style": "beast_dragon"
       },
       "desc": "[C.Pháp] Khiến kẻ địch ngẫu nhiên chịu 2 lần 2600% Pháp Công. Khiến Pháp Phòng của mục tiêu giảm 40%, duy trì 2 lượt. Bản thân nhận trị liệu 2 lần (Mức trị liệu bằng 20% Pháp Công). Bản thân hồi 50+{10} sĩ khí.",
@@ -15629,9 +15629,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "dragon",
+        "flash": "ember_orange",
         "text": "VIÊM LONG SÁT",
-        "motif": "dragon",
+        "motif": "fire",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc ngẫu nhiên chịu 3 lần 5500% Pháp Công, khiến Pháp Phòng toàn phe địch giảm 30%, duy trì 2 lượt. Bản thân nhận trị liệu 2 lần (Mức trị liệu bằng 20% Pháp Công). Bản thân hồi 50+{10} sĩ khí.",
@@ -15661,9 +15661,9 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "dragon",
+        "flash": "ember_orange",
         "text": "VIÊM LONG KỲ TẬP",
-        "motif": "dragon",
+        "motif": "fire",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch Pháp Phòng giảm 30%, duy trì 2 lượt, sau đó khiến địch trên hàng dọc ngẫu nhiên chịu 4 lần 8500% Pháp Công, bản thân nhận trị liệu bằng 2 lần (Mức trị liệu bằng 20% Pháp Công). Bản thân hồi 50+{16} sĩ khí.",
@@ -15823,9 +15823,9 @@
       "power": 1.95,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "TIỄU SÁT",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 195% Pháp Công, bản thân hồi 145 sĩ khí.",
@@ -15884,10 +15884,10 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "ember_orange",
         "text": "HỎA LONG TIỄN",
-        "motif": "buff",
-        "style": "ally_bless"
+        "motif": "fire",
+        "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 2 lần 2000% sát thương. Bản thân nhận [Độ Hiểm] [Đề Kháng], duy trì 3 lượt, chống đỡ sát thương bằng 15% binh lực tối đa. Bản thân hồi 100 sĩ khí.",
       "wikiQuality": "Truyền thuyết",
@@ -16114,7 +16114,7 @@
         "flash": "shield",
         "text": "NHO THÁNH HỘ THỂ",
         "motif": "shield",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Giải trừ hiệu quả bất lợi toàn phe ta (Khi chiến đấu với người chơi khác, giải trừ tối đa 3 hiệu quả bất lợi cho mỗi tướng phe ta), tăng cho toàn phe ta hiệu quả [Minh Triết], duy trì 2 lượt, giúp các đồng đội khác hồi 50 +{4} sĩ khí, mỗi giải trừ 1 hiệu quả bất lợi, tướ",
       "wikiQuality": "Thái Sơ",
@@ -16237,9 +16237,9 @@
       "power": 1.51,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "TỰ HỦY",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 600% Pháp Công, bản thân chịu 1000% Pháp Công.",
@@ -16503,9 +16503,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue",
+        "flash": "ice_blue",
         "text": "HÀNH BINH",
-        "motif": "arcane",
+        "motif": "ice",
         "style": "column_pierce"
       },
       "desc": "[Chiến+Kế+Thường] Tấn công 500 sĩ khí gây cho địch trên hàng ngang 3000% Pháp Công. Tấn công 500 sĩ khí gây cho địch trên hàng dọc 3000% Mưu Công. Tấn công 500 sĩ khí gây cho đơn vị địch lính ít nhất 1700% sát thương vật lý, lính mục tiêu càng ít sát thương càng cao, bản thân nhậ",
@@ -16729,9 +16729,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "LOẠN KÍCH",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "aoe_nova"
       },
       "desc": "[C.Pháp] Toàn phe địch chịu 315% Pháp Công, lính mục tiêu càng ít sát thương càng cao.",
@@ -16786,7 +16786,7 @@
         "flash": "steel",
         "text": "CỐT THÍCH",
         "motif": "pierce",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Thường] Đánh nhóm, lính ít sẽ gây nhiều sát thương, bản thân tăng bạo kích 2 lượt.",
       "wikiQuality": "Thần",
@@ -16801,7 +16801,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "brown",
         "text": "DIÊM LA KÍCH",
         "motif": "slash",
         "style": "aoe_nova"
@@ -16837,7 +16837,7 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "brown",
         "text": "THẬP PHƯƠNG DIỆT",
         "motif": "slash",
         "style": "aoe_nova"
@@ -16873,7 +16873,7 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "brown",
         "text": "NGHỊCH CHUYỂN SINH",
         "motif": "slash",
         "style": "aoe_nova"
@@ -16953,7 +16953,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "MA QUÂN",
         "motif": "slash",
         "style": "column_pierce"
@@ -16987,7 +16987,7 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "BẬC THẦY U MỊCH",
         "motif": "slash",
         "style": "aoe_nova"
@@ -17087,7 +17087,7 @@
       "power": 1.4,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "HỎA TIỄN",
         "motif": "fire",
         "style": "aoe_nova"
@@ -17204,7 +17204,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "thunder",
+        "flash": "electric_blue",
         "text": "BẠO LÔI",
         "motif": "thunder",
         "style": "element_thunder"
@@ -17322,9 +17322,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "violet_spirit",
         "text": "TỎA HỒN",
-        "motif": "heal",
+        "motif": "spirit",
         "style": "ally_bless"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 268% Mưu Công, giảm 10 sĩ khí, hiệu quả trị liệu của mục tiêu giảm 75% (Khi chiến đấu với người chơi khác, hiệu quả trị liệu giảm còn 25%), duy trì 2 lượt, mục tiêu bị [Âm Hồn], duy trì đến khi kết thúc chiến đấu, bản thân hồi 50 sĩ khí.",
@@ -17400,9 +17400,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "ice_blue",
         "text": "QUYỀN HÀNH",
-        "motif": "heal",
+        "motif": "ice",
         "style": "ally_bless"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 1500% Mưu Công và giảm 15 sĩ khí, khiến mục tiêu bị giảm hiệu quả trị liệu 90% (Khi chiến đấu với người chơi khác, hiệu quả trị liệu giảm 60%), duy trì 2 lượt. Khiến mục tiêu bị [Âm Hồn], duy trì đến khi kết thúc chiến đấu. Bản thân hồi 50+{4} sĩ khí.",
@@ -17478,9 +17478,9 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue",
+        "flash": "ice_blue",
         "text": "HÀN BĂNG",
-        "motif": "arcane",
+        "motif": "ice",
         "style": "row_sweep"
       },
       "desc": "[Kế Sách] Tấn công hàng ngang, hiệu quả hồi sĩ khí phe địch giảm (50+{3%})% trong 2 lượt.",
@@ -17676,9 +17676,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "TẬT TRÌ",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 2 lần 230% Pháp Công, bản thân hồi 145 sĩ khí.",
@@ -17748,9 +17748,9 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "purple",
         "text": "BẾ NGUYỆT",
-        "motif": "slash",
+        "motif": "shadow",
         "style": "aoe_nova"
       },
       "desc": "Toàn phe ta tăng 60% + {3%}% tấn công (Khi chiến đấu với người chơi khác, giảm hiệu quả Tăng Công), giảm tấn công của toàn phe địch (Ban đầu 20%), duy trì 2 lượt, có xác suất Mê Hoặc địch 2 lượt (Khi chiến đấu với người chơi khác, giảm xác suất Mê Hoặc).",
@@ -17767,9 +17767,9 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "blue_water",
         "text": "VŨ ĐIỆU DƯỚI TRĂNG",
-        "motif": "buff",
+        "motif": "water",
         "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tất cả tấn công của toàn phe ta tăng 60+{3%}% (Khi chiến đấu với người chơi khác, tất cả tấn công tăng 45%), duy trì 2 lượt, tất cả tấn công của toàn phe địch giảm 24+{5%}%, duy trì 2 lượt, 25% toàn phe địch bị [Mê Hoặc], duy trì 2 lượt (Khi chiến đấu với người chơi khác",
@@ -17794,9 +17794,9 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "ice_blue",
         "text": "THIÊN VŨ KHUYNH TH",
-        "motif": "buff",
+        "motif": "ice",
         "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tất cả tấn công của toàn phe ta tăng 75+{3%}%, duy trì 2 lượt, khiến tấn công của tất cả địch giảm 24+{5%}%, duy trì 2 lượt, 25% khiến tất cả địch nhận [Mê Hoặc], duy trì 2 lượt (Khi chiến đấu với người chơi khác, xác suất [Mê Hoặc] là 7.5%).",
@@ -17821,9 +17821,9 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "blue_water",
         "text": "NGHÊ THƯỜNG THIÊN ",
-        "motif": "buff",
+        "motif": "water",
         "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tất cả tấn công của toàn phe ta tăng 95+{3%}%, duy trì 2 lượt, khiến tấn công của tất cả địch giảm 30+{5%}%, duy trì 2 lượt, 25% khiến tất cả địch nhận [Mê Hoặc], duy trì 2 lượt (Khi chiến đấu với người chơi khác, xác suất [Mê Hoặc] là 9.5%).",
@@ -17900,9 +17900,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue_water",
+        "flash": "crimson_flame",
         "text": "PHƯỢNG VŨ CỬU THIÊ",
-        "motif": "water",
+        "motif": "firebird",
         "style": "row_sweep"
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 7000% Pháp Công, lính mục tiêu càng nhiều sát thương càng cao, khiến tướng địch lính ít nhất chịu 2 lần 10000% Pháp Công, lính mục tiêu càng ít sát thương càng cao. Mỗi lần tấn công sẽ khiến mục tiêu giảm 10+{2} sĩ khí. Bản thân hồi 145 sĩ khí.",
@@ -17926,9 +17926,9 @@
       "power": 1.83,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue_water",
+        "flash": "crimson_flame",
         "text": "LOAN HỒI PHƯỢNG VŨ",
-        "motif": "water",
+        "motif": "firebird",
         "style": "row_sweep"
       },
       "desc": "[C.Pháp] Địch trên hàng ngang chịu 11000% Pháp Công, lính mục tiêu càng nhiều sát thương càng cao, khiến tướng địch lính ít nhất chịu 14500% Pháp Công, lính mục tiêu càng ít sát thương càng cao, mỗi lần tấn công sẽ khiến mục tiêu giảm 15+{2} sĩ khí. Bản thân hồi 145 sĩ khí.",
@@ -17952,7 +17952,7 @@
       "power": 1.59,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "crimson",
         "text": "PHẪN NỘ",
         "motif": "slash",
         "style": "single_strike"
@@ -17980,7 +17980,7 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "HỎA NHAM",
         "motif": "fire",
         "style": "element_fire"
@@ -18254,9 +18254,9 @@
       "power": 1.05,
       "moraleCost": 100,
       "fx": {
-        "flash": "gold_soft",
+        "flash": "purple",
         "text": "ĐỊNH KẾ NHẤT THỐNG",
-        "motif": "buff",
+        "motif": "shadow",
         "style": "ally_bless"
       },
       "desc": "[Hỗ Trợ] Tướng khác của phe ta tăng 40 sĩ khí, nhận hiệu quả [Điên Cuồng], duy trì 3 lượt, lân lượt có xác suất 50% khiến toàn phe địch bị [Vô Lực], [Do Dự] (Khi chiến đấu với người chơi khác, hiệu quả [Do Dự] đổi thành [Tê Liệt], khi bắt đầu lượt có xác suất bị Hỗn Loạn 1 lượt),",
@@ -18433,9 +18433,9 @@
       "power": 2.0,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "KHÍ GIỚI",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 200% Pháp Công, tấn công của mục tiêu giảm 100%, duy trì 1 lượt.",
@@ -18451,9 +18451,9 @@
       "power": 2.2,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "DƯƠNG CÔNG",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 400% Pháp Công, giải trừ hiệu quả có lợi của 1 kẻ địch, tấn công của mục tiêu giảm 100%, duy trì 1 lượt.",
@@ -18487,9 +18487,9 @@
       "power": 1.4,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "SÁT Ý",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 140% Pháp Công, tất cả tấn công của bản thân tăng 100%, duy trì 2 lượt.",
@@ -18505,9 +18505,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "blue",
+        "flash": "jade_gold",
         "text": "ÂM DƯƠNG DIỆT",
-        "motif": "arcane",
+        "motif": "bagua",
         "style": "aoe_nova"
       },
       "desc": "[Kế Sách] Toàn phe địch chịu 5500% Mưu Công, lính mục tiêu càng nhiều sát thương càng cao, khiến mục tiêu bị [Ma Ám] không thể giải trừ, duy trì 3 lượt. Bản thân hồi 50+{4} sĩ khí.",
@@ -18792,9 +18792,9 @@
       "power": 2.1,
       "moraleCost": 100,
       "fx": {
-        "flash": "purple",
+        "flash": "ice_blue",
         "text": "HUYỀN BĂNG",
-        "motif": "shadow",
+        "motif": "ice",
         "style": "single_strike"
       },
       "desc": "[Kế Sách] Gây cho 1 kẻ địch 210% Mưu Công, lính bản thân càng ít sát thương càng cao.",
@@ -18810,7 +18810,7 @@
       "power": 1.6700000000000002,
       "moraleCost": 100,
       "fx": {
-        "flash": "fire_rain",
+        "flash": "ember_orange",
         "text": "THIÊN HỎA THIÊU",
         "motif": "fire",
         "style": "element_fire"
@@ -18852,7 +18852,7 @@
         "flash": "shield",
         "text": "TRƯỜNG CA",
         "motif": "shield",
-        "style": "barrier"
+        "style": "ally_bless"
       },
       "desc": "[Kế Sách] Bản thân nhận trị liệu (Mức trị liệu bằng 20% Mưu Công), 25% giúp toàn phe ta nhận [Thiết Bích], duy trì 2 lượt. Giúp các đồng đội khác hồi 25+{4} sĩ khí.",
       "wikiQuality": "Thần",
@@ -19378,9 +19378,9 @@
       "power": 1.59,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "TUYỆT SÁT",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "single_strike"
       },
       "desc": "[C.Pháp] Gây cho 1 kẻ địch 1200% Pháp Công, đoạt hết sĩ khí của mục tiêu.",
@@ -19437,9 +19437,9 @@
       "power": 1.75,
       "moraleCost": 100,
       "fx": {
-        "flash": "steel",
+        "flash": "blue",
         "text": "VÔ SONG THƯỢNG TƯỚ",
-        "motif": "slash",
+        "motif": "arcane",
         "style": "column_pierce"
       },
       "desc": "[C.Pháp] Địch trên hàng dọc chịu 3200% Pháp Công, gây cho 1 đơn vị địch 3000% Pháp Công. Bản thân nhận [Hấp Huyết], duy trì 3 lượt. Bản thân nhận [Tăng Uy] không thể giải trừ, duy trì đến khi kết thúc chiến đấu. Bản thân hồi 145 sĩ khí.",

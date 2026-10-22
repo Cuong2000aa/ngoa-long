@@ -187,6 +187,30 @@
       "q": ""
     },
     {
+      "id": "bach_ly_truy_hon",
+      "name": "Bách Lý Truy Hồn",
+      "flash": "violet_spirit",
+      "motif": "spirit",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "xich_vu_quan_hong",
+      "name": "Xích Vũ Quán Hồng",
+      "flash": "violet_spirit",
+      "motif": "spirit",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "bach_hong_quan_nhat",
+      "name": "Bạch Hồng Quán Nhật",
+      "flash": "violet_spirit",
+      "motif": "spirit",
+      "pattern": "column",
+      "q": ""
+    },
+    {
       "id": "tau_sat",
       "name": "Tấu Sát",
       "flash": "purple",
@@ -203,6 +227,14 @@
       "q": ""
     },
     {
+      "id": "thanh_long_hon",
+      "name": "Thanh Long Hồn",
+      "flash": "violet_spirit",
+      "motif": "spirit",
+      "pattern": "column",
+      "q": ""
+    },
+    {
       "id": "loan_the_ky_muu",
       "name": "Loạn Thế Kỳ Mưu",
       "flash": "purple",
@@ -215,6 +247,14 @@
       "name": "Khu Trục",
       "flash": "purple",
       "motif": "shadow",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "thu_hon_doat_phach",
+      "name": "Thu Hồn Đoạt Phách",
+      "flash": "violet_spirit",
+      "motif": "spirit",
       "pattern": "single",
       "q": ""
     },
@@ -264,6 +304,30 @@
       "flash": "crimson",
       "motif": "slash",
       "pattern": "column",
+      "q": ""
+    },
+    {
+      "id": "de_hon",
+      "name": "Đế Hồn",
+      "flash": "violet_spirit",
+      "motif": "spirit",
+      "pattern": "all",
+      "q": ""
+    },
+    {
+      "id": "hong_lien_nghiep_hoa",
+      "name": "Hồng Liên Nghiệp Hỏa",
+      "flash": "violet_spirit",
+      "motif": "spirit",
+      "pattern": "all",
+      "q": ""
+    },
+    {
+      "id": "hong_viem",
+      "name": "Hồng Viêm",
+      "flash": "violet_spirit",
+      "motif": "spirit",
+      "pattern": "single",
       "q": ""
     },
     {
@@ -363,6 +427,14 @@
       "q": ""
     },
     {
+      "id": "hong_hoang_no_hoa",
+      "name": "Hồng Hoang Nộ Hỏa",
+      "flash": "violet_spirit",
+      "motif": "spirit",
+      "pattern": "all",
+      "q": ""
+    },
+    {
       "id": "thi_huyet",
       "name": "Thị Huyết",
       "flash": "crimson",
@@ -383,6 +455,14 @@
       "name": "Man Nộ Hống",
       "flash": "crimson",
       "motif": "slash",
+      "pattern": "all",
+      "q": ""
+    },
+    {
+      "id": "tran_hon",
+      "name": "Trấn Hồn",
+      "flash": "violet_spirit",
+      "motif": "spirit",
       "pattern": "all",
       "q": ""
     },
@@ -435,6 +515,14 @@
       "q": ""
     },
     {
+      "id": "toa_hon",
+      "name": "Tỏa Hồn",
+      "flash": "violet_spirit",
+      "motif": "spirit",
+      "pattern": "all",
+      "q": ""
+    },
+    {
       "id": "am_van",
       "name": "Ám Vân",
       "flash": "purple",
@@ -475,14 +563,6 @@
       "q": ""
     },
     {
-      "id": "huyen_bang",
-      "name": "Huyền Băng",
-      "flash": "purple",
-      "motif": "shadow",
-      "pattern": "single",
-      "q": ""
-    },
-    {
       "id": "huyet_chien",
       "name": "Huyết Chiến",
       "flash": "crimson",
@@ -519,7 +599,7 @@
     {
       "id": "shui_jian",
       "name": "Thủy Chiến",
-      "flash": "blue_water",
+      "flash": "aqua",
       "motif": "water",
       "pattern": "row",
       "q": ""
@@ -543,14 +623,6 @@
     {
       "id": "wu_sheng_king",
       "name": "Vũ Thánh · Thần Hoàng",
-      "flash": "blue_water",
-      "motif": "water",
-      "pattern": "single",
-      "q": ""
-    },
-    {
-      "id": "xich_vu_quan_hong",
-      "name": "Xích Vũ Quán Hồng",
       "flash": "blue_water",
       "motif": "water",
       "pattern": "single",
@@ -591,7 +663,7 @@
     {
       "id": "thuy_cong",
       "name": "Thủy Công",
-      "flash": "blue_water",
+      "flash": "aqua",
       "motif": "water",
       "pattern": "all",
       "q": ""
@@ -599,7 +671,7 @@
     {
       "id": "tran_thu_han_thuy",
       "name": "Trấn Thủ Hán Thủy",
-      "flash": "blue_water",
+      "flash": "aqua",
       "motif": "water",
       "pattern": "all",
       "q": ""
@@ -619,22 +691,6 @@
       "motif": "water",
       "pattern": "all",
       "q": ""
-    },
-    {
-      "id": "phuong_vu_cuu_thien",
-      "name": "Phượng Vũ Cửu Thiên",
-      "flash": "blue_water",
-      "motif": "water",
-      "pattern": "row",
-      "q": ""
-    },
-    {
-      "id": "loan_hoi_phuong_vu",
-      "name": "Loan Hồi Phượng Vũ",
-      "flash": "blue_water",
-      "motif": "water",
-      "pattern": "row",
-      "q": ""
     }
   ],
   "roar": [
@@ -649,7 +705,7 @@
     {
       "id": "ho_si",
       "name": "Hổ Si",
-      "flash": "tiger",
+      "flash": "gold_beast",
       "motif": "tiger",
       "pattern": "front_row",
       "q": ""
@@ -665,7 +721,7 @@
     {
       "id": "hoa_hung_slash",
       "name": "Hổ Lao Trảm",
-      "flash": "tiger",
+      "flash": "gold_beast",
       "motif": "tiger",
       "pattern": "single",
       "q": ""
@@ -673,7 +729,7 @@
     {
       "id": "tl_thuong",
       "name": "Hổ Xung",
-      "flash": "tiger",
+      "flash": "gold_beast",
       "motif": "tiger",
       "pattern": "single",
       "q": ""
@@ -681,7 +737,7 @@
     {
       "id": "tl_chien",
       "name": "Hổ Xung · Chiến",
-      "flash": "tiger",
+      "flash": "gold_beast",
       "motif": "tiger",
       "pattern": "column",
       "q": ""
@@ -689,7 +745,7 @@
     {
       "id": "tl_than",
       "name": "Hổ Sát",
-      "flash": "tiger",
+      "flash": "gold_beast",
       "motif": "tiger",
       "pattern": "column",
       "q": ""
@@ -697,7 +753,7 @@
     {
       "id": "tl_truyen",
       "name": "Hổ Sát · Truyền thuyết",
-      "flash": "tiger",
+      "flash": "gold_beast",
       "motif": "tiger",
       "pattern": "column",
       "q": ""
@@ -713,7 +769,7 @@
     {
       "id": "manh_ho",
       "name": "Mãnh Hổ",
-      "flash": "tiger",
+      "flash": "gold_beast",
       "motif": "tiger",
       "pattern": "column",
       "q": ""
@@ -721,7 +777,7 @@
     {
       "id": "ho_khieu",
       "name": "Hổ Khiếu",
-      "flash": "tiger",
+      "flash": "gold_beast",
       "motif": "tiger",
       "pattern": "all",
       "q": ""
@@ -729,7 +785,7 @@
     {
       "id": "manh_ho_liet_son",
       "name": "Mãnh Hổ Liệt Sơn",
-      "flash": "tiger",
+      "flash": "gold_beast",
       "motif": "tiger",
       "pattern": "column",
       "q": ""
@@ -737,7 +793,7 @@
     {
       "id": "ho_tri",
       "name": "Hổ Tri",
-      "flash": "tiger",
+      "flash": "gold_beast",
       "motif": "tiger",
       "pattern": "single",
       "q": ""
@@ -745,7 +801,7 @@
     {
       "id": "ho_hau_san_no",
       "name": "Hổ Hầu Sân Nộ",
-      "flash": "tiger",
+      "flash": "gold_beast",
       "motif": "tiger",
       "pattern": "single",
       "q": ""
@@ -753,7 +809,7 @@
     {
       "id": "ho_xung",
       "name": "Hổ Xung",
-      "flash": "tiger",
+      "flash": "gold_beast",
       "motif": "tiger",
       "pattern": "single",
       "q": ""
@@ -761,7 +817,7 @@
     {
       "id": "ho_sat",
       "name": "Hổ Sát",
-      "flash": "tiger",
+      "flash": "gold_beast",
       "motif": "tiger",
       "pattern": "column",
       "q": ""
@@ -769,7 +825,7 @@
     {
       "id": "trieu_ho_pha_tran",
       "name": "Triệu Hổ Phá Trận",
-      "flash": "tiger",
+      "flash": "gold_beast",
       "motif": "tiger",
       "pattern": "column",
       "q": ""
@@ -777,7 +833,7 @@
     {
       "id": "ho_uy",
       "name": "Hổ Uy",
-      "flash": "tiger",
+      "flash": "gold_beast",
       "motif": "tiger",
       "pattern": "column",
       "q": ""
@@ -801,7 +857,7 @@
     {
       "id": "kho_ke",
       "name": "Khổ Kế",
-      "flash": "tiger",
+      "flash": "gold_beast",
       "motif": "tiger",
       "pattern": "column",
       "q": ""
@@ -809,9 +865,17 @@
     {
       "id": "hung_ho_tien_phong",
       "name": "Hùng Hổ Tiên Phong",
-      "flash": "tiger",
+      "flash": "gold_beast",
       "motif": "tiger",
       "pattern": "row",
+      "q": ""
+    },
+    {
+      "id": "loan_the_pho_do",
+      "name": "Loạn Thế Phổ Độ",
+      "flash": "gold_beast",
+      "motif": "tiger",
+      "pattern": "all",
       "q": ""
     }
   ],
@@ -833,17 +897,9 @@
       "q": ""
     },
     {
-      "id": "hoa_long",
-      "name": "Hỏa Long",
-      "flash": "dragon",
-      "motif": "dragon",
-      "pattern": "single",
-      "q": ""
-    },
-    {
       "id": "thanh_long",
       "name": "Thanh Long",
-      "flash": "dragon",
+      "flash": "cyan_dragon",
       "motif": "dragon",
       "pattern": "column",
       "q": ""
@@ -851,7 +907,7 @@
     {
       "id": "thanh_long_tram",
       "name": "Thanh Long Trảm",
-      "flash": "dragon",
+      "flash": "cyan_dragon",
       "motif": "dragon",
       "pattern": "column",
       "q": ""
@@ -859,7 +915,7 @@
     {
       "id": "thanh_long_yen_nguyet",
       "name": "Thanh Long Yển Nguyệt",
-      "flash": "dragon",
+      "flash": "cyan_dragon",
       "motif": "dragon",
       "pattern": "column",
       "q": ""
@@ -867,7 +923,7 @@
     {
       "id": "bach_long",
       "name": "Bạch Long",
-      "flash": "dragon",
+      "flash": "cyan_dragon",
       "motif": "dragon",
       "pattern": "column",
       "q": ""
@@ -929,17 +985,9 @@
       "q": ""
     },
     {
-      "id": "thanh_long_hon",
-      "name": "Thanh Long Hồn",
-      "flash": "dragon",
-      "motif": "dragon",
-      "pattern": "column",
-      "q": ""
-    },
-    {
       "id": "thanh_long_nguyen",
       "name": "Thanh Long Nguyện",
-      "flash": "dragon",
+      "flash": "cyan_dragon",
       "motif": "dragon",
       "pattern": "column",
       "q": ""
@@ -947,7 +995,7 @@
     {
       "id": "thanh_long_khieu_nguyet",
       "name": "Thanh Long Khiếu Nguyệt",
-      "flash": "dragon",
+      "flash": "cyan_dragon",
       "motif": "dragon",
       "pattern": "column",
       "q": ""
@@ -1009,38 +1057,6 @@
       "q": ""
     },
     {
-      "id": "viem_long_pha",
-      "name": "Viêm Long Phá",
-      "flash": "dragon",
-      "motif": "dragon",
-      "pattern": "single",
-      "q": ""
-    },
-    {
-      "id": "viem_long_sat",
-      "name": "Viêm Long Sát",
-      "flash": "dragon",
-      "motif": "dragon",
-      "pattern": "all",
-      "q": ""
-    },
-    {
-      "id": "viem_long_ky_tap",
-      "name": "Viêm Long Kỳ Tập",
-      "flash": "dragon",
-      "motif": "dragon",
-      "pattern": "all",
-      "q": ""
-    },
-    {
-      "id": "hoa_long_tien",
-      "name": "Hỏa Long Tiễn",
-      "flash": "dragon",
-      "motif": "dragon",
-      "pattern": "all",
-      "q": ""
-    },
-    {
       "id": "long_minh",
       "name": "Long Minh",
       "flash": "dragon",
@@ -1081,125 +1097,157 @@
       "q": ""
     }
   ],
-  "bagua": [
+  "ice": [
     {
       "id": "khong_thanh",
       "name": "Không Thành",
-      "flash": "bagua",
-      "motif": "bagua",
+      "flash": "ice_blue",
+      "motif": "ice",
       "pattern": "all",
-      "q": ""
-    },
-    {
-      "id": "bagua_zhen",
-      "name": "Bát Quái Trận",
-      "flash": "bagua",
-      "motif": "bagua",
-      "pattern": "single",
       "q": ""
     },
     {
       "id": "khong_thanh_legend",
       "name": "Không Thành · Truyền thuyết",
-      "flash": "bagua",
-      "motif": "bagua",
+      "flash": "ice_blue",
+      "motif": "ice",
       "pattern": "single",
       "q": ""
     },
     {
       "id": "khong_thanh_king",
       "name": "Không Thành · Thần Hoàng",
-      "flash": "bagua",
-      "motif": "bagua",
+      "flash": "ice_blue",
+      "motif": "ice",
       "pattern": "single",
       "q": ""
     },
     {
-      "id": "bat_tran_do",
-      "name": "Bát Trận Đồ",
-      "flash": "bagua",
-      "motif": "bagua",
+      "id": "son_bang",
+      "name": "Sơn Băng",
+      "flash": "ice_blue",
+      "motif": "ice",
       "pattern": "all",
       "q": ""
     },
     {
-      "id": "thien_dia_van_tuong",
-      "name": "Thiên Địa Vạn Tượng",
-      "flash": "bagua",
-      "motif": "bagua",
+      "id": "thien_bang",
+      "name": "Thiên Băng",
+      "flash": "ice_blue",
+      "motif": "ice",
       "pattern": "all",
       "q": ""
     },
     {
-      "id": "ky_mon_bat_tran_do",
-      "name": "Kỳ Môn Bát Trận Đồ",
-      "flash": "bagua",
-      "motif": "bagua",
+      "id": "thien_bang_dia_liep",
+      "name": "Thiên Băng Địa Liệp",
+      "flash": "ice_blue",
+      "motif": "ice",
       "pattern": "all",
       "q": ""
     },
     {
-      "id": "tien_co_chien_tran",
-      "name": "Tiên Cơ Chiến Trận",
-      "flash": "bagua",
-      "motif": "bagua",
+      "id": "bang_chuy",
+      "name": "Băng Chùy",
+      "flash": "ice_blue",
+      "motif": "ice",
+      "pattern": "row",
+      "q": ""
+    },
+    {
+      "id": "bang_phong",
+      "name": "Băng Phong",
+      "flash": "ice_blue",
+      "motif": "ice",
+      "pattern": "row",
+      "q": ""
+    },
+    {
+      "id": "thien_han_dia_bang",
+      "name": "Thiên Hàn Địa Băng",
+      "flash": "ice_blue",
+      "motif": "ice",
+      "pattern": "row",
+      "q": ""
+    },
+    {
+      "id": "thien_ly_bang_phong",
+      "name": "Thiên Lý Băng Phong",
+      "flash": "ice_blue",
+      "motif": "ice",
+      "pattern": "row",
+      "q": ""
+    },
+    {
+      "id": "hanh_thich",
+      "name": "Hành Thích",
+      "flash": "ice_blue",
+      "motif": "ice",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "bang_hoai",
+      "name": "Băng Hoại",
+      "flash": "ice_blue",
+      "motif": "ice",
       "pattern": "column",
       "q": ""
     },
     {
-      "id": "than_uy_pha_tran",
-      "name": "Thần Uy Phá Trận",
-      "flash": "bagua",
-      "motif": "bagua",
-      "pattern": "all",
-      "q": ""
-    },
-    {
-      "id": "huyen_thuat",
-      "name": "Huyễn Thuật",
-      "flash": "bagua",
-      "motif": "bagua",
-      "pattern": "all",
-      "q": ""
-    },
-    {
-      "id": "huyen_phap",
-      "name": "Huyễn Pháp",
-      "flash": "bagua",
-      "motif": "bagua",
-      "pattern": "all",
-      "q": ""
-    },
-    {
-      "id": "thuong_tran",
-      "name": "Thương Trận",
-      "flash": "bagua",
-      "motif": "bagua",
+      "id": "nao_loan_kinh_thanh",
+      "name": "Náo Loạn Kinh Thành",
+      "flash": "ice_blue",
+      "motif": "ice",
       "pattern": "column",
       "q": ""
     },
     {
-      "id": "ky_mon",
-      "name": "Kỳ Môn",
-      "flash": "bagua",
-      "motif": "bagua",
+      "id": "lien_thanh",
+      "name": "Liên Thành",
+      "flash": "ice_blue",
+      "motif": "ice",
       "pattern": "all",
       "q": ""
     },
     {
       "id": "ngu_hanh_pha_tran",
       "name": "Ngũ Hành Phá Trận",
-      "flash": "bagua",
-      "motif": "bagua",
+      "flash": "ice_blue",
+      "motif": "ice",
       "pattern": "all",
       "q": ""
     },
     {
-      "id": "kinh_dien_luan_hoi",
-      "name": "Kính Diễn Luân Hồi",
-      "flash": "bagua",
-      "motif": "bagua",
-      "pattern": "front_row",
+      "id": "hanh_binh",
+      "name": "Hành Binh",
+      "flash": "ice_blue",
+      "motif": "ice",
+      "pattern": "column",
+      "q": ""
+    },
+    {
+      "id": "quyen_hanh",
+      "name": "Quyền Hành",
+      "flash": "ice_blue",
+      "motif": "ice",
+      "pattern": "all",
+      "q": ""
+    },
+    {
+      "id": "han_bang",
+      "name": "Hàn Băng",
+      "flash": "ice_blue",
+      "motif": "ice",
+      "pattern": "row",
+      "q": ""
+    },
+    {
+      "id": "huyen_bang",
+      "name": "Huyền Băng",
+      "flash": "ice_blue",
+      "motif": "ice",
+      "pattern": "single",
       "q": ""
     }
   ],
@@ -1207,7 +1255,7 @@
     {
       "id": "ho_khi",
       "name": "Hổ Khí",
-      "flash": "tiger",
+      "flash": "gold_beast",
       "motif": "tiger",
       "pattern": "ally_all",
       "q": ""
@@ -1247,16 +1295,16 @@
     {
       "id": "hieu_lenh",
       "name": "Hiệu Lệnh",
-      "flash": "purple",
-      "motif": "shadow",
+      "flash": "violet_spirit",
+      "motif": "spirit",
       "pattern": "ally_all",
       "q": ""
     },
     {
       "id": "thien_menh",
       "name": "Thiên Mệnh",
-      "flash": "gold_soft",
-      "motif": "buff",
+      "flash": "violet_spirit",
+      "motif": "spirit",
       "pattern": "ally_all",
       "q": ""
     },
@@ -1298,14 +1346,6 @@
       "flash": "gold_soft",
       "motif": "heal",
       "pattern": "single",
-      "q": ""
-    },
-    {
-      "id": "bach_hong_quan_nhat",
-      "name": "Bạch Hồng Quán Nhật",
-      "flash": "gold_soft",
-      "motif": "heal",
-      "pattern": "column",
       "q": ""
     },
     {
@@ -1463,7 +1503,7 @@
     {
       "id": "lac_thuy_tien",
       "name": "Lạc Thủy Tiên",
-      "flash": "blue_water",
+      "flash": "aqua",
       "motif": "water",
       "pattern": "ally_all",
       "q": ""
@@ -1527,8 +1567,8 @@
     {
       "id": "loi_co",
       "name": "Lôi Cổ",
-      "flash": "gold_soft",
-      "motif": "buff",
+      "flash": "electric_blue",
+      "motif": "thunder",
       "pattern": "ally_all",
       "q": ""
     },
@@ -1577,14 +1617,6 @@
       "name": "Mưu Thủ",
       "flash": "gold_soft",
       "motif": "heal",
-      "pattern": "all",
-      "q": ""
-    },
-    {
-      "id": "loan_the_pho_do",
-      "name": "Loạn Thế Phổ Độ",
-      "flash": "gold_soft",
-      "motif": "buff",
       "pattern": "all",
       "q": ""
     },
@@ -1655,22 +1687,6 @@
     {
       "id": "cuu_vien",
       "name": "Cứu Viện",
-      "flash": "gold_soft",
-      "motif": "heal",
-      "pattern": "all",
-      "q": ""
-    },
-    {
-      "id": "tran_hon",
-      "name": "Trấn Hồn",
-      "flash": "gold_soft",
-      "motif": "heal",
-      "pattern": "all",
-      "q": ""
-    },
-    {
-      "id": "phong_ngu_can_than",
-      "name": "Phòng Ngự Cẩn Thận",
       "flash": "gold_soft",
       "motif": "heal",
       "pattern": "all",
@@ -1791,7 +1807,7 @@
     {
       "id": "tri_lieu",
       "name": "Trị Liệu",
-      "flash": "gold_soft",
+      "flash": "healing_green",
       "motif": "heal",
       "pattern": "single",
       "q": ""
@@ -1973,22 +1989,6 @@
       "q": ""
     },
     {
-      "id": "toa_hon",
-      "name": "Tỏa Hồn",
-      "flash": "gold_soft",
-      "motif": "heal",
-      "pattern": "all",
-      "q": ""
-    },
-    {
-      "id": "quyen_hanh",
-      "name": "Quyền Hành",
-      "flash": "gold_soft",
-      "motif": "heal",
-      "pattern": "all",
-      "q": ""
-    },
-    {
       "id": "vuong_trieu_tan_ra",
       "name": "Vương Triều Tan Rã",
       "flash": "gold_soft",
@@ -2023,8 +2023,8 @@
     {
       "id": "thien_vu_khuynh_thanh",
       "name": "Thiên Vũ Khuynh Thành",
-      "flash": "blue_water",
-      "motif": "water",
+      "flash": "ice_blue",
+      "motif": "ice",
       "pattern": "ally_all",
       "q": ""
     },
@@ -2193,7 +2193,7 @@
     {
       "id": "hoa_cong",
       "name": "Hỏa Công",
-      "flash": "fire_rain",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "single",
       "q": ""
@@ -2201,7 +2201,7 @@
     {
       "id": "lua_luc",
       "name": "Lửa Lục",
-      "flash": "fire_rain",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "single",
       "q": ""
@@ -2209,7 +2209,15 @@
     {
       "id": "thien_hoa",
       "name": "Thiên Hỏa",
-      "flash": "fire_rain",
+      "flash": "ember_orange",
+      "motif": "fire",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "hoa_long",
+      "name": "Hỏa Long",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "single",
       "q": ""
@@ -2217,23 +2225,15 @@
     {
       "id": "hoa_nguu_dap",
       "name": "Hỏa Ngưu Đạp",
-      "flash": "fire_rain",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "all",
       "q": ""
     },
     {
-      "id": "viem_loi",
-      "name": "Viêm Lôi",
-      "flash": "fire_rain",
-      "motif": "fire",
-      "pattern": "single",
-      "q": ""
-    },
-    {
       "id": "hoa_than",
       "name": "Hỏa Thần",
-      "flash": "fire_rain",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "all",
       "q": ""
@@ -2241,15 +2241,7 @@
     {
       "id": "dai_viem_de",
       "name": "Đại Viêm Đế",
-      "flash": "fire_rain",
-      "motif": "fire",
-      "pattern": "all",
-      "q": ""
-    },
-    {
-      "id": "hong_lien_nghiep_hoa",
-      "name": "Hồng Liên Nghiệp Hỏa",
-      "flash": "fire_rain",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "all",
       "q": ""
@@ -2257,23 +2249,15 @@
     {
       "id": "luyen_nguc_hoa_hai",
       "name": "Luyện Ngục Hỏa Hải",
-      "flash": "fire_rain",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "all",
       "q": ""
     },
     {
-      "id": "hong_viem",
-      "name": "Hồng Viêm",
-      "flash": "fire_rain",
-      "motif": "fire",
-      "pattern": "single",
-      "q": ""
-    },
-    {
       "id": "hac_viem",
       "name": "Hắc Viêm",
-      "flash": "fire_rain",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "single",
       "q": ""
@@ -2281,7 +2265,7 @@
     {
       "id": "hoa_thieu_lien_doanh",
       "name": "Hỏa Thiêu Liên Doanh",
-      "flash": "fire_rain",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "single",
       "q": ""
@@ -2289,7 +2273,7 @@
     {
       "id": "nghiep_viem_bao",
       "name": "Nghiệp Viêm Bạo",
-      "flash": "fire_rain",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "single",
       "q": ""
@@ -2297,7 +2281,7 @@
     {
       "id": "hoa_the_ngut_troi",
       "name": "Hỏa Thế Ngút Trời",
-      "flash": "fire_rain",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "single",
       "q": ""
@@ -2305,7 +2289,7 @@
     {
       "id": "xich_lua_tri_tue",
       "name": "Xích Lửa Trí Tuệ",
-      "flash": "fire_rain",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "single",
       "q": ""
@@ -2313,7 +2297,7 @@
     {
       "id": "ma_than_no_hoa",
       "name": "Ma Thần Nộ Hỏa",
-      "flash": "fire_rain",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "all",
       "q": ""
@@ -2321,7 +2305,7 @@
     {
       "id": "minh_hoa_lieu_nguyen",
       "name": "Minh Hỏa Liêu Nguyên",
-      "flash": "fire_rain",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "all",
       "q": ""
@@ -2329,7 +2313,7 @@
     {
       "id": "boc_viem",
       "name": "Bộc Viêm",
-      "flash": "fire_rain",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "single",
       "q": ""
@@ -2337,15 +2321,7 @@
     {
       "id": "no_nguc_viem",
       "name": "Nộ Ngục Viêm",
-      "flash": "fire_rain",
-      "motif": "fire",
-      "pattern": "all",
-      "q": ""
-    },
-    {
-      "id": "hong_hoang_no_hoa",
-      "name": "Hồng Hoang Nộ Hỏa",
-      "flash": "fire_rain",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "all",
       "q": ""
@@ -2353,7 +2329,7 @@
     {
       "id": "than_hoa_hien_the",
       "name": "Thần Hỏa Hiện Thế",
-      "flash": "fire_rain",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "all",
       "q": ""
@@ -2361,23 +2337,71 @@
     {
       "id": "hoa_no",
       "name": "Hỏa Nỏ",
-      "flash": "fire_rain",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "row",
       "q": ""
     },
     {
-      "id": "hoa_tien",
-      "name": "Hỏa Tiễn",
-      "flash": "fire_rain",
+      "id": "viem_long_pha",
+      "name": "Viêm Long Phá",
+      "flash": "ember_orange",
+      "motif": "fire",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "viem_long_sat",
+      "name": "Viêm Long Sát",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "all",
       "q": ""
     },
     {
+      "id": "viem_long_ky_tap",
+      "name": "Viêm Long Kỳ Tập",
+      "flash": "ember_orange",
+      "motif": "fire",
+      "pattern": "all",
+      "q": ""
+    },
+    {
+      "id": "hoa_long_tien",
+      "name": "Hỏa Long Tiễn",
+      "flash": "ember_orange",
+      "motif": "fire",
+      "pattern": "all",
+      "q": ""
+    },
+    {
+      "id": "hoa_tien",
+      "name": "Hỏa Tiễn",
+      "flash": "ember_orange",
+      "motif": "fire",
+      "pattern": "all",
+      "q": ""
+    },
+    {
+      "id": "phuong_vu_cuu_thien",
+      "name": "Phượng Vũ Cửu Thiên",
+      "flash": "crimson_flame",
+      "motif": "firebird",
+      "pattern": "row",
+      "q": ""
+    },
+    {
+      "id": "loan_hoi_phuong_vu",
+      "name": "Loan Hồi Phượng Vũ",
+      "flash": "crimson_flame",
+      "motif": "firebird",
+      "pattern": "row",
+      "q": ""
+    },
+    {
       "id": "hoa_nham",
       "name": "Hỏa Nham",
-      "flash": "fire_rain",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "single",
       "q": ""
@@ -2385,7 +2409,7 @@
     {
       "id": "thien_hoa_thieu",
       "name": "Thiên Hỏa Thiêu",
-      "flash": "fire_rain",
+      "flash": "ember_orange",
       "motif": "fire",
       "pattern": "single",
       "q": ""
@@ -2425,14 +2449,6 @@
       "q": ""
     },
     {
-      "id": "bach_ly_truy_hon",
-      "name": "Bách Lý Truy Hồn",
-      "flash": "yellow",
-      "motif": "pierce",
-      "pattern": "single",
-      "q": ""
-    },
-    {
       "id": "lac_nhat_than_tien",
       "name": "Lạc Nhật Thần Tiễn",
       "flash": "yellow",
@@ -2451,14 +2467,6 @@
     {
       "id": "thich_sat",
       "name": "Thích Sát",
-      "flash": "steel",
-      "motif": "pierce",
-      "pattern": "single",
-      "q": ""
-    },
-    {
-      "id": "hanh_thich",
-      "name": "Hành Thích",
       "flash": "steel",
       "motif": "pierce",
       "pattern": "single",
@@ -2887,7 +2895,7 @@
     {
       "id": "doc_muu",
       "name": "Độc Mưu",
-      "flash": "green_poison",
+      "flash": "toxic_green",
       "motif": "poison",
       "pattern": "all",
       "q": ""
@@ -2895,7 +2903,7 @@
     {
       "id": "doc_xa",
       "name": "Độc Xà",
-      "flash": "green_poison",
+      "flash": "toxic_green",
       "motif": "poison",
       "pattern": "single",
       "q": ""
@@ -2903,7 +2911,7 @@
     {
       "id": "doc_dia",
       "name": "Độc Địa",
-      "flash": "green_poison",
+      "flash": "toxic_green",
       "motif": "poison",
       "pattern": "all",
       "q": ""
@@ -2911,7 +2919,7 @@
     {
       "id": "doc_tieu",
       "name": "Độc Tiêu",
-      "flash": "green_poison",
+      "flash": "toxic_green",
       "motif": "poison",
       "pattern": "single",
       "q": ""
@@ -2919,15 +2927,7 @@
     {
       "id": "xa_doc",
       "name": "Xà Độc",
-      "flash": "green_poison",
-      "motif": "poison",
-      "pattern": "column",
-      "q": ""
-    },
-    {
-      "id": "doc_loi",
-      "name": "Độc Lôi",
-      "flash": "green_poison",
+      "flash": "toxic_green",
       "motif": "poison",
       "pattern": "column",
       "q": ""
@@ -2935,15 +2935,7 @@
     {
       "id": "tuyet_sach_doc_ke",
       "name": "Tuyệt Sách Độc Kế",
-      "flash": "green_poison",
-      "motif": "poison",
-      "pattern": "column",
-      "q": ""
-    },
-    {
-      "id": "nao_loan_kinh_thanh",
-      "name": "Náo Loạn Kinh Thành",
-      "flash": "green_poison",
+      "flash": "toxic_green",
       "motif": "poison",
       "pattern": "column",
       "q": ""
@@ -2951,7 +2943,7 @@
     {
       "id": "doc_chu",
       "name": "Độc Chú",
-      "flash": "green_poison",
+      "flash": "toxic_green",
       "motif": "poison",
       "pattern": "all",
       "q": ""
@@ -2959,7 +2951,7 @@
     {
       "id": "doc_nhan",
       "name": "Độc Nhẫn",
-      "flash": "green_poison",
+      "flash": "toxic_green",
       "motif": "poison",
       "pattern": "single",
       "q": ""
@@ -2967,7 +2959,7 @@
     {
       "id": "kich_doc",
       "name": "Kịch Độc",
-      "flash": "green_poison",
+      "flash": "toxic_green",
       "motif": "poison",
       "pattern": "single",
       "q": ""
@@ -2975,7 +2967,7 @@
     {
       "id": "doc_ke",
       "name": "Độc Kế",
-      "flash": "green_poison",
+      "flash": "toxic_green",
       "motif": "poison",
       "pattern": "single",
       "q": ""
@@ -2983,7 +2975,7 @@
     {
       "id": "thi_doc",
       "name": "Thi Độc",
-      "flash": "green_poison",
+      "flash": "toxic_green",
       "motif": "poison",
       "pattern": "single",
       "q": ""
@@ -2999,7 +2991,7 @@
     {
       "id": "hu_thi_doc",
       "name": "Hủ Thi Độc",
-      "flash": "green_poison",
+      "flash": "toxic_green",
       "motif": "poison",
       "pattern": "single",
       "q": ""
@@ -3007,7 +2999,7 @@
     {
       "id": "quy_mon_thi_doc",
       "name": "Quỷ Môn Thi Độc",
-      "flash": "green_poison",
+      "flash": "toxic_green",
       "motif": "poison",
       "pattern": "single",
       "q": ""
@@ -3015,7 +3007,7 @@
     {
       "id": "on_dich",
       "name": "Ôn Dịch",
-      "flash": "green_poison",
+      "flash": "toxic_green",
       "motif": "poison",
       "pattern": "single",
       "q": ""
@@ -3079,14 +3071,6 @@
       "q": ""
     },
     {
-      "id": "phong_loi",
-      "name": "Phong Lôi",
-      "flash": "whirlwind",
-      "motif": "whirlwind",
-      "pattern": "column",
-      "q": ""
-    },
-    {
       "id": "uy_phong",
       "name": "Uy Phong",
       "flash": "whirlwind",
@@ -3111,22 +3095,6 @@
       "q": ""
     },
     {
-      "id": "bang_phong",
-      "name": "Băng Phong",
-      "flash": "whirlwind",
-      "motif": "whirlwind",
-      "pattern": "row",
-      "q": ""
-    },
-    {
-      "id": "thien_ly_bang_phong",
-      "name": "Thiên Lý Băng Phong",
-      "flash": "whirlwind",
-      "motif": "whirlwind",
-      "pattern": "row",
-      "q": ""
-    },
-    {
       "id": "phong_tien",
       "name": "Phong Tiễn",
       "flash": "whirlwind",
@@ -3145,7 +3113,7 @@
     {
       "id": "gio_loc",
       "name": "Gió Lốc",
-      "flash": "whirlwind",
+      "flash": "wind_silver",
       "motif": "whirlwind",
       "pattern": "single",
       "q": ""
@@ -3159,11 +3127,109 @@
       "q": ""
     }
   ],
+  "bagua": [
+    {
+      "id": "bagua_zhen",
+      "name": "Bát Quái Trận",
+      "flash": "jade_gold",
+      "motif": "bagua",
+      "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "bat_tran_do",
+      "name": "Bát Trận Đồ",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "all",
+      "q": ""
+    },
+    {
+      "id": "thien_dia_van_tuong",
+      "name": "Thiên Địa Vạn Tượng",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "all",
+      "q": ""
+    },
+    {
+      "id": "ky_mon_bat_tran_do",
+      "name": "Kỳ Môn Bát Trận Đồ",
+      "flash": "jade_gold",
+      "motif": "bagua",
+      "pattern": "all",
+      "q": ""
+    },
+    {
+      "id": "tien_co_chien_tran",
+      "name": "Tiên Cơ Chiến Trận",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "column",
+      "q": ""
+    },
+    {
+      "id": "than_uy_pha_tran",
+      "name": "Thần Uy Phá Trận",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "all",
+      "q": ""
+    },
+    {
+      "id": "huyen_thuat",
+      "name": "Huyễn Thuật",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "all",
+      "q": ""
+    },
+    {
+      "id": "huyen_phap",
+      "name": "Huyễn Pháp",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "all",
+      "q": ""
+    },
+    {
+      "id": "thuong_tran",
+      "name": "Thương Trận",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "column",
+      "q": ""
+    },
+    {
+      "id": "ky_mon",
+      "name": "Kỳ Môn",
+      "flash": "jade_gold",
+      "motif": "bagua",
+      "pattern": "all",
+      "q": ""
+    },
+    {
+      "id": "am_duong_diet",
+      "name": "Âm Dương Diệt",
+      "flash": "jade_gold",
+      "motif": "bagua",
+      "pattern": "all",
+      "q": ""
+    },
+    {
+      "id": "kinh_dien_luan_hoi",
+      "name": "Kính Diễn Luân Hồi",
+      "flash": "bagua",
+      "motif": "bagua",
+      "pattern": "front_row",
+      "q": ""
+    }
+  ],
   "thunder": [
     {
       "id": "sam_set",
       "name": "Lôi Kích",
-      "flash": "thunder",
+      "flash": "electric_blue",
       "motif": "thunder",
       "pattern": "single",
       "q": ""
@@ -3171,7 +3237,15 @@
     {
       "id": "loi_tien",
       "name": "Lôi Tiễn",
-      "flash": "thunder",
+      "flash": "electric_blue",
+      "motif": "thunder",
+      "pattern": "column",
+      "q": ""
+    },
+    {
+      "id": "phong_loi",
+      "name": "Phong Lôi",
+      "flash": "electric_blue",
       "motif": "thunder",
       "pattern": "column",
       "q": ""
@@ -3179,7 +3253,7 @@
     {
       "id": "tu_dien",
       "name": "Tử Điện",
-      "flash": "thunder",
+      "flash": "electric_blue",
       "motif": "thunder",
       "pattern": "single",
       "q": ""
@@ -3187,7 +3261,7 @@
     {
       "id": "than_loi",
       "name": "Thần Lôi",
-      "flash": "thunder",
+      "flash": "electric_blue",
       "motif": "thunder",
       "pattern": "single",
       "q": ""
@@ -3195,7 +3269,7 @@
     {
       "id": "loi_oanh",
       "name": "Lôi Oanh",
-      "flash": "thunder",
+      "flash": "electric_blue",
       "motif": "thunder",
       "pattern": "single",
       "q": ""
@@ -3203,7 +3277,7 @@
     {
       "id": "cuu_thien_than_loi",
       "name": "Cửu Thiên Thần Lôi",
-      "flash": "thunder",
+      "flash": "electric_blue",
       "motif": "thunder",
       "pattern": "single",
       "q": ""
@@ -3211,7 +3285,7 @@
     {
       "id": "diet_the_thien_loi",
       "name": "Diệt Thế Thiên Lôi",
-      "flash": "thunder",
+      "flash": "electric_blue",
       "motif": "thunder",
       "pattern": "single",
       "q": ""
@@ -3219,7 +3293,7 @@
     {
       "id": "kinh_thien_bao_loi",
       "name": "Kinh Thiên Bạo Lôi",
-      "flash": "thunder",
+      "flash": "electric_blue",
       "motif": "thunder",
       "pattern": "single",
       "q": ""
@@ -3227,7 +3301,7 @@
     {
       "id": "cuu_tieu_than_loi",
       "name": "Cửu Tiêu Thần Lôi",
-      "flash": "thunder",
+      "flash": "electric_blue",
       "motif": "thunder",
       "pattern": "single",
       "q": ""
@@ -3235,15 +3309,23 @@
     {
       "id": "kinh_loi",
       "name": "Kinh Lôi",
-      "flash": "thunder",
+      "flash": "electric_blue",
       "motif": "thunder",
       "pattern": "column",
       "q": ""
     },
     {
+      "id": "viem_loi",
+      "name": "Viêm Lôi",
+      "flash": "electric_blue",
+      "motif": "thunder",
+      "pattern": "single",
+      "q": ""
+    },
+    {
       "id": "xich_loi",
       "name": "Xích Lôi",
-      "flash": "thunder",
+      "flash": "electric_blue",
       "motif": "thunder",
       "pattern": "row",
       "q": ""
@@ -3251,7 +3333,7 @@
     {
       "id": "lac_loi",
       "name": "Lạc Lôi",
-      "flash": "thunder",
+      "flash": "electric_blue",
       "motif": "thunder",
       "pattern": "single",
       "q": ""
@@ -3259,7 +3341,15 @@
     {
       "id": "am_loi",
       "name": "Âm Lôi",
-      "flash": "thunder",
+      "flash": "electric_blue",
+      "motif": "thunder",
+      "pattern": "column",
+      "q": ""
+    },
+    {
+      "id": "doc_loi",
+      "name": "Độc Lôi",
+      "flash": "electric_blue",
       "motif": "thunder",
       "pattern": "column",
       "q": ""
@@ -3267,7 +3357,7 @@
     {
       "id": "bao_loi",
       "name": "Bạo Lôi",
-      "flash": "thunder",
+      "flash": "electric_blue",
       "motif": "thunder",
       "pattern": "single",
       "q": ""
@@ -3387,14 +3477,6 @@
       "q": ""
     },
     {
-      "id": "son_bang",
-      "name": "Sơn Băng",
-      "flash": "blue",
-      "motif": "arcane",
-      "pattern": "all",
-      "q": ""
-    },
-    {
       "id": "thap_thien",
       "name": "Tháp Thiên",
       "flash": "blue",
@@ -3403,24 +3485,8 @@
       "q": ""
     },
     {
-      "id": "thien_bang",
-      "name": "Thiên Băng",
-      "flash": "blue",
-      "motif": "arcane",
-      "pattern": "all",
-      "q": ""
-    },
-    {
       "id": "liet_thien",
       "name": "Liệt Thiên",
-      "flash": "blue",
-      "motif": "arcane",
-      "pattern": "all",
-      "q": ""
-    },
-    {
-      "id": "thien_bang_dia_liep",
-      "name": "Thiên Băng Địa Liệp",
       "flash": "blue",
       "motif": "arcane",
       "pattern": "all",
@@ -3501,14 +3567,6 @@
     {
       "id": "tu_than_giang_lam",
       "name": "Tử Thần Giáng Lâm",
-      "flash": "blue",
-      "motif": "arcane",
-      "pattern": "single",
-      "q": ""
-    },
-    {
-      "id": "thu_hon_doat_phach",
-      "name": "Thu Hồn Đoạt Phách",
       "flash": "blue",
       "motif": "arcane",
       "pattern": "single",
@@ -3651,22 +3709,6 @@
       "q": ""
     },
     {
-      "id": "bang_chuy",
-      "name": "Băng Chùy",
-      "flash": "blue",
-      "motif": "arcane",
-      "pattern": "row",
-      "q": ""
-    },
-    {
-      "id": "thien_han_dia_bang",
-      "name": "Thiên Hàn Địa Băng",
-      "flash": "blue",
-      "motif": "arcane",
-      "pattern": "row",
-      "q": ""
-    },
-    {
       "id": "su_hong",
       "name": "Sư Hống",
       "flash": "blue",
@@ -3677,14 +3719,6 @@
     {
       "id": "cuong_hao",
       "name": "Cuồng Hào",
-      "flash": "blue",
-      "motif": "arcane",
-      "pattern": "all",
-      "q": ""
-    },
-    {
-      "id": "de_hon",
-      "name": "Đế Hồn",
       "flash": "blue",
       "motif": "arcane",
       "pattern": "all",
@@ -3963,14 +3997,6 @@
       "q": ""
     },
     {
-      "id": "bang_hoai",
-      "name": "Băng Hoại",
-      "flash": "blue",
-      "motif": "arcane",
-      "pattern": "column",
-      "q": ""
-    },
-    {
       "id": "bao_le",
       "name": "Bạo Lệ",
       "flash": "blue",
@@ -4000,14 +4026,6 @@
       "flash": "blue",
       "motif": "arcane",
       "pattern": "column",
-      "q": ""
-    },
-    {
-      "id": "lien_thanh",
-      "name": "Liên Thành",
-      "flash": "blue",
-      "motif": "arcane",
-      "pattern": "all",
       "q": ""
     },
     {
@@ -4363,14 +4381,6 @@
       "q": ""
     },
     {
-      "id": "hanh_binh",
-      "name": "Hành Binh",
-      "flash": "blue",
-      "motif": "arcane",
-      "pattern": "column",
-      "q": ""
-    },
-    {
       "id": "ky_binh_pha_thuc",
       "name": "Kỳ Binh Phá Thục",
       "flash": "blue",
@@ -4392,14 +4402,6 @@
       "flash": "blue",
       "motif": "arcane",
       "pattern": "column",
-      "q": ""
-    },
-    {
-      "id": "han_bang",
-      "name": "Hàn Băng",
-      "flash": "blue",
-      "motif": "arcane",
-      "pattern": "row",
       "q": ""
     },
     {
@@ -4456,14 +4458,6 @@
       "flash": "blue",
       "motif": "arcane",
       "pattern": "single",
-      "q": ""
-    },
-    {
-      "id": "am_duong_diet",
-      "name": "Âm Dương Diệt",
-      "flash": "blue",
-      "motif": "arcane",
-      "pattern": "all",
       "q": ""
     },
     {
@@ -4591,9 +4585,17 @@
     {
       "id": "thiet_bich",
       "name": "Thiết Bích",
-      "flash": "shield",
+      "flash": "steel_blue",
       "motif": "shield",
       "pattern": "single",
+      "q": ""
+    },
+    {
+      "id": "phong_ngu_can_than",
+      "name": "Phòng Ngự Cẩn Thận",
+      "flash": "steel_blue",
+      "motif": "shield",
+      "pattern": "all",
       "q": ""
     },
     {

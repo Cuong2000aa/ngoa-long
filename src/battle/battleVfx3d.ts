@@ -657,18 +657,20 @@ function flashPalette(flash?: string): { base: THREE.Color; hot: THREE.Color; co
   // Hỏa Long — cam lửa (không trắng / không lam linh)
   if (f === "dragon")
     return { base: new THREE.Color(0xff7a2e), hot: new THREE.Color(0xffe08a), cool: new THREE.Color(0xdc2626) };
-  if (f === "fire" || f === "fire_rain" || f === "orange")
+  if (f === "fire" || f === "fire_rain" || f === "orange" || f === "ember_orange" || f === "crimson_flame")
     return { base: new THREE.Color(0xff7a2e), hot: new THREE.Color(0xffe08a), cool: new THREE.Color(0xb91c1c) };
   if (f === "tiger" || f === "gold" || f === "gold_soft" || f === "yellow")
     return { base: new THREE.Color(0xfbbf24), hot: new THREE.Color(0xfff7ed), cool: new THREE.Color(0xb45309) };
-  if (f === "thunder" || f === "storm")
-    return { base: new THREE.Color(0x7dd3fc), hot: new THREE.Color(0xf0f9ff), cool: new THREE.Color(0x0369a1) };
-  if (f === "blue" || f === "blue_water" || f === "cyan" || f === "frost")
+  if (f === "thunder" || f === "storm" || f === "electric_blue")
+    return { base: new THREE.Color(0xfde047), hot: new THREE.Color(0xfffbeb), cool: new THREE.Color(0x0369a1) };
+  if (f === "ice_blue" || f === "ice" || f === "frost")
+    return { base: new THREE.Color(0xbae6fd), hot: new THREE.Color(0xf0f9ff), cool: new THREE.Color(0x0284c7) };
+  if (f === "blue" || f === "blue_water" || f === "cyan")
     return { base: new THREE.Color(0x38bdf8), hot: new THREE.Color(0xe0f2fe), cool: new THREE.Color(0x1d4ed8) };
-  if (f === "purple" || f === "shadow" || f === "bagua" || f === "jade_gold" || f === "violet_spirit")
+  if (f === "violet_spirit")
+    return { base: new THREE.Color(0xc4b5fd), hot: new THREE.Color(0xf5f3ff), cool: new THREE.Color(0x6d28d9) };
+  if (f === "purple" || f === "shadow" || f === "bagua" || f === "jade_gold")
     return { base: new THREE.Color(0xa78bfa), hot: new THREE.Color(0xe9d5ff), cool: new THREE.Color(0x5b21b6) };
-  if (f === "electric_blue")
-    return { base: new THREE.Color(0x7dd3fc), hot: new THREE.Color(0xf0f9ff), cool: new THREE.Color(0x0369a1) };
   if (f === "crimson" || f === "blood" || f === "gold_red")
     return { base: new THREE.Color(0xf87171), hot: new THREE.Color(0xfecaca), cool: new THREE.Color(0x991b1b) };
   if (f === "green_poison" || f === "poison" || f === "nature" || f === "snake" || f === "fire_green")
@@ -1735,6 +1737,8 @@ function boltUrlsForStyle(style: Fx3dStyle, flash?: string): { urls: string[]; w
     return { urls: cm("pixel_fire", 24), w: 2.2, h: 2.2 };
   if (style === "thunder" || f === "thunder" || f === "storm" || f === "electric_blue")
     return { urls: br("storm_burst", 24), w: 2.2, h: 2.2 };
+  if (style === "ice" || f === "ice_blue" || f === "ice" || f === "frost")
+    return { urls: br("water_wave", 24), w: 2.15, h: 2.15 };
   if (style === "tide" || f === "blue_water" || f === "cyan" || f === "teal" || f === "white_blue")
     return { urls: br("water_wave", 24), w: 2.15, h: 2.15 };
   if (style === "bagua") return { urls: cm("elden_ring", 24), w: 2.3, h: 2.3 };
@@ -1768,6 +1772,7 @@ function flightProfile(style: Fx3dStyle, _flash?: string): {
   if (style === "pierce") return { durationMs: 380, arc: 0.08, size: 0.4, density: 14, sheetMul: 1.35 };
   if (style === "thunder") return { durationMs: 500, arc: 0.22, size: 0.52, density: 18, sheetMul: 1.4 };
   if (style === "bagua") return { durationMs: 540, arc: 0.18, size: 0.5, density: 12, sheetMul: 1.35 };
+  if (style === "ice") return { durationMs: 520, arc: 0.28, size: 0.5, density: 16, sheetMul: 1.4 };
   if (style === "nova") return { durationMs: 560, arc: 0.55, size: 0.58, density: 18, sheetMul: 1.45 };
   if (style === "tide") return { durationMs: 560, arc: 0.5, size: 0.52, density: 17, sheetMul: 1.4 };
   if (style === "poison") return { durationMs: 540, arc: 0.38, size: 0.48, density: 18, sheetMul: 1.35 };
@@ -1888,6 +1893,20 @@ function skillPremiumLayers(
         { folder: "spritepilot", pack: "hit_spark", n: 24, w: 2.3, h: 2.3, opacity: 0.95 },
       ],
       flightUnder: under,
+    };
+  }
+  if (style === "ice") {
+    return {
+      cast: [
+        { folder: "codemanu", pack: "anima", n: 24, w: 3.0, h: 3.0, opacity: 0.88 },
+        { folder: "brackeys", pack: "water_wave", n: 24, w: 2.8, h: 2.8, opacity: 0.85 },
+      ],
+      hit: [
+        { folder: "spritepilot", pack: "water_splash", n: 24, w: 3.2, h: 3.2, opacity: 0.95 },
+        { folder: "brackeys", pack: "water_wave", n: 24, w: 3.0, h: 3.0, opacity: 0.9 },
+        { folder: "codemanu", pack: "impact", n: 24, w: 2.6, h: 2.6, opacity: 0.75 },
+      ],
+      flightUnder: itchFrameUrls("brackeys", "water_wave", 24),
     };
   }
   if (style === "tide") {

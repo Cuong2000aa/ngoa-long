@@ -372,6 +372,9 @@ export const MOTIF_DEDICATED_FLASH: Record<string, string> = {
   water: "blue_water",
   bagua: "bagua",
   shield: "gold_soft",
+  ice: "ice_blue",
+  spirit: "violet_spirit",
+  firebird: "crimson_flame",
 };
 
 /** Fallback khi thiếu flash */
@@ -419,7 +422,8 @@ function sheetForFlash(flash: string): string[] {
   // Thủy / băng — forge tide / frost
   if (flash === "blue_water" || flash === "cyan" || flash === "teal" || flash === "white_blue")
     return TEX.forgeTide.length ? TEX.forgeTide : TEX.forgeTide.length ? TEX.forgeTide : TEX.kenneyAura;
-  if (flash === "frost" || flash === "ice") return TEX.forgeFrost.length ? TEX.forgeFrost : TEX.forgeFrostAura;
+  if (flash === "frost" || flash === "ice" || flash === "ice_blue")
+    return TEX.forgeFrost.length ? TEX.forgeFrost : TEX.forgeFrostAura;
   // Sói
   if (flash === "wolf") return TEX.forgeBlood.length ? TEX.forgeBlood : TEX.forgeBlood;
   // Huyết / son

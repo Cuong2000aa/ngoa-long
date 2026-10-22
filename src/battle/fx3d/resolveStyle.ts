@@ -1,8 +1,6 @@
 /**
  * Cổng duy nhất: flash/motif/pattern → Fx3dStyle + HonPackId.
- * playSkillFx3d và catalog QA đều đi qua đây — không map motif rải rác.
- *
- * Bucket tách (P0 motif): thunder / bagua / pierce — không nhét chung beam tím / rush kỵ.
+ * Đồng bộ motif classify: ice / spirit / firebird / thunder / bagua / pierce.
  */
 
 export type Fx3dStyle =
@@ -19,12 +17,11 @@ export type Fx3dStyle =
   | "shadow"
   | "bless"
   | "barrier"
-  /** Lôi — pack hon_loi, không chung beam arcane */
   | "thunder"
-  /** Pháp trận Bát Quái — sigil/vòng, pack hon_bagua */
   | "bagua"
-  /** Đâm / tiễn xuyên — khác rush đột kích */
-  | "pierce";
+  | "pierce"
+  /** Băng — frost, không chung arcane/beam */
+  | "ice";
 
 export type HonPackId =
   | "hon_rong"
@@ -51,32 +48,30 @@ export function resolveFx3dStyle(opts: {
   const motif = String(opts.motif || "").toLowerCase();
   const pat = String(opts.pattern || "single").toLowerCase();
 
-  // —— Giữ nguyên bless / barrier / charge / rush dedicated ——
+  // —— barrier / bless / charge / rush ——
   if (opts.isShield || flash === "shield" || motif === "shield") return "barrier";
   if (opts.support || motif === "heal" || motif === "buff" || pat === "ally_all" || pat === "self") {
     if (flash === "shield") return "barrier";
+    // spirit hỗ trợ cũng bless (không slash)
     return "bless";
   }
   if (opts.isCharge || flash === "charge" || flash === "brown" || motif === "charge") return "charge";
   if (opts.isRush || flash === "rush" || motif === "rush") return "rush";
 
-  // —— Thú / long ——
+  // —— spirit: bless đã bắt ở trên; offensive → shadow nhẹ (hon_hon), không slash ——
+  if (motif === "spirit" || flash === "violet_spirit") return "shadow";
+
+  // —— Thú / long / phượng ——
   if (flash === "dragon" || motif === "dragon") return "breath";
+  if (motif === "firebird" || flash === "crimson_flame") return "nova";
   if (flash === "tiger" || motif === "tiger" || flash === "wolf" || motif === "wolf") return "roar";
 
-  // —— Bucket tách: bagua / thunder / pierce (TRƯỚC beam generic) ——
+  // —— Bucket tách (TRƯỚC beam generic) ——
   if (flash === "jade_gold" || flash === "bagua" || motif === "bagua") return "bagua";
-  if (
-    flash === "thunder" ||
-    flash === "storm" ||
-    flash === "electric_blue" ||
-    motif === "thunder"
-  )
+  if (flash === "thunder" || flash === "storm" || flash === "electric_blue" || motif === "thunder")
     return "thunder";
+  if (motif === "ice" || flash === "ice_blue" || flash === "ice" || flash === "frost") return "ice";
   if (motif === "pierce" || flash === "gold_pierce") return "pierce";
-
-  // —— Linh hồn người ——
-  if (flash === "violet_spirit" || motif === "spirit") return "beam";
 
   if (flash === "whirlwind" || motif === "whirlwind" || flash === "wind") return "whirl";
   if (
@@ -101,14 +96,7 @@ export function resolveFx3dStyle(opts: {
   )
     return "shadow";
 
-  // Arcane / mưu lam-tím → beam (không gồm thunder/bagua nữa)
-  if (
-    flash === "purple" ||
-    flash === "violet" ||
-    flash === "blue" ||
-    motif === "arcane"
-  )
-    return "beam";
+  if (flash === "purple" || flash === "violet" || flash === "blue" || motif === "arcane") return "beam";
 
   return "slash";
 }
@@ -118,11 +106,9 @@ export function honPackForStyle(style: Fx3dStyle, flash?: string, skillId?: stri
   const f = (flash || "").toLowerCase();
   const id = String(skillId || "").toLowerCase();
 
-  // Style bucket thắng trước
   if (style === "bagua") return "hon_bagua";
   if (style === "thunder") return "hon_loi";
 
-  // Id/flash bổ sung (pháp trận / hồn người) — khi style vẫn beam generic
   if (
     f === "bagua" ||
     f === "jade_gold" ||
@@ -131,22 +117,22 @@ export function honPackForStyle(style: Fx3dStyle, flash?: string, skillId?: stri
     )
   )
     return "hon_bagua";
+
+  // Linh hồn người / spirit motif (flash violet_spirit luôn hon_hon)
+  if (f === "violet_spirit") return "hon_hon";
   if (
-    (f === "violet_spirit" ||
-      /truy_hon|toa_hon|tran_hon|de_hon|thu_hon|doat_phach|thien_menh|hieu_lenh|bach_hong|hong_hoang|hong_lien|hong_viem|xich_vu/.test(
-        id
-      )) &&
-    !/long|rong/.test(id)
+    /truy_hon|toa_hon|tran_hon|de_hon|thu_hon|doat_phach|thien_menh|hieu_lenh|bach_hong|hong_hoang|hong_lien|hong_viem|xich_vu|thanh_long_hon/.test(
+      id
+    )
   )
     return "hon_hon";
 
   if (style === "breath") return "hon_rong";
   if (style === "poison") return "hon_xa";
-  if (style === "tide") return "hon_thuy";
+  if (style === "tide" || style === "ice") return "hon_thuy";
   if (style === "whirl") return "hon_phong";
   if (style === "roar") return f === "wolf" || /lang_|_soi|soi_|wolf/.test(id) ? "hon_soi" : "hon_ho";
 
-  // Legacy: lôi còn sót flash khi style chưa map (an toàn)
   if (
     f === "thunder" ||
     f === "storm" ||

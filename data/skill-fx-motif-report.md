@@ -1,53 +1,59 @@
 # Skill FX motif / style report
-
-Generated: 2026-10-22 · catalog **590** skills · missing motif/flash: **0**
-
-## Motif (>8% đậm)
-
+Generated: 2026-10-22 · **590** skills · synced classify → skills.json
+## Motif
 | Motif | Count | % |
 |-------|------:|--:|
-| `arcane` | 155 | 26.3 |
-| `heal` | 70 | 11.9 |
+| `arcane` | 143 | 24.2 |
+| `heal` | 65 | 11.0 |
 | `slash` | 48 | 8.1 |
+| `buff` | 41 | 6.9 |
+| `pierce` | 39 | 6.6 |
+| `dragon` | 27 | 4.6 |
+| `fire` | 26 | 4.4 |
+| `shadow` | 24 | 4.1 |
+| `tiger` | 22 | 3.7 |
+| `ice` | 20 | 3.4 |
+| `poison` | 18 | 3.1 |
+| `thunder` | 18 | 3.1 |
+| `water` | 17 | 2.9 |
+| `shield` | 15 | 2.5 |
+| `rush` | 15 | 2.5 |
+| `spirit` | 13 | 2.2 |
+| `charge` | 12 | 2.0 |
+| `bagua` | 12 | 2.0 |
+| `whirlwind` | 11 | 1.9 |
+| `wolf` | 2 | 0.3 |
+| `firebird` | 2 | 0.3 |
 
-## Fx3dStyle trước → sau (tách bucket)
+## Fx3dStyle (sau resolve)
+| Style | Count | % |
+|-------|------:|--:|
+| `beam` | 143 | 24.2 |
+| `bless` | 117 | 19.8 |
+| `shadow` | 63 | 10.7 |
+| `pierce` | 38 | 6.4 |
+| `nova` | 28 | 4.7 |
+| `breath` | 27 | 4.6 |
+| `roar` | 23 | 3.9 |
+| `charge` | 21 | 3.6 |
+| `ice` | 19 | 3.2 |
+| `poison` | 18 | 3.1 |
+| `thunder` | 17 | 2.9 |
+| `barrier` | 15 | 2.5 |
+| `rush` | 15 | 2.5 |
+| `tide` | 13 | 2.2 |
+| `bagua` | 12 | 2.0 |
+| `whirl` | 11 | 1.9 |
+| `slash` | 10 | 1.7 |
 
-| Style | Trước | Sau | Ghi chú |
-|-------|------:|----:|---------|
-| `beam` | 184 | 155 | −29 (thunder+bagua) |
-| `bless` | 123 | 123 |  |
-| `shadow` | 53 | 53 |  |
-| `pierce` | 0 | 40 | mới ← rush |
-| `breath` | 33 | 33 |  |
-| `nova` | 25 | 25 |  |
-| `roar` | 22 | 22 |  |
-| `charge` | 21 | 21 |  |
-| `poison` | 20 | 20 |  |
-| `tide` | 16 | 16 |  |
-| `rush` | 55 | 15 | −40 (pierce) |
-| `bagua` | 0 | 15 | mới ← beam |
-| `whirl` | 14 | 14 |  |
-| `barrier` | 14 | 14 |  |
-| `thunder` | 0 | 14 | mới ← beam |
-| `slash` | 10 | 10 |  |
-
-## Preview test (gallery / trận)
-
-| Bucket | Skill id |
-|--------|----------|
-| thunder | `sam_set`, `than_loi` |
-| bagua | `khong_thanh`, `bat_tran_do` |
-| pierce | `bach_bo`, `lac_nhat_than_tien` |
-| beam (arcane) | `yen_nguyet`, `binh_phat` |
-| rush | xem `previewTestIds.rush` trong JSON |
-
-## File đụng
-
-- `src/battle/fx3d/resolveStyle.ts` — style mới + thứ tự map
-- `src/battle/fx3d/stylePlay.ts` — emission/impact pierce/thunder/bagua
-- `src/battle/battleVfx3d.ts` — premium layers / bolt / flight
-- `src/battle/battleVfx.ts` — fallback pierce
-- `data/skill-fx-groups.json` — regenerate
-- `data/skill-fx-motif-report.json` — report này
-
-Không sửa `skills.json` (motif/flash đã đúng). Không thêm motif hàng loạt.
+## Preview 1 skill / bucket
+| Bucket | id |
+|--------|----|
+| arcane | `yen_nguyet` |
+| thunder | `sam_set` |
+| bagua | `bat_tran_do` |
+| ice | `bang_chuy` |
+| spirit | `tran_hon` |
+| dragon | `long_dam` |
+| pierce | `bach_bo` |
+| firebird | `loan_hoi_phuong_vu` |

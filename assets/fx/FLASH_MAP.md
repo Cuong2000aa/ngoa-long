@@ -57,7 +57,7 @@ Motif đặc biệt: charge / rush / shield vẫn choreography riêng. `skill_wa
 
 **Motif → flash:** `resolveFxKey` — motif *dedicated* (tiger/wolf/dragon/fire/…) thắng flash generic; slash/arcane/heal giữ flash chi tiết trong data.
 
-**Fx3dStyle (3D):** `resolveFx3dStyle` — bucket tách `thunder` / `bagua` / `pierce` (không nhét chung `beam` tím hay `rush` kỵ). Report: `data/skill-fx-motif-report.md`.
+**Fx3dStyle (3D):** `resolveFx3dStyle` — `thunder` / `bagua` / `pierce` / `ice` / spirit→`shadow|bless` / firebird→`nova`. Motif UI đồng bộ `skill-fx-classify` (`ice`, `spirit`, `firebird`). Report: `data/skill-fx-motif-report.md`.
 
 ## Recipe aura (mọi motif)
 
