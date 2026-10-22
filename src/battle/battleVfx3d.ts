@@ -1,13 +1,29 @@
 import * as THREE from "three";
+import {
+  clampHonTargetSize,
+  fxSeq,
+  HON_PACKS,
+  honPackForStyle,
+  resolveFx3dStyle,
+  runStyleEmission,
+  runStyleImpact,
+  type Fx3dStyle,
+  type HonPackId,
+  type StylePlayApi,
+} from "./fx3d";
 
 /**
  * True 3D battle VFX — soft Points + mesh cores/rings + hồn qi sheet in world space.
  *
  * Hồn thú = luồng khí silhouette (flipbook CC0), không GLB full-body.
  * Style: Tam Quốc — ember / hổ phách / thép / băng; tránh neon.
+ *
+ * Resolve style / hon packs / play-by-style: `./fx3d/*`. File này giữ emitter runtime.
  */
 
 export type Fx3dHandle = { cancel: () => void };
+export type { Fx3dStyle, HonPackId };
+export { resolveFx3dStyle, honPackForStyle, clampHonTargetSize };
 
 type Particle = {
   pos: THREE.Vector3;
@@ -105,93 +121,6 @@ let nextId = 1;
 const _texLoader = new THREE.TextureLoader();
 const _texCache = new Map<string, THREE.Texture>();
 
-/** Soft volumetric Hồn packs — gen: `npm run gen:hon-packs` */
-export type HonPackId =
-  | "hon_rong"
-  | "hon_xa"
-  | "hon_ho"
-  | "hon_soi"
-  | "hon_thuy"
-  | "hon_loi"
-  | "hon_phong"
-  | "hon_bagua"
-  | "hon_hon";
-
-type HonPackPaths = {
-  serpent: string[];
-  mist: string[];
-  sparkle: string[];
-  ring: string[];
-  crescent: string[];
-  orb: string;
-  tint: number;
-  flash: string;
-  /** Đầu silhouette flipbook (qi flight) */
-  head: string[];
-  /** Thân/đuôi qi stream */
-  body: string[];
-  /** Emissive / tint phụ */
-  emissive: number;
-  yawOffset: number;
-};
-
-const _pad2 = (n: number) => String(n).padStart(2, "0");
-const _fxSeq = (folder: string, prefix: string, n: number, start = 1) =>
-  Array.from({ length: n }, (_, i) => `assets/fx/${folder}/${prefix}_${_pad2(start + i)}.png`);
-
-/** Pack qi-stream dưới assets/fx/skill/{short}/qi_* */
-function honPaths(
-  tint: number,
-  flash: string,
-  emissive: number,
-  qiFolder: string,
-  yawOffset = 0
-): HonPackPaths {
-  const flight = _fxSeq(qiFolder, "flight", 24);
-  const charge = _fxSeq(qiFolder, "charge", 24);
-  return {
-    serpent: flight,
-    mist: charge,
-    sparkle: [],
-    ring: charge,
-    crescent: [],
-    orb: "",
-    tint,
-    flash,
-    head: flight,
-    body: flight,
-    emissive,
-    yawOffset,
-  };
-}
-
-/**
- * Hồn = qi-stream trong assets/fx/skill/* (charge → flight → impact).
- * Id code giữ hon_* ; folder runtime = skill/{short}/qi_*.
- */
-const HON_PACKS: Record<HonPackId, HonPackPaths> = {
-  hon_rong: honPaths(0xff8a3a, "fire", 0xff4a12, "skill/rong/qi_fire"),
-  hon_xa: honPaths(0x6ee7a8, "green_poison", 0x22c55e, "skill/xa/qi_poison"),
-  hon_ho: honPaths(0xfbbf24, "tiger", 0xf59e0b, "skill/ho/qi_tiger"),
-  hon_soi: honPaths(0xcbd5e1, "wolf", 0x94a3b8, "skill/soi/qi_wolf"),
-  hon_thuy: honPaths(0x38bdf8, "blue_water", 0x0ea5e9, "skill/thuy/qi_water"),
-  hon_loi: honPaths(0xfde047, "thunder", 0xfacc15, "skill/loi/qi_thunder"),
-  hon_phong: honPaths(0xa5f3fc, "whirlwind", 0x67e8f9, "skill/phong/qi_wind"),
-  hon_bagua: honPaths(0xf5e6c8, "bagua", 0xc4b5fd, "skill/bagua/qi_bagua"),
-  hon_hon: honPaths(0xe0e7ff, "violet_spirit", 0xa78bfa, "skill/hon/qi_soul"),
-};
-
-/** Combat sprite scale — head longest ~1.05–1.75 (không showcase). */
-const HON_SIZE_MIN = 1.05;
-const HON_SIZE_MAX = 1.85;
-const HON_SIZE_DEFAULT = 1.45;
-
-/** Clamp scale luồng khí hồn. */
-export function clampHonTargetSize(raw: number): number {
-  if (!Number.isFinite(raw) || raw <= 0) return HON_SIZE_DEFAULT;
-  return Math.min(HON_SIZE_MAX, Math.max(HON_SIZE_MIN, raw));
-}
-
 function loadFxTex(url: string): Promise<THREE.Texture> {
   if (!url) return Promise.reject(new Error("empty fx url"));
   const hit = _texCache.get(url);
@@ -232,127 +161,6 @@ function trackTimer(ms: number, fn: () => void): number {
   }, ms);
   PENDING_TIMERS.push(tid);
   return tid;
-}
-
-/** Styles cho rebuild 3D toàn catalog */
-export type Fx3dStyle =
-  | "slash"
-  | "breath"
-  | "roar"
-  | "rush"
-  | "charge"
-  | "beam"
-  | "nova"
-  | "tide"
-  | "poison"
-  | "whirl"
-  | "shadow"
-  | "bless"
-  | "barrier";
-
-/**
- * Map flash/motif/pattern → style 3D (mọi chiêu đi qua đây).
- */
-export function resolveFx3dStyle(opts: {
-  flash?: string | null;
-  motif?: string | null;
-  pattern?: string | null;
-  support?: boolean;
-  isShield?: boolean;
-  isCharge?: boolean;
-  isRush?: boolean;
-}): Fx3dStyle {
-  const flash = String(opts.flash || "").toLowerCase();
-  const motif = String(opts.motif || "").toLowerCase();
-  const pat = String(opts.pattern || "single").toLowerCase();
-  if (opts.isShield || flash === "shield" || motif === "shield") return "barrier";
-  if (opts.support || motif === "heal" || motif === "buff" || pat === "ally_all" || pat === "self") {
-    if (flash === "shield") return "barrier";
-    return "bless";
-  }
-  if (opts.isCharge || flash === "charge" || flash === "brown" || motif === "charge") return "charge";
-  if (opts.isRush || flash === "rush" || motif === "rush") return "rush";
-  if (flash === "dragon" || motif === "dragon") return "breath";
-  if (flash === "tiger" || motif === "tiger" || flash === "wolf" || motif === "wolf") return "roar";
-  // Linh hồn người / pháp trận — map sớm trước beam generic
-  if (flash === "violet_spirit" || motif === "spirit") return "beam";
-  if (flash === "jade_gold" || flash === "bagua" || motif === "bagua") return "beam";
-  if (flash === "whirlwind" || motif === "whirlwind" || flash === "wind") return "whirl";
-  if (
-    flash === "green_poison" ||
-    flash === "poison" ||
-    flash === "snake" ||
-    flash === "fire_green" ||
-    motif === "poison" ||
-    motif === "snake"
-  )
-    return "poison";
-  if (flash === "blue_water" || flash === "cyan" || flash === "teal" || flash === "white_blue" || motif === "water")
-    return "tide";
-  if (flash === "fire_rain" || flash === "fire" || flash === "orange" || flash === "red_fire" || motif === "fire")
-    return "nova";
-  if (
-    flash === "crimson" ||
-    flash === "dark_red" ||
-    flash === "gold_red" ||
-    flash === "red" ||
-    motif === "shadow"
-  )
-    return "shadow";
-  if (
-    flash === "thunder" ||
-    flash === "storm" ||
-    flash === "electric_blue" ||
-    flash === "purple" ||
-    flash === "violet" ||
-    flash === "bagua" ||
-    flash === "blue" ||
-    motif === "arcane" ||
-    motif === "thunder" ||
-    motif === "bagua"
-  )
-    return "beam";
-  if (motif === "pierce" || flash === "gold_pierce") return "rush";
-  return "slash";
-}
-
-/** Map style 3D → pack hồn (null = không dùng spirit sequence). */
-export function honPackForStyle(style: Fx3dStyle, flash?: string, skillId?: string | null): HonPackId | null {
-  const f = (flash || "").toLowerCase();
-  const id = String(skillId || "").toLowerCase();
-  // Pháp trận Bát Quái (đa màu) — ưu tiên trước beam generic
-  if (
-    f === "bagua" ||
-    f === "jade_gold" ||
-    /bagua|bat_tran|ky_mon|am_duong|huyen_phap|huyen_thuat|kinh_dien_luan|thien_dia_van_tuong|than_uy_pha_tran|thuong_tran|tien_co_chien_tran/.test(
-      id
-    )
-  )
-    return "hon_bagua";
-  // Linh hồn người (không long/rồng)
-  if (
-    (f === "violet_spirit" ||
-      /truy_hon|toa_hon|tran_hon|de_hon|thu_hon|doat_phach|thien_menh|hieu_lenh|bach_hong|hong_hoang|hong_lien|hong_viem|xich_vu/.test(
-        id
-      )) &&
-    !/long|rong/.test(id)
-  )
-    return "hon_hon";
-  if (style === "breath") return "hon_rong";
-  if (style === "poison") return "hon_xa";
-  if (style === "tide") return "hon_thuy";
-  if (style === "whirl") return "hon_phong";
-  if (style === "roar") return f === "wolf" || /lang_|_soi|soi_|wolf/.test(id) ? "hon_soi" : "hon_ho";
-  // Lôi: flash electric_blue (wiki) + thunder/storm
-  if (
-    style === "beam" &&
-    (f === "thunder" ||
-      f === "storm" ||
-      f === "electric_blue" ||
-      /sam_set|than_loi|bao_loi|kinh_loi|thien_loi|loi_/.test(id))
-  )
-    return "hon_loi";
-  return null;
 }
 
 const _tmp = new THREE.Vector3();
@@ -1082,7 +890,7 @@ function honCombatTimeline(
 
 /** Qi spirit folders — style Hỏa Long (charge / flight đầu-phải / impact). */
 function qiSeq(folder: string, stem: string, n: number): string[] {
-  return _fxSeq(folder, stem, n);
+  return fxSeq(folder, stem, n);
 }
 
 const QI_PACK_FOLDERS: Record<HonPackId, string> = {
@@ -3019,226 +2827,41 @@ export function playSkillFx3d(params: {
   const scale = params.scale;
   const skillId = params.skillId;
   const pattern = params.pattern;
-  const palHex = flashPalette(flash).base.getHex();
 
-  const runEmission = () => {
-    const premium = skillPremiumLayers(style, flash);
-    if (style === "barrier") {
-      // 1–2–5 barrier: sigil + aura + ward (không projectile)
-      handles.push(
-        emitGroundSigil3d(params.scene, params.from, {
-          flash: "shield",
-          scale,
-          durationMs: 980,
-          color: 0x93c5fd,
-        })
-      );
-      handles.push(
-        emitBodyAura3d(params.scene, params.from, {
-          flash: "shield",
-          scale,
-          durationMs: 900,
-          color: 0xdbeafe,
-          pack: "elden_ring",
-        })
-      );
-      handles.push(emitShockwave3d(params.scene, params.from, { flash: "shield", scale, radius: 2.25, durationMs: 980 }));
-      handles.push(emitFlashDisc3d(params.scene, params.from, "shield", scale));
-      handles.push(emitBurst3d(params.scene, params.from, "gold_soft", scale));
-      handles.push(...emitPremiumLayersAt(params.scene, params.from, premium.cast, { scale, durationMs: 820, color: 0xdbeafe }));
-      return;
-    }
-    if (style === "bless") {
-      handles.push(
-        emitGroundSigil3d(params.scene, params.from, {
-          flash: flash || "gold_soft",
-          scale,
-          durationMs: 560,
-          color: 0xfde68a,
-        })
-      );
-      handles.push(
-        emitShockwave3d(params.scene, params.from, {
-          flash: flash || "gold_soft",
-          scale,
-          radius: 1.5,
-          durationMs: 480,
-        })
-      );
-      handles.push(emitFlashDisc3d(params.scene, params.from, flash || "gold_soft", scale));
-      handles.push(
-        ...emitPremiumLayersAt(params.scene, params.from, premium.cast.slice(0, 1), {
-          scale,
-          durationMs: 420,
-          color: 0xfef08a,
-          y0: 0.06,
-        })
-      );
-      handles.push(...emitHostileProjectile3d(params.scene, params.from, params.to, "bless", flash || "gold_soft", scale));
-      return;
-    }
-    // Hồn packs — GLB + 8 lớp
-    {
-      const hon = honPackForStyle(style, flash, skillId);
-      if (hon) {
-        if (phase === "impact") return;
-        handles.push(
-          emitHonSpiritSequence3d(params.scene, params.from, params.to, {
-            scale,
-            pack: hon,
-            skillId,
-            pattern,
-            targets: params.targets?.length ? params.targets : [params.to],
-          })
-        );
-        return;
-      }
-    }
+  const api = {
+    emitGroundSigil3d,
+    emitBodyAura3d,
+    emitShockwave3d,
+    emitBurst3d,
+    emitDust3d,
+    emitFlashDisc3d,
+    emitSparksBurst3d,
+    emitResidual3d,
+    emitGroundMark3d,
+    emitTrail3d,
+    emitPremiumLayersAt,
+    emitHostileProjectile3d,
+    emitHonSpiritSequence3d,
+    emitItchFolderPackAt,
+    skillPremiumLayers,
+    flashPalette,
+  } as unknown as StylePlayApi;
 
-    // —— Style tụ lực: vòng đất + cast nhẹ → projectile → impact (không aura thân lớn) ——
-    handles.push(
-      emitGroundSigil3d(params.scene, params.from, {
-        flash,
-        scale,
-        durationMs: style === "nova" || style === "beam" ? 620 : 480,
-        color: palHex,
-      })
-    );
-    handles.push(
-      emitShockwave3d(params.scene, params.from, {
-        flash,
-        scale,
-        radius: style === "nova" ? 1.7 : 1.4,
-        durationMs: style === "slash" ? 320 : 420,
-      })
-    );
-    handles.push(emitDust3d(params.scene, params.from, scale));
-    handles.push(emitFlashDisc3d(params.scene, params.from, flash, scale));
-    // Cast premium thấp gần chân — tránh cánh/aura che sprite
-    handles.push(
-      ...emitPremiumLayersAt(params.scene, params.from, premium.cast.slice(0, 1), {
-        scale,
-        durationMs: style === "nova" ? 480 : style === "beam" ? 420 : 360,
-        y0: 0.08,
-      })
-    );
-    if (style === "roar" || style === "whirl" || style === "nova" || style === "beam") {
-      handles.push(
-        emitShockwave3d(params.scene, params.from, {
-          flash,
-          scale,
-          radius: style === "nova" ? 2.7 : style === "roar" ? 2.65 : style === "beam" ? 2.1 : 2.25,
-          durationMs: 600,
-        })
-      );
-    }
-    // Slash: trail dày + sparks sớm (đọc lưỡi thép)
-    if (style === "slash") {
-      handles.push(
-        emitTrail3d(params.scene, params.from, params.to, {
-          flash,
-          durationMs: 420,
-          density: 22,
-          arc: 0.28,
-          scale,
-          streak: true,
-        })
-      );
-      handles.push(emitSparksBurst3d(params.scene, params.from, { flash, scale }));
-    }
-    if (style === "rush" || style === "charge") {
-      handles.push(
-        emitTrail3d(params.scene, params.from, params.to, {
-          flash,
-          durationMs: style === "charge" ? 640 : 480,
-          density: style === "charge" ? 20 : 18,
-          arc: style === "charge" ? 0.22 : 0.35,
-          scale,
-          streak: true,
-        })
-      );
-    }
-    handles.push(...emitHostileProjectile3d(params.scene, params.from, params.to, style, flash, scale));
-    if (style === "charge") {
-      handles.push(emitDust3d(params.scene, params.from.clone().lerp(params.to, 0.45), scale));
-      handles.push(emitDust3d(params.scene, params.from.clone().lerp(params.to, 0.72), scale));
-    }
+  const playParams = {
+    scene: params.scene,
+    from: params.from,
+    to: params.to,
+    flash,
+    style,
+    scale,
+    phase,
+    skillId,
+    pattern,
+    targets: params.targets,
   };
 
-  const runImpact = () => {
-    if (honPackForStyle(style, flash, skillId)) return;
-    const premium = skillPremiumLayers(style, flash);
-    // 5) Impact core + flash
-    handles.push(emitBurst3d(params.scene, params.to, flash, scale));
-    handles.push(emitFlashDisc3d(params.scene, params.to, flash, scale));
-    handles.push(
-      ...emitPremiumLayersAt(params.scene, params.to, premium.hit, {
-        scale,
-        durationMs: 580,
-        y0: 0.28,
-      })
-    );
-    // Slash / rush: sparks đọc được
-    if (style === "slash" || style === "rush" || style === "charge" || style === "beam") {
-      handles.push(emitSparksBurst3d(params.scene, params.to, { flash, scale }));
-    }
-    const fHit = (flash || "").toLowerCase();
-    if (fHit === "thunder" || fHit === "storm" || (style === "beam" && fHit === "bagua")) {
-      handles.push(
-        emitItchFolderPackAt(params.scene, params.to, "stylized", "lightning", 1, {
-          durationMs: 440,
-          w: 3.1,
-          h: 1.8,
-          y: 0.65,
-          delayMs: 30,
-          opacity: 0.98,
-          scale,
-          color: 0xf5f3ff,
-        })
-      );
-    }
-    // 6) Ground mark đích
-    handles.push(
-      emitGroundMark3d(params.scene, params.to, {
-        flash,
-        scale,
-        durationMs: style === "nova" ? 900 : 700,
-        color: flashPalette(flash).cool.getHex(),
-      })
-    );
-    // 7) Debris / residual
-    handles.push(emitDust3d(params.scene, params.to, scale));
-    handles.push(emitResidual3d(params.scene, params.to, { flash, scale, delayMs: 90 }));
-
-    if (style === "roar" || style === "nova" || style === "whirl" || style === "slash") {
-      handles.push(
-        emitShockwave3d(params.scene, params.to, {
-          flash,
-          scale,
-          radius: style === "nova" ? 3.15 : style === "slash" ? 2.15 : 2.45,
-          durationMs: 660,
-        })
-      );
-    } else if (style === "rush" || style === "charge") {
-      handles.push(emitShockwave3d(params.scene, params.to, { flash, scale, radius: 2.0, durationMs: 500 }));
-    } else if (style === "barrier" || style === "bless") {
-      handles.push(emitFlashDisc3d(params.scene, params.to, flash || "gold_soft", scale));
-      if (style === "bless") {
-        handles.push(
-          emitResidual3d(params.scene, params.to, {
-            flash: flash || "gold_soft",
-            scale,
-            delayMs: 40,
-            color: 0xfde68a,
-          })
-        );
-      }
-    } else if (style === "tide" || style === "poison" || style === "shadow" || style === "beam") {
-      handles.push(emitShockwave3d(params.scene, params.to, { flash, scale, radius: 1.9, durationMs: 520 }));
-    } else {
-      handles.push(emitShockwave3d(params.scene, params.to, { flash, scale, radius: 1.7, durationMs: 480 }));
-    }
-  };
+  const runEmission = () => runStyleEmission(api, playParams, handles);
+  const runImpact = () => runStyleImpact(api, playParams, handles);
 
   if (phase === "emission") runEmission();
   else if (phase === "impact") runImpact();
