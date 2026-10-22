@@ -241,7 +241,7 @@
         <option value="">Tất cả motif</option>
       </select>
       <div class="motif-chips" id="motif-chips" aria-label="Motif nhanh"></div>
-      <p class="sub" style="margin:0.15rem 0 0">QA mẫu theo nhóm style:</p>
+      <p class="sub" style="margin:0.15rem 0 0">QA Phase C — style A ≠ B trong ~0.5s; beam single/col/row/all:</p>
       <div class="motif-chips" id="qa-chips" aria-label="Chiêu mẫu polish"></div>
       <div id="skill-list" role="listbox" aria-label="Danh sách chiêu"></div>
       <div class="actions">
@@ -277,18 +277,21 @@
     const qaChipsEl = document.getElementById("qa-chips");
     const metaEl = document.getElementById("meta");
     /** Mẫu polish theo nhóm style — bấm → chọn + phát */
-    /** 1 skill / bucket motif chính (sau sync classify) */
+    /** Phase C — 1 skill / style bucket (+ slash / bless). Checklist: A ≠ B trong 0.5s */
     const QA_SAMPLES = [
-      ["yen_nguyet", "arcane"],
+      ["yen_nguyet", "beam"],
       ["sam_set", "thunder"],
       ["bat_tran_do", "bagua"],
       ["bang_chuy", "ice"],
       ["tran_hon", "spirit"],
-      ["long_dam", "dragon"],
+      ["long_dam", "breath"],
       ["bach_bo", "pierce"],
-      ["loan_hoi_phuong_vu", "firebird"],
-      ["thiet_bich", "barrier"],
+      ["loan_hoi_phuong_vu", "nova"],
       ["basic_strike", "slash"],
+      ["nhan_duc", "bless"],
+      ["bao_hao", "beam·col"],
+      ["hoanh_hoa", "beam·row"],
+      ["than_toan", "beam·all"],
     ];
     const hintEl = document.getElementById("overlay-hint");
     const statusEl = document.getElementById("status");

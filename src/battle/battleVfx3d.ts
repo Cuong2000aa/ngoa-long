@@ -669,6 +669,9 @@ function flashPalette(flash?: string): { base: THREE.Color; hot: THREE.Color; co
     return { base: new THREE.Color(0x38bdf8), hot: new THREE.Color(0xe0f2fe), cool: new THREE.Color(0x1d4ed8) };
   if (f === "violet_spirit")
     return { base: new THREE.Color(0xc4b5fd), hot: new THREE.Color(0xf5f3ff), cool: new THREE.Color(0x6d28d9) };
+  // Beam tint: violet ≠ purple (cùng style beam, khác overlay)
+  if (f === "violet")
+    return { base: new THREE.Color(0xc4b5fd), hot: new THREE.Color(0xf5f3ff), cool: new THREE.Color(0x7c3aed) };
   if (f === "purple" || f === "shadow" || f === "bagua" || f === "jade_gold")
     return { base: new THREE.Color(0xa78bfa), hot: new THREE.Color(0xe9d5ff), cool: new THREE.Color(0x5b21b6) };
   if (f === "crimson" || f === "blood" || f === "gold_red")
@@ -1742,7 +1745,13 @@ function boltUrlsForStyle(style: Fx3dStyle, flash?: string): { urls: string[]; w
   if (style === "tide" || f === "blue_water" || f === "cyan" || f === "teal" || f === "white_blue")
     return { urls: br("water_wave", 24), w: 2.15, h: 2.15 };
   if (style === "bagua") return { urls: cm("elden_ring", 24), w: 2.3, h: 2.3 };
-  if (style === "beam" || style === "shadow" || f === "purple" || f === "violet")
+  // Beam / arcane — sheet theo flash (blue ≠ purple ≠ violet), không chung shadow
+  if (style === "beam") {
+    if (f === "blue" || f === "cyan" || f === "teal") return { urls: cm("anima", 24), w: 2.15, h: 2.15 };
+    if (f === "violet") return { urls: cm("constellation", 24), w: 2.2, h: 2.2 };
+    return { urls: sp("sp_magic", 24), w: 2.1, h: 2.1 }; // purple / default
+  }
+  if (style === "shadow" || f === "purple" || f === "violet")
     return { urls: sp("sp_magic", 24), w: 2.1, h: 2.1 };
   if (style === "poison") return { urls: cm("worm", 24), w: 2.0, h: 2.0 };
   if (style === "rush" || style === "charge") {
@@ -1952,20 +1961,32 @@ function skillPremiumLayers(
     };
   }
   if (style === "beam") {
-    // Arcane / mưu — không còn bagua/thunder (đã tách style)
+    // Arcane — flash blue dùng anima; purple/violet dùng constellation + magic
+    const blue = f === "blue" || f === "cyan" || f === "teal";
+    const violet = f === "violet";
     return {
-      cast: [
-        { folder: "codemanu", pack: "charged", n: 24, w: 3.0, h: 3.0, opacity: 0.9 },
-        { folder: "codemanu", pack: "constellation", n: 24, w: 2.8, h: 2.8, opacity: 0.82 },
-        { folder: "codemanu", pack: "anima", n: 24, w: 2.5, h: 2.5, opacity: 0.72 },
-      ],
+      cast: blue
+        ? [
+            { folder: "codemanu", pack: "anima", n: 24, w: 3.0, h: 3.0, opacity: 0.9 },
+            { folder: "codemanu", pack: "charged", n: 24, w: 2.6, h: 2.6, opacity: 0.75 },
+          ]
+        : violet
+          ? [
+              { folder: "codemanu", pack: "constellation", n: 24, w: 3.0, h: 3.0, opacity: 0.9 },
+              { folder: "codemanu", pack: "anima", n: 24, w: 2.5, h: 2.5, opacity: 0.72 },
+            ]
+          : [
+              { folder: "codemanu", pack: "charged", n: 24, w: 3.0, h: 3.0, opacity: 0.9 },
+              { folder: "codemanu", pack: "constellation", n: 24, w: 2.8, h: 2.8, opacity: 0.82 },
+              { folder: "codemanu", pack: "anima", n: 24, w: 2.5, h: 2.5, opacity: 0.72 },
+            ],
       hit: [
         { folder: "codemanu", pack: "anima", n: 24, w: 3.3, h: 3.3, opacity: 0.92 },
         { folder: "brackeys", pack: "arcane_burst", n: 24, w: 3.0, h: 3.0, opacity: 0.88 },
         { folder: "superpowers", pack: "sp_magic", n: 24, w: 2.6, h: 2.6, opacity: 0.96 },
         { folder: "spritepilot", pack: "hit_spark", n: 24, w: 2.4, h: 2.4, opacity: 0.9 },
       ],
-      flightUnder: under,
+      flightUnder: blue ? itchFrameUrls("codemanu", "anima", 24) : under,
     };
   }
   if (style === "roar") {
@@ -2061,42 +2082,56 @@ function emitHostileProjectile3d(
   to: THREE.Vector3,
   style: Fx3dStyle,
   flash: string,
-  scale?: string | null
+  scale?: string | null,
+  pattern?: string | null
 ): Fx3dHandle[] {
   const handles: Fx3dHandle[] = [];
   const prof = flightProfile(style, flash);
+  const tune = patternFlightTune(pattern);
+  const durationMs = prof.durationMs + tune.flightExtraMs;
+  const arc = prof.arc * tune.arcMul;
+  const density = Math.round(prof.density * tune.densityMul);
   const bolt = boltUrlsForStyle(style, flash);
   const premium = skillPremiumLayers(style, flash);
+  // Beam: tint sheet theo flash; pierce/slash giữ trắng
+  const sheetTint =
+    style === "beam" ? flashPalette(flash).base.getHex() : style === "ice" ? 0xbae6fd : 0xffffff;
+  const sizeMul =
+    String(pattern || "").toLowerCase() === "all" || String(pattern || "").toLowerCase() === "ally_all"
+      ? 1.18
+      : String(pattern || "").toLowerCase() === "row" || String(pattern || "").toLowerCase() === "front_row"
+        ? 1.08
+        : 1;
   handles.push(
     emitCoreFlight3d(scene, from, to, {
       flash,
       scale,
-      durationMs: prof.durationMs,
-      arc: prof.arc,
-      size: prof.size,
+      durationMs,
+      arc,
+      size: prof.size * sizeMul,
     })
   );
   // Underlay CodeManu (đậm) rồi overlay element
   handles.push(
     emitFlyingSheet3d(scene, from, to, premium.flightUnder, {
-      durationMs: prof.durationMs,
-      w: bolt.w * prof.sheetMul * 1.15,
-      h: bolt.h * prof.sheetMul * 1.15,
-      arc: prof.arc,
+      durationMs,
+      w: bolt.w * prof.sheetMul * 1.15 * sizeMul,
+      h: bolt.h * prof.sheetMul * 1.15 * sizeMul,
+      arc,
       scale,
-      color: 0xffffff,
+      color: sheetTint,
       frameMs: 52,
       yLift: 0.95,
     })
   );
   handles.push(
     emitFlyingSheet3d(scene, from, to, bolt.urls, {
-      durationMs: prof.durationMs,
-      w: bolt.w * prof.sheetMul,
-      h: bolt.h * prof.sheetMul,
-      arc: prof.arc * 1.02,
+      durationMs,
+      w: bolt.w * prof.sheetMul * sizeMul,
+      h: bolt.h * prof.sheetMul * sizeMul,
+      arc: arc * 1.02,
       scale,
-      color: 0xffffff,
+      color: sheetTint,
       frameMs: 44,
       yLift: 1.05,
     })
@@ -2104,9 +2139,9 @@ function emitHostileProjectile3d(
   handles.push(
     emitTrail3d(scene, from, to, {
       flash,
-      durationMs: prof.durationMs,
-      density: prof.density,
-      arc: prof.arc * 0.92,
+      durationMs,
+      density,
+      arc: arc * 0.92,
       scale,
       streak: true,
     })

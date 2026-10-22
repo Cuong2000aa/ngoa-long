@@ -210,5 +210,26 @@
     "ice",
     "spirit",
     "firebird"
-  ]
+  ],
+  "phaseC": {
+    "note": "patternVariant + beam flash tint; no new motifs",
+    "beamPatternSamples": {
+      "single": "yen_nguyet",
+      "column": "bao_hao",
+      "row": "hoanh_hoa",
+      "all": "than_toan"
+    },
+    "preview": {
+      "beam": "yen_nguyet",
+      "thunder": "sam_set",
+      "bagua": "bat_tran_do",
+      "ice": "bang_chuy",
+      "spirit": "tran_hon",
+      "breath": "long_dam",
+      "pierce": "bach_bo",
+      "nova": "loan_hoi_phuong_vu",
+      "slash": "basic_strike",
+      "bless": "nhan_duc"
+    }
+  }
 }
