@@ -221,6 +221,26 @@ export class CityRenderer {
     });
     new ResizeObserver(() => this.resize()).observe(map);
     this.resize();
+    // Mobile xoay màn: giữ context, tránh browser kill tab / reload về trang chủ
+    renderer.domElement.addEventListener(
+      "webglcontextlost",
+      (ev) => {
+        ev.preventDefault();
+        console.warn("[NLCity] WebGL context lost — pause");
+        this.pause();
+      },
+      false
+    );
+    renderer.domElement.addEventListener(
+      "webglcontextrestored",
+      () => {
+        console.warn("[NLCity] WebGL context restored — resize + resume");
+        this.resize();
+        const combat = document.getElementById("combat-overlay");
+        if (!combat || combat.hidden) this.resume();
+      },
+      false
+    );
     renderer.setAnimationLoop(() => this.tick());
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) this.pause();
@@ -436,14 +456,19 @@ export class CityRenderer {
     if (!this.renderer || !this.camera || !this.mapEl) return;
     const w = this.mapEl.clientWidth;
     const h = this.mapEl.clientHeight;
-    if (w < 2 || h < 2) return;
+    // Xoay / scale transient: bỏ qua size 0 — tránh setSize(0) crash GL
+    if (w < 8 || h < 8) return;
     this.camera.aspect = w / h;
     // Lệch frustum: tâm thành lên band an toàn (tránh bottom nav đè cổng/tường)
     const top = Math.min(HUD_TOP_SAFE, Math.round(h * 0.09));
     const bottom = Math.min(HUD_BOTTOM_SAFE, Math.round(h * 0.16));
     this.camera.setViewOffset(w, h, 0, (top - bottom) * 0.5, w, h);
     this.camera.updateProjectionMatrix();
-    this.renderer.setSize(w, h, false);
+    try {
+      this.renderer.setSize(w, h, false);
+    } catch (err) {
+      console.warn("[NLCity] resize setSize", err);
+    }
   }
 
   /** Kéo = pan, pinch/lăn = zoom, chuột phải = xoay. Touch-friendly. */
@@ -472,55 +497,61 @@ export class CityRenderer {
 
   private tick(): void {
     if (this.paused || !this.renderer || !this.scene || !this.camera) return;
-    this.timer.update();
-    const t = this.timer.getElapsed();
-    const dt = this.timer.getDelta();
-    const motion = this.reducedMotion ? 0.15 : 1;
-    this.crowd.update(dt, t, motion);
-    if (!this.reducedMotion) this.scape.update(dt, t);
-    this.stepCamTween();
-    if (this.controls && !this.camTween) {
-      const tg = this.controls.target;
-      const cx = THREE.MathUtils.clamp(tg.x, -PAN_LIMIT, PAN_LIMIT) - tg.x;
-      const cz = THREE.MathUtils.clamp(tg.z, -PAN_LIMIT, PAN_LIMIT) - tg.z;
-      if (cx || cz || tg.y) {
-        tg.add(new THREE.Vector3(cx, -tg.y, cz));
-        this.camera.position.x += cx;
-        this.camera.position.z += cz;
+    try {
+      this.timer.update();
+      const t = this.timer.getElapsed();
+      const dt = this.timer.getDelta();
+      const motion = this.reducedMotion ? 0.15 : 1;
+      this.crowd.update(dt, t, motion);
+      if (!this.reducedMotion) this.scape.update(dt, t);
+      this.stepCamTween();
+      if (this.controls && !this.camTween) {
+        const tg = this.controls.target;
+        const cx = THREE.MathUtils.clamp(tg.x, -PAN_LIMIT, PAN_LIMIT) - tg.x;
+        const cz = THREE.MathUtils.clamp(tg.z, -PAN_LIMIT, PAN_LIMIT) - tg.z;
+        if (cx || cz || tg.y) {
+          tg.add(new THREE.Vector3(cx, -tg.y, cz));
+          this.camera.position.x += cx;
+          this.camera.position.z += cz;
+        }
+        this.controls.update();
+      } else if (this.controls && this.camTween) {
+        this.controls.update();
       }
-      this.controls.update();
-    } else if (this.controls && this.camTween) {
-      this.controls.update();
-    }
-    if (!this.reducedMotion) {
-      this.flags.forEach((f, i) => {
-        f.rotation.y = Math.sin(t * 1.8 + i) * 0.35;
-      });
-    }
-    this.updateSmoke(t);
-    const now = performance.now();
-    for (const actor of this.actors.values()) {
-      const base = (actor.userData.baseScale as number) || 1;
-      let mul = 1;
-      const until = actor.userData.levelUpUntil as number | undefined;
-      if (until && until > now && !this.reducedMotion) {
-        const u = 1 - (until - now) / LEVEL_UP_MS;
-        mul *= 1 + 0.12 * Math.sin(Math.PI * Math.min(1, Math.max(0, u)));
-      } else if (until && until <= now) {
-        delete actor.userData.levelUpUntil;
+      if (!this.reducedMotion) {
+        this.flags.forEach((f, i) => {
+          f.rotation.y = Math.sin(t * 1.8 + i) * 0.35;
+        });
       }
-      if (actor.userData.upgrading && !this.reducedMotion) {
-        mul *= 1 + Math.sin(t * 4) * 0.015;
+      this.updateSmoke(t);
+      const now = performance.now();
+      for (const actor of this.actors.values()) {
+        const base = (actor.userData.baseScale as number) || 1;
+        let mul = 1;
+        const until = actor.userData.levelUpUntil as number | undefined;
+        if (until && until > now && !this.reducedMotion) {
+          const u = 1 - (until - now) / LEVEL_UP_MS;
+          mul *= 1 + 0.12 * Math.sin(Math.PI * Math.min(1, Math.max(0, u)));
+        } else if (until && until <= now) {
+          delete actor.userData.levelUpUntil;
+        }
+        if (actor.userData.upgrading && !this.reducedMotion) {
+          mul *= 1 + Math.sin(t * 4) * 0.015;
+        }
+        actor.scale.setScalar(base * mul);
       }
-      actor.scale.setScalar(base * mul);
+      this.projectLabels();
+      this.renderer.render(this.scene, this.camera);
+    } catch (err) {
+      // Giữ loop sống trên mobile — 1 frame lỗi không được giết Thành Chính
+      console.warn("[NLCity] tick", err);
     }
-    this.projectLabels();
-    this.renderer.render(this.scene, this.camera);
   }
 
   private hitBuilding(ev: PointerEvent): string | null {
     if (!this.camera || !this.renderer || this.actors.size === 0) return null;
     const rect = this.renderer.domElement.getBoundingClientRect();
+    if (rect.width < 2 || rect.height < 2) return null;
     this.ndc.set(((ev.clientX - rect.left) / rect.width) * 2 - 1, -((ev.clientY - rect.top) / rect.height) * 2 + 1);
     this.ray.setFromCamera(this.ndc, this.camera);
     for (const hit of this.ray.intersectObjects([...this.actors.values()], true)) {

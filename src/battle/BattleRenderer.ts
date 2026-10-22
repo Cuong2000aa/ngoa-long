@@ -401,6 +401,28 @@ export class BattleRenderer {
     prefetchBattleActors();
     this.resize();
     window.addEventListener("resize", this.onResizeBound);
+    renderer.domElement.addEventListener(
+      "webglcontextlost",
+      (ev) => {
+        ev.preventDefault();
+        console.warn("[Battle] WebGL context lost");
+        this.running = false;
+      },
+      false
+    );
+    renderer.domElement.addEventListener(
+      "webglcontextrestored",
+      () => {
+        console.warn("[Battle] WebGL context restored");
+        this.resize();
+        if (!this.running) {
+          this.running = true;
+          this.last = performance.now();
+          this.tick();
+        }
+      },
+      false
+    );
     this.running = true;
     this.t0 = performance.now();
     this.last = this.t0;
@@ -1178,11 +1200,17 @@ export class BattleRenderer {
 
   private resize(): void {
     if (!this.host || !this.renderer || !this.camera) return;
-    const w = Math.max(1, this.host.clientWidth);
-    const h = Math.max(1, this.host.clientHeight);
-    this.renderer.setSize(w, h, false);
-    this.camera.aspect = w / h;
-    this.camera.updateProjectionMatrix();
+    const w = this.host.clientWidth;
+    const h = this.host.clientHeight;
+    // Mobile xoay: bỏ frame size 0 — tránh WebGL crash
+    if (w < 8 || h < 8) return;
+    try {
+      this.renderer.setSize(w, h, false);
+      this.camera.aspect = w / h;
+      this.camera.updateProjectionMatrix();
+    } catch (err) {
+      console.warn("[Battle] resize", err);
+    }
   }
 
   /** Hủy timeline chiêu đang chạy */

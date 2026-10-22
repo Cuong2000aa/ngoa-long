@@ -548,8 +548,18 @@
     );
   }
 
+  function markInGame(on) {
+    try {
+      if (on) sessionStorage.setItem("nl_ingame", "1");
+      else sessionStorage.removeItem("nl_ingame");
+    } catch (e) {
+      /* private mode */
+    }
+  }
+
   function enterGame(s) {
     state = s;
+    markInGame(true);
     document.getElementById("screen-start").classList.remove("active");
     document.getElementById("screen-game").classList.add("active");
     var stageHome = document.querySelector(".game-stage");
@@ -703,7 +713,10 @@
   document.getElementById("btn-menu").addEventListener("click", function () {
     if (!state) return;
     G.saveGame(state);
-    if (confirm("Thoát về menu? (đã lưu)")) location.reload();
+    if (confirm("Thoát về menu? (đã lưu)")) {
+      markInGame(false);
+      location.reload();
+    }
   });
 
   document.getElementById("btn-day").addEventListener("click", function () {
@@ -802,6 +815,22 @@
     } catch (err) {
       document.documentElement.setAttribute("data-smoke", "error");
       console.error(err);
+    }
+  } else {
+    // Mobile xoay / WebGL kill tab → reload: tự vào lại game (không kẹt màn start)
+    var resumeIngame = false;
+    try {
+      resumeIngame = sessionStorage.getItem("nl_ingame") === "1";
+    } catch (e3) {
+      resumeIngame = false;
+    }
+    if (resumeIngame && G.hasSave()) {
+      var resumed = G.loadGame();
+      if (resumed) {
+        enterGame(resumed);
+      } else {
+        markInGame(false);
+      }
     }
   }
 
