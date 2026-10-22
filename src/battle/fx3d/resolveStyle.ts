@@ -34,6 +34,79 @@ export type HonPackId =
   | "hon_bagua"
   | "hon_hon";
 
+/**
+ * Pack sét dọc (qi_*) dưới `assets/fx/skill/loi/`.
+ * Dùng khi hồn đánh địch / chiêu lôi — màu theo skill.
+ */
+export type ThunderStrikeId =
+  | "qi_crimson"
+  | "qi_violet"
+  | "qi_azure"
+  | "qi_gold"
+  | "qi_venom"
+  | "qi_gale";
+
+/** Flash burst/spark đi kèm màu sét. */
+export function thunderStrikeFlash(strike: ThunderStrikeId): string {
+  switch (strike) {
+    case "qi_crimson":
+      return "crimson_flame";
+    case "qi_violet":
+      return "violet_spirit";
+    case "qi_azure":
+      return "cyan";
+    case "qi_gold":
+      return "thunder";
+    case "qi_venom":
+      return "green_poison";
+    case "qi_gale":
+      return "whirlwind";
+    default:
+      return "thunder";
+  }
+}
+
+/**
+ * Map skillId → pack sét màu đúng theme.
+ * Hồn fire/hồng → đỏ; thanh long → lam; hồn thuần → tím; độc/phong/vàng lôi → đúng hệ.
+ */
+export function resolveThunderStrikeId(skillId?: string | null): ThunderStrikeId {
+  const id = String(skillId || "").toLowerCase();
+
+  // Độc lôi
+  if (/doc_loi/.test(id)) return "qi_venom";
+  // Phong lôi
+  if (/phong_loi/.test(id)) return "qi_gale";
+  // Lôi lửa / hồng / xích
+  if (
+    /viem_loi|xich_loi|hong_viem|hong_lien|hong_hoang|xich_vu|bach_hong|hoa_long/.test(id)
+  )
+    return "qi_crimson";
+  // Thanh Long Hồn / lam
+  if (/thanh_long_hon/.test(id)) return "qi_azure";
+  // Hồn tím cổ điển + tử điện / âm lôi
+  if (
+    /tran_hon|toa_hon|de_hon|truy_hon|thu_hon|doat_phach|tu_dien|am_loi/.test(id)
+  )
+    return "qi_violet";
+  // Lôi điện mặc định (sam_set, thần lôi, bạo lôi…)
+  if (
+    /sam_set|than_loi|bao_loi|kinh_loi|thien_loi|loi_co|loi_oanh|loi_tien|lac_loi|cuu_thien|cuu_tieu|diet_the/.test(
+      id
+    ) ||
+    /_loi$|^loi_/.test(id)
+  )
+    return "qi_gold";
+
+  // Hồn đánh địch còn lại → tím
+  if (/hon|phach|menh|hieu_lenh/.test(id)) return "qi_violet";
+  return "qi_gold";
+}
+
+export function thunderStrikeFolder(strike: ThunderStrikeId): string {
+  return `skill/loi/${strike}`;
+}
+
 /** Chiêu rồng — không để motif fire/ember nuốt thành nova blob. */
 function isDragonSkill(skillId?: string | null, fxStyle?: string | null, flash?: string, motif?: string): boolean {
   const id = String(skillId || "").toLowerCase();
@@ -67,16 +140,14 @@ export function resolveFx3dStyle(opts: {
 
   // —— barrier / bless / charge / rush ——
   if (opts.isShield || flash === "shield" || motif === "shield") return "barrier";
+  // spirit (hỗ trợ lẫn offensive): caster hiện hồn — không fallback bless vàng generic
+  if (motif === "spirit" || flash === "violet_spirit") return "shadow";
   if (opts.support || motif === "heal" || motif === "buff" || pat === "ally_all" || pat === "self") {
     if (flash === "shield") return "barrier";
-    // spirit hỗ trợ cũng bless (không slash)
     return "bless";
   }
   if (opts.isCharge || flash === "charge" || flash === "brown" || motif === "charge") return "charge";
   if (opts.isRush || flash === "rush" || motif === "rush") return "rush";
-
-  // —— spirit: bless đã bắt ở trên; offensive → shadow nhẹ (hon_hon), không slash ——
-  if (motif === "spirit" || flash === "violet_spirit") return "shadow";
 
   // —— Thú / long / phượng ——
   // Hỏa Long: motif fire + ember vẫn breath (qi rồng), không nova

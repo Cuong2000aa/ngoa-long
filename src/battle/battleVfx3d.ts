@@ -5,6 +5,9 @@ import {
   HON_PACKS,
   honPackForStyle,
   resolveFx3dStyle,
+  resolveThunderStrikeId,
+  thunderStrikeFolder,
+  thunderStrikeFlash,
   runStyleCharge,
   runStyleFlight,
   runStyleImpact,
@@ -12,6 +15,7 @@ import {
   honHostileTimeline,
   type Fx3dStyle,
   type HonPackId,
+  type ThunderStrikeId,
   type StylePlayApi,
 } from "./fx3d";
 
@@ -25,8 +29,16 @@ import {
  */
 
 export type Fx3dHandle = { cancel: () => void };
-export type { Fx3dStyle, HonPackId };
-export { resolveFx3dStyle, honPackForStyle, clampHonTargetSize, hostileTimeline };
+export type { Fx3dStyle, HonPackId, ThunderStrikeId };
+export {
+  resolveFx3dStyle,
+  honPackForStyle,
+  resolveThunderStrikeId,
+  thunderStrikeFolder,
+  thunderStrikeFlash,
+  clampHonTargetSize,
+  hostileTimeline,
+};
 
 type Particle = {
   pos: THREE.Vector3;
@@ -1205,8 +1217,120 @@ function emitBaguaFormationSequence3d(
 }
 
 /**
- * Linh hồn người — pháp sư đối diện camera, hiện ở CASTER (người thi triển).
- * Tụ lực → hồn hiện trên caster → xung hit địch.
+ * Sét dọc khí thế — màu theo skill (qi_crimson / violet / azure / gold / venom / gale).
+ * Dùng cho hồn đánh địch + chiêu lôi impact.
+ */
+function emitColoredThunderStrike3d(
+  scene: THREE.Scene,
+  at: THREE.Vector3,
+  opts: {
+    skillId?: string | null;
+    scale?: string | null;
+    strikeId?: ThunderStrikeId;
+    delayMs?: number;
+  } = {}
+): Fx3dHandle {
+  const mul = scaleMul(opts.scale);
+  const strikeId = opts.strikeId || resolveThunderStrikeId(opts.skillId);
+  const folder = thunderStrikeFolder(strikeId);
+  const flash = thunderStrikeFlash(strikeId);
+  const strikeUrls = qiSeq(folder, "strike", 24);
+  const impactUrls = qiSeq(folder, "impact", 24);
+  const handles: Fx3dHandle[] = [];
+  const cancelled = { v: false };
+  const delayMs = opts.delayMs ?? 0;
+
+  const start = () => {
+    if (cancelled.v || !scene) return;
+    if (strikeUrls.length) {
+      void loadFrameSet(strikeUrls).then((frames) => {
+        if (cancelled.v || !scene || !frames.length) return;
+        handles.push(
+          emitHonSheetAt(scene, at, frames, {
+            durationMs: 420,
+            w: 1.55 * mul,
+            h: 4.4 * mul,
+            opacity: 1,
+            y: 1.55,
+            color: 0xffffff,
+          })
+        );
+      });
+    }
+    if (impactUrls.length) {
+      void loadFrameSet(impactUrls).then((frames) => {
+        if (cancelled.v || !scene || !frames.length) return;
+        handles.push(
+          emitHonSheetAt(scene, at, frames, {
+            durationMs: 380,
+            w: 2.8 * mul,
+            h: 2.8 * mul,
+            opacity: 0.95,
+            y: 0.35,
+            color: 0xffffff,
+            delayMs: 40,
+          })
+        );
+      });
+    }
+    handles.push(emitBurst3d(scene, at, flash, opts.scale));
+    handles.push(emitSparksBurst3d(scene, at, { flash, scale: opts.scale }));
+    handles.push(
+      emitShockwave3d(scene, at, {
+        flash,
+        scale: opts.scale,
+        radius: 2.4 * mul,
+        durationMs: 420,
+      })
+    );
+    const markColor =
+      strikeId === "qi_crimson"
+        ? 0xff4a12
+        : strikeId === "qi_violet"
+          ? 0xa78bfa
+          : strikeId === "qi_azure"
+            ? 0x38bdf8
+            : strikeId === "qi_venom"
+              ? 0x4ade80
+              : strikeId === "qi_gale"
+                ? 0x67e8f9
+                : 0xfde047;
+    handles.push(
+      emitGroundMark3d(scene, at, {
+        flash,
+        scale: opts.scale,
+        durationMs: 560,
+        color: markColor,
+      })
+    );
+  };
+
+  if (delayMs > 0) {
+    const tid = trackTimer(delayMs, start);
+    return {
+      cancel() {
+        cancelled.v = true;
+        clearTimeout(tid);
+        const ti = PENDING_TIMERS.indexOf(tid);
+        if (ti >= 0) PENDING_TIMERS.splice(ti, 1);
+        handles.forEach((h) => h.cancel());
+      },
+    };
+  }
+  start();
+  return {
+    cancel() {
+      cancelled.v = true;
+      handles.forEach((h) => h.cancel());
+    },
+  };
+}
+
+/**
+ * Linh hồn người — KHÔNG bay đạn hồn.
+ * 1) Người xuất chiêu: hồn (vung tay) hiện tại CASTER
+ * 2) Đồng minh được buff: hồn hiện trên ally (cùng art)
+ * 3) Kẻ địch bị đánh bởi hồn: sét đánh xuống
  */
 function emitSoulMageSequence3d(
   scene: THREE.Scene,
@@ -1217,28 +1341,34 @@ function emitSoulMageSequence3d(
     skillId?: string | null;
     pattern?: string | null;
     targets?: THREE.Vector3[];
+    support?: boolean;
   } = {}
 ): Fx3dHandle {
   const sheets = resolveHonStreamSheets("hon_hon", opts.skillId);
   const mul = scaleMul(opts.scale);
-  /** Charge → flight hồn bay path → impact (không chỉ nhấp nháy tại chỗ). */
+  const pat = String(opts.pattern || "single").toLowerCase();
+  const isBuff = opts.support === true || pat === "ally_all" || pat === "self";
   const tlSoul = honHostileTimeline({
     pattern: opts.pattern,
     scale: opts.scale,
     qiStream: true,
     style: "shadow",
   });
-  const CHARGE_MS = tlSoul.chargeMs;
-  const FLIGHT_MS = tlSoul.flightMs;
+  const CHARGE_MS = Math.min(380, tlSoul.chargeMs);
+  const CAST_MS = Math.max(520, Math.min(720, Math.round(tlSoul.flightMs * 0.55)));
+  const TARGET_AT = CHARGE_MS + Math.round(CAST_MS * 0.55);
+  const STAGGER = isBuff ? 48 : 55;
   const handles: Fx3dHandle[] = [];
   const timers: number[] = [];
   const cancelled = { v: false };
   const hitTargets = (opts.targets && opts.targets.length ? opts.targets : [to]).map((p) => p.clone());
+  const castUrls = sheets.head.length ? sheets.head : sheets.charge;
 
   const start = () => {
     if (cancelled.v || !scene) return;
+    // 1) Tụ lực dưới chân caster
     handles.push(
-      emitGroundQiDecal3d(scene, from, sheets.charge.length ? sheets.charge : sheets.head, {
+      emitGroundQiDecal3d(scene, from, sheets.charge.length ? sheets.charge : castUrls, {
         durationMs: CHARGE_MS + 40,
         diameter: 1.85 * mul,
         opacity: 0.88,
@@ -1256,81 +1386,90 @@ function emitSoulMageSequence3d(
       })
     );
 
-    // Flight: sheet nhân hình vung tay (qi_soul) bay caster → địch, nhanh dần
+    // 2) Hồn hiện tại CASTER — sheet vung tay (không bay path)
     timers.push(
       trackTimer(CHARGE_MS, () => {
         if (cancelled.v || !scene) return;
-        const focus = hitTargets[Math.floor((hitTargets.length - 1) / 2)] || hitTargets[0] || to;
-        const urls = sheets.head.length ? sheets.head : sheets.charge;
-        if (urls.length) {
+        void loadFrameSet(castUrls).then((frames) => {
+          if (cancelled.v || !scene || !frames.length) return;
           handles.push(
-            emitFlyingSheet3d(scene, from, focus, urls, {
-              durationMs: FLIGHT_MS,
+            emitHonSheetAt(scene, from, frames, {
+              durationMs: CAST_MS,
               w: 2.05 * mul,
-              h: 2.55 * mul, // portrait 256×320
-              arc: 0.35,
-              scale: opts.scale,
-              color: 0xffffff,
-              yLift: 1.05,
+              h: 2.55 * mul,
               opacity: 0.98,
-              headOnRight: false,
-              sequenceOnce: true,
-              pathEase: "in",
-            })
-          );
-        } else {
-          handles.push(
-            emitDragonSpirit3d(scene, from, focus, {
-              durationMs: FLIGHT_MS,
-              scale: opts.scale,
-              pack: "hon_hon",
-              skillId: opts.skillId,
-              formMs: 40,
-              dissolveMs: 180,
-              size: 1.55,
-              pathEase: "in",
-            })
-          );
-        }
-      })
-    );
-
-    // Impact sau flight
-    timers.push(
-      trackTimer(CHARGE_MS + FLIGHT_MS, () => {
-        if (cancelled.v || !scene) return;
-        hitTargets.forEach((tgt, i) => {
-          timers.push(
-            trackTimer(i * 40, () => {
-              if (cancelled.v || !scene) return;
-              void loadFrameSet(sheets.impact).then((frames) => {
-                if (cancelled.v || !scene || !frames.length) return;
-                handles.push(
-                  emitHonSheetAt(scene, tgt, frames, {
-                    durationMs: 320,
-                    w: 2.4 * mul,
-                    h: 2.4 * mul,
-                    opacity: 0.92,
-                    y: 0.75,
-                    color: 0xffffff,
-                  })
-                );
-              });
-              handles.push(emitBurst3d(scene, tgt, "violet_spirit", opts.scale));
-              handles.push(emitSparksBurst3d(scene, tgt, { flash: "violet_spirit", scale: opts.scale }));
-              handles.push(
-                emitGroundMark3d(scene, tgt, {
-                  flash: "violet_spirit",
-                  scale: opts.scale,
-                  durationMs: 420,
-                  color: 0xa78bfa,
-                })
-              );
+              y: 0.95,
+              color: 0xffffff,
             })
           );
         });
       })
     );
+
+    // 3) Mục tiêu: buff = hồn trên ally; đánh = sét xuống địch
+    hitTargets.forEach((tgt, i) => {
+      timers.push(
+        trackTimer(TARGET_AT + i * STAGGER, () => {
+          if (cancelled.v || !scene) return;
+          if (isBuff) {
+            void loadFrameSet(castUrls).then((frames) => {
+              if (cancelled.v || !scene || !frames.length) return;
+              handles.push(
+                emitHonSheetAt(scene, tgt, frames, {
+                  durationMs: Math.min(560, CAST_MS),
+                  w: 1.65 * mul,
+                  h: 2.05 * mul,
+                  opacity: 0.92,
+                  y: 0.85,
+                  color: 0xffffff,
+                })
+              );
+            });
+            if (sheets.impact.length) {
+              void loadFrameSet(sheets.impact).then((frames) => {
+                if (cancelled.v || !scene || !frames.length) return;
+                handles.push(
+                  emitHonSheetAt(scene, tgt, frames, {
+                    durationMs: 360,
+                    w: 2.1 * mul,
+                    h: 2.1 * mul,
+                    opacity: 0.78,
+                    y: 0.55,
+                    color: 0xffffff,
+                    delayMs: 80,
+                  })
+                );
+              });
+            }
+            handles.push(
+              emitBodyAura3d(scene, tgt, {
+                flash: "violet_spirit",
+                scale: opts.scale,
+                durationMs: 520,
+                color: 0xc4b5fd,
+              })
+            );
+            handles.push(
+              emitGroundMark3d(scene, tgt, {
+                flash: "violet_spirit",
+                scale: opts.scale,
+                durationMs: 420,
+                color: 0xa78bfa,
+              })
+            );
+            return;
+          }
+
+          // Địch — sét dọc màu đúng skill (khí thế)
+          handles.push(
+            emitColoredThunderStrike3d(scene, tgt, {
+              skillId: opts.skillId,
+              scale: opts.scale,
+            })
+          );
+        })
+      );
+    });
   };
 
   start();
@@ -2429,6 +2568,8 @@ export function emitHonSpiritSequence3d(
     pattern?: string | null;
     /** Mục tiêu đội hình — bagua phủ hết */
     targets?: THREE.Vector3[];
+    /** Hồn hỗ trợ — ally hiện hồn; không thì địch bị sét */
+    support?: boolean;
   } = {}
 ): Fx3dHandle {
   const packId = opts.pack || "hon_rong";
@@ -2446,6 +2587,7 @@ export function emitHonSpiritSequence3d(
       skillId: opts.skillId,
       pattern: opts.pattern,
       targets: opts.targets,
+      support: opts.support,
     });
   }
   const pack = HON_PACKS[packId];
@@ -2678,6 +2820,15 @@ export function emitHonSpiritSequence3d(
           if (cancelled.v || !scene) return;
           const hit = to.clone();
           hit.y += 0.18;
+          // Chiêu lôi — thêm sét dọc màu đúng skill (khí thế)
+          if (packId === "hon_loi") {
+            handles.push(
+              emitColoredThunderStrike3d(scene, to, {
+                skillId: opts.skillId,
+                scale: opts.scale,
+              })
+            );
+          }
           if (qiStream && streamSheets.impact.length) {
             void loadFrameSet(streamSheets.impact).then((frames) => {
               if (cancelled.v || !scene || !frames.length) return;
@@ -2967,6 +3118,8 @@ export function playSkillFx3d(params: {
   pattern?: string | null;
   /** Đội hình mục tiêu — pháp trận phủ hết */
   targets?: THREE.Vector3[];
+  /** Hồn / hỗ trợ — đồng minh buff */
+  support?: boolean;
   /** Optional juice (cam punch / hitstop) — BattleRenderer gắn */
   onImpactJuice?: (style: Fx3dStyle, scale?: string | null) => void;
 }): Fx3dHandle {
@@ -3042,6 +3195,7 @@ export function playSkillFx3d(params: {
         skillId,
         pattern,
         targets: params.targets?.length ? params.targets : [params.to],
+        support: params.support,
       })
     );
     return handle;
@@ -3126,6 +3280,7 @@ export function playPatternFx3d(params: {
         skillId: params.skillId,
         pattern: params.pattern,
         targets: list,
+        support: params.support,
       })
     );
     const handle: Fx3dHandle = {
