@@ -1,8 +1,9 @@
 name: Deploy GitHub Pages
 
+# Chỉ deploy khi publish GitHub Release (gắn version), không deploy mỗi push main.
 on:
-  push:
-    branches: [main]
+  release:
+    types: [published]
   workflow_dispatch:
 
 permissions:
@@ -19,6 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Release event: checkout tag của release
+          ref: ${{ github.event.release.tag_name || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: "22"

@@ -378,6 +378,9 @@ export const MOTIF_DEDICATED_FLASH: Record<string, string> = {
 export const MOTIF_FALLBACK_FLASH: Record<string, string> = {
   ...MOTIF_DEDICATED_FLASH,
   slash: "steel",
+  pierce: "steel",
+  rush: "rush",
+  charge: "charge",
   arcane: "blue",
   heal: "gold_soft",
   buff: "gold_soft",

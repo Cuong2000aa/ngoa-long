@@ -1727,20 +1727,22 @@ function boltUrlsForStyle(style: Fx3dStyle, flash?: string): { urls: string[]; w
     );
     return { urls: slashUrls, w: 2.35, h: 2.35 };
   }
-  // Cung / tiễn / xuyên — mũi tên stylized ≥24
-  if (f === "gold_pierce" || f.includes("pierce")) {
+  // Cung / tiễn / xuyên — mũi tên stylized ≥24 (style pierce ≠ rush)
+  if (style === "pierce" || f === "gold_pierce" || f.includes("pierce")) {
     return { urls: st("arrow", 24), w: 2.15, h: 1.6 };
   }
   if (style === "nova" || f === "fire" || f === "fire_rain" || f === "orange" || f === "red_fire")
     return { urls: cm("pixel_fire", 24), w: 2.2, h: 2.2 };
-  if (f === "thunder" || f === "storm") return { urls: br("storm_burst", 24), w: 2.2, h: 2.2 };
+  if (style === "thunder" || f === "thunder" || f === "storm" || f === "electric_blue")
+    return { urls: br("storm_burst", 24), w: 2.2, h: 2.2 };
   if (style === "tide" || f === "blue_water" || f === "cyan" || f === "teal" || f === "white_blue")
     return { urls: br("water_wave", 24), w: 2.15, h: 2.15 };
-  if (style === "beam" || style === "shadow" || f === "bagua" || f === "purple" || f === "violet")
+  if (style === "bagua") return { urls: cm("elden_ring", 24), w: 2.3, h: 2.3 };
+  if (style === "beam" || style === "shadow" || f === "purple" || f === "violet")
     return { urls: sp("sp_magic", 24), w: 2.1, h: 2.1 };
   if (style === "poison") return { urls: cm("worm", 24), w: 2.0, h: 2.0 };
   if (style === "rush" || style === "charge") {
-    // Đâm thương / kỵ xung — muzzle dày
+    // Đột kích / kỵ xung — muzzle dày (không dùng cho pierce tiễn)
     return { urls: br("muzzle_seq", 24), w: 2.0, h: 2.0 };
   }
   if (style === "roar") return { urls: sp("sp_shock", 24), w: 2.2, h: 2.2 };
@@ -1753,24 +1755,24 @@ function boltUrlsForStyle(style: Fx3dStyle, flash?: string): { urls: string[]; w
 }
 
 /** Profile bay caster → mục tiêu — size/sheet lớn hơn (core game không phèn). */
-function flightProfile(style: Fx3dStyle, flash?: string): {
+function flightProfile(style: Fx3dStyle, _flash?: string): {
   durationMs: number;
   arc: number;
   size: number;
   density: number;
   sheetMul: number;
 } {
-  const f = (flash || "").toLowerCase();
   if (style === "charge") return { durationMs: 420, arc: 0.14, size: 0.48, density: 18, sheetMul: 1.35 };
   if (style === "rush") return { durationMs: 360, arc: 0.22, size: 0.44, density: 17, sheetMul: 1.4 };
+  // Tiễn / đâm — thẳng, nhanh, ít cong (khác rush)
+  if (style === "pierce") return { durationMs: 380, arc: 0.08, size: 0.4, density: 14, sheetMul: 1.35 };
+  if (style === "thunder") return { durationMs: 500, arc: 0.22, size: 0.52, density: 18, sheetMul: 1.4 };
+  if (style === "bagua") return { durationMs: 540, arc: 0.18, size: 0.5, density: 12, sheetMul: 1.35 };
   if (style === "nova") return { durationMs: 560, arc: 0.55, size: 0.58, density: 18, sheetMul: 1.45 };
   if (style === "tide") return { durationMs: 560, arc: 0.5, size: 0.52, density: 17, sheetMul: 1.4 };
   if (style === "poison") return { durationMs: 540, arc: 0.38, size: 0.48, density: 18, sheetMul: 1.35 };
   if (style === "shadow") return { durationMs: 520, arc: 0.34, size: 0.46, density: 16, sheetMul: 1.35 };
-  if (style === "beam") {
-    if (f === "thunder" || f === "storm") return { durationMs: 500, arc: 0.28, size: 0.52, density: 18, sheetMul: 1.4 };
-    return { durationMs: 520, arc: 0.32, size: 0.5, density: 16, sheetMul: 1.4 };
-  }
+  if (style === "beam") return { durationMs: 520, arc: 0.32, size: 0.5, density: 16, sheetMul: 1.4 };
   if (style === "slash") return { durationMs: 440, arc: 0.35, size: 0.48, density: 17, sheetMul: 1.45 };
   if (style === "roar") return { durationMs: 480, arc: 0.3, size: 0.54, density: 16, sheetMul: 1.4 };
   if (style === "whirl") return { durationMs: 500, arc: 0.45, size: 0.5, density: 16, sheetMul: 1.35 };
@@ -1846,7 +1848,7 @@ function skillPremiumLayers(
       flightUnder: itchFrameUrls("codemanu", "pixel_fire", 24),
     };
   }
-  if (thunder) {
+  if (style === "thunder" || thunder) {
     return {
       cast: [
         { folder: "codemanu", pack: "electric_shield", n: 24, w: 3.0, h: 3.0, opacity: 0.9 },
@@ -1856,6 +1858,34 @@ function skillPremiumLayers(
         { folder: "codemanu", pack: "big_hit", n: 24, w: 3.4, h: 3.4, opacity: 0.95 },
         { folder: "brackeys", pack: "storm_burst", n: 24, w: 3.0, h: 3.0, opacity: 0.88 },
         { folder: "spritepilot", pack: "hit_spark", n: 24, w: 2.6, h: 2.6, opacity: 0.98 },
+      ],
+      flightUnder: under,
+    };
+  }
+  if (style === "bagua") {
+    return {
+      cast: [
+        { folder: "codemanu", pack: "elden_ring", n: 24, w: 3.2, h: 3.2, opacity: 0.92 },
+        { folder: "codemanu", pack: "constellation", n: 24, w: 2.8, h: 2.8, opacity: 0.8 },
+      ],
+      hit: [
+        { folder: "codemanu", pack: "elden_ring", n: 24, w: 3.4, h: 3.4, opacity: 0.9 },
+        { folder: "brackeys", pack: "arcane_burst", n: 24, w: 2.9, h: 2.9, opacity: 0.85 },
+        { folder: "spritepilot", pack: "hit_spark", n: 24, w: 2.4, h: 2.4, opacity: 0.9 },
+      ],
+      flightUnder: itchFrameUrls("codemanu", "elden_ring", 24),
+    };
+  }
+  if (style === "pierce") {
+    return {
+      cast: [
+        { folder: "brackeys", pack: "hit_burst", n: 24, w: 2.0, h: 2.0, opacity: 0.7 },
+        { folder: "spritepilot", pack: "hit_spark", n: 24, w: 1.8, h: 1.8, opacity: 0.85 },
+      ],
+      hit: [
+        { folder: "codemanu", pack: "impact", n: 24, w: 2.8, h: 2.8, opacity: 0.9 },
+        { folder: "stylized", pack: "arrow", n: 24, w: 2.2, h: 1.5, opacity: 0.88 },
+        { folder: "spritepilot", pack: "hit_spark", n: 24, w: 2.3, h: 2.3, opacity: 0.95 },
       ],
       flightUnder: under,
     };
@@ -1903,19 +1933,12 @@ function skillPremiumLayers(
     };
   }
   if (style === "beam") {
-    const bagua = f === "bagua" || f === "blue" || f === "purple" || f === "violet";
+    // Arcane / mưu — không còn bagua/thunder (đã tách style)
     return {
       cast: [
         { folder: "codemanu", pack: "charged", n: 24, w: 3.0, h: 3.0, opacity: 0.9 },
         { folder: "codemanu", pack: "constellation", n: 24, w: 2.8, h: 2.8, opacity: 0.82 },
-        {
-          folder: "codemanu",
-          pack: bagua ? "elden_ring" : "anima",
-          n: 24,
-          w: 2.5,
-          h: 2.5,
-          opacity: 0.72,
-        },
+        { folder: "codemanu", pack: "anima", n: 24, w: 2.5, h: 2.5, opacity: 0.72 },
       ],
       hit: [
         { folder: "codemanu", pack: "anima", n: 24, w: 3.3, h: 3.3, opacity: 0.92 },

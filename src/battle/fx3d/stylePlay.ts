@@ -175,7 +175,8 @@ export function runStyleEmission(api: StylePlayApi, params: StylePlayParams, han
     api.emitGroundSigil3d(scene, from, {
       flash,
       scale,
-      durationMs: style === "nova" || style === "beam" ? 620 : 480,
+      durationMs:
+        style === "nova" || style === "beam" || style === "bagua" || style === "thunder" ? 620 : 480,
       color: palHex,
     })
   );
@@ -183,25 +184,27 @@ export function runStyleEmission(api: StylePlayApi, params: StylePlayParams, han
     api.emitShockwave3d(scene, from, {
       flash,
       scale,
-      radius: style === "nova" ? 1.7 : 1.4,
-      durationMs: style === "slash" ? 320 : 420,
+      radius: style === "nova" ? 1.7 : style === "pierce" ? 1.15 : 1.4,
+      durationMs: style === "slash" || style === "pierce" ? 320 : 420,
     })
   );
-  handles.push(api.emitDust3d(scene, from, scale));
+  if (style !== "pierce") handles.push(api.emitDust3d(scene, from, scale));
   handles.push(api.emitFlashDisc3d(scene, from, flash, scale));
   handles.push(
     ...api.emitPremiumLayersAt(scene, from, premium.cast.slice(0, 1), {
       scale,
-      durationMs: style === "nova" ? 480 : style === "beam" ? 420 : 360,
+      durationMs:
+        style === "nova" ? 480 : style === "beam" || style === "bagua" || style === "thunder" ? 420 : 360,
       y0: 0.08,
     })
   );
-  if (style === "roar" || style === "whirl" || style === "nova" || style === "beam") {
+  if (style === "roar" || style === "whirl" || style === "nova" || style === "beam" || style === "thunder") {
     handles.push(
       api.emitShockwave3d(scene, from, {
         flash,
         scale,
-        radius: style === "nova" ? 2.7 : style === "roar" ? 2.65 : style === "beam" ? 2.1 : 2.25,
+        radius:
+          style === "nova" ? 2.7 : style === "roar" ? 2.65 : style === "thunder" ? 2.2 : style === "beam" ? 2.1 : 2.25,
         durationMs: 600,
       })
     );
@@ -218,6 +221,19 @@ export function runStyleEmission(api: StylePlayApi, params: StylePlayParams, han
       })
     );
     handles.push(api.emitSparksBurst3d(scene, from, { flash, scale }));
+  }
+  // Pierce: vệt mỏng thẳng (tiễn/thương) — không trail dày kiểu rush/charge
+  if (style === "pierce") {
+    handles.push(
+      api.emitTrail3d(scene, from, to, {
+        flash,
+        durationMs: 300,
+        density: 10,
+        arc: 0.06,
+        scale,
+        streak: true,
+      })
+    );
   }
   if (style === "rush" || style === "charge") {
     handles.push(
@@ -253,11 +269,18 @@ export function runStyleImpact(api: StylePlayApi, params: StylePlayParams, handl
       y0: 0.28,
     })
   );
-  if (style === "slash" || style === "rush" || style === "charge" || style === "beam") {
+  if (
+    style === "slash" ||
+    style === "rush" ||
+    style === "charge" ||
+    style === "beam" ||
+    style === "pierce" ||
+    style === "thunder"
+  ) {
     handles.push(api.emitSparksBurst3d(scene, to, { flash, scale }));
   }
   const fHit = (flash || "").toLowerCase();
-  if (fHit === "thunder" || fHit === "storm" || (style === "beam" && fHit === "bagua")) {
+  if (style === "thunder" || fHit === "thunder" || fHit === "storm" || fHit === "electric_blue") {
     handles.push(
       api.emitItchFolderPackAt(scene, to, "stylized", "lightning", 1, {
         durationMs: 440,
@@ -282,17 +305,19 @@ export function runStyleImpact(api: StylePlayApi, params: StylePlayParams, handl
   handles.push(api.emitDust3d(scene, to, scale));
   handles.push(api.emitResidual3d(scene, to, { flash, scale, delayMs: 90 }));
 
-  if (style === "roar" || style === "nova" || style === "whirl" || style === "slash") {
+  if (style === "roar" || style === "nova" || style === "whirl" || style === "slash" || style === "thunder") {
     handles.push(
       api.emitShockwave3d(scene, to, {
         flash,
         scale,
-        radius: style === "nova" ? 3.15 : style === "slash" ? 2.15 : 2.45,
+        radius: style === "nova" ? 3.15 : style === "slash" ? 2.15 : style === "thunder" ? 2.35 : 2.45,
         durationMs: 660,
       })
     );
   } else if (style === "rush" || style === "charge") {
     handles.push(api.emitShockwave3d(scene, to, { flash, scale, radius: 2.0, durationMs: 500 }));
+  } else if (style === "pierce") {
+    handles.push(api.emitShockwave3d(scene, to, { flash, scale, radius: 1.35, durationMs: 380 }));
   } else if (style === "barrier" || style === "bless") {
     handles.push(api.emitFlashDisc3d(scene, to, flash || "gold_soft", scale));
     if (style === "bless") {
@@ -305,8 +330,8 @@ export function runStyleImpact(api: StylePlayApi, params: StylePlayParams, handl
         })
       );
     }
-  } else if (style === "tide" || style === "poison" || style === "shadow" || style === "beam") {
-    handles.push(api.emitShockwave3d(scene, to, { flash, scale, radius: 1.9, durationMs: 520 }));
+  } else if (style === "tide" || style === "poison" || style === "shadow" || style === "beam" || style === "bagua") {
+    handles.push(api.emitShockwave3d(scene, to, { flash, scale, radius: style === "bagua" ? 2.2 : 1.9, durationMs: 520 }));
   } else {
     handles.push(api.emitShockwave3d(scene, to, { flash, scale, radius: 1.7, durationMs: 480 }));
   }

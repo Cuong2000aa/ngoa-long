@@ -1,0 +1,367 @@
+{
+  "generated": "2026-10-22",
+  "catalogSize": 590,
+  "missingMotif": [],
+  "missingFlash": [],
+  "motifCounts": [
+    {
+      "motif": "arcane",
+      "count": 155,
+      "pct": 26.3
+    },
+    {
+      "motif": "heal",
+      "count": 70,
+      "pct": 11.9
+    },
+    {
+      "motif": "slash",
+      "count": 48,
+      "pct": 8.1
+    },
+    {
+      "motif": "buff",
+      "count": 44,
+      "pct": 7.5
+    },
+    {
+      "motif": "pierce",
+      "count": 41,
+      "pct": 6.9
+    },
+    {
+      "motif": "dragon",
+      "count": 33,
+      "pct": 5.6
+    },
+    {
+      "motif": "shadow",
+      "count": 26,
+      "pct": 4.4
+    },
+    {
+      "motif": "fire",
+      "count": 25,
+      "pct": 4.2
+    },
+    {
+      "motif": "water",
+      "count": 21,
+      "pct": 3.6
+    },
+    {
+      "motif": "tiger",
+      "count": 21,
+      "pct": 3.6
+    },
+    {
+      "motif": "poison",
+      "count": 20,
+      "pct": 3.4
+    },
+    {
+      "motif": "bagua",
+      "count": 15,
+      "pct": 2.5
+    },
+    {
+      "motif": "rush",
+      "count": 15,
+      "pct": 2.5
+    },
+    {
+      "motif": "whirlwind",
+      "count": 14,
+      "pct": 2.4
+    },
+    {
+      "motif": "thunder",
+      "count": 14,
+      "pct": 2.4
+    },
+    {
+      "motif": "shield",
+      "count": 14,
+      "pct": 2.4
+    },
+    {
+      "motif": "charge",
+      "count": 12,
+      "pct": 2.0
+    },
+    {
+      "motif": "wolf",
+      "count": 2,
+      "pct": 0.3
+    }
+  ],
+  "styleCountsBefore": [
+    {
+      "style": "beam",
+      "count": 184,
+      "pct": 31.2
+    },
+    {
+      "style": "bless",
+      "count": 123,
+      "pct": 20.8
+    },
+    {
+      "style": "rush",
+      "count": 55,
+      "pct": 9.3
+    },
+    {
+      "style": "shadow",
+      "count": 53,
+      "pct": 9.0
+    },
+    {
+      "style": "breath",
+      "count": 33,
+      "pct": 5.6
+    },
+    {
+      "style": "nova",
+      "count": 25,
+      "pct": 4.2
+    },
+    {
+      "style": "roar",
+      "count": 22,
+      "pct": 3.7
+    },
+    {
+      "style": "charge",
+      "count": 21,
+      "pct": 3.6
+    },
+    {
+      "style": "poison",
+      "count": 20,
+      "pct": 3.4
+    },
+    {
+      "style": "tide",
+      "count": 16,
+      "pct": 2.7
+    },
+    {
+      "style": "whirl",
+      "count": 14,
+      "pct": 2.4
+    },
+    {
+      "style": "barrier",
+      "count": 14,
+      "pct": 2.4
+    },
+    {
+      "style": "slash",
+      "count": 10,
+      "pct": 1.7
+    }
+  ],
+  "styleCountsAfter": [
+    {
+      "style": "beam",
+      "count": 155,
+      "pct": 26.3
+    },
+    {
+      "style": "bless",
+      "count": 123,
+      "pct": 20.8
+    },
+    {
+      "style": "shadow",
+      "count": 53,
+      "pct": 9.0
+    },
+    {
+      "style": "pierce",
+      "count": 40,
+      "pct": 6.8
+    },
+    {
+      "style": "breath",
+      "count": 33,
+      "pct": 5.6
+    },
+    {
+      "style": "nova",
+      "count": 25,
+      "pct": 4.2
+    },
+    {
+      "style": "roar",
+      "count": 22,
+      "pct": 3.7
+    },
+    {
+      "style": "charge",
+      "count": 21,
+      "pct": 3.6
+    },
+    {
+      "style": "poison",
+      "count": 20,
+      "pct": 3.4
+    },
+    {
+      "style": "tide",
+      "count": 16,
+      "pct": 2.7
+    },
+    {
+      "style": "bagua",
+      "count": 15,
+      "pct": 2.5
+    },
+    {
+      "style": "rush",
+      "count": 15,
+      "pct": 2.5
+    },
+    {
+      "style": "whirl",
+      "count": 14,
+      "pct": 2.4
+    },
+    {
+      "style": "thunder",
+      "count": 14,
+      "pct": 2.4
+    },
+    {
+      "style": "barrier",
+      "count": 14,
+      "pct": 2.4
+    },
+    {
+      "style": "slash",
+      "count": 10,
+      "pct": 1.7
+    }
+  ],
+  "over8PctMotif": [
+    {
+      "motif": "arcane",
+      "count": 155,
+      "pct": 26.3
+    },
+    {
+      "motif": "heal",
+      "count": 70,
+      "pct": 11.9
+    },
+    {
+      "motif": "slash",
+      "count": 48,
+      "pct": 8.1
+    }
+  ],
+  "over8PctStyleBefore": [
+    {
+      "style": "beam",
+      "count": 184,
+      "pct": 31.2
+    },
+    {
+      "style": "bless",
+      "count": 123,
+      "pct": 20.8
+    },
+    {
+      "style": "rush",
+      "count": 55,
+      "pct": 9.3
+    },
+    {
+      "style": "shadow",
+      "count": 53,
+      "pct": 9.0
+    }
+  ],
+  "over8PctStyleAfter": [
+    {
+      "style": "beam",
+      "count": 155,
+      "pct": 26.3
+    },
+    {
+      "style": "bless",
+      "count": 123,
+      "pct": 20.8
+    },
+    {
+      "style": "shadow",
+      "count": 53,
+      "pct": 9.0
+    }
+  ],
+  "bucketSplit": {
+    "thunder": {
+      "count": 14,
+      "was": "beam",
+      "samples": [
+        "sam_set",
+        "loi_tien",
+        "tu_dien"
+      ]
+    },
+    "bagua": {
+      "count": 15,
+      "was": "beam",
+      "samples": [
+        "khong_thanh",
+        "bagua_zhen",
+        "khong_thanh_legend"
+      ]
+    },
+    "pierce": {
+      "count": 40,
+      "was": "rush",
+      "samples": [
+        "bach_bo",
+        "xiaoyaojin",
+        "liet_thi"
+      ]
+    }
+  },
+  "previewTestIds": {
+    "thunder": [
+      "sam_set",
+      "than_loi"
+    ],
+    "bagua": [
+      "khong_thanh",
+      "bat_tran_do"
+    ],
+    "pierce": [
+      "bach_bo",
+      "lac_nhat_than_tien"
+    ],
+    "beam_arcane": [
+      "yen_nguyet",
+      "binh_phat"
+    ],
+    "rush": [
+      "loa_y_no_tap",
+      "dot_kich"
+    ],
+    "bless": [
+      "ho_khi",
+      "co_chien"
+    ],
+    "barrier": [
+      "ngu_giap",
+      "lay_than_lam_giap"
+    ]
+  },
+  "notes": [
+    "Không thêm motif mới hàng loạt — chỉ tách Fx3dStyle thunder/bagua/pierce.",
+    "skills.json motif/flash không đổi (classify đã đúng).",
+    "bless/barrier/charge/rush dedicated giữ nguyên thứ tự resolve."
+  ]
+}
