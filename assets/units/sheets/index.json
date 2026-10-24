@@ -7,49 +7,55 @@
         "sheet": "assets/units/sheets/infantry-t1.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-infantry-t1.png",
-        "wikiId": "1"
+        "wikiId": "1",
+        "attackFrames": 8
       },
       "2": {
         "sheet": "assets/units/sheets/infantry-t2.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-infantry-t2.png",
-        "wikiId": "5"
+        "wikiId": "5",
+        "attackFrames": 8
       },
       "3": {
         "sheet": "assets/units/sheets/infantry-t3.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-infantry-t3.png",
-        "wikiId": "61"
+        "wikiId": "61",
+        "attackFrames": 8
       },
       "4": {
         "sheet": "assets/units/sheets/infantry-t4.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-infantry-t4.png",
-        "wikiId": "136"
+        "wikiId": "136",
+        "attackFrames": 8
       },
       "5": {
         "sheet": "assets/units/sheets/infantry-t5.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-infantry-t5.png",
-        "wikiId": "181"
+        "wikiId": "181",
+        "attackFrames": 8
       },
       "6": {
         "sheet": "assets/units/sheets/infantry-t6.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-infantry-t6.png",
-        "wikiId": "298"
+        "wikiId": "298",
+        "attackFrames": 8
       }
     },
     "spear": {
@@ -57,49 +63,55 @@
         "sheet": "assets/units/sheets/spear-t1.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-spear-t1.png",
-        "wikiId": "10"
+        "wikiId": "10",
+        "attackFrames": 8
       },
       "2": {
         "sheet": "assets/units/sheets/spear-t2.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-spear-t2.png",
-        "wikiId": "28"
+        "wikiId": "28",
+        "attackFrames": 8
       },
       "3": {
         "sheet": "assets/units/sheets/spear-t3.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-spear-t3.png",
-        "wikiId": "70"
+        "wikiId": "70",
+        "attackFrames": 8
       },
       "4": {
         "sheet": "assets/units/sheets/spear-t4.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-spear-t4.png",
-        "wikiId": "141"
+        "wikiId": "141",
+        "attackFrames": 8
       },
       "5": {
         "sheet": "assets/units/sheets/spear-t5.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-spear-t5.png",
-        "wikiId": "200"
+        "wikiId": "200",
+        "attackFrames": 8
       },
       "6": {
         "sheet": "assets/units/sheets/spear-t6.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-spear-t6.png",
-        "wikiId": "300"
+        "wikiId": "300",
+        "attackFrames": 8
       }
     },
     "cavalry": {
@@ -107,49 +119,55 @@
         "sheet": "assets/units/sheets/cavalry-t1.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-cavalry-t1.png",
-        "wikiId": "11"
+        "wikiId": "11",
+        "attackFrames": 8
       },
       "2": {
         "sheet": "assets/units/sheets/cavalry-t2.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-cavalry-t2.png",
-        "wikiId": "43"
+        "wikiId": "43",
+        "attackFrames": 8
       },
       "3": {
         "sheet": "assets/units/sheets/cavalry-t3.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-cavalry-t3.png",
-        "wikiId": "81"
+        "wikiId": "81",
+        "attackFrames": 8
       },
       "4": {
         "sheet": "assets/units/sheets/cavalry-t4.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-cavalry-t4.png",
-        "wikiId": "151"
+        "wikiId": "151",
+        "attackFrames": 8
       },
       "5": {
-        "sheet": "assets/units/sheets/hobao-ky.png",
+        "sheet": "assets/units/sheets/cavalry-t5.png",
         "cols": 8,
         "rows": 2,
-        "kind": "hobao",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-cavalry-t5.png",
-        "wikiId": "38"
+        "wikiId": "38",
+        "attackFrames": 8
       },
       "6": {
-        "sheet": "assets/units/sheets/hobao-ky.png",
+        "sheet": "assets/units/sheets/cavalry-t6.png",
         "cols": 8,
         "rows": 2,
-        "kind": "hobao",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-cavalry-t6.png",
-        "wikiId": "302"
+        "wikiId": "302",
+        "attackFrames": 8
       }
     },
     "archer": {
@@ -159,47 +177,53 @@
         "rows": 2,
         "kind": "wiki-derived",
         "icon": "assets/units/battle/wiki-archer-t1.png",
-        "wikiId": "12"
+        "wikiId": "12",
+        "attackFrames": 8
       },
       "2": {
         "sheet": "assets/units/sheets/archer-t2.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-archer-t2.png",
-        "wikiId": "48"
+        "wikiId": "48",
+        "attackFrames": 8
       },
       "3": {
         "sheet": "assets/units/sheets/archer-t3.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-archer-t3.png",
-        "wikiId": "89"
+        "wikiId": "89",
+        "attackFrames": 8
       },
       "4": {
         "sheet": "assets/units/sheets/archer-t4.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-archer-t4.png",
-        "wikiId": "161"
+        "wikiId": "161",
+        "attackFrames": 8
       },
       "5": {
         "sheet": "assets/units/sheets/archer-t5.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-archer-t5.png",
-        "wikiId": "189"
+        "wikiId": "189",
+        "attackFrames": 8
       },
       "6": {
         "sheet": "assets/units/sheets/archer-t6.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-archer-t6.png",
-        "wikiId": "305"
+        "wikiId": "305",
+        "attackFrames": 8
       }
     },
     "strategist": {
@@ -207,49 +231,55 @@
         "sheet": "assets/units/sheets/strategist-t1.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-strategist-t1.png",
-        "wikiId": "13"
+        "wikiId": "13",
+        "attackFrames": 8
       },
       "2": {
         "sheet": "assets/units/sheets/strategist-t2.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-strategist-t2.png",
-        "wikiId": "52"
+        "wikiId": "52",
+        "attackFrames": 8
       },
       "3": {
         "sheet": "assets/units/sheets/strategist-t3.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-strategist-t3.png",
-        "wikiId": "98"
+        "wikiId": "98",
+        "attackFrames": 8
       },
       "4": {
         "sheet": "assets/units/sheets/strategist-t4.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-strategist-t4.png",
-        "wikiId": "167"
+        "wikiId": "167",
+        "attackFrames": 8
       },
       "5": {
         "sheet": "assets/units/sheets/strategist-t5.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-strategist-t5.png",
-        "wikiId": "209"
+        "wikiId": "209",
+        "attackFrames": 8
       },
       "6": {
         "sheet": "assets/units/sheets/strategist-t6.png",
         "cols": 8,
         "rows": 2,
-        "kind": "wiki-derived",
+        "kind": "poses",
         "icon": "assets/units/battle/wiki-strategist-t6.png",
-        "wikiId": "285"
+        "wikiId": "285",
+        "attackFrames": 8
       }
     }
   },
@@ -272,7 +302,8 @@
       "icon": "assets/units/wiki/1.png",
       "name": "Bộ",
       "troop": "infantry",
-      "tier": 1
+      "tier": 1,
+      "attackFrames": 8
     },
     "405": {
       "sheet": "assets/units/sheets/units/405.png",
@@ -438,11 +469,12 @@
       "sheet": "assets/units/sheets/units/5.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/5.png",
       "name": "Kim Bộ",
       "troop": "infantry",
-      "tier": 2
+      "tier": 2,
+      "attackFrames": 8
     },
     "25": {
       "sheet": "assets/units/sheets/units/25.png",
@@ -498,11 +530,12 @@
       "sheet": "assets/units/sheets/units/61.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/61.png",
       "name": "Giáp Bộ",
       "troop": "infantry",
-      "tier": 3
+      "tier": 3,
+      "attackFrames": 8
     },
     "60": {
       "sheet": "assets/units/sheets/units/60.png",
@@ -578,11 +611,12 @@
       "sheet": "assets/units/sheets/units/136.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/136.png",
       "name": "Điện Sĩ",
       "troop": "infantry",
-      "tier": 4
+      "tier": 4,
+      "attackFrames": 8
     },
     "133": {
       "sheet": "assets/units/sheets/units/133.png",
@@ -658,11 +692,12 @@
       "sheet": "assets/units/sheets/units/181.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/181.png",
       "name": "Hàn Giáp Bộ",
       "troop": "infantry",
-      "tier": 5
+      "tier": 5,
+      "attackFrames": 8
     },
     "180": {
       "sheet": "assets/units/sheets/units/180.png",
@@ -728,11 +763,12 @@
       "sheet": "assets/units/sheets/units/298.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/298.png",
       "name": "Băng Chùy",
       "troop": "infantry",
-      "tier": 6
+      "tier": 6,
+      "attackFrames": 8
     },
     "299": {
       "sheet": "assets/units/sheets/units/299.png",
@@ -862,7 +898,8 @@
       "icon": "assets/units/wiki/10.png",
       "name": "Thương",
       "troop": "spear",
-      "tier": 1
+      "tier": 1,
+      "attackFrames": 8
     },
     "17": {
       "sheet": "assets/units/sheets/units/17.png",
@@ -928,11 +965,12 @@
       "sheet": "assets/units/sheets/units/28.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/28.png",
       "name": "Kim Thương",
       "troop": "spear",
-      "tier": 2
+      "tier": 2,
+      "attackFrames": 8
     },
     "32": {
       "sheet": "assets/units/sheets/units/32.png",
@@ -998,11 +1036,12 @@
       "sheet": "assets/units/sheets/units/70.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/70.png",
       "name": "Hoàng Thương",
       "troop": "spear",
-      "tier": 3
+      "tier": 3,
+      "attackFrames": 8
     },
     "72": {
       "sheet": "assets/units/sheets/units/72.png",
@@ -1058,11 +1097,12 @@
       "sheet": "assets/units/sheets/units/141.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/141.png",
       "name": "Linh Thương",
       "troop": "spear",
-      "tier": 4
+      "tier": 4,
+      "attackFrames": 8
     },
     "147": {
       "sheet": "assets/units/sheets/units/147.png",
@@ -1128,11 +1168,12 @@
       "sheet": "assets/units/sheets/units/200.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/200.png",
       "name": "Diệm Thương",
       "troop": "spear",
-      "tier": 5
+      "tier": 5,
+      "attackFrames": 8
     },
     "199": {
       "sheet": "assets/units/sheets/units/199.png",
@@ -1208,11 +1249,12 @@
       "sheet": "assets/units/sheets/units/300.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/300.png",
       "name": "Băng Thương",
       "troop": "spear",
-      "tier": 6
+      "tier": 6,
+      "attackFrames": 8
     },
     "277": {
       "sheet": "assets/units/sheets/units/277.png",
@@ -1302,7 +1344,8 @@
       "icon": "assets/units/wiki/11.png",
       "name": "Kỵ",
       "troop": "cavalry",
-      "tier": 1
+      "tier": 1,
+      "attackFrames": 8
     },
     "314": {
       "sheet": "assets/units/sheets/units/314.png",
@@ -1368,21 +1411,23 @@
       "sheet": "assets/units/sheets/units/38.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/38.png",
       "name": "Hổ Báo Kỵ",
       "troop": "cavalry",
-      "tier": 5
+      "tier": 5,
+      "attackFrames": 8
     },
     "43": {
       "sheet": "assets/units/sheets/units/43.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/43.png",
       "name": "Kim Kỵ",
       "troop": "cavalry",
-      "tier": 2
+      "tier": 2,
+      "attackFrames": 8
     },
     "39": {
       "sheet": "assets/units/sheets/units/39.png",
@@ -1428,11 +1473,12 @@
       "sheet": "assets/units/sheets/units/81.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/81.png",
       "name": "Bạch Kỵ",
       "troop": "cavalry",
-      "tier": 3
+      "tier": 3,
+      "attackFrames": 8
     },
     "83": {
       "sheet": "assets/units/sheets/units/83.png",
@@ -1508,11 +1554,12 @@
       "sheet": "assets/units/sheets/units/151.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/151.png",
       "name": "Bạch Hổ Kỵ",
       "troop": "cavalry",
-      "tier": 4
+      "tier": 4,
+      "attackFrames": 8
     },
     "153": {
       "sheet": "assets/units/sheets/units/153.png",
@@ -1678,11 +1725,12 @@
       "sheet": "assets/units/sheets/units/302.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/302.png",
       "name": "Băng Kỵ",
       "troop": "cavalry",
-      "tier": 6
+      "tier": 6,
+      "attackFrames": 8
     },
     "303": {
       "sheet": "assets/units/sheets/units/303.png",
@@ -1792,7 +1840,8 @@
       "icon": "assets/units/wiki/12.png",
       "name": "Cung",
       "troop": "archer",
-      "tier": 1
+      "tier": 1,
+      "attackFrames": 8
     },
     "111": {
       "sheet": "assets/units/sheets/units/111.png",
@@ -1838,11 +1887,12 @@
       "sheet": "assets/units/sheets/units/48.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/48.png",
       "name": "Hỏa Cung",
       "troop": "archer",
-      "tier": 2
+      "tier": 2,
+      "attackFrames": 8
     },
     "47": {
       "sheet": "assets/units/sheets/units/47.png",
@@ -1928,11 +1978,12 @@
       "sheet": "assets/units/sheets/units/89.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/89.png",
       "name": "Diệm Cung",
       "troop": "archer",
-      "tier": 3
+      "tier": 3,
+      "attackFrames": 8
     },
     "88": {
       "sheet": "assets/units/sheets/units/88.png",
@@ -2068,11 +2119,12 @@
       "sheet": "assets/units/sheets/units/161.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/161.png",
       "name": "Xích Cung",
       "troop": "archer",
-      "tier": 4
+      "tier": 4,
+      "attackFrames": 8
     },
     "205": {
       "sheet": "assets/units/sheets/units/205.png",
@@ -2128,11 +2180,12 @@
       "sheet": "assets/units/sheets/units/189.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/189.png",
       "name": "Tu La Cung",
       "troop": "archer",
-      "tier": 5
+      "tier": 5,
+      "attackFrames": 8
     },
     "207": {
       "sheet": "assets/units/sheets/units/207.png",
@@ -2148,11 +2201,12 @@
       "sheet": "assets/units/sheets/units/305.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/305.png",
       "name": "Băng Cung",
       "troop": "archer",
-      "tier": 6
+      "tier": 6,
+      "attackFrames": 8
     },
     "304": {
       "sheet": "assets/units/sheets/units/304.png",
@@ -2362,7 +2416,8 @@
       "icon": "assets/units/wiki/13.png",
       "name": "Quan văn",
       "troop": "strategist",
-      "tier": 1
+      "tier": 1,
+      "attackFrames": 8
     },
     "216": {
       "sheet": "assets/units/sheets/units/216.png",
@@ -2448,11 +2503,12 @@
       "sheet": "assets/units/sheets/units/52.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/52.png",
       "name": "Hỏa Sách Sĩ",
       "troop": "strategist",
-      "tier": 2
+      "tier": 2,
+      "attackFrames": 8
     },
     "54": {
       "sheet": "assets/units/sheets/units/54.png",
@@ -2558,11 +2614,12 @@
       "sheet": "assets/units/sheets/units/98.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/98.png",
       "name": "Lôi Cổ",
       "troop": "strategist",
-      "tier": 3
+      "tier": 3,
+      "attackFrames": 8
     },
     "95": {
       "sheet": "assets/units/sheets/units/95.png",
@@ -2628,11 +2685,12 @@
       "sheet": "assets/units/sheets/units/167.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/167.png",
       "name": "Địa Sư",
       "troop": "strategist",
-      "tier": 4
+      "tier": 4,
+      "attackFrames": 8
     },
     "172": {
       "sheet": "assets/units/sheets/units/172.png",
@@ -2698,11 +2756,12 @@
       "sheet": "assets/units/sheets/units/209.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/209.png",
       "name": "Hỏa Sứ",
       "troop": "strategist",
-      "tier": 5
+      "tier": 5,
+      "attackFrames": 8
     },
     "228": {
       "sheet": "assets/units/sheets/units/228.png",
@@ -2798,11 +2857,12 @@
       "sheet": "assets/units/sheets/units/285.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-unit",
+      "kind": "poses",
       "icon": "assets/units/wiki/285.png",
       "name": "Linh Hỏa Mưu Sĩ",
       "troop": "strategist",
-      "tier": 6
+      "tier": 6,
+      "attackFrames": 8
     },
     "248": {
       "sheet": "assets/units/sheets/units/248.png",
@@ -3203,49 +3263,55 @@
       "sheet": "assets/units/sheets/infantry-t1.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-infantry-t1.png",
-      "wikiId": "1"
+      "wikiId": "1",
+      "attackFrames": 8
     },
     "2": {
       "sheet": "assets/units/sheets/infantry-t2.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-infantry-t2.png",
-      "wikiId": "5"
+      "wikiId": "5",
+      "attackFrames": 8
     },
     "3": {
       "sheet": "assets/units/sheets/infantry-t3.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-infantry-t3.png",
-      "wikiId": "61"
+      "wikiId": "61",
+      "attackFrames": 8
     },
     "4": {
       "sheet": "assets/units/sheets/infantry-t4.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-infantry-t4.png",
-      "wikiId": "136"
+      "wikiId": "136",
+      "attackFrames": 8
     },
     "5": {
       "sheet": "assets/units/sheets/infantry-t5.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-infantry-t5.png",
-      "wikiId": "181"
+      "wikiId": "181",
+      "attackFrames": 8
     },
     "6": {
       "sheet": "assets/units/sheets/infantry-t6.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-infantry-t6.png",
-      "wikiId": "298"
+      "wikiId": "298",
+      "attackFrames": 8
     }
   },
   "spear": {
@@ -3253,49 +3319,55 @@
       "sheet": "assets/units/sheets/spear-t1.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-spear-t1.png",
-      "wikiId": "10"
+      "wikiId": "10",
+      "attackFrames": 8
     },
     "2": {
       "sheet": "assets/units/sheets/spear-t2.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-spear-t2.png",
-      "wikiId": "28"
+      "wikiId": "28",
+      "attackFrames": 8
     },
     "3": {
       "sheet": "assets/units/sheets/spear-t3.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-spear-t3.png",
-      "wikiId": "70"
+      "wikiId": "70",
+      "attackFrames": 8
     },
     "4": {
       "sheet": "assets/units/sheets/spear-t4.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-spear-t4.png",
-      "wikiId": "141"
+      "wikiId": "141",
+      "attackFrames": 8
     },
     "5": {
       "sheet": "assets/units/sheets/spear-t5.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-spear-t5.png",
-      "wikiId": "200"
+      "wikiId": "200",
+      "attackFrames": 8
     },
     "6": {
       "sheet": "assets/units/sheets/spear-t6.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-spear-t6.png",
-      "wikiId": "300"
+      "wikiId": "300",
+      "attackFrames": 8
     }
   },
   "cavalry": {
@@ -3303,49 +3375,55 @@
       "sheet": "assets/units/sheets/cavalry-t1.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-cavalry-t1.png",
-      "wikiId": "11"
+      "wikiId": "11",
+      "attackFrames": 8
     },
     "2": {
       "sheet": "assets/units/sheets/cavalry-t2.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-cavalry-t2.png",
-      "wikiId": "43"
+      "wikiId": "43",
+      "attackFrames": 8
     },
     "3": {
       "sheet": "assets/units/sheets/cavalry-t3.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-cavalry-t3.png",
-      "wikiId": "81"
+      "wikiId": "81",
+      "attackFrames": 8
     },
     "4": {
       "sheet": "assets/units/sheets/cavalry-t4.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-cavalry-t4.png",
-      "wikiId": "151"
+      "wikiId": "151",
+      "attackFrames": 8
     },
     "5": {
-      "sheet": "assets/units/sheets/hobao-ky.png",
+      "sheet": "assets/units/sheets/cavalry-t5.png",
       "cols": 8,
       "rows": 2,
-      "kind": "hobao",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-cavalry-t5.png",
-      "wikiId": "38"
+      "wikiId": "38",
+      "attackFrames": 8
     },
     "6": {
-      "sheet": "assets/units/sheets/hobao-ky.png",
+      "sheet": "assets/units/sheets/cavalry-t6.png",
       "cols": 8,
       "rows": 2,
-      "kind": "hobao",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-cavalry-t6.png",
-      "wikiId": "302"
+      "wikiId": "302",
+      "attackFrames": 8
     }
   },
   "archer": {
@@ -3355,47 +3433,53 @@
       "rows": 2,
       "kind": "wiki-derived",
       "icon": "assets/units/battle/wiki-archer-t1.png",
-      "wikiId": "12"
+      "wikiId": "12",
+      "attackFrames": 8
     },
     "2": {
       "sheet": "assets/units/sheets/archer-t2.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-archer-t2.png",
-      "wikiId": "48"
+      "wikiId": "48",
+      "attackFrames": 8
     },
     "3": {
       "sheet": "assets/units/sheets/archer-t3.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-archer-t3.png",
-      "wikiId": "89"
+      "wikiId": "89",
+      "attackFrames": 8
     },
     "4": {
       "sheet": "assets/units/sheets/archer-t4.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-archer-t4.png",
-      "wikiId": "161"
+      "wikiId": "161",
+      "attackFrames": 8
     },
     "5": {
       "sheet": "assets/units/sheets/archer-t5.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-archer-t5.png",
-      "wikiId": "189"
+      "wikiId": "189",
+      "attackFrames": 8
     },
     "6": {
       "sheet": "assets/units/sheets/archer-t6.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-archer-t6.png",
-      "wikiId": "305"
+      "wikiId": "305",
+      "attackFrames": 8
     }
   },
   "strategist": {
@@ -3403,49 +3487,55 @@
       "sheet": "assets/units/sheets/strategist-t1.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-strategist-t1.png",
-      "wikiId": "13"
+      "wikiId": "13",
+      "attackFrames": 8
     },
     "2": {
       "sheet": "assets/units/sheets/strategist-t2.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-strategist-t2.png",
-      "wikiId": "52"
+      "wikiId": "52",
+      "attackFrames": 8
     },
     "3": {
       "sheet": "assets/units/sheets/strategist-t3.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-strategist-t3.png",
-      "wikiId": "98"
+      "wikiId": "98",
+      "attackFrames": 8
     },
     "4": {
       "sheet": "assets/units/sheets/strategist-t4.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-strategist-t4.png",
-      "wikiId": "167"
+      "wikiId": "167",
+      "attackFrames": 8
     },
     "5": {
       "sheet": "assets/units/sheets/strategist-t5.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-strategist-t5.png",
-      "wikiId": "209"
+      "wikiId": "209",
+      "attackFrames": 8
     },
     "6": {
       "sheet": "assets/units/sheets/strategist-t6.png",
       "cols": 8,
       "rows": 2,
-      "kind": "wiki-derived",
+      "kind": "poses",
       "icon": "assets/units/battle/wiki-strategist-t6.png",
-      "wikiId": "285"
+      "wikiId": "285",
+      "attackFrames": 8
     }
   }
 }

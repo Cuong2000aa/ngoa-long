@@ -246,8 +246,35 @@
       <div id="skill-list" role="listbox" aria-label="Danh sách chiêu"></div>
       <div class="actions">
         <button type="button" class="primary" id="btn-play">Phát chiêu</button>
+        <button type="button" id="btn-attack" title="Test động tác đánh thường & hiệu ứng va chạm">Đánh thường</button>
         <button type="button" id="btn-replay">Phát lại</button>
         <button type="button" id="btn-clear">Xóa FX</button>
+      </div>
+      <div style="margin-top:0.4rem;display:flex;flex-direction:column;gap:0.25rem">
+        <label style="font-size:0.75rem;color:var(--gold);font-weight:bold">Binh chủng Caster:</label>
+        <div style="display:flex;gap:0.35rem">
+          <select id="troop-sel" style="flex:2;background:#2a1c12;color:var(--gold);border:1px solid var(--line);padding:0.35rem;border-radius:4px" aria-label="Đổi binh chủng Caster">
+            <option value="strategist">Mưu sĩ (strategist)</option>
+            <option value="infantry">Bộ binh (infantry)</option>
+            <option value="spear">Thương binh (spear)</option>
+            <option value="cavalry">Kỵ binh (cavalry)</option>
+            <option value="archer">Cung thủ (archer)</option>
+            <option value="hobao">Hổ Báo Kỵ (hobao)</option>
+          </select>
+          <select id="tier-sel" style="flex:1;background:#2a1c12;color:var(--gold);border:1px solid var(--line);padding:0.35rem;border-radius:4px" aria-label="Cấp bậc Tier">
+            <option value="1">Tier 1</option>
+            <option value="2">Tier 2</option>
+            <option value="3">Tier 3</option>
+            <option value="4">Tier 4</option>
+            <option value="5" selected>Tier 5</option>
+            <option value="6">Tier 6</option>
+          </select>
+        </div>
+        <div style="display:flex;gap:0.35rem;margin-top:0.25rem">
+          <select id="wiki-unit-sel" style="flex:1;background:#2a1c12;color:var(--gold);border:1px solid var(--line);padding:0.35rem;border-radius:4px;font-size:0.75rem" aria-label="Chọn cụ thể theo Binh chủng Wiki (261 units)">
+            <option value="">-- Hoặc chọn skin Wiki (261 units) --</option>
+          </select>
+        </div>
       </div>
       <div class="actions" style="margin-top:0.35rem">
         <button type="button" id="btn-side-ally" class="primary" title="Caster phe ta (phải → trái)">Caster: Phe ta</button>
@@ -298,8 +325,11 @@
     const hintEl = document.getElementById("overlay-hint");
     const statusEl = document.getElementById("status");
     const btnPlay = document.getElementById("btn-play");
+    const btnAttack = document.getElementById("btn-attack");
     const btnReplay = document.getElementById("btn-replay");
     const btnClear = document.getElementById("btn-clear");
+    const troopSel = document.getElementById("troop-sel");
+    const tierSel = document.getElementById("tier-sel");
 
     let br = null;
     let skills = [];
@@ -645,6 +675,38 @@
       setCastSide("ally");
       // Chờ actor load nhẹ
       await new Promise((r) => setTimeout(r, 600));
+
+      // Nạp danh sách 261 wiki units vào dropdown
+      const wikiUnitSel = document.getElementById("wiki-unit-sel");
+      try {
+        const idxRes = await fetch("assets/units/sheets/index.json");
+        const idxData = await idxRes.json();
+        if (idxData && idxData.byWikiId && wikiUnitSel) {
+          const list = Object.entries(idxData.byWikiId);
+          list.sort((a, b) => (a[1].name || "").localeCompare(b[1].name || "", "vi"));
+          for (const [wid, u] of list) {
+            const opt = document.createElement("option");
+            opt.value = wid;
+            opt.textContent = `[${u.troop}] T${u.tier} - ${u.name}`;
+            wikiUnitSel.appendChild(opt);
+          }
+          wikiUnitSel.addEventListener("change", async () => {
+            const wid = wikiUnitSel.value;
+            if (!wid || !br) return;
+            const meta = idxData.byWikiId[wid];
+            if (!meta) return;
+            if (troopSel) troopSel.value = meta.troop;
+            if (tierSel) tierSel.value = String(meta.tier);
+            const ok = await br.setFighterTroop(casterUid, meta.troop, meta.tier, wid);
+            if (ok) {
+              statusEl.textContent = "Skin Wiki: " + meta.name + " (" + meta.troop + " T" + meta.tier + ")";
+            }
+          });
+        }
+      } catch (e) {
+        console.warn("Could not load wiki unit options:", e);
+      }
+
       hintEl.textContent = "Sẵn sàng — chọn chiêu · đổi Caster phe ta/địch để xem 2 hướng";
       statusEl.textContent = skills.length + " chiêu · sân 3D OK";
     }
@@ -660,6 +722,30 @@
     btnPlay.addEventListener("click", playSelected);
     btnReplay.addEventListener("click", playSelected);
     btnClear.addEventListener("click", clearFx);
+    if (btnAttack) {
+      btnAttack.addEventListener("click", () => {
+        if (!br) return;
+        const targetId = (targetUids && targetUids[0]) || (castSide === "ally" ? "e0" : "a0");
+        br.attack(casterUid, targetId);
+        const trName = troopSel ? troopSel.value : "unit";
+        statusEl.textContent = "Đánh thường: " + casterUid + " (" + trName + ") → " + targetId;
+      });
+    }
+
+    async function applyTroopChange() {
+      if (!br || !troopSel || !tierSel) return;
+      const troop = troopSel.value;
+      const tier = parseInt(tierSel.value, 10) || 1;
+      const wikiId = troop === "hobao" ? "hobao" : undefined;
+      const actualTroop = troop === "hobao" ? "cavalry" : troop;
+      const ok = await br.setFighterTroop(casterUid, actualTroop, tier, wikiId);
+      if (ok) {
+        statusEl.textContent = "Đã đổi binh chủng: " + troop.toUpperCase() + " Cấp " + tier;
+      }
+    }
+
+    if (troopSel) troopSel.addEventListener("change", applyTroopChange);
+    if (tierSel) tierSel.addEventListener("change", applyTroopChange);
     document.getElementById("btn-side-ally").addEventListener("click", () => setCastSide("ally"));
     document.getElementById("btn-side-enemy").addEventListener("click", () => setCastSide("enemy"));
 

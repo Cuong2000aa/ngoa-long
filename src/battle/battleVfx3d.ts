@@ -103,6 +103,8 @@ type MeshFx = {
   headLed?: boolean;
   /** Flipbook 1→N đúng 1 lần theo tiến độ bay (không loop, không chồng) */
   sequenceOnce?: boolean;
+  noPitch?: boolean;
+  noPulse?: boolean;
   /**
    * Tiến độ path caster→đích:
    * - out (mặc định): nhanh đầu, chậm cuối
@@ -128,6 +130,10 @@ type MeshFx = {
   altFramesFlip?: THREE.Texture[][];
   /** True = bay GLB mesh (không flipbook sprite) */
   mesh3d?: boolean;
+  shadowObj?: THREE.Mesh;
+  shadowMat?: THREE.MeshBasicMaterial;
+  shadowBaseW?: number;
+  shadowBaseH?: number;
   /** Cộng thêm vào yaw khi mặt mũi model không khớp +Z */
   yawOffset?: number;
   /** SkinnedMesh — cập nhật mỗi khung */
@@ -508,15 +514,10 @@ function honElementLayers(packId: HonPackId): {
     case "hon_ho":
       return {
         charge: [
-          { folder: "codemanu", pack: "charged", n: 24, w: 3.0, h: 3.0, opacity: 0.88 },
-          { folder: "codemanu", pack: "charged", n: 24, w: 2.8, h: 2.8, opacity: 0.75 },
-          { folder: "brackeys", pack: "hit_burst", n: 24, w: 2.5, h: 2.5, opacity: 0.7 },
+          { folder: "codemanu", pack: "charged", n: 24, w: 2.2, h: 2.2, opacity: 0.65 },
         ],
-        form: [
-          { folder: "codemanu", pack: "vortex", n: 24, w: 2.8, h: 2.8, opacity: 0.7 },
-          { folder: "superpowers", pack: "sp_shock", n: 24, w: 2.4, h: 2.4, opacity: 0.8 },
-        ],
-        flight: { urls: sp("sp_shock", 24), w: 1.9, h: 1.9 },
+        form: [],
+        flight: { urls: [], w: 0, h: 0 },
         hit: [
           { folder: "codemanu", pack: "big_hit", n: 24, w: 3.2, h: 3.2, opacity: 0.95 },
           { folder: "brackeys", pack: "hit_burst", n: 24, w: 2.8, h: 2.8, opacity: 0.85 },
@@ -773,8 +774,26 @@ function pushEmit(scene: THREE.Scene, em: Emitter): Fx3dHandle {
   };
 }
 
+let cachedShadowTex: THREE.CanvasTexture | null = null;
+function getSoftShadowTexture(): THREE.CanvasTexture {
+  if (cachedShadowTex) return cachedShadowTex;
+  const canvas = document.createElement("canvas");
+  canvas.width = 64;
+  canvas.height = 64;
+  const ctx = canvas.getContext("2d")!;
+  const grad = ctx.createRadialGradient(32, 32, 2, 32, 32, 30);
+  grad.addColorStop(0, "rgba(0, 0, 0, 0.65)");
+  grad.addColorStop(0.5, "rgba(0, 0, 0, 0.28)");
+  grad.addColorStop(1, "rgba(0, 0, 0, 0)");
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, 64, 64);
+  cachedShadowTex = new THREE.CanvasTexture(canvas);
+  return cachedShadowTex;
+}
+
 function pushMesh(scene: THREE.Scene, fx: MeshFx): Fx3dHandle {
   scene.add(fx.obj);
+  if (fx.shadowObj) scene.add(fx.shadowObj);
   ACTIVE_MESH.push(fx);
   return {
     cancel() {
@@ -782,6 +801,10 @@ function pushMesh(scene: THREE.Scene, fx: MeshFx): Fx3dHandle {
       if (i >= 0) ACTIVE_MESH.splice(i, 1);
       fx.obj.parent?.remove(fx.obj);
       disposeFxObject(fx.obj);
+      if (fx.shadowObj) {
+        fx.shadowObj.parent?.remove(fx.shadowObj);
+        disposeFxObject(fx.shadowObj);
+      }
     },
   };
 }
@@ -1119,7 +1142,7 @@ function emitBaguaFormationSequence3d(
     if (cancelled.v || !scene) return;
     const casterGround = from.clone();
     casterGround.y = 0.05;
-    // 1) Tụ lực nhỏ dưới chân caster
+    // 1) Tụ lực nhỏ dưới chân caster — sigil bát quái tròn mượt
     handles.push(
       emitGroundSigil3d(scene, casterGround, {
         flash: "bagua",
@@ -1129,13 +1152,13 @@ function emitBaguaFormationSequence3d(
       })
     );
     handles.push(
-      emitGroundQiDecal3d(scene, from, sheets.charge.length ? sheets.charge : ringUrls, {
+      emitGroundQiDecal3d(scene, from, ringUrls, {
         durationMs: CHARGE_MS,
         diameter: 1.9 * mul,
         opacity: 0.88,
-        spinSpeed: 3.2,
+        spinSpeed: 2.2,
         y: 0.04,
-        animateFrames: true,
+        animateFrames: false,
       })
     );
 
@@ -1366,15 +1389,22 @@ function emitSoulMageSequence3d(
 
   const start = () => {
     if (cancelled.v || !scene) return;
-    // 1) Tụ lực dưới chân caster
+    // 1) Tụ lực dưới chân caster — sigil trận pháp + body aura (không quay hình người trên sàn)
     handles.push(
-      emitGroundQiDecal3d(scene, from, sheets.charge.length ? sheets.charge : castUrls, {
+      emitGroundSigil3d(scene, from, {
+        flash: "violet_spirit",
+        scale: opts.scale,
         durationMs: CHARGE_MS + 40,
-        diameter: 1.85 * mul,
-        opacity: 0.88,
-        spinSpeed: 2.6,
-        y: 0.04,
-        animateFrames: true,
+        color: 0x9333ea,
+      })
+    );
+    handles.push(
+      emitBodyAura3d(scene, from, {
+        flash: "violet_spirit",
+        scale: opts.scale,
+        durationMs: CHARGE_MS + 60,
+        color: 0xc084fc,
+        pack: "vortex",
       })
     );
     handles.push(
@@ -1808,6 +1838,10 @@ export function emitFlyingSheet3d(
     sequenceOnce?: boolean;
     /** in = bay nhanh dần (chậm xuất → lao mạnh) */
     pathEase?: "in" | "out" | "inout";
+    noPitch?: boolean;
+    noPulse?: boolean;
+    /** Frames đã được lật ngang sẵn từ source (không cần UV hack) */
+    preFlipped?: boolean;
   } = {}
 ): Fx3dHandle {
   const mul = scaleMul(opts.scale);
@@ -1815,8 +1849,8 @@ export function emitFlyingSheet3d(
   const cancelled = { v: false };
   const handles: Fx3dHandle[] = [];
   const face = spiritFacing(from, to);
-  // Sân: ta +X / địch −X. Art đầu bên phải → bay −X (ta→địch) phải lật UV.
-  const flip = !!opts.headOnRight && face < 0;
+  // Sân: ta +X / địch −X. Art đầu bên phải → bay −X (ta→địch) phải lật UV (nếu chưa preFlipped).
+  const flip = !opts.preFlipped && !!opts.headOnRight && face < 0;
   const sprW = (opts.w ?? 1.4) * mul;
   const sprH = (opts.h ?? 1.4) * mul;
   const start = from.clone();
@@ -1824,7 +1858,7 @@ export function emitFlyingSheet3d(
   const end = to.clone();
   end.y = Math.max(to.y, opts.yLift ?? 0.9);
   // Tâm sprite lùi về phía caster → đầu (leading) chạy đúng from→to, đâm vào đích rồi mới bùm
-  if (opts.headOnRight) {
+  if (opts.headOnRight || opts.preFlipped || opts.headLeadFrac != null) {
     const lead = sprW * (opts.headLeadFrac ?? 0.36);
     const dx = end.x - start.x;
     const dz = end.z - start.z;
@@ -1868,11 +1902,33 @@ export function emitFlyingSheet3d(
       spr.position.copy(start);
       spr.renderOrder = 85;
       spr.frustumCulled = false;
+
+      // Bóng đổ 3D mặt đất đồng hành cùng đạn bay
+      const shadowMat = new THREE.MeshBasicMaterial({
+        map: getSoftShadowTexture(),
+        transparent: true,
+        opacity: 0.42,
+        depthWrite: false,
+        depthTest: true,
+      });
+      const shadowMesh = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), shadowMat);
+      shadowMesh.rotation.x = -Math.PI / 2;
+      const shadowBaseW = Math.max(1.1, sprW * 0.72);
+      const shadowBaseH = Math.max(0.55, sprH * 0.42);
+      shadowMesh.scale.set(shadowBaseW, shadowBaseH, 1);
+      shadowMesh.position.set(start.x, 0.035, start.z);
+      shadowMesh.renderOrder = 42;
+      shadowMesh.frustumCulled = false;
+
       const now = performance.now();
       handles.push(
         pushMesh(scene, {
           id: nextId++,
           obj: spr,
+          shadowObj: shadowMesh,
+          shadowMat,
+          shadowBaseW,
+          shadowBaseH,
           until: now + durationMs + 80,
           kind: "bolt",
           born: now,
@@ -1889,6 +1945,8 @@ export function emitFlyingSheet3d(
           baseScale: 1,
           facing: face,
           headLed: !!opts.headOnRight,
+          noPitch: !!opts.noPitch,
+          noPulse: !!opts.noPulse,
           // sequenceOnce: caller bật tường minh; mặc định bật khi head-led qi-stream
           sequenceOnce:
             opts.sequenceOnce != null
@@ -2398,7 +2456,7 @@ export function emitDragonSpirit3d(
   const sheets = resolveHonStreamSheets(packId, opts.skillId);
   const cancelled = { v: false };
   const handles: Fx3dHandle[] = [];
-  const bodyCount = opts.headOnly ? 0 : isDragon ? 5 : packId === "hon_soi" || packId === "hon_ho" ? 3 : 4;
+  const bodyCount = opts.headOnly ? 0 : isDragon ? 5 : (packId === "hon_soi" || packId === "hon_ho") ? 0 : 4;
 
   const start = () => {
     if (cancelled.v || !scene) return;
@@ -2419,11 +2477,12 @@ export function emitDragonSpirit3d(
         group.renderOrder = 90;
         const segments: THREE.Object3D[] = [];
 
-        // ĐẦU — qi_fire flight = wide; serpent = vuông
+        // ĐẦU — qi_fire / qi_tiger flight = wide; serpent = vuông
         const headMap = headFrames[0] || bodyFrames[0];
-        const wideFlight = isDragon && sheets.charge.length > 0;
-        const headW = wideFlight ? size * 1.55 : size;
-        const headH = wideFlight ? size * 0.78 : size * 0.95;
+        const isTiger = packId === "hon_ho" || packId === "hon_soi";
+        const wideFlight = (isDragon || isTiger) && sheets.charge.length > 0;
+        const headW = isTiger ? size * 2.0 : wideFlight ? size * 1.55 : size;
+        const headH = isTiger ? size * 1.0 : wideFlight ? size * 0.78 : size * 0.95;
         const headSpr = makeFxSprite(
           headMap,
           wideFlight ? 0xffffff : tint,
@@ -2610,11 +2669,13 @@ export function emitHonSpiritSequence3d(
   const cancelled = { v: false };
   const ground = from.clone();
   ground.y = Math.min(from.y, 0.12);
-  const flightArc = (qiStream ? 0.55 : 0.42) * variant.arcMul * tune.arcMul;
-  const flightSide = tune.side;
-  const flightW = packId === "hon_rong" ? 3.6 : packId === "hon_ho" || packId === "hon_soi" ? 3.2 : 3.4;
-  const flightH = packId === "hon_rong" ? 1.85 : 1.7;
-  const headLead = 0.38;
+  const isTiger = packId === "hon_ho" || packId === "hon_soi";
+  const flightArc = isTiger ? 0.22 : (qiStream ? 0.55 : 0.42) * variant.arcMul * tune.arcMul;
+  const flightSide = isTiger ? 0.02 : tune.side;
+  // Tỷ lệ chuẩn 2:1 cho hổ/sói (384x192), cao 1.3 cân đối với tướng ~1.28
+  const flightW = packId === "hon_rong" ? 3.6 : isTiger ? 2.6 : 3.4;
+  const flightH = packId === "hon_rong" ? 1.85 : isTiger ? 1.3 : 1.7;
+  const headLead = isTiger ? 0.28 : 0.38;
 
   const pushLayer = (at: THREE.Vector3, ref: HonLayerRef, extra: ItchSheetOpts = {}) => {
     handles.push(
@@ -2639,30 +2700,50 @@ export function emitHonSpiritSequence3d(
       loadFrameSet(pack.crescent),
       loadFrameSet(pack.sparkle),
       pack.orb ? loadFxTex(pack.orb).catch(() => null) : Promise.resolve(null),
-    ]).then(([rings, crescents, sparkles, orbG]) => {
+      streamSheets.charge.length ? loadFrameSet(streamSheets.charge) : Promise.resolve([]),
+    ]).then(([rings, crescents, sparkles, orbG, chargeFrames]) => {
       if (cancelled.v || !scene) return;
 
-      // 1) TỤ LỰ — qiStream: chỉ vòng đất dưới chân (không aura thân che tướng)
+      // 1) TỤ LỰ — Trận pháp sigil dưới chân + aura quanh thân + linh hồn ngưng tụ (không xoay hình thú bẹp trên sàn)
       if (qiStream) {
+        handles.push(
+          emitGroundSigil3d(scene, ground, {
+            flash: pack.flash,
+            scale: opts.scale,
+            durationMs: CHARGE_MS + 40,
+            color: tint,
+          })
+        );
         handles.push(
           emitShockwave3d(scene, ground, {
             flash: pack.flash,
             scale: opts.scale,
-            radius: 1.45 * sheetMul,
+            radius: 1.65 * sheetMul,
             durationMs: CHARGE_MS,
           })
         );
         handles.push(
-          emitGroundQiDecal3d(scene, from, streamSheets.charge, {
-            durationMs: CHARGE_MS + 40,
-            diameter: 1.9 * sheetMul,
-            opacity: 0.9,
-            spinSpeed: 2.6,
-            y: 0.04,
-            // charge×24 — flipbook + xoay = tụ lực sống
-            animateFrames: true,
+          emitBodyAura3d(scene, from, {
+            flash: pack.flash,
+            scale: opts.scale,
+            durationMs: CHARGE_MS + 60,
+            color: tintHot,
+            pack: packId === "hon_loi" ? "electric_shield" : packId === "hon_phong" ? "vortex" : "charged",
           })
         );
+        // Không spawn hình con hổ tĩnh tại caster để tránh bị chồng 2 con hổ
+        if (chargeFrames.length && !isTiger) {
+          handles.push(
+            emitHonSheetAt(scene, from, chargeFrames, {
+              durationMs: CHARGE_MS + 40,
+              w: 2.3 * sheetMul,
+              h: 1.5 * sheetMul,
+              opacity: 0.88,
+              y: 0.72,
+              color: tintHot,
+            })
+          );
+        }
       } else {
         handles.push(
           emitGroundSigil3d(scene, ground, {
@@ -2750,21 +2831,51 @@ export function emitHonSpiritSequence3d(
             });
           }
           if (qiStream) {
-            // 1 sprite: flight_01 lúc xuất → flight_N lúc trúng (không ghost chồng)
+            const face = spiritFacing(from, to);
+            // Sân: ta +X (phải) / địch −X (trái).
+            // Bộ frame flight_*.png đầu quay sang PHẢI (địch đánh ta, bay về +X).
+            // Bộ frame flight_left_*.png đầu quay sang TRÁI (ta đánh địch, bay về −X).
+            const isFlippedHead = face < 0;
+            let beastFolder = QI_PACK_FOLDERS[packId];
+            if (packId === "hon_rong") {
+              const sid = opts.skillId || "";
+              if (/thanh_long|thuong_long/.test(sid)) beastFolder = "skill/rong/qi_azure";
+              else if (/bach_long|ngan_long/.test(sid)) beastFolder = "skill/rong/qi_ivory";
+              else beastFolder = "skill/rong/qi_fire";
+            }
+            const headFrames = isFlippedHead
+              ? qiSeq(beastFolder, "flight_left", 24)
+              : (packId === "hon_rong" ? qiSeq(beastFolder, "flight", 24) : streamSheets.head);
+
+            // Linh thú bay theo đường đạn 3D (sprite bay in-place + Three.js tịnh tiến mượt)
             handles.push(
-              emitFlyingSheet3d(scene, from, to, streamSheets.head, {
+              emitFlyingSheet3d(scene, from, to, headFrames, {
                 durationMs: FLIGHT_MS,
                 w: flightW,
                 h: flightH,
                 arc: flightArc,
                 scale: opts.scale,
                 color: 0xffffff,
-                yLift: 0.95,
+                yLift: isTiger ? 0.68 : 0.95,
                 opacity: 1,
-                headOnRight: true,
+                headOnRight: !isFlippedHead,
+                preFlipped: isFlippedHead,
                 headLeadFrac: headLead,
                 sequenceOnce: true,
-                pathEase: "in", // bay nhanh dần tới địch
+                pathEase: isTiger ? "inout" : "in", // hổ: phi nước đại đều mượt thấy rõ bước chân, không vọt 300ms cuối
+                noPitch: isTiger, // hổ 4 chân luôn hướng đất vững chãi, không bị cắm đầu 45 độ
+                noPulse: isTiger, // không bị rung phập phồng co bóp
+              })
+            );
+            // Dải hạt khí thế đuôi linh thú — hổ giảm mật độ để không che khuất móng vuốt và thân
+            handles.push(
+              emitTrail3d(scene, from, to, {
+                flash: pack.flash,
+                durationMs: FLIGHT_MS,
+                density: isTiger ? 4 : Math.round(18 * tune.densityMul),
+                arc: flightArc * 0.95,
+                scale: opts.scale,
+                streak: !isTiger,
               })
             );
           } else {
@@ -2820,6 +2931,17 @@ export function emitHonSpiritSequence3d(
           if (cancelled.v || !scene) return;
           const hit = to.clone();
           hit.y += 0.18;
+          // Flash đĩa chớp sáng cực đại tại đích
+          handles.push(emitFlashDisc3d(scene, hit, pack.flash, opts.scale));
+          // Vòng shockwave nổ lan tỏa trên mặt đất
+          handles.push(
+            emitShockwave3d(scene, hit, {
+              flash: pack.flash,
+              scale: opts.scale,
+              radius: 2.8 * sheetMul,
+              durationMs: 400,
+            })
+          );
           // Chiêu lôi — thêm sét dọc màu đúng skill (khí thế)
           if (packId === "hon_loi") {
             handles.push(
@@ -3381,13 +3503,24 @@ export function tickBattleVfx3d(_scene: THREE.Scene, now: number, dt: number): v
       _tmp.copy(fx.from).lerp(fx.to, e);
       _tmp.y += Math.sin(e * Math.PI) * (fx.arc || 0.5);
       fx.obj.position.copy(_tmp);
+      if (fx.shadowObj) {
+        fx.shadowObj.position.set(_tmp.x, 0.035, _tmp.z);
+        const alt = Math.max(0, _tmp.y - 0.5);
+        const s = Math.max(0.45, 1 - alt * 0.25);
+        if (fx.shadowBaseW && fx.shadowBaseH) {
+          fx.shadowObj.scale.set(fx.shadowBaseW * s, fx.shadowBaseH * s, 1);
+        }
+        if (fx.shadowMat) {
+          fx.shadowMat.opacity = Math.max(0, 0.42 * (t < 0.88 ? 1 : 1 - (t - 0.88) / 0.12));
+        }
+      }
       const spr = fx.obj as THREE.Sprite;
       const mat = fx.spriteMat || (spr.material as THREE.SpriteMaterial);
       // Frame 1 → N đúng 1 lần theo tiến độ bay (không loop, 1 sprite)
       if (mat && fx.frames && fx.frames.length > 1) {
         if (fx.sequenceOnce) {
           const last = fx.frames.length - 1;
-          const fi = Math.min(last, Math.floor(e * fx.frames.length));
+          const fi = Math.min(last, Math.floor(t * fx.frames.length));
           if (fi !== fx.frameI) {
             fx.frameI = fi;
             mat.map = fx.frames[fi];
@@ -3400,7 +3533,20 @@ export function tickBattleVfx3d(_scene: THREE.Scene, now: number, dt: number): v
           fx.nextFrame = now + (fx.frameMs || 55);
         }
       }
-      const pulse = 1 + 0.1 * Math.sin(t * Math.PI * 5);
+      // Độ nghiêng chúi bổ nhào theo tiếp tuyến quỹ đạo parabol 3D (Tangent Pitch Tilt)
+      if (mat && fx.headLed && fx.from && fx.to && !fx.noPitch) {
+        const dx = fx.to.x - fx.from.x;
+        const dz = fx.to.z - fx.from.z;
+        const distXZ = Math.max(1.6, Math.hypot(dx, dz));
+        const arc = fx.arc || 0.5;
+        const slopeY = Math.cos(e * Math.PI) * Math.PI * arc;
+        const pitch = Math.atan2(slopeY, distXZ);
+        const sign = (fx.facing ?? 1) >= 0 ? 1 : -1;
+        mat.rotation = pitch * sign;
+      } else if (mat && fx.noPitch) {
+        mat.rotation = 0;
+      }
+      const pulse = fx.noPulse ? 1 : 1 + 0.1 * Math.sin(t * Math.PI * 5);
       const grow = e < 0.15 ? 0.55 + (e / 0.15) * 0.45 : 1;
       if (!spr.userData.baseW) {
         spr.userData.baseW = spr.scale.x;
@@ -3583,6 +3729,10 @@ export function tickBattleVfx3d(_scene: THREE.Scene, now: number, dt: number): v
       ACTIVE_MESH.splice(i, 1);
       fx.obj.parent?.remove(fx.obj);
       disposeFxObject(fx.obj);
+      if (fx.shadowObj) {
+        fx.shadowObj.parent?.remove(fx.shadowObj);
+        disposeFxObject(fx.shadowObj);
+      }
     }
   }
 
@@ -3683,5 +3833,10 @@ export function clearBattleVfx3d(scene?: THREE.Scene | null): void {
     scene?.remove(fx.obj);
     fx.obj.parent?.remove(fx.obj);
     disposeFxObject(fx.obj);
+    if (fx.shadowObj) {
+      scene?.remove(fx.shadowObj);
+      fx.shadowObj.parent?.remove(fx.shadowObj);
+      disposeFxObject(fx.shadowObj);
+    }
   }
 }

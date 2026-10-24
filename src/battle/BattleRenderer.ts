@@ -322,6 +322,10 @@ export class BattleRenderer {
   /** setTimeout từ skillFlash/wave — phải hủy trong clearFx kẻo FX sót sang chiêu sau */
   private skillFxTimers: ReturnType<typeof setTimeout>[] = [];
   private onResizeBound = () => this.resize();
+  private sunLight: THREE.DirectionalLight | null = null;
+  private hemiLight: THREE.HemisphereLight | null = null;
+  private ambientLight: THREE.AmbientLight | null = null;
+  private skillDimUntil = 0;
 
   private scheduleSkillFx(fn: () => void, ms: number): void {
     const id = setTimeout(() => {
@@ -377,25 +381,25 @@ export class BattleRenderer {
     this.renderer = renderer;
 
     const scene = new THREE.Scene();
-    const bg = 0x8a7358;
+    const bg = 0x1a1614;
     scene.background = new THREE.Color(bg);
     scene.fog = this.preview
-      ? new THREE.FogExp2(0x8a7358, 0.012)
-      : new THREE.FogExp2(0x8a7358, 0.0035);
+      ? new THREE.FogExp2(0x221b16, 0.004)
+      : new THREE.FogExp2(0x221b16, 0.0025);
     this.scene = scene;
 
-    const camera = new THREE.PerspectiveCamera(34, 1, 0.2, 90);
+    const camera = new THREE.PerspectiveCamera(38, 1, 0.2, 90);
     if (this.preview) {
-      camera.position.set(-1.4, 5.8, 9.2);
-      camera.lookAt(-2.4, 0.45, 0);
+      camera.position.set(-1.4, 6.0, 11.2);
+      camera.lookAt(-2.4, 0.65, 0);
     } else {
-      camera.position.set(0, 7.4, 12.4);
-      camera.lookAt(0, 0.35, -0.2);
+      camera.position.set(0, 6.8, 13.6);
+      camera.lookAt(0, 0.65, -0.2);
     }
     this.camera = camera;
     this.camHome.copy(camera.position);
-    if (this.preview) this.camLook.set(-2.4, 0.45, 0);
-    else this.camLook.set(0, 0.35, -0.2);
+    if (this.preview) this.camLook.set(-2.4, 0.65, 0);
+    else this.camLook.set(0, 0.65, -0.2);
     this.refDist = camera.position.distanceTo(new THREE.Vector3(0, 0.4, 0));
 
     this.buildArena(scene);
@@ -432,58 +436,86 @@ export class BattleRenderer {
   }
 
   private buildArena(scene: THREE.Scene): void {
-    // Sàn + backdrop texture (arena-floor / arena-back) — không plane nâu trong suốt
-    scene.add(new THREE.HemisphereLight(0xe8dcc8, 0x1a1410, 0.9));
-    const sun = new THREE.DirectionalLight(0xffe2c8, 0.85);
+    // Sàn đá cổ kính Tam Quốc + backdrop trường thành
+    const hemi = new THREE.HemisphereLight(0xe8dcc8, 0x221c16, 0.95);
+    scene.add(hemi);
+    this.hemiLight = hemi;
+
+    const sun = new THREE.DirectionalLight(0xffecd4, 0.9);
     sun.position.set(-1.5, 11, 6);
     sun.castShadow = false;
     scene.add(sun);
-    scene.add(new THREE.AmbientLight(0x5a4a3c, 0.4));
+    this.sunLight = sun;
+
+    const amb = new THREE.AmbientLight(0x605040, 0.45);
+    scene.add(amb);
+    this.ambientLight = amb;
 
     const loader = new THREE.TextureLoader();
     const aniso = Math.min(8, this.renderer?.capabilities.getMaxAnisotropy() || 1);
 
-    const groundMat = new THREE.MeshBasicMaterial({ color: 0xcbb89a, depthWrite: true });
-    const ground = new THREE.Mesh(new THREE.PlaneGeometry(36, 26), groundMat);
+    // 1. Sàn gạch đá liền mạch mở rộng toàn cảnh (ground)
+    const groundMat = new THREE.MeshStandardMaterial({
+      color: 0xcccccc,
+      roughness: 0.84,
+      metalness: 0.06,
+      depthWrite: true,
+    });
+    const ground = new THREE.Mesh(new THREE.PlaneGeometry(48, 30), groundMat);
     ground.rotation.x = -Math.PI / 2;
-    ground.position.set(0, -0.04, -1.2);
+    ground.position.set(0, 0, -1.2);
+    ground.renderOrder = 0;
     scene.add(ground);
 
-    // Sàn y=0 — pad/VFX đặt y>0 nên không bị che
-    const floorMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+    loader.load("assets/battle/arena-ground-tile.jpg", (tex) => {
+      tex.colorSpace = THREE.SRGBColorSpace;
+      tex.wrapS = THREE.RepeatWrapping;
+      tex.wrapT = THREE.RepeatWrapping;
+      tex.repeat.set(14, 8);
+      tex.anisotropy = aniso;
+      tex.needsUpdate = true;
+      groundMat.map = tex;
+      groundMat.color.set(0xffffff);
+      groundMat.needsUpdate = true;
+    });
+
+    // 2. Quảng trường đá trung tâm với viền đồng cổ & trận đồ (courtyard)
+    // Dùng RGBA png với viền mềm (feathered alpha) chuyển mượt vào nền gạch đá xung quanh — không vết cắt giấy
+    const floorMat = new THREE.MeshStandardMaterial({
+      color: 0xffffff,
+      roughness: 0.8,
+      metalness: 0.1,
+      transparent: true,
+      depthWrite: false,
+    });
     const courtyard = new THREE.Mesh(new THREE.PlaneGeometry(15.2, 9.8), floorMat);
     courtyard.rotation.x = -Math.PI / 2;
-    courtyard.position.y = 0;
+    courtyard.position.set(0, 0.002, 0);
+    courtyard.renderOrder = 1;
     scene.add(courtyard);
 
-    loader.load("assets/battle/arena-floor-3k.jpg", (tex) => {
+    loader.load("assets/battle/arena-floor-3k.png", (tex) => {
       tex.colorSpace = THREE.SRGBColorSpace;
       tex.anisotropy = aniso;
       floorMat.map = tex;
       floorMat.needsUpdate = true;
-      const tiled = tex.clone();
-      tiled.colorSpace = THREE.SRGBColorSpace;
-      tiled.wrapS = THREE.RepeatWrapping;
-      tiled.wrapT = THREE.RepeatWrapping;
-      tiled.repeat.set(2.8, 2.2);
-      tiled.anisotropy = aniso;
-      tiled.needsUpdate = true;
-      groundMat.map = tiled;
-      groundMat.color.set(0xe2d2b6);
-      groundMat.needsUpdate = true;
     });
 
-    const backMat = new THREE.MeshBasicMaterial({ color: 0xfff6ea });
-    const back = new THREE.Mesh(new THREE.PlaneGeometry(32, 11.5), backMat);
-    back.position.set(0, 3.85, -6.55);
+    // 3. Phông thành trì phía sau (backdrop)
+    const backMat = new THREE.MeshBasicMaterial({ color: 0xffffff, fog: false });
+    const back = new THREE.Mesh(new THREE.PlaneGeometry(34, 5.4), backMat);
+    back.position.set(0, 2.7, -6.8);
     scene.add(back);
     loader.load("assets/battle/arena-back-3k.jpg", (tex) => {
       tex.colorSpace = THREE.SRGBColorSpace;
       tex.anisotropy = aniso;
       tex.wrapS = THREE.ClampToEdgeWrapping;
       tex.wrapT = THREE.ClampToEdgeWrapping;
-      tex.offset.set(0, 0.04);
-      tex.repeat.set(1, 0.96);
+      tex.generateMipmaps = false;
+      tex.minFilter = THREE.LinearFilter;
+      tex.magFilter = THREE.LinearFilter;
+      tex.offset.set(0, 0);
+      tex.repeat.set(1, 1);
       tex.needsUpdate = true;
       backMat.map = tex;
       backMat.needsUpdate = true;
@@ -558,6 +590,33 @@ export class BattleRenderer {
       ...(allies || []).map((u) => add(u, false)),
       ...(foes || []).map((u) => add(u, true)),
     ]);
+  }
+
+  /** Đổi loại binh chủng và cấp bậc của võ tướng linh hoạt trên sân */
+  async setFighterTroop(uid: string, troop: string, tier = 1, wikiId?: string | null): Promise<boolean> {
+    const f = this.fighters.get(uid);
+    if (!f || !this.scene) return false;
+    const enemy = f.side === "enemy";
+    try {
+      const actor = await createBattleActor(
+        troop,
+        enemy,
+        f.seed,
+        f.name,
+        tier,
+        wikiId
+      );
+      this.scene.remove(f.actor.root);
+      actor.root.position.copy(f.home);
+      this.scene.add(actor.root);
+      f.actor = actor;
+      f.troop = troop;
+      this.applyScreenEqualScale(f);
+      return true;
+    } catch (err) {
+      console.warn("[battle] setFighterTroop fail", uid, troop, err);
+      return false;
+    }
   }
 
   private createHud(
@@ -688,10 +747,11 @@ export class BattleRenderer {
     if (dir.lengthSq() > 0.01) dir.normalize();
     const ranged = from.troop === "archer" || from.troop === "strategist";
     const cavalry = from.troop === "cavalry";
-    // Ká»µ: xĂ´ng gáº§n Ä‘á»‹ch (ngá»±a tĂ´ng); bá»™/thÆ°Æ¡ng: lunge ngáº¯n; cung/mÆ°u: chá»‰ nghiĂªng ngÆ°á»i
+    const spear = from.troop === "spear";
     let reach = 0.85;
     if (missed) reach = 0.25;
     else if (ranged) reach = 0.35;
+    else if (spear) reach = 1.05;
     else if (cavalry && to && !to.dead) {
       const dist = from.home.distanceTo(to.home);
       reach = Math.min(Math.max(dist * 0.72, 1.35), 2.6);
@@ -701,42 +761,55 @@ export class BattleRenderer {
       from: from.home.clone(),
       peak,
       t0: performance.now(),
-      durOut: ranged ? 110 : cavalry ? 190 : 130,
-      durBack: ranged ? 200 : cavalry ? 300 : 240,
+      durOut: ranged ? 110 : spear ? 95 : cavalry ? 190 : 125,
+      durBack: ranged ? 200 : spear ? 200 : cavalry ? 300 : 220,
     };
     if (to && !to.dead && !missed) {
       const atkTroop = from.troop;
-      const now = performance.now();
-      if (atkTroop === "archer" || atkTroop === "strategist") {
-        spawnSkillBeam(
-          this.scene,
-          from.actor.root.position.clone(),
-          to.home,
-          atkTroop === "strategist" ? "bagua" : "thunder",
-          now
-        );
-      } else if (atkTroop === "cavalry") {
-        // ÄĂ¡nh thÆ°á»ng ká»µ â€” tĂ´ng nháº¹ (S). Skill charge dĂ¹ng scale M/L + windup riĂªng.
-        spawnCavalryCharge(this.scene, from.home.clone(), to.home.clone(), now, "S");
-      } else if (atkTroop === "spear") {
-        // ThÆ°Æ¡ng Ä‘Ă¢m â€” slash háº¹p + beam nháº¹ (pierce)
-        spawnSlashArc(this.scene, this.casterFxAt(from), to.home, now, "steel");
-        spawnSkillBeam(this.scene, this.casterFxAt(from), to.home, "steel", now);
-      } else {
-        // Bá»™ binh â€” chĂ©m
-        spawnSlashArc(this.scene, this.casterFxAt(from), to.home, now, "white");
-      }
-      const hitDelay = cavalry ? 170 : 130;
+      const swingDelay =
+        atkTroop === "spear" ? 45 : atkTroop === "cavalry" ? 70 : atkTroop === "archer" ? 65 : atkTroop === "strategist" ? 60 : 55;
+      const hitDelay = cavalry ? 175 : spear ? 100 : ranged ? 145 : 120;
+
+      // Xuất hiện hiệu ứng vũ khí ngay khi tướng vung chém / đâm / buông cung
+      setTimeout(() => {
+        if (!this.scene || from.dead) return;
+        const now = performance.now();
+        if (atkTroop === "archer") {
+          spawnSkillBeam(
+            this.scene,
+            this.casterFxAt(from),
+            to.home,
+            "steel",
+            now
+          );
+        } else if (atkTroop === "strategist") {
+          spawnSkillBeam(
+            this.scene,
+            this.casterFxAt(from),
+            to.home,
+            "bagua",
+            now
+          );
+        } else if (atkTroop === "cavalry") {
+          spawnCavalryCharge(this.scene, from.home.clone(), to.home.clone(), now, "S");
+        } else if (atkTroop === "spear") {
+          spawnSlashArc(this.scene, this.casterFxAt(from), to.home, now, "steel");
+          spawnSkillBeam(this.scene, this.casterFxAt(from), to.home, "steel", now);
+        } else {
+          spawnSlashArc(this.scene, this.casterFxAt(from), to.home, now, "white");
+        }
+      }, swingDelay);
+
       setTimeout(() => {
         if (!to.dead && this.scene) {
           to.hitFlashUntil = performance.now() + (cavalry ? 380 : 300);
           playActor(to.actor, "hit", 0.05);
           spawnHitBurst(this.scene, this.casterFxAt(to));
-          // Ká»µ tĂ´ng trĂºng â†’ Ä‘á»‹ch bá»‹ Ä‘áº©y lĂ¹i nháº¹
+          this.triggerCamPunch(0.035, 100);
           if (cavalry) {
             to.lunge = {
               from: to.home.clone(),
-              peak: to.home.clone().addScaledVector(dir, 0.32),
+              peak: to.home.clone().addScaledVector(dir, 0.35),
               t0: performance.now(),
               durOut: 90,
               durBack: 220,
@@ -812,6 +885,10 @@ export class BattleRenderer {
     });
     /** Qi-stream (rồng/hồn/bát quái…) — bỏ aura/windup 2D cũ kẻo đè FX mới */
     const honQi = honPackForStyle(fx3dStyle, skillKind, skillId);
+    // Kích hoạt làm tối nền đấu trường khi xuất đại chiêu (scale L hoặc Hồn khí thế) để FX phát sáng rực rỡ
+    if (scale === "L" || honQi) {
+      this.skillDimUntil = performance.now() + 850;
+    }
     const usePatternChoreo =
       !support &&
       !isCharge &&
@@ -932,26 +1009,27 @@ export class BattleRenderer {
             pattern,
           });
           if (mode === "impact") {
-            if (isCharge || isRush || fx3dStyle === "rush" || fx3dStyle === "charge") {
-              const push =
-                f.side === "ally"
-                  ? isCharge || fx3dStyle === "charge"
-                    ? -0.35
-                    : -0.3
-                  : isCharge || fx3dStyle === "charge"
-                    ? 0.35
-                    : 0.3;
+            if (!support && !isShield) {
+              const pushMag =
+                isCharge || fx3dStyle === "charge"
+                  ? 0.35
+                  : isRush || fx3dStyle === "rush"
+                    ? 0.28
+                    : scale === "L"
+                      ? 0.22
+                      : 0.14;
+              const push = f.side === "ally" ? -pushMag : pushMag;
               to.lunge = {
                 from: to.home.clone(),
                 peak: to.home.clone().add(new THREE.Vector3(push, 0, 0)),
                 t0: tnow,
-                durOut: isCharge ? 100 : 80,
-                durBack: isCharge ? 240 : 200,
+                durOut: 65,
+                durBack: scale === "L" ? 220 : 170,
               };
-            }
-            if (!support || isShield) {
               playActor(to.actor, "hit", 0.05);
-              to.hitFlashUntil = tnow + (isShield ? 360 : 560);
+              to.hitFlashUntil = tnow + 560;
+            } else if (isShield) {
+              to.hitFlashUntil = tnow + 360;
             } else {
               to.hitFlashUntil = tnow + 320;
             }
@@ -978,6 +1056,15 @@ export class BattleRenderer {
                 pattern,
               });
               if (!support) {
+                const pushMag = scale === "L" ? 0.22 : 0.14;
+                const push = f.side === "ally" ? -pushMag : pushMag;
+                to.lunge = {
+                  from: to.home.clone(),
+                  peak: to.home.clone().add(new THREE.Vector3(push, 0, 0)),
+                  t0: performance.now(),
+                  durOut: 65,
+                  durBack: scale === "L" ? 220 : 170,
+                };
                 playActor(to.actor, "hit", 0.05);
                 to.hitFlashUntil = performance.now() + 560;
               }
@@ -1008,7 +1095,7 @@ export class BattleRenderer {
         peak = f.home.clone().add(new THREE.Vector3(toward * reach, 0, 0));
       }
       f.lunge = {
-        from: f.home.clone(),
+        from: f.actor.root.position.clone(),
         peak,
         t0: now,
         durOut: isCharge || isRush ? 240 : movement === "plant" || isShield ? 150 : 170,
@@ -1037,15 +1124,15 @@ export class BattleRenderer {
           const at = this.casterFxAt(f);
           if (phase === "windup") {
             if (!honQi) spawnSkillWindup(this.scene, at, skillKind, scale);
-            // Nhún nhẹ ra sau trước khi xung
+            // Chuẩn bị tụ lực mượt — lùi nhẹ lấy thế, không giật snap
             if (!isShield) {
-              const back = f.side === "ally" ? 0.18 : -0.18;
+              const back = f.side === "ally" ? 0.14 : -0.14;
               f.lunge = {
                 from: f.home.clone(),
                 peak: f.home.clone().add(new THREE.Vector3(back, 0, 0)),
                 t0: performance.now(),
-                durOut: 90,
-                durBack: 1,
+                durOut: 110,
+                durBack: 40,
               };
             }
           } else if (phase === "cast") {
@@ -1058,8 +1145,16 @@ export class BattleRenderer {
           } else if (phase === "emission") {
             deliverToTargets("emission");
             if (isShield && !targets.length) spawnShieldBarrier(this.scene, at, performance.now(), scale);
+            // Đồng bộ impact của hồn đúng mốc va chạm (hitAt), tránh trễ 400ms
+            if (honQi) {
+              const honTl = hostileTimeline({ style: fx3dStyle, scale, pattern });
+              const hitAtMs = honTl.chargeMs + honTl.flightMs - 35;
+              this.scheduleSkillFx(() => deliverToTargets("impact"), hitAtMs);
+            }
           } else if (phase === "impact") {
-            deliverToTargets("impact");
+            if (!honQi) {
+              deliverToTargets("impact");
+            }
           }
         },
         () => {
@@ -1093,7 +1188,9 @@ export class BattleRenderer {
       const damp = Math.min(1, (this.camPunchUntil - now) / 180);
       const ox = (Math.random() - 0.5) * this.camPunchAmp * damp;
       const oy = (Math.random() - 0.5) * this.camPunchAmp * 0.4 * damp;
-      this.camera.position.set(this.camHome.x + ox, this.camHome.y + oy, this.camHome.z);
+      // Cú giật nén Z mô phỏng sóng xung kích va đập vào ống kính
+      const oz = -0.16 * this.camPunchAmp * Math.sin(damp * Math.PI);
+      this.camera.position.set(this.camHome.x + ox, this.camHome.y + oy, this.camHome.z + oz);
       this.camera.lookAt(this.camLook);
     } else if (this.camPunchAmp > 0) {
       this.camera.position.copy(this.camHome);
@@ -1172,19 +1269,16 @@ export class BattleRenderer {
       return;
     }
     let pos: THREE.Vector3;
-    let squash = 1;
     if (elapsed <= L.durOut) {
       const u = this.easeInOut(elapsed / L.durOut);
       pos = L.from.clone().lerp(L.peak, u);
-      // Windup â†’ strike: kĂ©o dĂ i theo hÆ°á»›ng Ä‘Ă¡nh
-      squash = 1 + u * 0.12;
     } else {
       const u = this.easeInOut((elapsed - L.durOut) / L.durBack);
       pos = L.peak.clone().lerp(L.from, u);
-      squash = 1.12 - u * 0.12;
     }
     f.actor.root.position.copy(pos);
-    this.applyScreenEqualScale(f, squash, 2 - squash);
+    // Giữ nguyên tỉ lệ (squash = 1) — tuyệt đối không bẹp dọc (tránh cảm giác nhúng người)
+    this.applyScreenEqualScale(f, 1, 1);
   }
 
   private applyHitFlash(f: Fighter, now: number): void {
@@ -1263,6 +1357,20 @@ export class BattleRenderer {
     });
 
     if (!freezeUnits) this.updateCamJuice(now);
+    // Dimming ánh sáng sàn khi xuất đại chiêu (tôn vinh ánh sáng phát quang của chiêu)
+    if (this.sunLight && this.hemiLight && this.ambientLight) {
+      if (now < this.skillDimUntil) {
+        const remaining = (this.skillDimUntil - now) / 850;
+        const dimFactor = 0.65 + 0.35 * (1 - Math.sin(remaining * Math.PI));
+        this.sunLight.intensity = 0.85 * dimFactor;
+        this.hemiLight.intensity = 0.9 * dimFactor;
+        this.ambientLight.intensity = 0.4 * dimFactor;
+      } else if (this.sunLight.intensity !== 0.85) {
+        this.sunLight.intensity = 0.85;
+        this.hemiLight.intensity = 0.9;
+        this.ambientLight.intensity = 0.4;
+      }
+    }
     tickBattleVfx(this.scene, now, dt);
     tickBattleVfx3d(this.scene, now, dt);
     this.syncHudPositions();

@@ -38,15 +38,18 @@ def clamp(v: float, lo: float, hi: float) -> float:
 
 def ensure_ref() -> Image.Image:
     OUT.mkdir(parents=True, exist_ok=True)
-    if REF_SRC.exists():
-        im = Image.open(REF_SRC).convert("RGBA")
-        if im.size != (W, H):
-            im = im.resize((W, H), Image.Resampling.LANCZOS)
-        im.save(REF)
-        return im
     if REF.exists():
         return Image.open(REF).convert("RGBA")
-    raise SystemExit(f"Missing dragon ref: {REF_SRC}")
+    if REF_SRC.exists():
+        try:
+            im = Image.open(REF_SRC).convert("RGBA")
+            if im.size != (W, H):
+                im = im.resize((W, H), Image.Resampling.LANCZOS)
+            im.save(REF)
+            return im
+        except Exception:
+            pass
+    raise SystemExit(f"Missing dragon ref: {REF}")
 
 
 def to_fire_palette(im: Image.Image) -> Image.Image:
@@ -134,7 +137,7 @@ def warp_serpentine(
                 + dys[x + 3] * 0.05
             )
         dys = tmp
-    max_step = 0.28  # px / cột — quan trọng chống tách
+    max_step = 0.85  # px / cột — cho phép sóng uốn lượn sâu mà không bị xé thân
     for _ in range(6):
         for x in range(1, w):
             d = dys[x] - dys[x - 1]
@@ -221,8 +224,8 @@ def soft_vortex(im: Image.Image, t: float) -> Image.Image:
 def render_flight(base: Image.Image, frame_i: int) -> Image.Image:
     t = (frame_i - 1) / N
     phase = t * PI2
-    amp = 18.0 + 10.0 * math.sin(phase)  # key uốn rõ
-    return warp_serpentine(base, phase, amp=amp, waves=1.12, head_frac=0.24, head_dampen=0.08)
+    amp = 36.0 + 8.0 * math.sin(phase)  # Uốn lượn sâu, cuộn sóng rõ rệt
+    return warp_serpentine(base, phase, amp=amp, waves=1.18, head_frac=0.22, head_dampen=0.07)
 
 
 def render_charge(base: Image.Image, frame_i: int) -> Image.Image:

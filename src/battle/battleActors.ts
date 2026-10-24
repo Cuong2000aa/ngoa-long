@@ -16,6 +16,7 @@ type SheetMeta = {
   troop?: string;
   tier?: number;
   wikiId?: string;
+  attackFrames?: number;
 };
 
 type SheetsFile = {
@@ -93,30 +94,142 @@ function loadImage(url: string): Promise<HTMLImageElement> {
 
 type Clip = { row: number; start: number; frames: number; fps: number; loop: boolean };
 
-const CLIPS_WIKI: Record<string, Clip> = {
-  idle: { row: 1, start: 0, frames: 4, fps: 5, loop: true },
-  attack: { row: 0, start: 0, frames: 8, fps: 18, loop: false },
-  skill: { row: 1, start: 4, frames: 4, fps: 12, loop: false },
-  hit: { row: 0, start: 5, frames: 2, fps: 10, loop: false },
-  death: { row: 1, start: 0, frames: 1, fps: 1, loop: false },
-};
-
-/** Sheet solo: idle đứng yên (1 frame — không rung), attack có trail */
-const CLIPS_SOLO: Record<string, Clip> = {
+export const CLIPS_WIKI: Record<string, Clip> = {
   idle: { row: 1, start: 0, frames: 1, fps: 1, loop: true },
-  attack: { row: 0, start: 1, frames: 6, fps: 14, loop: false },
-  skill: { row: 0, start: 2, frames: 4, fps: 12, loop: false },
-  hit: { row: 1, start: 6, frames: 1, fps: 8, loop: false },
-  death: { row: 1, start: 6, frames: 1, fps: 1, loop: false },
+  attack: { row: 0, start: 0, frames: 8, fps: 16, loop: false },
+  skill: { row: 1, start: 4, frames: 4, fps: 10, loop: false },
+  hit: { row: 1, start: 2, frames: 1, fps: 8, loop: false },
+  death: { row: 1, start: 2, frames: 1, fps: 1, loop: false },
 };
 
+/** Sheet solo mặc định (fallback): idle tĩnh 1f, skill vận khí 4f, hit lùi thế 1f */
+export const CLIPS_SOLO: Record<string, Clip> = {
+  idle: { row: 1, start: 0, frames: 1, fps: 1, loop: true },
+  attack: { row: 0, start: 0, frames: 8, fps: 16, loop: false },
+  skill: { row: 1, start: 4, frames: 4, fps: 10, loop: false },
+  hit: { row: 1, start: 2, frames: 1, fps: 8, loop: false },
+  death: { row: 1, start: 2, frames: 1, fps: 1, loop: false },
+};
+
+/** Bộ binh — chém xả dứt khoát 8 frames */
+const CLIPS_INFANTRY: Record<string, Clip> = {
+  idle: { row: 1, start: 0, frames: 1, fps: 1, loop: true },
+  attack: { row: 0, start: 0, frames: 8, fps: 16, loop: false },
+  skill: { row: 1, start: 4, frames: 4, fps: 10, loop: false },
+  hit: { row: 1, start: 2, frames: 1, fps: 8, loop: false },
+  death: { row: 1, start: 2, frames: 1, fps: 1, loop: false },
+};
+
+/** Thương binh — nhấp nháy lùi rồi đâm thẳng cực nhanh 8 frames */
+const CLIPS_SPEAR: Record<string, Clip> = {
+  idle: { row: 1, start: 0, frames: 1, fps: 1, loop: true },
+  attack: { row: 0, start: 0, frames: 8, fps: 16, loop: false },
+  skill: { row: 1, start: 4, frames: 4, fps: 10, loop: false },
+  hit: { row: 1, start: 2, frames: 1, fps: 8, loop: false },
+  death: { row: 1, start: 2, frames: 1, fps: 1, loop: false },
+};
+
+/** Kỵ binh — lướt vó ngựa vung đao dũng mãnh 8 frames */
+const CLIPS_CAVALRY: Record<string, Clip> = {
+  idle: { row: 1, start: 0, frames: 1, fps: 1, loop: true },
+  attack: { row: 0, start: 0, frames: 8, fps: 16, loop: false },
+  skill: { row: 1, start: 4, frames: 4, fps: 10, loop: false },
+  hit: { row: 1, start: 2, frames: 1, fps: 8, loop: false },
+  death: { row: 1, start: 2, frames: 1, fps: 1, loop: false },
+};
+
+/** Cung thủ — kéo cung nhắm rồi buông tên 8 frames */
+const CLIPS_ARCHER: Record<string, Clip> = {
+  idle: { row: 1, start: 0, frames: 1, fps: 1, loop: true },
+  attack: { row: 0, start: 0, frames: 8, fps: 16, loop: false },
+  skill: { row: 1, start: 4, frames: 4, fps: 10, loop: false },
+  hit: { row: 1, start: 2, frames: 1, fps: 8, loop: false },
+  death: { row: 1, start: 2, frames: 1, fps: 1, loop: false },
+};
+
+/** Mưu sĩ — vung quạt phất lệnh niệm thuật uyển chuyển 8 frames */
+const CLIPS_STRATEGIST: Record<string, Clip> = {
+  idle: { row: 1, start: 0, frames: 1, fps: 1, loop: true },
+  attack: { row: 0, start: 0, frames: 8, fps: 16, loop: false },
+  skill: { row: 1, start: 4, frames: 4, fps: 10, loop: false },
+  hit: { row: 1, start: 2, frames: 1, fps: 8, loop: false },
+  death: { row: 1, start: 2, frames: 1, fps: 1, loop: false },
+};
+
+/** Hổ Báo Kỵ — kỵ binh tinh nhuệ bậc cao (tier >= 5) */
 const CLIPS_HOBAO: Record<string, Clip> = {
   idle: { row: 1, start: 0, frames: 1, fps: 1, loop: true },
-  attack: { row: 0, start: 0, frames: 8, fps: 15, loop: false },
-  skill: { row: 1, start: 0, frames: 8, fps: 12, loop: false },
-  hit: { row: 1, start: 0, frames: 1, fps: 8, loop: false },
-  death: { row: 1, start: 0, frames: 1, fps: 1, loop: false },
+  attack: { row: 0, start: 0, frames: 8, fps: 16, loop: false },
+  skill: { row: 1, start: 0, frames: 8, fps: 14, loop: false },
+  hit: { row: 0, start: 1, frames: 1, fps: 8, loop: false },
+  death: { row: 0, start: 1, frames: 1, fps: 1, loop: false },
 };
+
+/** Chọn bộ clip diễn hoạt tối ưu theo từng loại binh chủng */
+function clipsForTroop(
+  troop?: string,
+  kind?: string,
+  sheetPath?: string,
+  meta?: SheetMeta
+): Record<string, Clip> {
+  if (kind === "hobao" || (sheetPath && sheetPath.includes("hobao"))) {
+    return CLIPS_HOBAO;
+  }
+  let base: Record<string, Clip>;
+  switch (troop) {
+    case "spear":
+      base = CLIPS_SPEAR;
+      break;
+    case "cavalry":
+      base = CLIPS_CAVALRY;
+      break;
+    case "archer":
+      base = CLIPS_ARCHER;
+      break;
+    case "strategist":
+      base = CLIPS_STRATEGIST;
+      break;
+    case "infantry":
+    default:
+      base = CLIPS_INFANTRY;
+      break;
+  }
+  const attackFrames =
+    meta?.attackFrames || (meta?.cols && meta.cols > 8 ? meta.cols : base.attack.frames);
+  const attackFps = attackFrames >= 12 ? 18 : base.attack.fps;
+  if (attackFrames !== base.attack.frames) {
+    return {
+      ...base,
+      attack: { ...base.attack, frames: attackFrames, fps: attackFps },
+    };
+  }
+  return base;
+}
+
+/* ──────────────────────────────────────────────────────────────
+ *  Swing profiles — xoay sprite quanh chân khi vung vũ khí.
+ *  Âm = rút đà / giương vũ khí (lean away from enemy).
+ *  Dương = vung chém / đâm tới (lean forward into swing).
+ *  Sprite quay quanh tâm chân (0.5, 0) giữ chắc trên mặt đất.
+ * ─────────────────────────────────────────────────────────────── */
+const ATTACK_SWING: Record<string, number[]> = {
+  /* Bộ binh: 8f — lùi đà giương đao → chém xả dứt khoát → thu đao */
+  infantry:   [0, -0.04, -0.08,  0.08,  0.10,  0.05,  0.02, 0],
+  /* Thương binh: 8f — rút giáo co lực → phóng đâm dứt khoát */
+  spear:      [0, -0.04, -0.08,  0.08,  0.10,  0.04,  0.02, 0],
+  /* Kỵ binh: 8f — vung đao từ lưng ngựa chém xuống */
+  cavalry:    [0, -0.05, -0.10,  0.09,  0.12,  0.06,  0.02, 0],
+  /* Cung thủ: 8f — ngả người kéo căng dây cung → buông tên bật nhẹ */
+  archer:     [0, -0.03, -0.06,  0.04,  0.06,  0.02,  0,    0],
+  /* Mưu sĩ: 8f — nâng quạt tụ phong → phất mạnh quạt ra chiêu */
+  strategist: [0, -0.03, -0.06,  0.06,  0.08,  0.04,  0.01, 0],
+};
+
+/** Skill vận khí: 4f — tụ lực → bung tỏa hào quang. */
+const SKILL_SWING: number[] = [-0.04, -0.08, 0.08, 0.02];
+
+/** Base Y position of sprite (chân trên mặt đất, cố định không nảy). */
+const SPRITE_BASE_Y = 0.02;
 
 type SheetRuntime = {
   img: HTMLImageElement;
@@ -153,37 +266,32 @@ function paintFrame(sh: SheetRuntime): void {
   }
   ctx.drawImage(sh.img, col * fw, sh.clip.row * fh, fw, fh, 0, 0, fw, fh);
   ctx.restore();
-  try {
-    const id = ctx.getImageData(0, 0, fw, fh);
-    const d = id.data;
-    for (let i = 0; i < d.length; i += 4) {
-      const r = d[i];
-      const g = d[i + 1];
-      const b = d[i + 2];
-      // Chỉ xóa nền trắng / đen thuần — giữ giáp tối / bóng
-      if ((r > 250 && g > 250 && b > 250) || (r < 6 && g < 6 && b < 6)) d[i + 3] = 0;
-    }
-    ctx.putImageData(id, 0, 0);
-  } catch {
-    /* ignore */
-  }
   sh.tex.needsUpdate = true;
 }
 
-async function loadSheetFromMeta(meta: SheetMeta): Promise<SheetRuntime> {
+async function loadSheetFromMeta(meta: SheetMeta, troop?: string): Promise<SheetRuntime> {
   const url = meta.sheet.startsWith("assets/") ? meta.sheet : `assets/units/sheets/${meta.sheet}`;
   const img = await loadImage(url);
-  const cols = meta.cols || 8;
+  let cols = meta.cols || 8;
   const rows = meta.rows || 2;
-  const fw = Math.floor(img.naturalWidth / cols);
   const fh = Math.floor(img.naturalHeight / rows);
+  let fw = Math.floor(img.naturalWidth / cols);
+  // Các ô sheet trong Ngọa Long luôn vuông (fw == fh).
+  // Nếu cols bị lệch làm rách frame (fw != fh), tự động sửa cols = naturalWidth / fh.
+  if (fh > 0 && fw !== fh && img.naturalWidth % fh === 0) {
+    cols = Math.round(img.naturalWidth / fh);
+    fw = fh;
+  }
   const canvas = document.createElement("canvas");
   canvas.width = fw;
   canvas.height = fh;
   const ctx = canvas.getContext("2d")!;
   const tex = new THREE.CanvasTexture(canvas);
   tex.colorSpace = THREE.SRGBColorSpace;
-  const clips = meta.kind === "hobao" ? CLIPS_HOBAO : CLIPS_SOLO;
+  tex.generateMipmaps = false;
+  tex.minFilter = THREE.LinearFilter;
+  tex.magFilter = THREE.LinearFilter;
+  const clips = clipsForTroop(troop || meta.troop, meta.kind, meta.sheet, meta);
   const sh: SheetRuntime = {
     img,
     canvas,
@@ -242,7 +350,7 @@ export async function createBattleActor(
 
   let sheet: SheetRuntime;
   try {
-    sheet = await loadSheetFromMeta(meta);
+    sheet = await loadSheetFromMeta(meta, kind);
   } catch (err) {
     console.warn("[battle] sheet fail", kind, tier, meta.sheet, err);
     const wikiFallback = meta.icon || `assets/units/battle/wiki-${kind}-t1.png`;
@@ -254,6 +362,7 @@ export async function createBattleActor(
     ctx.drawImage(img, 0, 0, 128, 128);
     const tex = new THREE.CanvasTexture(canvas);
     tex.colorSpace = THREE.SRGBColorSpace;
+    const fallbackClips = clipsForTroop(kind, meta.kind, meta.sheet, meta);
     sheet = {
       img,
       canvas,
@@ -263,8 +372,8 @@ export async function createBattleActor(
       rows: 1,
       fw: 128,
       fh: 128,
-      clips: CLIPS_WIKI,
-      clip: CLIPS_WIKI.idle,
+      clips: fallbackClips,
+      clip: fallbackClips.idle,
       playing: "idle",
       frame: 0,
       acc: 0,
@@ -285,7 +394,7 @@ export async function createBattleActor(
     map: sheet.tex,
     transparent: true,
     depthWrite: false,
-    alphaTest: 0.04,
+    alphaTest: 0.01,
     color: enemy ? 0xffe4e0 : 0xffffff,
   });
   const leader = new THREE.Sprite(leadMat);
@@ -306,8 +415,15 @@ export async function createBattleActor(
     mixer: {
       update(dt: number) {
         const sh = actor.sheet;
-        // Idle 1 frame — không tốn CPU mỗi tick
-        if (sh.playing === "idle" && sh.clip.frames <= 1) return;
+        const mat = leader.material as THREE.SpriteMaterial;
+
+        // Idle 1 frame — không tốn CPU mỗi tick; reset xoay nếu cần
+        if (sh.playing === "idle" && sh.clip.frames <= 1) {
+          if (mat.rotation !== 0) mat.rotation = 0;
+          if (leader.position.y !== SPRITE_BASE_Y) leader.position.y = SPRITE_BASE_Y;
+          return;
+        }
+
         sh.acc += dt;
         const step = 1 / Math.max(1, sh.clip.fps);
         while (sh.acc >= step) {
@@ -324,6 +440,31 @@ export async function createBattleActor(
           }
           paintFrame(sh);
         }
+
+        /* ── Swing rotation: xoay vung vũ khí dứt khoát quanh chân ── */
+        const isAttack = sh.playing === "attack";
+        const isSkill = sh.playing === "skill";
+        const isHit = sh.playing === "hit";
+
+        if (isAttack || isSkill) {
+          const swingArr = isSkill
+            ? SKILL_SWING
+            : (ATTACK_SWING[actor.troop] || ATTACK_SWING.infantry);
+          const fi = Math.min(sh.frame, swingArr.length - 1);
+          // Nếu sheet đã có chuỗi frame diễn hoạt động tác đầy đủ (>8f) thì dùng trực tiếp chuyển động frame
+          const angle = isAttack && sh.clip.frames > 8 ? 0 : (swingArr[fi] || 0);
+          // faceRight (enemy) → đảo hướng xoay để cả 2 phe vung đúng chiều
+          const sign = actor.faceRight ? -1 : 1;
+          mat.rotation = angle * sign;
+        } else if (isHit) {
+          // Bị trúng đòn → giật lùi thế ngửa người
+          const sign = actor.faceRight ? -1 : 1;
+          mat.rotation = -0.16 * sign;
+        } else {
+          // idle / death — đứng thẳng
+          if (mat.rotation !== 0) mat.rotation = 0;
+        }
+        if (leader.position.y !== SPRITE_BASE_Y) leader.position.y = SPRITE_BASE_Y;
       },
     },
     current: "idle",
@@ -347,6 +488,10 @@ export function playActor(actor: BattleActor, name: string, _fade = 0.15): void 
   sh.clip = clip;
   sh.frame = 0;
   sh.acc = 0;
+  // Reset xoay khi chuyển trạng thái — mixer sẽ áp lại đúng swing cho trạng thái mới
+  const mat = actor.sprite.material as THREE.SpriteMaterial;
+  mat.rotation = 0;
+  actor.sprite.position.y = SPRITE_BASE_Y;
   if (name === "death") {
     actor.members.forEach((m, i) => {
       const mat = m.material as THREE.SpriteMaterial;
@@ -366,10 +511,11 @@ export function playActor(actor: BattleActor, name: string, _fade = 0.15): void 
 
 export function prefetchBattleActors(): void {
   const warm = (troop: string, tier: number) =>
-    void loadSheetFromMeta(resolveMeta(troop, tier, 0)).catch(() => undefined);
+    void loadSheetFromMeta(resolveMeta(troop, tier, 0), troop).catch(() => undefined);
   warm("infantry", 1);
   warm("cavalry", 1);
   warm("cavalry", 5);
   warm("spear", 1);
   warm("archer", 1);
+  warm("strategist", 1);
 }

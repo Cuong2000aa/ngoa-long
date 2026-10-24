@@ -459,10 +459,11 @@ export function runStyleImpact(api: StylePlayApi, params: StylePlayParams, handl
     return;
   }
 
-  // ≤3: burst + 1 hit sheet + residual/ground
+  // Impact: Flash disc tức thì + burst + 2 lớp hit sheet đa tầng
+  handles.push(api.emitFlashDisc3d(scene, to, flash, scale));
   handles.push(api.emitBurst3d(scene, to, flash, scale));
   handles.push(
-    ...api.emitPremiumLayersAt(scene, to, premium.hit.slice(0, 1), {
+    ...api.emitPremiumLayersAt(scene, to, premium.hit.slice(0, 2), {
       scale,
       durationMs: tl.impactMs,
       y0: 0.28,

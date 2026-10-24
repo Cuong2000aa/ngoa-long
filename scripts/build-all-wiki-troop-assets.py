@@ -16,6 +16,13 @@ from pathlib import Path
 
 from PIL import Image, ImageEnhance
 
+# Đưa thư mục scripts vào sys.path để import lib_troop_sheet
+SCRIPTS_DIR = Path(__file__).resolve().parent
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
+
+from lib_troop_sheet import build_sheet_from_icon
+
 ROOT = Path(__file__).resolve().parents[1]
 WIKI_JSON = ROOT / "data" / "troops-wiki.json"
 ICON_DIR = ROOT / "assets" / "units" / "wiki"
@@ -151,33 +158,8 @@ def brighten(im: Image.Image, factor: float) -> Image.Image:
     return out
 
 
-def make_sheet(icon_path: Path, out_path: Path) -> None:
-    base = fit_icon(Image.open(icon_path), CELL)
-    # Attack nhẹ — ít dịch/xoay để không cắt tóc/sét/áo
-    frames: list[Image.Image] = [
-        base,
-        rotate_about_feet(scale_about_feet(shift(base, 3, 0), 0.98, 1.02), -5),
-        rotate_about_feet(scale_about_feet(shift(base, 5, 0), 0.97, 1.03), -7),
-        rotate_about_feet(scale_about_feet(shift(base, -8, -2), 1.06, 0.96), 6),
-        brighten(rotate_about_feet(scale_about_feet(shift(base, -10, -2), 1.08, 0.95), 8), 1.15),
-        tint(scale_about_feet(shift(base, -6, 0), 1.04, 0.98), (255, 220, 120), 0.28),
-        scale_about_feet(shift(base, -3, 0), 1.01, 0.99),
-        base,
-        # Idle tĩnh ×8 — không bob trong sheet (tránh rung khi idle 1 frame)
-        base,
-        base,
-        base,
-        base,
-        tint(base, (180, 210, 255), 0.18),
-        tint(scale_about_feet(base, 1.04, 1.04), (255, 210, 100), 0.25),
-        brighten(tint(scale_about_feet(base, 1.06, 1.05), (255, 240, 160), 0.32), 1.1),
-        tint(base, (200, 230, 255), 0.1),
-    ]
-    sheet = Image.new("RGBA", (CELL * COLS, CELL * ROWS), (0, 0, 0, 0))
-    for i, fr in enumerate(frames):
-        sheet.paste(fr, ((i % COLS) * CELL, (i // COLS) * CELL), fr)
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    sheet.save(out_path, "PNG")
+def make_sheet(icon_path: Path, out_path: Path, troop: str = "infantry", tier: int = 1) -> None:
+    build_sheet_from_icon(icon_path, out_path, troop=troop, tier=tier)
 
 
 def wiki_cap_to_tier(cap: int) -> int:
@@ -295,7 +277,7 @@ def main() -> int:
         icon_rel = f"assets/units/wiki/{wid}.png"
         out = UNIT_SHEETS / f"{wid}.png"
         try:
-            make_sheet(u["iconPath"], out)
+            make_sheet(u["iconPath"], out, troop=u["troop"], tier=u["tier"])
             done += 1
             if done % 25 == 0:
                 log("sheets", done, "/", ok_dl)
@@ -342,12 +324,18 @@ def main() -> int:
                     "wikiId": wid,
                 }
             else:
-                make_sheet(rep["iconPath"], sheet_out)
+                # Nếu có ảnh pose độ phân giải cao trong _poses/ thì giữ lại, ngược lại sinh từ icon wiki
+                has_poses = (
+                    (SHEETS / "_poses" / f"{troop}-t{tier}-wind.jpg").exists()
+                    or (SHEETS / "_poses" / f"{troop}-t{tier}-raise.jpg").exists()
+                )
+                if not has_poses or not sheet_out.exists():
+                    make_sheet(rep["iconPath"], sheet_out, troop=troop, tier=tier)
                 type_index[troop][str(tier)] = {
                     "sheet": f"assets/units/sheets/{troop}-t{tier}.png",
                     "cols": COLS,
                     "rows": ROWS,
-                    "kind": "wiki-derived",
+                    "kind": "poses" if has_poses else "wiki-derived",
                     "icon": f"assets/units/battle/wiki-{troop}-t{tier}.png",
                     "wikiId": wid,
                 }
