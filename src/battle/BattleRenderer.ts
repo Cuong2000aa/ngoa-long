@@ -319,9 +319,36 @@ export class BattleRenderer {
   private camPunchAmp = 0;
   private hitStopUntil = 0;
   private skillPlayCancel: (() => void) | null = null;
-  /** setTimeout từ skillFlash/wave — phải hủy trong clearFx kẻo FX sót sang chiêu sau */
+  /** setTimeout từ skillFlash/wave/attack — phải hủy trong clearFx kẻo FX sót sang chiêu sau */
   private skillFxTimers: ReturnType<typeof setTimeout>[] = [];
-  private onResizeBound = () => this.resize();
+  private resizeRaf = 0;
+  private pausedForOrient = false;
+
+  private onResizeBound = (): void => {
+    if (this.resizeRaf) cancelAnimationFrame(this.resizeRaf);
+    this.resizeRaf = requestAnimationFrame(() => {
+      this.resizeRaf = 0;
+      this.resize();
+    });
+  };
+
+  private onOrientBeginBound = (): void => {
+    this.pausedForOrient = true;
+    if (this.resizeRaf) {
+      cancelAnimationFrame(this.resizeRaf);
+      this.resizeRaf = 0;
+    }
+  };
+
+  private onOrientEndBound = (): void => {
+    this.pausedForOrient = false;
+    this.resize();
+    if (this.running && !this.raf) {
+      this.last = performance.now();
+      this.tick();
+    }
+  };
+
   private sunLight: THREE.DirectionalLight | null = null;
   private hemiLight: THREE.HemisphereLight | null = null;
   private ambientLight: THREE.AmbientLight | null = null;
@@ -331,7 +358,12 @@ export class BattleRenderer {
     const id = setTimeout(() => {
       const i = this.skillFxTimers.indexOf(id);
       if (i >= 0) this.skillFxTimers.splice(i, 1);
-      fn();
+      if (!this.running || !this.scene || !this.renderer) return;
+      try {
+        fn();
+      } catch (err) {
+        console.warn("[Battle] skillFx err", err);
+      }
     }, ms);
     this.skillFxTimers.push(id);
   }
@@ -360,15 +392,15 @@ export class BattleRenderer {
 
     const coarse =
       typeof window.matchMedia === "function" && window.matchMedia("(pointer: coarse)").matches;
+    // Trên mobile (pointer: coarse): khóa DPR = 1.0 để tránh VRAM vượt trần khi xoay màn hình (Retina 3x = x9 pixels)
     const dpr = this.preview
       ? Math.min(window.devicePixelRatio || 1, 1.25)
-      : Math.min(window.devicePixelRatio || 1, coarse ? 1.25 : 2);
+      : coarse ? 1.0 : Math.min(window.devicePixelRatio || 1, 1.75);
     const renderer = new THREE.WebGLRenderer({
       antialias: !coarse,
       alpha: true,
       powerPreference: coarse ? "low-power" : "high-performance",
-      // Mobile tắt — preserveDrawingBuffer gần như x2 VRAM, dễ OOM khi xoay
-      preserveDrawingBuffer: !coarse,
+      preserveDrawingBuffer: false,
     });
     renderer.setPixelRatio(dpr);
     renderer.setClearColor(0x000000, 0);
@@ -406,7 +438,9 @@ export class BattleRenderer {
     prefetchBattleVfx();
     prefetchBattleActors();
     this.resize();
-    window.addEventListener("resize", this.onResizeBound);
+    window.addEventListener("resize", this.onResizeBound, { passive: true });
+    window.addEventListener("nl-orientation-begin", this.onOrientBeginBound, { passive: true });
+    window.addEventListener("nl-orientation-end", this.onOrientEndBound, { passive: true });
     renderer.domElement.addEventListener(
       "webglcontextlost",
       (ev) => {
@@ -468,6 +502,7 @@ export class BattleRenderer {
     scene.add(ground);
 
     loader.load("assets/battle/arena-ground-tile.jpg", (tex) => {
+      if (!this.running || !this.scene) { tex.dispose(); return; }
       tex.colorSpace = THREE.SRGBColorSpace;
       tex.wrapS = THREE.RepeatWrapping;
       tex.wrapT = THREE.RepeatWrapping;
@@ -495,6 +530,7 @@ export class BattleRenderer {
     scene.add(courtyard);
 
     loader.load("assets/battle/arena-floor-3k.png", (tex) => {
+      if (!this.running || !this.scene) { tex.dispose(); return; }
       tex.colorSpace = THREE.SRGBColorSpace;
       tex.anisotropy = aniso;
       floorMat.map = tex;
@@ -507,6 +543,7 @@ export class BattleRenderer {
     back.position.set(0, 2.7, -6.8);
     scene.add(back);
     loader.load("assets/battle/arena-back-3k.jpg", (tex) => {
+      if (!this.running || !this.scene) { tex.dispose(); return; }
       tex.colorSpace = THREE.SRGBColorSpace;
       tex.anisotropy = aniso;
       tex.wrapS = THREE.ClampToEdgeWrapping;
@@ -771,7 +808,7 @@ export class BattleRenderer {
       const hitDelay = cavalry ? 175 : spear ? 100 : ranged ? 145 : 120;
 
       // Xuất hiện hiệu ứng vũ khí ngay khi tướng vung chém / đâm / buông cung
-      setTimeout(() => {
+      this.scheduleSkillFx(() => {
         if (!this.scene || from.dead) return;
         const now = performance.now();
         if (atkTroop === "archer") {
@@ -800,7 +837,7 @@ export class BattleRenderer {
         }
       }, swingDelay);
 
-      setTimeout(() => {
+      this.scheduleSkillFx(() => {
         if (!to.dead && this.scene) {
           to.hitFlashUntil = performance.now() + (cavalry ? 380 : 300);
           playActor(to.actor, "hit", 0.05);
@@ -949,7 +986,7 @@ export class BattleRenderer {
         targets.forEach((tid, i) => {
           const to = this.fighters.get(tid);
           if (!to || to.dead || to.side === f.side || !this.scene) return;
-          setTimeout(() => {
+          this.scheduleSkillFx(() => {
             if (!this.scene || to.dead) return;
             playSkillFx3d({
               scene: this.scene,
@@ -1216,7 +1253,12 @@ export class BattleRenderer {
     this.running = false;
     if (this.raf) cancelAnimationFrame(this.raf);
     this.raf = 0;
+    if (this.resizeRaf) cancelAnimationFrame(this.resizeRaf);
+    this.resizeRaf = 0;
     window.removeEventListener("resize", this.onResizeBound);
+    window.removeEventListener("nl-orientation-begin", this.onOrientBeginBound);
+    window.removeEventListener("nl-orientation-end", this.onOrientEndBound);
+    this.clearFx();
     this.clearFighters();
     if (this.hudLayer) {
       this.hudLayer.innerHTML = "";
@@ -1302,7 +1344,14 @@ export class BattleRenderer {
     if (w < 8 || h < 8) return;
     try {
       this.renderer.setSize(w, h, false);
-      this.camera.aspect = w / h;
+      const aspect = w / h;
+      this.camera.aspect = aspect;
+      if (aspect < 1.0) {
+        // Màn hình dọc (portrait): tự động nới FOV để không bị cắt cánh quân 2 bên
+        this.camera.fov = Math.min(65, 38 / Math.max(0.55, aspect));
+      } else {
+        this.camera.fov = 38;
+      }
       this.camera.updateProjectionMatrix();
     } catch (err) {
       console.warn("[Battle] resize", err);
@@ -1312,7 +1361,11 @@ export class BattleRenderer {
   /** Hủy timeline chiêu đang chạy */
   cancelSkillPlay(): void {
     if (this.skillPlayCancel) {
-      this.skillPlayCancel();
+      try {
+        this.skillPlayCancel();
+      } catch (err) {
+        console.warn("[Battle] skillPlayCancel", err);
+      }
       this.skillPlayCancel = null;
     }
     for (const id of this.skillFxTimers) clearTimeout(id);
@@ -1333,7 +1386,8 @@ export class BattleRenderer {
   }
 
   private tick = (): void => {
-    if (!this.running || !this.renderer || !this.scene || !this.camera) return;
+    this.raf = 0;
+    if (!this.running || this.pausedForOrient || !this.renderer || !this.scene || !this.camera) return;
     this.raf = requestAnimationFrame(this.tick);
     const now = performance.now();
     let dt = Math.min(0.05, (now - this.last) / 1000);

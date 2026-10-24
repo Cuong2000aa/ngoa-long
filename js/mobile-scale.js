@@ -105,6 +105,14 @@
     applyFluid();
     // Chỉ orientation — không storm từ visualViewport/resize (browser tự fire resize)
     window.addEventListener("orientationchange", onOrient, { passive: true });
+    try {
+      var mql = window.matchMedia("(orientation: portrait)");
+      if (mql && mql.addEventListener) {
+        mql.addEventListener("change", onOrient, { passive: true });
+      } else if (mql && mql.addListener) {
+        mql.addListener(onOrient);
+      }
+    } catch (_) {}
     // resize: chỉ sync CSS vars, không synthetic Event (tránh vòng lặp)
     window.addEventListener(
       "resize",

@@ -53,6 +53,7 @@
     this.roundBadge = document.getElementById("combat-round-badge");
     this.cards = {};
     this._playing = false;
+    this._stepTimer = 0;
     this._battle3d = null;
     this._battleReady = null;
 
@@ -65,6 +66,10 @@
   }
 
   CombatView.prototype.open = function () {
+    // Dừng CityRenderer khi vào trận để tránh 2 WebGL context chạy đồng thời gây sập trên iOS
+    if (global.NLCity && global.NLCity.city && typeof global.NLCity.city.pause === "function") {
+      global.NLCity.city.pause();
+    }
     this.root.hidden = false;
     this.resultEl.hidden = true;
     this.btnClose.hidden = true;
@@ -80,11 +85,26 @@
   CombatView.prototype.close = function () {
     this.root.hidden = true;
     this._playing = false;
+    if (this._stepTimer) {
+      clearTimeout(this._stepTimer);
+      this._stepTimer = 0;
+    }
+    if (this._skillPlay && this._skillPlay.cancel) {
+      this._skillPlay.cancel();
+      this._skillPlay = null;
+    }
     if (this.root) this.root.classList.remove("mode-3d");
     if (this._battle3d) {
       this._battle3d.dispose();
       this._battle3d = null;
       this._battleReady = null;
+    }
+    // Tiếp tục render Thành Chính sau khi rời trận
+    if (global.NLCity && global.NLCity.city && typeof global.NLCity.city.resume === "function") {
+      global.NLCity.city.resume();
+      if (typeof global.NLCity.city.resize === "function") {
+        global.NLCity.city.resize();
+      }
     }
   };
 
@@ -324,6 +344,10 @@
 
     function finish() {
       self._playing = false;
+      if (self._stepTimer) {
+        clearTimeout(self._stepTimer);
+        self._stepTimer = 0;
+      }
       self.resultEl.hidden = false;
       self.resultEl.textContent = result.win ? "CHIẾN THẮNG" : "THẤT BẠI";
       self.resultEl.className = "combat-result " + (result.win ? "win" : "lose");
@@ -336,24 +360,41 @@
 
     function step() {
       if (!self._playing) return;
+      if (self._stepTimer) {
+        clearTimeout(self._stepTimer);
+        self._stepTimer = 0;
+      }
       if (self._skip) {
+        // Hủy ngay toàn bộ VFX / timeline chiêu đang chạy
+        if (self._battle3d && typeof self._battle3d.clearFx === "function") {
+          self._battle3d.clearFx();
+        }
+        if (self._skillPlay && self._skillPlay.cancel) {
+          self._skillPlay.cancel();
+          self._skillPlay = null;
+        }
         while (idx < events.length) {
           var rem = events[idx++];
-          if (rem.type === "hp") self.updateHp(rem.uid, rem.hp, rem.maxHp);
-          else if (rem.type === "morale") self.updateMorale(rem.uid, rem.value, rem.max);
-          else if (rem.type === "death") {
+          if (rem.type === "hp") {
+            self.updateHp(rem.uid, rem.hp, rem.maxHp);
+            if (self._battle3d) self._battle3d.setHp(rem.uid, rem.hp, rem.maxHp);
+          } else if (rem.type === "morale") {
+            self.updateMorale(rem.uid, rem.value, rem.max);
+            if (self._battle3d && self._battle3d.setMorale) self._battle3d.setMorale(rem.uid, rem.value, rem.max);
+          } else if (rem.type === "death") {
             self.log("<b>" + rem.name + "</b> trận vong.");
             if (self.cards[rem.uid]) self.cards[rem.uid].classList.add("dead");
             if (self._battle3d) self._battle3d.setDead(rem.uid);
-          } else if (
-            rem.type === "round" ||
-            rem.type === "skill" ||
-            rem.type === "attack" ||
-            rem.type === "skip" ||
-            rem.type === "battle_end"
-          ) {
-            self.applyEvent(rem);
+          } else if (rem.type === "status") {
+            if (self._battle3d && self._battle3d.setStatuses) self._battle3d.setStatuses(rem.uid, rem.statuses || []);
+          } else if (rem.type === "round") {
+            if (self.roundBadge) self.roundBadge.textContent = "Hiệp " + rem.round;
+            self.log("— Hiệp " + rem.round + " —");
           }
+          // TUYỆT ĐỐI KHÔNG GỌI applyEvent CHO SKILL / ATTACK KHI BỎ QUA ĐỂ TRÁNH SPAM DRAW CALL & TIMERS GÂY CRASH TRÊN IOS
+        }
+        if (self._battle3d && typeof self._battle3d.clearFx === "function") {
+          self._battle3d.clearFx();
         }
         finish();
         return;
@@ -375,11 +416,24 @@
       }
       if (ev.type === "float") delay = 80;
       if (ev.type === "hp" || ev.type === "morale") delay = 40;
-      setTimeout(step, delay);
+      self._stepTimer = setTimeout(step, delay);
     }
 
     this.btnSkip.onclick = function () {
+      if (self._skip || !self._playing) return;
       self._skip = true;
+      if (self._stepTimer) {
+        clearTimeout(self._stepTimer);
+        self._stepTimer = 0;
+      }
+      if (self._battle3d && typeof self._battle3d.clearFx === "function") {
+        self._battle3d.clearFx();
+      }
+      if (self._skillPlay && self._skillPlay.cancel) {
+        self._skillPlay.cancel();
+        self._skillPlay = null;
+      }
+      step();
     };
 
     function begin() {
