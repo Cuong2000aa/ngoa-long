@@ -1,7 +1,8 @@
 name: Deploy GitHub Pages
 
-# Chỉ deploy khi publish GitHub Release (gắn version), không deploy mỗi push main.
 on:
+  push:
+    branches: [main]
   release:
     types: [published]
   workflow_dispatch:
