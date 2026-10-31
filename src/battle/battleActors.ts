@@ -17,6 +17,11 @@ type SheetMeta = {
   tier?: number;
   wikiId?: string;
   attackFrames?: number;
+  /**
+   * facing-lr: col0 = LOOK LEFT, col1 = LOOK RIGHT; animation frames advance down rows.
+   * Không flip canvas — dùng đúng art trái/phải đã gen.
+   */
+  layout?: "grid" | "facing-lr";
 };
 
 type SheetsFile = {
@@ -120,6 +125,22 @@ const CLIPS_INFANTRY: Record<string, Clip> = {
   death: { row: 1, start: 2, frames: 1, fps: 1, loop: false },
 };
 
+/**
+ * Sheet LOOK LEFT | LOOK RIGHT (2 cột × N hàng).
+ * Clip.row = chỉ số hàng frame; facing chọn cột lúc paint.
+ */
+const CLIPS_FACING_LR = (rows: number, attackFrames: number): Record<string, Clip> => {
+  const n = Math.max(1, Math.min(rows, attackFrames || rows));
+  const hitRow = Math.min(rows - 1, Math.max(0, Math.floor(n * 0.6)));
+  return {
+    idle: { row: 0, start: 0, frames: 1, fps: 1, loop: true },
+    attack: { row: 0, start: 0, frames: n, fps: n >= 10 ? 18 : 14, loop: false },
+    skill: { row: 0, start: 0, frames: Math.min(n, 6), fps: 12, loop: false },
+    hit: { row: hitRow, start: 0, frames: 1, fps: 8, loop: false },
+    death: { row: hitRow, start: 0, frames: 1, fps: 1, loop: false },
+  };
+};
+
 /** Thương binh — nhấp nháy lùi rồi đâm thẳng cực nhanh 8 frames */
 const CLIPS_SPEAR: Record<string, Clip> = {
   idle: { row: 1, start: 0, frames: 1, fps: 1, loop: true },
@@ -174,6 +195,11 @@ function clipsForTroop(
 ): Record<string, Clip> {
   if (kind === "hobao" || (sheetPath && sheetPath.includes("hobao"))) {
     return CLIPS_HOBAO;
+  }
+  if (meta?.layout === "facing-lr" || kind === "facing-lr") {
+    const rows = Math.max(1, meta?.rows || 8);
+    const attackFrames = meta?.attackFrames || rows;
+    return CLIPS_FACING_LR(rows, attackFrames);
   }
   let base: Record<string, Clip>;
   switch (troop) {
@@ -247,24 +273,36 @@ type SheetRuntime = {
   acc: number;
   /** Wiki sheet mặc định nhìn TRÁI — true = lật canvas nhìn PHẢI (địch bên trái) */
   mirror: boolean;
+  /** facing-lr: chọn cột art thay vì flip */
+  facingLr: boolean;
   /** Cache key frame đã paint — tránh getImageData lặp khi idle */
   paintKey?: string;
 };
 
 function paintFrame(sh: SheetRuntime): void {
   const fi = Math.min(sh.frame, sh.clip.frames - 1);
-  const col = sh.clip.start + fi;
-  const key = `${sh.clip.row}:${col}:${sh.mirror ? 1 : 0}`;
+  let col: number;
+  let row: number;
+  if (sh.facingLr) {
+    // col0 = LOOK LEFT (phe ta), col1 = LOOK RIGHT (địch); frame chạy theo hàng
+    col = sh.mirror ? 1 : 0;
+    row = Math.min(sh.rows - 1, sh.clip.row + sh.clip.start + fi);
+  } else {
+    col = sh.clip.start + fi;
+    row = sh.clip.row;
+  }
+  const key = `${row}:${col}:${sh.facingLr ? "lr" : sh.mirror ? 1 : 0}`;
   if (sh.paintKey === key) return;
   sh.paintKey = key;
   const { ctx, fw, fh } = sh;
   ctx.clearRect(0, 0, fw, fh);
   ctx.save();
-  if (sh.mirror) {
+  // Chỉ flip khi sheet cũ 1 hướng; sheet facing-lr đã có art đúng hướng
+  if (sh.mirror && !sh.facingLr) {
     ctx.translate(fw, 0);
     ctx.scale(-1, 1);
   }
-  ctx.drawImage(sh.img, col * fw, sh.clip.row * fh, fw, fh, 0, 0, fw, fh);
+  ctx.drawImage(sh.img, col * fw, row * fh, fw, fh, 0, 0, fw, fh);
   ctx.restore();
   sh.tex.needsUpdate = true;
 }
@@ -272,13 +310,22 @@ function paintFrame(sh: SheetRuntime): void {
 async function loadSheetFromMeta(meta: SheetMeta, troop?: string): Promise<SheetRuntime> {
   const url = meta.sheet.startsWith("assets/") ? meta.sheet : `assets/units/sheets/${meta.sheet}`;
   const img = await loadImage(url);
-  let cols = meta.cols || 8;
-  const rows = meta.rows || 2;
-  const fh = Math.floor(img.naturalHeight / rows);
+  const facingLr = meta.layout === "facing-lr" || meta.kind === "facing-lr";
+  let cols = meta.cols || (facingLr ? 2 : 8);
+  let rows = meta.rows || (facingLr ? 8 : 2);
+  // facing-lr: ô vuông 512 — suy rows từ chiều cao nếu meta lệch
+  if (facingLr && img.naturalWidth > 0) {
+    cols = 2;
+    const cell = Math.floor(img.naturalWidth / 2);
+    if (cell > 0 && img.naturalHeight % cell === 0) {
+      rows = Math.round(img.naturalHeight / cell);
+    }
+  }
+  let fh = Math.floor(img.naturalHeight / rows);
   let fw = Math.floor(img.naturalWidth / cols);
   // Các ô sheet trong Ngọa Long luôn vuông (fw == fh).
   // Nếu cols bị lệch làm rách frame (fw != fh), tự động sửa cols = naturalWidth / fh.
-  if (fh > 0 && fw !== fh && img.naturalWidth % fh === 0) {
+  if (!facingLr && fh > 0 && fw !== fh && img.naturalWidth % fh === 0) {
     cols = Math.round(img.naturalWidth / fh);
     fw = fh;
   }
@@ -291,7 +338,10 @@ async function loadSheetFromMeta(meta: SheetMeta, troop?: string): Promise<Sheet
   tex.generateMipmaps = false;
   tex.minFilter = THREE.LinearFilter;
   tex.magFilter = THREE.LinearFilter;
-  const clips = clipsForTroop(troop || meta.troop, meta.kind, meta.sheet, meta);
+  const metaForClips: SheetMeta = facingLr
+    ? { ...meta, rows, cols, attackFrames: meta.attackFrames || rows, layout: "facing-lr", kind: "facing-lr" }
+    : meta;
+  const clips = clipsForTroop(troop || meta.troop, metaForClips.kind, meta.sheet, metaForClips);
   const sh: SheetRuntime = {
     img,
     canvas,
@@ -307,6 +357,7 @@ async function loadSheetFromMeta(meta: SheetMeta, troop?: string): Promise<Sheet
     frame: 0,
     acc: 0,
     mirror: false,
+    facingLr,
   };
   paintFrame(sh);
   return sh;
@@ -378,6 +429,7 @@ export async function createBattleActor(
       frame: 0,
       acc: 0,
       mirror: false,
+      facingLr: false,
     };
   }
 
